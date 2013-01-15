@@ -38,7 +38,7 @@
         
         self.descriptions = [NSMutableArray arrayWithObjects:
                              @"RAID View",
-                             @"Mirror View",
+                             @"HA Appliance View",
                              @"Volume View",
                              @"Datacenter View",
                              @"Rack View",
@@ -214,7 +214,7 @@
         
         if (index < 3) // lower the center with 50 points
         {
-            centery = centery + 45;
+            centery = centery + 50;
             textColor = [UIColor darkGrayColor];
         }
         
