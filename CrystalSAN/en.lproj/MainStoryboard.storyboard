@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12D38" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D38" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -37,7 +37,7 @@
                                 <rect key="frame" x="165" y="672" width="195" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.001" maxValue="1" id="kai-nS-II0">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.001" maxValue="1" id="kai-nS-II0">
                                 <rect key="frame" x="469" y="20" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -45,7 +45,7 @@
                                     <action selector="updateValue:" destination="2" eventType="valueChanged" id="ZyL-uo-jtN"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999999999999" minValue="0.001" maxValue="2" id="cpd-pg-lMp">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999999999999" minValue="0.001" maxValue="2" id="cpd-pg-lMp">
                                 <rect key="frame" x="469" y="50" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -53,7 +53,7 @@
                                     <action selector="updateValue:" destination="2" eventType="valueChanged" id="Yxh-x0-E05"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.82999999999999996" minValue="0.001" maxValue="2" id="ju0-X0-DCu">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.82999999999999996" minValue="0.001" maxValue="2" id="ju0-X0-DCu">
                                 <rect key="frame" x="469" y="80" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -61,42 +61,42 @@
                                     <action selector="updateValue:" destination="2" eventType="valueChanged" id="twc-1y-TcD"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fvl-wa-nje">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fvl-wa-nje">
                                 <rect key="frame" x="406" y="20" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ufc-J5-Hgq">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ufc-J5-Hgq">
                                 <rect key="frame" x="406" y="50" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jrJ-zF-LgB">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jrJ-zF-LgB">
                                 <rect key="frame" x="406" y="80" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KNo-Tg-eVE">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KNo-Tg-eVE">
                                 <rect key="frame" x="593" y="20" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="24P-Ce-vuN">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="24P-Ce-vuN">
                                 <rect key="frame" x="593" y="56" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.83" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cjB-MQ-10N">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.83" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cjB-MQ-10N">
                                 <rect key="frame" x="593" y="86" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -107,6 +107,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <navigationItem key="navigationItem" id="b9y-7s-dt2"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="arcSlider" destination="kai-nS-II0" id="rsu-fw-W3s"/>
@@ -119,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-774" y="-587"/>
+            <point key="canvasLocation" x="-443" y="-611"/>
         </scene>
         <!--Raid View Controller-->
         <scene sceneID="r9q-67-G5r">
@@ -233,7 +234,7 @@
                                 <rect key="frame" x="50" y="60" width="237" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="zd2-et-nRt">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="zd2-et-nRt">
                                 <rect key="frame" x="469" y="21" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -241,7 +242,7 @@
                                     <action selector="updateValue:" destination="sZ4-0c-S4u" eventType="valueChanged" id="VuD-PZ-XgK"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999999999999" minValue="0.0010000000474974513" maxValue="2" id="eE0-Xa-eya">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999999999999" minValue="0.0010000000474974513" maxValue="2" id="eE0-Xa-eya">
                                 <rect key="frame" x="469" y="51" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -249,7 +250,7 @@
                                     <action selector="updateValue:" destination="sZ4-0c-S4u" eventType="valueChanged" id="eSX-QE-7HH"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.72999999999999998" minValue="0.0010000000474974513" maxValue="2" id="LeU-Sb-6SH">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.72999999999999998" minValue="0.0010000000474974513" maxValue="2" id="LeU-Sb-6SH">
                                 <rect key="frame" x="469" y="81" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -257,42 +258,42 @@
                                     <action selector="updateValue:" destination="sZ4-0c-S4u" eventType="valueChanged" id="FQD-n3-dwA"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yCg-k9-9TA">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yCg-k9-9TA">
                                 <rect key="frame" x="406" y="20" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AAA-cb-HBn">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AAA-cb-HBn">
                                 <rect key="frame" x="406" y="50" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sXL-nC-kYy">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sXL-nC-kYy">
                                 <rect key="frame" x="406" y="80" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cAa-Js-enX">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cAa-Js-enX">
                                 <rect key="frame" x="593" y="20" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hKH-8a-bAw">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hKH-8a-bAw">
                                 <rect key="frame" x="593" y="56" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ogH-qk-PYT">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ogH-qk-PYT">
                                 <rect key="frame" x="593" y="86" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -338,7 +339,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFh-Ls-7Zv" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="-1446"/>
+            <point key="canvasLocation" x="722" y="-1616"/>
         </scene>
         <!--Mirror View Controller-->
         <scene sceneID="kRp-ku-pt5">
@@ -361,11 +362,11 @@
                                 <rect key="frame" x="50" y="60" width="237" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text - HA Appliance View.png" id="8nu-Ke-BhL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text-HA Appliance View.png" id="8nu-Ke-BhL">
                                 <rect key="frame" x="71" y="60" width="346" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="229-kE-frN">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="229-kE-frN">
                                 <rect key="frame" x="486" y="21" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -373,7 +374,7 @@
                                     <action selector="updateValue:" destination="YOT-Ri-UBv" eventType="valueChanged" id="Kf7-oI-voc"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999475479126" minValue="0.0010000000474974513" maxValue="2" id="N5R-IM-Hla">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999475479126" minValue="0.0010000000474974513" maxValue="2" id="N5R-IM-Hla">
                                 <rect key="frame" x="486" y="51" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -381,7 +382,7 @@
                                     <action selector="updateValue:" destination="YOT-Ri-UBv" eventType="valueChanged" id="rWI-D5-C1e"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="dtG-2v-5i1">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="dtG-2v-5i1">
                                 <rect key="frame" x="486" y="81" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -389,42 +390,42 @@
                                     <action selector="updateValue:" destination="YOT-Ri-UBv" eventType="valueChanged" id="wsG-yS-B6g"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cte-dV-sr1">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cte-dV-sr1">
                                 <rect key="frame" x="423" y="20" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3nd-Dg-IkF">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3nd-Dg-IkF">
                                 <rect key="frame" x="423" y="50" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oRa-QV-2PT">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oRa-QV-2PT">
                                 <rect key="frame" x="423" y="80" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qk1-NQ-PLr">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qk1-NQ-PLr">
                                 <rect key="frame" x="610" y="20" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wka-Wb-ctU">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wka-Wb-ctU">
                                 <rect key="frame" x="610" y="56" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IWS-Dy-62u">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IWS-Dy-62u">
                                 <rect key="frame" x="610" y="86" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -560,7 +561,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIs-nA-1fb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="-587"/>
+            <point key="canvasLocation" x="722" y="-611"/>
         </scene>
         <!--Volume View Controller-->
         <scene sceneID="4XE-nL-MyA">
@@ -681,7 +682,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fd2-7b-XIg" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="292"/>
+            <point key="canvasLocation" x="728" y="264"/>
         </scene>
         <!--Raid View Config Controller-->
         <scene sceneID="Lp7-zm-J1S">
@@ -825,7 +826,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgJ-po-JiG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1744" y="-1616"/>
+            <point key="canvasLocation" x="1964" y="-1616"/>
         </scene>
     </scenes>
     <resources>
@@ -837,10 +838,10 @@
         <image name="button-Home.png" width="279" height="268"/>
         <image name="button-Monitor.png" width="361" height="355"/>
         <image name="image-RAID-Configuration.png" width="1318" height="747"/>
-        <image name="text - HA Appliance View.png" width="687" height="77"/>
         <image name="text-CircularMode.png" width="358" height="44"/>
         <image name="text-CrystalSAN.png" width="278" height="106"/>
         <image name="text-DiagonalMode.png" width="391" height="56"/>
+        <image name="text-HA Appliance View.png" width="687" height="77"/>
         <image name="text-Home.png" width="296" height="101"/>
         <image name="text-Mirror-view.png" width="520" height="130"/>
         <image name="text-RAID-View.png" width="475" height="130"/>

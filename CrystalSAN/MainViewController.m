@@ -86,19 +86,19 @@
     // -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender defined in storyboard,
     // So delete the connection between the class 'MainViewController' and other three class,
     // ie, RaidViewController, MirrorViewController and VolumeViewController,
-    // otherwise the trnasition behaviour will follow the defined in storyboard connection
+    // otherwise the trnasition behaviour will follow the defined in storyboard
     
     self.raidViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RaidViewControllerID"];
-    self.mirrorViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    self.raidViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     self.mirrorViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MirrorViewControllerID"];
-    self.mirrorViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
-    // below is for demo code
-    //self.mirrorViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RaidViewConfigControllerID"];
-    //self.mirrorViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    self.mirrorViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
     self.volumeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VolumeViewControllerID"];
-    self.mirrorViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    self.volumeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    [theDelegate getSanVmirrorLists];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,6 +119,10 @@
             toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    NSLog(@"%s: %@",__func__, sender);
+}
 
 #pragma mark - event handler
 - (void)onItemPress:(id)sender
@@ -202,6 +206,8 @@
         }
         
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
+        //[theButton addTarget:self action:@selector(performSegueWithIdentifier:) forControlEvents:UIControlEventTouchUpInside];
+        //performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
         
         float x = 0;
         float y = 0;

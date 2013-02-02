@@ -7,6 +7,8 @@
 //
 
 #import "MirrorViewController.h"
+#import "AppDelegate.h"
+
 
 @interface MirrorViewController ()
 
@@ -41,17 +43,11 @@
         //carousel.backgroundColor = [UIColor cyanColor];
         
         descriptions = [NSMutableArray arrayWithObjects:
-                        @"Xsan1_Meta",@"Xsan2_Meta",
-                        @"L1_Meta_1",@"L1_Meta_2",
-                        @"VML003",@"VML004",@"VML005",@"VML006",@"VML007",@"VML008",@"VML009",@"VML010",
-                        @"VML011",@"VML012",@"VML013",@"VML014",@"VML015",@"VML016",@"VML017",@"VML018",@"VML019",@"VML020",
-                        @"VML021",@"VML022",@"VML023",@"VML024",@"VML025",@"VML026",@"VML027",@"VML028",@"VML029",@"VML030",
-                        @"VML031",@"VML032",@"VML033",@"VML034",@"VML035",@"VML036",@"VML037",@"VML038",@"VML039",@"VML040",
-                        @"VML041",@"VML042",@"VML043",@"VML044",@"VML045",@"VML046",@"VML047",@"VML048",
-                        @"VML101",@"VML102",@"VML103",@"VML104",@"VML105",@"VML106",@"VML107",@"VML108",@"VML109",@"VML110",
-                        @"VML111",@"VML112",@"VML113",@"VML114",@"VML115",@"VML116",
-                        @"VXR35-1",@"VXR35-2",@"VXR36-1",@"VXR36-2",
-                        @"VL2_1",@"VL2_2",@"VL3_1",@"VL3_2",@"VL4_1",@"VL4_2",@"VL5_1",@"VL5_2",@"VL6_1",@"VL6_2",
+                        @"Engine_227",
+                        @"Engine_229",
+                        @"Engine_231",@"Engine_233",@"Engine_235",@"Engine_237",@"Engine_239",
+                        @"Engine_241",@"Engine_243",@"Engine_245",@"Engine_247",@"Engine_249",
+                        @"Engine_251",
                         @"VicomM01",@"VicomM02",@"VicomM03",@"VicomM04",
                         //@"",
                         nil];
@@ -110,11 +106,19 @@
 
 - (IBAction)onHome:(id)sender
 {
+    //get data
+    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [theDelegate getSanVmirrorLists];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)onBack:(id)sender
 {
+    //get data
+    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [theDelegate getSanVmirrorLists];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

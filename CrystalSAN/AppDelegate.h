@@ -26,4 +26,6 @@
 @property (strong,nonatomic) NSString *currentSegueID;
 @property (strong,nonatomic) NSString *currentDeviceName;
 
+- (NSString *)getSanVmirrorLists;
+
 @end

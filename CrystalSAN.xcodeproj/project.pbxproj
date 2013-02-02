@@ -10,6 +10,8 @@
 		5604ECAD169D1D98004B046F /* text-CrystalSAN.png in Resources */ = {isa = PBXBuildFile; fileRef = 5604ECAC169D1D98004B046F /* text-CrystalSAN.png */; };
 		5604ECAF169D1F51004B046F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 5604ECAE169D1F51004B046F /* background.png */; };
 		5604ECB1169D2892004B046F /* Hexagonal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5604ECB0169D2892004B046F /* Hexagonal.png */; };
+		561284E216A8DF8E00F53C49 /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284E116A8DE0800F53C49 /* CustomPushSegue.m */; };
+		5612850B16A8E50600F53C49 /* FlipTopPopToRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */; };
 		561A93DC169C4A3F0063F990 /* appicon72.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93DA169C4A3F0063F990 /* appicon72.png */; };
 		561A93DD169C4A3F0063F990 /* appicon144.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93DB169C4A3F0063F990 /* appicon144.png */; };
 		561A93E7169C4A500063F990 /* button-Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93DE169C4A500063F990 /* button-Arrow.png */; };
@@ -33,7 +35,7 @@
 		561A9405169C4CAD0063F990 /* item-RAIDView.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A9404169C4CAD0063F990 /* item-RAIDView.png */; };
 		565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */; };
 		56BDEC73169BE6D10076CD6B /* RaidViewConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */; };
-		56BF63F916A612DC008DDA70 /* text - HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BF63F816A612DC008DDA70 /* text - HA Appliance View.png */; };
+		56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */; };
 		56EB75321689D06A0082A5D2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75311689D06A0082A5D2 /* UIKit.framework */; };
 		56EB75341689D06A0082A5D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75331689D06A0082A5D2 /* Foundation.framework */; };
 		56EB75361689D06A0082A5D2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75351689D06A0082A5D2 /* CoreGraphics.framework */; };
@@ -57,6 +59,10 @@
 		5604ECAC169D1D98004B046F /* text-CrystalSAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-CrystalSAN.png"; sourceTree = "<group>"; };
 		5604ECAE169D1F51004B046F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		5604ECB0169D2892004B046F /* Hexagonal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hexagonal.png; sourceTree = "<group>"; };
+		561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipTopPopToRoot.m; sourceTree = "<group>"; };
+		561284D716A7CDF200F53C49 /* FlipTopPopToRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipTopPopToRoot.h; sourceTree = "<group>"; };
+		561284E016A8DE0800F53C49 /* CustomPushSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
+		561284E116A8DE0800F53C49 /* CustomPushSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPushSegue.m; sourceTree = "<group>"; };
 		561A93DA169C4A3F0063F990 /* appicon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon72.png; sourceTree = "<group>"; };
 		561A93DB169C4A3F0063F990 /* appicon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon144.png; sourceTree = "<group>"; };
 		561A93DE169C4A500063F990 /* button-Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-Arrow.png"; sourceTree = "<group>"; };
@@ -81,7 +87,7 @@
 		565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewConfigController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewConfigController.m; sourceTree = "<group>"; };
-		56BF63F816A612DC008DDA70 /* text - HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text - HA Appliance View.png"; sourceTree = "<group>"; };
+		56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-HA Appliance View.png"; sourceTree = "<group>"; };
 		56EB752D1689D06A0082A5D2 /* CrystalSAN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalSAN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EB75311689D06A0082A5D2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		56EB75331689D06A0082A5D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -161,8 +167,12 @@
 		56EB75371689D06A0082A5D2 /* CrystalSAN */ = {
 			isa = PBXGroup;
 			children = (
+				561284E016A8DE0800F53C49 /* CustomPushSegue.h */,
+				561284E116A8DE0800F53C49 /* CustomPushSegue.m */,
 				56EB76CC16901A020082A5D2 /* CrystalSAN.entitlements */,
 				56EB75491689D06A0082A5D2 /* MainStoryboard.storyboard */,
+				561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */,
+				561284D716A7CDF200F53C49 /* FlipTopPopToRoot.h */,
 				56EB7579168BFA670082A5D2 /* VolumeViewController.h */,
 				56EB757A168BFA670082A5D2 /* VolumeViewController.m */,
 				56EB757C168BFA800082A5D2 /* MirrorViewController.h */,
@@ -225,7 +235,7 @@
 				561A93FC169C4A710063F990 /* text-RAID-View.png */,
 				561A93FD169C4A710063F990 /* text-volume-view.png */,
 				5604ECAC169D1D98004B046F /* text-CrystalSAN.png */,
-				56BF63F816A612DC008DDA70 /* text - HA Appliance View.png */,
+				56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -321,7 +331,7 @@
 				5604ECAF169D1F51004B046F /* background.png in Resources */,
 				5604ECB1169D2892004B046F /* Hexagonal.png in Resources */,
 				565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */,
-				56BF63F916A612DC008DDA70 /* text - HA Appliance View.png in Resources */,
+				56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +342,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5612850B16A8E50600F53C49 /* FlipTopPopToRoot.m in Sources */,
+				561284E216A8DF8E00F53C49 /* CustomPushSegue.m in Sources */,
 				56EB756F168AB0670082A5D2 /* iCarousel.m in Sources */,
 				56EB753E1689D06A0082A5D2 /* main.m in Sources */,
 				56EB75421689D06A0082A5D2 /* AppDelegate.m in Sources */,
@@ -454,7 +466,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -462,6 +475,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
