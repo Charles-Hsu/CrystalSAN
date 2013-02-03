@@ -33,6 +33,13 @@
 		561A9402169C4A710063F990 /* text-RAID-View.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93FC169C4A710063F990 /* text-RAID-View.png */; };
 		561A9403169C4A710063F990 /* text-volume-view.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93FD169C4A710063F990 /* text-volume-view.png */; };
 		561A9405169C4CAD0063F990 /* item-RAIDView.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A9404169C4CAD0063F990 /* item-RAIDView.png */; };
+		5623C76216BD50F1009410B2 /* SanDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C76116BD50F0009410B2 /* SanDatabase.m */; };
+		5623C77B16BD54BF009410B2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77116BD54BF009410B2 /* FMDatabase.m */; };
+		5623C77C16BD54BF009410B2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77316BD54BF009410B2 /* FMDatabaseAdditions.m */; };
+		5623C77D16BD54BF009410B2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77516BD54BF009410B2 /* FMDatabasePool.m */; };
+		5623C77E16BD54BF009410B2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77716BD54BF009410B2 /* FMDatabaseQueue.m */; };
+		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
+		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
 		565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */; };
 		56BDEC73169BE6D10076CD6B /* RaidViewConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */; };
 		56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */; };
@@ -84,6 +91,19 @@
 		561A93FC169C4A710063F990 /* text-RAID-View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-RAID-View.png"; sourceTree = "<group>"; };
 		561A93FD169C4A710063F990 /* text-volume-view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-volume-view.png"; sourceTree = "<group>"; };
 		561A9404169C4CAD0063F990 /* item-RAIDView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "item-RAIDView.png"; sourceTree = "<group>"; };
+		5623C76016BD50F0009410B2 /* SanDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SanDatabase.h; sourceTree = "<group>"; };
+		5623C76116BD50F0009410B2 /* SanDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SanDatabase.m; sourceTree = "<group>"; };
+		5623C77016BD54BF009410B2 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		5623C77116BD54BF009410B2 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		5623C77216BD54BF009410B2 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		5623C77316BD54BF009410B2 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		5623C77416BD54BF009410B2 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		5623C77516BD54BF009410B2 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		5623C77616BD54BF009410B2 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		5623C77716BD54BF009410B2 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		5623C77916BD54BF009410B2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		5623C77A16BD54BF009410B2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		5623C78116BD565E009410B2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewConfigController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewConfigController.m; sourceTree = "<group>"; };
@@ -124,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */,
 				56EB756A1689D2E00082A5D2 /* QuartzCore.framework in Frameworks */,
 				56EB75321689D06A0082A5D2 /* UIKit.framework in Frameworks */,
 				56EB75341689D06A0082A5D2 /* Foundation.framework in Frameworks */,
@@ -134,6 +155,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5623C76F16BD54BF009410B2 /* FMDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				5623C77016BD54BF009410B2 /* FMDatabase.h */,
+				5623C77116BD54BF009410B2 /* FMDatabase.m */,
+				5623C77216BD54BF009410B2 /* FMDatabaseAdditions.h */,
+				5623C77316BD54BF009410B2 /* FMDatabaseAdditions.m */,
+				5623C77416BD54BF009410B2 /* FMDatabasePool.h */,
+				5623C77516BD54BF009410B2 /* FMDatabasePool.m */,
+				5623C77616BD54BF009410B2 /* FMDatabaseQueue.h */,
+				5623C77716BD54BF009410B2 /* FMDatabaseQueue.m */,
+				5623C77916BD54BF009410B2 /* FMResultSet.h */,
+				5623C77A16BD54BF009410B2 /* FMResultSet.m */,
+			);
+			name = FMDatabase;
+			path = src;
+			sourceTree = "<group>";
+		};
 		56EB75221689D06A0082A5D2 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +195,7 @@
 		56EB75301689D06A0082A5D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5623C78116BD565E009410B2 /* libsqlite3.0.dylib */,
 				56EB75691689D2DF0082A5D2 /* QuartzCore.framework */,
 				56EB75311689D06A0082A5D2 /* UIKit.framework */,
 				56EB75331689D06A0082A5D2 /* Foundation.framework */,
@@ -167,12 +207,14 @@
 		56EB75371689D06A0082A5D2 /* CrystalSAN */ = {
 			isa = PBXGroup;
 			children = (
+				5623C76016BD50F0009410B2 /* SanDatabase.h */,
+				5623C76116BD50F0009410B2 /* SanDatabase.m */,
 				561284E016A8DE0800F53C49 /* CustomPushSegue.h */,
 				561284E116A8DE0800F53C49 /* CustomPushSegue.m */,
 				56EB76CC16901A020082A5D2 /* CrystalSAN.entitlements */,
 				56EB75491689D06A0082A5D2 /* MainStoryboard.storyboard */,
-				561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */,
 				561284D716A7CDF200F53C49 /* FlipTopPopToRoot.h */,
+				561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */,
 				56EB7579168BFA670082A5D2 /* VolumeViewController.h */,
 				56EB757A168BFA670082A5D2 /* VolumeViewController.m */,
 				56EB757C168BFA800082A5D2 /* MirrorViewController.h */,
@@ -187,6 +229,7 @@
 				56EB754D1689D06A0082A5D2 /* MainViewController.m */,
 				56EB756B1689DFA80082A5D2 /* CoverFlowViewController.h */,
 				56EB756C1689DFA80082A5D2 /* CoverFlowViewController.m */,
+				5623C76F16BD54BF009410B2 /* FMDatabase */,
 				56EB76AD168D7F010082A5D2 /* iCarousel */,
 				56EB75381689D06A0082A5D2 /* Supporting Files */,
 			);
@@ -352,6 +395,12 @@
 				56EB757B168BFA680082A5D2 /* VolumeViewController.m in Sources */,
 				56EB757E168BFA800082A5D2 /* MirrorViewController.m in Sources */,
 				56BDEC73169BE6D10076CD6B /* RaidViewConfigController.m in Sources */,
+				5623C76216BD50F1009410B2 /* SanDatabase.m in Sources */,
+				5623C77B16BD54BF009410B2 /* FMDatabase.m in Sources */,
+				5623C77C16BD54BF009410B2 /* FMDatabaseAdditions.m in Sources */,
+				5623C77D16BD54BF009410B2 /* FMDatabasePool.m in Sources */,
+				5623C77E16BD54BF009410B2 /* FMDatabaseQueue.m in Sources */,
+				5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@
     NSLog(@"%s", __func__);
    id sourceViewController = [self sourceViewController];
    
-   UIView *sourceView = [[sourceViewController parentViewController] view];
+   //UIView *sourceView = [[sourceViewController parentViewController] view];
    //UIImageView *sourceImageView = [[UIImageView alloc] initWithImage:[sourceView pw_imageSnapshot]];
     UIImageView *sourceImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Hexagonal"]];
    

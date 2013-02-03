@@ -211,7 +211,7 @@
         
         float x = 0;
         float y = 0;
-        float w = itemWidth/2;
+        float w = itemWidth/3*2;
         float h = 80;
         float centerx = itemWidth/2;
         float centery = (itemHeight-90)/2;

@@ -48,7 +48,7 @@
 
 - (NSString *)getSanVmirrorLists
 {
-    NSURL *url = [NSURL URLWithString:@"http://192.168.1.6/san_site_name.php"];
+    NSURL *url = [NSURL URLWithString:@"http://sanserver.local/san_site_name.php"];
     NSError *error = nil;
     NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
     NSLog(@"--");

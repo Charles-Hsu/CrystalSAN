@@ -43,9 +43,9 @@
         //carousel.backgroundColor = [UIColor cyanColor];
         
         descriptions = [NSMutableArray arrayWithObjects:
-                        @"Engine_227",
-                        @"Engine_229",
-                        @"Engine_231",@"Engine_233",@"Engine_235",@"Engine_237",@"Engine_239",
+                        @"Engine_227_228",
+                        @"Engine_229_230",
+                        @"Engine_231_232",@"Engine_233_234",@"Engine_235",@"Engine_237",@"Engine_239",
                         @"Engine_241",@"Engine_243",@"Engine_245",@"Engine_247",@"Engine_249",
                         @"Engine_251",
                         @"VicomM01",@"VicomM02",@"VicomM03",@"VicomM04",
