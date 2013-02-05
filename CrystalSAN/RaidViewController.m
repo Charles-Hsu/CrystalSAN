@@ -316,7 +316,7 @@
         //view.backgroundColor = [UIColor redColor];
         
         //UIImage *theItemImage = [UIImage imageNamed:[animals objectAtIndex:index]];
-        UIImage *theItemImage = [UIImage imageNamed:@"item-MirrorView"];
+        UIImage *theItemImage = [UIImage imageNamed:@"item-RAIDView"];
         //Item-RAIDView
         
         theLabel = [[UILabel alloc] init];

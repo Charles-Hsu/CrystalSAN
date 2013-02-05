@@ -202,7 +202,7 @@
         
         if (index == [self.totalItems count]-1) // the last one, item image
         {
-            theView.alpha = 0.6; // set transparnet to 80%
+            //theView.alpha = 0.6; // set transparnet to 80%
         }
         
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
