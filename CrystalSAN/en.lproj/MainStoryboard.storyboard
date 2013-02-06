@@ -234,7 +234,7 @@
                                 <rect key="frame" x="50" y="60" width="237" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="zd2-et-nRt">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="zd2-et-nRt" userLabel="Horizontal Slider - Arc">
                                 <rect key="frame" x="469" y="21" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -242,7 +242,7 @@
                                     <action selector="updateValue:" destination="sZ4-0c-S4u" eventType="valueChanged" id="VuD-PZ-XgK"/>
                                 </connections>
                             </slider>
-                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999999999999" minValue="0.0010000000474974513" maxValue="2" id="eE0-Xa-eya">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999999999999" minValue="0.0010000000474974513" maxValue="2" id="eE0-Xa-eya" userLabel="Horizontal Slider - Radius">
                                 <rect key="frame" x="469" y="51" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -250,7 +250,7 @@
                                     <action selector="updateValue:" destination="sZ4-0c-S4u" eventType="valueChanged" id="eSX-QE-7HH"/>
                                 </connections>
                             </slider>
-                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.72999999999999998" minValue="0.0010000000474974513" maxValue="2" id="LeU-Sb-6SH">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.72999999999999998" minValue="0.0010000000474974513" maxValue="2" id="LeU-Sb-6SH" userLabel="Horizontal Slider - Spacing">
                                 <rect key="frame" x="469" y="81" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -674,22 +674,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gPe-K0-Ut3">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gPe-K0-Ut3">
                                 <rect key="frame" x="525" y="99" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="fQ0-BZ-2CX" userLabel="Horizontal Slider - Arc">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="UDV-fd-0fi" userLabel="Horizontal Slider - arc">
                                 <rect key="frame" x="380" y="33" width="118" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="reloadCarousel" destination="MSi-jl-ayd" eventType="valueChanged" id="gUs-F6-jTb"/>
+                                    <action selector="updateValue:" destination="MSi-jl-ayd" eventType="valueChanged" id="CGp-Cp-vcU"/>
+                                </connections>
+                            </slider>
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999999999999" minValue="0.0010000000474974513" maxValue="2" id="fQ0-BZ-2CX" userLabel="Horizontal Slider - radius">
+                                <rect key="frame" x="380" y="63" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="MSi-jl-ayd" eventType="valueChanged" id="aIc-LL-gsp"/>
                                     <action selector="updateValue:" destination="MSi-jl-ayd" eventType="valueChanged" id="675-Lw-XoP"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="3zg-hr-wVV" userLabel="Horizontal Slider - sapcing">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="3zg-hr-wVV" userLabel="Horizontal Slider - sapcing">
                                 <rect key="frame" x="380" y="93" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -697,44 +705,36 @@
                                     <action selector="updateValue:" destination="MSi-jl-ayd" eventType="valueChanged" id="E0U-X7-Crn"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999475479126" minValue="0.0010000000474974513" maxValue="2" id="UDV-fd-0fi" userLabel="Horizontal Slider - Radius">
-                                <rect key="frame" x="380" y="63" width="118" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="reloadCarousel" destination="MSi-jl-ayd" eventType="valueChanged" id="gUs-F6-jTb"/>
-                                    <action selector="updateValue:" destination="MSi-jl-ayd" eventType="valueChanged" id="CGp-Cp-vcU"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6aQ-mO-KcH">
-                                <rect key="frame" x="525" y="33" width="26" height="21"/>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6aQ-mO-KcH">
+                                <rect key="frame" x="525" y="63" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x2H-3E-mv4">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x2H-3E-mv4">
                                 <rect key="frame" x="321" y="93" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Nt-3Y-nza">
-                                <rect key="frame" x="525" y="69" width="26" height="10"/>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Nt-3Y-nza">
+                                <rect key="frame" x="525" y="39" width="26" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EVN-Kb-GNT">
-                                <rect key="frame" x="321" y="33" width="53" height="21"/>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EVN-Kb-GNT">
+                                <rect key="frame" x="321" y="63" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p2S-5Q-2hc">
-                                <rect key="frame" x="321" y="63" width="26" height="21"/>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p2S-5Q-2hc">
+                                <rect key="frame" x="321" y="33" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -746,12 +746,12 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="arcSlider" destination="UDV-fd-0fi" id="WFz-Q8-Bcu"/>
-                        <outlet property="arcValue" destination="3Nt-3Y-nza" id="yer-Qu-8zM"/>
-                        <outlet property="radiusSlider" destination="fQ0-BZ-2CX" id="hUw-fn-xKA"/>
-                        <outlet property="radiusValue" destination="6aQ-mO-KcH" id="Phi-V3-QWZ"/>
-                        <outlet property="spacingSlider" destination="3zg-hr-wVV" id="xud-yL-12Z"/>
-                        <outlet property="spacingValue" destination="gPe-K0-Ut3" id="alW-Sy-BWv"/>
+                        <outlet property="arcSlider" destination="UDV-fd-0fi" id="fIm-70-zYR"/>
+                        <outlet property="arcValue" destination="3Nt-3Y-nza" id="8rp-1G-eBA"/>
+                        <outlet property="radiusSlider" destination="fQ0-BZ-2CX" id="SdZ-L7-6yk"/>
+                        <outlet property="radiusValue" destination="6aQ-mO-KcH" id="7gQ-PC-FNb"/>
+                        <outlet property="spacingSlider" destination="3zg-hr-wVV" id="zOs-ee-Ail"/>
+                        <outlet property="spacingValue" destination="gPe-K0-Ut3" id="KRL-fP-NAb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fd2-7b-XIg" sceneMemberID="firstResponder"/>
@@ -921,6 +921,79 @@
         <image name="text-RAID-View.png" width="475" height="130"/>
         <image name="text-volume-view.png" width="580" height="130"/>
     </resources>
+    <classes>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MirrorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MirrorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="currentItemIndex" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalItemCount" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RaidViewConfigController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RaidViewConfigController.h"/>
+            <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="outlet" name="deviceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RaidViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RaidViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonConfigPressed:"/>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="currentItemIndex" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalItemCount" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VolumeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VolumeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

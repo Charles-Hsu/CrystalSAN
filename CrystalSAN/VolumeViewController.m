@@ -46,9 +46,9 @@
         //carousel.backgroundColor = [UIColor cyanColor];
         
         self.descriptions = [NSMutableArray arrayWithObjects:
-                             @"Volume-1",@"Volume-2",@"Volume-3",//@"Volume-2-1",
-                             //@"Volume-X3-3",@"Volume-X3-4",@"Volume-X3-3-1",@"Volume-X3-4-1",
-                             //@"Volume-X3-5",@"Volume-X3-6",@"Volume-X3-5-1",@"Volume-X3-6-1",
+                             @"Volume-1",@"Volume-2",@"Volume-3",@"Volume-2-1",
+                             @"Volume-X3-3",@"Volume-X3-4",@"Volume-X3-3-1",@"Volume-X3-4-1",
+                             @"Volume-X3-5",@"Volume-X3-6",@"Volume-X3-5-1",@"Volume-X3-6-1",
                              //@"Volume-X3-7",@"Volume-X3-8",@"Volume-X3-7-1",@"Volume-X3-8-1",
                              nil];
     }
@@ -97,6 +97,15 @@
     self.activeItems = nil;
 }
 
+#pragma mark - event handler
+- (void)onItemPress:(id)sender
+{
+    UIButton *theButon = (UIButton *)sender;
+    
+    NSLog(@"onItemPress: tag=%d",theButon.tag);
+    
+}
+
 - (IBAction)onHome:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -140,6 +149,7 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
+    NSLog(@"%s %u", __func__, [descriptions count]);
     return [descriptions count];
 }
 
@@ -174,22 +184,8 @@
         
         float itemWidth, itemHeight;
         
-        //button size
-        //if(self.iCarouselView.type == iCarouselTypeTimeMachine)
-        //{
-        //    itemWidth = theItemImage.size.width ;
-        //    itemHeight = theItemImage.size.height ;
-        //}
-        //else if(self.iCarouselView.type == iCarouselTypeInvertedCylinder)
-        //{
-        //    itemWidth = theItemImage.size.width / 2 ;
-        //    itemHeight = theItemImage.size.height  / 2 ;
-        //}
-        //else
-        //{
         itemWidth = theItemImage.size.width / 2 ;
         itemHeight = theItemImage.size.height / 2 ;
-        //}
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
