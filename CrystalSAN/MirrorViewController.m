@@ -10,8 +10,9 @@
 #import "AppDelegate.h"
 
 
-@interface MirrorViewController ()
-
+@interface MirrorViewController () {
+    NSMutableArray *statusArray;
+}
 @end
 
 @implementation MirrorViewController
@@ -51,6 +52,29 @@
                         @"VicomM01",@"VicomM02",@"VicomM03",@"VicomM04",
                         //@"",
                         nil];
+        
+        statusArray = [[NSMutableArray alloc] init];
+        
+        NSInteger ok = 0;
+        NSInteger degarded = 1;
+        NSInteger died = 2;
+        
+        NSNumber *okStatus = [NSNumber numberWithInt:ok];
+        NSNumber *degardedStatus = [NSNumber numberWithInt:degarded];
+        NSNumber *diedStatus = [NSNumber numberWithInt:died];
+        
+        for (int i=0; i<[descriptions count]; i++) {
+            [statusArray addObject:okStatus];
+            /*
+            if (i==10) {
+                [statusArray addObject:degardedStatus];
+            } else if (i==15) {
+                [statusArray addObject:diedStatus];
+            } else {
+                [statusArray addObject:okStatus];
+            }
+             */
+        }
     }
     return self;
 }
@@ -67,7 +91,6 @@
     //self.iCarouselView.currentItemIndex = self.totalItems.count/2;
     
     carousel.type = iCarouselTypeRotary; //0 - -0.01;
-    //self.iCarouselView.type = iCarouselTypeLinear;
     
     carousel.contentOffset = CGSizeMake(0, -250);
     carousel.viewpointOffset = CGSizeMake(0, -330);
@@ -75,7 +98,6 @@
     
     totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
     currentItemIndex.text = @"1";
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,20 +110,10 @@
 
 - (void)onItemPress:(id)sender
 {
-    UIButton *theButon = (UIButton *)sender;
-    NSInteger index = carousel.currentItemIndex;
+    //UIButton *theButon = (UIButton *)sender;
+    //NSInteger index = carousel.currentItemIndex;
     
-    NSLog(@"onItemPress: tag=%d, current index=%u %@",theButon.tag, index, [descriptions objectAtIndex:index]);
-    
-    /*
-     if (theButon.tag == 201) { // RaidViewController
-     [self presentViewController:self.raidViewController animated:YES completion:nil];
-     } else if (theButon.tag == 202) { // MirrorViewController
-     [self presentViewController:self.mirrorViewController animated:YES completion:nil];
-     } else if (theButon.tag == 203) { // VolumeViewController
-     [self presentViewController:self.volumeViewController animated:YES completion:nil];
-     }
-     */
+    //NSLog(@"onItemPress: tag=%d, current index=%u %@",theButon.tag, index, [descriptions objectAtIndex:index]);
 }
 
 - (IBAction)onHome:(id)sender
@@ -122,9 +134,26 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)refreshStatus
+{
+    
+}
+
 - (IBAction)reloadCarousel
 {
     NSLog(@"%s", __func__);
+    
+    //[myNSMutableArray replaceObjectAtIndex:0 withObject:@\"object4.png\"];
+    //NSInteger ok = 0;
+    NSInteger degarded = 1;
+    //NSInteger died = 2;
+    
+    //NSNumber *okStatus = [NSNumber numberWithInt:ok];
+    NSNumber *degardedStatus = [NSNumber numberWithInt:degarded];
+    //NSNumber *diedStatus = [NSNumber numberWithInt:died];
+    
+    [statusArray replaceObjectAtIndex:10 withObject:degardedStatus];
+    
     [carousel reloadData];
 }
 
@@ -132,20 +161,21 @@
 {
     UISlider *slider = (UISlider*)sender;
     NSLog(@"%s %@ %@", __func__, sender, [sender restorationIdentifier]);
-    NSString *identifier = [sender restorationIdentifier];
-    if ([identifier isEqualToString:@"arcSlider"]) {
-        arcValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } else if ([identifier isEqualToString:@"radiusSlider"]) {
-        radiusValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } else if ([identifier isEqualToString:@"spacingSlider"]) {
-        spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } //else if ([identifier isEqualToString:@"contentSlider"]) {
-    //    contentValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    //} else if ([identifier isEqualToString:@"viewpointSlider"]) {
-    //    viewpointValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    //    carousel.viewpointOffset = CGSizeMake(0, 100*slider.value);
-    //}
     
+    NSString *identifier = [sender restorationIdentifier];
+    
+    if ([identifier isEqualToString:@"arcSlider"])
+    {
+        arcValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    }
+    else if ([identifier isEqualToString:@"radiusSlider"])
+    {
+        radiusValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    }
+    else if ([identifier isEqualToString:@"spacingSlider"])
+    {
+        spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    } 
 }
 
 
@@ -160,71 +190,50 @@
     return [descriptions count];
 }
 
-/*
- - (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
- {
- //limit the number of items views loaded concurrently (for performance reasons)
- return 3;
- return [animals count];
- }
- */
-
-
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
     NSLog(@"%s index=%u %@", __func__, index, [descriptions objectAtIndex:index]);
     UILabel *theLabel = nil;
+    NSInteger status = [[statusArray objectAtIndex:index] integerValue];
+    
 	//create new view if no view is available for recycling
 	if (view == nil)
 	{
         UIButton *theButton;
-        //UIView *theView;
         view = [[UIView alloc] init];
         //view.backgroundColor = [UIColor redColor];
         
-        //UIImage *theItemImage = [UIImage imageNamed:[animals objectAtIndex:index]];
-        //UIImage *theItemImage = [UIImage imageNamed:@"item-MirrorView"];HA-item-ok
-        UIImage *theItemImage = [UIImage imageNamed:@"HA-item-ok"];
-        //Item-RAIDView
+        UIImage *theItemImage = nil;
+        
+        switch (status) {
+            case 0: // healthy
+                theItemImage = [UIImage imageNamed:@"HA-item-ok"];
+                break;
+            case 1: // degarded
+                theItemImage = [UIImage imageNamed:@"HA-item-orange"];
+                break;
+            case 2: // died
+                theItemImage = [UIImage imageNamed:@"HA-item-blackwhite"];
+                break;
+            default:
+                break;
+        }
         
         theLabel = [[UILabel alloc] init];
-        
         theLabel.numberOfLines = 0;
         theLabel.textColor = [UIColor darkGrayColor];
         
-        //UITableView *tableView = [[[UITableView alloc] init] autorelease];
-        //[theView addSubview:tableView];
-        
-        if (index == [descriptions count]-1) // the last one, item image
-        {
-            //view.alpha = 0.5; // set transparnet to 80%
-        }
-
         float itemWidth, itemHeight;
         
-        //button size
-        //if(self.iCarouselView.type == iCarouselTypeTimeMachine)
-        //{
-        //    itemWidth = theItemImage.size.width ;
-        //    itemHeight = theItemImage.size.height ;
-        //}
-        //else if(self.iCarouselView.type == iCarouselTypeInvertedCylinder)
-        //{
-        //    itemWidth = theItemImage.size.width / 2 ;
-        //    itemHeight = theItemImage.size.height  / 2 ;
-        //}
-        //else
-        //{
         itemWidth = theItemImage.size.width / 2 ;
         itemHeight = theItemImage.size.height / 2 ;
-        //}
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-35, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-60, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];
@@ -241,15 +250,12 @@
     }
     else
 	{
-		//theButton = (UIButton *)view;
-        //theView = view;
         theLabel = (UILabel *)[view viewWithTag:1];
 	}
     
     theLabel.text = [descriptions objectAtIndex:index];
-	
     
-	return view;//theButton;
+	return view;
 }
 
 
@@ -257,9 +263,6 @@
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"carousel:didSelectItemAtIndex:  %d",index);
-    //currentDeviceName = [[descriptions objectAtIndex:index] stringByReplacingOccurrencesOfString:@"\r" withString:@" "];
-    //currentDeviceName = [descriptions objectAtIndex:index];
-    //NSLog(@"current device name = %@", currentDeviceName);
 }
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
@@ -271,14 +274,8 @@
 
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
-    //NSLog(@"%s", __func__);
-    //float wrap = 0;
     switch (option)
     {
-            //case iCarouselOptionWrap:
-            //{
-            //    return 1;
-            //}
         case iCarouselOptionFadeMax:
         {
             if (carousel.type == iCarouselTypeCustom)
@@ -289,26 +286,15 @@
         }
         case iCarouselOptionArc:
         {
-            //NSLog(@"iCarouselOptionArc=%f", arcSlider.value);
             return 2 * M_PI * arcSlider.value;
-            //return 2 * M_PI * 0.28;
-            //return 2 * M_PI * 0.1;
         }
         case iCarouselOptionRadius:
         {
-            //NSLog(@"iCarouselOptionRadius=%f", radiusSlider.value);
             return value * radiusSlider.value;
-            //return value * 1.695;
         }
-            //case iCarouselOptionTilt:
-            //{
-            //    return tiltSlider.value;
-            //}
         case iCarouselOptionSpacing:
         {
-            //NSLog(@"iCarouselOptionSpacing=%f", spacingSlider.value);
             return value * spacingSlider.value;
-            //return value * 0.75;
         }
         default:
         {
