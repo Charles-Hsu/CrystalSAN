@@ -97,7 +97,7 @@
     self.volumeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VolumeViewControllerID"];
     self.volumeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    [theDelegate getSanVmirrorLists];
+    //[theDelegate getSanVmirrorLists];
     
 }
 

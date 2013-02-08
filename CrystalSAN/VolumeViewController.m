@@ -184,15 +184,15 @@
         
         float itemWidth, itemHeight;
         
-        itemWidth = theItemImage.size.width / 2 ;
-        itemHeight = theItemImage.size.height / 2 ;
+        itemWidth = theItemImage.size.width * 0.4 ;
+        itemHeight = theItemImage.size.height * 0.4 ;
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-35, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-25, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];
