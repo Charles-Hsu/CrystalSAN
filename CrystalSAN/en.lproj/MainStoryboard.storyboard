@@ -539,6 +539,19 @@
                                 <color key="textColor" red="0.36426928867907765" green="0.60062154611554086" blue="0.77931680484693877" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" id="3XU-RG-xIs">
+                                <rect key="frame" x="858" y="52" width="148" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="YOT-Ri-UBv" id="bXE-Vb-4QH"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -550,12 +563,22 @@
                         <outlet property="currentItemIndex" destination="cay-wg-ljo" id="83J-Ee-cdA"/>
                         <outlet property="radiusSlider" destination="N5R-IM-Hla" id="7af-6t-w7U"/>
                         <outlet property="radiusValue" destination="Wka-Wb-ctU" id="Wpg-XN-GwW"/>
+                        <outlet property="searchDisplayController" destination="cyi-mB-6VF" id="EiH-UZ-JfC"/>
                         <outlet property="spacingSlider" destination="dtG-2v-5i1" id="j0u-n4-37H"/>
                         <outlet property="spacingValue" destination="IWS-Dy-62u" id="Hix-Pn-uT7"/>
                         <outlet property="totalItemCount" destination="KML-X9-dJO" id="Rlq-zQ-PY1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIs-nA-1fb" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="cyi-mB-6VF">
+                    <connections>
+                        <outlet property="delegate" destination="YOT-Ri-UBv" id="rNC-Bq-GI5"/>
+                        <outlet property="searchBar" destination="3XU-RG-xIs" id="c7Z-lh-wou"/>
+                        <outlet property="searchContentsController" destination="YOT-Ri-UBv" id="iZ8-V1-F04"/>
+                        <outlet property="searchResultsDataSource" destination="YOT-Ri-UBv" id="zGA-me-UOf"/>
+                        <outlet property="searchResultsDelegate" destination="YOT-Ri-UBv" id="y8l-ux-m83"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="722" y="-611"/>
         </scene>
