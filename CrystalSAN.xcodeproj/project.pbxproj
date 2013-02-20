@@ -107,6 +107,7 @@
 		5623C77A16BD54BF009410B2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		5623C78116BD565E009410B2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		56AC50A616D4AC9300A8121D /* sandatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = sandatabase.sqlite; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewConfigController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewConfigController.m; sourceTree = "<group>"; };
 		56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-HA Appliance View.png"; sourceTree = "<group>"; };
@@ -182,6 +183,7 @@
 		56EB75221689D06A0082A5D2 = {
 			isa = PBXGroup;
 			children = (
+				56AC50A616D4AC9300A8121D /* sandatabase.sqlite */,
 				56EB756D168AA1790082A5D2 /* ReadMe.txt */,
 				56EB75541689D12B0082A5D2 /* Resource */,
 				56EB75371689D06A0082A5D2 /* CrystalSAN */,

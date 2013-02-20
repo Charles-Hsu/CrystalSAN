@@ -13,6 +13,8 @@
 
 @implementation AppDelegate
 
+@synthesize sanDatabase;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -41,14 +43,18 @@
     NSLog(@"%@", self.totalItems);
     
     self.activeItems = [NSMutableArray array];
+    sanDatabase = [[SanDatabase alloc] init];
+    //[sanDatabase getVmirrorListByKey:@"vi"];
+    if ([[sanDatabase getVmirrorListByKey:@""] count] == 0) {
+        [sanDatabase insertDemoDevices];
+    }
     
-
     return YES;
 }
 
 - (NSString *)getSanVmirrorLists
 {
-    NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/san_site_name.php"];
+    NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
     NSError *error = nil;
     //NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
     //NSLog(@"--");

@@ -31,6 +31,12 @@
 @synthesize totalItemCount;
 @synthesize currentItemIndex;
 
+@synthesize names;
+@synthesize searchBar;
+
+@synthesize sanDatabase;
+
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -43,28 +49,19 @@
         carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 110, 1024, 460)];
         //carousel.backgroundColor = [UIColor cyanColor];
         
-        descriptions = [NSMutableArray arrayWithObjects:
-                        @"Engine_227_228",
-                        @"Engine_229_230",
-                        @"Engine_231_232",@"Engine_233_234",@"Engine_235",@"Engine_237",@"Engine_239",
-                        @"Engine_241",@"Engine_243",@"Engine_245",@"Engine_247",@"Engine_249",
-                        @"Engine_251",
-                        @"VicomM01",@"VicomM02",@"VicomM03",@"VicomM04",
-                        //@"",
-                        nil];
         
-        statusArray = [[NSMutableArray alloc] init];
+        //statusArray = [[NSMutableArray alloc] init];
         
-        NSInteger ok = 0;
-        NSInteger degarded = 1;
-        NSInteger died = 2;
+        //NSInteger ok = 0;
+        //NSInteger degarded = 1;
+        //NSInteger died = 2;
         
-        NSNumber *okStatus = [NSNumber numberWithInt:ok];
-        NSNumber *degardedStatus = [NSNumber numberWithInt:degarded];
-        NSNumber *diedStatus = [NSNumber numberWithInt:died];
+        //NSNumber *okStatus = [NSNumber numberWithInt:ok];
+        //NSNumber *degardedStatus = [NSNumber numberWithInt:degarded];
+        //NSNumber *diedStatus = [NSNumber numberWithInt:died];
         
-        for (int i=0; i<[descriptions count]; i++) {
-            [statusArray addObject:okStatus];
+        //for (int i=0; i<[descriptions count]; i++) {
+        //    [statusArray addObject:okStatus];
             /*
             if (i==10) {
                 [statusArray addObject:degardedStatus];
@@ -74,7 +71,7 @@
                 [statusArray addObject:okStatus];
             }
              */
-        }
+        //}
     }
     return self;
 }
@@ -84,6 +81,27 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    
+    //get data
+    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    sanDatabase = theDelegate.sanDatabase;
+    //self.activeItems = theDelegate.activeItems;
+
+    /*
+    descriptions = [NSMutableArray arrayWithObjects:
+                    @"Engine_227_228",
+                    @"Engine_229_230",
+                    @"Engine_231_232",@"Engine_233_234",@"Engine_235",@"Engine_237",@"Engine_239",
+                    @"Engine_241",@"Engine_243",@"Engine_245",@"Engine_247",@"Engine_249",
+                    @"Engine_251",
+                    @"VicomM01",@"VicomM02",@"VicomM03",@"VicomM04",
+                    //@"",
+                    nil];
+     */
+    
+    descriptions = [sanDatabase getVmirrorListByKey:@""];
+    //NSLog(@"description count = %u", [descriptions count]);
+
     //init/add carouse view
     carousel.delegate = self;
     carousel.dataSource = self;
@@ -98,6 +116,19 @@
     
     totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
     currentItemIndex.text = @"1";
+    
+    // change the background to clearColor
+    // http://stackoverflow.com/questions/8999322/how-to-change-search-bar-background-color-in-ipad
+    for (UIView *subview in searchBar.subviews) {
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [subview removeFromSuperview];
+            break;
+        }
+    }
+    // change the size of searchBar
+    // http://stackoverflow.com/questions/556814/changing-the-size-of-the-uisearchbar-textfield
+    
+    //[carousel reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,6 +209,74 @@
     } 
 }
 
+#pragma mark -
+#pragma mark Custom Methods 
+- (void)resetSearch
+{
+    /*
+    self.names = [self.allNames mutableDeepCopy];
+    NSMutableArray *keyArray = [[NSMutableArray alloc] init];
+    [keyArray addObjectsFromArray:[[[self.allNames allKeys] sortedArrayUsingSelector:@selector(compare:)]];
+     self.keys = keyArray;
+     */
+}
+
+- (void)handleSearchForTerm:(NSString *)searchTerm
+{
+    //NSMutableArray *sectionsToRemove = [[NSMutableArray alloc] init];
+    [self resetSearch];
+    /*
+    for (NSString *key in self.keys) {
+        NSMutableArray *array = [names valueForKey:key];
+        NSMutableArray *toRemove = [[NSMutableArray alloc] init];
+        for (NSString *name in array) {
+            if ([name rangeOfString:searchTerm
+                            options:NSCaseInsensitiveSearch].location == NSNotFound) [toRemove addObject:name];
+        }
+        if ([array count] == [toRemove count])
+            [sectionsToRemove addObject:key];
+        [array removeObjectsInArray:toRemove]; 
+     }
+     */
+    //[self.keys removeObjectsInArray:sectionsToRemove];
+    [carousel reloadData];
+}
+
+/*
+- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"%s", __func__);
+    //if ([keys count] == 0) return 0;
+    //NSString *key = [keys objectAtIndex:section];
+    //NSArray *nameSection = [names objectForKey:key];
+    //return [nameSection count];
+    return 0;
+}
+ */
+
+#pragma mark -
+#pragma mark Search Bar Delegate Methods
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"%s", __func__);
+    //NSString *searchTerm = [searchBar text];
+    //[self handleSearchForTerm:searchTerm];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchTerm
+{
+    NSLog(@"%s searchTerm=%@", __func__, searchTerm);
+    
+    descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
+    [carousel reloadData];
+    
+    //if ([searchTerm length] == 0) {
+    //    [self resetSearch];
+    //    [carousel reloadData];
+    //    return;
+    //}
+    //[self handleSearchForTerm:searchTerm];
+}
 
 #pragma mark -
 #pragma mark iCarousel methods

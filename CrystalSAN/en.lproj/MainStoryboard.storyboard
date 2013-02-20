@@ -362,7 +362,7 @@
                                 <rect key="frame" x="71" y="60" width="346" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="229-kE-frN" userLabel="Horizontal Slider - Arc">
+                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="229-kE-frN" userLabel="Horizontal Slider - Arc">
                                 <rect key="frame" x="486" y="21" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -370,7 +370,7 @@
                                     <action selector="updateValue:" destination="YOT-Ri-UBv" eventType="valueChanged" id="Kf7-oI-voc"/>
                                 </connections>
                             </slider>
-                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999475479126" minValue="0.0010000000474974513" maxValue="2" id="N5R-IM-Hla" userLabel="Horizontal Slider - Radius">
+                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999475479126" minValue="0.0010000000474974513" maxValue="2" id="N5R-IM-Hla" userLabel="Horizontal Slider - Radius">
                                 <rect key="frame" x="486" y="51" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -378,7 +378,7 @@
                                     <action selector="updateValue:" destination="YOT-Ri-UBv" eventType="valueChanged" id="rWI-D5-C1e"/>
                                 </connections>
                             </slider>
-                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="dtG-2v-5i1" userLabel="Horizontal Slider - Spacing">
+                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="dtG-2v-5i1" userLabel="Horizontal Slider - Spacing">
                                 <rect key="frame" x="486" y="81" width="118" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -386,42 +386,42 @@
                                     <action selector="updateValue:" destination="YOT-Ri-UBv" eventType="valueChanged" id="wsG-yS-B6g"/>
                                 </connections>
                             </slider>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cte-dV-sr1">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cte-dV-sr1">
                                 <rect key="frame" x="423" y="20" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3nd-Dg-IkF">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3nd-Dg-IkF">
                                 <rect key="frame" x="423" y="50" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oRa-QV-2PT">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oRa-QV-2PT">
                                 <rect key="frame" x="423" y="80" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qk1-NQ-PLr">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qk1-NQ-PLr">
                                 <rect key="frame" x="610" y="20" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wka-Wb-ctU">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wka-Wb-ctU">
                                 <rect key="frame" x="610" y="56" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IWS-Dy-62u">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IWS-Dy-62u">
                                 <rect key="frame" x="610" y="86" width="26" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -539,19 +539,23 @@
                                 <color key="textColor" red="0.36426928867907765" green="0.60062154611554086" blue="0.77931680484693877" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" id="3XU-RG-xIs">
-                                <rect key="frame" x="858" y="52" width="148" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" id="ydp-uK-33r">
+                                <rect key="frame" x="830" y="71" width="183" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <searchBar autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="redraw" placeholder="Search" id="bFi-6H-p6j">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="YOT-Ri-UBv" id="xfM-hi-RXF"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="YOT-Ri-UBv" id="bXE-Vb-4QH"/>
-                                </connections>
-                            </searchBar>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -563,24 +567,15 @@
                         <outlet property="currentItemIndex" destination="cay-wg-ljo" id="83J-Ee-cdA"/>
                         <outlet property="radiusSlider" destination="N5R-IM-Hla" id="7af-6t-w7U"/>
                         <outlet property="radiusValue" destination="Wka-Wb-ctU" id="Wpg-XN-GwW"/>
-                        <outlet property="searchDisplayController" destination="cyi-mB-6VF" id="EiH-UZ-JfC"/>
+                        <outlet property="searchBar" destination="bFi-6H-p6j" id="y0P-x4-9NE"/>
                         <outlet property="spacingSlider" destination="dtG-2v-5i1" id="j0u-n4-37H"/>
                         <outlet property="spacingValue" destination="IWS-Dy-62u" id="Hix-Pn-uT7"/>
                         <outlet property="totalItemCount" destination="KML-X9-dJO" id="Rlq-zQ-PY1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIs-nA-1fb" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="cyi-mB-6VF">
-                    <connections>
-                        <outlet property="delegate" destination="YOT-Ri-UBv" id="rNC-Bq-GI5"/>
-                        <outlet property="searchBar" destination="3XU-RG-xIs" id="c7Z-lh-wou"/>
-                        <outlet property="searchContentsController" destination="YOT-Ri-UBv" id="iZ8-V1-F04"/>
-                        <outlet property="searchResultsDataSource" destination="YOT-Ri-UBv" id="zGA-me-UOf"/>
-                        <outlet property="searchResultsDelegate" destination="YOT-Ri-UBv" id="y8l-ux-m83"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="722" y="-611"/>
+            <point key="canvasLocation" x="536" y="-606"/>
         </scene>
         <!--Volume View Controller-->
         <scene sceneID="4XE-nL-MyA">
@@ -965,6 +960,7 @@
                 <relationship kind="outlet" name="currentItemIndex" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="totalItemCount" candidateClass="UILabel"/>

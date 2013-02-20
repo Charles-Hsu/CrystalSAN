@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SanDatabase.h"
 
 #define ITEM_BUTTON_START_TAG       201
 
@@ -25,6 +26,8 @@
 
 @property (strong,nonatomic) NSString *currentSegueID;
 @property (strong,nonatomic) NSString *currentDeviceName;
+
+@property (strong,nonatomic) SanDatabase *sanDatabase;
 
 - (NSString *)getSanVmirrorLists;
 

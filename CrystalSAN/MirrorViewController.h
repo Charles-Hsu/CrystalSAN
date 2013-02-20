@@ -8,17 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
+#import "SanDatabase.h"
 
 
-@interface MirrorViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
+@interface MirrorViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) NSMutableArray *descriptions;
 
 // view
-@property (strong,nonatomic) iCarousel *carousel;
-
-- (IBAction)onHome:(id)sender;
-- (IBAction)onBack:(id)sender;
+@property (strong, nonatomic) iCarousel *carousel;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic, retain) IBOutlet UISlider *arcSlider;
 @property (nonatomic, retain) IBOutlet UISlider *radiusSlider;
@@ -31,7 +30,17 @@
 @property (nonatomic, retain) IBOutlet UILabel *currentItemIndex;
 @property (nonatomic, retain) IBOutlet UILabel *totalItemCount;
 
+// data
+@property (strong, nonatomic) NSDictionary *allNames;
+@property (strong, nonatomic) NSMutableDictionary *names;
+
+@property (strong, nonatomic) SanDatabase *sanDatabase;
+
 - (IBAction)reloadCarousel;
 - (IBAction)updateValue:(id)sender;
+
+- (IBAction)onHome:(id)sender;
+- (IBAction)onBack:(id)sender;
+
 
 @end

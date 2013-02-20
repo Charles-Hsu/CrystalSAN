@@ -11,6 +11,9 @@
 #import "FMDatabaseAdditions.h"
 
 @interface SanDatabase : NSObject
-@property (nonatomic, strong) FMDatabase *sandb;
+@property (nonatomic, strong) FMDatabase *sanDatabase;
+
+- (NSMutableArray *)getVmirrorListByKey:(NSString *)key;
+- (void)insertDemoDevices;
 
 @end
