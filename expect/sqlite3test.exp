@@ -1,0 +1,6 @@
+while {1} {    incr a    puts "hello"    if {$a%3 != 0} {        continue
+    }    puts "there"
+}
+
+
+ sudo cp /opt/local/etc/php5/php.ini-development /opt/local/etc/php.ini

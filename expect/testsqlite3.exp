@@ -1,0 +1,41 @@
+#  testsqlite3.exp
+#  
+#
+#  Created by Charles Hsu on 1/30/13.
+#
+#!/usr/bin/tclsh
+#if {$argc!=2} {
+#    puts stderr "Usage: %s DATABASE SQL-STATEMENT"
+#    exit 1
+#}
+load /usr/lib/sqlite3/libtclsqlite3.dylib Sqlite3
+#sqlite3 db [lindex $argv 0]
+sqlite3 db example1.db
+db eval {CREATE TABLE IF NOT EXISTS t1(a TEXT, b INTEGER)}
+#db eval [lindex $argv 1] x {
+#    foreach v $x(*) {
+#        puts "$v = $x($v)"
+#    }
+#    puts ""
+#}
+#db eval {
+#    INSERT INTO t1 VALUES('one',1);
+#    INSERT INTO t1 VALUES('two',2);
+#    INSERT INTO t1 VALUES(NULL,3);
+#}
+puts [db eval {SELECT * FROM t1}]
+set value [lindex [db eval {SELECT b FROM t1 WHERE a='one'}] 0]
+puts $value
+set value [db onecolumn {SELECT b FROM t1 WHERE a='one'}]
+puts $value
+db eval {SELECT * FROM t1} {
+    puts a=$a
+    puts b=$b
+}
+db eval {SELECT a AS x, b AS y FROM t1} {
+    puts x=$x
+    puts y=$y
+}
+puts "------------"
+db eval {SELECT * FROM t1} v {parray v}
+db close

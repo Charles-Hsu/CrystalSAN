@@ -12,6 +12,7 @@
 
 @interface MirrorViewController () {
     NSMutableArray *statusArray;
+    NSInteger totalItemInCarousel;
 }
 @end
 
@@ -28,6 +29,7 @@
 @synthesize radiusSlider;
 @synthesize spacingSlider;
 
+@synthesize totalItem;
 @synthesize totalItemCount;
 @synthesize currentItemIndex;
 
@@ -114,8 +116,13 @@
     carousel.viewpointOffset = CGSizeMake(0, -330);
     carousel.decelerationRate = 0.9;
     
-    totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
+    totalItemInCarousel = [descriptions count];
+    totalItemCount.text = [NSString stringWithFormat:@"%u", totalItemInCarousel];
+    totalItem.text = totalItemCount.text;
+    
     currentItemIndex.text = @"1";
+    
+    [totalItem setHidden:YES];
     
     // change the background to clearColor
     // http://stackoverflow.com/questions/8999322/how-to-change-search-bar-background-color-in-ipad
@@ -268,8 +275,28 @@
     NSLog(@"%s searchTerm=%@", __func__, searchTerm);
     
     descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
-    [carousel reloadData];
+    totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
     
+    if ([searchTerm length] != 0)
+    {
+        [totalItem setHidden:NO];
+    }
+    else
+    {
+        [totalItem setHidden:YES];
+    }
+    
+    [carousel reloadData];
+
+    [carousel scrollToItemAtIndex:0 animated:TRUE];
+    if ([carousel numberOfItems] > 0) {
+        NSInteger index = carousel.currentItemIndex;
+        //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
+        currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
+    } else {
+        currentItemIndex.text = [NSString stringWithFormat:@"%u", 0];
+    }
+        
     //if ([searchTerm length] == 0) {
     //    [self resetSearch];
     //    [carousel reloadData];

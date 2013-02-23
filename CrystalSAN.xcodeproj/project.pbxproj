@@ -40,6 +40,10 @@
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
 		565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */; };
+		56AC50AC16D8953A00A8121D /* sqlite3test.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50AB16D8953A00A8121D /* sqlite3test.exp */; };
+		56AC50AE16D8954200A8121D /* testsqlite3.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50AD16D8954200A8121D /* testsqlite3.exp */; };
+		56AC50B016D8954900A8121D /* testXML.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50AF16D8954900A8121D /* testXML.exp */; };
+		56AC50B216D896E500A8121D /* engine_227_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B116D896E500A8121D /* engine_227_all.xml */; };
 		56BDEC73169BE6D10076CD6B /* RaidViewConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */; };
 		56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */; };
 		56D107BE16C293C700D70A9B /* HA-item-ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107BB16C293C700D70A9B /* HA-item-ok.png */; };
@@ -108,6 +112,10 @@
 		5623C78116BD565E009410B2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		56AC50A616D4AC9300A8121D /* sandatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = sandatabase.sqlite; sourceTree = "<group>"; };
+		56AC50AB16D8953A00A8121D /* sqlite3test.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = sqlite3test.exp; sourceTree = "<group>"; };
+		56AC50AD16D8954200A8121D /* testsqlite3.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = testsqlite3.exp; sourceTree = "<group>"; };
+		56AC50AF16D8954900A8121D /* testXML.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = testXML.exp; sourceTree = "<group>"; };
+		56AC50B116D896E500A8121D /* engine_227_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_227_all.xml; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewConfigController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewConfigController.m; sourceTree = "<group>"; };
 		56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-HA Appliance View.png"; sourceTree = "<group>"; };
@@ -180,9 +188,21 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		56AC50A916D870B400A8121D /* expect */ = {
+			isa = PBXGroup;
+			children = (
+				56AC50B116D896E500A8121D /* engine_227_all.xml */,
+				56AC50AB16D8953A00A8121D /* sqlite3test.exp */,
+				56AC50AD16D8954200A8121D /* testsqlite3.exp */,
+				56AC50AF16D8954900A8121D /* testXML.exp */,
+			);
+			path = expect;
+			sourceTree = "<group>";
+		};
 		56EB75221689D06A0082A5D2 = {
 			isa = PBXGroup;
 			children = (
+				56AC50A916D870B400A8121D /* expect */,
 				56AC50A616D4AC9300A8121D /* sandatabase.sqlite */,
 				56EB756D168AA1790082A5D2 /* ReadMe.txt */,
 				56EB75541689D12B0082A5D2 /* Resource */,
@@ -389,6 +409,7 @@
 				56D107BF16C293C700D70A9B /* HA-item-blackwhite.png in Resources */,
 				56D107C016C293C700D70A9B /* HA-item-orange.png in Resources */,
 				56D107C216C2987E00D70A9B /* item-RAIDView.png in Resources */,
+				56AC50B216D896E500A8121D /* engine_227_all.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +436,9 @@
 				5623C77D16BD54BF009410B2 /* FMDatabasePool.m in Sources */,
 				5623C77E16BD54BF009410B2 /* FMDatabaseQueue.m in Sources */,
 				5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */,
+				56AC50AC16D8953A00A8121D /* sqlite3test.exp in Sources */,
+				56AC50AE16D8954200A8121D /* testsqlite3.exp in Sources */,
+				56AC50B016D8954900A8121D /* testXML.exp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +519,6 @@
 		56EB75521689D06A0082A5D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = CrystalSAN/CrystalSAN.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrystalSAN/CrystalSAN-Prefix.pch";
 				INFOPLIST_FILE = "CrystalSAN/CrystalSAN-Info.plist";
@@ -509,11 +532,11 @@
 		56EB75531689D06A0082A5D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = CrystalSAN/CrystalSAN.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrystalSAN/CrystalSAN-Prefix.pch";
 				INFOPLIST_FILE = "CrystalSAN/CrystalSAN-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -549,17 +572,16 @@
 		56EB76CB169019B90082A5D2 /* Ad Hoc Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = CrystalSAN/CrystalSAN.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Pro Andy Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pro Andy Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrystalSAN/CrystalSAN-Prefix.pch";
 				INFOPLIST_FILE = "CrystalSAN/CrystalSAN-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "09CD5254-9C4C-45CA-A61E-E7C108A59DB3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "09CD5254-9C4C-45CA-A61E-E7C108A59DB3";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

@@ -29,6 +29,7 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *currentItemIndex;
 @property (nonatomic, retain) IBOutlet UILabel *totalItemCount;
+@property (nonatomic, retain) IBOutlet UILabel *totalItem;
 
 // data
 @property (strong, nonatomic) NSDictionary *allNames;

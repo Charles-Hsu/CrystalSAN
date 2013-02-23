@@ -518,8 +518,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Total count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KML-X9-dJO">
-                                <rect key="frame" x="926" y="119" width="94" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KML-X9-dJO">
+                                <rect key="frame" x="926" y="119" width="47" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -532,11 +532,18 @@
                                 <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="current" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cay-wg-ljo">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="index" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cay-wg-ljo" userLabel="Label - index">
                                 <rect key="frame" x="805" y="119" width="108" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" red="0.36426928867907765" green="0.60062154611554086" blue="0.77931680484693877" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ctP-Eg-YLr" userLabel="Label - Total">
+                                <rect key="frame" x="867" y="143" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" id="ydp-uK-33r">
@@ -570,6 +577,7 @@
                         <outlet property="searchBar" destination="bFi-6H-p6j" id="y0P-x4-9NE"/>
                         <outlet property="spacingSlider" destination="dtG-2v-5i1" id="j0u-n4-37H"/>
                         <outlet property="spacingValue" destination="IWS-Dy-62u" id="Hix-Pn-uT7"/>
+                        <outlet property="totalItem" destination="ctP-Eg-YLr" id="JhT-c4-O2B"/>
                         <outlet property="totalItemCount" destination="KML-X9-dJO" id="Rlq-zQ-PY1"/>
                     </connections>
                 </viewController>
@@ -963,6 +971,7 @@
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalItem" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="totalItemCount" candidateClass="UILabel"/>
             </relationships>
         </class>
