@@ -44,6 +44,7 @@
 		56AC50AE16D8954200A8121D /* testsqlite3.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50AD16D8954200A8121D /* testsqlite3.exp */; };
 		56AC50B016D8954900A8121D /* testXML.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50AF16D8954900A8121D /* testXML.exp */; };
 		56AC50B216D896E500A8121D /* engine_227_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B116D896E500A8121D /* engine_227_all.xml */; };
+		56AC50B416D8B24C00A8121D /* parse_engine_all.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50B316D8B24B00A8121D /* parse_engine_all.exp */; };
 		56BDEC73169BE6D10076CD6B /* RaidViewConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */; };
 		56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */; };
 		56D107BE16C293C700D70A9B /* HA-item-ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107BB16C293C700D70A9B /* HA-item-ok.png */; };
@@ -116,6 +117,7 @@
 		56AC50AD16D8954200A8121D /* testsqlite3.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = testsqlite3.exp; sourceTree = "<group>"; };
 		56AC50AF16D8954900A8121D /* testXML.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = testXML.exp; sourceTree = "<group>"; };
 		56AC50B116D896E500A8121D /* engine_227_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_227_all.xml; sourceTree = "<group>"; };
+		56AC50B316D8B24B00A8121D /* parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all.exp; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewConfigController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewConfigController.m; sourceTree = "<group>"; };
 		56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-HA Appliance View.png"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				56AC50AB16D8953A00A8121D /* sqlite3test.exp */,
 				56AC50AD16D8954200A8121D /* testsqlite3.exp */,
 				56AC50AF16D8954900A8121D /* testXML.exp */,
+				56AC50B316D8B24B00A8121D /* parse_engine_all.exp */,
 			);
 			path = expect;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				56AC50AC16D8953A00A8121D /* sqlite3test.exp in Sources */,
 				56AC50AE16D8954200A8121D /* testsqlite3.exp in Sources */,
 				56AC50B016D8954900A8121D /* testXML.exp in Sources */,
+				56AC50B416D8B24C00A8121D /* parse_engine_all.exp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
