@@ -4,7 +4,7 @@
 #  Created by Charles Hsu on 1/27/13.
 #
 #  usage:
-#      expect parse_engine_all.exp <engine_last_part_of_ip>
+#      expect parse_engine_all.exp <engine_last_part_of_ip> <database_filename>
 #  for example:
 #      $expect parse_engine_all.exp 227 server.db
 #  will open the engine_227_all.xml file amd parse the information to database 'server.db'
@@ -72,10 +72,10 @@ proc list2xml list {
 #-------------------------------------------- now testing:
 set test {<foo a="b">bar and<grill x:c="d" e="f g"><baz x="y"/></grill><room/></foo>}
 
-set filename [lindex $argv 0]
-set fp [open $filename r]
-set file_data [read $fp]
-close $fp
+#set filename [lindex $argv 0]
+#set fp [open $filename r]
+#set file_data [read $fp]
+#close $fp
 
 proc tdomlist x {[[dom parse $x] documentElement root] asList} ;# reference
 proc lequal {a b} {
@@ -90,64 +90,307 @@ proc try x {
     puts list:[lequal $a $b],string:[string equal $a $b]
 }
 
-set a [lindex [list a b "Hello World"] 2]
-puts $a
+proc keyvalue key {
+    return [string trim [lindex [lindex [lindex $key 2] 0] 1]]
+}
 
-#set res [xml2list $test]
+#set a [lindex [list a b "Hello World"] 2]
+#puts $a
+
+#set xmlfilename "engine_[lindex $argv 0]_all.xml"
+set xmlfilename "[lindex $argv 0]"
+puts "xml_filename=$xmlfilename"
+set fp [open $xmlfilename r]
+set file_data [read $fp]
+close $fp
+
+set db_filename [lindex $argv 1]
+load /usr/lib/sqlite3/libtclsqlite3.dylib Sqlite3
+sqlite3 db $db_filename
+
+#db eval {CREATE TABLE IF NOT EXISTS t1(a TEXT, b INTEGER)}
+#
+#proc create_table_if_not_exist table_name {
+#    set sql "create table if not exists $table_name (id integer)"
+#    puts $sql
+#    db eval $sql
+#}
+#
+#create_table_if_not_exist "test_table"
+
+set sql "create table if not exists engine_cli_vpd (serial text primary key, seconds integer, site_name text, engine_name text, product_type text, fw_version text, fw_data text, redboot text, uid text, pcb text, mac text, ip text, uptime text, alert text, time text, a1_wwpn, a2_wwpn, b1_wwpn, b2_wwpn)"
+db eval $sql
+
+#set res [xml2list $test
 #puts $file_data
 set site_data [lindex [xml2list $file_data] 2]
 set site_name [lindex [lindex $site_data 0] 1]
 set engines_data [lindex [lindex $site_data 0] 2]
-puts $site_name
-puts [lindex [lindex $engines_data 0] 1]
+
+puts "-------------"
+puts "site_name=[lindex $site_name 1]"
+#puts "type=[lindex [lindex [lindex $engines_data 0] 1] 1]"
 
 #engine_name
 set engine_name        [lindex [lindex [lindex [lindex $engines_data 0] 2] 0] 1] 
-puts $engine_name
+puts "engine_name=[lindex $engine_name 1]"
 
 set engine_info [lindex [lindex [lindex [lindex $engines_data 0] 2] 0] 2]
 
 #cli_vpd
 set cli_vpd_section    [lindex $engine_info 0]
 puts $cli_vpd_section
-puts "-------------"
-set product_type [lindex [lindex $cli_vpd_section 2] 0]
-set fw_version   [lindex [lindex $cli_vpd_section 2] 1]
-set fw_date      [lindex [lindex $cli_vpd_section 2] 2]
-set redboot      [lindex [lindex $cli_vpd_section 2] 3]
-set uid          [lindex [lindex $cli_vpd_section 2] 4]
-set serial       [lindex [lindex $cli_vpd_section 2] 5]
-set pcb          [lindex [lindex $cli_vpd_section 2] 6]
-set mac          [lindex [lindex $cli_vpd_section 2] 7]
-set ip           [lindex [lindex $cli_vpd_section 2] 8]
-set uptime       [lindex [lindex $cli_vpd_section 2] 9]
-set alert        [lindex [lindex $cli_vpd_section 2] 10]
-set time         [lindex [lindex $cli_vpd_section 2] 11]
+puts "------------- cli_vpd -------------"
+set seconds         [lindex [lindex $cli_vpd_section 1] 1]
+puts "seconds=$seconds"
+
+set product_type_s [lindex [lindex $cli_vpd_section 2] 0]
+set fw_version_s   [lindex [lindex $cli_vpd_section 2] 1]
+set fw_date_s      [lindex [lindex $cli_vpd_section 2] 2]
+set redboot_s      [lindex [lindex $cli_vpd_section 2] 3]
+set uid_s          [lindex [lindex $cli_vpd_section 2] 4]
+set serial_s       [lindex [lindex $cli_vpd_section 2] 5]
+set pcb_s          [lindex [lindex $cli_vpd_section 2] 6]
+set mac_s          [lindex [lindex $cli_vpd_section 2] 7]
+set ip_s           [lindex [lindex $cli_vpd_section 2] 8]
+set uptime_s       [lindex [lindex $cli_vpd_section 2] 9]
+set alert_s        [lindex [lindex $cli_vpd_section 2] 10]
+set time_s         [lindex [lindex $cli_vpd_section 2] 11]
 set port_A1      [lindex [lindex $cli_vpd_section 2] 12]
 set port_A2      [lindex [lindex $cli_vpd_section 2] 13]
 set port_B1      [lindex [lindex $cli_vpd_section 2] 14]
 set port_B2      [lindex [lindex $cli_vpd_section 2] 15]
 
 #puts "product_type"
-puts $product_type
-puts $fw_version
-puts $fw_date
-puts $redboot
-puts $uid
-puts $serial
-puts $pcb
-puts $mac
-puts $ip
-puts $uptime
-puts $time
-puts $port_A1
-puts $port_A2
-puts $port_B1
-puts $port_B2
+set product_type [string trim [lindex [lindex [lindex $product_type_s 2] 0] 1]]
+puts "[lindex $product_type_s 0]=$product_type"
+
+#puts $fw_version
+set fw_version [string trim [lindex [lindex [lindex $fw_version_s 2] 0] 1]]
+puts "[lindex $fw_version_s 0]=$fw_version"
+
+#puts $fw_date
+set fw_date [string trim [lindex [lindex [lindex $fw_date_s 2] 0] 1]]
+puts "[lindex $fw_date_s 0]=$fw_date"
+
+#puts $redboot
+set redboot [string trim [lindex [lindex [lindex $redboot_s 2] 0] 1]]
+puts "[lindex $redboot_s 0]=$redboot"
+
+#puts $uid
+set uid [string trim [lindex [lindex [lindex $uid_s 2] 0] 1]]
+puts "[lindex $uid_s 0]=$uid"
+
+#puts $serial
+set serial [string trim [lindex [lindex [lindex $serial_s 2] 0] 1]]
+puts "[lindex $serial_s 0]=$serial"
+
+#puts $pcb
+set pcb [string trim [lindex [lindex [lindex $pcb_s 2] 0] 1]]
+puts "[lindex $pcb_s 0]=$pcb"
+
+#puts $mac
+set mac [string trim [lindex [lindex [lindex $mac_s 2] 0] 1]]
+puts "[lindex $mac_s 0]=$mac"
+
+#puts $ip
+set ip [string trim [lindex [lindex [lindex $ip_s 2] 0] 1]]
+puts "[lindex $ip_s 0]=$ip"
+
+#puts $uptime
+set uptime [keyvalue $uptime_s]
+puts "[lindex $uptime_s 0]=$uptime"
+
+#puts $alert
+set alert [string trim [lindex [lindex [lindex $alert_s 2] 0] 1]]
+puts "alert=$alert"
+
+#puts $time
+set time [keyvalue $time_s]
+puts "[lindex $time_s 0]=$time"
+
+#puts $port_A1
+puts "[lindex [lindex $port_A1 1] 1]_[lindex [lindex [lindex $port_A1 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_A1 2] 1] 2] 0] 1]"
+puts "[lindex [lindex $port_A1 1] 1]_[lindex [lindex [lindex $port_A1 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_A1 2] 2] 2] 0] 1]"
+set a1_wwpn [lindex [lindex [lindex [lindex [lindex $port_A1 2] 2] 2] 0] 1]
+
+#puts $port_A2
+puts "[lindex [lindex $port_A2 1] 1]_[lindex [lindex [lindex $port_A2 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_A2 2] 1] 2] 0] 1]"
+puts "[lindex [lindex $port_A2 1] 1]_[lindex [lindex [lindex $port_A2 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_A2 2] 2] 2] 0] 1]"
+set a2_wwpn [lindex [lindex [lindex [lindex [lindex $port_A2 2] 2] 2] 0] 1]
+
+#puts $port_B1
+puts "[lindex [lindex $port_B1 1] 1]_[lindex [lindex [lindex $port_B1 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_B1 2] 1] 2] 0] 1]"
+puts "[lindex [lindex $port_B1 1] 1]_[lindex [lindex [lindex $port_B1 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_B1 2] 2] 2] 0] 1]"
+set b1_wwpn [lindex [lindex [lindex [lindex [lindex $port_B1 2] 2] 2] 0] 1]
+
+
+#puts $port_B2
+puts "[lindex [lindex $port_B2 1] 1]_[lindex [lindex [lindex $port_B2 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_B2 2] 1] 2] 0] 1]"
+puts "[lindex [lindex $port_B2 1] 1]_[lindex [lindex [lindex $port_B2 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]"
+set b2_wwpn [lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]
+puts "-------------"
+
+set sql "select seconds from engine_cli_vpd where serial='$serial'"
+#puts $sql
+set seconds_in_table [db eval $sql]
+puts $seconds_in_table
+
+if {[expr $seconds > $seconds_in_table]} {
+    set sql "insert into engine_cli_vpd values ('$serial', $seconds, '[lindex $site_name 1]', '[lindex $engine_name 1]', '$product_type', '$fw_version', '$fw_date', '$redboot', '$uid', '$pcb', '$mac', '$ip', '$uptime', '$alert', '$time', '$a1_wwpn', '$a2_wwpn', '$b1_wwpn', '$b2_wwpn')"
+    db eval $sql
+    puts "insert record"
+} else {
+    if {[expr $seconds == $seconds_in_table]} {
+        puts "table($seconds_in_table) = xml($seconds). record exists, ignores"
+    } else {
+        puts "table($seconds_in_table) < xml($seconds). xml is older than database, ignores"
+    }
+}
+
+#db eval "insert into engine_cli_vpd values ($serial, $product_type, $fw_version, '$fw_date', $red_boot, $uid, $pcb, $mac, $ip, '$uptime', '$alert', '$time', [lindex [lindex [lindex [lindex [lindex $port_A1 2] 2] 2] 0] 1], [lindex [lindex [lindex [lindex [lindex $port_A2 2] 2] 2] 0] 1], [lindex [lindex [lindex [lindex [lindex $port_B1 2] 2] 2] 0] 1], [lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]"
+
 
 #cli_mirror
+puts "------------- cli_mirror ----------"
+set sql "create table if not exists engine_cli_mirror (serial text primary key, seconds integer, 
+    mirror_0_id integer, mirror_0_sts text, mirror_0_map integer, mirror_0_capacity integer, mirror_0_member_0_id integer, mirror_0_member_0_sts text, mirror_0_member_1_id integer, mirror_0_member_1_sts text,
+    mirror_1_id integer, mirror_1_sts text, mirror_1_map integer, mirror_1_capacity integer, mirror_1_member_0_id integer, mirror_1_member_0_sts text, mirror_1_member_1_id integer, mirror_1_member_1_sts text,
+    mirror_2_id integer, mirror_2_sts text, mirror_2_map integer, mirror_2_capacity integer, mirror_2_member_0_id integer, mirror_2_member_0_sts text, mirror_2_member_1_id integer, mirror_2_member_1_sts text,
+    mirror_3_id integer, mirror_3_sts text, mirror_3_map integer, mirror_3_capacity integer, mirror_3_member_0_id integer, mirror_3_member_0_sts text, mirror_3_member_1_id integer, mirror_3_member_1_sts text,
+    mirror_4_id integer, mirror_4_sts text, mirror_4_map integer, mirror_4_capacity integer, mirror_4_member_0_id integer, mirror_4_member_0_sts text, mirror_4_member_1_id integer, mirror_4_member_1_sts text,
+    mirror_5_id integer, mirror_5_sts text, mirror_5_map integer, mirror_5_capacity integer, mirror_5_member_0_id integer, mirror_5_member_0_sts text, mirror_5_member_1_id integer, mirror_5_member_1_sts text,
+    mirror_ok integer, mirror_degraded integer, mirror_failed integer)"
+db eval $sql
+
 set cli_mirror_section [lindex $engine_info 1]
+
+set seconds         [lindex [lindex $cli_mirror_section 1] 1]
+puts "seconds=$seconds"
+
+proc xml_is_older_than_database args {
+    set seconds [lindex args 0]
+    set record_seconds [lindex args 1] 
+    if {[string length $record_seconds] == 0} {
+        puts "not exists"
+        # not exists
+        return "not_exists"
+    }
+    if {[expr $seconds > $record_seconds]} {
+        puts "new record, update it"
+        # new record
+        return "new_record"
+    }
+    # older than current
+    return "older"
+}
+
+proc keyvalue key {
+    return [string trim [lindex [lindex [lindex $key 2] 0] 1]]
+}
+
+
+set sql "select seconds from engine_cli_mirror where serial='$serial'"
+#puts $sql
+set seconds_in_table [db eval $sql]
+puts "seconds_in_table($seconds_in_table)"
+
+puts "========"
+
+set val [xml_is_older_than_database {seconds seconds_in_table}]
+#puts $val
+#puts $new_or_old
+
+
+switch -- $val \
+  "not_exists" {
+    puts "===>$val"
+} "new_record" {
+    puts "===>$val"
+} "older" {
+    puts "===>$val"
+}
+
+
+
 #puts $cli_mirror_section
+#puts [lindex [lindex $cli_mirror_section 2] 0]
+#puts [lindex [lindex $cli_mirror_section 2] 1]
+#puts [lindex [lindex $cli_mirror_section 2] 2]
+#puts [lindex [lindex $cli_mirror_section 2] 3]
+#puts [lindex [lindex $cli_mirror_section 2] 4]
+#puts [lindex [lindex $cli_mirror_section 2] 5]
+#puts "----"
+set mirror_count [expr [llength [lindex $cli_mirror_section 2]]-3]
+puts "mirror_count=$mirror_count"
+
+set i 0
+set sql "insert into engine_cli_mirror values ('$serial',$seconds"
+for {} {$i < $mirror_count} {incr i 1} {
+    append sql ","
+    #puts [lindex [lindex $cli_mirror_section 2] $i]
+    set mirror_data [lindex [lindex $cli_mirror_section 2] $i]
+    set mirror_status [lindex [lindex $mirror_data 2] 1]
+    set mirror_map [lindex [lindex $mirror_data 2] 2]
+    set mirror_capacity [lindex [lindex $mirror_data 2] 3]
+    puts "mirror_$i"
+    puts "id_$i=[lindex [lindex $mirror_data 1] 1]"
+    append sql "[lindex [lindex $mirror_data 1] 1]"
+    puts "[lindex $mirror_status 0]_$i=[lindex [lindex [lindex $mirror_status 2] 0] 1]"
+    append sql ",'[lindex [lindex [lindex $mirror_status 2] 0] 1]'"
+    puts "[lindex $mirror_map 0]_$i=[lindex [lindex [lindex $mirror_map 2] 0] 1]"
+    append sql ",[lindex [lindex [lindex $mirror_map 2] 0] 1]"
+    puts "[lindex $mirror_capacity 0]_$i=[lindex [lindex [lindex $mirror_capacity 2] 0] 1]"
+    append sql ",[lindex [lindex [lindex $mirror_capacity 2] 0] 1]"
+    #puts [lindex [lindex $mirror_data 2] 4]
+    
+    set j 0
+    puts "[lindex [lindex [lindex [lindex $mirror_data 2] 4] 1] 0]_$i-$j=[lindex [lindex [lindex [lindex $mirror_data 2] 4] 1] 1]"
+    puts "[lindex [lindex [lindex [lindex $mirror_data 2] 4] 1] 0]_$i-$j-status=[lindex [lindex [lindex [lindex [lindex [lindex [lindex $mirror_data 2] 4] 2] 1] 2] 0] 1]"
+    #puts [lindex [lindex $mirror_data 2] 5]
+    append sql ",[lindex [lindex [lindex [lindex $mirror_data 2] 4] 1] 1],'[lindex [lindex [lindex [lindex [lindex [lindex [lindex $mirror_data 2] 4] 2] 1] 2] 0] 1]'"
+
+    incr j 1 
+    puts "[lindex [lindex [lindex [lindex $mirror_data 2] 5] 1] 0]_$i-$j=[lindex [lindex [lindex [lindex $mirror_data 2] 5] 1] 1]"
+    puts "[lindex [lindex [lindex [lindex $mirror_data 2] 5] 1] 0]_$i-$j-status=[lindex [lindex [lindex [lindex [lindex [lindex [lindex $mirror_data 2] 5] 2] 1] 2] 0] 1]"
+    append sql ",[lindex [lindex [lindex [lindex $mirror_data 2] 5] 1] 1],'[lindex [lindex [lindex [lindex [lindex [lindex [lindex $mirror_data 2] 5] 2] 1] 2] 0] 1]'"
+}
+for {} {$i < 6} {incr i 1} {
+    append sql ",'','','','','','','',''"
+}
+
+set mirror_ok_data [lindex [lindex $cli_mirror_section 2] $mirror_count]
+set mirror_degraded_data [lindex [lindex $cli_mirror_section 2] [expr $mirror_count+1]]
+set mirror_failed_data [lindex [lindex $cli_mirror_section 2] [expr $mirror_count+2]]
+
+puts "[lindex $mirror_ok_data 0]=[lindex [lindex [lindex $mirror_ok_data 2] 0] 1]"
+append sql ",[lindex [lindex [lindex $mirror_ok_data 2] 0] 1]"
+
+puts "[lindex $mirror_degraded_data 0]=[lindex [lindex [lindex $mirror_degraded_data 2] 0] 1]"
+append sql ",[lindex [lindex [lindex $mirror_degraded_data 2] 0] 1]"
+
+puts "[lindex $mirror_failed_data 0]=[lindex [lindex [lindex $mirror_failed_data 2] 0] 1]"
+append sql ",[lindex [lindex [lindex $mirror_failed_data 2] 0] 1]"
+
+append sql ")"
+puts $sql
+db eval $sql
+
+#puts $mirror_degraded_data
+#puts $mirror_failed_data
+
+proc printlist { inlist } {
+        foreach item $inlist {
+            # recurse - go into the sub list
+            if { [llength $item] > 1 } {
+                printlist $item 
+            } else {
+                puts $item
+            }
+        }
+}
+        
+#printlist $cli_mirror_section
 
 #puts "-------------"
 
@@ -225,7 +468,7 @@ set cli_map [lindex $engine_info 16]
 #puts $cli_map
 
 
-
+db close
 
 
 
