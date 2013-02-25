@@ -268,9 +268,10 @@ set cli_mirror_section [lindex $engine_info 1]
 set seconds         [lindex [lindex $cli_mirror_section 1] 1]
 puts "seconds=$seconds"
 
-proc xml_is_older_than_database args {
-    set seconds [lindex args 0]
-    set record_seconds [lindex args 1] 
+proc xml_is_older_than_database {args} {
+    set seconds [lindex $args 0]
+    set record_seconds [lindex $args 1] 
+    puts "seconds $seconds, record_seconds $record_seconds"
     if {[string length $record_seconds] == 0} {
         puts "not exists"
         # not exists
@@ -289,9 +290,29 @@ proc keyvalue key {
     return [string trim [lindex [lindex [lindex $key 2] 0] 1]]
 }
 
+proc dress {seconds {size 1}} {
+        upvar $text harry
+        set harry "<h$size>$harry</h$size>"
+        return [string length $harry]
+        }
+        
+proc compare_seconds {xml_seconds db_seconds} {
+    puts "xml_seconds $xml_seconds"
+    puts "db_seconds $db_seconds"
+    if {[string length $db_seconds] == 0} {
+        return "not_exists"
+    }
+    if {[expr $xml_seconds > $db_seconds]} {
+        return "new_record"
+    }
+    return "ignore"
+}
 
+#compare_seconds 123 456
+
+        
 set sql "select seconds from engine_cli_mirror where serial='$serial'"
-#puts $sql
+puts $sql
 set seconds_in_table [db eval $sql]
 puts "seconds_in_table($seconds_in_table)"
 
@@ -301,15 +322,21 @@ set val [xml_is_older_than_database {seconds seconds_in_table}]
 #puts $val
 #puts $new_or_old
 
+puts "++++++++++++++++++++"
+#compare_seconds $seconds $seconds_in_table
+set compare_result [compare_seconds $seconds $seconds_in_table]
+puts $compare_result
+puts "++++++++++++++++++++"
 
-switch -- $val \
-  "not_exists" {
-    puts "===>$val"
-} "new_record" {
-    puts "===>$val"
-} "older" {
-    puts "===>$val"
-}
+
+#switch -- $val \
+#  "not_exists" {
+#    puts "===>$val"
+#} "new_record" {
+#    puts "===>$val"
+#} "older" {
+#    puts "===>$val"
+#}
 
 
 
@@ -373,8 +400,21 @@ puts "[lindex $mirror_failed_data 0]=[lindex [lindex [lindex $mirror_failed_data
 append sql ",[lindex [lindex [lindex $mirror_failed_data 2] 0] 1]"
 
 append sql ")"
-puts $sql
-db eval $sql
+
+#compare_result --> not_exists, new_record, ignore
+
+switch -- $compare_result \
+  "not_exists" {
+    puts "===>$compare_result"
+    puts $sql
+    db eval $sql
+} "new_record" {
+    puts "===>$compare_result"
+} "ignore" {
+    puts "===>$compare_result"
+}
+
+
 
 #puts $mirror_degraded_data
 #puts $mirror_failed_data
