@@ -108,6 +108,8 @@ set db_filename [lindex $argv 1]
 load /usr/lib/sqlite3/libtclsqlite3.dylib Sqlite3
 sqlite3 db $db_filename
 
+
+
 #db eval {CREATE TABLE IF NOT EXISTS t1(a TEXT, b INTEGER)}
 #
 #proc create_table_if_not_exist table_name {
@@ -231,11 +233,24 @@ puts "[lindex [lindex $port_B2 1] 1]_[lindex [lindex [lindex $port_B2 2] 2] 0]=[
 set b2_wwpn [lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]
 puts "-------------"
 
-set sql "select seconds from engine_cli_vpd where serial='$serial'"
-#puts $sql
-set seconds_in_table [db eval $sql]
-puts $seconds_in_table
+#set seconds_in_table 0
 
+#db eval {SELECT seconds FROM engine_cli_vpd WHERE serial='$serial'} {
+#    puts "=======$seconds\\\\\\\\\\\\\////////////////"
+#    set seconds_in_table $seconds
+#}
+
+#
+#
+# compare seconds in database and seconds in xml, 
+# if seconds_in_table is equal to or bigger than seconds_in_xml, then exits
+# otherwise, add the record to database
+#
+set sql "SELECT seconds FROM engine_cli_vpd WHERE serial='$serial'"
+puts $sql
+set seconds_in_table [db onecolumn $sql]
+puts "seconds_in_table : $seconds_in_table"
+puts "seconds_in_xml   : $seconds"
 if {[expr $seconds > $seconds_in_table]} {
     set sql "insert into engine_cli_vpd values ('$serial', $seconds, '[lindex $site_name 1]', '[lindex $engine_name 1]', '$product_type', '$fw_version', '$fw_date', '$redboot', '$uid', '$pcb', '$mac', '$ip', '$uptime', '$alert', '$time', '$a1_wwpn', '$a2_wwpn', '$b1_wwpn', '$b2_wwpn')"
     db eval $sql
@@ -246,10 +261,8 @@ if {[expr $seconds > $seconds_in_table]} {
     } else {
         puts "table($seconds_in_table) < xml($seconds). xml is older than database, ignores"
     }
+    #exit
 }
-
-#db eval "insert into engine_cli_vpd values ($serial, $product_type, $fw_version, '$fw_date', $red_boot, $uid, $pcb, $mac, $ip, '$uptime', '$alert', '$time', [lindex [lindex [lindex [lindex [lindex $port_A1 2] 2] 2] 0] 1], [lindex [lindex [lindex [lindex [lindex $port_A2 2] 2] 2] 0] 1], [lindex [lindex [lindex [lindex [lindex $port_B1 2] 2] 2] 0] 1], [lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]"
-
 
 #cli_mirror
 puts "------------- cli_mirror ----------"
@@ -303,9 +316,9 @@ proc compare_seconds {xml_seconds db_seconds} {
         return "not_exists"
     }
     if {[expr $xml_seconds > $db_seconds]} {
-        return "new_record"
+        return "old_record"
     }
-    return "ignore"
+    return "the_same"
 }
 
 #compare_seconds 123 456
@@ -318,7 +331,7 @@ puts "seconds_in_table($seconds_in_table)"
 
 puts "========"
 
-set val [xml_is_older_than_database {seconds seconds_in_table}]
+#set val [xml_is_older_than_database {seconds seconds_in_table}]
 #puts $val
 #puts $new_or_old
 
@@ -327,17 +340,6 @@ puts "++++++++++++++++++++"
 set compare_result [compare_seconds $seconds $seconds_in_table]
 puts $compare_result
 puts "++++++++++++++++++++"
-
-
-#switch -- $val \
-#  "not_exists" {
-#    puts "===>$val"
-#} "new_record" {
-#    puts "===>$val"
-#} "older" {
-#    puts "===>$val"
-#}
-
 
 
 #puts $cli_mirror_section
@@ -408,9 +410,9 @@ switch -- $compare_result \
     puts "===>$compare_result"
     puts $sql
     db eval $sql
-} "new_record" {
+} "old_record" {
     puts "===>$compare_result"
-} "ignore" {
+} "the_same" {
     puts "===>$compare_result"
 }
 
@@ -439,8 +441,93 @@ set cli_conmgr_drive_status [lindex $engine_info 2]
 
 #puts "-------------"
 
-set cli_conmgr_engine_status [lindex $engine_info 3]
-#puts $cli_conmgr_engine_status
+
+#
+#
+# cli_conmgr_engine_status
+#
+#
+puts ""
+puts "<<<<<<< cli_conmgr_engine_status >>>>>>>"
+puts ""
+
+set sql "CREATE TABLE IF NOT EXISTS engine_cli_conmgr_engine_status (serial TEXT PRIMARY KEY, seconds INTEGER, cluster_id INTEGER, cluster_sts TEXT, 
+    path_0_id INTEGER, path_0_port TEXT, path_0_wwpn TEXT, path_0_pstatus TEXT,
+    path_1_id INTEGER, path_1_port TEXT, path_1_wwpn TEXT, path_1_pstatus TEXT)"
+db eval $sql
+
+set cli_conmgr_engine_status_block [lindex $engine_info 3]
+#puts $cli_conmgr_engine_status_block
+puts "serial=$serial"
+puts "seconds=$seconds"
+
+set sql "select seconds from engine_cli_conmgr_engine_status where serial='$serial'"
+#puts $sql
+set seconds_in_table [db eval $sql]
+set compare_result [compare_seconds $seconds $seconds_in_table]
+puts "compare result = $compare_result"
+
+switch -- $compare_result \
+  "not_exists" {
+
+    set cluster_data [lindex [lindex [lindex $cli_conmgr_engine_status_block 2] 0] 2]
+    #puts $cluster_data
+
+    set cluster_id  [lindex [lindex [lindex [lindex $cluster_data 0] 2] 0] 1]
+    puts "cluster_id=$cluster_id"
+
+    set cluster_sts [lindex [lindex [lindex [lindex $cluster_data 1] 2] 0] 1]
+    puts "cluster_sts=$cluster_sts"
+
+    set path_0_data [lindex $cluster_data 2]
+    # paths {id 1} {{port {} {{{#text} B1}}} {wwpn {} {{{#text} 2300-006022-09281e}}} {pstatus {} {{{#text} A}}}}
+
+    set path_0_id   [lindex [lindex $path_0_data 1] 1]
+
+    set path_0_port_data [lindex $path_0_data 2]
+    # path_0_port_data => {port {} {{{#text} B1}}} {wwpn {} {{{#text} 2300-006022-09281e}}} {pstatus {} {{{#text} A}}}
+
+    set path_0_port [lindex [lindex [lindex [lindex $path_0_port_data 0] 2] 0] 1]
+    set path_0_port_wwpn [lindex [lindex [lindex [lindex $path_0_port_data 1] 2] 0] 1]
+    set path_0_port_pstatus [lindex [lindex [lindex [lindex $path_0_port_data 2] 2] 0] 1]
+
+    #puts $path_0_data
+    puts "path_0_id=$path_0_id"
+    puts "path_0_port=$path_0_port"
+    puts "path_0_port_wwpn=$path_0_port_wwpn"
+    puts "path_0_port_pstatus=$path_0_port_pstatus"
+
+    set path_1_data [lindex $cluster_data 3]
+    #puts $path_1_data
+    #puts [lindex $cluster_data  2]
+    # paths {id 1} {{port {} {{{#text} B1}}} {wwpn {} {{{#text} 2300-006022-09281e}}} {pstatus {} {{{#text} A}}}}
+
+    set path_1_id   [lindex [lindex $path_1_data 1] 1]
+
+    set path_1_port_data [lindex $path_1_data 2]
+    # path_0_port_data => {port {} {{{#text} B1}}} {wwpn {} {{{#text} 2300-006022-09281e}}} {pstatus {} {{{#text} A}}}
+
+    set path_1_port [lindex [lindex [lindex [lindex $path_1_port_data 0] 2] 0] 1]
+    set path_1_port_wwpn [lindex [lindex [lindex [lindex $path_1_port_data 1] 2] 0] 1]
+    set path_1_port_pstatus [lindex [lindex [lindex [lindex $path_1_port_data 2] 2] 0] 1]
+
+    #puts $path_1_data
+    puts "path_1_id=$path_1_id"
+    puts "path_1_port=$path_1_port"
+    puts "path_1_port_wwpn=$path_1_port_wwpn"
+    puts "path_1_port_pstatus=$path_1_port_pstatus"
+
+    set sql "INSERT INTO engine_cli_conmgr_engine_status VALUES ('$serial','$seconds','$cluster_id','$cluster_sts','$path_0_id','$path_0_port','$path_0_port_wwpn','$path_0_port_pstatus','$path_1_id','$path_1_port','$path_1_port_wwpn','$path_1_port_pstatus')"
+
+    puts $sql
+    db eval $sql
+    
+} "old_record" {
+    puts "===>$compare_result"
+} "the_same" {
+    puts "===>$compare_result"
+}
+
 
 #puts "-------------"
 
