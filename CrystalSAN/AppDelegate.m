@@ -34,6 +34,10 @@
             case ITEM_BUTTON_VIEW_VOLUME_TAG:
                 [self.totalItems addObject:@"button-item-Volume-view"];
                 break;
+            case ITEM_BUTTON_VIEW_DRIVE_TAG:
+            case ITEM_BUTTON_VIEW_HBA_TAG:
+                [self.totalItems addObject:@"Hexagonal-orange"];
+                break;
             default:
                 [self.totalItems addObject:@"Hexagonal"];
                 break;

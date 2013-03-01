@@ -15,6 +15,10 @@
 #define ITEM_BUTTON_VIEW_MIRROR_TAG 1
 #define ITEM_BUTTON_VIEW_VOLUME_TAG 2
 
+#define ITEM_BUTTON_VIEW_DRIVE_TAG    10
+#define ITEM_BUTTON_VIEW_HBA_TAG    11
+
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -8,6 +8,10 @@
 
 #import "SanDatabase.h"
 
+@interface SanDatabase ()
+    - (NSString *)getServerDbForDemonstration;
+@end
+
 @implementation SanDatabase
 @synthesize sanDatabase;
 
@@ -18,10 +22,11 @@
     if (self) {
         // Finding a file in the iPhone sandbox
         // http://stackoverflow.com/questions/5652329/finding-a-file-in-the-iphone-sandbox
-        NSString *home = NSHomeDirectory();
-        NSString *documentsPath = [home stringByAppendingPathComponent:@"Documents"];
+        //NSString *home = NSHomeDirectory();
+        //NSString *documentsPath = [home stringByAppendingPathComponent:@"Documents"];
         // Get the full path to our file.
-        NSString *databasePath = [documentsPath stringByAppendingPathComponent:@"sandatabase.sqlite"];
+        //NSString *databasePath = [documentsPath stringByAppendingPathComponent:@"sandatabase.sqlite"];
+        NSString *databasePath = [self getServerDbForDemonstration];
         NSLog(@"%s %@", __func__, databasePath);
         
         sanDatabase = [FMDatabase databaseWithPath:databasePath];
@@ -35,6 +40,33 @@
         //return db;
     }
     return self;
+}
+
+- (NSString *)getServerDbForDemonstration
+{
+    // IOS: copy a file in documents folder
+    // http://stackoverflow.com/questions/6545180/ios-copy-a-file-in-documents-folder
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *txtPath = [documentsDirectory stringByAppendingPathComponent:@"server.db"];
+    
+    //if ([fileManager fileExistsAtPath:txtPath] == NO) {
+    //    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"server" ofType:@"db"];
+    //    [fileManager copyItemAtPath:resourcePath toPath:txtPath error:&error];
+    //}
+    
+    // If you want to overwrite every time then try this:
+    if ([fileManager fileExistsAtPath:txtPath] == YES) {
+        [fileManager removeItemAtPath:txtPath error:&error];
+    }
+    
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"server" ofType:@"db"];
+    [fileManager copyItemAtPath:resourcePath toPath:txtPath error:&error];
+    
+    return txtPath;
 }
 
 - (void)insertDemoDevices
@@ -59,7 +91,7 @@
     }
     [sanDatabase commit];
     
-    [self getVmirrorListByKey:@""];
+    //[self getVmirrorListByKey:@""];
 }
 
 - (NSMutableArray *)getVmirrorListByKey:(NSString *)key

@@ -47,8 +47,8 @@
                              @"Switch View",
                              @"Host View",
                              @"Maintenance View",
-                             @"Provisioning Wizard",
-                             @"",
+                             @"Drive View",
+                             @"HBA View",
                              nil];
     }
     

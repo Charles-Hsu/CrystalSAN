@@ -40,11 +40,7 @@
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
 		565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */; };
-		56AC50AC16D8953A00A8121D /* sqlite3test.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50AB16D8953A00A8121D /* sqlite3test.exp */; };
-		56AC50AE16D8954200A8121D /* testsqlite3.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50AD16D8954200A8121D /* testsqlite3.exp */; };
-		56AC50B016D8954900A8121D /* testXML.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50AF16D8954900A8121D /* testXML.exp */; };
 		56AC50B216D896E500A8121D /* engine_227_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B116D896E500A8121D /* engine_227_all.xml */; };
-		56AC50B416D8B24C00A8121D /* parse_engine_all.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50B316D8B24B00A8121D /* parse_engine_all.exp */; };
 		56AC50B616DA089600A8121D /* engine_228_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B516DA089600A8121D /* engine_228_all.xml */; };
 		56AC50B816DB04C500A8121D /* engine_229_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B716DB04C400A8121D /* engine_229_all.xml */; };
 		56AC50BA16DB04CD00A8121D /* engine_230_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B916DB04CD00A8121D /* engine_230_all.xml */; };
@@ -52,13 +48,20 @@
 		56AC50BE16DB04E000A8121D /* engine_232_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50BD16DB04E000A8121D /* engine_232_all.xml */; };
 		56AC50C016DB04EA00A8121D /* engine_233_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50BF16DB04EA00A8121D /* engine_233_all.xml */; };
 		56AC50C216DB04F200A8121D /* engine_234_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50C116DB04F200A8121D /* engine_234_all.xml */; };
-		56AC50C416DC5C2C00A8121D /* scan_ha_cluster.exp in Sources */ = {isa = PBXBuildFile; fileRef = 56AC50C316DC5C2B00A8121D /* scan_ha_cluster.exp */; };
+		56AC50C616E0568600A8121D /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50C516E0568500A8121D /* server.db */; };
 		56BDEC73169BE6D10076CD6B /* RaidViewConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */; };
 		56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */; };
 		56D107BE16C293C700D70A9B /* HA-item-ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107BB16C293C700D70A9B /* HA-item-ok.png */; };
 		56D107BF16C293C700D70A9B /* HA-item-blackwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107BC16C293C700D70A9B /* HA-item-blackwhite.png */; };
 		56D107C016C293C700D70A9B /* HA-item-orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107BD16C293C700D70A9B /* HA-item-orange.png */; };
 		56D107C216C2987E00D70A9B /* item-RAIDView.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107C116C2987E00D70A9B /* item-RAIDView.png */; };
+		56D191D016E06DA6002BB2B5 /* image-engine.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D191CD16E06DA6002BB2B5 /* image-engine.png */; };
+		56D191D116E06DA6002BB2B5 /* image-host.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D191CE16E06DA6002BB2B5 /* image-host.png */; };
+		56D191D316E06EA0002BB2B5 /* image-lun.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D191D216E06EA0002BB2B5 /* image-lun.png */; };
+		56D191D516E07D40002BB2B5 /* img-raid-vxr.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D191D416E07D40002BB2B5 /* img-raid-vxr.png */; };
+		56D191D816E080F0002BB2B5 /* MirrorViewRController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D191D716E080F0002BB2B5 /* MirrorViewRController.m */; };
+		56D191DB16E085DB002BB2B5 /* MirrorViewIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D191DA16E085DB002BB2B5 /* MirrorViewIController.m */; };
+		56D191E116E08BFE002BB2B5 /* Hexagonal-orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D191E016E08BFE002BB2B5 /* Hexagonal-orange.png */; };
 		56EB75321689D06A0082A5D2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75311689D06A0082A5D2 /* UIKit.framework */; };
 		56EB75341689D06A0082A5D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75331689D06A0082A5D2 /* Foundation.framework */; };
 		56EB75361689D06A0082A5D2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75351689D06A0082A5D2 /* CoreGraphics.framework */; };
@@ -134,6 +137,7 @@
 		56AC50BF16DB04EA00A8121D /* engine_233_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_233_all.xml; sourceTree = "<group>"; };
 		56AC50C116DB04F200A8121D /* engine_234_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_234_all.xml; sourceTree = "<group>"; };
 		56AC50C316DC5C2B00A8121D /* scan_ha_cluster.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_ha_cluster.exp; sourceTree = "<group>"; };
+		56AC50C516E0568500A8121D /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewConfigController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewConfigController.m; sourceTree = "<group>"; };
 		56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-HA Appliance View.png"; sourceTree = "<group>"; };
@@ -141,6 +145,15 @@
 		56D107BC16C293C700D70A9B /* HA-item-blackwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HA-item-blackwhite.png"; sourceTree = "<group>"; };
 		56D107BD16C293C700D70A9B /* HA-item-orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HA-item-orange.png"; sourceTree = "<group>"; };
 		56D107C116C2987E00D70A9B /* item-RAIDView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "item-RAIDView.png"; sourceTree = "<group>"; };
+		56D191CD16E06DA6002BB2B5 /* image-engine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-engine.png"; sourceTree = "<group>"; };
+		56D191CE16E06DA6002BB2B5 /* image-host.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-host.png"; sourceTree = "<group>"; };
+		56D191D216E06EA0002BB2B5 /* image-lun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-lun.png"; sourceTree = "<group>"; };
+		56D191D416E07D40002BB2B5 /* img-raid-vxr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-raid-vxr.png"; sourceTree = "<group>"; };
+		56D191D616E080D0002BB2B5 /* MirrorViewRController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MirrorViewRController.h; sourceTree = "<group>"; };
+		56D191D716E080F0002BB2B5 /* MirrorViewRController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MirrorViewRController.m; sourceTree = "<group>"; };
+		56D191D916E085C9002BB2B5 /* MirrorViewIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MirrorViewIController.h; sourceTree = "<group>"; };
+		56D191DA16E085DB002BB2B5 /* MirrorViewIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MirrorViewIController.m; sourceTree = "<group>"; };
+		56D191E016E08BFE002BB2B5 /* Hexagonal-orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hexagonal-orange.png"; sourceTree = "<group>"; };
 		56EB752D1689D06A0082A5D2 /* CrystalSAN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrystalSAN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EB75311689D06A0082A5D2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		56EB75331689D06A0082A5D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -209,6 +222,7 @@
 		56AC50A916D870B400A8121D /* expect */ = {
 			isa = PBXGroup;
 			children = (
+				56AC50C516E0568500A8121D /* server.db */,
 				56AC50B116D896E500A8121D /* engine_227_all.xml */,
 				56AC50B516DA089600A8121D /* engine_228_all.xml */,
 				56AC50B716DB04C400A8121D /* engine_229_all.xml */,
@@ -274,6 +288,10 @@
 				56EB757A168BFA670082A5D2 /* VolumeViewController.m */,
 				56EB757C168BFA800082A5D2 /* MirrorViewController.h */,
 				56EB757D168BFA800082A5D2 /* MirrorViewController.m */,
+				56D191D616E080D0002BB2B5 /* MirrorViewRController.h */,
+				56D191D716E080F0002BB2B5 /* MirrorViewRController.m */,
+				56D191D916E085C9002BB2B5 /* MirrorViewIController.h */,
+				56D191DA16E085DB002BB2B5 /* MirrorViewIController.m */,
 				56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */,
 				56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */,
 				56EB7576168BF70B0082A5D2 /* RaidViewController.h */,
@@ -308,7 +326,12 @@
 		56EB75541689D12B0082A5D2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				56D191D416E07D40002BB2B5 /* img-raid-vxr.png */,
+				56D191D216E06EA0002BB2B5 /* image-lun.png */,
+				56D191CD16E06DA6002BB2B5 /* image-engine.png */,
+				56D191CE16E06DA6002BB2B5 /* image-host.png */,
 				5604ECB0169D2892004B046F /* Hexagonal.png */,
+				56D191E016E08BFE002BB2B5 /* Hexagonal-orange.png */,
 				5604ECAE169D1F51004B046F /* background.png */,
 				561A93DE169C4A500063F990 /* button-Arrow.png */,
 				561A93DF169C4A500063F990 /* button-Back.png */,
@@ -401,6 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56AC50C616E0568600A8121D /* server.db in Resources */,
 				56EB753C1689D06A0082A5D2 /* InfoPlist.strings in Resources */,
 				56EB75441689D06A0082A5D2 /* Default.png in Resources */,
 				56EB75461689D06A0082A5D2 /* Default@2x.png in Resources */,
@@ -444,6 +468,11 @@
 				56AC50BE16DB04E000A8121D /* engine_232_all.xml in Resources */,
 				56AC50C016DB04EA00A8121D /* engine_233_all.xml in Resources */,
 				56AC50C216DB04F200A8121D /* engine_234_all.xml in Resources */,
+				56D191D016E06DA6002BB2B5 /* image-engine.png in Resources */,
+				56D191D116E06DA6002BB2B5 /* image-host.png in Resources */,
+				56D191D316E06EA0002BB2B5 /* image-lun.png in Resources */,
+				56D191D516E07D40002BB2B5 /* img-raid-vxr.png in Resources */,
+				56D191E116E08BFE002BB2B5 /* Hexagonal-orange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,11 +499,8 @@
 				5623C77D16BD54BF009410B2 /* FMDatabasePool.m in Sources */,
 				5623C77E16BD54BF009410B2 /* FMDatabaseQueue.m in Sources */,
 				5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */,
-				56AC50AC16D8953A00A8121D /* sqlite3test.exp in Sources */,
-				56AC50AE16D8954200A8121D /* testsqlite3.exp in Sources */,
-				56AC50B016D8954900A8121D /* testXML.exp in Sources */,
-				56AC50B416D8B24C00A8121D /* parse_engine_all.exp in Sources */,
-				56AC50C416DC5C2C00A8121D /* scan_ha_cluster.exp in Sources */,
+				56D191D816E080F0002BB2B5 /* MirrorViewRController.m in Sources */,
+				56D191DB16E085DB002BB2B5 /* MirrorViewIController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
