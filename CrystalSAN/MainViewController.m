@@ -97,6 +97,13 @@
     self.volumeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VolumeViewControllerID"];
     self.volumeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
+    
+    self.driveViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DriveViewControllerID"];
+    self.driveViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
+    self.hbaViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HbaViewControllerID"];
+    self.hbaViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
     //[theDelegate getSanVmirrorLists];
     
 }
@@ -129,18 +136,30 @@
 {
     NSLog(@"%s: %@",__func__, sender);
           
-    UIButton *theButon = (UIButton *)sender;
-    if (theButon.tag == 201) // RaidViewController
+    UIButton *theButton = (UIButton *)sender;
+    NSLog(@"theButton.tag==%u", theButton.tag);
+    
+    if (theButton.tag == 201) // RaidViewController
     { 
        [self presentViewController:self.raidViewController animated:YES completion:nil];
     }
-    else if (theButon.tag == 202) // MirrorViewController
+    else if (theButton.tag == 202) // MirrorViewController
     { 
         [self presentViewController:self.mirrorViewController animated:YES completion:nil];
     }
-    else if (theButon.tag == 203) // VolumeViewController
+    else if (theButton.tag == 203) // VolumeViewController
     { 
         [self presentViewController:self.volumeViewController animated:YES completion:nil];
+    }
+    else if (theButton.tag == 200 + ITEM_BUTTON_VIEW_DRIVE_TAG +1)
+    {
+        NSLog(@"presentViewController==driveViewController");
+        [self presentViewController:self.driveViewController animated:YES completion:nil];
+    }
+    else if (theButton.tag == 200 + ITEM_BUTTON_VIEW_HBA_TAG +1)
+    {
+        NSLog(@"presentViewController==HbaViewController");
+        [self presentViewController:self.hbaViewController animated:YES completion:nil];
     }
 }
 

@@ -58,8 +58,8 @@
 
 - (NSString *)getSanVmirrorLists
 {
-    NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
-    NSError *error = nil;
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    //NSError *error = nil;
     //NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
     //NSLog(@"--");
     //NSLog(@"nsurl response = %@", apiResponse);

@@ -1,0 +1,70 @@
+#  scan_ha_cluster.exp
+#  
+#
+#  Created by Charles Hsu on 2/26/13.
+#
+#  usage:
+#      expect scan_ha_cluster.exp <database_filename>
+#
+#  for example:
+#      $expect scan_ha_cluster.exp server.db
+#  
+#
+
+set db_filename [lindex $argv 0]
+load /usr/lib/sqlite3/libtclsqlite3.dylib Sqlite3
+sqlite3 db $db_filename
+
+set sql "create table if not exists ha_cluster (site_name text, ha_appliance_name text, engine00 text primary key, engine01 text , engine02 text, engine03 text, engine04 text)"
+db eval $sql
+
+db eval {select b.site_name, a.serial 'SN',a.cluster_id,substr(a.path_0_wwpn,6),b.engine_name,substr(b.a1_wwpn,6) from engine_cli_conmgr_engine_status a, engine_cli_vpd b where a.serial=b.serial and a.cluster_id=2} {
+
+    set sql "select serial,engine_name from engine_cli_vpd where substr(a1_wwpn,6)='$substr(a.path_0_wwpn,6)'"
+    #puts $sql
+    
+    set cluster_engines "'$SN'"
+    #puts $cluster_engines
+    
+    db eval $sql {
+        
+        append cluster_engines ", '$serial'"
+        
+        #puts "site_name: $site_name"
+        #puts "ha_appliance_name: "
+        #puts "engine00: $serial"
+        #puts "engine01: $serial"
+        #puts "engine02: "
+        #puts "engine03: "
+        #puts "engine04: "
+        #puts "INSERT INTO ha_cluster VALUES ('$site_name','$serial','$serial','$serial','','','')"
+        
+    }
+    
+    set sql "SELECT count(*) FROM ha_cluster WHERE engine00='$SN'"
+    #puts $sql
+    
+    set cc [db eval $sql]
+    puts "serial=$SN, counter=$cc in ha_cluster"
+    
+    if { [expr $cc] == 0 } {
+
+        set sql "INSERT INTO ha_cluster VALUES ('$site_name', '', '$SN', $cluster_engines, '', '')"
+        puts $sql
+        db eval $sql
+
+    } else {
+    
+        #puts "exist"
+
+    }
+
+}
+
+db close
+
+
+
+
+
+

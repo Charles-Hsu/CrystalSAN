@@ -12,6 +12,8 @@
 #import "RaidViewController.h"
 #import "MirrorViewController.h"
 #import "VolumeViewController.h"
+#import "DriveViewController.h"
+#import "HbaViewController.h"
 
 @interface MainViewController : UIViewController<iCarouselDataSource, iCarouselDelegate>
 
@@ -25,6 +27,9 @@
 @property (strong, nonatomic) RaidViewController *raidViewController;
 @property (strong, nonatomic) MirrorViewController *mirrorViewController;
 @property (strong, nonatomic) VolumeViewController *volumeViewController;
+
+@property (strong, nonatomic) DriveViewController *driveViewController;
+@property (strong, nonatomic) HbaViewController *hbaViewController;
 
 @property (strong, nonatomic) NSMutableArray *descriptions;
 
