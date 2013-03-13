@@ -53,6 +53,22 @@
         [sanDatabase insertDemoDevices];
     }
     
+    [sanDatabase getPasswordBySiteName:@"KBS" siteID:@"123456" userName:@"admin"];
+    [sanDatabase getHAClusterXMLBySiteName:@"KBS"];
+    [sanDatabase getEngineCliVpdBySerial:@"00600118"];
+    [sanDatabase getEngineCliMirrorBySerial:@"00600120"];
+    
+    [sanDatabase getEngineCliConmgrInitiatorStatusBySerial:@"00600120"];
+    [sanDatabase getEngineCliConmgrInitiatorStatusDetailBySerial:@"00600120"];
+    
+    [sanDatabase getEngineCliConmgrEngineStatusBySerial:@"00600120"];
+    [sanDatabase getEngineCliConmgrDriveStatusBySerial:@"00600120"];
+    
+    [sanDatabase getEngineCliConmgrDriveStatusDetailBySerial:@"00600120"];
+
+    
+    
+    
     return YES;
 }
 

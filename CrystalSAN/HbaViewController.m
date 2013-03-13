@@ -327,7 +327,8 @@
 	{
         UIButton *theButton;
         view = [[UIView alloc] init];
-        //view.backgroundColor = [UIColor redColor];
+        //view.backgroundColor = [UIColor grayColor];
+        view.contentMode = UIViewContentModeScaleAspectFit;
         
         UIImage *theItemImage = nil;
         
@@ -356,6 +357,8 @@
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
+        
+        //theButton.
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -369,10 +372,13 @@
         NSLog(@"theButton.tag=%u", theButton.tag);
         
         view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
+        view.contentMode = UIViewContentModeScaleAspectFit;
+        
         [view addSubview:theButton];
         [view addSubview:theLabel];
         //define button handler
         [theButton setImage:theItemImage forState:UIControlStateNormal];
+        //theButton.contentMode = UIViewContentModeScaleAspectFit;
     }
     else
 	{

@@ -48,7 +48,7 @@
     
     if (self) {
         //set up carousel data
-        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 110, 1024, 460)];
+        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(50, 160, 924, 400)];
         //carousel.backgroundColor = [UIColor cyanColor];
         
         
@@ -122,7 +122,7 @@
     
     currentItemIndex.text = @"1";
     
-    [totalItem setHidden:YES];
+    //[totalItem setHidden:YES];
     
     // change the background to clearColor
     // http://stackoverflow.com/questions/8999322/how-to-change-search-bar-background-color-in-ipad
@@ -277,6 +277,8 @@
     descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
     totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
     
+    
+    /*
     if ([searchTerm length] != 0)
     {
         [totalItem setHidden:NO];
@@ -285,6 +287,7 @@
     {
         [totalItem setHidden:YES];
     }
+     */
     
     [carousel reloadData];
 
@@ -351,15 +354,15 @@
         
         float itemWidth, itemHeight;
         
-        itemWidth = theItemImage.size.width / 2 ;
-        itemHeight = theItemImage.size.height / 2 ;
+        itemWidth = theItemImage.size.width / 2;
+        itemHeight = theItemImage.size.height / 2;
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-60, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-80, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];

@@ -42,6 +42,238 @@
     return self;
 }
 
+- (NSString *)getPasswordBySiteName:(NSString *)siteName siteID:(NSString *)siteID userName:(NSString *)userName
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_account.php?site_name=%@&site_id=%@&user_name=%@", hostname, siteName, siteID, userName];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return apiResponse;
+}
+
+- (NSString *)getHAClusterXMLBySiteName:(NSString *)siteName
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_ha_cluster_all.php?site_name=%@", hostname, siteName];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return apiResponse;
+}
+
+- (NSArray *)getEngineCliVpdBySerial:(NSString *)serial
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_vpd_all.php?serial=%@", hostname, serial];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return nil;
+}
+
+- (NSArray *)getEngineCliMirrorBySerial:(NSString *)serial
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_mirror_all.php?serial=%@", hostname, serial];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return nil;
+}
+
+- (NSArray *)getEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_initiator_status.php?serial=%@", hostname, serial];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return nil;
+}
+
+
+- (NSArray *)getEngineCliConmgrInitiatorStatusDetailBySerial:(NSString *)serial
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_initiator_status_detail.php?serial=%@", hostname, serial];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return nil;
+}
+
+- (NSArray *)getEngineCliConmgrEngineStatusBySerial:(NSString *)serial
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_engine_status.php?serial=%@", hostname, serial];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return nil;
+}
+
+-(NSArray *)getEngineCliConmgrDriveStatusBySerial:(NSString *)serial
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_drive_status.php?serial=%@", hostname, serial];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return nil;
+}
+
+-(NSArray *)getEngineCliConmgrDriveStatusDetailBySerial:(NSString *)serial
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults synchronize];
+    
+    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_drive_status_detail.php?serial=%@", hostname, serial];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlString);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"--");
+    
+    return nil;
+}
+
+- (void)syncRemoteServerDatabaseBySiteName:(NSString *)siteName
+{
+    
+}
+
+
+- (void)loadUserPreference
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //DDLogInfo(@"%s", __func__, defaults);
+    if ([defaults objectForKey:@"port"] == nil) {
+        
+        //Get the bundle path
+        NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
+        NSString *settingsPath = [bundlePath stringByAppendingPathComponent:@"Settings.bundle"];
+        NSString *plistFile = [settingsPath stringByAppendingPathComponent:@"Root.plist"];
+        //DDLogVerbose(@"%@", plistFile);
+        
+        //Get the Preferences Array from the dictionary
+        NSDictionary *settingsDictionary = [NSDictionary dictionaryWithContentsOfFile:plistFile];
+        NSArray *preferencesArray = [settingsDictionary objectForKey:@"PreferenceSpecifiers"];
+        
+        //Loop through the array
+        NSDictionary *item;
+        for(item in preferencesArray)
+        {
+            //Get the key of the item.
+            NSString *keyValue = [item objectForKey:@"Key"];
+            
+            //Get the default value specified in the plist file.
+            id defaultValue = [item objectForKey:@"DefaultValue"];
+            
+            if (keyValue != nil) {
+                //DDLogVerbose(@"[key:%@, value:%@]", keyValue, defaultValue);
+                [defaults setObject:defaultValue forKey:keyValue];
+            }
+        }
+    }
+    [defaults synchronize];
+}
+
+
 - (NSString *)getServerDbForDemonstration
 {
     // IOS: copy a file in documents folder

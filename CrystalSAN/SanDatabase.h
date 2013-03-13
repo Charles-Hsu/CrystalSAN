@@ -16,4 +16,17 @@
 - (NSMutableArray *)getVmirrorListByKey:(NSString *)key;
 - (void)insertDemoDevices;
 
+- (NSString *)getPasswordBySiteName:(NSString *)siteName siteID:(NSString *)siteID userName:(NSString *)userName;
+- (NSArray *)getHAClusterXMLBySiteName:(NSString *)siteName;
+- (NSArray *)getEngineCliVpdBySerial:(NSString *)serial;
+- (NSArray *)getEngineCliMirrorBySerial:(NSString *)serial;
+
+- (NSArray *)getEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial;
+- (NSArray *)getEngineCliConmgrInitiatorStatusDetailBySerial:(NSString *)serial;
+
+- (NSArray *)getEngineCliConmgrEngineStatusBySerial:(NSString *)serial;
+
+- (NSArray *)getEngineCliConmgrDriveStatusBySerial:(NSString *)serial;
+- (NSArray *)getEngineCliConmgrDriveStatusDetailBySerial:(NSString *)serial;
+
 @end

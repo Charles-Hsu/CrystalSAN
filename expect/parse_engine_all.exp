@@ -538,11 +538,6 @@ switch -- $compare_result \
 }
 
 
-
-
-
-
-
 #puts "-------------"
 
 
@@ -635,8 +630,93 @@ switch -- $compare_result \
 
 #puts "-------------"
 
+
+proc parse_initiators {lists serial seconds} {
+
+    puts $lists
+    puts [llength $lists]
+    
+    puts [lindex $lists 0]
+    puts [lindex $lists 1]
+    puts [lindex $lists 2]
+    
+    set initiatorsBlock [lindex $lists 2]
+    
+    puts [llength [lindex $lists 2]]
+    set initiatorsNum [expr [llength $initiatorsBlock] -2]
+    set activeNum [lindex [lindex [lindex [lindex $initiatorsBlock $initiatorsNum] 2] 0] 1]
+    set inactiveNum [lindex [lindex [lindex [lindex $initiatorsBlock [expr $initiatorsNum+1]] 2] 0] 1]
+    
+    puts $activeNum
+    puts $inactiveNum
+    puts "$activeNum + $inactiveNum = $initiatorsNum"
+    
+    set sql "INSERT INTO engine_cli_conmgr_initiator_status VALUES ('$serial', '$seconds', '$activeNum', '$inactiveNum')"
+    puts $sql
+    db eval $sql
+    
+    for {set i 0} {$i < $initiatorsNum} {incr i 1} {
+        puts $i
+        set idData [lindex [lindex [lindex $initiatorsBlock $i] 2] 0]
+        set portData [lindex [lindex [lindex $initiatorsBlock $i] 2] 1]
+        set wwpnData [lindex [lindex [lindex $initiatorsBlock $i] 2] 2]
+        set statusData [lindex [lindex [lindex $initiatorsBlock $i] 2] 3]
+        #set id [lindex [lindex $initiatorData 1] 1]
+        set id [lindex [lindex [lindex $idData 2] 0] 1]
+        set port [lindex [lindex [lindex $portData 2] 0] 1]
+        set wwpn [lindex [lindex [lindex $wwpnData 2] 0] 1]
+        set status [lindex [lindex [lindex $statusData 2] 0] 1]
+        puts "serial=$serial"
+        puts "seconds=$seconds"
+        puts "id=$id"
+        puts "port=$port"
+        puts "wwpn=$wwpn"
+        puts "status=$status"
+        #puts $id
+        #puts [lindex $initiatorData 2]
+        set sql "INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('$serial', '$seconds', '$id', '$port', '$wwpn', '$status')"
+        puts $sql
+        db eval $sql
+    }
+
+}
+
+puts ""
+puts "<<<<<<< cli_conmgr_initiator_status >>>>>>>"
+puts ""
+
 set cli_conmgr_initiator_status [lindex $engine_info 4]
 #puts $cli_conmgr_initiator_status
+
+
+set sql "CREATE TABLE IF NOT EXISTS engine_cli_conmgr_initiator_status (serial TEXT PRIMARY KEY, seconds INTEGER, online INTEGER, offline INTEGER)"
+db eval $sql
+
+set sql "CREATE TABLE IF NOT EXISTS engine_cli_conmgr_initiator_status_detail (serial TEXT, seconds INTEGER, initiator_id INTEGER, port TEXT, wwpn TEXT, status TEXT, PRIMARY KEY (serial, seconds, initiator_id))"
+db eval $sql
+
+set seconds [lindex [lindex $cli_conmgr_initiator_status 1] 1]
+
+set sql "select seconds from engine_cli_conmgr_initiator_status where serial='$serial'"
+puts $sql
+set seconds_in_table [db eval $sql]
+set compare_result [compare_seconds $seconds $seconds_in_table]
+puts "compare result = $compare_result"
+
+puts "serial=$serial"
+puts "seconds=$seconds"
+
+switch -- $compare_result \
+  "not_exists" {
+
+      parse_initiators $cli_conmgr_initiator_status $serial $seconds
+
+} "old_record" {
+    puts "===>$compare_result"
+} "the_same" {
+    puts "===>$compare_result"
+}
+
 
 #puts "-------------"
 

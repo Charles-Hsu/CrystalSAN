@@ -40,21 +40,16 @@
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
 		565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */; };
-		56AC50B216D896E500A8121D /* engine_227_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B116D896E500A8121D /* engine_227_all.xml */; };
-		56AC50B616DA089600A8121D /* engine_228_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B516DA089600A8121D /* engine_228_all.xml */; };
-		56AC50B816DB04C500A8121D /* engine_229_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B716DB04C400A8121D /* engine_229_all.xml */; };
-		56AC50BA16DB04CD00A8121D /* engine_230_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50B916DB04CD00A8121D /* engine_230_all.xml */; };
-		56AC50BC16DB04D600A8121D /* engine_231_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50BB16DB04D600A8121D /* engine_231_all.xml */; };
-		56AC50BE16DB04E000A8121D /* engine_232_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50BD16DB04E000A8121D /* engine_232_all.xml */; };
-		56AC50C016DB04EA00A8121D /* engine_233_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50BF16DB04EA00A8121D /* engine_233_all.xml */; };
-		56AC50C216DB04F200A8121D /* engine_234_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50C116DB04F200A8121D /* engine_234_all.xml */; };
 		56AC50C616E0568600A8121D /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50C516E0568500A8121D /* server.db */; };
+		56BD565216E7243E00E56664 /* HA-item-ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BD565116E7243E00E56664 /* HA-item-ok.png */; };
+		56BD567016E99A8400E56664 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56BD566F16E99A8400E56664 /* Settings.bundle */; };
 		56BDEC73169BE6D10076CD6B /* RaidViewConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */; };
 		56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */; };
+		56C4AEB716F096E500E829A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEB416F096E500E829A2 /* README.md */; };
+		56C4AEB816F096E500E829A2 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C4AEB616F096E500E829A2 /* XMLReader.m */; };
 		56C9874E16E44CB20066AC2C /* DriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9874D16E44CB20066AC2C /* DriveViewController.m */; };
 		56C9875016E452A60066AC2C /* image-hba.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C9874F16E452A60066AC2C /* image-hba.png */; };
 		56C9875316E452E00066AC2C /* HbaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9875216E452E00066AC2C /* HbaViewController.m */; };
-		56D107BE16C293C700D70A9B /* HA-item-ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107BB16C293C700D70A9B /* HA-item-ok.png */; };
 		56D107BF16C293C700D70A9B /* HA-item-blackwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107BC16C293C700D70A9B /* HA-item-blackwhite.png */; };
 		56D107C016C293C700D70A9B /* HA-item-orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107BD16C293C700D70A9B /* HA-item-orange.png */; };
 		56D107C216C2987E00D70A9B /* item-RAIDView.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D107C116C2987E00D70A9B /* item-RAIDView.png */; };
@@ -141,15 +136,46 @@
 		56AC50C116DB04F200A8121D /* engine_234_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_234_all.xml; sourceTree = "<group>"; };
 		56AC50C316DC5C2B00A8121D /* scan_ha_cluster.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_ha_cluster.exp; sourceTree = "<group>"; };
 		56AC50C516E0568500A8121D /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
+		56BD565116E7243E00E56664 /* HA-item-ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HA-item-ok.png"; sourceTree = "<group>"; };
+		56BD566F16E99A8400E56664 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewConfigController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewConfigController.m; sourceTree = "<group>"; };
 		56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-HA Appliance View.png"; sourceTree = "<group>"; };
+		56C4AE7D16F02AC600E829A2 /* engine_cli_conmgr_drive_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_drive_status.xml; sourceTree = "<group>"; };
+		56C4AE7E16F02AC600E829A2 /* engine_cli_conmgr_drive_status_detail.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_drive_status_detail.xml; sourceTree = "<group>"; };
+		56C4AE7F16F02AC600E829A2 /* engine_cli_conmgr_engine_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_engine_status.xml; sourceTree = "<group>"; };
+		56C4AE8016F02AC600E829A2 /* engine_cli_conmgr_initiator_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_initiator_status.xml; sourceTree = "<group>"; };
+		56C4AE8116F02AC600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_initiator_status_detail.xml; sourceTree = "<group>"; };
+		56C4AE8216F02AC600E829A2 /* engine_cli_mirror_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_mirror_all.xml; sourceTree = "<group>"; };
+		56C4AE8316F02AC600E829A2 /* engine_cli_vpd_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_vpd_all.xml; sourceTree = "<group>"; };
+		56C4AE8416F02AC600E829A2 /* get_engine_cli_conmgr_drive_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_drive_status.php; sourceTree = "<group>"; };
+		56C4AE8516F02AC600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_drive_status_detail.php; sourceTree = "<group>"; };
+		56C4AE8616F02AC600E829A2 /* get_engine_cli_conmgr_engine_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_engine_status.php; sourceTree = "<group>"; };
+		56C4AE8716F02AC600E829A2 /* get_engine_cli_conmgr_initiator_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_initiator_status.php; sourceTree = "<group>"; };
+		56C4AE8816F02AC600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_initiator_status_detail.php; sourceTree = "<group>"; };
+		56C4AE8916F02AC600E829A2 /* get_engine_cli_mirror_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_mirror_all.php; sourceTree = "<group>"; };
+		56C4AE8A16F02AC600E829A2 /* get_engine_cli_vpd_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_vpd_all.php; sourceTree = "<group>"; };
+		56C4AE8B16F02AC600E829A2 /* get_ha_cluster_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_ha_cluster_all.php; sourceTree = "<group>"; };
+		56C4AE8C16F02AC600E829A2 /* index.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
+		56C4AE8D16F02AC600E829A2 /* phpinfo.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = phpinfo.php; sourceTree = "<group>"; };
+		56C4AE8E16F02AC600E829A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		56C4AE8F16F02AC600E829A2 /* san_site_name.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = san_site_name.php; sourceTree = "<group>"; };
+		56C4AE9016F02AC600E829A2 /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
+		56C4AE9116F02AC600E829A2 /* sqlite.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite.php; sourceTree = "<group>"; };
+		56C4AE9216F02AC600E829A2 /* sqlite3_exec.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite3_exec.php; sourceTree = "<group>"; };
+		56C4AE9316F02AC600E829A2 /* sqlite3_opendatabase.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite3_opendatabase.php; sourceTree = "<group>"; };
+		56C4AE9416F02AC600E829A2 /* sqlite_createtable.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_createtable.php; sourceTree = "<group>"; };
+		56C4AE9516F02AC600E829A2 /* sqlite_createtable2.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_createtable2.php; sourceTree = "<group>"; };
+		56C4AE9616F02AC600E829A2 /* sqlite_insert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_insert.php; sourceTree = "<group>"; };
+		56C4AEB116F02CE900E829A2 /* get_account.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_account.php; sourceTree = "<group>"; };
+		56C4AEB416F096E500E829A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		56C4AEB516F096E500E829A2 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		56C4AEB616F096E500E829A2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		56C9874C16E44C8D0066AC2C /* DriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveViewController.h; sourceTree = "<group>"; };
 		56C9874D16E44CB20066AC2C /* DriveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveViewController.m; sourceTree = "<group>"; };
 		56C9874F16E452A60066AC2C /* image-hba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-hba.png"; sourceTree = "<group>"; };
 		56C9875116E452CE0066AC2C /* HbaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HbaViewController.h; sourceTree = "<group>"; };
 		56C9875216E452E00066AC2C /* HbaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HbaViewController.m; sourceTree = "<group>"; };
-		56D107BB16C293C700D70A9B /* HA-item-ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HA-item-ok.png"; sourceTree = "<group>"; };
 		56D107BC16C293C700D70A9B /* HA-item-blackwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HA-item-blackwhite.png"; sourceTree = "<group>"; };
 		56D107BD16C293C700D70A9B /* HA-item-orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HA-item-orange.png"; sourceTree = "<group>"; };
 		56D107C116C2987E00D70A9B /* item-RAIDView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "item-RAIDView.png"; sourceTree = "<group>"; };
@@ -248,9 +274,55 @@
 			path = expect;
 			sourceTree = "<group>";
 		};
+		56C4AE7C16F02AC600E829A2 /* CrystalSANServer */ = {
+			isa = PBXGroup;
+			children = (
+				56C4AE7D16F02AC600E829A2 /* engine_cli_conmgr_drive_status.xml */,
+				56C4AE7E16F02AC600E829A2 /* engine_cli_conmgr_drive_status_detail.xml */,
+				56C4AE7F16F02AC600E829A2 /* engine_cli_conmgr_engine_status.xml */,
+				56C4AE8016F02AC600E829A2 /* engine_cli_conmgr_initiator_status.xml */,
+				56C4AE8116F02AC600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml */,
+				56C4AE8216F02AC600E829A2 /* engine_cli_mirror_all.xml */,
+				56C4AE8316F02AC600E829A2 /* engine_cli_vpd_all.xml */,
+				56C4AE8416F02AC600E829A2 /* get_engine_cli_conmgr_drive_status.php */,
+				56C4AE8516F02AC600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php */,
+				56C4AE8616F02AC600E829A2 /* get_engine_cli_conmgr_engine_status.php */,
+				56C4AE8716F02AC600E829A2 /* get_engine_cli_conmgr_initiator_status.php */,
+				56C4AE8816F02AC600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php */,
+				56C4AE8916F02AC600E829A2 /* get_engine_cli_mirror_all.php */,
+				56C4AE8A16F02AC600E829A2 /* get_engine_cli_vpd_all.php */,
+				56C4AE8B16F02AC600E829A2 /* get_ha_cluster_all.php */,
+				56C4AEB116F02CE900E829A2 /* get_account.php */,
+				56C4AE8C16F02AC600E829A2 /* index.php */,
+				56C4AE8D16F02AC600E829A2 /* phpinfo.php */,
+				56C4AE8E16F02AC600E829A2 /* README.md */,
+				56C4AE8F16F02AC600E829A2 /* san_site_name.php */,
+				56C4AE9016F02AC600E829A2 /* server.db */,
+				56C4AE9116F02AC600E829A2 /* sqlite.php */,
+				56C4AE9216F02AC600E829A2 /* sqlite3_exec.php */,
+				56C4AE9316F02AC600E829A2 /* sqlite3_opendatabase.php */,
+				56C4AE9416F02AC600E829A2 /* sqlite_createtable.php */,
+				56C4AE9516F02AC600E829A2 /* sqlite_createtable2.php */,
+				56C4AE9616F02AC600E829A2 /* sqlite_insert.php */,
+			);
+			name = CrystalSANServer;
+			path = ../../../../../../Library/WebServer/Documents/CrystalSANServer;
+			sourceTree = "<group>";
+		};
+		56C4AEB316F096E500E829A2 /* XMLReader-master */ = {
+			isa = PBXGroup;
+			children = (
+				56C4AEB416F096E500E829A2 /* README.md */,
+				56C4AEB516F096E500E829A2 /* XMLReader.h */,
+				56C4AEB616F096E500E829A2 /* XMLReader.m */,
+			);
+			path = "XMLReader-master";
+			sourceTree = "<group>";
+		};
 		56EB75221689D06A0082A5D2 = {
 			isa = PBXGroup;
 			children = (
+				56C4AE7C16F02AC600E829A2 /* CrystalSANServer */,
 				56AC50A916D870B400A8121D /* expect */,
 				56AC50A616D4AC9300A8121D /* sandatabase.sqlite */,
 				56EB756D168AA1790082A5D2 /* ReadMe.txt */,
@@ -314,6 +386,7 @@
 				56EB754D1689D06A0082A5D2 /* MainViewController.m */,
 				56EB756B1689DFA80082A5D2 /* CoverFlowViewController.h */,
 				56EB756C1689DFA80082A5D2 /* CoverFlowViewController.m */,
+				56C4AEB316F096E500E829A2 /* XMLReader-master */,
 				5623C76F16BD54BF009410B2 /* FMDatabase */,
 				56EB76AD168D7F010082A5D2 /* iCarousel */,
 				56EB75381689D06A0082A5D2 /* Supporting Files */,
@@ -324,6 +397,7 @@
 		56EB75381689D06A0082A5D2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				56BD566F16E99A8400E56664 /* Settings.bundle */,
 				56EB75391689D06A0082A5D2 /* CrystalSAN-Info.plist */,
 				56EB753A1689D06A0082A5D2 /* InfoPlist.strings */,
 				56EB753D1689D06A0082A5D2 /* main.m */,
@@ -359,7 +433,7 @@
 				561A93DB169C4A3F0063F990 /* appicon144.png */,
 				565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */,
 				561A93F0169C4A640063F990 /* image-RAID-Configuration.png */,
-				56D107BB16C293C700D70A9B /* HA-item-ok.png */,
+				56BD565116E7243E00E56664 /* HA-item-ok.png */,
 				56D107BC16C293C700D70A9B /* HA-item-blackwhite.png */,
 				56D107BD16C293C700D70A9B /* HA-item-orange.png */,
 				56D107C116C2987E00D70A9B /* item-RAIDView.png */,
@@ -469,24 +543,18 @@
 				5604ECB1169D2892004B046F /* Hexagonal.png in Resources */,
 				565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */,
 				56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */,
-				56D107BE16C293C700D70A9B /* HA-item-ok.png in Resources */,
 				56D107BF16C293C700D70A9B /* HA-item-blackwhite.png in Resources */,
 				56D107C016C293C700D70A9B /* HA-item-orange.png in Resources */,
 				56D107C216C2987E00D70A9B /* item-RAIDView.png in Resources */,
-				56AC50B216D896E500A8121D /* engine_227_all.xml in Resources */,
-				56AC50B616DA089600A8121D /* engine_228_all.xml in Resources */,
-				56AC50B816DB04C500A8121D /* engine_229_all.xml in Resources */,
-				56AC50BA16DB04CD00A8121D /* engine_230_all.xml in Resources */,
-				56AC50BC16DB04D600A8121D /* engine_231_all.xml in Resources */,
-				56AC50BE16DB04E000A8121D /* engine_232_all.xml in Resources */,
-				56AC50C016DB04EA00A8121D /* engine_233_all.xml in Resources */,
-				56AC50C216DB04F200A8121D /* engine_234_all.xml in Resources */,
 				56D191D016E06DA6002BB2B5 /* image-engine.png in Resources */,
 				56D191D116E06DA6002BB2B5 /* image-host.png in Resources */,
 				56D191D316E06EA0002BB2B5 /* image-lun.png in Resources */,
 				56D191D516E07D40002BB2B5 /* img-raid-vxr.png in Resources */,
 				56D191E116E08BFE002BB2B5 /* Hexagonal-orange.png in Resources */,
 				56C9875016E452A60066AC2C /* image-hba.png in Resources */,
+				56BD565216E7243E00E56664 /* HA-item-ok.png in Resources */,
+				56BD567016E99A8400E56664 /* Settings.bundle in Resources */,
+				56C4AEB716F096E500E829A2 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +585,7 @@
 				56D191DB16E085DB002BB2B5 /* MirrorViewIController.m in Sources */,
 				56C9874E16E44CB20066AC2C /* DriveViewController.m in Sources */,
 				56C9875316E452E00066AC2C /* HbaViewController.m in Sources */,
+				56C4AEB816F096E500E829A2 /* XMLReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,11 +666,13 @@
 		56EB75521689D06A0082A5D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pro Andy Inc.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrystalSAN/CrystalSAN-Prefix.pch";
 				INFOPLIST_FILE = "CrystalSAN/CrystalSAN-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4174B4CD-406A-4726-AA0E-0A00B88F97D9";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -610,12 +681,14 @@
 		56EB75531689D06A0082A5D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pro Andy Inc.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrystalSAN/CrystalSAN-Prefix.pch";
 				INFOPLIST_FILE = "CrystalSAN/CrystalSAN-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4174B4CD-406A-4726-AA0E-0A00B88F97D9";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -650,7 +723,7 @@
 		56EB76CB169019B90082A5D2 /* Ad Hoc Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pro Andy Inc.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrystalSAN/CrystalSAN-Prefix.pch";
@@ -658,7 +731,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4174B4CD-406A-4726-AA0E-0A00B88F97D9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
