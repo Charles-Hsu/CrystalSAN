@@ -47,6 +47,33 @@
 		56BF63F916A612DC008DDA70 /* text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */; };
 		56C4AEB716F096E500E829A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEB416F096E500E829A2 /* README.md */; };
 		56C4AEB816F096E500E829A2 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C4AEB616F096E500E829A2 /* XMLReader.m */; };
+		56C4AF0E16F1775600E829A2 /* engine_cli_conmgr_drive_status.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEF316F1775600E829A2 /* engine_cli_conmgr_drive_status.xml */; };
+		56C4AF0F16F1775600E829A2 /* engine_cli_conmgr_drive_status_detail.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEF416F1775600E829A2 /* engine_cli_conmgr_drive_status_detail.xml */; };
+		56C4AF1016F1775600E829A2 /* engine_cli_conmgr_engine_status.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEF516F1775600E829A2 /* engine_cli_conmgr_engine_status.xml */; };
+		56C4AF1116F1775600E829A2 /* engine_cli_conmgr_initiator_status.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEF616F1775600E829A2 /* engine_cli_conmgr_initiator_status.xml */; };
+		56C4AF1216F1775600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEF716F1775600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml */; };
+		56C4AF1316F1775600E829A2 /* engine_cli_mirror_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEF816F1775600E829A2 /* engine_cli_mirror_all.xml */; };
+		56C4AF1416F1775600E829A2 /* engine_cli_vpd_all.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEF916F1775600E829A2 /* engine_cli_vpd_all.xml */; };
+		56C4AF1516F1775600E829A2 /* get_account.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEFA16F1775600E829A2 /* get_account.php */; };
+		56C4AF1616F1775600E829A2 /* get_engine_cli_conmgr_drive_status.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEFB16F1775600E829A2 /* get_engine_cli_conmgr_drive_status.php */; };
+		56C4AF1716F1775600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEFC16F1775600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php */; };
+		56C4AF1816F1775600E829A2 /* get_engine_cli_conmgr_engine_status.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEFD16F1775600E829A2 /* get_engine_cli_conmgr_engine_status.php */; };
+		56C4AF1916F1775600E829A2 /* get_engine_cli_conmgr_initiator_status.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEFE16F1775600E829A2 /* get_engine_cli_conmgr_initiator_status.php */; };
+		56C4AF1A16F1775600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AEFF16F1775600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php */; };
+		56C4AF1B16F1775600E829A2 /* get_engine_cli_mirror_all.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0016F1775600E829A2 /* get_engine_cli_mirror_all.php */; };
+		56C4AF1C16F1775600E829A2 /* get_engine_cli_vpd_all.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0116F1775600E829A2 /* get_engine_cli_vpd_all.php */; };
+		56C4AF1D16F1775600E829A2 /* get_ha_cluster_all.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0216F1775600E829A2 /* get_ha_cluster_all.php */; };
+		56C4AF1E16F1775600E829A2 /* index.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0316F1775600E829A2 /* index.php */; };
+		56C4AF1F16F1775600E829A2 /* phpinfo.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0416F1775600E829A2 /* phpinfo.php */; };
+		56C4AF2016F1775600E829A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0516F1775600E829A2 /* README.md */; };
+		56C4AF2116F1775600E829A2 /* san_site_name.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0616F1775600E829A2 /* san_site_name.php */; };
+		56C4AF2216F1775600E829A2 /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0716F1775600E829A2 /* server.db */; };
+		56C4AF2316F1775600E829A2 /* sqlite.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0816F1775600E829A2 /* sqlite.php */; };
+		56C4AF2416F1775600E829A2 /* sqlite3_exec.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0916F1775600E829A2 /* sqlite3_exec.php */; };
+		56C4AF2516F1775600E829A2 /* sqlite3_opendatabase.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0A16F1775600E829A2 /* sqlite3_opendatabase.php */; };
+		56C4AF2616F1775600E829A2 /* sqlite_createtable.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0B16F1775600E829A2 /* sqlite_createtable.php */; };
+		56C4AF2716F1775600E829A2 /* sqlite_createtable2.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0C16F1775600E829A2 /* sqlite_createtable2.php */; };
+		56C4AF2816F1775600E829A2 /* sqlite_insert.php in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF0D16F1775600E829A2 /* sqlite_insert.php */; };
 		56C9874E16E44CB20066AC2C /* DriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9874D16E44CB20066AC2C /* DriveViewController.m */; };
 		56C9875016E452A60066AC2C /* image-hba.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C9874F16E452A60066AC2C /* image-hba.png */; };
 		56C9875316E452E00066AC2C /* HbaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9875216E452E00066AC2C /* HbaViewController.m */; };
@@ -141,36 +168,36 @@
 		56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewConfigController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewConfigController.m; sourceTree = "<group>"; };
 		56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-HA Appliance View.png"; sourceTree = "<group>"; };
-		56C4AE7D16F02AC600E829A2 /* engine_cli_conmgr_drive_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_drive_status.xml; sourceTree = "<group>"; };
-		56C4AE7E16F02AC600E829A2 /* engine_cli_conmgr_drive_status_detail.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_drive_status_detail.xml; sourceTree = "<group>"; };
-		56C4AE7F16F02AC600E829A2 /* engine_cli_conmgr_engine_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_engine_status.xml; sourceTree = "<group>"; };
-		56C4AE8016F02AC600E829A2 /* engine_cli_conmgr_initiator_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_initiator_status.xml; sourceTree = "<group>"; };
-		56C4AE8116F02AC600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_initiator_status_detail.xml; sourceTree = "<group>"; };
-		56C4AE8216F02AC600E829A2 /* engine_cli_mirror_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_mirror_all.xml; sourceTree = "<group>"; };
-		56C4AE8316F02AC600E829A2 /* engine_cli_vpd_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_vpd_all.xml; sourceTree = "<group>"; };
-		56C4AE8416F02AC600E829A2 /* get_engine_cli_conmgr_drive_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_drive_status.php; sourceTree = "<group>"; };
-		56C4AE8516F02AC600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_drive_status_detail.php; sourceTree = "<group>"; };
-		56C4AE8616F02AC600E829A2 /* get_engine_cli_conmgr_engine_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_engine_status.php; sourceTree = "<group>"; };
-		56C4AE8716F02AC600E829A2 /* get_engine_cli_conmgr_initiator_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_initiator_status.php; sourceTree = "<group>"; };
-		56C4AE8816F02AC600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_initiator_status_detail.php; sourceTree = "<group>"; };
-		56C4AE8916F02AC600E829A2 /* get_engine_cli_mirror_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_mirror_all.php; sourceTree = "<group>"; };
-		56C4AE8A16F02AC600E829A2 /* get_engine_cli_vpd_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_vpd_all.php; sourceTree = "<group>"; };
-		56C4AE8B16F02AC600E829A2 /* get_ha_cluster_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_ha_cluster_all.php; sourceTree = "<group>"; };
-		56C4AE8C16F02AC600E829A2 /* index.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
-		56C4AE8D16F02AC600E829A2 /* phpinfo.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = phpinfo.php; sourceTree = "<group>"; };
-		56C4AE8E16F02AC600E829A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		56C4AE8F16F02AC600E829A2 /* san_site_name.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = san_site_name.php; sourceTree = "<group>"; };
-		56C4AE9016F02AC600E829A2 /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
-		56C4AE9116F02AC600E829A2 /* sqlite.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite.php; sourceTree = "<group>"; };
-		56C4AE9216F02AC600E829A2 /* sqlite3_exec.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite3_exec.php; sourceTree = "<group>"; };
-		56C4AE9316F02AC600E829A2 /* sqlite3_opendatabase.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite3_opendatabase.php; sourceTree = "<group>"; };
-		56C4AE9416F02AC600E829A2 /* sqlite_createtable.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_createtable.php; sourceTree = "<group>"; };
-		56C4AE9516F02AC600E829A2 /* sqlite_createtable2.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_createtable2.php; sourceTree = "<group>"; };
-		56C4AE9616F02AC600E829A2 /* sqlite_insert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_insert.php; sourceTree = "<group>"; };
-		56C4AEB116F02CE900E829A2 /* get_account.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_account.php; sourceTree = "<group>"; };
 		56C4AEB416F096E500E829A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		56C4AEB516F096E500E829A2 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		56C4AEB616F096E500E829A2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		56C4AEF316F1775600E829A2 /* engine_cli_conmgr_drive_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_drive_status.xml; sourceTree = "<group>"; };
+		56C4AEF416F1775600E829A2 /* engine_cli_conmgr_drive_status_detail.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_drive_status_detail.xml; sourceTree = "<group>"; };
+		56C4AEF516F1775600E829A2 /* engine_cli_conmgr_engine_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_engine_status.xml; sourceTree = "<group>"; };
+		56C4AEF616F1775600E829A2 /* engine_cli_conmgr_initiator_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_initiator_status.xml; sourceTree = "<group>"; };
+		56C4AEF716F1775600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_initiator_status_detail.xml; sourceTree = "<group>"; };
+		56C4AEF816F1775600E829A2 /* engine_cli_mirror_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_mirror_all.xml; sourceTree = "<group>"; };
+		56C4AEF916F1775600E829A2 /* engine_cli_vpd_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_vpd_all.xml; sourceTree = "<group>"; };
+		56C4AEFA16F1775600E829A2 /* get_account.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_account.php; sourceTree = "<group>"; };
+		56C4AEFB16F1775600E829A2 /* get_engine_cli_conmgr_drive_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_drive_status.php; sourceTree = "<group>"; };
+		56C4AEFC16F1775600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_drive_status_detail.php; sourceTree = "<group>"; };
+		56C4AEFD16F1775600E829A2 /* get_engine_cli_conmgr_engine_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_engine_status.php; sourceTree = "<group>"; };
+		56C4AEFE16F1775600E829A2 /* get_engine_cli_conmgr_initiator_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_initiator_status.php; sourceTree = "<group>"; };
+		56C4AEFF16F1775600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_conmgr_initiator_status_detail.php; sourceTree = "<group>"; };
+		56C4AF0016F1775600E829A2 /* get_engine_cli_mirror_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_mirror_all.php; sourceTree = "<group>"; };
+		56C4AF0116F1775600E829A2 /* get_engine_cli_vpd_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_engine_cli_vpd_all.php; sourceTree = "<group>"; };
+		56C4AF0216F1775600E829A2 /* get_ha_cluster_all.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_ha_cluster_all.php; sourceTree = "<group>"; };
+		56C4AF0316F1775600E829A2 /* index.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
+		56C4AF0416F1775600E829A2 /* phpinfo.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = phpinfo.php; sourceTree = "<group>"; };
+		56C4AF0516F1775600E829A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		56C4AF0616F1775600E829A2 /* san_site_name.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = san_site_name.php; sourceTree = "<group>"; };
+		56C4AF0716F1775600E829A2 /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
+		56C4AF0816F1775600E829A2 /* sqlite.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite.php; sourceTree = "<group>"; };
+		56C4AF0916F1775600E829A2 /* sqlite3_exec.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite3_exec.php; sourceTree = "<group>"; };
+		56C4AF0A16F1775600E829A2 /* sqlite3_opendatabase.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite3_opendatabase.php; sourceTree = "<group>"; };
+		56C4AF0B16F1775600E829A2 /* sqlite_createtable.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_createtable.php; sourceTree = "<group>"; };
+		56C4AF0C16F1775600E829A2 /* sqlite_createtable2.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_createtable2.php; sourceTree = "<group>"; };
+		56C4AF0D16F1775600E829A2 /* sqlite_insert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_insert.php; sourceTree = "<group>"; };
 		56C9874C16E44C8D0066AC2C /* DriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveViewController.h; sourceTree = "<group>"; };
 		56C9874D16E44CB20066AC2C /* DriveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveViewController.m; sourceTree = "<group>"; };
 		56C9874F16E452A60066AC2C /* image-hba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-hba.png"; sourceTree = "<group>"; };
@@ -274,41 +301,6 @@
 			path = expect;
 			sourceTree = "<group>";
 		};
-		56C4AE7C16F02AC600E829A2 /* CrystalSANServer */ = {
-			isa = PBXGroup;
-			children = (
-				56C4AE7D16F02AC600E829A2 /* engine_cli_conmgr_drive_status.xml */,
-				56C4AE7E16F02AC600E829A2 /* engine_cli_conmgr_drive_status_detail.xml */,
-				56C4AE7F16F02AC600E829A2 /* engine_cli_conmgr_engine_status.xml */,
-				56C4AE8016F02AC600E829A2 /* engine_cli_conmgr_initiator_status.xml */,
-				56C4AE8116F02AC600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml */,
-				56C4AE8216F02AC600E829A2 /* engine_cli_mirror_all.xml */,
-				56C4AE8316F02AC600E829A2 /* engine_cli_vpd_all.xml */,
-				56C4AE8416F02AC600E829A2 /* get_engine_cli_conmgr_drive_status.php */,
-				56C4AE8516F02AC600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php */,
-				56C4AE8616F02AC600E829A2 /* get_engine_cli_conmgr_engine_status.php */,
-				56C4AE8716F02AC600E829A2 /* get_engine_cli_conmgr_initiator_status.php */,
-				56C4AE8816F02AC600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php */,
-				56C4AE8916F02AC600E829A2 /* get_engine_cli_mirror_all.php */,
-				56C4AE8A16F02AC600E829A2 /* get_engine_cli_vpd_all.php */,
-				56C4AE8B16F02AC600E829A2 /* get_ha_cluster_all.php */,
-				56C4AEB116F02CE900E829A2 /* get_account.php */,
-				56C4AE8C16F02AC600E829A2 /* index.php */,
-				56C4AE8D16F02AC600E829A2 /* phpinfo.php */,
-				56C4AE8E16F02AC600E829A2 /* README.md */,
-				56C4AE8F16F02AC600E829A2 /* san_site_name.php */,
-				56C4AE9016F02AC600E829A2 /* server.db */,
-				56C4AE9116F02AC600E829A2 /* sqlite.php */,
-				56C4AE9216F02AC600E829A2 /* sqlite3_exec.php */,
-				56C4AE9316F02AC600E829A2 /* sqlite3_opendatabase.php */,
-				56C4AE9416F02AC600E829A2 /* sqlite_createtable.php */,
-				56C4AE9516F02AC600E829A2 /* sqlite_createtable2.php */,
-				56C4AE9616F02AC600E829A2 /* sqlite_insert.php */,
-			);
-			name = CrystalSANServer;
-			path = ../../../../../../Library/WebServer/Documents/CrystalSANServer;
-			sourceTree = "<group>";
-		};
 		56C4AEB316F096E500E829A2 /* XMLReader-master */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,10 +311,44 @@
 			path = "XMLReader-master";
 			sourceTree = "<group>";
 		};
+		56C4AEF216F1775600E829A2 /* CrystalSANServer */ = {
+			isa = PBXGroup;
+			children = (
+				56C4AEF316F1775600E829A2 /* engine_cli_conmgr_drive_status.xml */,
+				56C4AEF416F1775600E829A2 /* engine_cli_conmgr_drive_status_detail.xml */,
+				56C4AEF516F1775600E829A2 /* engine_cli_conmgr_engine_status.xml */,
+				56C4AEF616F1775600E829A2 /* engine_cli_conmgr_initiator_status.xml */,
+				56C4AEF716F1775600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml */,
+				56C4AEF816F1775600E829A2 /* engine_cli_mirror_all.xml */,
+				56C4AEF916F1775600E829A2 /* engine_cli_vpd_all.xml */,
+				56C4AEFA16F1775600E829A2 /* get_account.php */,
+				56C4AEFB16F1775600E829A2 /* get_engine_cli_conmgr_drive_status.php */,
+				56C4AEFC16F1775600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php */,
+				56C4AEFD16F1775600E829A2 /* get_engine_cli_conmgr_engine_status.php */,
+				56C4AEFE16F1775600E829A2 /* get_engine_cli_conmgr_initiator_status.php */,
+				56C4AEFF16F1775600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php */,
+				56C4AF0016F1775600E829A2 /* get_engine_cli_mirror_all.php */,
+				56C4AF0116F1775600E829A2 /* get_engine_cli_vpd_all.php */,
+				56C4AF0216F1775600E829A2 /* get_ha_cluster_all.php */,
+				56C4AF0316F1775600E829A2 /* index.php */,
+				56C4AF0416F1775600E829A2 /* phpinfo.php */,
+				56C4AF0516F1775600E829A2 /* README.md */,
+				56C4AF0616F1775600E829A2 /* san_site_name.php */,
+				56C4AF0716F1775600E829A2 /* server.db */,
+				56C4AF0816F1775600E829A2 /* sqlite.php */,
+				56C4AF0916F1775600E829A2 /* sqlite3_exec.php */,
+				56C4AF0A16F1775600E829A2 /* sqlite3_opendatabase.php */,
+				56C4AF0B16F1775600E829A2 /* sqlite_createtable.php */,
+				56C4AF0C16F1775600E829A2 /* sqlite_createtable2.php */,
+				56C4AF0D16F1775600E829A2 /* sqlite_insert.php */,
+			);
+			path = CrystalSANServer;
+			sourceTree = "<group>";
+		};
 		56EB75221689D06A0082A5D2 = {
 			isa = PBXGroup;
 			children = (
-				56C4AE7C16F02AC600E829A2 /* CrystalSANServer */,
+				56C4AEF216F1775600E829A2 /* CrystalSANServer */,
 				56AC50A916D870B400A8121D /* expect */,
 				56AC50A616D4AC9300A8121D /* sandatabase.sqlite */,
 				56EB756D168AA1790082A5D2 /* ReadMe.txt */,
@@ -555,6 +581,33 @@
 				56BD565216E7243E00E56664 /* HA-item-ok.png in Resources */,
 				56BD567016E99A8400E56664 /* Settings.bundle in Resources */,
 				56C4AEB716F096E500E829A2 /* README.md in Resources */,
+				56C4AF0E16F1775600E829A2 /* engine_cli_conmgr_drive_status.xml in Resources */,
+				56C4AF0F16F1775600E829A2 /* engine_cli_conmgr_drive_status_detail.xml in Resources */,
+				56C4AF1016F1775600E829A2 /* engine_cli_conmgr_engine_status.xml in Resources */,
+				56C4AF1116F1775600E829A2 /* engine_cli_conmgr_initiator_status.xml in Resources */,
+				56C4AF1216F1775600E829A2 /* engine_cli_conmgr_initiator_status_detail.xml in Resources */,
+				56C4AF1316F1775600E829A2 /* engine_cli_mirror_all.xml in Resources */,
+				56C4AF1416F1775600E829A2 /* engine_cli_vpd_all.xml in Resources */,
+				56C4AF1516F1775600E829A2 /* get_account.php in Resources */,
+				56C4AF1616F1775600E829A2 /* get_engine_cli_conmgr_drive_status.php in Resources */,
+				56C4AF1716F1775600E829A2 /* get_engine_cli_conmgr_drive_status_detail.php in Resources */,
+				56C4AF1816F1775600E829A2 /* get_engine_cli_conmgr_engine_status.php in Resources */,
+				56C4AF1916F1775600E829A2 /* get_engine_cli_conmgr_initiator_status.php in Resources */,
+				56C4AF1A16F1775600E829A2 /* get_engine_cli_conmgr_initiator_status_detail.php in Resources */,
+				56C4AF1B16F1775600E829A2 /* get_engine_cli_mirror_all.php in Resources */,
+				56C4AF1C16F1775600E829A2 /* get_engine_cli_vpd_all.php in Resources */,
+				56C4AF1D16F1775600E829A2 /* get_ha_cluster_all.php in Resources */,
+				56C4AF1E16F1775600E829A2 /* index.php in Resources */,
+				56C4AF1F16F1775600E829A2 /* phpinfo.php in Resources */,
+				56C4AF2016F1775600E829A2 /* README.md in Resources */,
+				56C4AF2116F1775600E829A2 /* san_site_name.php in Resources */,
+				56C4AF2216F1775600E829A2 /* server.db in Resources */,
+				56C4AF2316F1775600E829A2 /* sqlite.php in Resources */,
+				56C4AF2416F1775600E829A2 /* sqlite3_exec.php in Resources */,
+				56C4AF2516F1775600E829A2 /* sqlite3_opendatabase.php in Resources */,
+				56C4AF2616F1775600E829A2 /* sqlite_createtable.php in Resources */,
+				56C4AF2716F1775600E829A2 /* sqlite_createtable2.php in Resources */,
+				56C4AF2816F1775600E829A2 /* sqlite_insert.php in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
