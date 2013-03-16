@@ -38,7 +38,7 @@
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
 		565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */; };
 		56AC0E4316F2E1CF008C1678 /* Button-Vh.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4216F2E1CF008C1678 /* Button-Vh.png */; };
-		56AC0E4616F2E538008C1678 /* Button-Back_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4416F2E538008C1678 /* Button-Back_x.png */; };
+		56AC0E4616F2E538008C1678 /* Button-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4416F2E538008C1678 /* Button-Back.png */; };
 		56AC0E4716F2E538008C1678 /* Button-Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4516F2E538008C1678 /* Button-Home.png */; };
 		56AC0E4916F2E61A008C1678 /* Button-Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4816F2E61A008C1678 /* Button-Logout.png */; };
 		56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN_x.png */; };
@@ -134,7 +134,7 @@
 		5623C78116BD565E009410B2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		56AC0E4216F2E1CF008C1678 /* Button-Vh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vh.png"; sourceTree = "<group>"; };
-		56AC0E4416F2E538008C1678 /* Button-Back_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Back_x.png"; sourceTree = "<group>"; };
+		56AC0E4416F2E538008C1678 /* Button-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Back.png"; sourceTree = "<group>"; };
 		56AC0E4516F2E538008C1678 /* Button-Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Home.png"; sourceTree = "<group>"; };
 		56AC0E4816F2E61A008C1678 /* Button-Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Logout.png"; sourceTree = "<group>"; };
 		56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-CrystalSAN_x.png"; sourceTree = "<group>"; };
@@ -488,7 +488,7 @@
 				56C4AF8616F2CC9C00E829A2 /* Button-Vf.png */,
 				56C4AF8416F2CC3F00E829A2 /* Button-Vi.png */,
 				56AC0E4216F2E1CF008C1678 /* Button-Vh.png */,
-				56AC0E4416F2E538008C1678 /* Button-Back_x.png */,
+				56AC0E4416F2E538008C1678 /* Button-Back.png */,
 				56AC0E4516F2E538008C1678 /* Button-Home.png */,
 				56AC0E4816F2E61A008C1678 /* Button-Logout.png */,
 				56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN_x.png */,
@@ -610,7 +610,7 @@
 				56C4AF8716F2CC9C00E829A2 /* Button-Vf.png in Resources */,
 				56C4AF8916F2CCD500E829A2 /* Button-Vc.png in Resources */,
 				56AC0E4316F2E1CF008C1678 /* Button-Vh.png in Resources */,
-				56AC0E4616F2E538008C1678 /* Button-Back_x.png in Resources */,
+				56AC0E4616F2E538008C1678 /* Button-Back.png in Resources */,
 				56AC0E4716F2E538008C1678 /* Button-Home.png in Resources */,
 				56AC0E4916F2E61A008C1678 /* Button-Logout.png in Resources */,
 				56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN_x.png in Resources */,
