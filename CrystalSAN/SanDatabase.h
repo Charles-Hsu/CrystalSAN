@@ -17,7 +17,7 @@
 - (void)insertDemoDevices;
 
 - (NSString *)getPasswordBySiteName:(NSString *)siteName siteID:(NSString *)siteID userName:(NSString *)userName;
-- (NSArray *)getHAClusterXMLBySiteName:(NSString *)siteName;
+- (NSDictionary *)getHAClusterDictionaryBySiteName:(NSString *)siteName;
 - (NSArray *)getEngineCliVpdBySerial:(NSString *)serial;
 - (NSArray *)getEngineCliMirrorBySerial:(NSString *)serial;
 

@@ -7,6 +7,8 @@
 //
 
 #import "SanDatabase.h"
+//#import "SMXMLDocument.h"
+#import "XMLParser.h"
 
 @interface SanDatabase ()
     - (NSString *)getServerDbForDemonstration;
@@ -38,6 +40,7 @@
             //return nil;
         }
         //return db;
+        
     }
     return self;
 }
@@ -63,7 +66,7 @@
     return apiResponse;
 }
 
-- (NSString *)getHAClusterXMLBySiteName:(NSString *)siteName
+- (NSDictionary *)getHAClusterDictionaryBySiteName:(NSString *)siteName
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -71,17 +74,85 @@
     
     NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
     NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_ha_cluster_all.php?site_name=%@", hostname, siteName];
+    
+    //NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/samplexml.php", hostname];
     NSURL *url = [NSURL URLWithString:urlString];
     
     //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
-    NSError *error = nil;
-    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    //NSError *error = nil;
+    //NSString *xml = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    //NSString *xml = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"xml"];
+
     NSLog(@"--");
     NSLog(@"%@", urlString);
-    NSLog(@"nsurl response = %@", apiResponse);
+    //NSLog(@"nsurl response = %@", xml);
     NSLog(@"--");
     
-    return apiResponse;
+    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    
+    //Initialize the delegate.
+    XMLParser *parser = [[XMLParser alloc] initXMLParser];
+    
+    //Set delegate
+    [xmlParser setDelegate:(id <NSXMLParserDelegate>)parser];
+    
+    //Start parsing the XML file.
+    BOOL success = [xmlParser parse];
+    
+
+    
+    
+	// find "sample.xml" in our bundle resources
+	//	NSData *data = [NSData dataWithContentsOfFile:xml];
+	
+	// create a new SMXMLDocument with the contents of sample.xml
+	//SMXMLDocument *document = [SMXMLDocument documentWithData:data error:&error];
+    
+    //NSLog(@"XML:\n %@", xml);
+
+    // check for errors
+    //if (error) {
+    //    NSLog(@"Error while parsing the document: %@", error);
+    //    return nil;
+    //}
+    
+	// demonstrate -description of document/element classes
+    //	NSLog(@"Document:\n %@", document);
+	
+	// Pull out the <books> node
+	//SMXMLElement *books = [document.root childNamed:@"books"];
+	
+	// Look through <books> children of type <book>
+	//for (SMXMLElement *book in [books childrenNamed:@"book"]) {
+		
+		// demonstrate common cases of extracting XML data
+        /*
+		NSString *site_name = [cluster attributeNamed:@"site_name"]; // XML attribute
+		NSString *ha_appliance_name = [cluster valueWithPath:@"ha_appliance_name"]; // child node value
+		NSString *engine00 = [cluster valueWithPath:@"engine00"]; // child node value
+        NSString *engine01 = [cluster valueWithPath:@"engine01"]; // child node value
+        NSString *engine02 = [cluster valueWithPath:@"engine02"]; // child node value
+		//float price = [[book valueWithPath:@"price"] floatValue]; // child node value (converted)
+		
+		// show off some KVC magic
+		//NSArray *authors = [[book childNamed:@"authors"].children valueForKey:@"value"];
+		
+		NSLog(@"Found a cluster!\n site_name: %@ \n ha_appliance_name: %@ \n engine01: %@ \n engine02: %@", site_name, ha_appliance_name, engine01, engine02);
+         */
+        
+        // demonstrate common cases of extracting XML data
+	//	NSString *isbn = [book attributeNamed:@"isbn"]; // XML attribute
+	//	NSString *title = [book valueWithPath:@"title"]; // child node value
+	//	float price = [[book valueWithPath:@"price"] floatValue]; // child node value (converted)
+		
+		// show off some KVC magic
+	//	NSArray *authors = [[book childNamed:@"authors"].children valueForKey:@"value"];
+		
+	//	NSLog(@"Found a book!\n ISBN: %@ \n Title: %@ \n Price: %f \n Authors: %@", isbn, title, price, authors);
+
+	//}
+    
+    return nil;
 }
 
 - (NSArray *)getEngineCliVpdBySerial:(NSString *)serial

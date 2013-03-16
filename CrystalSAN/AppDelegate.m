@@ -8,6 +8,7 @@
 
 
 #import "AppDelegate.h"
+#import "XMLParser.h"
 
 #define PSUDO_ITEM_NUMBER   12
 
@@ -54,7 +55,11 @@
     }
     
     [sanDatabase getPasswordBySiteName:@"KBS" siteID:@"123456" userName:@"admin"];
-    [sanDatabase getHAClusterXMLBySiteName:@"KBS"];
+    
+    NSDictionary *dict = [sanDatabase getHAClusterDictionaryBySiteName:@"KBS"];
+    NSLog(@"%@", dict);
+    
+    /*
     [sanDatabase getEngineCliVpdBySerial:@"00600118"];
     [sanDatabase getEngineCliMirrorBySerial:@"00600120"];
     
@@ -65,10 +70,25 @@
     [sanDatabase getEngineCliConmgrDriveStatusBySerial:@"00600120"];
     
     [sanDatabase getEngineCliConmgrDriveStatusDetailBySerial:@"00600120"];
+     */
+    
+    /*
+    NSString *hostname = @"localhost";
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/samplexml.php", hostname];
+    NSURL *url = [NSURL URLWithString:urlString];
 
-    
-    
-    
+    //NSURL *url = [[NSURL alloc] initWithString:@"http://www.edumobile.org/blog/uploads/XML-parsing-data/Data.xml"];
+	NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+	
+	//Initialize the delegate.
+	XMLParser *parser = [[XMLParser alloc] initXMLParser];
+
+	//Set delegate
+	[xmlParser setDelegate:(id)parser];
+	
+	//Start parsing the XML file.
+	BOOL success = [xmlParser parse];
+     */
     return YES;
 }
 

@@ -13,7 +13,15 @@
 @interface MirrorViewController () {
     NSMutableArray *statusArray;
     NSInteger totalItemInCarousel;
+    NSInteger currentCollectionNumber;
+    
+    NSUInteger currentItemIndex;
+    NSUInteger currentCollectionCount;
+    NSUInteger totalCount;
 }
+
+- (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )curentIndex count:(NSUInteger)count total:(NSUInteger)total;
+
 @end
 
 @implementation MirrorViewController
@@ -21,22 +29,19 @@
 @synthesize carousel;
 @synthesize descriptions;
 
-@synthesize arcValue;
-@synthesize radiusValue;
-@synthesize spacingValue;
+@synthesize arcValue, radiusValue, spacingValue, sizingValue;
+@synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
 
 @synthesize arcSlider;
 @synthesize radiusSlider;
 @synthesize spacingSlider;
-
-@synthesize totalItem;
-@synthesize totalItemCount;
-@synthesize currentItemIndex;
+@synthesize sizingSlider;
 
 @synthesize names;
 @synthesize searchBar;
 
 @synthesize sanDatabase;
+@synthesize itemIndexCountsAndTotalLabel;
 
 
 
@@ -48,32 +53,8 @@
     
     if (self) {
         //set up carousel data
-        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(50, 160, 924, 400)];
+        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(50, 150, 924, 400)];
         //carousel.backgroundColor = [UIColor cyanColor];
-        
-        
-        //statusArray = [[NSMutableArray alloc] init];
-        
-        //NSInteger ok = 0;
-        //NSInteger degarded = 1;
-        //NSInteger died = 2;
-        
-        //NSNumber *okStatus = [NSNumber numberWithInt:ok];
-        //NSNumber *degardedStatus = [NSNumber numberWithInt:degarded];
-        //NSNumber *diedStatus = [NSNumber numberWithInt:died];
-        
-        //for (int i=0; i<[descriptions count]; i++) {
-        //    [statusArray addObject:okStatus];
-            /*
-            if (i==10) {
-                [statusArray addObject:degardedStatus];
-            } else if (i==15) {
-                [statusArray addObject:diedStatus];
-            } else {
-                [statusArray addObject:okStatus];
-            }
-             */
-        //}
     }
     return self;
 }
@@ -83,23 +64,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    
     //get data
     AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
-    //self.activeItems = theDelegate.activeItems;
-
-    /*
-    descriptions = [NSMutableArray arrayWithObjects:
-                    @"Engine_227_228",
-                    @"Engine_229_230",
-                    @"Engine_231_232",@"Engine_233_234",@"Engine_235",@"Engine_237",@"Engine_239",
-                    @"Engine_241",@"Engine_243",@"Engine_245",@"Engine_247",@"Engine_249",
-                    @"Engine_251",
-                    @"VicomM01",@"VicomM02",@"VicomM03",@"VicomM04",
-                    //@"",
-                    nil];
-     */
     
     descriptions = [sanDatabase getVmirrorListByKey:@""];
     //NSLog(@"description count = %u", [descriptions count]);
@@ -117,12 +84,13 @@
     carousel.decelerationRate = 0.9;
     
     totalItemInCarousel = [descriptions count];
-    totalItemCount.text = [NSString stringWithFormat:@"%u", totalItemInCarousel];
-    totalItem.text = totalItemCount.text;
+    NSUInteger count = [descriptions count];
     
-    currentItemIndex.text = @"1";
+    currentItemIndex = 0;
+    currentCollectionCount =  count;
+    totalCount = count;
     
-    //[totalItem setHidden:YES];
+    [self updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount];
     
     // change the background to clearColor
     // http://stackoverflow.com/questions/8999322/how-to-change-search-bar-background-color-in-ipad
@@ -136,6 +104,56 @@
     // http://stackoverflow.com/questions/556814/changing-the-size-of-the-uisearchbar-textfield
     
     //[carousel reloadData];
+    
+    // Customizing UISlider in iPhone
+    // http://jasonlawton.com/blog/customizing-uislider-in-iphone/
+    // 
+    UIImage *sliderThumb = [UIImage imageNamed:@"uislider-thumb.png"];
+    UIImage *sliderMinimum = [[UIImage imageNamed:@"uislider-left.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0];
+    UIImage *sliderMaximum = [[UIImage imageNamed:@"uislider-right.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0];
+
+    [arcSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [arcSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [arcSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [arcSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+
+    [radiusSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [radiusSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [radiusSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [radiusSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+
+    [spacingSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [spacingSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [spacingSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [spacingSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    
+    [sizingSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [sizingSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [sizingSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [sizingSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    
+    [self.view bringSubviewToFront:arcSlider];
+    [self.view bringSubviewToFront:radiusSlider];
+    [self.view bringSubviewToFront:spacingSlider];
+    [self.view bringSubviewToFront:sizingSlider];
+
+    [[UISearchBar appearance] setSearchFieldBackgroundImage:[UIImage imageNamed:@"Search-Bar.png"] forState:UIControlStateNormal];
+}
+
+- (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )currentIndex count:(NSUInteger)count total:(NSUInteger)total
+{
+        
+    NSString *label = [NSString stringWithFormat:@" /%u /%u", count, total];
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:label];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor darkGrayColor] range:NSMakeRange(0, [label length])];
+    
+    NSDictionary *boldSystemFontOfSize30Dict = [NSDictionary dictionaryWithObject:[UIFont boldSystemFontOfSize:30.0] forKey:NSFontAttributeName];
+    NSAttributedString *indexString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%u", currentIndex+1] attributes:boldSystemFontOfSize30Dict];
+    [attrString insertAttributedString:indexString atIndex:0];
+    
+    itemIndexCountsAndTotalLabel.attributedText = attrString;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -150,7 +168,6 @@
 {
     //UIButton *theButon = (UIButton *)sender;
     //NSInteger index = carousel.currentItemIndex;
-    
     //NSLog(@"onItemPress: tag=%d, current index=%u %@",theButon.tag, index, [descriptions objectAtIndex:index]);
 }
 
@@ -203,17 +220,48 @@
     NSString *identifier = [sender restorationIdentifier];
     
     if ([identifier isEqualToString:@"arcSlider"])
-    {
         arcValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    }
     else if ([identifier isEqualToString:@"radiusSlider"])
-    {
         radiusValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    }
     else if ([identifier isEqualToString:@"spacingSlider"])
-    {
         spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } 
+    else if ([identifier isEqualToString:@"sizingSlider"])
+        sizingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+}
+
+- (IBAction)hideSlider:(id)sender
+{
+    if ([arcSlider isHidden]) {
+        // enable the sliders
+        [arcSlider setHidden:FALSE];
+        [radiusSlider setHidden:FALSE];
+        [spacingSlider setHidden:FALSE];
+        [sizingSlider setHidden:FALSE];
+        // show the vales
+        [arcValue setHidden:FALSE];
+        [radiusValue setHidden:FALSE];
+        [spacingValue setHidden:FALSE];
+        [sizingValue setHidden:FALSE];
+        // show the labels
+        [arcLabel setHidden:FALSE];
+        [radiusLabel setHidden:FALSE];
+        [spacingLabel setHidden:FALSE];
+        [sizingLabel setHidden:FALSE];
+    } else {
+        [arcSlider setHidden:TRUE];
+        [radiusSlider setHidden:TRUE];
+        [spacingSlider setHidden:TRUE];
+        [sizingSlider setHidden:TRUE];
+        [arcValue setHidden:TRUE];
+        [radiusValue setHidden:TRUE];
+        [spacingValue setHidden:TRUE];
+        [sizingValue setHidden:TRUE];
+        // hide the labels
+        [arcLabel setHidden:TRUE];
+        [radiusLabel setHidden:TRUE];
+        [spacingLabel setHidden:TRUE];
+        [sizingLabel setHidden:TRUE];
+    }
 }
 
 #pragma mark -
@@ -266,46 +314,17 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSLog(@"%s", __func__);
-    //NSString *searchTerm = [searchBar text];
-    //[self handleSearchForTerm:searchTerm];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchTerm
 {
-    NSLog(@"%s searchTerm=%@", __func__, searchTerm);
-    
     descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
-    totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
-    
-    
-    /*
-    if ([searchTerm length] != 0)
-    {
-        [totalItem setHidden:NO];
-    }
-    else
-    {
-        [totalItem setHidden:YES];
-    }
-     */
-    
-    [carousel reloadData];
-
+    currentCollectionCount = [descriptions count];
     [carousel scrollToItemAtIndex:0 animated:TRUE];
-    if ([carousel numberOfItems] > 0) {
-        NSInteger index = carousel.currentItemIndex;
-        //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
-        currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
-    } else {
-        currentItemIndex.text = [NSString stringWithFormat:@"%u", 0];
-    }
-        
-    //if ([searchTerm length] == 0) {
-    //    [self resetSearch];
-    //    [carousel reloadData];
-    //    return;
-    //}
-    //[self handleSearchForTerm:searchTerm];
+    currentItemIndex = carousel.currentItemIndex;
+    
+    [self updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount];
+    [carousel reloadData];
 }
 
 #pragma mark -
@@ -336,7 +355,7 @@
         
         switch (status) {
             case 0: // healthy
-                theItemImage = [UIImage imageNamed:@"HA-item-ok"];
+                theItemImage = [UIImage imageNamed:@"Device-HA-Appliance-healthy"];
                 break;
             case 1: // degarded
                 theItemImage = [UIImage imageNamed:@"HA-item-orange"];
@@ -354,15 +373,15 @@
         
         float itemWidth, itemHeight;
         
-        itemWidth = theItemImage.size.width / 2;
-        itemHeight = theItemImage.size.height / 2;
+        itemWidth = theItemImage.size.width; // 250px
+        itemHeight = theItemImage.size.height;
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-80, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-20, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];
@@ -396,9 +415,9 @@
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
-    NSInteger index = _carousel.currentItemIndex;
-    NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
-    currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
+    currentItemIndex = _carousel.currentItemIndex;
+    
+    [self updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount];
 }
 
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value

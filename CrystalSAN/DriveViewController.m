@@ -333,7 +333,9 @@
         
         switch (status) {
             case 0: // healthy
-                theItemImage = [UIImage imageNamed:@"img-raid-vxr"];
+                //theItemImage = [UIImage imageNamed:@"img-raid-vxr"];
+                theItemImage = [UIImage imageNamed:@"Device-Drive-healthy"];
+                //.png
                 break;
             case 1: // degarded
                 theItemImage = [UIImage imageNamed:@"HA-item-orange"];
@@ -351,7 +353,7 @@
         
         float itemWidth, itemHeight;
         
-        itemWidth = theItemImage.size.width;
+        itemWidth = theItemImage.size.width; // 250px
         itemHeight = theItemImage.size.height;
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
