@@ -41,7 +41,7 @@
 		56AC0E4616F2E538008C1678 /* Button-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4416F2E538008C1678 /* Button-Back.png */; };
 		56AC0E4716F2E538008C1678 /* Button-Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4516F2E538008C1678 /* Button-Home.png */; };
 		56AC0E4916F2E61A008C1678 /* Button-Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4816F2E61A008C1678 /* Button-Logout.png */; };
-		56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN_x.png */; };
+		56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */; };
 		56AC0E4F16F2F99A008C1678 /* Search-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4E16F2F99A008C1678 /* Search-Bar.png */; };
 		56AC0E5116F2FD4B008C1678 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E5016F2FD4B008C1678 /* off.png */; };
 		56AC50C616E0568600A8121D /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 56AC50C516E0568500A8121D /* server.db */; };
@@ -137,7 +137,7 @@
 		56AC0E4416F2E538008C1678 /* Button-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Back.png"; sourceTree = "<group>"; };
 		56AC0E4516F2E538008C1678 /* Button-Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Home.png"; sourceTree = "<group>"; };
 		56AC0E4816F2E61A008C1678 /* Button-Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Logout.png"; sourceTree = "<group>"; };
-		56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-CrystalSAN_x.png"; sourceTree = "<group>"; };
+		56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-CrystalSAN.png"; sourceTree = "<group>"; };
 		56AC0E4E16F2F99A008C1678 /* Search-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Search-Bar.png"; sourceTree = "<group>"; };
 		56AC0E5016F2FD4B008C1678 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
 		56AC50A616D4AC9300A8121D /* sandatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = sandatabase.sqlite; sourceTree = "<group>"; };
@@ -491,7 +491,7 @@
 				56AC0E4416F2E538008C1678 /* Button-Back.png */,
 				56AC0E4516F2E538008C1678 /* Button-Home.png */,
 				56AC0E4816F2E61A008C1678 /* Button-Logout.png */,
-				56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN_x.png */,
+				56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */,
 				56AC0E4E16F2F99A008C1678 /* Search-Bar.png */,
 				56AC0E5016F2FD4B008C1678 /* off.png */,
 			);
@@ -613,7 +613,7 @@
 				56AC0E4616F2E538008C1678 /* Button-Back.png in Resources */,
 				56AC0E4716F2E538008C1678 /* Button-Home.png in Resources */,
 				56AC0E4916F2E61A008C1678 /* Button-Logout.png in Resources */,
-				56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN_x.png in Resources */,
+				56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN.png in Resources */,
 				56AC0E4F16F2F99A008C1678 /* Search-Bar.png in Resources */,
 				56AC0E5116F2FD4B008C1678 /* off.png in Resources */,
 			);
