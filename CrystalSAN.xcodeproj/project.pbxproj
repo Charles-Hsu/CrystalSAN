@@ -37,6 +37,8 @@
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
 		565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */; };
+		567ABEC016F4A7A1004B789D /* Device-Volume-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABEBF16F4A7A1004B789D /* Device-Volume-healthy.png */; };
+		56984AEA16F41031006A6AAD /* Device-Raid-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 56984AE916F41031006A6AAD /* Device-Raid-healthy.png */; };
 		56AC0E4316F2E1CF008C1678 /* Button-Vh.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4216F2E1CF008C1678 /* Button-Vh.png */; };
 		56AC0E4616F2E538008C1678 /* Button-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4416F2E538008C1678 /* Button-Back.png */; };
 		56AC0E4716F2E538008C1678 /* Button-Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4516F2E538008C1678 /* Button-Home.png */; };
@@ -133,6 +135,8 @@
 		5623C77A16BD54BF009410B2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		5623C78116BD565E009410B2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		567ABEBF16F4A7A1004B789D /* Device-Volume-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-healthy.png"; sourceTree = "<group>"; };
+		56984AE916F41031006A6AAD /* Device-Raid-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-healthy.png"; sourceTree = "<group>"; };
 		56AC0E4216F2E1CF008C1678 /* Button-Vh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vh.png"; sourceTree = "<group>"; };
 		56AC0E4416F2E538008C1678 /* Button-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Back.png"; sourceTree = "<group>"; };
 		56AC0E4516F2E538008C1678 /* Button-Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Home.png"; sourceTree = "<group>"; };
@@ -284,6 +288,62 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		56984AE416F40D2F006A6AAD /* images */ = {
+			isa = PBXGroup;
+			children = (
+				56C4AF8016F2C85A00E829A2 /* uislider-left.png */,
+				56C4AF8116F2C85A00E829A2 /* uislider-right.png */,
+				56C4AF7A16F2C08500E829A2 /* uislider-thumb.png */,
+				56C4AF7416F2070A00E829A2 /* Device-Drive-healthy.png */,
+				56C4AF7616F207D900E829A2 /* Device-HA-Appliance-healthy.png */,
+				56984AE916F41031006A6AAD /* Device-Raid-healthy.png */,
+				567ABEBF16F4A7A1004B789D /* Device-Volume-healthy.png */,
+				56C9874F16E452A60066AC2C /* image-hba.png */,
+				56D191D416E07D40002BB2B5 /* img-raid-vxr.png */,
+				56D191D216E06EA0002BB2B5 /* image-lun.png */,
+				56D191CD16E06DA6002BB2B5 /* image-engine.png */,
+				56D191CE16E06DA6002BB2B5 /* image-host.png */,
+				5604ECB0169D2892004B046F /* Hexagonal.png */,
+				56D191E016E08BFE002BB2B5 /* Hexagonal-orange.png */,
+				5604ECAE169D1F51004B046F /* background.png */,
+				561A93DE169C4A500063F990 /* button-Arrow.png */,
+				561A93E0169C4A500063F990 /* button-Configuration.png */,
+				561A93E1169C4A500063F990 /* button-Diagnostic.png */,
+				561A93E3169C4A500063F990 /* button-item-Mirror-view.png */,
+				561A93E4169C4A500063F990 /* button-item-RAID-view.png */,
+				561A93E5169C4A500063F990 /* button-item-Volume-view.png */,
+				561A93E6169C4A500063F990 /* button-Monitor.png */,
+				561A93DA169C4A3F0063F990 /* appicon72.png */,
+				561A93DB169C4A3F0063F990 /* appicon144.png */,
+				565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */,
+				561A93F0169C4A640063F990 /* image-RAID-Configuration.png */,
+				56BD565116E7243E00E56664 /* HA-item-ok.png */,
+				56D107BC16C293C700D70A9B /* HA-item-blackwhite.png */,
+				56D107BD16C293C700D70A9B /* HA-item-orange.png */,
+				56D107C116C2987E00D70A9B /* item-RAIDView.png */,
+				561A93F1169C4A640063F990 /* item-MirrorView.png */,
+				561A93F3169C4A640063F990 /* item-VolumeView.png */,
+				561A93F8169C4A710063F990 /* text-CircularMode.png */,
+				561A93F9169C4A710063F990 /* text-DiagonalMode.png */,
+				561A93FA169C4A710063F990 /* text-Home.png */,
+				561A93FB169C4A710063F990 /* text-Mirror-view.png */,
+				561A93FC169C4A710063F990 /* text-RAID-View.png */,
+				561A93FD169C4A710063F990 /* text-volume-view.png */,
+				56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */,
+				56C4AF8816F2CCD500E829A2 /* Button-Vc.png */,
+				56C4AF8616F2CC9C00E829A2 /* Button-Vf.png */,
+				56C4AF8416F2CC3F00E829A2 /* Button-Vi.png */,
+				56AC0E4216F2E1CF008C1678 /* Button-Vh.png */,
+				56AC0E4416F2E538008C1678 /* Button-Back.png */,
+				56AC0E4516F2E538008C1678 /* Button-Home.png */,
+				56AC0E4816F2E61A008C1678 /* Button-Logout.png */,
+				56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */,
+				56AC0E4E16F2F99A008C1678 /* Search-Bar.png */,
+				56AC0E5016F2FD4B008C1678 /* off.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		56AC50A916D870B400A8121D /* expect */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,27 +456,27 @@
 				561284E016A8DE0800F53C49 /* CustomPushSegue.h */,
 				561284E116A8DE0800F53C49 /* CustomPushSegue.m */,
 				56EB76CC16901A020082A5D2 /* CrystalSAN.entitlements */,
-				56EB75491689D06A0082A5D2 /* MainStoryboard.storyboard */,
 				561284D716A7CDF200F53C49 /* FlipTopPopToRoot.h */,
 				561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */,
-				56EB7579168BFA670082A5D2 /* VolumeViewController.h */,
-				56EB757A168BFA670082A5D2 /* VolumeViewController.m */,
-				56EB757C168BFA800082A5D2 /* MirrorViewController.h */,
-				56EB757D168BFA800082A5D2 /* MirrorViewController.m */,
-				56C9874C16E44C8D0066AC2C /* DriveViewController.h */,
-				56C9874D16E44CB20066AC2C /* DriveViewController.m */,
-				56C9875116E452CE0066AC2C /* HbaViewController.h */,
-				56C9875216E452E00066AC2C /* HbaViewController.m */,
 				56D191D616E080D0002BB2B5 /* MirrorViewRController.h */,
 				56D191D716E080F0002BB2B5 /* MirrorViewRController.m */,
 				56D191D916E085C9002BB2B5 /* MirrorViewIController.h */,
 				56D191DA16E085DB002BB2B5 /* MirrorViewIController.m */,
 				56BDEC71169BE6B50076CD6B /* RaidViewConfigController.h */,
 				56BDEC72169BE6D10076CD6B /* RaidViewConfigController.m */,
+				56EB757C168BFA800082A5D2 /* MirrorViewController.h */,
+				56EB757D168BFA800082A5D2 /* MirrorViewController.m */,
 				56EB7576168BF70B0082A5D2 /* RaidViewController.h */,
 				56EB7577168BF70B0082A5D2 /* RaidViewController.m */,
 				56EB75401689D06A0082A5D2 /* AppDelegate.h */,
 				56EB75411689D06A0082A5D2 /* AppDelegate.m */,
+				56C9875116E452CE0066AC2C /* HbaViewController.h */,
+				56C9875216E452E00066AC2C /* HbaViewController.m */,
+				56C9874C16E44C8D0066AC2C /* DriveViewController.h */,
+				56C9874D16E44CB20066AC2C /* DriveViewController.m */,
+				56EB7579168BFA670082A5D2 /* VolumeViewController.h */,
+				56EB757A168BFA670082A5D2 /* VolumeViewController.m */,
+				56EB75491689D06A0082A5D2 /* MainStoryboard.storyboard */,
 				56EB754C1689D06A0082A5D2 /* MainViewController.h */,
 				56EB754D1689D06A0082A5D2 /* MainViewController.m */,
 				56EB756B1689DFA80082A5D2 /* CoverFlowViewController.h */,
@@ -447,53 +507,7 @@
 		56EB75541689D12B0082A5D2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				56C4AF8016F2C85A00E829A2 /* uislider-left.png */,
-				56C4AF8116F2C85A00E829A2 /* uislider-right.png */,
-				56C4AF7A16F2C08500E829A2 /* uislider-thumb.png */,
-				56C4AF7416F2070A00E829A2 /* Device-Drive-healthy.png */,
-				56C4AF7616F207D900E829A2 /* Device-HA-Appliance-healthy.png */,
-				56C9874F16E452A60066AC2C /* image-hba.png */,
-				56D191D416E07D40002BB2B5 /* img-raid-vxr.png */,
-				56D191D216E06EA0002BB2B5 /* image-lun.png */,
-				56D191CD16E06DA6002BB2B5 /* image-engine.png */,
-				56D191CE16E06DA6002BB2B5 /* image-host.png */,
-				5604ECB0169D2892004B046F /* Hexagonal.png */,
-				56D191E016E08BFE002BB2B5 /* Hexagonal-orange.png */,
-				5604ECAE169D1F51004B046F /* background.png */,
-				561A93DE169C4A500063F990 /* button-Arrow.png */,
-				561A93E0169C4A500063F990 /* button-Configuration.png */,
-				561A93E1169C4A500063F990 /* button-Diagnostic.png */,
-				561A93E3169C4A500063F990 /* button-item-Mirror-view.png */,
-				561A93E4169C4A500063F990 /* button-item-RAID-view.png */,
-				561A93E5169C4A500063F990 /* button-item-Volume-view.png */,
-				561A93E6169C4A500063F990 /* button-Monitor.png */,
-				561A93DA169C4A3F0063F990 /* appicon72.png */,
-				561A93DB169C4A3F0063F990 /* appicon144.png */,
-				565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */,
-				561A93F0169C4A640063F990 /* image-RAID-Configuration.png */,
-				56BD565116E7243E00E56664 /* HA-item-ok.png */,
-				56D107BC16C293C700D70A9B /* HA-item-blackwhite.png */,
-				56D107BD16C293C700D70A9B /* HA-item-orange.png */,
-				56D107C116C2987E00D70A9B /* item-RAIDView.png */,
-				561A93F1169C4A640063F990 /* item-MirrorView.png */,
-				561A93F3169C4A640063F990 /* item-VolumeView.png */,
-				561A93F8169C4A710063F990 /* text-CircularMode.png */,
-				561A93F9169C4A710063F990 /* text-DiagonalMode.png */,
-				561A93FA169C4A710063F990 /* text-Home.png */,
-				561A93FB169C4A710063F990 /* text-Mirror-view.png */,
-				561A93FC169C4A710063F990 /* text-RAID-View.png */,
-				561A93FD169C4A710063F990 /* text-volume-view.png */,
-				56BF63F816A612DC008DDA70 /* text-HA Appliance View.png */,
-				56C4AF8816F2CCD500E829A2 /* Button-Vc.png */,
-				56C4AF8616F2CC9C00E829A2 /* Button-Vf.png */,
-				56C4AF8416F2CC3F00E829A2 /* Button-Vi.png */,
-				56AC0E4216F2E1CF008C1678 /* Button-Vh.png */,
-				56AC0E4416F2E538008C1678 /* Button-Back.png */,
-				56AC0E4516F2E538008C1678 /* Button-Home.png */,
-				56AC0E4816F2E61A008C1678 /* Button-Logout.png */,
-				56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */,
-				56AC0E4E16F2F99A008C1678 /* Search-Bar.png */,
-				56AC0E5016F2FD4B008C1678 /* off.png */,
+				56984AE416F40D2F006A6AAD /* images */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -616,6 +630,8 @@
 				56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN.png in Resources */,
 				56AC0E4F16F2F99A008C1678 /* Search-Bar.png in Resources */,
 				56AC0E5116F2FD4B008C1678 /* off.png in Resources */,
+				56984AEA16F41031006A6AAD /* Device-Raid-healthy.png in Resources */,
+				567ABEC016F4A7A1004B789D /* Device-Volume-healthy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

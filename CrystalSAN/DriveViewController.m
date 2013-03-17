@@ -9,10 +9,15 @@
 #import "DriveViewController.h"
 #import "AppDelegate.h"
 
-
 @interface DriveViewController () {
     NSMutableArray *statusArray;
     NSInteger totalItemInCarousel;
+    
+    NSUInteger currentItemIndex;
+    NSUInteger currentCollectionCount;
+    NSUInteger totalCount;
+
+    AppDelegate *theDelegate;
 }
 @end
 
@@ -21,23 +26,22 @@
 @synthesize carousel;
 @synthesize descriptions;
 
-@synthesize arcValue;
-@synthesize radiusValue;
-@synthesize spacingValue;
+@synthesize arcSlider, radiusSlider, spacingSlider, sizingSlider;
+@synthesize arcValue, radiusValue, spacingValue, sizingValue;
+@synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
 
-@synthesize arcSlider;
-@synthesize radiusSlider;
-@synthesize spacingSlider;
-
-@synthesize totalItem;
-@synthesize totalItemCount;
-@synthesize currentItemIndex;
+//@synthesize totalItem;
+//@synthesize totalItemCount;
+//@synthesize currentItemIndex;
 
 @synthesize names;
 @synthesize searchBar;
 
+@synthesize searchConnectionButton, searchNameButton, searchStatusButton;
+
 @synthesize sanDatabase;
 
+@synthesize itemIndexCountsAndTotalLabel;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -50,30 +54,6 @@
         //set up carousel data
         carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 110, 1024, 460)];
         //carousel.backgroundColor = [UIColor cyanColor];
-        
-        
-        //statusArray = [[NSMutableArray alloc] init];
-        
-        //NSInteger ok = 0;
-        //NSInteger degarded = 1;
-        //NSInteger died = 2;
-        
-        //NSNumber *okStatus = [NSNumber numberWithInt:ok];
-        //NSNumber *degardedStatus = [NSNumber numberWithInt:degarded];
-        //NSNumber *diedStatus = [NSNumber numberWithInt:died];
-        
-        //for (int i=0; i<[descriptions count]; i++) {
-        //    [statusArray addObject:okStatus];
-            /*
-            if (i==10) {
-                [statusArray addObject:degardedStatus];
-            } else if (i==15) {
-                [statusArray addObject:diedStatus];
-            } else {
-                [statusArray addObject:okStatus];
-            }
-             */
-        //}
     }
     return self;
 }
@@ -85,7 +65,7 @@
     
     
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
     //self.activeItems = theDelegate.activeItems;
 
@@ -117,25 +97,26 @@
     carousel.decelerationRate = 0.9;
     
     totalItemInCarousel = [descriptions count];
-    totalItemCount.text = [NSString stringWithFormat:@"%u", totalItemInCarousel];
-    totalItem.text = totalItemCount.text;
     
-    currentItemIndex.text = @"1";
+    totalCount = [descriptions count];
+    currentCollectionCount = [descriptions count];
     
-    [totalItem setHidden:YES];
+    //totalItemCount.text = [NSString stringWithFormat:@"%u", totalItemInCarousel];
+    //totalItem.text = totalItemCount.text;
     
-    // change the background to clearColor
-    // http://stackoverflow.com/questions/8999322/how-to-change-search-bar-background-color-in-ipad
-    for (UIView *subview in searchBar.subviews) {
-        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
-            [subview removeFromSuperview];
-            break;
-        }
-    }
-    // change the size of searchBar
-    // http://stackoverflow.com/questions/556814/changing-the-size-of-the-uisearchbar-textfield
+    //currentItemIndex.text = @"1";
     
-    //[carousel reloadData];
+    //[totalItem setHidden:YES];
+    
+    [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
+
+    [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
+    
+    currentItemIndex = carousel.currentItemIndex;
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,7 +138,7 @@
 - (IBAction)onHome:(id)sender
 {
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -166,7 +147,7 @@
 - (IBAction)onBack:(id)sender
 {
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -213,7 +194,16 @@
     else if ([identifier isEqualToString:@"spacingSlider"])
     {
         spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } 
+    }
+    else if ([identifier isEqualToString:@"sizingSlider"])
+    {
+        sizingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    }
+}
+
+- (IBAction)hideShowSliders:(id)sender
+{
+    [theDelegate hideShowSliders:self.view];
 }
 
 #pragma mark -
@@ -275,26 +265,26 @@
     NSLog(@"%s searchTerm=%@", __func__, searchTerm);
     
     descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
-    totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
+    //totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
     
     if ([searchTerm length] != 0)
     {
-        [totalItem setHidden:NO];
+        //[totalItem setHidden:NO];
     }
     else
     {
-        [totalItem setHidden:YES];
+        //[totalItem setHidden:YES];
     }
     
     [carousel reloadData];
 
     [carousel scrollToItemAtIndex:0 animated:TRUE];
     if ([carousel numberOfItems] > 0) {
-        NSInteger index = carousel.currentItemIndex;
+        //NSInteger index = carousel.currentItemIndex;
         //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
-        currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
+        //currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
     } else {
-        currentItemIndex.text = [NSString stringWithFormat:@"%u", 0];
+        //currentItemIndex.text = [NSString stringWithFormat:@"%u", 0];
     }
         
     //if ([searchTerm length] == 0) {
@@ -361,7 +351,7 @@
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-60, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-23, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];
@@ -395,9 +385,10 @@
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
-    NSInteger index = _carousel.currentItemIndex;
-    NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
-    currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
+    currentItemIndex = _carousel.currentItemIndex;
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+
 }
 
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value

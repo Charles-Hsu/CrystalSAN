@@ -16,6 +16,14 @@
 @interface RaidViewController ()
 {
     NSString *currentDeviceName;
+    
+    NSUInteger currentItemIndex;
+    NSUInteger currentCollectionCount;
+    NSUInteger totalCount;
+
+    
+    AppDelegate *theDelegate;
+
 }
 @end
 
@@ -24,17 +32,15 @@
 @synthesize animals, descriptions;
 @synthesize carousel;
 
-@synthesize arcValue;
-@synthesize radiusValue;
-@synthesize spacingValue;
+@synthesize arcSlider, radiusSlider, spacingSlider, sizingSlider;
+@synthesize arcValue, radiusValue, spacingValue, sizingValue;
+@synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
 
-@synthesize arcSlider;
-@synthesize radiusSlider;
-@synthesize spacingSlider;
 
-@synthesize totalItemCount;
-@synthesize currentItemIndex;
+@synthesize searchBar;
+@synthesize itemIndexCountsAndTotalLabel;
 
+@synthesize searchConnectionButton, searchNameButton, searchStatusButton;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -91,7 +97,7 @@
 	// Do any additional setup after loading the view.
     
     //get data
-    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     //self.totalItems = theDelegate.totalItems;
     //self.activeItems = theDelegate.activeItems;
     
@@ -110,9 +116,21 @@
     
     currentDeviceName = [descriptions objectAtIndex:0];
     
-    totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
-    currentItemIndex.text = @"1";
+    //totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
+    //currentItemIndex.text = @"1";
+    
+    NSUInteger count = [descriptions count];
+    
+    currentItemIndex = 0;
+    currentCollectionCount =  count;
+    totalCount = count;
 
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+
+    [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
+    
+    [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
+        
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,6 +162,7 @@
     [carousel reloadData];
 }
 
+/*
 - (IBAction)updateValue:(id)sender
 {
     UISlider *slider = (UISlider*)sender;
@@ -162,6 +181,29 @@
     //    carousel.viewpointOffset = CGSizeMake(0, 100*slider.value);
     //}
     
+}
+*/
+
+- (IBAction)updateValue:(id)sender
+{
+    UISlider *slider = (UISlider*)sender;
+    NSLog(@"%s %@ %@", __func__, sender, [sender restorationIdentifier]);
+    
+    NSString *identifier = [sender restorationIdentifier];
+    
+    if ([identifier isEqualToString:@"arcSlider"])
+        arcValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    else if ([identifier isEqualToString:@"radiusSlider"])
+        radiusValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    else if ([identifier isEqualToString:@"spacingSlider"])
+        spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    else if ([identifier isEqualToString:@"sizingSlider"])
+        sizingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+}
+
+- (IBAction)hideSlider:(id)sender
+{
+    [theDelegate hideShowSliders:self.view];
 }
 
 
@@ -316,7 +358,7 @@
         //view.backgroundColor = [UIColor redColor];
         
         //UIImage *theItemImage = [UIImage imageNamed:[animals objectAtIndex:index]];
-        UIImage *theItemImage = [UIImage imageNamed:@"item-RAIDView"];
+        UIImage *theItemImage = [UIImage imageNamed:@"Device-Raid-healthy"];
         //Item-RAIDView
         
         theLabel = [[UILabel alloc] init];
@@ -347,8 +389,8 @@
         //}
         //else
         //{
-        itemWidth = theItemImage.size.width / 2 ;
-        itemHeight = theItemImage.size.height / 2 ;
+        itemWidth = theItemImage.size.width;
+        itemHeight = theItemImage.size.height;
         //}
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -356,7 +398,7 @@
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-75, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-23, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];
@@ -388,8 +430,8 @@
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
     NSInteger index = _carousel.currentItemIndex;
-    NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
-    currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
+    //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
+    //currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
     currentDeviceName = [descriptions objectAtIndex:index];
 }
 

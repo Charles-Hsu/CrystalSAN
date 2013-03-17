@@ -7,22 +7,33 @@
 //
 
 #import "VolumeViewController.h"
+#import "AppDelegate.h"
 
-@interface VolumeViewController ()
+@interface VolumeViewController () {
+
+    NSString *currentDeviceName;
+    
+    NSUInteger currentItemIndex;
+    NSUInteger currentCollectionCount;
+    NSUInteger totalCount;
+    
+    AppDelegate *theDelegate;
+}
 
 @end
+
 
 @implementation VolumeViewController
 @synthesize descriptions;
 @synthesize carousel;
 
-@synthesize radiusValue;
-@synthesize spacingValue;
-@synthesize arcValue;
+@synthesize arcSlider, radiusSlider, spacingSlider, sizingSlider;
+@synthesize arcValue, radiusValue, spacingValue, sizingValue;
+@synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
 
-@synthesize arcSlider;
-@synthesize radiusSlider;
-@synthesize spacingSlider;
+
+@synthesize searchBar;
+@synthesize searchConnectionButton, searchNameButton, searchStatusButton;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,6 +68,7 @@
 
 - (void)viewDidLoad
 {
+    /*
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
@@ -82,7 +94,45 @@
     
     //totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
     //currentItemIndex.text = @"1";
+    */
     
+    
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+    //get data
+    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //self.totalItems = theDelegate.totalItems;
+    //self.activeItems = theDelegate.activeItems;
+    
+    //init/add carouse view
+    carousel.delegate = self;
+    carousel.dataSource = self;
+    [self.view addSubview:carousel];
+    //self.iCarouselView.currentItemIndex = self.totalItems.count/2;
+    
+    carousel.type = iCarouselTypeRotary; //0 - -0.01;
+    //self.iCarouselView.type = iCarouselTypeLinear;
+    
+    carousel.contentOffset = CGSizeMake(0, -250);
+    carousel.viewpointOffset = CGSizeMake(0, -330);
+    carousel.decelerationRate = 0.9;
+    
+    currentDeviceName = [descriptions objectAtIndex:0];
+    
+    //totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
+    //currentItemIndex.text = @"1";
+    
+    NSUInteger count = [descriptions count];
+    
+    currentItemIndex = 0;
+    currentCollectionCount =  count;
+    totalCount = count;
+    
+    [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
+    
+    [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,7 +175,8 @@
 - (IBAction)updateValue:(id)sender
 {
     UISlider *slider = (UISlider*)sender;
-    NSLog(@"%s %@ %@", __func__, sender, [sender restorationIdentifier]);
+    //NSLog(@"%s %@ %@", __func__, sender, [sender restorationIdentifier]);
+    NSLog(@"%s", __func__);
     NSString *identifier = [sender restorationIdentifier];
     if ([identifier isEqualToString:@"arcSlider"]) {
         arcValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
@@ -133,14 +184,17 @@
         radiusValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
     } else if ([identifier isEqualToString:@"spacingSlider"]) {
         spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } //else if ([identifier isEqualToString:@"contentSlider"]) {
-    //    contentValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    //} else if ([identifier isEqualToString:@"viewpointSlider"]) {
-    //    viewpointValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    //    carousel.viewpointOffset = CGSizeMake(0, 100*slider.value);
-    //}
+    } else if ([identifier isEqualToString:@"sizingSlider"]) {
+        sizingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    }
     
 }
+
+- (IBAction)hideSlider:(id)sender
+{
+    [theDelegate hideShowSliders:self.view];
+}
+
 
 #pragma mark -
 #pragma mark iCarousel methods
@@ -166,7 +220,7 @@
         //view.backgroundColor = [UIColor redColor];
         
         //UIImage *theItemImage = [UIImage imageNamed:[animals objectAtIndex:index]];
-        UIImage *theItemImage = [UIImage imageNamed:@"item-VolumeView"];
+        UIImage *theItemImage = [UIImage imageNamed:@"Device-Volume-healthy"];
         //Item-RAIDView
         
         theLabel = [[UILabel alloc] init];
@@ -184,8 +238,8 @@
         
         float itemWidth, itemHeight;
         
-        itemWidth = theItemImage.size.width * 0.4 ;
-        itemHeight = theItemImage.size.height * 0.4 ;
+        itemWidth = theItemImage.size.width;// * 0.4 ;
+        itemHeight = theItemImage.size.height;// * 0.4 ;
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
@@ -223,8 +277,8 @@
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
-    NSInteger index = _carousel.currentItemIndex;
-    NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
+    //NSInteger index = _carousel.currentItemIndex;
+    //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
     //currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
     //currentDeviceName = [descriptions objectAtIndex:index];
 }

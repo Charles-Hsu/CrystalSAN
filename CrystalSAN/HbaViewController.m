@@ -13,30 +13,37 @@
 @interface HbaViewController () {
     NSMutableArray *statusArray;
     NSInteger totalItemInCarousel;
+    
+    NSUInteger currentItemIndex;
+    NSUInteger currentCollectionCount;
+    NSUInteger totalCount;
+    
+    AppDelegate *theDelegate;
+
 }
 @end
+
 
 @implementation HbaViewController
 
 @synthesize carousel;
 @synthesize descriptions;
 
-@synthesize arcValue;
-@synthesize radiusValue;
-@synthesize spacingValue;
-
-@synthesize arcSlider;
-@synthesize radiusSlider;
-@synthesize spacingSlider;
+@synthesize arcValue, radiusValue, spacingValue, sizingValue;
+@synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
+@synthesize arcSlider, radiusSlider, spacingSlider, sizingSlider;
 
 @synthesize totalItem;
 @synthesize totalItemCount;
-@synthesize currentItemIndex;
 
 @synthesize names;
 @synthesize searchBar;
 
+@synthesize searchConnectionButton, searchNameButton, searchStatusButton;
+
+
 @synthesize sanDatabase;
+//@synthesize currentItemIndex;
 
 
 
@@ -85,7 +92,7 @@
     
     
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
     //self.activeItems = theDelegate.activeItems;
 
@@ -116,11 +123,12 @@
     carousel.viewpointOffset = CGSizeMake(0, -330);
     carousel.decelerationRate = 0.9;
     
+    /*
     totalItemInCarousel = [descriptions count];
     totalItemCount.text = [NSString stringWithFormat:@"%u", totalItemInCarousel];
     totalItem.text = totalItemCount.text;
     
-    currentItemIndex.text = @"1";
+    //currentItemIndex.text = @"1";
     
     [totalItem setHidden:YES];
     
@@ -136,6 +144,12 @@
     // http://stackoverflow.com/questions/556814/changing-the-size-of-the-uisearchbar-textfield
     
     //[carousel reloadData];
+     */
+    
+    [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
+    
+    [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,7 +171,7 @@
 - (IBAction)onHome:(id)sender
 {
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -166,7 +180,7 @@
 - (IBAction)onBack:(id)sender
 {
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -213,8 +227,19 @@
     else if ([identifier isEqualToString:@"spacingSlider"])
     {
         spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } 
+    }
+    else if ([identifier isEqualToString:@"sizingSlider"])
+    {
+        sizingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    }
 }
+
+
+- (IBAction)showHideSliders:(id)sender
+{
+    [theDelegate hideShowSliders:self.view];
+}
+
 
 #pragma mark -
 #pragma mark Custom Methods 
@@ -290,11 +315,11 @@
 
     [carousel scrollToItemAtIndex:0 animated:TRUE];
     if ([carousel numberOfItems] > 0) {
-        NSInteger index = carousel.currentItemIndex;
+        //NSInteger index = carousel.currentItemIndex;
         //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
-        currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
+        //currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
     } else {
-        currentItemIndex.text = [NSString stringWithFormat:@"%u", 0];
+        //currentItemIndex.text = [NSString stringWithFormat:@"%u", 0];
     }
         
     //if ([searchTerm length] == 0) {
@@ -399,9 +424,9 @@
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
-    NSInteger index = _carousel.currentItemIndex;
-    NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
-    currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
+    //NSInteger index = _carousel.currentItemIndex;
+    //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
+    //currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
 }
 
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value

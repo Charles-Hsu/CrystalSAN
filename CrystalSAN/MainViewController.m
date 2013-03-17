@@ -33,7 +33,8 @@
     if(self)
     {
         //carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 120, 1024, 480)];
-        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 130, 1024, 460)];
+        //carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 130, 1024, 460)];
+        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 110, 1024, 460)];
         //carousel.backgroundColor = [UIColor cyanColor];
         
         self.descriptions = [NSMutableArray arrayWithObjects:

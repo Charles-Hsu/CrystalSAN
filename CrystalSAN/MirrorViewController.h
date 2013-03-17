@@ -29,16 +29,16 @@
 @property (nonatomic, retain) IBOutlet UILabel *spacingLabel;
 @property (nonatomic, retain) IBOutlet UILabel *sizingLabel;
 
-
 @property (nonatomic, retain) IBOutlet UILabel *arcValue;
 @property (nonatomic, retain) IBOutlet UILabel *radiusValue;
 @property (nonatomic, retain) IBOutlet UILabel *spacingValue;
 @property (nonatomic, retain) IBOutlet UILabel *sizingValue;
 
-//@property (nonatomic, retain) IBOutlet UILabel *currentItemIndex;
-//@property (nonatomic, retain) IBOutlet UILabel *totalItemCount;
-//@property (nonatomic, retain) IBOutlet UILabel *totalItem;
 @property (nonatomic, retain) IBOutlet UILabel *itemIndexCountsAndTotalLabel;
+
+@property (strong, nonatomic) IBOutlet UIButton *searchStatusButton;
+@property (strong, nonatomic) IBOutlet UIButton *searchNameButton;
+@property (strong, nonatomic) IBOutlet UIButton *searchConnectionButton;
 
 
 // data

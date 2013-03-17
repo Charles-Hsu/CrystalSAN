@@ -99,6 +99,8 @@
     //Start parsing the XML file.
     BOOL success = [xmlParser parse];
     
+    NSLog(@"%u", success);
+    
 
     
     

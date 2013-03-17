@@ -92,6 +92,99 @@
     return YES;
 }
 
+
+- (void)customizedArcSlider:(UISlider *)arcSlider radiusSlider:(UISlider *)radiusSlider spacingSlider:(UISlider *)spacingSlider sizingSlider:(UISlider *)sizingSlider inView:(UIView *)view
+{
+    // Customizing UISlider in iPhone
+    // http://jasonlawton.com/blog/customizing-uislider-in-iphone/
+    //
+    UIImage *sliderThumb = [UIImage imageNamed:@"uislider-thumb.png"];
+    UIImage *sliderMinimum = [[UIImage imageNamed:@"uislider-left.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0];
+    UIImage *sliderMaximum = [[UIImage imageNamed:@"uislider-right.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0];
+    
+    [arcSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [arcSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [arcSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [arcSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    
+    [radiusSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [radiusSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [radiusSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [radiusSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    
+    [spacingSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [spacingSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [spacingSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [spacingSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    
+    [sizingSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [sizingSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    [sizingSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
+    [sizingSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    
+    [view bringSubviewToFront:arcSlider];
+    [view bringSubviewToFront:radiusSlider];
+    [view bringSubviewToFront:spacingSlider];
+    [view bringSubviewToFront:sizingSlider];
+
+}
+
+- (void)customizedSearchArea:(UISearchBar *)searchBar statusButton:(UIButton *)statusButton nameButton:(UIButton *)nameButton connectionButton:(UIButton *)connectionButton inView:(UIView *)view
+{
+    // change the background to clearColor
+    // http://stackoverflow.com/questions/8999322/how-to-change-search-bar-background-color-in-ipad
+    for (UIView *subview in searchBar.subviews) {
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [subview removeFromSuperview];
+            break;
+        }
+    }
+    // change the size of searchBar
+    // http://stackoverflow.com/questions/556814/changing-the-size-of-the-uisearchbar-textfield
+    
+    [[UISearchBar appearance] setSearchFieldBackgroundImage:[UIImage imageNamed:@"Search-Bar.png"] forState:UIControlStateNormal];
+    
+    [view bringSubviewToFront:statusButton];
+    [view bringSubviewToFront:nameButton];
+    [view bringSubviewToFront:connectionButton];
+
+}
+
+- (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )currentIndex count:(NSUInteger)count total:(NSUInteger)total forUILabel:(UILabel *)itemIndexCountsAndTotalLabel
+{
+    
+    NSString *label = [NSString stringWithFormat:@" /%u /%u", count, total];
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:label];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor darkGrayColor] range:NSMakeRange(0, [label length])];
+    
+    NSDictionary *boldSystemFontOfSize30Dict = [NSDictionary dictionaryWithObject:[UIFont boldSystemFontOfSize:30.0] forKey:NSFontAttributeName];
+    NSMutableAttributedString *indexString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%3u", currentIndex+1] attributes:boldSystemFontOfSize30Dict];
+    [indexString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:87.0/255.0 green:175.0/255.0 blue:235.0/255.0 alpha:1] range:NSMakeRange(0, [indexString length])];
+    
+    [attrString insertAttributedString:indexString atIndex:0];
+    
+    itemIndexCountsAndTotalLabel.attributedText = attrString;
+    itemIndexCountsAndTotalLabel.textAlignment = UITextAlignmentRight;
+    
+}
+
+- (void)hideShowSliders:(UIView *)view
+{
+    //[theDelegate hideShowSliders:self.view.subviews];
+    
+    for (UIView *subview in view.subviews) {
+        NSString *identification = subview.restorationIdentifier;
+        NSRange range = [identification rangeOfString:@"Slider"];
+        if (range.length != 0) {
+            if (subview.isHidden)
+                [subview setHidden:FALSE];
+            else
+                [subview setHidden:TRUE];
+        }
+    }
+}
+
 - (NSString *)getSanVmirrorLists
 {
     //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];

@@ -35,4 +35,11 @@
 
 - (NSString *)getSanVmirrorLists;
 
+- (void)customizedArcSlider:(UISlider *)arcSlider radiusSlider:(UISlider *)radiusSlider spacingSlider:(UISlider *)spacingSlider sizingSlider:(UISlider *)sizingSlider inView:(UIView *)view;
+- (void)customizedSearchArea:(UISearchBar *)searchBar statusButton:(UIButton *)statusButton nameButton:(UIButton *)nameButton connectionButton:(UIButton *)connectionButton inView:(UIView *)view;
+- (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )currentIndex count:(NSUInteger)count total:(NSUInteger)total forUILabel:(UILabel *)itemIndexCountsAndTotalLabel;
+
+- (void)hideShowSliders:(UIView *)view;
+//- (void)hideSlider:(id)sender;
+
 @end

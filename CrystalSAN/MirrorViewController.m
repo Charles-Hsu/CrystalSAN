@@ -18,9 +18,11 @@
     NSUInteger currentItemIndex;
     NSUInteger currentCollectionCount;
     NSUInteger totalCount;
+    
+    AppDelegate *theDelegate;
 }
 
-- (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )curentIndex count:(NSUInteger)count total:(NSUInteger)total;
+//- (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )curentIndex count:(NSUInteger)count total:(NSUInteger)total;
 
 @end
 
@@ -31,11 +33,7 @@
 
 @synthesize arcValue, radiusValue, spacingValue, sizingValue;
 @synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
-
-@synthesize arcSlider;
-@synthesize radiusSlider;
-@synthesize spacingSlider;
-@synthesize sizingSlider;
+@synthesize arcSlider, radiusSlider, spacingSlider, sizingSlider;
 
 @synthesize names;
 @synthesize searchBar;
@@ -43,6 +41,7 @@
 @synthesize sanDatabase;
 @synthesize itemIndexCountsAndTotalLabel;
 
+@synthesize searchConnectionButton, searchNameButton, searchStatusButton;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -53,7 +52,8 @@
     
     if (self) {
         //set up carousel data
-        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(50, 150, 924, 400)];
+        //carousel = [[iCarousel alloc] initWithFrame:CGRectMake(50, 150, 924, 400)];
+        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 110, 1024, 460)];
         //carousel.backgroundColor = [UIColor cyanColor];
     }
     return self;
@@ -65,7 +65,7 @@
 	// Do any additional setup after loading the view.
     
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
     
     descriptions = [sanDatabase getVmirrorListByKey:@""];
@@ -90,54 +90,14 @@
     currentCollectionCount =  count;
     totalCount = count;
     
-    [self updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount];
-    
-    // change the background to clearColor
-    // http://stackoverflow.com/questions/8999322/how-to-change-search-bar-background-color-in-ipad
-    for (UIView *subview in searchBar.subviews) {
-        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
-            [subview removeFromSuperview];
-            break;
-        }
-    }
-    // change the size of searchBar
-    // http://stackoverflow.com/questions/556814/changing-the-size-of-the-uisearchbar-textfield
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
     
     //[carousel reloadData];
     
-    // Customizing UISlider in iPhone
-    // http://jasonlawton.com/blog/customizing-uislider-in-iphone/
-    // 
-    UIImage *sliderThumb = [UIImage imageNamed:@"uislider-thumb.png"];
-    UIImage *sliderMinimum = [[UIImage imageNamed:@"uislider-left.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0];
-    UIImage *sliderMaximum = [[UIImage imageNamed:@"uislider-right.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:0];
+    [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
 
-    [arcSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
-    [arcSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
-    [arcSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
-    [arcSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
+    [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
 
-    [radiusSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
-    [radiusSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
-    [radiusSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
-    [radiusSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
-
-    [spacingSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
-    [spacingSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
-    [spacingSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
-    [spacingSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
-    
-    [sizingSlider setThumbImage:sliderThumb forState:UIControlStateNormal];
-    [sizingSlider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
-    [sizingSlider setMinimumTrackImage:sliderMinimum forState:UIControlStateNormal];
-    [sizingSlider setMaximumTrackImage:sliderMaximum forState:UIControlStateNormal];
-    
-    [self.view bringSubviewToFront:arcSlider];
-    [self.view bringSubviewToFront:radiusSlider];
-    [self.view bringSubviewToFront:spacingSlider];
-    [self.view bringSubviewToFront:sizingSlider];
-
-    [[UISearchBar appearance] setSearchFieldBackgroundImage:[UIImage imageNamed:@"Search-Bar.png"] forState:UIControlStateNormal];
 }
 
 - (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )currentIndex count:(NSUInteger)count total:(NSUInteger)total
@@ -174,7 +134,7 @@
 - (IBAction)onHome:(id)sender
 {
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -183,7 +143,7 @@
 - (IBAction)onBack:(id)sender
 {
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -231,37 +191,7 @@
 
 - (IBAction)hideSlider:(id)sender
 {
-    if ([arcSlider isHidden]) {
-        // enable the sliders
-        [arcSlider setHidden:FALSE];
-        [radiusSlider setHidden:FALSE];
-        [spacingSlider setHidden:FALSE];
-        [sizingSlider setHidden:FALSE];
-        // show the vales
-        [arcValue setHidden:FALSE];
-        [radiusValue setHidden:FALSE];
-        [spacingValue setHidden:FALSE];
-        [sizingValue setHidden:FALSE];
-        // show the labels
-        [arcLabel setHidden:FALSE];
-        [radiusLabel setHidden:FALSE];
-        [spacingLabel setHidden:FALSE];
-        [sizingLabel setHidden:FALSE];
-    } else {
-        [arcSlider setHidden:TRUE];
-        [radiusSlider setHidden:TRUE];
-        [spacingSlider setHidden:TRUE];
-        [sizingSlider setHidden:TRUE];
-        [arcValue setHidden:TRUE];
-        [radiusValue setHidden:TRUE];
-        [spacingValue setHidden:TRUE];
-        [sizingValue setHidden:TRUE];
-        // hide the labels
-        [arcLabel setHidden:TRUE];
-        [radiusLabel setHidden:TRUE];
-        [spacingLabel setHidden:TRUE];
-        [sizingLabel setHidden:TRUE];
-    }
+    [theDelegate hideShowSliders:self.view];
 }
 
 #pragma mark -
@@ -323,7 +253,7 @@
     [carousel scrollToItemAtIndex:0 animated:TRUE];
     currentItemIndex = carousel.currentItemIndex;
     
-    [self updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount];
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
     [carousel reloadData];
 }
 
@@ -417,7 +347,7 @@
 {
     currentItemIndex = _carousel.currentItemIndex;
     
-    [self updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount];
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
 }
 
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
