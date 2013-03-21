@@ -46,7 +46,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     
     self = [super initWithCoder:aDecoder];
     
@@ -310,7 +310,7 @@
 {
     NSLog(@"%s index=%u %@", __func__, index, [descriptions objectAtIndex:index]);
     UILabel *theLabel = nil;
-    NSInteger status = [[statusArray objectAtIndex:index] integerValue];
+    //NSInteger status = [[statusArray objectAtIndex:index] integerValue];
     
 	//create new view if no view is available for recycling
 	if (view == nil)
@@ -321,21 +321,21 @@
         
         UIImage *theItemImage = nil;
         
-        switch (status) {
-            case 0: // healthy
-                //theItemImage = [UIImage imageNamed:@"img-raid-vxr"];
-                theItemImage = [UIImage imageNamed:@"Device-Drive-healthy"];
-                //.png
+        switch (index) {
+            case 0:
+                theItemImage = [UIImage imageNamed:@"Device-Drive-problem"];
                 break;
-            case 1: // degarded
-                theItemImage = [UIImage imageNamed:@"HA-item-orange"];
+            case 1:
+                theItemImage = [UIImage imageNamed:@"Device-Drive-degraded"];
                 break;
-            case 2: // died
-                theItemImage = [UIImage imageNamed:@"HA-item-blackwhite"];
+            case 2:
+                theItemImage = [UIImage imageNamed:@"Device-Drive-disappeared"];
                 break;
             default:
+                theItemImage = [UIImage imageNamed:@"Device-Drive-healthy"];
                 break;
         }
+
         
         theLabel = [[UILabel alloc] init];
         theLabel.numberOfLines = 0;
@@ -358,7 +358,7 @@
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.tag = 1;
         
-        NSLog(@"theButton.tag=%u", theButton.tag);
+        //NSLog(@"theButton.tag=%u", theButton.tag);
         
         view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         [view addSubview:theButton];

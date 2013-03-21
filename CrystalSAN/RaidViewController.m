@@ -7,7 +7,7 @@
 //
 
 #import "RaidViewController.h"
-#import "RaidViewConfigController.h"
+//#import "RaidViewVcController.h"
 #import "AppDelegate.h"
 
 
@@ -44,7 +44,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
 
     self = [super initWithCoder:aDecoder];
     
@@ -210,9 +210,9 @@
 #pragma mark - event handler
 - (void)onItemPress:(id)sender
 {
-    UIButton *theButon = (UIButton *)sender;
+    //UIButton *theButon = (UIButton *)sender;
     
-    NSLog(@"onItemPress: tag=%d",theButon.tag);
+    //NSLog(@"onItemPress: tag=%d",theButon.tag);
     
     /*
     if (theButon.tag == 201) { // RaidViewController
@@ -227,11 +227,11 @@
 
 - (IBAction)buttonConfigPressed:(id)sender
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     [self performSegueWithIdentifier:@"RaidViewConfigSegue" sender:sender];
 }
 
-
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
@@ -245,7 +245,7 @@
     }
     
 }
-
+*/
 
 #pragma mark -
 #pragma mark iCarousel methods
@@ -358,7 +358,22 @@
         //view.backgroundColor = [UIColor redColor];
         
         //UIImage *theItemImage = [UIImage imageNamed:[animals objectAtIndex:index]];
-        UIImage *theItemImage = [UIImage imageNamed:@"Device-Raid-healthy"];
+        UIImage *theItemImage = nil;
+        
+        switch (index) {
+            case 0:
+                theItemImage = [UIImage imageNamed:@"Device-Raid-problem"];
+                break;
+            case 1:
+                theItemImage = [UIImage imageNamed:@"Device-Raid-degraded"];
+                break;
+            case 2:
+                theItemImage = [UIImage imageNamed:@"Device-Raid-disappeared"];
+                break;
+            default:
+                theItemImage = [UIImage imageNamed:@"Device-Raid-healthy"];
+                break;
+        }
         //Item-RAIDView
         
         theLabel = [[UILabel alloc] init];
@@ -405,7 +420,7 @@
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.tag = 1;
         
-        NSLog(@"theButton.tag=%u", theButton.tag);
+        //NSLog(@"theButton.tag=%u", theButton.tag);
         
         view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         [view addSubview:theButton];

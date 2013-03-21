@@ -34,6 +34,7 @@
 
 @synthesize searchBar;
 @synthesize searchConnectionButton, searchNameButton, searchStatusButton;
+@synthesize itemIndexCountsAndTotalLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,7 +48,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     
     self = [super initWithCoder:aDecoder];
     
@@ -132,6 +133,9 @@
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
     
     [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+
 
 }
 
@@ -150,9 +154,9 @@
 #pragma mark - event handler
 - (void)onItemPress:(id)sender
 {
-    UIButton *theButon = (UIButton *)sender;
+    //UIButton *theButon = (UIButton *)sender;
     
-    NSLog(@"onItemPress: tag=%d",theButon.tag);
+    //NSLog(@"onItemPress: tag=%d",theButon.tag);
     
 }
 
@@ -190,7 +194,7 @@
     
 }
 
-- (IBAction)hideSlider:(id)sender
+- (IBAction)hideShowSlider:(id)sender
 {
     [theDelegate hideShowSliders:self.view];
 }
@@ -219,10 +223,24 @@
         view = [[UIView alloc] init];
         //view.backgroundColor = [UIColor redColor];
         
-        //UIImage *theItemImage = [UIImage imageNamed:[animals objectAtIndex:index]];
-        UIImage *theItemImage = [UIImage imageNamed:@"Device-Volume-healthy"];
-        //Item-RAIDView
+        UIImage *theItemImage = nil;
         
+        switch (index) {
+            case 0:
+                theItemImage = [UIImage imageNamed:@"Device-Volume-problem"];
+                break;
+            case 1:
+                theItemImage = [UIImage imageNamed:@"Device-Volume-degraded"];
+                break;
+            case 2:
+                theItemImage = [UIImage imageNamed:@"Device-Volume-disappeared"];
+                break;
+            default:
+                theItemImage = [UIImage imageNamed:@"Device-Volume-healthy"];
+                break;
+        }
+        
+
         theLabel = [[UILabel alloc] init];
         
         theLabel.numberOfLines = 0;
@@ -253,7 +271,7 @@
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.tag = 1;
         
-        NSLog(@"theButton.tag=%u", theButton.tag);
+        //NSLog(@"theButton.tag=%u", theButton.tag);
         
         view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         [view addSubview:theButton];
@@ -277,10 +295,13 @@
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
-    //NSInteger index = _carousel.currentItemIndex;
+    currentItemIndex = _carousel.currentItemIndex;
     //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
     //currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
     //currentDeviceName = [descriptions objectAtIndex:index];
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+
 }
 
 

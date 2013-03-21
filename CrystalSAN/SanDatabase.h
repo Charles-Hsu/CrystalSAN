@@ -11,7 +11,7 @@
 #import "FMDatabaseAdditions.h"
 
 @interface SanDatabase : NSObject
-@property (nonatomic, strong) FMDatabase *sanDatabase;
+@property (nonatomic, strong) FMDatabase *db;
 
 - (NSMutableArray *)getVmirrorListByKey:(NSString *)key;
 - (void)insertDemoDevices;
@@ -28,5 +28,18 @@
 
 - (NSArray *)getEngineCliConmgrDriveStatusBySerial:(NSString *)serial;
 - (NSArray *)getEngineCliConmgrDriveStatusDetailBySerial:(NSString *)serial;
+
+- (NSArray *)getEnginesByHaApplianceName:(NSString *)haApplianceName;
+
+- (void)insertUpdateHaCluster:(NSDictionary *)dict;
+- (void)insertUpdate:(NSString *)table record:(NSDictionary *)dict;
+
+- (void)syncWithServerDb:(NSString *)siteName;
+
+- (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName;
+- (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName andKey:(NSString *)key;
+- (NSDictionary *)getVpdBySerial:(NSString *)serial;
+- (NSDictionary *)getEngineCliMirrorDictBySerial:(NSString *)serial;
+- (NSArray *)getInitiatorListByEngineSerial:(NSString *)serial;
 
 @end

@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
 #import "SanDatabase.h"
+#import "MirrorViewVcController.h"
 
 
 @interface MirrorViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UISearchBarDelegate>
 
-@property (strong, nonatomic) NSMutableArray *descriptions;
+@property (strong, nonatomic) NSMutableArray *deviceArray;
 
 // view
 @property (strong, nonatomic) iCarousel *carousel;
@@ -57,6 +58,7 @@
 
 - (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )curentIndex count:(NSUInteger)count total:(NSUInteger)total;
 
+@property (strong, nonatomic) MirrorViewVcController *mirrorViewVcController;
 
 
 @end

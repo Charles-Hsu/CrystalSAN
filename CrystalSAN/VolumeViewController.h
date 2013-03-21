@@ -51,6 +51,6 @@
 - (IBAction)reloadCarousel;
 - (IBAction)updateValue:(id)sender;
 
-- (IBAction)hideSlider:(id)sender;
+- (IBAction)hideShowSlider:(id)sender;
 
 @end

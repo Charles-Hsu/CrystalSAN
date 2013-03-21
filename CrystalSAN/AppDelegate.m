@@ -27,17 +27,19 @@
     {
         switch (i) {
             case ITEM_BUTTON_VIEW_RAID_TAG:
-                [self.totalItems addObject:@"button-item-RAID-view"];
+                [self.totalItems addObject:@"Home-Button-RaidView"];
                 break;
             case ITEM_BUTTON_VIEW_MIRROR_TAG:
-                [self.totalItems addObject:@"button-item-Mirror-view"];
+                [self.totalItems addObject:@"Home-Button-HAApplianceView"];
                 break;
             case ITEM_BUTTON_VIEW_VOLUME_TAG:
-                [self.totalItems addObject:@"button-item-Volume-view"];
+                [self.totalItems addObject:@"Home-Button-VolumeView"];
                 break;
             case ITEM_BUTTON_VIEW_DRIVE_TAG:
+                [self.totalItems addObject:@"Home-Button-DriveView"];
+                break;
             case ITEM_BUTTON_VIEW_HBA_TAG:
-                [self.totalItems addObject:@"Hexagonal-orange"];
+                [self.totalItems addObject:@"Home-Button-HBAView"];
                 break;
             default:
                 [self.totalItems addObject:@"Hexagonal"];
@@ -45,7 +47,7 @@
         }
     }
     
-    NSLog(@"%@", self.totalItems);
+    //NSLog(@"%s %@", __func__, self.totalItems);
     
     self.activeItems = [NSMutableArray array];
     sanDatabase = [[SanDatabase alloc] init];
@@ -54,12 +56,11 @@
         [sanDatabase insertDemoDevices];
     }
     
+    /*
     [sanDatabase getPasswordBySiteName:@"KBS" siteID:@"123456" userName:@"admin"];
     
-    NSDictionary *dict = [sanDatabase getHAClusterDictionaryBySiteName:@"KBS"];
-    NSLog(@"%@", dict);
+    [sanDatabase syncWithServerDb:@"KBS"];
     
-    /*
     [sanDatabase getEngineCliVpdBySerial:@"00600118"];
     [sanDatabase getEngineCliMirrorBySerial:@"00600120"];
     
@@ -72,23 +73,9 @@
     [sanDatabase getEngineCliConmgrDriveStatusDetailBySerial:@"00600120"];
      */
     
-    /*
-    NSString *hostname = @"localhost";
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/samplexml.php", hostname];
-    NSURL *url = [NSURL URLWithString:urlString];
+    self.currentDeviceName = @"";
 
-    //NSURL *url = [[NSURL alloc] initWithString:@"http://www.edumobile.org/blog/uploads/XML-parsing-data/Data.xml"];
-	NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-	
-	//Initialize the delegate.
-	XMLParser *parser = [[XMLParser alloc] initXMLParser];
 
-	//Set delegate
-	[xmlParser setDelegate:(id)parser];
-	
-	//Start parsing the XML file.
-	BOOL success = [xmlParser parse];
-     */
     return YES;
 }
 
@@ -183,6 +170,34 @@
                 [subview setHidden:TRUE];
         }
     }
+}
+
+
+- (void)insertInto:(NSString *)table values:(NSDictionary *)dict
+{
+    NSMutableString *keys = [[NSMutableString alloc] init];
+    NSMutableString *values = [[NSMutableString alloc] init];
+    NSUInteger count = [[dict allKeys] count];
+    
+    for (int i=0; i<count; i++) {
+        [keys appendString:[[dict allKeys] objectAtIndex:i]];
+        if (i < count-1)
+            [keys appendString:@","];
+    }
+ 
+    for (int i=0; i<count; i++) {
+        [values appendFormat:@"'%@'", [[dict allValues] objectAtIndex:i]];
+        if (i < count-1)
+            [values appendString:@","];
+    }
+
+    if ([table isEqualToString:@"ha_cluster"]) {
+        [sanDatabase insertUpdateHaCluster: dict];
+    }
+    else {
+        [sanDatabase insertUpdate:table record: dict];
+    }
+    
 }
 
 - (NSString *)getSanVmirrorLists

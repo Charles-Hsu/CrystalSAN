@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 
-@class AppDelegate;
+//@class AppDelegate;
 
 @interface XMLParser : NSObject {
 

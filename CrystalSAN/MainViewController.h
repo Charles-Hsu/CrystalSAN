@@ -36,12 +36,24 @@
 @property (nonatomic, retain) IBOutlet UISlider *arcSlider;
 @property (nonatomic, retain) IBOutlet UISlider *radiusSlider;
 @property (nonatomic, retain) IBOutlet UISlider *spacingSlider;
+@property (strong, nonatomic) IBOutlet UISlider *sizingSlider;
 
 @property (nonatomic, retain) IBOutlet UILabel *arcValue;
 @property (nonatomic, retain) IBOutlet UILabel *radiusValue;
 @property (nonatomic, retain) IBOutlet UILabel *spacingValue;
+@property (nonatomic, retain) IBOutlet UILabel *sizingValue;
+
+@property (nonatomic, retain) IBOutlet UILabel *arcLabel;
+@property (nonatomic, retain) IBOutlet UILabel *radiusLabel;
+@property (nonatomic, retain) IBOutlet UILabel *spacingLabel;
+@property (nonatomic, retain) IBOutlet UILabel *sizingLabel;
+
+
 
 - (IBAction)reloadCarousel;
 - (IBAction)updateValue:(id)sender;
+
+- (IBAction)hideShowSlider:(id)sender;
+
 
 @end

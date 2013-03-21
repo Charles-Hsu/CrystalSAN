@@ -11,6 +11,7 @@
 
 
 @interface HbaViewController () {
+    
     NSMutableArray *statusArray;
     NSInteger totalItemInCarousel;
     
@@ -19,6 +20,8 @@
     NSUInteger totalCount;
     
     AppDelegate *theDelegate;
+    
+    NSArray *deviceArray;
 
 }
 @end
@@ -27,7 +30,7 @@
 @implementation HbaViewController
 
 @synthesize carousel;
-@synthesize descriptions;
+//@synthesize descriptions;
 
 @synthesize arcValue, radiusValue, spacingValue, sizingValue;
 @synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
@@ -40,7 +43,7 @@
 @synthesize searchBar;
 
 @synthesize searchConnectionButton, searchNameButton, searchStatusButton;
-
+@synthesize itemIndexCountsAndTotalLabel;
 
 @synthesize sanDatabase;
 //@synthesize currentItemIndex;
@@ -49,7 +52,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     
     self = [super initWithCoder:aDecoder];
     
@@ -108,7 +111,13 @@
                     nil];
      */
     
-    descriptions = [sanDatabase getVmirrorListByKey:@""];
+    NSLog(@"%s %@", __func__, theDelegate.currentDeviceName); 
+
+    
+
+    //NSLog(@"%s %@", __func__, deviceArray);
+    
+    //descriptions = [sanDatabase getVmirrorListByKey:@""];
     //NSLog(@"description count = %u", [descriptions count]);
 
     //init/add carouse view
@@ -122,34 +131,48 @@
     carousel.contentOffset = CGSizeMake(0, -250);
     carousel.viewpointOffset = CGSizeMake(0, -330);
     carousel.decelerationRate = 0.9;
-    
-    /*
-    totalItemInCarousel = [descriptions count];
-    totalItemCount.text = [NSString stringWithFormat:@"%u", totalItemInCarousel];
-    totalItem.text = totalItemCount.text;
-    
-    //currentItemIndex.text = @"1";
-    
-    [totalItem setHidden:YES];
-    
-    // change the background to clearColor
-    // http://stackoverflow.com/questions/8999322/how-to-change-search-bar-background-color-in-ipad
-    for (UIView *subview in searchBar.subviews) {
-        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
-            [subview removeFromSuperview];
-            break;
-        }
-    }
-    // change the size of searchBar
-    // http://stackoverflow.com/questions/556814/changing-the-size-of-the-uisearchbar-textfield
-    
-    //[carousel reloadData];
-     */
-    
+        
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
     
     [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
+    
+    
+    totalItemInCarousel = [deviceArray count];
+    //NSUInteger count = [deviceArray count];
+    
+    //currentItemIndex = 0;
+    //currentCollectionCount =  count;
+    //totalCount = count;
+    
 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%s", __func__);
+    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    
+    // currentDeviceName in theDelegate is a HA-Cluster-Name
+    NSLog(@"%s currentDeviceName %@", __func__, theDelegate.currentDeviceName);
+    deviceArray = [sanDatabase getInitiatorListByEngineSerial:theDelegate.currentDeviceName];
+    //deviceArray = [sanDatabase getInitiatorListByEngineSerial:theDelegate.currentDeviceName];
+
+    
+    if (carousel.currentItemIndex > [deviceArray count]) {
+        carousel.currentItemIndex = 0;
+    }
+ 
+    currentItemIndex = carousel.currentItemIndex;
+
+    currentCollectionCount = [deviceArray count];
+    totalCount = [deviceArray count];
+    NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+    
+    NSLog(@"%s size of diskArray %u", __func__, [deviceArray count]);
+    NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+    [carousel reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -181,7 +204,7 @@
 {
     //get data
     //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [theDelegate getSanVmirrorLists];
+    //[theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -299,21 +322,14 @@
 {
     NSLog(@"%s searchTerm=%@", __func__, searchTerm);
     
-    descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
-    totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
+    //descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
     
-    if ([searchTerm length] != 0)
-    {
-        [totalItem setHidden:NO];
-    }
-    else
-    {
-        [totalItem setHidden:YES];
-    }
+    //deviceArray = [theDelegate.sanDatabase ]
+    //[theDelegate.sanDatabase getInitiatorListByEngineSerial:theDelegate.currentDeviceName]
     
     [carousel reloadData];
 
-    [carousel scrollToItemAtIndex:0 animated:TRUE];
+    //[carousel scrollToItemAtIndex:0 animated:TRUE];
     if ([carousel numberOfItems] > 0) {
         //NSInteger index = carousel.currentItemIndex;
         //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
@@ -337,15 +353,19 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    NSLog(@"%s count=%d", __func__, [descriptions count]);
-    return [descriptions count];
+    NSLog(@"%s count=%d", __func__, [deviceArray count]);
+    return [deviceArray count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    NSLog(@"%s index=%u %@", __func__, index, [descriptions objectAtIndex:index]);
+    NSLog(@"%s index=%u %@", __func__, index, [deviceArray objectAtIndex:index]);
     UILabel *theLabel = nil;
-    NSInteger status = [[statusArray objectAtIndex:index] integerValue];
+    //NSInteger status = [[statusArray objectAtIndex:index] integerValue];
+    
+    NSDictionary *dict = [deviceArray objectAtIndex:index];
+    NSString *wwpn = [dict valueForKey:@"wwpn"];
+    NSString *status = [dict valueForKey:@"status"];
     
 	//create new view if no view is available for recycling
 	if (view == nil)
@@ -355,11 +375,16 @@
         //view.backgroundColor = [UIColor grayColor];
         view.contentMode = UIViewContentModeScaleAspectFit;
         
-        UIImage *theItemImage = nil;
+        UIImage *theItemImage = [UIImage imageNamed:@"Device-HBA-healthy"];
         
+        if ([status isEqualToString:@"I"]) {
+            theItemImage = [UIImage imageNamed:@"Device-HBA-disappeared"];
+        }
+        
+        /*
         switch (status) {
             case 0: // healthy
-                theItemImage = [UIImage imageNamed:@"image-hba"];
+                theItemImage = [UIImage imageNamed:@"Device-HBA-healthy"];
                 break;
             case 1: // degarded
                 theItemImage = [UIImage imageNamed:@"HA-item-orange"];
@@ -370,6 +395,7 @@
             default:
                 break;
         }
+         */
         
         theLabel = [[UILabel alloc] init];
         theLabel.numberOfLines = 0;
@@ -387,14 +413,14 @@
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-60, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-25, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.tag = 1;
         
-        NSLog(@"theButton.tag=%u", theButton.tag);
+        //NSLog(@"theButton.tag=%u", theButton.tag);
         
         view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         view.contentMode = UIViewContentModeScaleAspectFit;
@@ -410,8 +436,8 @@
         theLabel = (UILabel *)[view viewWithTag:1];
 	}
     
-    theLabel.text = [descriptions objectAtIndex:index];
-    
+    theLabel.text = [NSString stringWithFormat:@"%@(%@)", wwpn, status];
+
 	return view;
 }
 
@@ -419,7 +445,12 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
-    NSLog(@"carousel:didSelectItemAtIndex:  %d",index);
+    currentItemIndex = index;
+    currentCollectionCount = [deviceArray count];
+    totalCount = [deviceArray count];
+    NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+
 }
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
@@ -427,6 +458,14 @@
     //NSInteger index = _carousel.currentItemIndex;
     //NSLog(@"%s: current index=%u '%@'", __func__, index, [descriptions objectAtIndex:index]);
     //currentItemIndex.text = [NSString stringWithFormat:@"%u", index+1];
+    currentItemIndex = _carousel.currentItemIndex;
+    currentCollectionCount = [deviceArray count];
+    totalCount = [deviceArray count];
+    NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+    
+
+    
 }
 
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value

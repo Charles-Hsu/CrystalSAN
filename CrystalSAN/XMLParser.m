@@ -8,6 +8,17 @@
 
 #import "XMLParser.h"
 
+@interface XMLParser () {
+    
+    NSString *tableName;
+    NSMutableArray *records;
+    
+    NSMutableDictionary *dict;
+}
+
+@end
+
+
 @implementation XMLParser
 
 - (XMLParser *) initXMLParser {
@@ -15,6 +26,9 @@
 	self = [super init];
 	
 	appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    records = [[NSMutableArray alloc] init];
+    
+    dict = [[NSMutableDictionary alloc] init];
 	
 	return self;
 }
@@ -27,7 +41,8 @@
 		//Initialize the array.
 		//appDelegate.books = [[NSMutableArray alloc] init];
 	}
-	else if([elementName isEqualToString:@"Book"]) {
+	//else if([elementName isEqualToString:@"Book"]) {
+    else if([elementName isEqualToString:@"record"]) {
 		
 		//Initialize the book.
 		//aBook = [[Book alloc] init];
@@ -38,7 +53,12 @@
 		//NSLog(@"Reading id value :%i", aBook.bookID);
 	}
 	
-	NSLog(@"Processing Element: %@", elementName);
+	//NSLog(@"<%@>", elementName);
+    
+    if (tableName == nil) {
+        tableName = elementName;
+        NSLog(@"tableName=%@", tableName);
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -47,21 +67,26 @@
 		currentElementValue = [[NSMutableString alloc] initWithString:string];
 	else
 		[currentElementValue appendString:string];
-	
-	NSLog(@"Processing Value: %@", currentElementValue);
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	
-	if([elementName isEqualToString:@"Books"])
+	//if([elementName isEqualToString:@"Books"])
+    if([elementName isEqualToString:@"ha_cluster"]) {
+        //NSLog(@"elementName=%@", elementName);
+        //NSLog(@"write to database");
+        tableName = nil;
 		return;
+    }
+    
+    //NSLog(@"</%@>", elementName);
 	
 	//There is nothing to do if we encounter the Books element here.
 	//If we encounter the Book element howevere, we want to add the book object to the array
 	// and release the object.
     /*
-	if([elementName isEqualToString:@"Book"]) {
+	if([elementName isEqualToString:@"book"]) {
 		[appDelegate.books addObject:aBook];
 		
 		[aBook release];
@@ -70,7 +95,22 @@
 	else
 		[aBook setValue:currentElementValue forKey:elementName];
 	*/
-	//[currentElementValue release];
+     if([elementName isEqualToString:@"record"]) {
+
+         NSLog(@"Dict = %@", dict);
+         NSLog(@"Write to database");
+         //[appDelegate.books addObject:aBook];
+         [appDelegate insertInto:tableName values:dict];
+     
+         //[aBook release];
+         //aBook = nil;
+     }
+     else {
+         //[aBook setValue:currentElementValue forKey:elementName];
+         [dict setValue:currentElementValue forKey:elementName];
+     }
+
+	//[currentElementValue release]; // *** ARC forbids explicit message send of 'release'
 	currentElementValue = nil;
 }
 

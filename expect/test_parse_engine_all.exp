@@ -1,0 +1,13 @@
+#!/usr/bin/expect
+
+exec expect parse_engine_all.exp engine_227_all.xml /Library/WebServer/Documents/CrystalSANServer/server.db
+exec expect parse_engine_all.exp engine_228_all.xml /Library/WebServer/Documents/CrystalSANServer/server.db
+exec expect parse_engine_all.exp engine_229_all.xml /Library/WebServer/Documents/CrystalSANServer/server.db
+exec expect parse_engine_all.exp engine_230_all.xml /Library/WebServer/Documents/CrystalSANServer/server.db
+exec expect parse_engine_all.exp engine_231_all.xml /Library/WebServer/Documents/CrystalSANServer/server.db
+exec expect parse_engine_all.exp engine_232_all.xml /Library/WebServer/Documents/CrystalSANServer/server.db
+exec expect parse_engine_all.exp engine_233_all.xml /Library/WebServer/Documents/CrystalSANServer/server.db
+exec expect parse_engine_all.exp engine_234_all.xml /Library/WebServer/Documents/CrystalSANServer/server.db
+exec expect scan_ha_cluster.exp /Library/WebServer/Documents/CrystalSANServer/server.db
+
+exec echo a

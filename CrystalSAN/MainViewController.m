@@ -10,21 +10,19 @@
 #import "AppDelegate.h"
 
 
-@interface MainViewController ()
+@interface MainViewController () {
+    AppDelegate *theDelegate;
+}
 
 @end
 
 @implementation MainViewController
 
 @synthesize carousel;
-@synthesize arcValue;
-@synthesize radiusValue;
-@synthesize spacingValue;
 
-@synthesize arcSlider;
-@synthesize radiusSlider;
-@synthesize spacingSlider;
-
+@synthesize arcSlider, radiusSlider, spacingSlider, sizingSlider;
+@synthesize arcValue, radiusValue, spacingValue, sizingValue;
+@synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -63,7 +61,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     //get data
-    AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.totalItems = theDelegate.totalItems;
     self.activeItems = theDelegate.activeItems;
     
@@ -75,13 +73,15 @@
     carousel.type = iCarouselTypeRotary; //0 - -0.01;
     
     carousel.contentOffset = CGSizeMake(0, -250);
-    carousel.viewpointOffset = CGSizeMake(0, -330);
+    //carousel.contentOffset = CGSizeMake(0, -200);
+    //carousel.viewpointOffset = CGSizeMake(0, -330);
+    carousel.viewpointOffset = CGSizeMake(0, -350);
     carousel.decelerationRate = 0.9;
     
-    NSLog(@"viewpointOffset=(%f,%f)", carousel.viewpointOffset.width, carousel.viewpointOffset.height);
-    NSLog(@"contentOffset=(%f,%f)", carousel.contentOffset.width, carousel.contentOffset.height);
+    //NSLog(@"viewpointOffset=(%f,%f)", carousel.viewpointOffset.width, carousel.viewpointOffset.height);
+    //NSLog(@"contentOffset=(%f,%f)", carousel.contentOffset.width, carousel.contentOffset.height);
 
-    [carousel scrollToItemAtIndex:2 animated:TRUE];
+    [carousel scrollToItemAtIndex:1 animated:TRUE];
     
     // Here does not use the method
     // -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender defined in storyboard,
@@ -106,6 +106,8 @@
     self.hbaViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
     //[theDelegate getSanVmirrorLists];
+    [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
+
     
 }
 
@@ -135,10 +137,10 @@
 #pragma mark - event handler
 - (void)onItemPress:(id)sender
 {
-    NSLog(@"%s: %@",__func__, sender);
+    //NSLog(@"%s: %@",__func__, sender);
           
     UIButton *theButton = (UIButton *)sender;
-    NSLog(@"theButton.tag==%u", theButton.tag);
+    //NSLog(@"theButton.tag==%u", theButton.tag);
     
     if (theButton.tag == 201) // RaidViewController
     { 
@@ -164,6 +166,11 @@
     }
 }
 
+- (IBAction)hideShowSlider:(id)sender
+{
+    [theDelegate hideShowSliders:self.view];
+}
+
 - (IBAction)reloadCarousel
 {
     [carousel reloadData];
@@ -172,20 +179,19 @@
 - (IBAction)updateValue:(id)sender
 {
     UISlider *slider = (UISlider*)sender;
+    //NSLog(@"%s %@ %@", __func__, sender, [sender restorationIdentifier]);
+    NSLog(@"%s", __func__);
     NSString *identifier = [sender restorationIdentifier];
-    
-    if ([identifier isEqualToString:@"arcSlider"])
-    {
+    if ([identifier isEqualToString:@"arcSlider"]) {
         arcValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    }
-    else if ([identifier isEqualToString:@"radiusSlider"])
-    {
+    } else if ([identifier isEqualToString:@"radiusSlider"]) {
         radiusValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    }
-    else if ([identifier isEqualToString:@"spacingSlider"])
-    {
+    } else if ([identifier isEqualToString:@"spacingSlider"]) {
         spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } 
+    } else if ([identifier isEqualToString:@"sizingSlider"]) {
+        sizingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
+    }
+    
 }
 
 #pragma mark - iCarousel datasource and delegate
@@ -197,12 +203,15 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    NSLog(@"%s index=%u %@", __func__, index, self.totalItems[index]);
+    //NSLog(@"%s index=%u %@", __func__, index, self.totalItems[index]);
     
     UIButton *theButton;
     UIView *theView;
     
     UIImage *theItemImage = [UIImage imageNamed:self.totalItems[index]];
+    //UIImage *theItemImage = [UIImage imageNamed:@"Home-Button-HBAView"];
+
+    
     UILabel *theLabel = [[UILabel alloc] init];
     //theLabel.text = [NSString stringWithFormat:@"%u %@", index, [self.descriptions objectAtIndex:index]];
     theLabel.text = [NSString stringWithFormat:@"%@", [self.descriptions objectAtIndex:index]];
@@ -211,10 +220,10 @@
 	//create new view if no view is available for recycling
 	if (view == nil)
 	{
-        theView = [[[UIView alloc] init] autorelease];
+        theView = [[UIView alloc] init];
         
-        float itemWidth = theItemImage.size.width /4 * 3;
-        float itemHeight = theItemImage.size.height /4 * 3;
+        float itemWidth = theItemImage.size.width;
+        float itemHeight = theItemImage.size.height;
        
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
@@ -238,9 +247,20 @@
         
         UIColor *textColor = [UIColor whiteColor];
         
-        if (index < 3) // lower the center with 50 points
-        {
+        if (index < 2) { // lower the center with 50 points
             centery = centery + 50;
+            textColor = [UIColor darkGrayColor];
+        }
+        else if (index == 2) {
+            centery = centery + 63;
+            textColor = [UIColor darkGrayColor];
+        }
+        else if (index == 10) {
+            centery = centery + 50;
+            textColor = [UIColor darkGrayColor];
+        }
+        else if (index == 11) {
+            centery = centery + 60;
             textColor = [UIColor darkGrayColor];
         }
         
@@ -257,7 +277,7 @@
         theLabel.lineBreakMode = UILineBreakModeWordWrap;
         theLabel.numberOfLines = 0;
 
-        NSLog(@"theButton.tag=%u", theButton.tag);
+        //NSLog(@"theButton.tag=%u", theButton.tag);
         
         theView.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         [theView addSubview:theButton];

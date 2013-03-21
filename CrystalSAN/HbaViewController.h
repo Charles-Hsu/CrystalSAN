@@ -13,7 +13,7 @@
 
 @interface HbaViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UISearchBarDelegate>
 
-@property (strong, nonatomic) NSMutableArray *descriptions;
+//@property (strong, nonatomic) NSMutableArray *descriptions;
 
 // view
 @property (strong, nonatomic) iCarousel *carousel;

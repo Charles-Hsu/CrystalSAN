@@ -29,7 +29,7 @@
 @implementation MirrorViewController
 
 @synthesize carousel;
-@synthesize descriptions;
+@synthesize deviceArray;
 
 @synthesize arcValue, radiusValue, spacingValue, sizingValue;
 @synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
@@ -46,7 +46,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     
     self = [super initWithCoder:aDecoder];
     
@@ -68,7 +68,7 @@
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
     
-    descriptions = [sanDatabase getVmirrorListByKey:@""];
+    deviceArray = [sanDatabase getHaApplianceNameListBySiteName:@""];
     //NSLog(@"description count = %u", [descriptions count]);
 
     //init/add carouse view
@@ -83,8 +83,8 @@
     carousel.viewpointOffset = CGSizeMake(0, -330);
     carousel.decelerationRate = 0.9;
     
-    totalItemInCarousel = [descriptions count];
-    NSUInteger count = [descriptions count];
+    totalItemInCarousel = [deviceArray count];
+    NSUInteger count = [deviceArray count];
     
     currentItemIndex = 0;
     currentCollectionCount =  count;
@@ -94,10 +94,26 @@
     
     //[carousel reloadData];
     
+    self.mirrorViewVcController = [self.storyboard instantiateViewControllerWithIdentifier:@"MirrorViewVcControllerID"];
+    self.mirrorViewVcController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    currentItemIndex = carousel.currentItemIndex;
+    
+    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
+
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
-
+    
     [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
+    
 
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%s", __func__);
+    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
 }
 
 - (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )currentIndex count:(NSUInteger)count total:(NSUInteger)total
@@ -126,16 +142,25 @@
 
 - (void)onItemPress:(id)sender
 {
-    //UIButton *theButon = (UIButton *)sender;
-    //NSInteger index = carousel.currentItemIndex;
-    //NSLog(@"onItemPress: tag=%d, current index=%u %@",theButon.tag, index, [descriptions objectAtIndex:index]);
+    UIButton *theButon = (UIButton *)sender;
+    NSInteger index = carousel.currentItemIndex;
+    NSLog(@"onItemPress: tag=%d, current index=%u %@",theButon.tag, index, [deviceArray objectAtIndex:index]);
+    
+    //currentItemIndex = _carousel.currentItemIndex;
+
+    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
+    
+    //self.mirrorViewVcController.haApplianceName = [deviceArray objectAtIndex:currentItemIndex];
+    //self.mirrorViewVcController.deviceLabel.text = self.mirrorViewVcController.haApplianceName;
+    [self presentViewController:self.mirrorViewVcController animated:YES completion:nil];
+
 }
 
 - (IBAction)onHome:(id)sender
 {
     //get data
     //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [theDelegate getSanVmirrorLists];
+    //[theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -248,8 +273,11 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchTerm
 {
-    descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
-    currentCollectionCount = [descriptions count];
+    //descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
+    
+    deviceArray = [sanDatabase getHaApplianceNameListBySiteName:@"" andKey:searchTerm];
+    
+    currentCollectionCount = [deviceArray count];
     [carousel scrollToItemAtIndex:0 animated:TRUE];
     currentItemIndex = carousel.currentItemIndex;
     
@@ -264,13 +292,13 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    NSLog(@"%s count=%d", __func__, [descriptions count]);
-    return [descriptions count];
+    NSLog(@"%s count=%d", __func__, [deviceArray count]);
+    return [deviceArray count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    NSLog(@"%s index=%u %@", __func__, index, [descriptions objectAtIndex:index]);
+    NSLog(@"%s index=%u %@", __func__, index, [deviceArray objectAtIndex:index]);
     UILabel *theLabel = nil;
     NSInteger status = [[statusArray objectAtIndex:index] integerValue];
     
@@ -318,7 +346,7 @@
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.tag = 1;
         
-        NSLog(@"theButton.tag=%u", theButton.tag);
+        //NSLog(@"theButton.tag=%u", theButton.tag);
         
         view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         [view addSubview:theButton];
@@ -331,7 +359,7 @@
         theLabel = (UILabel *)[view viewWithTag:1];
 	}
     
-    theLabel.text = [descriptions objectAtIndex:index];
+    theLabel.text = [deviceArray objectAtIndex:index];
     
 	return view;
 }
@@ -346,6 +374,8 @@
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
     currentItemIndex = _carousel.currentItemIndex;
+    
+    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
 }

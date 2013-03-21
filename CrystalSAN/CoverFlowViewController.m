@@ -69,7 +69,7 @@
     
     UIButton *theButon = (UIButton *)sender;
 
-    NSLog(@"onItemPress:, tag=%d",theButon.tag);
+    //NSLog(@"onItemPress:, tag=%d",theButon.tag);
     
 }
 

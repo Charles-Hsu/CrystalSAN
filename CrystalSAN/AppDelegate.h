@@ -40,6 +40,8 @@
 - (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )currentIndex count:(NSUInteger)count total:(NSUInteger)total forUILabel:(UILabel *)itemIndexCountsAndTotalLabel;
 
 - (void)hideShowSliders:(UIView *)view;
+
+- (void)insertInto:(NSString *)table values:(NSDictionary *)dict;
 //- (void)hideSlider:(id)sender;
 
 @end
