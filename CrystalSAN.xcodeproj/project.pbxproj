@@ -35,6 +35,7 @@
 		56424EF516FAAA1000616251 /* Device-Volume-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EF216FAAA1000616251 /* Device-Volume-degraded.png */; };
 		56424EF616FAAA1000616251 /* Device-Volume-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EF316FAAA1000616251 /* Device-Volume-disappeared.png */; };
 		56424EF716FAAA1000616251 /* Device-Volume-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EF416FAAA1000616251 /* Device-Volume-problem.png */; };
+		56424EF916FABDC100616251 /* Text-Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EF816FABDC100616251 /* Text-Home.png */; };
 		565057C616F7E8CA00CCFF7D /* MirrorViewVcController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565057C516F7E8C900CCFF7D /* MirrorViewVcController.m */; };
 		565057D316F80AC100CCFF7D /* Device-HBA-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057D216F80AC100CCFF7D /* Device-HBA-healthy.png */; };
 		565057D716F8139500CCFF7D /* Text-Vc.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057D616F8139400CCFF7D /* Text-Vc.png */; };
@@ -138,6 +139,7 @@
 		56424EF216FAAA1000616251 /* Device-Volume-degraded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-degraded.png"; sourceTree = "<group>"; };
 		56424EF316FAAA1000616251 /* Device-Volume-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-disappeared.png"; sourceTree = "<group>"; };
 		56424EF416FAAA1000616251 /* Device-Volume-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-problem.png"; sourceTree = "<group>"; };
+		56424EF816FABDC100616251 /* Text-Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Home.png"; sourceTree = "<group>"; };
 		565057BB16F7338C00CCFF7D /* test_parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = test_parse_engine_all.exp; sourceTree = "<group>"; };
 		565057BD16F738F100CCFF7D /* script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = script.sh; sourceTree = "<group>"; };
 		565057C416F7E8BC00CCFF7D /* MirrorViewVcController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MirrorViewVcController.h; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				561A93F8169C4A710063F990 /* text-CircularMode.png */,
 				561A93F9169C4A710063F990 /* text-DiagonalMode.png */,
 				567ABEC316F57E58004B789D /* Text-Volume View.png */,
+				56424EF816FABDC100616251 /* Text-Home.png */,
 				567ABEC716F57F9F004B789D /* Text-RAID View.png */,
 				567ABED016F58E52004B789D /* Text-Drive View.png */,
 				567ABED416F591F4004B789D /* Text-HBA View.png */,
@@ -653,6 +656,7 @@
 				56424EF516FAAA1000616251 /* Device-Volume-degraded.png in Resources */,
 				56424EF616FAAA1000616251 /* Device-Volume-disappeared.png in Resources */,
 				56424EF716FAAA1000616251 /* Device-Volume-problem.png in Resources */,
+				56424EF916FABDC100616251 /* Text-Home.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3173,7 +3173,7 @@
         <image name="Text-Drive View.png" width="228" height="54"/>
         <image name="Text-HA Appliance View.png" width="16" height="16"/>
         <image name="Text-HBA View.png" width="202" height="49"/>
-        <image name="Text-Home.png" width="16" height="16"/>
+        <image name="Text-Home.png" width="122" height="50"/>
         <image name="Text-RAID View.png" width="202" height="49"/>
         <image name="Text-Vc.png" width="90" height="54"/>
         <image name="Text-Volume View.png" width="237" height="50"/>
