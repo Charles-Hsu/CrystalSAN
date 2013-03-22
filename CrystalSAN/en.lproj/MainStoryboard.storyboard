@@ -877,7 +877,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIs-nA-1fb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="-646"/>
+            <point key="canvasLocation" x="476" y="-711"/>
         </scene>
         <!--Volume View Controller-->
         <scene sceneID="4XE-nL-MyA">
@@ -1362,6 +1362,10 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="Text-HA Appliance View.png" id="vAP-tQ-7or">
                                 <rect key="frame" x="71" y="35" width="346" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Text-HA Appliance View - Connection.png" id="Xhc-9O-OQc">
+                                <rect key="frame" x="369" y="43" width="306" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zyd-wk-Uih" userLabel="Button - Home">
@@ -2021,7 +2025,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WcI-hz-Uf7" userLabel="Hide/Show Sliders">
-                                <rect key="frame" x="80" y="46" width="337" height="44"/>
+                                <rect key="frame" x="85" y="41" width="305" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -2035,13 +2039,6 @@
                                     <action selector="hideSlider:" destination="whg-kQ-d2J" eventType="touchUpInside" id="UFl-iu-s7T"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" text="- Connection" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j7w-Sn-Wa1">
-                                <rect key="frame" x="419" y="43" width="247" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -2094,6 +2091,10 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="Text-HA Appliance View.png" id="ke1-zO-GEp">
                                 <rect key="frame" x="71" y="35" width="346" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Text-HA Appliance View - Mirror.png" id="P9Z-dw-ZUJ" userLabel="Image View - Text-HA Appliance View - Mirror.png">
+                                <rect key="frame" x="387" y="42" width="306" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BaK-Ui-kA9" userLabel="Button - Home">
@@ -2188,13 +2189,6 @@
                                     </textView>
                                 </subviews>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" text="- Mirror" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1fB-Ge-SwP">
-                                <rect key="frame" x="425" y="43" width="247" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -2394,13 +2388,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" text="- Cluster" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0cj-dt-L3d">
-                                <rect key="frame" x="426" y="43" width="166" height="49"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Text-HA Appliance View - Cluster.png" id="pIG-7H-vhI">
+                                <rect key="frame" x="386" y="40" width="306" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -2893,7 +2884,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oKV-tS-zmt" userLabel="Button - Home">
-                                <rect key="frame" x="733" y="525" width="140" height="134"/>
+                                <rect key="frame" x="735" y="525" width="140" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <state key="normal" title="Button-Home" image="Button-Home.png">
@@ -3171,7 +3162,10 @@
         <image name="Information-Board.png" width="442" height="51"/>
         <image name="Text-CrystalSAN.png" width="132" height="45"/>
         <image name="Text-Drive View.png" width="228" height="54"/>
-        <image name="Text-HA Appliance View.png" width="16" height="16"/>
+        <image name="Text-HA Appliance View - Cluster.png" width="255" height="48"/>
+        <image name="Text-HA Appliance View - Connection.png" width="255" height="48"/>
+        <image name="Text-HA Appliance View - Mirror.png" width="255" height="48"/>
+        <image name="Text-HA Appliance View.png" width="346" height="54"/>
         <image name="Text-HBA View.png" width="202" height="49"/>
         <image name="Text-Home.png" width="122" height="50"/>
         <image name="Text-RAID View.png" width="202" height="49"/>
@@ -3185,14 +3179,243 @@
         <image name="text-DiagonalMode.png" width="391" height="56"/>
         <image name="uislider-thumb.png" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="DriveViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriveViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hideShowSliders:"/>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchConnectionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchNameButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchStatusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HbaViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HbaViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="showHideSliders:"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchConnectionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchNameButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchStatusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalItem" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalItemCount" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hideShowSlider:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MirrorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MirrorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hideSlider:"/>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchConnectionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchNameButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchStatusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MirrorViewVcController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MirrorViewVcController.h"/>
+            <relationships>
+                <relationship kind="action" name="hideSlider:"/>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deviceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun00Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lun00Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun01Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lun01Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun02Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lun02Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun03Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lun03Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun04Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lun04Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun05Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lun05Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MirrorViewVfController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MirrorViewVfController.h"/>
+            <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="outlet" name="engine0Serial" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="engine0mirror" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="engine1Serial" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="engine1mirror" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MirrorViewViController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MirrorViewViController.h"/>
+            <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="outlet" name="driveInformation" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="engine0Serial" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="engine0Vpd" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="engine1Serial" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="engine1Vpd" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hbaInformation" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mirrorInformation" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RaidViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RaidViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonConfigPressed:"/>
+                <relationship kind="action" name="hideSlider:"/>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchConnectionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchNameButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchStatusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RaidViewVcController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RaidViewVcController.h"/>
+            <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="outlet" name="deviceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VolumeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VolumeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hideShowSlider:"/>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="reloadCarousel"/>
+                <relationship kind="action" name="updateValue:"/>
+                <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchConnectionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchNameButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchStatusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Mkl-G1-fQg"/>
-        <segue reference="LPB-Ox-4ST"/>
+        <segue reference="UgR-Po-8d3"/>
+        <segue reference="7FE-LI-xeF"/>
         <segue reference="6yA-wg-w5X"/>
     </inferredMetricsTieBreakers>
 </document>

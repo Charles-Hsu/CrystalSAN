@@ -24,6 +24,16 @@
 		5623C77E16BD54BF009410B2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77716BD54BF009410B2 /* FMDatabaseQueue.m */; };
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
+		5637E7CC16FAD52A00ED0BC3 /* scan_ha_cluster.exp in Sources */ = {isa = PBXBuildFile; fileRef = 5637E7CA16FAD52A00ED0BC3 /* scan_ha_cluster.exp */; };
+		5637E7CD16FAD52A00ED0BC3 /* parse_engine_all.exp in Sources */ = {isa = PBXBuildFile; fileRef = 5637E7CB16FAD52A00ED0BC3 /* parse_engine_all.exp */; };
+		5637E7CF16FAEF3E00ED0BC3 /* Text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7CE16FAEF3E00ED0BC3 /* Text-HA Appliance View.png */; };
+		5637E7D116FAF56C00ED0BC3 /* Text-Connection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D016FAF56C00ED0BC3 /* Text-Connection.png */; };
+		5637E7D616FB341600ED0BC3 /* Text-HA Appliance View - Cluster.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D216FB341500ED0BC3 /* Text-HA Appliance View - Cluster.png */; };
+		5637E7D716FB341600ED0BC3 /* Text-HA Appliance View - Connection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D316FB341600ED0BC3 /* Text-HA Appliance View - Connection.png */; };
+		5637E7D816FB341600ED0BC3 /* Text-HA Appliance View - History.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D416FB341600ED0BC3 /* Text-HA Appliance View - History.png */; };
+		5637E7D916FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D516FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png */; };
+		5637E7DB16FB439B00ED0BC3 /* parse_engine_all_20130321.exp in Sources */ = {isa = PBXBuildFile; fileRef = 5637E7DA16FB439B00ED0BC3 /* parse_engine_all_20130321.exp */; };
+		5637E7DD16FB43E200ED0BC3 /* public-parse-xml-proc.exp in Sources */ = {isa = PBXBuildFile; fileRef = 5637E7DC16FB43E200ED0BC3 /* public-parse-xml-proc.exp */; };
 		56424EE416FAA40200616251 /* Device-HBA-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EE216FAA40200616251 /* Device-HBA-disappeared.png */; };
 		56424EE516FAA40200616251 /* Device-HBA-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EE316FAA40200616251 /* Device-HBA-problem.png */; };
 		56424EE916FAA5FA00616251 /* Device-Raid-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EE616FAA5FA00616251 /* Device-Raid-degraded.png */; };
@@ -128,6 +138,16 @@
 		5623C77916BD54BF009410B2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		5623C77A16BD54BF009410B2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		5623C78116BD565E009410B2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		5637E7CA16FAD52A00ED0BC3 /* scan_ha_cluster.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_ha_cluster.exp; sourceTree = "<group>"; };
+		5637E7CB16FAD52A00ED0BC3 /* parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all.exp; sourceTree = "<group>"; };
+		5637E7CE16FAEF3E00ED0BC3 /* Text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View.png"; sourceTree = "<group>"; };
+		5637E7D016FAF56C00ED0BC3 /* Text-Connection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Connection.png"; sourceTree = "<group>"; };
+		5637E7D216FB341500ED0BC3 /* Text-HA Appliance View - Cluster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Cluster.png"; sourceTree = "<group>"; };
+		5637E7D316FB341600ED0BC3 /* Text-HA Appliance View - Connection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Connection.png"; sourceTree = "<group>"; };
+		5637E7D416FB341600ED0BC3 /* Text-HA Appliance View - History.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - History.png"; sourceTree = "<group>"; };
+		5637E7D516FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Mirror.png"; sourceTree = "<group>"; };
+		5637E7DA16FB439B00ED0BC3 /* parse_engine_all_20130321.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all_20130321.exp; sourceTree = "<group>"; };
+		5637E7DC16FB43E200ED0BC3 /* public-parse-xml-proc.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = "public-parse-xml-proc.exp"; sourceTree = "<group>"; };
 		56424EE216FAA40200616251 /* Device-HBA-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-disappeared.png"; sourceTree = "<group>"; };
 		56424EE316FAA40200616251 /* Device-HBA-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-problem.png"; sourceTree = "<group>"; };
 		56424EE616FAA5FA00616251 /* Device-Raid-degraded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-degraded.png"; sourceTree = "<group>"; };
@@ -161,8 +181,6 @@
 		565057FB16F8A87400CCFF7D /* Information-Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Information-Board.png"; sourceTree = "<group>"; };
 		565057FD16F93BD300CCFF7D /* MirrorViewVfController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MirrorViewVfController.h; sourceTree = "<group>"; };
 		565057FE16F93BE300CCFF7D /* MirrorViewVfController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MirrorViewVfController.m; sourceTree = "<group>"; };
-		5650580016F97E2500CCFF7D /* parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; name = parse_engine_all.exp; path = "../../../../../Desktop/Vicom-SMS-For-KBS/Scripts/parse_engine_all.exp"; sourceTree = "<group>"; };
-		5650580116F97E2500CCFF7D /* scan_ha_cluster.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; name = scan_ha_cluster.exp; path = "../../../../../Desktop/Vicom-SMS-For-KBS/Scripts/scan_ha_cluster.exp"; sourceTree = "<group>"; };
 		5650580416F97F3A00CCFF7D /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = server.db; path = ../../../../../../../Library/WebServer/Documents/CrystalSANServer/server.db; sourceTree = "<group>"; };
 		565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		567ABEBF16F4A7A1004B789D /* Device-Volume-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-healthy.png"; sourceTree = "<group>"; };
@@ -344,9 +362,15 @@
 				561A93F8169C4A710063F990 /* text-CircularMode.png */,
 				561A93F9169C4A710063F990 /* text-DiagonalMode.png */,
 				567ABEC316F57E58004B789D /* Text-Volume View.png */,
+				5637E7D016FAF56C00ED0BC3 /* Text-Connection.png */,
 				56424EF816FABDC100616251 /* Text-Home.png */,
 				567ABEC716F57F9F004B789D /* Text-RAID View.png */,
 				567ABED016F58E52004B789D /* Text-Drive View.png */,
+				5637E7CE16FAEF3E00ED0BC3 /* Text-HA Appliance View.png */,
+				5637E7D216FB341500ED0BC3 /* Text-HA Appliance View - Cluster.png */,
+				5637E7D316FB341600ED0BC3 /* Text-HA Appliance View - Connection.png */,
+				5637E7D416FB341600ED0BC3 /* Text-HA Appliance View - History.png */,
+				5637E7D516FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png */,
 				567ABED416F591F4004B789D /* Text-HBA View.png */,
 				565057F716F8A3EE00CCFF7D /* Text-Vf.png */,
 				565057F816F8A3EF00CCFF7D /* Text-Vi.png */,
@@ -379,6 +403,10 @@
 				56AC50B916DB04CD00A8121D /* engine_230_all.xml */,
 				56AC50BB16DB04D600A8121D /* engine_231_all.xml */,
 				56AC50BD16DB04E000A8121D /* engine_232_all.xml */,
+				5637E7CA16FAD52A00ED0BC3 /* scan_ha_cluster.exp */,
+				5637E7CB16FAD52A00ED0BC3 /* parse_engine_all.exp */,
+				5637E7DC16FB43E200ED0BC3 /* public-parse-xml-proc.exp */,
+				5637E7DA16FB439B00ED0BC3 /* parse_engine_all_20130321.exp */,
 				56AC50BF16DB04EA00A8121D /* engine_233_all.xml */,
 				56AC50C116DB04F200A8121D /* engine_234_all.xml */,
 				56AC50AB16D8953A00A8121D /* sqlite3test.exp */,
@@ -386,8 +414,6 @@
 				565057BD16F738F100CCFF7D /* script.sh */,
 				56AC50AD16D8954200A8121D /* testsqlite3.exp */,
 				56AC50AF16D8954900A8121D /* testXML.exp */,
-				5650580016F97E2500CCFF7D /* parse_engine_all.exp */,
-				5650580116F97E2500CCFF7D /* scan_ha_cluster.exp */,
 			);
 			path = expect;
 			sourceTree = "<group>";
@@ -657,6 +683,12 @@
 				56424EF616FAAA1000616251 /* Device-Volume-disappeared.png in Resources */,
 				56424EF716FAAA1000616251 /* Device-Volume-problem.png in Resources */,
 				56424EF916FABDC100616251 /* Text-Home.png in Resources */,
+				5637E7CF16FAEF3E00ED0BC3 /* Text-HA Appliance View.png in Resources */,
+				5637E7D116FAF56C00ED0BC3 /* Text-Connection.png in Resources */,
+				5637E7D616FB341600ED0BC3 /* Text-HA Appliance View - Cluster.png in Resources */,
+				5637E7D716FB341600ED0BC3 /* Text-HA Appliance View - Connection.png in Resources */,
+				5637E7D816FB341600ED0BC3 /* Text-HA Appliance View - History.png in Resources */,
+				5637E7D916FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +722,10 @@
 				56C4AF6D16F1A24800E829A2 /* XMLParser.m in Sources */,
 				565057C616F7E8CA00CCFF7D /* MirrorViewVcController.m in Sources */,
 				565057FF16F93BE800CCFF7D /* MirrorViewVfController.m in Sources */,
+				5637E7CC16FAD52A00ED0BC3 /* scan_ha_cluster.exp in Sources */,
+				5637E7CD16FAD52A00ED0BC3 /* parse_engine_all.exp in Sources */,
+				5637E7DB16FB439B00ED0BC3 /* parse_engine_all_20130321.exp in Sources */,
+				5637E7DD16FB43E200ED0BC3 /* public-parse-xml-proc.exp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
