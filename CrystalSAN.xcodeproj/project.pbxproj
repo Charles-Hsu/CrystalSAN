@@ -67,6 +67,10 @@
 		567ABEC816F57F9F004B789D /* Text-RAID View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABEC716F57F9F004B789D /* Text-RAID View.png */; };
 		567ABED116F58E52004B789D /* Text-Drive View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABED016F58E52004B789D /* Text-Drive View.png */; };
 		567ABED516F591F4004B789D /* Text-HBA View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABED416F591F4004B789D /* Text-HBA View.png */; };
+		5690A8AE16FC88D6007FDC32 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5690A8AD16FC88D6007FDC32 /* MapViewController.m */; };
+		5690A8B016FC8A68007FDC32 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5690A8AF16FC8A68007FDC32 /* MapKit.framework */; };
+		5690A8B416FD6978007FDC32 /* Device-Site.png in Resources */ = {isa = PBXBuildFile; fileRef = 5690A8B316FD6978007FDC32 /* Device-Site.png */; };
+		5690A8B616FD6CF6007FDC32 /* Text-Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 5690A8B516FD6CF6007FDC32 /* Text-Map.png */; };
 		56984AEA16F41031006A6AAD /* Device-Raid-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 56984AE916F41031006A6AAD /* Device-Raid-healthy.png */; };
 		56AC0E4316F2E1CF008C1678 /* Button-Vh.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4216F2E1CF008C1678 /* Button-Vh.png */; };
 		56AC0E4616F2E538008C1678 /* Button-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4416F2E538008C1678 /* Button-Back.png */; };
@@ -190,6 +194,11 @@
 		567ABED016F58E52004B789D /* Text-Drive View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Drive View.png"; sourceTree = "<group>"; };
 		567ABED416F591F4004B789D /* Text-HBA View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HBA View.png"; sourceTree = "<group>"; };
 		5690A84916FC5E5C007FDC32 /* test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
+		5690A8AC16FC88C6007FDC32 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		5690A8AD16FC88D6007FDC32 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		5690A8AF16FC8A68007FDC32 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5690A8B316FD6978007FDC32 /* Device-Site.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Site.png"; sourceTree = "<group>"; };
+		5690A8B516FD6CF6007FDC32 /* Text-Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Map.png"; sourceTree = "<group>"; };
 		56984AE916F41031006A6AAD /* Device-Raid-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-healthy.png"; sourceTree = "<group>"; };
 		56AC0E4216F2E1CF008C1678 /* Button-Vh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vh.png"; sourceTree = "<group>"; };
 		56AC0E4416F2E538008C1678 /* Button-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Back.png"; sourceTree = "<group>"; };
@@ -285,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5690A8B016FC8A68007FDC32 /* MapKit.framework in Frameworks */,
 				5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */,
 				56EB756A1689D2E00082A5D2 /* QuartzCore.framework in Frameworks */,
 				56EB75321689D06A0082A5D2 /* UIKit.framework in Frameworks */,
@@ -369,6 +379,7 @@
 				565057E416F8465600CCFF7D /* Device-LUN-member-blue.png */,
 				565057E516F8465600CCFF7D /* Device-LUN-member-green.png */,
 				565057EB16F849AF00CCFF7D /* Device-PC.png */,
+				5690A8B316FD6978007FDC32 /* Device-Site.png */,
 				5604ECB0169D2892004B046F /* Hexagonal.png */,
 				5604ECAE169D1F51004B046F /* background.png */,
 				561A93DE169C4A500063F990 /* button-Arrow.png */,
@@ -381,6 +392,7 @@
 				567ABEC316F57E58004B789D /* Text-Volume View.png */,
 				5637E7D016FAF56C00ED0BC3 /* Text-Connection.png */,
 				56424EF816FABDC100616251 /* Text-Home.png */,
+				5690A8B516FD6CF6007FDC32 /* Text-Map.png */,
 				567ABEC716F57F9F004B789D /* Text-RAID View.png */,
 				567ABED016F58E52004B789D /* Text-Drive View.png */,
 				5637E7CE16FAEF3E00ED0BC3 /* Text-HA Appliance View.png */,
@@ -449,6 +461,7 @@
 		56EB75221689D06A0082A5D2 = {
 			isa = PBXGroup;
 			children = (
+				5690A8AF16FC8A68007FDC32 /* MapKit.framework */,
 				5690A84916FC5E5C007FDC32 /* test.sh */,
 				56C4AF2A16F1787E00E829A2 /* CrystalSANServer */,
 				56AC50A616D4AC9300A8121D /* sandatabase.sqlite */,
@@ -519,6 +532,8 @@
 				56EB75491689D06A0082A5D2 /* MainStoryboard.storyboard */,
 				56EB754C1689D06A0082A5D2 /* MainViewController.h */,
 				56EB754D1689D06A0082A5D2 /* MainViewController.m */,
+				5690A8AC16FC88C6007FDC32 /* MapViewController.h */,
+				5690A8AD16FC88D6007FDC32 /* MapViewController.m */,
 				56EB756B1689DFA80082A5D2 /* CoverFlowViewController.h */,
 				56EB756C1689DFA80082A5D2 /* CoverFlowViewController.m */,
 				5623C76F16BD54BF009410B2 /* FMDatabase */,
@@ -683,6 +698,8 @@
 				5637E7D816FB341600ED0BC3 /* Text-HA Appliance View - History.png in Resources */,
 				5637E7D916FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png in Resources */,
 				560EC28916FC54CC000B505C /* server.db in Resources */,
+				5690A8B416FD6978007FDC32 /* Device-Site.png in Resources */,
+				5690A8B616FD6CF6007FDC32 /* Text-Map.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +733,7 @@
 				56C4AF6D16F1A24800E829A2 /* XMLParser.m in Sources */,
 				565057C616F7E8CA00CCFF7D /* MirrorViewVcController.m in Sources */,
 				565057FF16F93BE800CCFF7D /* MirrorViewVfController.m in Sources */,
+				5690A8AE16FC88D6007FDC32 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

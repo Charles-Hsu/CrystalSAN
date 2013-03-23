@@ -103,8 +103,6 @@
     
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    //self.totalItems = theDelegate.totalItems;
-    //self.activeItems = theDelegate.activeItems;
     
     //init/add carouse view
     carousel.delegate = self;
