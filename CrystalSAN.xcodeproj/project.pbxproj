@@ -116,7 +116,6 @@
 /* Begin PBXFileReference section */
 		5604ECAE169D1F51004B046F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		5604ECB0169D2892004B046F /* Hexagonal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hexagonal.png; sourceTree = "<group>"; };
-		560EC26716FC54CC000B505C /* output.log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = output.log; sourceTree = "<group>"; };
 		560EC26816FC54CC000B505C /* parse_engine_all_20130321.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all_20130321.exp; sourceTree = "<group>"; };
 		560EC26916FC54CC000B505C /* script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.sh; sourceTree = "<group>"; };
 		560EC27316FC54CC000B505C /* parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -309,7 +308,6 @@
 		560EC26616FC54CC000B505C /* expect */ = {
 			isa = PBXGroup;
 			children = (
-				560EC26716FC54CC000B505C /* output.log */,
 				560EC26816FC54CC000B505C /* parse_engine_all_20130321.exp */,
 				560EC26916FC54CC000B505C /* script.sh */,
 				560EC26A16FC54CC000B505C /* Scripts */,

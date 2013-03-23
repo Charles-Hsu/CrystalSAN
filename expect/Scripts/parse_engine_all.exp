@@ -53,11 +53,12 @@ puts "[exec date]=============================================="
 puts "site_name=[lindex $site_name 1]"
 puts "engine_name=[lindex $engine_name 1]"
 
+
 if {1} {
     puts "[exec date]==================cli vpd====================="
     
     set table_name          "engine_cli_vpd"
-    set sql "CREATE TABLE if not exists $table_name (serial text primary key, seconds integer, site_name text, engine_name text, product_type text, fw_version text, fw_data text, redboot text, uid text, pcb text, mac text, ip text, uptime text, alert text, time text, a1_wwnn, a1_wwpn, a2_wwnn, a2_wwpn, b1_wwnn, b1_wwpn, b2_wwnn, b2_wwpn)"
+    set sql "CREATE TABLE if not exists $table_name (serial text primary key, seconds integer, site_name text, engine_name text, product_type text, fw_version text, fw_date text, redboot text, uid text, pcb text, mac text, ip text, uptime text, alert text, time text, a1_wwnn, a1_wwpn, a2_wwnn, a2_wwpn, b1_wwnn, b1_wwpn, b2_wwnn, b2_wwpn)"
     db eval $sql
     
     set cli_vpd_section     [lindex $engine_info 0]
@@ -80,11 +81,12 @@ if {1} {
         set sql "delete from $table_name where serial = '$serial'"
         db eval $sql
         # parse and insert the new one
-        parse_xml_cli_vpd $cli_vpd_section $site_name $engine_name $seconds
+        parse_xml_cli_vpd $cli_vpd_section $site_name $table_name $engine_name $seconds
+        
     }
 }
 
-if {1} {
+if {0} {
     
     puts "[exec date]===cli mirror=========================================="
     
@@ -112,7 +114,7 @@ if {1} {
 
 }
 
-if {1} {
+if {0} {
     
     puts "[exec date]===cli_conmgr_drive_status============================="
     
@@ -146,7 +148,7 @@ if {1} {
 }
 
 
-if {1} {
+if {0} {
 
     puts "[exec date]===cli_conmgr_engine_status============================"
     
@@ -176,7 +178,7 @@ if {1} {
 }
 
 
-if {1} {
+if {0} {
     
     puts "[exec date]===cli_conmgr_initiator_status========================="
     

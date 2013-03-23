@@ -12,8 +12,7 @@
                     <pcb>00600118</pcb>
                     <mac>0.60.22.9.28.36</mac>
                     <ip>10.100.5.227</ip>
-                    <uptime>106d 20:04:03</uptime>
-                    <alert>None</alert>
+                    <alert>990</alert>
                     <time>Wednesday 1/30/2013 04:54:20</time>
                     <ports id="A1">
                         <id>A1</id>

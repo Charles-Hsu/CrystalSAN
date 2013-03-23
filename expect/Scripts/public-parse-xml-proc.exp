@@ -90,9 +90,6 @@ proc try x {
     puts list:[lequal $a $b],string:[string equal $a $b]
 }
 
-proc keyvalue key {
-    return [string trim [lindex [lindex [lindex $key 2] 0] 1]]
-}
 
 proc compare_seconds {xml_seconds db_seconds} {
     puts "xml_seconds $xml_seconds"
@@ -105,6 +102,7 @@ proc compare_seconds {xml_seconds db_seconds} {
     }
     return "the_same"
 }
+
 
 proc parse_xml_cli_conmgr_drive_status {args} {
     
@@ -223,120 +221,202 @@ proc parse_xml_cli_mirror {args} {
 
 }
 
-#proc parse_cli_vpd {cli_vpd_section site_name engine_name seconds} {
+proc get_xml_cli_vpd_key_and_value_list {args} {
+    #puts $args
+    set items [lindex $args 0]
+    
+    set key [lindex $items 0]
+    set subkey [lindex $items 1]
+    
+    if {[llength $subkey] == 2} {
+        set key "[lindex $subkey 1]"
+    }
+    
+    set value_list  [string trim [lindex [lindex [lindex $items 2] 0] 1]]
+    
+    
+    set length [llength $value_list]
+    
+    set return_list "{{$key} {$value_list}}"
+    
+    if {$length == 0} {
+        
+        set return_list ""
+        
+        #puts [lindex [lindex $items 2] 0]
+        
+        set wwnn_data [lindex [lindex [lindex [lindex [lindex $items 2] 1] 2] 0] 1]
+        
+        set subkey [lindex [lindex [lindex $items 2] 1] 0]
+        
+        #puts "+++++++++++++++++ $key\_$subkey = $wwnn_data"
+        
+        #puts ">>>>>>>>>>return ====>  $return_list"
+        lappend return_list "{$key\_$subkey} {$wwnn_data}"
+        #puts ">>>>>>>>>>return ====>  $return_list"
+        
+        set wwpn_data [lindex [lindex [lindex [lindex [lindex $items 2] 2] 2] 0] 1]
+        set subkey [lindex [lindex [lindex $items 2] 2] 0]
+        
+        #puts "+++++++++++++++++ $key\_$subkey = $wwpn_data"
+        
+        
+        #puts [lindex [lindex [lindex $items 2] 1] 0]
+        set subkey [lindex [lindex [lindex $items 2] 2] 0]
+        #puts [lindex [lindex [lindex [lindex [lindex $items 2] 2] 2] 0] 1]
+        set value [lindex [lindex [lindex [lindex [lindex $items 2] 2] 2] 0] 1]
+        
+        #puts ">>>>>>>>>>return ====>  $return_list"
+        lappend return_list "{$key\_$subkey} {$wwpn_data}"
+        #puts ">>>>>>>>>>return ====>  $return_list"
+        
+    }
+    
+    #puts "return ====>  $return_list"
+    
+    
+    return $return_list
+}
+
+
 proc parse_xml_cli_vpd {args} {
-    
-    #$cli_vpd_section $site_name $engine_name $seconds
-    
-    set cli_vpd_section [lindex $args 0]
+        
+    set cli_vpd_section [lindex [lindex $args 0] 2]
     set site_name [lindex $args 1]
-    set engine_name [lindex $args 2]
-    set seconds [lindex $args 3]
+    set table_name [lindex $args 2]
+    set engine_name [lindex $args 3]
+    set seconds [lindex $args 4]
     
     puts "[exec date]=== parse_cli_vpd start..."
     
     puts $cli_vpd_section
     
-    set product_type_s [lindex [lindex $cli_vpd_section 2] 0]
-    set fw_version_s   [lindex [lindex $cli_vpd_section 2] 1]
-    set fw_date_s      [lindex [lindex $cli_vpd_section 2] 2]
-    set redboot_s      [lindex [lindex $cli_vpd_section 2] 3]
-    set uid_s          [lindex [lindex $cli_vpd_section 2] 4]
-    set serial_s       [lindex [lindex $cli_vpd_section 2] 5]
-    set pcb_s          [lindex [lindex $cli_vpd_section 2] 6]
-    set mac_s          [lindex [lindex $cli_vpd_section 2] 7]
-    set ip_s           [lindex [lindex $cli_vpd_section 2] 8]
-    set uptime_s       [lindex [lindex $cli_vpd_section 2] 9]
-    set alert_s        [lindex [lindex $cli_vpd_section 2] 10]
-    set time_s         [lindex [lindex $cli_vpd_section 2] 11]
-    set port_A1        [lindex [lindex $cli_vpd_section 2] 12]
-    set port_A2        [lindex [lindex $cli_vpd_section 2] 13]
-    set port_B1        [lindex [lindex $cli_vpd_section 2] 14]
-    set port_B2        [lindex [lindex $cli_vpd_section 2] 15]
+    set length [llength $cli_vpd_section]
+    puts "length = $length"
+    #set length [llength [lindex $cli_vpd_section 2]]
     
-    #puts "product_type"
-    set product_type [string trim [lindex [lindex [lindex $product_type_s 2] 0] 1]]
-    puts "[lindex $product_type_s 0]=$product_type"
+    set items ""
+    set values ""
     
-    #puts $fw_version
-    set fw_version [string trim [lindex [lindex [lindex $fw_version_s 2] 0] 1]]
-    puts "[lindex $fw_version_s 0]=$fw_version"
+    foreach item $cli_vpd_section {
+        set keyValueList [get_xml_cli_vpd_key_and_value_list $item]
+        set length [llength $keyValueList]
+        for {set i 0} {$i < $length} {incr i 1} {
+            #puts "[lindex $keyValueList $i] = '[lindex $keyValueList $i+1]'"
+            puts "[lindex [lindex $keyValueList $i] 0] = '[lindex [lindex $keyValueList $i] 1]'"
+            set items "$items, [lindex [lindex $keyValueList $i] 0]"
+            set values "$values, '[lindex [lindex $keyValueList $i] 1]'"
+        }
+    }
+    puts "items ===> $items"
+    puts "values ==> $values"
+    set items [string trimleft $items ","]
+    set values [string trimleft $values ","]
+    puts "items ===> $items"
+    puts "values ==> $values"
     
-    #puts $fw_date
-    set fw_date [string trim [lindex [lindex [lindex $fw_date_s 2] 0] 1]]
-    puts "[lindex $fw_date_s 0]=$fw_date"
-    
-    #puts $redboot
-    set redboot [string trim [lindex [lindex [lindex $redboot_s 2] 0] 1]]
-    puts "[lindex $redboot_s 0]=$redboot"
-    
-    #puts $uid
-    set uid [string trim [lindex [lindex [lindex $uid_s 2] 0] 1]]
-    puts "[lindex $uid_s 0]=$uid"
-    
-    #puts $serial
-    set serial [string trim [lindex [lindex [lindex $serial_s 2] 0] 1]]
-    puts "[lindex $serial_s 0]=$serial"
-    
-    #puts $pcb
-    set pcb [string trim [lindex [lindex [lindex $pcb_s 2] 0] 1]]
-    puts "[lindex $pcb_s 0]=$pcb"
-    
-    #puts $mac
-    set mac [string trim [lindex [lindex [lindex $mac_s 2] 0] 1]]
-    puts "[lindex $mac_s 0]=$mac"
-    
-    #puts $ip
-    set ip [string trim [lindex [lindex [lindex $ip_s 2] 0] 1]]
-    puts "[lindex $ip_s 0]=$ip"
-    
-    #puts $uptime
-    set uptime [keyvalue $uptime_s]
-    puts "[lindex $uptime_s 0]=$uptime"
-    
-    #puts $alert
-    set alert [string trim [lindex [lindex [lindex $alert_s 2] 0] 1]]
-    puts "alert=$alert"
-    
-    #puts $time
-    set time [keyvalue $time_s]
-    puts "[lindex $time_s 0]=$time"
-    
-    #puts $port_A1
-    puts "[lindex [lindex $port_A1 1] 1]_[lindex [lindex [lindex $port_A1 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_A1 2] 1] 2] 0] 1]"
-    puts "[lindex [lindex $port_A1 1] 1]_[lindex [lindex [lindex $port_A1 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_A1 2] 2] 2] 0] 1]"
-    set a1_wwnn [lindex [lindex [lindex [lindex [lindex $port_A1 2] 1] 2] 0] 1]
-    set a1_wwpn [lindex [lindex [lindex [lindex [lindex $port_A1 2] 2] 2] 0] 1]
-    
-    #puts $port_A2
-    puts "[lindex [lindex $port_A2 1] 1]_[lindex [lindex [lindex $port_A2 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_A2 2] 1] 2] 0] 1]"
-    puts "[lindex [lindex $port_A2 1] 1]_[lindex [lindex [lindex $port_A2 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_A2 2] 2] 2] 0] 1]"
-    set a2_wwnn [lindex [lindex [lindex [lindex [lindex $port_A2 2] 1] 2] 0] 1]
-    set a2_wwpn [lindex [lindex [lindex [lindex [lindex $port_A2 2] 2] 2] 0] 1]
-    
-    #puts $port_B1
-    puts "[lindex [lindex $port_B1 1] 1]_[lindex [lindex [lindex $port_B1 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_B1 2] 1] 2] 0] 1]"
-    puts "[lindex [lindex $port_B1 1] 1]_[lindex [lindex [lindex $port_B1 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_B1 2] 2] 2] 0] 1]"
-    set b1_wwnn [lindex [lindex [lindex [lindex [lindex $port_B1 2] 1] 2] 0] 1]
-    set b1_wwpn [lindex [lindex [lindex [lindex [lindex $port_B1 2] 2] 2] 0] 1]
-    
-    
-    #puts $port_B2
-    puts "[lindex [lindex $port_B2 1] 1]_[lindex [lindex [lindex $port_B2 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_B2 2] 1] 2] 0] 1]"
-    puts "[lindex [lindex $port_B2 1] 1]_[lindex [lindex [lindex $port_B2 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]"
-    set b2_wwnn [lindex [lindex [lindex [lindex [lindex $port_B2 2] 1] 2] 0] 1]
-    set b2_wwpn [lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]
-    puts "-------------"
-    
-    set sql "insert into engine_cli_vpd values ('$serial', $seconds, '[lindex $site_name 1]', '[lindex $engine_name 1]', '$product_type', '$fw_version', '$fw_date', '$redboot', '$uid', '$pcb', '$mac', '$ip', '$uptime', '$alert', '$time', '$a1_wwnn', '$a1_wwpn', '$a2_wwnn', '$a2_wwpn', '$b1_wwnn', '$b1_wwpn', '$b2_wwnn', '$b2_wwpn')"
+    set sql "INSERT INTO $table_name (seconds, $items) VALUES ($seconds, $values)"
     
     puts $sql
     db eval $sql
     
-    #return $serial
-    
     puts "[exec date]=== parse_cli_vpd completed!"
-    #return $sql
+
+    if {0} {
+        set product_type_s [lindex $cli_vpd_section 0]
+        set fw_version_s   [lindex $cli_vpd_section 1]
+        set fw_date_s      [lindex $cli_vpd_section 2]
+        set redboot_s      [lindex [lindex $cli_vpd_section 2] 3]
+        set uid_s          [lindex [lindex $cli_vpd_section 2] 4]
+        set serial_s       [lindex [lindex $cli_vpd_section 2] 5]
+        set pcb_s          [lindex [lindex $cli_vpd_section 2] 6]
+        set mac_s          [lindex [lindex $cli_vpd_section 2] 7]
+        set ip_s           [lindex [lindex $cli_vpd_section 2] 8]
+        set uptime_s       [lindex [lindex $cli_vpd_section 2] 9]
+        set alert_s        [lindex [lindex $cli_vpd_section 2] 10]
+        set time_s         [lindex [lindex $cli_vpd_section 2] 11]
+        set port_A1        [lindex [lindex $cli_vpd_section 2] 12]
+        set port_A2        [lindex [lindex $cli_vpd_section 2] 13]
+        set port_B1        [lindex [lindex $cli_vpd_section 2] 14]
+        set port_B2        [lindex [lindex $cli_vpd_section 2] 15]
+        
+        #puts "product_type"
+        set product_type [string trim [lindex [lindex [lindex $product_type_s 2] 0] 1]]
+        puts "[lindex $product_type_s 0]=$product_type"
+        
+        #puts $fw_version
+        set fw_version [string trim [lindex [lindex [lindex $fw_version_s 2] 0] 1]]
+        puts "[lindex $fw_version_s 0]=$fw_version"
+        
+        #puts $fw_date
+        set fw_date [string trim [lindex [lindex [lindex $fw_date_s 2] 0] 1]]
+        puts "[lindex $fw_date_s 0]=$fw_date"
+        
+        #puts $redboot
+        set redboot [string trim [lindex [lindex [lindex $redboot_s 2] 0] 1]]
+        puts "[lindex $redboot_s 0]=$redboot"
+        
+        #puts $uid
+        set uid [string trim [lindex [lindex [lindex $uid_s 2] 0] 1]]
+        puts "[lindex $uid_s 0]=$uid"
+        
+        #puts $serial
+        set serial [string trim [lindex [lindex [lindex $serial_s 2] 0] 1]]
+        puts "[lindex $serial_s 0]=$serial"
+        
+        #puts $pcb
+        set pcb [string trim [lindex [lindex [lindex $pcb_s 2] 0] 1]]
+        puts "[lindex $pcb_s 0]=$pcb"
+        
+        #puts $mac
+        set mac [string trim [lindex [lindex [lindex $mac_s 2] 0] 1]]
+        puts "[lindex $mac_s 0]=$mac"
+        
+        #puts $ip
+        set ip [string trim [lindex [lindex [lindex $ip_s 2] 0] 1]]
+        puts "[lindex $ip_s 0]=$ip"
+        
+        #puts $uptime
+        set uptime [keyvalue $uptime_s]
+        puts "[lindex $uptime_s 0]=$uptime"
+        
+        #puts $alert
+        set alert [string trim [lindex [lindex [lindex $alert_s 2] 0] 1]]
+        puts "alert=$alert"
+        
+        #puts $time
+        set time [keyvalue $time_s]
+        puts "[lindex $time_s 0]=$time"
+        
+        #puts $port_A1
+        puts "[lindex [lindex $port_A1 1] 1]_[lindex [lindex [lindex $port_A1 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_A1 2] 1] 2] 0] 1]"
+        puts "[lindex [lindex $port_A1 1] 1]_[lindex [lindex [lindex $port_A1 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_A1 2] 2] 2] 0] 1]"
+        set a1_wwnn [lindex [lindex [lindex [lindex [lindex $port_A1 2] 1] 2] 0] 1]
+        set a1_wwpn [lindex [lindex [lindex [lindex [lindex $port_A1 2] 2] 2] 0] 1]
+        
+        #puts $port_A2
+        puts "[lindex [lindex $port_A2 1] 1]_[lindex [lindex [lindex $port_A2 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_A2 2] 1] 2] 0] 1]"
+        puts "[lindex [lindex $port_A2 1] 1]_[lindex [lindex [lindex $port_A2 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_A2 2] 2] 2] 0] 1]"
+        set a2_wwnn [lindex [lindex [lindex [lindex [lindex $port_A2 2] 1] 2] 0] 1]
+        set a2_wwpn [lindex [lindex [lindex [lindex [lindex $port_A2 2] 2] 2] 0] 1]
+        
+        #puts $port_B1
+        puts "[lindex [lindex $port_B1 1] 1]_[lindex [lindex [lindex $port_B1 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_B1 2] 1] 2] 0] 1]"
+        puts "[lindex [lindex $port_B1 1] 1]_[lindex [lindex [lindex $port_B1 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_B1 2] 2] 2] 0] 1]"
+        set b1_wwnn [lindex [lindex [lindex [lindex [lindex $port_B1 2] 1] 2] 0] 1]
+        set b1_wwpn [lindex [lindex [lindex [lindex [lindex $port_B1 2] 2] 2] 0] 1]
+        
+        
+        #puts $port_B2
+        puts "[lindex [lindex $port_B2 1] 1]_[lindex [lindex [lindex $port_B2 2] 1] 0]=[lindex [lindex [lindex [lindex [lindex $port_B2 2] 1] 2] 0] 1]"
+        puts "[lindex [lindex $port_B2 1] 1]_[lindex [lindex [lindex $port_B2 2] 2] 0]=[lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]"
+        set b2_wwnn [lindex [lindex [lindex [lindex [lindex $port_B2 2] 1] 2] 0] 1]
+        set b2_wwpn [lindex [lindex [lindex [lindex [lindex $port_B2 2] 2] 2] 0] 1]
+        puts "-------------"
+        
+    }
+    
+    
     
 }
 
@@ -451,6 +531,7 @@ proc xml_is_older_than_database {args} {
 }
 
 proc keyvalue key {
+    puts "key in keyvalue is $key"
     return [string trim [lindex [lindex [lindex $key 2] 0] 1]]
 }
 
