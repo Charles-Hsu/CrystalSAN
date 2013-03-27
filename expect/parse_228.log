@@ -1,0 +1,1016 @@
+Scripts
+Sat Mar 23 17:42:33 CST 2013==============================================
+site_name=KBS
+engine_name=engine_228
+Sat Mar 23 17:42:33 CST 2013==================cli vpd=====================
+Sat Mar 23 17:42:33 CST 2013=== parse_cli_vpd start...
+cli_vpd {seconds 1359519200} {{product_type {} {{{#text} { FCE4400 }}}} {fw_version {} {{{#text} 15.1.10}}} {fw_date {} {{{#text} {Sep 17 2012 16:56:07}}}} {redboot {} {{{#text} 0.2.0.5}}} {uid {} {{{#text} 00000060-22092838}}} {serial {} {{{#text} 00600120}}} {pcb {} {{{#text} 00600120}}} {mac {} {{{#text} 0.60.22.9.28.38}}} {ip {} {{{#text} 10.100.5.228}}} {uptime {} {{{#text} {107d 04:25:56}}}} {alert {} {{{#text} None}}} {time {} {{{#text} {Wednesday 1/30/2013 13:13:10}}}} {ports {id A1} {{id {} {{{#text} A1}}} {wwnn {} {{{#text} 2000-006022-092836}}} {wwpn {} {{{#text} 2100-006022-092838}}}}} {ports {id A2} {{id {} {{{#text} A2}}} {wwnn {} {{{#text} 2000-006022-092836}}} {wwpn {} {{{#text} 2200-006022-092838}}}}} {ports {id B1} {{id {} {{{#text} B1}}} {wwnn {} {{{#text} 2000-006022-092838}}} {wwpn {} {{{#text} 2300-006022-092838}}}}} {ports {id B2} {{id {} {{{#text} B2}}} {wwnn {} {{{#text} 2000-006022-092838}}} {wwpn {} {{{#text} 2400-006022-092838}}}}}}
+product_type=FCE4400
+fw_version=15.1.10
+fw_date=Sep 17 2012 16:56:07
+redboot=0.2.0.5
+uid=00000060-22092838
+serial=00600120
+pcb=00600120
+mac=0.60.22.9.28.38
+ip=10.100.5.228
+key in keyvalue is uptime {} {{{#text} {107d 04:25:56}}}
+uptime=107d 04:25:56
+alert=None
+key in keyvalue is time {} {{{#text} {Wednesday 1/30/2013 13:13:10}}}
+time=Wednesday 1/30/2013 13:13:10
+A1_wwnn=2000-006022-092836
+A1_wwpn=2100-006022-092838
+A2_wwnn=2000-006022-092836
+A2_wwpn=2200-006022-092838
+B1_wwnn=2000-006022-092838
+B1_wwpn=2300-006022-092838
+B2_wwnn=2000-006022-092838
+B2_wwpn=2400-006022-092838
+-------------
+insert into engine_cli_vpd values ('00600120', 1359519200, 'KBS', 'engine_228', 'FCE4400', '15.1.10', 'Sep 17 2012 16:56:07', '0.2.0.5', '00000060-22092838', '00600120', '0.60.22.9.28.38', '10.100.5.228', '107d 04:25:56', 'None', 'Wednesday 1/30/2013 13:13:10', '2000-006022-092836', '2100-006022-092838', '2000-006022-092836', '2200-006022-092838', '2000-006022-092838', '2300-006022-092838', '2000-006022-092838', '2400-006022-092838')
+Sat Mar 23 17:42:33 CST 2013=== parse_cli_vpd completed!
+Sat Mar 23 17:42:33 CST 2013===cli mirror==========================================
+Sat Mar 23 17:42:33 CST 2013=== parse_cli_mirror start...
+insert into engine_cli_mirror values ('00600120',1359519201,'33537','Good','0','13672091475','1','OK','2','OK','33538','Good','1','13672091475','5','OK','6','OK','33539','Good','2','13672091475','0','OK','7','OK','33540','Good','3','13672091475','4','OK','3','OK','','','','','','','','','','','','','','','','','4','0','0')
+Sat Mar 23 17:42:33 CST 2013=== parse_cli_mirror completed!
+Sat Mar 23 17:42:33 CST 2013===cli_conmgr_drive_status=============================
+INSERT INTO engine_cli_conmgr_drive_status_detail VALUES ('00600120','1359519201','0', 'A', '1', 'B1', '5000-612032-f02000', '0000', 'A', '', '', '', '', '')
+INSERT INTO engine_cli_conmgr_drive_status_detail VALUES ('00600120','1359519201','1', 'A', '1', 'B1', '5000-612032-f18000', '0000', 'A', '', '', '', '', '')
+INSERT INTO engine_cli_conmgr_drive_status_detail VALUES ('00600120','1359519201','2', 'A', '1', 'B2', '5000-612032-c0c000', '0000', 'A', '', '', '', '', '')
+INSERT INTO engine_cli_conmgr_drive_status_detail VALUES ('00600120','1359519201','3', 'A', '1', 'B2', '5000-612032-ef2010', '0000', 'A', '', '', '', '', '')
+INSERT INTO engine_cli_conmgr_drive_status_detail VALUES ('00600120','1359519201','4', 'A', '1', 'B1', '5000-612032-f02010', '0000', 'A', '', '', '', '', '')
+INSERT INTO engine_cli_conmgr_drive_status_detail VALUES ('00600120','1359519201','5', 'A', '1', 'B1', '5000-612032-f18010', '0000', 'A', '', '', '', '', '')
+INSERT INTO engine_cli_conmgr_drive_status_detail VALUES ('00600120','1359519201','6', 'A', '1', 'B2', '5000-612032-c0c010', '0000', 'A', '', '', '', '', '')
+INSERT INTO engine_cli_conmgr_drive_status_detail VALUES ('00600120','1359519201','7', 'A', '1', 'B2', '5000-612032-ef2000', '0000', 'A', '', '', '', '', '')
+Sat Mar 23 17:42:33 CST 2013===cli_conmgr_engine_status============================
+seconds           = 1359519201
+seconds_in_table  = 0 (engine_cli_conmgr_engine_status)
+cluster_id=1
+cluster_sts=A
+INSERT INTO engine_cli_conmgr_engine_status VALUES ('00600120','1359519201','1','A','1','B1','2300-006022-092836','A','2','B2','2400-006022-092836','A')
+Sat Mar 23 17:42:33 CST 2013===cli_conmgr_initiator_status=========================
+seconds           = 1359519201
+seconds_in_table  = 0 (engine_cli_conmgr_initiator_status)
+cli_conmgr_initiator_status {seconds 1359519201} {{initiators {id 0} {{id {} {{{#text} 0}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-11422c}}} {status {} {{{#text} A}}}}} {initiators {id 1} {{id {} {{{#text} 1}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20b534}}} {status {} {{{#text} A}}}}} {initiators {id 2} {{id {} {{{#text} 2}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20a770}}} {status {} {{{#text} A}}}}} {initiators {id 3} {{id {} {{{#text} 3}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-16ef20}}} {status {} {{{#text} A}}}}} {initiators {id 4} {{id {} {{{#text} 4}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-16d868}}} {status {} {{{#text} A}}}}} {initiators {id 5} {{id {} {{{#text} 5}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-0000c9-7eb721}}} {status {} {{{#text} A}}}}} {initiators {id 6} {{id {} {{{#text} 6}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-0d577c}}} {status {} {{{#text} A}}}}} {initiators {id 7} {{id {} {{{#text} 7}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20af80}}} {status {} {{{#text} A}}}}} {initiators {id 8} {{id {} {{{#text} 8}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-16be70}}} {status {} {{{#text} A}}}}} {initiators {id 9} {{id {} {{{#text} 9}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-16e58c}}} {status {} {{{#text} A}}}}} {initiators {id 10} {{id {} {{{#text} 10}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1df398}}} {status {} {{{#text} A}}}}} {initiators {id 11} {{id {} {{{#text} 11}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-0000c9-7eb4dd}}} {status {} {{{#text} A}}}}} {initiators {id 12} {{id {} {{{#text} 12}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-115dbc}}} {status {} {{{#text} A}}}}} {initiators {id 13} {{id {} {{{#text} 13}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1dbba4}}} {status {} {{{#text} A}}}}} {initiators {id 14} {{id {} {{{#text} 14}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9149}}} {status {} {{{#text} A}}}}} {initiators {id 15} {{id {} {{{#text} 15}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-8875dc}}} {status {} {{{#text} A}}}}} {initiators {id 16} {{id {} {{{#text} 16}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438016-778308}}} {status {} {{{#text} A}}}}} {initiators {id 17} {{id {} {{{#text} 17}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1aa651}}} {status {} {{{#text} A}}}}} {initiators {id 18} {{id {} {{{#text} 18}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-15befc}}} {status {} {{{#text} A}}}}} {initiators {id 19} {{id {} {{{#text} 19}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-886dfe}}} {status {} {{{#text} A}}}}} {initiators {id 20} {{id {} {{{#text} 20}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-215e29}}} {status {} {{{#text} I}}}}} {initiators {id 21} {{id {} {{{#text} 21}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1e08c8}}} {status {} {{{#text} A}}}}} {initiators {id 22} {{id {} {{{#text} 22}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-159748}}} {status {} {{{#text} A}}}}} {initiators {id 23} {{id {} {{{#text} 23}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-21617d}}} {status {} {{{#text} I}}}}} {initiators {id 24} {{id {} {{{#text} 24}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1df3c8}}} {status {} {{{#text} A}}}}} {initiators {id 25} {{id {} {{{#text} 25}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20a748}}} {status {} {{{#text} A}}}}} {initiators {id 26} {{id {} {{{#text} 26}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1e08e0}}} {status {} {{{#text} A}}}}} {initiators {id 27} {{id {} {{{#text} 27}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1df6e4}}} {status {} {{{#text} A}}}}} {initiators {id 28} {{id {} {{{#text} 28}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1df3ec}}} {status {} {{{#text} A}}}}} {initiators {id 29} {{id {} {{{#text} 29}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-bb6a8c}}} {status {} {{{#text} A}}}}} {initiators {id 30} {{id {} {{{#text} 30}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-60b612}}} {status {} {{{#text} I}}}}} {initiators {id 31} {{id {} {{{#text} 31}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-6b645b}}} {status {} {{{#text} I}}}}} {initiators {id 32} {{id {} {{{#text} 32}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-bbb690}}} {status {} {{{#text} A}}}}} {initiators {id 33} {{id {} {{{#text} 33}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-159784}}} {status {} {{{#text} A}}}}} {initiators {id 34} {{id {} {{{#text} 34}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1db7f4}}} {status {} {{{#text} A}}}}} {initiators {id 35} {{id {} {{{#text} 35}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-62ae80}}} {status {} {{{#text} I}}}}} {initiators {id 36} {{id {} {{{#text} 36}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-202c28}}} {status {} {{{#text} A}}}}} {initiators {id 37} {{id {} {{{#text} 37}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-7eb686}}} {status {} {{{#text} I}}}}} {initiators {id 38} {{id {} {{{#text} 38}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-7eb690}}} {status {} {{{#text} I}}}}} {initiators {id 39} {{id {} {{{#text} 39}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-7eb599}}} {status {} {{{#text} I}}}}} {initiators {id 40} {{id {} {{{#text} 40}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20aa14}}} {status {} {{{#text} A}}}}} {initiators {id 41} {{id {} {{{#text} 41}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-882cc4}}} {status {} {{{#text} I}}}}} {initiators {id 42} {{id {} {{{#text} 42}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438016-777d0c}}} {status {} {{{#text} A}}}}} {initiators {id 43} {{id {} {{{#text} 43}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-15970e}}} {status {} {{{#text} I}}}}} {initiators {id 44} {{id {} {{{#text} 44}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9610}}} {status {} {{{#text} A}}}}} {initiators {id 45} {{id {} {{{#text} 45}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-121174}}} {status {} {{{#text} A}}}}} {initiators {id 46} {{id {} {{{#text} 46}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-15b6c0}}} {status {} {{{#text} A}}}}} {initiators {id 47} {{id {} {{{#text} 47}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9cf5}}} {status {} {{{#text} A}}}}} {initiators {id 48} {{id {} {{{#text} 48}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a1f19}}} {status {} {{{#text} A}}}}} {initiators {id 49} {{id {} {{{#text} 49}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2baa8}}} {status {} {{{#text} A}}}}} {initiators {id 50} {{id {} {{{#text} 50}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-123245}}} {status {} {{{#text} A}}}}} {initiators {id 51} {{id {} {{{#text} 51}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20aa30}}} {status {} {{{#text} A}}}}} {initiators {id 52} {{id {} {{{#text} 52}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-123749}}} {status {} {{{#text} A}}}}} {initiators {id 53} {{id {} {{{#text} 53}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-104849}}} {status {} {{{#text} A}}}}} {initiators {id 54} {{id {} {{{#text} 54}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 2101-001b32-329353}}} {status {} {{{#text} A}}}}} {initiators {id 55} {{id {} {{{#text} 55}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1bc281}}} {status {} {{{#text} A}}}}} {initiators {id 56} {{id {} {{{#text} 56}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-122c5c}}} {status {} {{{#text} A}}}}} {initiators {id 57} {{id {} {{{#text} 57}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20b5a4}}} {status {} {{{#text} A}}}}} {initiators {id 58} {{id {} {{{#text} 58}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9164}}} {status {} {{{#text} A}}}}} {initiators {id 59} {{id {} {{{#text} 59}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1bbfd9}}} {status {} {{{#text} A}}}}} {initiators {id 60} {{id {} {{{#text} 60}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-159264}}} {status {} {{{#text} A}}}}} {initiators {id 61} {{id {} {{{#text} 61}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9c68}}} {status {} {{{#text} A}}}}} {initiators {id 62} {{id {} {{{#text} 62}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 2101-001b32-3152d7}}} {status {} {{{#text} A}}}}} {initiators {id 63} {{id {} {{{#text} 63}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a926c}}} {status {} {{{#text} A}}}}} {initiators {id 64} {{id {} {{{#text} 64}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9c6c}}} {status {} {{{#text} A}}}}} {initiators {id 65} {{id {} {{{#text} 65}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1dcf6c}}} {status {} {{{#text} A}}}}} {initiators {id 66} {{id {} {{{#text} 66}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20aaac}}} {status {} {{{#text} A}}}}} {initiators {id 67} {{id {} {{{#text} 67}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-120874}}} {status {} {{{#text} I}}}}} {initiators {id 68} {{id {} {{{#text} 68}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 5001-438006-36ba20}}} {status {} {{{#text} A}}}}} {initiators {id 69} {{id {} {{{#text} 69}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 5001-438006-36b924}}} {status {} {{{#text} A}}}}} {initiators {id 71} {{id {} {{{#text} 71}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-15bc84}}} {status {} {{{#text} A}}}}} {initiators {id 72} {{id {} {{{#text} 72}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-14d486}}} {status {} {{{#text} A}}}}} {initiators {id 73} {{id {} {{{#text} 73}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-bbba2f}}} {status {} {{{#text} I}}}}} {initiators {id 74} {{id {} {{{#text} 74}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-12358f}}} {status {} {{{#text} A}}}}} {initiators {id 75} {{id {} {{{#text} 75}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438006-346e38}}} {status {} {{{#text} I}}}}} {initiators {id 76} {{id {} {{{#text} 76}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9290}}} {status {} {{{#text} A}}}}} {initiators {id 77} {{id {} {{{#text} 77}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2c004}}} {status {} {{{#text} A}}}}} {initiators {id 78} {{id {} {{{#text} 78}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-0000c9-60b613}}} {status {} {{{#text} I}}}}} {initiators {id 79} {{id {} {{{#text} 79}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-13d00c}}} {status {} {{{#text} I}}}}} {initiators {id 80} {{id {} {{{#text} 80}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1aa198}}} {status {} {{{#text} A}}}}} {initiators {id 81} {{id {} {{{#text} 81}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a92a4}}} {status {} {{{#text} A}}}}} {initiators {id 82} {{id {} {{{#text} 82}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20a334}}} {status {} {{{#text} I}}}}} {initiators {id 83} {{id {} {{{#text} 83}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-0000c9-882cc5}}} {status {} {{{#text} I}}}}} {initiators {id 84} {{id {} {{{#text} 84}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 2100-00e08b-1ff116}}} {status {} {{{#text} I}}}}} {initiators {id 85} {{id {} {{{#text} 85}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 2101-00e08b-3f6e18}}} {status {} {{{#text} I}}}}} {initiators {id 86} {{id {} {{{#text} 86}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-159386}}} {status {} {{{#text} A}}}}} {initiators {id 87} {{id {} {{{#text} 87}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20aa98}}} {status {} {{{#text} I}}}}} {initiators {id 88} {{id {} {{{#text} 88}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-215ebd}}} {status {} {{{#text} I}}}}} {initiators {id 89} {{id {} {{{#text} 89}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-214ec1}}} {status {} {{{#text} I}}}}} {initiators {id 90} {{id {} {{{#text} 90}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-2161c5}}} {status {} {{{#text} I}}}}} {initiators {id 91} {{id {} {{{#text} 91}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a8b94}}} {status {} {{{#text} A}}}}} {initiators {id 92} {{id {} {{{#text} 92}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-151d60}}} {status {} {{{#text} I}}}}} {initiators {id 93} {{id {} {{{#text} 93}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2bc5c}}} {status {} {{{#text} A}}}}} {initiators {id 94} {{id {} {{{#text} 94}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-0fa4a9}}} {status {} {{{#text} A}}}}} {initiators {id 95} {{id {} {{{#text} 95}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a90ac}}} {status {} {{{#text} A}}}}} {initiators {id 96} {{id {} {{{#text} 96}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1593ad}}} {status {} {{{#text} A}}}}} {initiators {id 97} {{id {} {{{#text} 97}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1591b4}}} {status {} {{{#text} A}}}}} {initiators {id 98} {{id {} {{{#text} 98}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1aa0c4}}} {status {} {{{#text} A}}}}} {initiators {id 99} {{id {} {{{#text} 99}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9dcc}}} {status {} {{{#text} A}}}}} {initiators {id 100} {{id {} {{{#text} 100}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1218d8}}} {status {} {{{#text} A}}}}} {initiators {id 101} {{id {} {{{#text} 101}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9ad8}}} {status {} {{{#text} A}}}}} {initiators {id 102} {{id {} {{{#text} 102}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1231e4}}} {status {} {{{#text} A}}}}} {initiators {id 103} {{id {} {{{#text} 103}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1dbbe8}}} {status {} {{{#text} A}}}}} {initiators {id 104} {{id {} {{{#text} 104}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-14d1ee}}} {status {} {{{#text} A}}}}} {initiators {id 105} {{id {} {{{#text} 105}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a89f8}}} {status {} {{{#text} A}}}}} {initiators {id 106} {{id {} {{{#text} 106}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2bb88}}} {status {} {{{#text} A}}}}} {initiators {id 107} {{id {} {{{#text} 107}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 2101-001b32-291977}}} {status {} {{{#text} A}}}}} {initiators {id 108} {{id {} {{{#text} 108}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 2101-001b32-210fa2}}} {status {} {{{#text} I}}}}} {initiators {id 109} {{id {} {{{#text} 109}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438006-34705a}}} {status {} {{{#text} I}}}}} {initiators {id 110} {{id {} {{{#text} 110}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20e674}}} {status {} {{{#text} A}}}}} {initiators {id 111} {{id {} {{{#text} 111}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1786cd}}} {status {} {{{#text} I}}}}} {initiators {id 112} {{id {} {{{#text} 112}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1595c9}}} {status {} {{{#text} I}}}}} {initiators {id 113} {{id {} {{{#text} 113}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20d000}}} {status {} {{{#text} I}}}}} {initiators {id 114} {{id {} {{{#text} 114}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20ce94}}} {status {} {{{#text} I}}}}} {initiators {id 115} {{id {} {{{#text} 115}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1ec31d}}} {status {} {{{#text} A}}}}} {initiators {id 116} {{id {} {{{#text} 116}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1ec4f5}}} {status {} {{{#text} A}}}}} {initiators {id 117} {{id {} {{{#text} 117}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20af70}}} {status {} {{{#text} I}}}}} {initiators {id 118} {{id {} {{{#text} 118}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e3b08c}}} {status {} {{{#text} A}}}}} {initiators {id 119} {{id {} {{{#text} 119}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2beb0}}} {status {} {{{#text} A}}}}} {online {} {{{#text} 88}}} {offline {} {{{#text} 31}}}}
+3
+cli_conmgr_initiator_status
+seconds 1359519201
+{initiators {id 0} {{id {} {{{#text} 0}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-11422c}}} {status {} {{{#text} A}}}}} {initiators {id 1} {{id {} {{{#text} 1}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20b534}}} {status {} {{{#text} A}}}}} {initiators {id 2} {{id {} {{{#text} 2}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20a770}}} {status {} {{{#text} A}}}}} {initiators {id 3} {{id {} {{{#text} 3}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-16ef20}}} {status {} {{{#text} A}}}}} {initiators {id 4} {{id {} {{{#text} 4}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-16d868}}} {status {} {{{#text} A}}}}} {initiators {id 5} {{id {} {{{#text} 5}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-0000c9-7eb721}}} {status {} {{{#text} A}}}}} {initiators {id 6} {{id {} {{{#text} 6}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-0d577c}}} {status {} {{{#text} A}}}}} {initiators {id 7} {{id {} {{{#text} 7}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20af80}}} {status {} {{{#text} A}}}}} {initiators {id 8} {{id {} {{{#text} 8}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-16be70}}} {status {} {{{#text} A}}}}} {initiators {id 9} {{id {} {{{#text} 9}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-16e58c}}} {status {} {{{#text} A}}}}} {initiators {id 10} {{id {} {{{#text} 10}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1df398}}} {status {} {{{#text} A}}}}} {initiators {id 11} {{id {} {{{#text} 11}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-0000c9-7eb4dd}}} {status {} {{{#text} A}}}}} {initiators {id 12} {{id {} {{{#text} 12}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-115dbc}}} {status {} {{{#text} A}}}}} {initiators {id 13} {{id {} {{{#text} 13}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1dbba4}}} {status {} {{{#text} A}}}}} {initiators {id 14} {{id {} {{{#text} 14}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9149}}} {status {} {{{#text} A}}}}} {initiators {id 15} {{id {} {{{#text} 15}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-8875dc}}} {status {} {{{#text} A}}}}} {initiators {id 16} {{id {} {{{#text} 16}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438016-778308}}} {status {} {{{#text} A}}}}} {initiators {id 17} {{id {} {{{#text} 17}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1aa651}}} {status {} {{{#text} A}}}}} {initiators {id 18} {{id {} {{{#text} 18}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-15befc}}} {status {} {{{#text} A}}}}} {initiators {id 19} {{id {} {{{#text} 19}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-886dfe}}} {status {} {{{#text} A}}}}} {initiators {id 20} {{id {} {{{#text} 20}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-215e29}}} {status {} {{{#text} I}}}}} {initiators {id 21} {{id {} {{{#text} 21}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1e08c8}}} {status {} {{{#text} A}}}}} {initiators {id 22} {{id {} {{{#text} 22}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-159748}}} {status {} {{{#text} A}}}}} {initiators {id 23} {{id {} {{{#text} 23}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-21617d}}} {status {} {{{#text} I}}}}} {initiators {id 24} {{id {} {{{#text} 24}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1df3c8}}} {status {} {{{#text} A}}}}} {initiators {id 25} {{id {} {{{#text} 25}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20a748}}} {status {} {{{#text} A}}}}} {initiators {id 26} {{id {} {{{#text} 26}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1e08e0}}} {status {} {{{#text} A}}}}} {initiators {id 27} {{id {} {{{#text} 27}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1df6e4}}} {status {} {{{#text} A}}}}} {initiators {id 28} {{id {} {{{#text} 28}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1df3ec}}} {status {} {{{#text} A}}}}} {initiators {id 29} {{id {} {{{#text} 29}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-bb6a8c}}} {status {} {{{#text} A}}}}} {initiators {id 30} {{id {} {{{#text} 30}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-60b612}}} {status {} {{{#text} I}}}}} {initiators {id 31} {{id {} {{{#text} 31}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-6b645b}}} {status {} {{{#text} I}}}}} {initiators {id 32} {{id {} {{{#text} 32}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-bbb690}}} {status {} {{{#text} A}}}}} {initiators {id 33} {{id {} {{{#text} 33}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-159784}}} {status {} {{{#text} A}}}}} {initiators {id 34} {{id {} {{{#text} 34}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1db7f4}}} {status {} {{{#text} A}}}}} {initiators {id 35} {{id {} {{{#text} 35}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-62ae80}}} {status {} {{{#text} I}}}}} {initiators {id 36} {{id {} {{{#text} 36}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-202c28}}} {status {} {{{#text} A}}}}} {initiators {id 37} {{id {} {{{#text} 37}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-7eb686}}} {status {} {{{#text} I}}}}} {initiators {id 38} {{id {} {{{#text} 38}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-7eb690}}} {status {} {{{#text} I}}}}} {initiators {id 39} {{id {} {{{#text} 39}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-7eb599}}} {status {} {{{#text} I}}}}} {initiators {id 40} {{id {} {{{#text} 40}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20aa14}}} {status {} {{{#text} A}}}}} {initiators {id 41} {{id {} {{{#text} 41}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-882cc4}}} {status {} {{{#text} I}}}}} {initiators {id 42} {{id {} {{{#text} 42}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438016-777d0c}}} {status {} {{{#text} A}}}}} {initiators {id 43} {{id {} {{{#text} 43}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-15970e}}} {status {} {{{#text} I}}}}} {initiators {id 44} {{id {} {{{#text} 44}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9610}}} {status {} {{{#text} A}}}}} {initiators {id 45} {{id {} {{{#text} 45}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-121174}}} {status {} {{{#text} A}}}}} {initiators {id 46} {{id {} {{{#text} 46}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-15b6c0}}} {status {} {{{#text} A}}}}} {initiators {id 47} {{id {} {{{#text} 47}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9cf5}}} {status {} {{{#text} A}}}}} {initiators {id 48} {{id {} {{{#text} 48}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a1f19}}} {status {} {{{#text} A}}}}} {initiators {id 49} {{id {} {{{#text} 49}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2baa8}}} {status {} {{{#text} A}}}}} {initiators {id 50} {{id {} {{{#text} 50}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-123245}}} {status {} {{{#text} A}}}}} {initiators {id 51} {{id {} {{{#text} 51}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20aa30}}} {status {} {{{#text} A}}}}} {initiators {id 52} {{id {} {{{#text} 52}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-123749}}} {status {} {{{#text} A}}}}} {initiators {id 53} {{id {} {{{#text} 53}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-104849}}} {status {} {{{#text} A}}}}} {initiators {id 54} {{id {} {{{#text} 54}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 2101-001b32-329353}}} {status {} {{{#text} A}}}}} {initiators {id 55} {{id {} {{{#text} 55}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1bc281}}} {status {} {{{#text} A}}}}} {initiators {id 56} {{id {} {{{#text} 56}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-122c5c}}} {status {} {{{#text} A}}}}} {initiators {id 57} {{id {} {{{#text} 57}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20b5a4}}} {status {} {{{#text} A}}}}} {initiators {id 58} {{id {} {{{#text} 58}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9164}}} {status {} {{{#text} A}}}}} {initiators {id 59} {{id {} {{{#text} 59}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1bbfd9}}} {status {} {{{#text} A}}}}} {initiators {id 60} {{id {} {{{#text} 60}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-159264}}} {status {} {{{#text} A}}}}} {initiators {id 61} {{id {} {{{#text} 61}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9c68}}} {status {} {{{#text} A}}}}} {initiators {id 62} {{id {} {{{#text} 62}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 2101-001b32-3152d7}}} {status {} {{{#text} A}}}}} {initiators {id 63} {{id {} {{{#text} 63}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a926c}}} {status {} {{{#text} A}}}}} {initiators {id 64} {{id {} {{{#text} 64}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9c6c}}} {status {} {{{#text} A}}}}} {initiators {id 65} {{id {} {{{#text} 65}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1dcf6c}}} {status {} {{{#text} A}}}}} {initiators {id 66} {{id {} {{{#text} 66}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20aaac}}} {status {} {{{#text} A}}}}} {initiators {id 67} {{id {} {{{#text} 67}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-120874}}} {status {} {{{#text} I}}}}} {initiators {id 68} {{id {} {{{#text} 68}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 5001-438006-36ba20}}} {status {} {{{#text} A}}}}} {initiators {id 69} {{id {} {{{#text} 69}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 5001-438006-36b924}}} {status {} {{{#text} A}}}}} {initiators {id 71} {{id {} {{{#text} 71}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-15bc84}}} {status {} {{{#text} A}}}}} {initiators {id 72} {{id {} {{{#text} 72}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-14d486}}} {status {} {{{#text} A}}}}} {initiators {id 73} {{id {} {{{#text} 73}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-0000c9-bbba2f}}} {status {} {{{#text} I}}}}} {initiators {id 74} {{id {} {{{#text} 74}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-12358f}}} {status {} {{{#text} A}}}}} {initiators {id 75} {{id {} {{{#text} 75}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438006-346e38}}} {status {} {{{#text} I}}}}} {initiators {id 76} {{id {} {{{#text} 76}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9290}}} {status {} {{{#text} A}}}}} {initiators {id 77} {{id {} {{{#text} 77}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2c004}}} {status {} {{{#text} A}}}}} {initiators {id 78} {{id {} {{{#text} 78}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-0000c9-60b613}}} {status {} {{{#text} I}}}}} {initiators {id 79} {{id {} {{{#text} 79}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-13d00c}}} {status {} {{{#text} I}}}}} {initiators {id 80} {{id {} {{{#text} 80}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1aa198}}} {status {} {{{#text} A}}}}} {initiators {id 81} {{id {} {{{#text} 81}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a92a4}}} {status {} {{{#text} A}}}}} {initiators {id 82} {{id {} {{{#text} 82}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20a334}}} {status {} {{{#text} I}}}}} {initiators {id 83} {{id {} {{{#text} 83}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-0000c9-882cc5}}} {status {} {{{#text} I}}}}} {initiators {id 84} {{id {} {{{#text} 84}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 2100-00e08b-1ff116}}} {status {} {{{#text} I}}}}} {initiators {id 85} {{id {} {{{#text} 85}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 2101-00e08b-3f6e18}}} {status {} {{{#text} I}}}}} {initiators {id 86} {{id {} {{{#text} 86}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-159386}}} {status {} {{{#text} A}}}}} {initiators {id 87} {{id {} {{{#text} 87}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-20aa98}}} {status {} {{{#text} I}}}}} {initiators {id 88} {{id {} {{{#text} 88}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-215ebd}}} {status {} {{{#text} I}}}}} {initiators {id 89} {{id {} {{{#text} 89}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-214ec1}}} {status {} {{{#text} I}}}}} {initiators {id 90} {{id {} {{{#text} 90}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-2161c5}}} {status {} {{{#text} I}}}}} {initiators {id 91} {{id {} {{{#text} 91}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a8b94}}} {status {} {{{#text} A}}}}} {initiators {id 92} {{id {} {{{#text} 92}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-151d60}}} {status {} {{{#text} I}}}}} {initiators {id 93} {{id {} {{{#text} 93}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2bc5c}}} {status {} {{{#text} A}}}}} {initiators {id 94} {{id {} {{{#text} 94}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-0fa4a9}}} {status {} {{{#text} A}}}}} {initiators {id 95} {{id {} {{{#text} 95}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a90ac}}} {status {} {{{#text} A}}}}} {initiators {id 96} {{id {} {{{#text} 96}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1593ad}}} {status {} {{{#text} A}}}}} {initiators {id 97} {{id {} {{{#text} 97}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1591b4}}} {status {} {{{#text} A}}}}} {initiators {id 98} {{id {} {{{#text} 98}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1aa0c4}}} {status {} {{{#text} A}}}}} {initiators {id 99} {{id {} {{{#text} 99}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9dcc}}} {status {} {{{#text} A}}}}} {initiators {id 100} {{id {} {{{#text} 100}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1218d8}}} {status {} {{{#text} A}}}}} {initiators {id 101} {{id {} {{{#text} 101}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a9ad8}}} {status {} {{{#text} A}}}}} {initiators {id 102} {{id {} {{{#text} 102}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1231e4}}} {status {} {{{#text} A}}}}} {initiators {id 103} {{id {} {{{#text} 103}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1dbbe8}}} {status {} {{{#text} A}}}}} {initiators {id 104} {{id {} {{{#text} 104}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-14d1ee}}} {status {} {{{#text} A}}}}} {initiators {id 105} {{id {} {{{#text} 105}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 1000-00062b-1a89f8}}} {status {} {{{#text} A}}}}} {initiators {id 106} {{id {} {{{#text} 106}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2bb88}}} {status {} {{{#text} A}}}}} {initiators {id 107} {{id {} {{{#text} 107}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 2101-001b32-291977}}} {status {} {{{#text} A}}}}} {initiators {id 108} {{id {} {{{#text} 108}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 2101-001b32-210fa2}}} {status {} {{{#text} I}}}}} {initiators {id 109} {{id {} {{{#text} 109}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438006-34705a}}} {status {} {{{#text} I}}}}} {initiators {id 110} {{id {} {{{#text} 110}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20e674}}} {status {} {{{#text} A}}}}} {initiators {id 111} {{id {} {{{#text} 111}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1786cd}}} {status {} {{{#text} I}}}}} {initiators {id 112} {{id {} {{{#text} 112}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1595c9}}} {status {} {{{#text} I}}}}} {initiators {id 113} {{id {} {{{#text} 113}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20d000}}} {status {} {{{#text} I}}}}} {initiators {id 114} {{id {} {{{#text} 114}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20ce94}}} {status {} {{{#text} I}}}}} {initiators {id 115} {{id {} {{{#text} 115}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1ec31d}}} {status {} {{{#text} A}}}}} {initiators {id 116} {{id {} {{{#text} 116}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-1ec4f5}}} {status {} {{{#text} A}}}}} {initiators {id 117} {{id {} {{{#text} 117}}} {port {} {{{#text} A1}}} {wwpn {} {{{#text} 1000-00062b-20af70}}} {status {} {{{#text} I}}}}} {initiators {id 118} {{id {} {{{#text} 118}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e3b08c}}} {status {} {{{#text} A}}}}} {initiators {id 119} {{id {} {{{#text} 119}}} {port {} {{{#text} A2}}} {wwpn {} {{{#text} 5001-438021-e2beb0}}} {status {} {{{#text} A}}}}} {online {} {{{#text} 88}}} {offline {} {{{#text} 31}}}
+121
+88
+31
+88 + 31 = 119
+INSERT INTO engine_cli_conmgr_initiator_status VALUES ('00600120', '1359519201', '88', '31')
+0
+serial=00600120
+seconds=1359519201
+id=0
+port=A2
+wwpn=1000-00062b-11422c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '0', 'A2', '1000-00062b-11422c', 'A')
+1
+serial=00600120
+seconds=1359519201
+id=1
+port=A2
+wwpn=1000-00062b-20b534
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '1', 'A2', '1000-00062b-20b534', 'A')
+2
+serial=00600120
+seconds=1359519201
+id=2
+port=A2
+wwpn=1000-00062b-20a770
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '2', 'A2', '1000-00062b-20a770', 'A')
+3
+serial=00600120
+seconds=1359519201
+id=3
+port=A1
+wwpn=1000-00062b-16ef20
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '3', 'A1', '1000-00062b-16ef20', 'A')
+4
+serial=00600120
+seconds=1359519201
+id=4
+port=A2
+wwpn=1000-00062b-16d868
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '4', 'A2', '1000-00062b-16d868', 'A')
+5
+serial=00600120
+seconds=1359519201
+id=5
+port=A1
+wwpn=1000-0000c9-7eb721
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '5', 'A1', '1000-0000c9-7eb721', 'A')
+6
+serial=00600120
+seconds=1359519201
+id=6
+port=A2
+wwpn=1000-00062b-0d577c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '6', 'A2', '1000-00062b-0d577c', 'A')
+7
+serial=00600120
+seconds=1359519201
+id=7
+port=A2
+wwpn=1000-00062b-20af80
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '7', 'A2', '1000-00062b-20af80', 'A')
+8
+serial=00600120
+seconds=1359519201
+id=8
+port=A2
+wwpn=1000-00062b-16be70
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '8', 'A2', '1000-00062b-16be70', 'A')
+9
+serial=00600120
+seconds=1359519201
+id=9
+port=A1
+wwpn=1000-00062b-16e58c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '9', 'A1', '1000-00062b-16e58c', 'A')
+10
+serial=00600120
+seconds=1359519201
+id=10
+port=A2
+wwpn=1000-00062b-1df398
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '10', 'A2', '1000-00062b-1df398', 'A')
+11
+serial=00600120
+seconds=1359519201
+id=11
+port=A1
+wwpn=1000-0000c9-7eb4dd
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '11', 'A1', '1000-0000c9-7eb4dd', 'A')
+12
+serial=00600120
+seconds=1359519201
+id=12
+port=A2
+wwpn=1000-00062b-115dbc
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '12', 'A2', '1000-00062b-115dbc', 'A')
+13
+serial=00600120
+seconds=1359519201
+id=13
+port=A1
+wwpn=1000-00062b-1dbba4
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '13', 'A1', '1000-00062b-1dbba4', 'A')
+14
+serial=00600120
+seconds=1359519201
+id=14
+port=A2
+wwpn=1000-00062b-1a9149
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '14', 'A2', '1000-00062b-1a9149', 'A')
+15
+serial=00600120
+seconds=1359519201
+id=15
+port=A2
+wwpn=1000-0000c9-8875dc
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '15', 'A2', '1000-0000c9-8875dc', 'A')
+16
+serial=00600120
+seconds=1359519201
+id=16
+port=A2
+wwpn=5001-438016-778308
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '16', 'A2', '5001-438016-778308', 'A')
+17
+serial=00600120
+seconds=1359519201
+id=17
+port=A2
+wwpn=1000-00062b-1aa651
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '17', 'A2', '1000-00062b-1aa651', 'A')
+18
+serial=00600120
+seconds=1359519201
+id=18
+port=A1
+wwpn=1000-00062b-15befc
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '18', 'A1', '1000-00062b-15befc', 'A')
+19
+serial=00600120
+seconds=1359519201
+id=19
+port=A2
+wwpn=1000-0000c9-886dfe
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '19', 'A2', '1000-0000c9-886dfe', 'A')
+20
+serial=00600120
+seconds=1359519201
+id=20
+port=A2
+wwpn=1000-00062b-215e29
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '20', 'A2', '1000-00062b-215e29', 'I')
+21
+serial=00600120
+seconds=1359519201
+id=21
+port=A1
+wwpn=1000-00062b-1e08c8
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '21', 'A1', '1000-00062b-1e08c8', 'A')
+22
+serial=00600120
+seconds=1359519201
+id=22
+port=A2
+wwpn=1000-00062b-159748
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '22', 'A2', '1000-00062b-159748', 'A')
+23
+serial=00600120
+seconds=1359519201
+id=23
+port=A2
+wwpn=1000-00062b-21617d
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '23', 'A2', '1000-00062b-21617d', 'I')
+24
+serial=00600120
+seconds=1359519201
+id=24
+port=A1
+wwpn=1000-00062b-1df3c8
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '24', 'A1', '1000-00062b-1df3c8', 'A')
+25
+serial=00600120
+seconds=1359519201
+id=25
+port=A2
+wwpn=1000-00062b-20a748
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '25', 'A2', '1000-00062b-20a748', 'A')
+26
+serial=00600120
+seconds=1359519201
+id=26
+port=A2
+wwpn=1000-00062b-1e08e0
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '26', 'A2', '1000-00062b-1e08e0', 'A')
+27
+serial=00600120
+seconds=1359519201
+id=27
+port=A2
+wwpn=1000-00062b-1df6e4
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '27', 'A2', '1000-00062b-1df6e4', 'A')
+28
+serial=00600120
+seconds=1359519201
+id=28
+port=A2
+wwpn=1000-00062b-1df3ec
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '28', 'A2', '1000-00062b-1df3ec', 'A')
+29
+serial=00600120
+seconds=1359519201
+id=29
+port=A2
+wwpn=1000-0000c9-bb6a8c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '29', 'A2', '1000-0000c9-bb6a8c', 'A')
+30
+serial=00600120
+seconds=1359519201
+id=30
+port=A2
+wwpn=1000-0000c9-60b612
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '30', 'A2', '1000-0000c9-60b612', 'I')
+31
+serial=00600120
+seconds=1359519201
+id=31
+port=A2
+wwpn=1000-0000c9-6b645b
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '31', 'A2', '1000-0000c9-6b645b', 'I')
+32
+serial=00600120
+seconds=1359519201
+id=32
+port=A2
+wwpn=1000-0000c9-bbb690
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '32', 'A2', '1000-0000c9-bbb690', 'A')
+33
+serial=00600120
+seconds=1359519201
+id=33
+port=A2
+wwpn=1000-00062b-159784
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '33', 'A2', '1000-00062b-159784', 'A')
+34
+serial=00600120
+seconds=1359519201
+id=34
+port=A1
+wwpn=1000-00062b-1db7f4
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '34', 'A1', '1000-00062b-1db7f4', 'A')
+35
+serial=00600120
+seconds=1359519201
+id=35
+port=A2
+wwpn=1000-0000c9-62ae80
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '35', 'A2', '1000-0000c9-62ae80', 'I')
+36
+serial=00600120
+seconds=1359519201
+id=36
+port=A2
+wwpn=1000-00062b-202c28
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '36', 'A2', '1000-00062b-202c28', 'A')
+37
+serial=00600120
+seconds=1359519201
+id=37
+port=A2
+wwpn=1000-0000c9-7eb686
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '37', 'A2', '1000-0000c9-7eb686', 'I')
+38
+serial=00600120
+seconds=1359519201
+id=38
+port=A2
+wwpn=1000-0000c9-7eb690
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '38', 'A2', '1000-0000c9-7eb690', 'I')
+39
+serial=00600120
+seconds=1359519201
+id=39
+port=A2
+wwpn=1000-0000c9-7eb599
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '39', 'A2', '1000-0000c9-7eb599', 'I')
+40
+serial=00600120
+seconds=1359519201
+id=40
+port=A2
+wwpn=1000-00062b-20aa14
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '40', 'A2', '1000-00062b-20aa14', 'A')
+41
+serial=00600120
+seconds=1359519201
+id=41
+port=A2
+wwpn=1000-0000c9-882cc4
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '41', 'A2', '1000-0000c9-882cc4', 'I')
+42
+serial=00600120
+seconds=1359519201
+id=42
+port=A2
+wwpn=5001-438016-777d0c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '42', 'A2', '5001-438016-777d0c', 'A')
+43
+serial=00600120
+seconds=1359519201
+id=43
+port=A1
+wwpn=1000-00062b-15970e
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '43', 'A1', '1000-00062b-15970e', 'I')
+44
+serial=00600120
+seconds=1359519201
+id=44
+port=A2
+wwpn=1000-00062b-1a9610
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '44', 'A2', '1000-00062b-1a9610', 'A')
+45
+serial=00600120
+seconds=1359519201
+id=45
+port=A2
+wwpn=1000-00062b-121174
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '45', 'A2', '1000-00062b-121174', 'A')
+46
+serial=00600120
+seconds=1359519201
+id=46
+port=A2
+wwpn=1000-00062b-15b6c0
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '46', 'A2', '1000-00062b-15b6c0', 'A')
+47
+serial=00600120
+seconds=1359519201
+id=47
+port=A2
+wwpn=1000-00062b-1a9cf5
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '47', 'A2', '1000-00062b-1a9cf5', 'A')
+48
+serial=00600120
+seconds=1359519201
+id=48
+port=A2
+wwpn=1000-00062b-1a1f19
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '48', 'A2', '1000-00062b-1a1f19', 'A')
+49
+serial=00600120
+seconds=1359519201
+id=49
+port=A2
+wwpn=5001-438021-e2baa8
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '49', 'A2', '5001-438021-e2baa8', 'A')
+50
+serial=00600120
+seconds=1359519201
+id=50
+port=A2
+wwpn=1000-00062b-123245
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '50', 'A2', '1000-00062b-123245', 'A')
+51
+serial=00600120
+seconds=1359519201
+id=51
+port=A2
+wwpn=1000-00062b-20aa30
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '51', 'A2', '1000-00062b-20aa30', 'A')
+52
+serial=00600120
+seconds=1359519201
+id=52
+port=A2
+wwpn=1000-00062b-123749
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '52', 'A2', '1000-00062b-123749', 'A')
+53
+serial=00600120
+seconds=1359519201
+id=53
+port=A2
+wwpn=1000-00062b-104849
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '53', 'A2', '1000-00062b-104849', 'A')
+54
+serial=00600120
+seconds=1359519201
+id=54
+port=A2
+wwpn=2101-001b32-329353
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '54', 'A2', '2101-001b32-329353', 'A')
+55
+serial=00600120
+seconds=1359519201
+id=55
+port=A1
+wwpn=1000-00062b-1bc281
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '55', 'A1', '1000-00062b-1bc281', 'A')
+56
+serial=00600120
+seconds=1359519201
+id=56
+port=A2
+wwpn=1000-00062b-122c5c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '56', 'A2', '1000-00062b-122c5c', 'A')
+57
+serial=00600120
+seconds=1359519201
+id=57
+port=A2
+wwpn=1000-00062b-20b5a4
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '57', 'A2', '1000-00062b-20b5a4', 'A')
+58
+serial=00600120
+seconds=1359519201
+id=58
+port=A2
+wwpn=1000-00062b-1a9164
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '58', 'A2', '1000-00062b-1a9164', 'A')
+59
+serial=00600120
+seconds=1359519201
+id=59
+port=A1
+wwpn=1000-00062b-1bbfd9
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '59', 'A1', '1000-00062b-1bbfd9', 'A')
+60
+serial=00600120
+seconds=1359519201
+id=60
+port=A2
+wwpn=1000-00062b-159264
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '60', 'A2', '1000-00062b-159264', 'A')
+61
+serial=00600120
+seconds=1359519201
+id=61
+port=A2
+wwpn=1000-00062b-1a9c68
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '61', 'A2', '1000-00062b-1a9c68', 'A')
+62
+serial=00600120
+seconds=1359519201
+id=62
+port=A2
+wwpn=2101-001b32-3152d7
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '62', 'A2', '2101-001b32-3152d7', 'A')
+63
+serial=00600120
+seconds=1359519201
+id=63
+port=A2
+wwpn=1000-00062b-1a926c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '63', 'A2', '1000-00062b-1a926c', 'A')
+64
+serial=00600120
+seconds=1359519201
+id=64
+port=A2
+wwpn=1000-00062b-1a9c6c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '64', 'A2', '1000-00062b-1a9c6c', 'A')
+65
+serial=00600120
+seconds=1359519201
+id=65
+port=A2
+wwpn=1000-00062b-1dcf6c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '65', 'A2', '1000-00062b-1dcf6c', 'A')
+66
+serial=00600120
+seconds=1359519201
+id=66
+port=A2
+wwpn=1000-00062b-20aaac
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '66', 'A2', '1000-00062b-20aaac', 'A')
+67
+serial=00600120
+seconds=1359519201
+id=67
+port=A1
+wwpn=1000-00062b-120874
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '67', 'A1', '1000-00062b-120874', 'I')
+68
+serial=00600120
+seconds=1359519201
+id=68
+port=A1
+wwpn=5001-438006-36ba20
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '68', 'A1', '5001-438006-36ba20', 'A')
+69
+serial=00600120
+seconds=1359519201
+id=69
+port=A1
+wwpn=5001-438006-36b924
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '69', 'A1', '5001-438006-36b924', 'A')
+70
+serial=00600120
+seconds=1359519201
+id=71
+port=A2
+wwpn=1000-00062b-15bc84
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '71', 'A2', '1000-00062b-15bc84', 'A')
+71
+serial=00600120
+seconds=1359519201
+id=72
+port=A1
+wwpn=1000-00062b-14d486
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '72', 'A1', '1000-00062b-14d486', 'A')
+72
+serial=00600120
+seconds=1359519201
+id=73
+port=A2
+wwpn=1000-0000c9-bbba2f
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '73', 'A2', '1000-0000c9-bbba2f', 'I')
+73
+serial=00600120
+seconds=1359519201
+id=74
+port=A2
+wwpn=1000-00062b-12358f
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '74', 'A2', '1000-00062b-12358f', 'A')
+74
+serial=00600120
+seconds=1359519201
+id=75
+port=A2
+wwpn=5001-438006-346e38
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '75', 'A2', '5001-438006-346e38', 'I')
+75
+serial=00600120
+seconds=1359519201
+id=76
+port=A2
+wwpn=1000-00062b-1a9290
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '76', 'A2', '1000-00062b-1a9290', 'A')
+76
+serial=00600120
+seconds=1359519201
+id=77
+port=A2
+wwpn=5001-438021-e2c004
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '77', 'A2', '5001-438021-e2c004', 'A')
+77
+serial=00600120
+seconds=1359519201
+id=78
+port=A1
+wwpn=1000-0000c9-60b613
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '78', 'A1', '1000-0000c9-60b613', 'I')
+78
+serial=00600120
+seconds=1359519201
+id=79
+port=A1
+wwpn=1000-00062b-13d00c
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '79', 'A1', '1000-00062b-13d00c', 'I')
+79
+serial=00600120
+seconds=1359519201
+id=80
+port=A2
+wwpn=1000-00062b-1aa198
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '80', 'A2', '1000-00062b-1aa198', 'A')
+80
+serial=00600120
+seconds=1359519201
+id=81
+port=A2
+wwpn=1000-00062b-1a92a4
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '81', 'A2', '1000-00062b-1a92a4', 'A')
+81
+serial=00600120
+seconds=1359519201
+id=82
+port=A1
+wwpn=1000-00062b-20a334
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '82', 'A1', '1000-00062b-20a334', 'I')
+82
+serial=00600120
+seconds=1359519201
+id=83
+port=A1
+wwpn=1000-0000c9-882cc5
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '83', 'A1', '1000-0000c9-882cc5', 'I')
+83
+serial=00600120
+seconds=1359519201
+id=84
+port=A1
+wwpn=2100-00e08b-1ff116
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '84', 'A1', '2100-00e08b-1ff116', 'I')
+84
+serial=00600120
+seconds=1359519201
+id=85
+port=A1
+wwpn=2101-00e08b-3f6e18
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '85', 'A1', '2101-00e08b-3f6e18', 'I')
+85
+serial=00600120
+seconds=1359519201
+id=86
+port=A2
+wwpn=1000-00062b-159386
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '86', 'A2', '1000-00062b-159386', 'A')
+86
+serial=00600120
+seconds=1359519201
+id=87
+port=A2
+wwpn=1000-00062b-20aa98
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '87', 'A2', '1000-00062b-20aa98', 'I')
+87
+serial=00600120
+seconds=1359519201
+id=88
+port=A2
+wwpn=1000-00062b-215ebd
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '88', 'A2', '1000-00062b-215ebd', 'I')
+88
+serial=00600120
+seconds=1359519201
+id=89
+port=A2
+wwpn=1000-00062b-214ec1
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '89', 'A2', '1000-00062b-214ec1', 'I')
+89
+serial=00600120
+seconds=1359519201
+id=90
+port=A2
+wwpn=1000-00062b-2161c5
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '90', 'A2', '1000-00062b-2161c5', 'I')
+90
+serial=00600120
+seconds=1359519201
+id=91
+port=A2
+wwpn=1000-00062b-1a8b94
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '91', 'A2', '1000-00062b-1a8b94', 'A')
+91
+serial=00600120
+seconds=1359519201
+id=92
+port=A2
+wwpn=1000-00062b-151d60
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '92', 'A2', '1000-00062b-151d60', 'I')
+92
+serial=00600120
+seconds=1359519201
+id=93
+port=A2
+wwpn=5001-438021-e2bc5c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '93', 'A2', '5001-438021-e2bc5c', 'A')
+93
+serial=00600120
+seconds=1359519201
+id=94
+port=A2
+wwpn=1000-00062b-0fa4a9
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '94', 'A2', '1000-00062b-0fa4a9', 'A')
+94
+serial=00600120
+seconds=1359519201
+id=95
+port=A2
+wwpn=1000-00062b-1a90ac
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '95', 'A2', '1000-00062b-1a90ac', 'A')
+95
+serial=00600120
+seconds=1359519201
+id=96
+port=A2
+wwpn=1000-00062b-1593ad
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '96', 'A2', '1000-00062b-1593ad', 'A')
+96
+serial=00600120
+seconds=1359519201
+id=97
+port=A2
+wwpn=1000-00062b-1591b4
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '97', 'A2', '1000-00062b-1591b4', 'A')
+97
+serial=00600120
+seconds=1359519201
+id=98
+port=A2
+wwpn=1000-00062b-1aa0c4
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '98', 'A2', '1000-00062b-1aa0c4', 'A')
+98
+serial=00600120
+seconds=1359519201
+id=99
+port=A2
+wwpn=1000-00062b-1a9dcc
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '99', 'A2', '1000-00062b-1a9dcc', 'A')
+99
+serial=00600120
+seconds=1359519201
+id=100
+port=A2
+wwpn=1000-00062b-1218d8
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '100', 'A2', '1000-00062b-1218d8', 'A')
+100
+serial=00600120
+seconds=1359519201
+id=101
+port=A2
+wwpn=1000-00062b-1a9ad8
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '101', 'A2', '1000-00062b-1a9ad8', 'A')
+101
+serial=00600120
+seconds=1359519201
+id=102
+port=A2
+wwpn=1000-00062b-1231e4
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '102', 'A2', '1000-00062b-1231e4', 'A')
+102
+serial=00600120
+seconds=1359519201
+id=103
+port=A2
+wwpn=1000-00062b-1dbbe8
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '103', 'A2', '1000-00062b-1dbbe8', 'A')
+103
+serial=00600120
+seconds=1359519201
+id=104
+port=A1
+wwpn=1000-00062b-14d1ee
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '104', 'A1', '1000-00062b-14d1ee', 'A')
+104
+serial=00600120
+seconds=1359519201
+id=105
+port=A2
+wwpn=1000-00062b-1a89f8
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '105', 'A2', '1000-00062b-1a89f8', 'A')
+105
+serial=00600120
+seconds=1359519201
+id=106
+port=A2
+wwpn=5001-438021-e2bb88
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '106', 'A2', '5001-438021-e2bb88', 'A')
+106
+serial=00600120
+seconds=1359519201
+id=107
+port=A2
+wwpn=2101-001b32-291977
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '107', 'A2', '2101-001b32-291977', 'A')
+107
+serial=00600120
+seconds=1359519201
+id=108
+port=A2
+wwpn=2101-001b32-210fa2
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '108', 'A2', '2101-001b32-210fa2', 'I')
+108
+serial=00600120
+seconds=1359519201
+id=109
+port=A2
+wwpn=5001-438006-34705a
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '109', 'A2', '5001-438006-34705a', 'I')
+109
+serial=00600120
+seconds=1359519201
+id=110
+port=A1
+wwpn=1000-00062b-20e674
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '110', 'A1', '1000-00062b-20e674', 'A')
+110
+serial=00600120
+seconds=1359519201
+id=111
+port=A1
+wwpn=1000-00062b-1786cd
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '111', 'A1', '1000-00062b-1786cd', 'I')
+111
+serial=00600120
+seconds=1359519201
+id=112
+port=A1
+wwpn=1000-00062b-1595c9
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '112', 'A1', '1000-00062b-1595c9', 'I')
+112
+serial=00600120
+seconds=1359519201
+id=113
+port=A1
+wwpn=1000-00062b-20d000
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '113', 'A1', '1000-00062b-20d000', 'I')
+113
+serial=00600120
+seconds=1359519201
+id=114
+port=A1
+wwpn=1000-00062b-20ce94
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '114', 'A1', '1000-00062b-20ce94', 'I')
+114
+serial=00600120
+seconds=1359519201
+id=115
+port=A1
+wwpn=1000-00062b-1ec31d
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '115', 'A1', '1000-00062b-1ec31d', 'A')
+115
+serial=00600120
+seconds=1359519201
+id=116
+port=A1
+wwpn=1000-00062b-1ec4f5
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '116', 'A1', '1000-00062b-1ec4f5', 'A')
+116
+serial=00600120
+seconds=1359519201
+id=117
+port=A1
+wwpn=1000-00062b-20af70
+status=I
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '117', 'A1', '1000-00062b-20af70', 'I')
+117
+serial=00600120
+seconds=1359519201
+id=118
+port=A2
+wwpn=5001-438021-e3b08c
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '118', 'A2', '5001-438021-e3b08c', 'A')
+118
+serial=00600120
+seconds=1359519201
+id=119
+port=A2
+wwpn=5001-438021-e2beb0
+status=A
+INSERT INTO engine_cli_conmgr_initiator_status_detail VALUES ('00600120', '1359519201', '119', 'A2', '5001-438021-e2beb0', 'A')
