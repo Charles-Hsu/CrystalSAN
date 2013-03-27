@@ -123,11 +123,7 @@
 		560EC27316FC54CC000B505C /* parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		560EC27416FC54CC000B505C /* public-parse-xml-proc.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = "public-parse-xml-proc.exp"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		560EC27516FC54CC000B505C /* scan_ha_cluster.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_ha_cluster.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
-		560EC27616FC54CC000B505C /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
-		560EC27716FC54CC000B505C /* sqlite3test.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = sqlite3test.exp; sourceTree = "<group>"; };
 		560EC27816FC54CC000B505C /* test_parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = test_parse_engine_all.exp; sourceTree = "<group>"; };
-		560EC27916FC54CC000B505C /* testsqlite3.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = testsqlite3.exp; sourceTree = "<group>"; };
-		560EC27A16FC54CC000B505C /* testXML.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = testXML.exp; sourceTree = "<group>"; };
 		561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipTopPopToRoot.m; sourceTree = "<group>"; };
 		561284D716A7CDF200F53C49 /* FlipTopPopToRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipTopPopToRoot.h; sourceTree = "<group>"; };
 		561284E016A8DE0800F53C49 /* CustomPushSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
@@ -194,7 +190,6 @@
 		567ABEC716F57F9F004B789D /* Text-RAID View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-RAID View.png"; sourceTree = "<group>"; };
 		567ABED016F58E52004B789D /* Text-Drive View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Drive View.png"; sourceTree = "<group>"; };
 		567ABED416F591F4004B789D /* Text-HBA View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HBA View.png"; sourceTree = "<group>"; };
-		5690A84916FC5E5C007FDC32 /* test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
 		5690A8AC16FC88C6007FDC32 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		5690A8AD16FC88D6007FDC32 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		5690A8AF16FC8A68007FDC32 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -215,7 +210,6 @@
 		56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-CrystalSAN.png"; sourceTree = "<group>"; };
 		56AC0E4E16F2F99A008C1678 /* Search-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Search-Bar.png"; sourceTree = "<group>"; };
 		56AC0E5016F2FD4B008C1678 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
-		56AC50A616D4AC9300A8121D /* sandatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = sandatabase.sqlite; sourceTree = "<group>"; };
 		56BD566F16E99A8400E56664 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewVcController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewVcController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewVcController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewVcController.m; sourceTree = "<group>"; };
@@ -246,7 +240,6 @@
 		56C4AF4316F1787E00E829A2 /* sqlite_createtable.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_createtable.php; sourceTree = "<group>"; };
 		56C4AF4416F1787E00E829A2 /* sqlite_createtable2.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_createtable2.php; sourceTree = "<group>"; };
 		56C4AF4516F1787E00E829A2 /* sqlite_insert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sqlite_insert.php; sourceTree = "<group>"; };
-		56C4AF6716F19A3C00E829A2 /* sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.xml; sourceTree = "<group>"; };
 		56C4AF6916F19C9000E829A2 /* samplexml.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = samplexml.php; sourceTree = "<group>"; };
 		56C4AF6B16F1A24800E829A2 /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
 		56C4AF6C16F1A24800E829A2 /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
@@ -321,11 +314,7 @@
 				560EC26816FC54CC000B505C /* parse_engine_all_20130321.exp */,
 				560EC26916FC54CC000B505C /* script.sh */,
 				560EC26A16FC54CC000B505C /* Scripts */,
-				560EC27616FC54CC000B505C /* server.db */,
-				560EC27716FC54CC000B505C /* sqlite3test.exp */,
 				560EC27816FC54CC000B505C /* test_parse_engine_all.exp */,
-				560EC27916FC54CC000B505C /* testsqlite3.exp */,
-				560EC27A16FC54CC000B505C /* testXML.exp */,
 			);
 			path = expect;
 			sourceTree = "<group>";
@@ -505,12 +494,9 @@
 		56EB75221689D06A0082A5D2 = {
 			isa = PBXGroup;
 			children = (
-				5690A84916FC5E5C007FDC32 /* test.sh */,
-				56C4AF2A16F1787E00E829A2 /* CrystalSANServer */,
-				56AC50A616D4AC9300A8121D /* sandatabase.sqlite */,
-				560EC26616FC54CC000B505C /* expect */,
 				56EB756D168AA1790082A5D2 /* ReadMe.txt */,
-				56C4AF6716F19A3C00E829A2 /* sample.xml */,
+				56C4AF2A16F1787E00E829A2 /* CrystalSANServer */,
+				560EC26616FC54CC000B505C /* expect */,
 				56EB75541689D12B0082A5D2 /* Resource */,
 				56EB75371689D06A0082A5D2 /* CrystalSAN */,
 				56EB75301689D06A0082A5D2 /* Frameworks */,
@@ -543,6 +529,7 @@
 		56EB75371689D06A0082A5D2 /* CrystalSAN */ = {
 			isa = PBXGroup;
 			children = (
+				567FA33B17029C7D000F5802 /* HAApplianceView */,
 				56956C161701448300F60A8A /* FLLocation */,
 				56EB76CC16901A020082A5D2 /* CrystalSAN.entitlements */,
 				56C4AF6B16F1A24800E829A2 /* XMLParser.h */,
@@ -557,7 +544,6 @@
 				56D191D716E080F0002BB2B5 /* MirrorViewRController.m */,
 				56BDEC71169BE6B50076CD6B /* RaidViewVcController.h */,
 				56BDEC72169BE6D10076CD6B /* RaidViewVcController.m */,
-				567FA33B17029C7D000F5802 /* HAApplianceView */,
 				56EB7576168BF70B0082A5D2 /* RaidViewController.h */,
 				56EB7577168BF70B0082A5D2 /* RaidViewController.m */,
 				56EB75401689D06A0082A5D2 /* AppDelegate.h */,
