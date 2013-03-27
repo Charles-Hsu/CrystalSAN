@@ -646,6 +646,57 @@
 }
 
 
+- (NSArray *)getDriveListByEngineSerial:(NSString *)serial
+{
+    NSMutableArray *initiators = [[NSMutableArray alloc] init];
+    //
+    // CREATE TABLE engine_cli_vpd (serial text primary key, seconds integer, site_name text, engine_name text, product_type text, fw_version text, fw_data text, redboot text, uid text, pcb text, mac text, ip text, uptime text, alert text, time text, a1_wwpn, a2_wwpn, b1_wwpn, b2_wwpn);
+    //
+    
+    NSString *sql = nil;
+    if (serial.length == 0) {
+        sql = [NSString stringWithFormat:@"select * from engine_cli_conmgr_drive_status_detail"];
+    }
+    else {
+        sql = [NSString stringWithFormat:@"select * from engine_cli_conmgr_drive_status_detail where serial='%@'", serial];
+    }
+    
+    FMResultSet *rs = [db executeQuery:sql];
+    
+    /*
+     select * from engine_cli_conmgr_drive_status_detail where serial='00600118' or serial='00600120' order by drive_id;
+     serial      seconds     drive_id    drive_status  path_0_id   path_0_port  path_0_wwpn         path_0_lun  path_0_pstatus  path_1_id   path_1_port  path_1_wwpn  path_1_lun  path_1_pstatus
+     ----------  ----------  ----------  ------------  ----------  -----------  ------------------  ----------  --------------  ----------  -----------  -----------  ----------  --------------
+     00600118    1363746628  0           A             1           B1           5000-612032-f02000  0000        A
+     00600120    1363746628  0           A             1           B1           5000-612032-f02000  0000        A
+     00600118    1363746628  1           A             1           B1           5000-612032-f18000  0000        A
+     00600120    1363746628  1           A             1           B1           5000-612032-f18000  0000        A
+     00600118    1363746628  2           A             1           B2           5000-612032-c0c000  0000        A
+     00600120    1363746628  2           A             1           B2           5000-612032-c0c000  0000        A
+     00600118    1363746628  3           A             1           B2           5000-612032-ef2010  0000        A
+     00600120    1363746628  3           A             1           B2           5000-612032-ef2010  0000        A
+     00600118    1363746628  4           A             1           B1           5000-612032-f02010  0000        A
+     00600120    1363746628  4           A             1           B1           5000-612032-f02010  0000        A
+     00600118    1363746628  5           A             1           B1           5000-612032-f18010  0000        A
+     00600120    1363746628  5           A             1           B1           5000-612032-f18010  0000        A
+     00600118    1363746628  6           A             1           B2           5000-612032-c0c010  0000        A
+     00600120    1363746628  6           A             1           B2           5000-612032-c0c010  0000        A
+     00600118    1363746628  7           A             1           B2           5000-612032-ef2000  0000        A
+     00600120    1363746628  7           A             1           B2           5000-612032-ef2000  0000        A
+     */
+    
+    while ([rs next])
+    {
+        [initiators addObject:[rs resultDictionary]];
+    }
+    // close the result set.
+    // it'll also close when it's dealloc'd, but we're closing the database before
+    // the autorelease pool closes, so sqlite will complain about it.
+    [rs close];
+    return initiators;
+}
+
+
 - (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName andKey:(NSString *)key
 {
     NSString *sql = [NSString stringWithFormat:@"SELECT ha_appliance_name FROM ha_cluster WHERE site_name = '%@' AND ha_appliance_name LIKE '%%%@%%'", siteName, key];

@@ -40,6 +40,7 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *itemIndexCountsAndTotalLabel;
 
+@property (nonatomic, strong) IBOutlet UILabel *haApplianceName;
 
 // data
 @property (strong, nonatomic) NSDictionary *allNames;

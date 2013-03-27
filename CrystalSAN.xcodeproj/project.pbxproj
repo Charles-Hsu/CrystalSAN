@@ -7,15 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5604ECAF169D1F51004B046F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 5604ECAE169D1F51004B046F /* background.png */; };
 		561284E216A8DF8E00F53C49 /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284E116A8DE0800F53C49 /* CustomPushSegue.m */; };
 		5612850B16A8E50600F53C49 /* FlipTopPopToRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */; };
-		561A93DC169C4A3F0063F990 /* appicon72.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93DA169C4A3F0063F990 /* appicon72.png */; };
-		561A93DD169C4A3F0063F990 /* appicon144.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93DB169C4A3F0063F990 /* appicon144.png */; };
-		561A93E7169C4A500063F990 /* button-Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93DE169C4A500063F990 /* button-Arrow.png */; };
-		561A93F4169C4A640063F990 /* image-RAID-Configuration.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93F0169C4A640063F990 /* image-RAID-Configuration.png */; };
-		561A93FE169C4A710063F990 /* text-CircularMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93F8169C4A710063F990 /* text-CircularMode.png */; };
-		561A93FF169C4A710063F990 /* text-DiagonalMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 561A93F9169C4A710063F990 /* text-DiagonalMode.png */; };
 		5623C76216BD50F1009410B2 /* SanDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C76116BD50F0009410B2 /* SanDatabase.m */; };
 		5623C77B16BD54BF009410B2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77116BD54BF009410B2 /* FMDatabase.m */; };
 		5623C77C16BD54BF009410B2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77316BD54BF009410B2 /* FMDatabaseAdditions.m */; };
@@ -23,76 +16,83 @@
 		5623C77E16BD54BF009410B2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77716BD54BF009410B2 /* FMDatabaseQueue.m */; };
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
-		5637E7CF16FAEF3E00ED0BC3 /* Text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7CE16FAEF3E00ED0BC3 /* Text-HA Appliance View.png */; };
-		5637E7D116FAF56C00ED0BC3 /* Text-Connection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D016FAF56C00ED0BC3 /* Text-Connection.png */; };
-		5637E7D616FB341600ED0BC3 /* Text-HA Appliance View - Cluster.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D216FB341500ED0BC3 /* Text-HA Appliance View - Cluster.png */; };
-		5637E7D716FB341600ED0BC3 /* Text-HA Appliance View - Connection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D316FB341600ED0BC3 /* Text-HA Appliance View - Connection.png */; };
-		5637E7D816FB341600ED0BC3 /* Text-HA Appliance View - History.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D416FB341600ED0BC3 /* Text-HA Appliance View - History.png */; };
-		5637E7D916FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png in Resources */ = {isa = PBXBuildFile; fileRef = 5637E7D516FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png */; };
-		56424EE416FAA40200616251 /* Device-HBA-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EE216FAA40200616251 /* Device-HBA-disappeared.png */; };
-		56424EE516FAA40200616251 /* Device-HBA-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EE316FAA40200616251 /* Device-HBA-problem.png */; };
-		56424EE916FAA5FA00616251 /* Device-Drive-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EE616FAA5FA00616251 /* Device-Drive-degraded.png */; };
-		56424EEA16FAA5FA00616251 /* Device-Drive-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EE716FAA5FA00616251 /* Device-Drive-disappeared.png */; };
-		56424EEB16FAA5FA00616251 /* Device-Drive-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EE816FAA5FA00616251 /* Device-Drive-problem.png */; };
-		56424EEF16FAA7D000616251 /* Device-Raid-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EEC16FAA7D000616251 /* Device-Raid-degraded.png */; };
-		56424EF016FAA7D000616251 /* Device-Raid-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EED16FAA7D000616251 /* Device-Raid-disappeared.png */; };
-		56424EF116FAA7D000616251 /* Device-Raid-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EEE16FAA7D000616251 /* Device-Raid-problem.png */; };
-		56424EF516FAAA1000616251 /* Device-Volume-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EF216FAAA1000616251 /* Device-Volume-degraded.png */; };
-		56424EF616FAAA1000616251 /* Device-Volume-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EF316FAAA1000616251 /* Device-Volume-disappeared.png */; };
-		56424EF716FAAA1000616251 /* Device-Volume-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EF416FAAA1000616251 /* Device-Volume-problem.png */; };
-		56424EF916FABDC100616251 /* Text-Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 56424EF816FABDC100616251 /* Text-Home.png */; };
 		565057C616F7E8CA00CCFF7D /* HAApplianceConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565057C516F7E8C900CCFF7D /* HAApplianceConnectionViewController.m */; };
-		565057D316F80AC100CCFF7D /* Device-HBA-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057D216F80AC100CCFF7D /* Device-HBA-healthy.png */; };
-		565057D716F8139500CCFF7D /* Text-Vc.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057D616F8139400CCFF7D /* Text-Vc.png */; };
-		565057D916F8144D00CCFF7D /* Device-LUN-unit-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057D816F8144D00CCFF7D /* Device-LUN-unit-healthy.png */; };
-		565057DB16F8173000CCFF7D /* Device-Engine.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057DA16F8172F00CCFF7D /* Device-Engine.png */; };
-		565057E616F8465700CCFF7D /* Device-LUN-member-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057E416F8465600CCFF7D /* Device-LUN-member-blue.png */; };
-		565057E716F8465700CCFF7D /* Device-LUN-member-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057E516F8465600CCFF7D /* Device-LUN-member-green.png */; };
-		565057EC16F849AF00CCFF7D /* Device-PC.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057EB16F849AF00CCFF7D /* Device-PC.png */; };
-		565057F216F88BB000CCFF7D /* Home-Button-RaidView.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057ED16F88B9F00CCFF7D /* Home-Button-RaidView.png */; };
-		565057F316F88BB000CCFF7D /* Home-Button-HAApplianceView.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057EE16F88B9F00CCFF7D /* Home-Button-HAApplianceView.png */; };
-		565057F416F88BB000CCFF7D /* Home-Button-HBAView.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057EF16F88BA300CCFF7D /* Home-Button-HBAView.png */; };
-		565057F516F88BB000CCFF7D /* Home-Button-DriveView.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057F016F88BA700CCFF7D /* Home-Button-DriveView.png */; };
-		565057F616F88BB000CCFF7D /* Home-Button-VolumeView.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057F116F88BAB00CCFF7D /* Home-Button-VolumeView.png */; };
-		565057F916F8A3EF00CCFF7D /* Text-Vf.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057F716F8A3EE00CCFF7D /* Text-Vf.png */; };
-		565057FA16F8A3EF00CCFF7D /* Text-Vi.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057F816F8A3EF00CCFF7D /* Text-Vi.png */; };
-		565057FC16F8A87400CCFF7D /* Information-Board.png in Resources */ = {isa = PBXBuildFile; fileRef = 565057FB16F8A87400CCFF7D /* Information-Board.png */; };
 		565057FF16F93BE800CCFF7D /* HAApplianceMirrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565057FE16F93BE300CCFF7D /* HAApplianceMirrorViewController.m */; };
 		5650580516F97F7500CCFF7D /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF3F16F1787E00E829A2 /* server.db */; };
-		565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */; };
-		567ABEC016F4A7A1004B789D /* Device-Volume-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABEBF16F4A7A1004B789D /* Device-Volume-healthy.png */; };
-		567ABEC416F57E58004B789D /* Text-Volume View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABEC316F57E58004B789D /* Text-Volume View.png */; };
-		567ABEC816F57F9F004B789D /* Text-RAID View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABEC716F57F9F004B789D /* Text-RAID View.png */; };
-		567ABED116F58E52004B789D /* Text-Drive View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABED016F58E52004B789D /* Text-Drive View.png */; };
-		567ABED516F591F4004B789D /* Text-HBA View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567ABED416F591F4004B789D /* Text-HBA View.png */; };
+		567FA37E1702CBA9000F5802 /* appicon144.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA33D1702CBA9000F5802 /* appicon144.png */; };
+		567FA37F1702CBA9000F5802 /* appicon72.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA33E1702CBA9000F5802 /* appicon72.png */; };
+		567FA3801702CBA9000F5802 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA33F1702CBA9000F5802 /* background.png */; };
+		567FA3811702CBA9000F5802 /* button-Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3401702CBA9000F5802 /* button-Arrow.png */; };
+		567FA3821702CBA9000F5802 /* Button-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3411702CBA9000F5802 /* Button-Back.png */; };
+		567FA3831702CBA9000F5802 /* Button-Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3421702CBA9000F5802 /* Button-Home.png */; };
+		567FA3841702CBA9000F5802 /* Button-Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3431702CBA9000F5802 /* Button-Logout.png */; };
+		567FA3851702CBA9000F5802 /* Button-Vc.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3441702CBA9000F5802 /* Button-Vc.png */; };
+		567FA3861702CBA9000F5802 /* Button-Vf.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3451702CBA9000F5802 /* Button-Vf.png */; };
+		567FA3871702CBA9000F5802 /* Button-Vh.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3461702CBA9000F5802 /* Button-Vh.png */; };
+		567FA3881702CBA9000F5802 /* Button-Vi.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3471702CBA9000F5802 /* Button-Vi.png */; };
+		567FA3891702CBA9000F5802 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3481702CBA9000F5802 /* Default-Landscape~ipad.png */; };
+		567FA38A1702CBA9000F5802 /* Device-Drive-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3491702CBA9000F5802 /* Device-Drive-degraded.png */; };
+		567FA38B1702CBA9000F5802 /* Device-Drive-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA34A1702CBA9000F5802 /* Device-Drive-disappeared.png */; };
+		567FA38C1702CBA9000F5802 /* Device-Drive-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA34B1702CBA9000F5802 /* Device-Drive-healthy.png */; };
+		567FA38D1702CBA9000F5802 /* Device-Drive-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA34C1702CBA9000F5802 /* Device-Drive-problem.png */; };
+		567FA38E1702CBA9000F5802 /* Device-Engine.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA34D1702CBA9000F5802 /* Device-Engine.png */; };
+		567FA38F1702CBA9000F5802 /* Device-HA-Appliance-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA34E1702CBA9000F5802 /* Device-HA-Appliance-healthy.png */; };
+		567FA3901702CBA9000F5802 /* Device-HBA-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA34F1702CBA9000F5802 /* Device-HBA-disappeared.png */; };
+		567FA3911702CBA9000F5802 /* Device-HBA-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3501702CBA9000F5802 /* Device-HBA-healthy.png */; };
+		567FA3921702CBA9000F5802 /* Device-HBA-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3511702CBA9000F5802 /* Device-HBA-problem.png */; };
+		567FA3931702CBA9000F5802 /* Device-LUN-member-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3521702CBA9000F5802 /* Device-LUN-member-blue.png */; };
+		567FA3941702CBA9000F5802 /* Device-LUN-member-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3531702CBA9000F5802 /* Device-LUN-member-green.png */; };
+		567FA3951702CBA9000F5802 /* Device-LUN-unit-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3541702CBA9000F5802 /* Device-LUN-unit-healthy.png */; };
+		567FA3961702CBA9000F5802 /* Device-PC.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3551702CBA9000F5802 /* Device-PC.png */; };
+		567FA3971702CBA9000F5802 /* Device-Raid-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3561702CBA9000F5802 /* Device-Raid-degraded.png */; };
+		567FA3981702CBA9000F5802 /* Device-Raid-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3571702CBA9000F5802 /* Device-Raid-disappeared.png */; };
+		567FA3991702CBA9000F5802 /* Device-Raid-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3581702CBA9000F5802 /* Device-Raid-healthy.png */; };
+		567FA39A1702CBA9000F5802 /* Device-Raid-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3591702CBA9000F5802 /* Device-Raid-problem.png */; };
+		567FA39B1702CBA9000F5802 /* Device-Site.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA35A1702CBA9000F5802 /* Device-Site.png */; };
+		567FA39C1702CBA9000F5802 /* Device-Volume-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA35B1702CBA9000F5802 /* Device-Volume-degraded.png */; };
+		567FA39D1702CBA9000F5802 /* Device-Volume-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA35C1702CBA9000F5802 /* Device-Volume-disappeared.png */; };
+		567FA39E1702CBA9000F5802 /* Device-Volume-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA35D1702CBA9000F5802 /* Device-Volume-healthy.png */; };
+		567FA39F1702CBA9000F5802 /* Device-Volume-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA35E1702CBA9000F5802 /* Device-Volume-problem.png */; };
+		567FA3A01702CBA9000F5802 /* Hexagonal.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA35F1702CBA9000F5802 /* Hexagonal.png */; };
+		567FA3A11702CBA9000F5802 /* Home-Button-DriveView.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3601702CBA9000F5802 /* Home-Button-DriveView.png */; };
+		567FA3A21702CBA9000F5802 /* Home-Button-HAApplianceView.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3611702CBA9000F5802 /* Home-Button-HAApplianceView.png */; };
+		567FA3A31702CBA9000F5802 /* Home-Button-HBAView.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3621702CBA9000F5802 /* Home-Button-HBAView.png */; };
+		567FA3A41702CBA9000F5802 /* Home-Button-RaidView.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3631702CBA9000F5802 /* Home-Button-RaidView.png */; };
+		567FA3A51702CBA9000F5802 /* Home-Button-VolumeView.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3641702CBA9000F5802 /* Home-Button-VolumeView.png */; };
+		567FA3A61702CBA9000F5802 /* image-RAID-Configuration.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3651702CBA9000F5802 /* image-RAID-Configuration.png */; };
+		567FA3A71702CBA9000F5802 /* Information-Board.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3661702CBA9000F5802 /* Information-Board.png */; };
+		567FA3A81702CBA9000F5802 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3671702CBA9000F5802 /* off.png */; };
+		567FA3A91702CBA9000F5802 /* Search-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3681702CBA9000F5802 /* Search-Bar.png */; };
+		567FA3AA1702CBA9000F5802 /* text-CircularMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3691702CBA9000F5802 /* text-CircularMode.png */; };
+		567FA3AB1702CBA9000F5802 /* Text-Connection.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA36A1702CBA9000F5802 /* Text-Connection.png */; };
+		567FA3AC1702CBA9000F5802 /* Text-CrystalSAN.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA36B1702CBA9000F5802 /* Text-CrystalSAN.png */; };
+		567FA3AD1702CBA9000F5802 /* text-DiagonalMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA36C1702CBA9000F5802 /* text-DiagonalMode.png */; };
+		567FA3AE1702CBA9000F5802 /* Text-Drive View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA36D1702CBA9000F5802 /* Text-Drive View.png */; };
+		567FA3AF1702CBA9000F5802 /* Text-HA Appliance View - Cluster.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA36E1702CBA9000F5802 /* Text-HA Appliance View - Cluster.png */; };
+		567FA3B01702CBA9000F5802 /* Text-HA Appliance View - Connection.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA36F1702CBA9000F5802 /* Text-HA Appliance View - Connection.png */; };
+		567FA3B11702CBA9000F5802 /* Text-HA Appliance View - History.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3701702CBA9000F5802 /* Text-HA Appliance View - History.png */; };
+		567FA3B21702CBA9000F5802 /* Text-HA Appliance View - Mirror.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3711702CBA9000F5802 /* Text-HA Appliance View - Mirror.png */; };
+		567FA3B31702CBA9000F5802 /* Text-HA Appliance View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3721702CBA9000F5802 /* Text-HA Appliance View.png */; };
+		567FA3B41702CBA9000F5802 /* Text-HBA View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3731702CBA9000F5802 /* Text-HBA View.png */; };
+		567FA3B51702CBA9000F5802 /* Text-Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3741702CBA9000F5802 /* Text-Home.png */; };
+		567FA3B61702CBA9000F5802 /* Text-Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3751702CBA9000F5802 /* Text-Map.png */; };
+		567FA3B71702CBA9000F5802 /* Text-RAID View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3761702CBA9000F5802 /* Text-RAID View.png */; };
+		567FA3B81702CBA9000F5802 /* Text-Vc.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3771702CBA9000F5802 /* Text-Vc.png */; };
+		567FA3B91702CBA9000F5802 /* Text-Vf.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3781702CBA9000F5802 /* Text-Vf.png */; };
+		567FA3BA1702CBA9000F5802 /* Text-Vi.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA3791702CBA9000F5802 /* Text-Vi.png */; };
+		567FA3BB1702CBA9000F5802 /* Text-Volume View.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA37A1702CBA9000F5802 /* Text-Volume View.png */; };
+		567FA3BC1702CBA9000F5802 /* uislider-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA37B1702CBA9000F5802 /* uislider-left.png */; };
+		567FA3BD1702CBA9000F5802 /* uislider-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA37C1702CBA9000F5802 /* uislider-right.png */; };
+		567FA3BE1702CBA9000F5802 /* uislider-thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA37D1702CBA9000F5802 /* uislider-thumb.png */; };
 		5690A8AE16FC88D6007FDC32 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5690A8AD16FC88D6007FDC32 /* MapViewController.m */; };
 		5690A8B016FC8A68007FDC32 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5690A8AF16FC8A68007FDC32 /* MapKit.framework */; };
-		5690A8B416FD6978007FDC32 /* Device-Site.png in Resources */ = {isa = PBXBuildFile; fileRef = 5690A8B316FD6978007FDC32 /* Device-Site.png */; };
-		5690A8B616FD6CF6007FDC32 /* Text-Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 5690A8B516FD6CF6007FDC32 /* Text-Map.png */; };
 		56956C1016FEDE0100F60A8A /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56956C0E16FEDE0100F60A8A /* MKMapView+ZoomLevel.m */; };
 		56956C1116FEDE0100F60A8A /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 56956C0F16FEDE0100F60A8A /* README.markdown */; };
 		56956C1316FF09A900F60A8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56956C1216FF09A900F60A8A /* CoreLocation.framework */; };
 		56956C1717014A0200F60A8A /* FLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56956C151701447700F60A8A /* FLLocation.m */; };
-		56956C1917018A4800F60A8A /* Hexagonal.png in Resources */ = {isa = PBXBuildFile; fileRef = 56956C1817018A4500F60A8A /* Hexagonal.png */; };
-		56984AEA16F41031006A6AAD /* Device-Drive-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 56984AE916F41031006A6AAD /* Device-Drive-healthy.png */; };
-		56AC0E4316F2E1CF008C1678 /* Button-Vh.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4216F2E1CF008C1678 /* Button-Vh.png */; };
-		56AC0E4616F2E538008C1678 /* Button-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4416F2E538008C1678 /* Button-Back.png */; };
-		56AC0E4716F2E538008C1678 /* Button-Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4516F2E538008C1678 /* Button-Home.png */; };
-		56AC0E4916F2E61A008C1678 /* Button-Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4816F2E61A008C1678 /* Button-Logout.png */; };
-		56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */; };
-		56AC0E4F16F2F99A008C1678 /* Search-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E4E16F2F99A008C1678 /* Search-Bar.png */; };
-		56AC0E5116F2FD4B008C1678 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC0E5016F2FD4B008C1678 /* off.png */; };
 		56BD567016E99A8400E56664 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56BD566F16E99A8400E56664 /* Settings.bundle */; };
 		56BDEC73169BE6D10076CD6B /* RaidViewVcController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDEC72169BE6D10076CD6B /* RaidViewVcController.m */; };
 		56C4AF6D16F1A24800E829A2 /* XMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C4AF6C16F1A24800E829A2 /* XMLParser.m */; };
-		56C4AF7516F2070A00E829A2 /* Device-Raid-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF7416F2070A00E829A2 /* Device-Raid-healthy.png */; };
-		56C4AF7716F207D900E829A2 /* Device-HA-Appliance-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF7616F207D900E829A2 /* Device-HA-Appliance-healthy.png */; };
-		56C4AF7B16F2C08500E829A2 /* uislider-thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF7A16F2C08500E829A2 /* uislider-thumb.png */; };
-		56C4AF8216F2C85A00E829A2 /* uislider-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF8016F2C85A00E829A2 /* uislider-left.png */; };
-		56C4AF8316F2C85A00E829A2 /* uislider-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF8116F2C85A00E829A2 /* uislider-right.png */; };
-		56C4AF8516F2CC3F00E829A2 /* Button-Vi.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF8416F2CC3F00E829A2 /* Button-Vi.png */; };
-		56C4AF8716F2CC9C00E829A2 /* Button-Vf.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF8616F2CC9C00E829A2 /* Button-Vf.png */; };
-		56C4AF8916F2CCD500E829A2 /* Button-Vc.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C4AF8816F2CCD500E829A2 /* Button-Vc.png */; };
 		56C9874E16E44CB20066AC2C /* DriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9874D16E44CB20066AC2C /* DriveViewController.m */; };
 		56C9875316E452E00066AC2C /* HbaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9875216E452E00066AC2C /* HbaViewController.m */; };
 		56D191D816E080F0002BB2B5 /* MirrorViewRController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D191D716E080F0002BB2B5 /* MirrorViewRController.m */; };
@@ -117,7 +117,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5604ECAE169D1F51004B046F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		560EC26816FC54CC000B505C /* parse_engine_all_20130321.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all_20130321.exp; sourceTree = "<group>"; };
 		560EC26916FC54CC000B505C /* script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.sh; sourceTree = "<group>"; };
 		560EC27316FC54CC000B505C /* parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -128,12 +127,6 @@
 		561284D716A7CDF200F53C49 /* FlipTopPopToRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipTopPopToRoot.h; sourceTree = "<group>"; };
 		561284E016A8DE0800F53C49 /* CustomPushSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
 		561284E116A8DE0800F53C49 /* CustomPushSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPushSegue.m; sourceTree = "<group>"; };
-		561A93DA169C4A3F0063F990 /* appicon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon72.png; sourceTree = "<group>"; };
-		561A93DB169C4A3F0063F990 /* appicon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon144.png; sourceTree = "<group>"; };
-		561A93DE169C4A500063F990 /* button-Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-Arrow.png"; sourceTree = "<group>"; };
-		561A93F0169C4A640063F990 /* image-RAID-Configuration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-RAID-Configuration.png"; sourceTree = "<group>"; };
-		561A93F8169C4A710063F990 /* text-CircularMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-CircularMode.png"; sourceTree = "<group>"; };
-		561A93F9169C4A710063F990 /* text-DiagonalMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-DiagonalMode.png"; sourceTree = "<group>"; };
 		5623C76016BD50F0009410B2 /* SanDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SanDatabase.h; sourceTree = "<group>"; };
 		5623C76116BD50F0009410B2 /* SanDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SanDatabase.m; sourceTree = "<group>"; };
 		5623C77016BD54BF009410B2 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -147,69 +140,84 @@
 		5623C77916BD54BF009410B2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		5623C77A16BD54BF009410B2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		5623C78116BD565E009410B2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		5637E7CE16FAEF3E00ED0BC3 /* Text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View.png"; sourceTree = "<group>"; };
-		5637E7D016FAF56C00ED0BC3 /* Text-Connection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Connection.png"; sourceTree = "<group>"; };
-		5637E7D216FB341500ED0BC3 /* Text-HA Appliance View - Cluster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Cluster.png"; sourceTree = "<group>"; };
-		5637E7D316FB341600ED0BC3 /* Text-HA Appliance View - Connection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Connection.png"; sourceTree = "<group>"; };
-		5637E7D416FB341600ED0BC3 /* Text-HA Appliance View - History.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - History.png"; sourceTree = "<group>"; };
-		5637E7D516FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Mirror.png"; sourceTree = "<group>"; };
-		56424EE216FAA40200616251 /* Device-HBA-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-disappeared.png"; sourceTree = "<group>"; };
-		56424EE316FAA40200616251 /* Device-HBA-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-problem.png"; sourceTree = "<group>"; };
-		56424EE616FAA5FA00616251 /* Device-Drive-degraded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Drive-degraded.png"; sourceTree = "<group>"; };
-		56424EE716FAA5FA00616251 /* Device-Drive-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Drive-disappeared.png"; sourceTree = "<group>"; };
-		56424EE816FAA5FA00616251 /* Device-Drive-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Drive-problem.png"; sourceTree = "<group>"; };
-		56424EEC16FAA7D000616251 /* Device-Raid-degraded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-degraded.png"; sourceTree = "<group>"; };
-		56424EED16FAA7D000616251 /* Device-Raid-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-disappeared.png"; sourceTree = "<group>"; };
-		56424EEE16FAA7D000616251 /* Device-Raid-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-problem.png"; sourceTree = "<group>"; };
-		56424EF216FAAA1000616251 /* Device-Volume-degraded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-degraded.png"; sourceTree = "<group>"; };
-		56424EF316FAAA1000616251 /* Device-Volume-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-disappeared.png"; sourceTree = "<group>"; };
-		56424EF416FAAA1000616251 /* Device-Volume-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-problem.png"; sourceTree = "<group>"; };
-		56424EF816FABDC100616251 /* Text-Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Home.png"; sourceTree = "<group>"; };
 		565057C416F7E8BC00CCFF7D /* HAApplianceConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAApplianceConnectionViewController.h; sourceTree = "<group>"; };
 		565057C516F7E8C900CCFF7D /* HAApplianceConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAApplianceConnectionViewController.m; sourceTree = "<group>"; };
-		565057D216F80AC100CCFF7D /* Device-HBA-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-healthy.png"; sourceTree = "<group>"; };
-		565057D616F8139400CCFF7D /* Text-Vc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Vc.png"; sourceTree = "<group>"; };
-		565057D816F8144D00CCFF7D /* Device-LUN-unit-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-LUN-unit-healthy.png"; sourceTree = "<group>"; };
-		565057DA16F8172F00CCFF7D /* Device-Engine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Engine.png"; sourceTree = "<group>"; };
-		565057E416F8465600CCFF7D /* Device-LUN-member-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-LUN-member-blue.png"; sourceTree = "<group>"; };
-		565057E516F8465600CCFF7D /* Device-LUN-member-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-LUN-member-green.png"; sourceTree = "<group>"; };
-		565057EB16F849AF00CCFF7D /* Device-PC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-PC.png"; sourceTree = "<group>"; };
-		565057ED16F88B9F00CCFF7D /* Home-Button-RaidView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-RaidView.png"; sourceTree = "<group>"; };
-		565057EE16F88B9F00CCFF7D /* Home-Button-HAApplianceView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-HAApplianceView.png"; sourceTree = "<group>"; };
-		565057EF16F88BA300CCFF7D /* Home-Button-HBAView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-HBAView.png"; sourceTree = "<group>"; };
-		565057F016F88BA700CCFF7D /* Home-Button-DriveView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-DriveView.png"; sourceTree = "<group>"; };
-		565057F116F88BAB00CCFF7D /* Home-Button-VolumeView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-VolumeView.png"; sourceTree = "<group>"; };
-		565057F716F8A3EE00CCFF7D /* Text-Vf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Vf.png"; sourceTree = "<group>"; };
-		565057F816F8A3EF00CCFF7D /* Text-Vi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Vi.png"; sourceTree = "<group>"; };
-		565057FB16F8A87400CCFF7D /* Information-Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Information-Board.png"; sourceTree = "<group>"; };
 		565057FD16F93BD300CCFF7D /* HAApplianceMirrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAApplianceMirrorViewController.h; sourceTree = "<group>"; };
 		565057FE16F93BE300CCFF7D /* HAApplianceMirrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAApplianceMirrorViewController.m; sourceTree = "<group>"; };
-		565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		567ABEBF16F4A7A1004B789D /* Device-Volume-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-healthy.png"; sourceTree = "<group>"; };
-		567ABEC316F57E58004B789D /* Text-Volume View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Volume View.png"; sourceTree = "<group>"; };
-		567ABEC716F57F9F004B789D /* Text-RAID View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-RAID View.png"; sourceTree = "<group>"; };
-		567ABED016F58E52004B789D /* Text-Drive View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Drive View.png"; sourceTree = "<group>"; };
-		567ABED416F591F4004B789D /* Text-HBA View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HBA View.png"; sourceTree = "<group>"; };
+		567FA33D1702CBA9000F5802 /* appicon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon144.png; sourceTree = "<group>"; };
+		567FA33E1702CBA9000F5802 /* appicon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon72.png; sourceTree = "<group>"; };
+		567FA33F1702CBA9000F5802 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		567FA3401702CBA9000F5802 /* button-Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-Arrow.png"; sourceTree = "<group>"; };
+		567FA3411702CBA9000F5802 /* Button-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Back.png"; sourceTree = "<group>"; };
+		567FA3421702CBA9000F5802 /* Button-Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Home.png"; sourceTree = "<group>"; };
+		567FA3431702CBA9000F5802 /* Button-Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Logout.png"; sourceTree = "<group>"; };
+		567FA3441702CBA9000F5802 /* Button-Vc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vc.png"; sourceTree = "<group>"; };
+		567FA3451702CBA9000F5802 /* Button-Vf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vf.png"; sourceTree = "<group>"; };
+		567FA3461702CBA9000F5802 /* Button-Vh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vh.png"; sourceTree = "<group>"; };
+		567FA3471702CBA9000F5802 /* Button-Vi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vi.png"; sourceTree = "<group>"; };
+		567FA3481702CBA9000F5802 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		567FA3491702CBA9000F5802 /* Device-Drive-degraded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Drive-degraded.png"; sourceTree = "<group>"; };
+		567FA34A1702CBA9000F5802 /* Device-Drive-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Drive-disappeared.png"; sourceTree = "<group>"; };
+		567FA34B1702CBA9000F5802 /* Device-Drive-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Drive-healthy.png"; sourceTree = "<group>"; };
+		567FA34C1702CBA9000F5802 /* Device-Drive-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Drive-problem.png"; sourceTree = "<group>"; };
+		567FA34D1702CBA9000F5802 /* Device-Engine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Engine.png"; sourceTree = "<group>"; };
+		567FA34E1702CBA9000F5802 /* Device-HA-Appliance-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HA-Appliance-healthy.png"; sourceTree = "<group>"; };
+		567FA34F1702CBA9000F5802 /* Device-HBA-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-disappeared.png"; sourceTree = "<group>"; };
+		567FA3501702CBA9000F5802 /* Device-HBA-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-healthy.png"; sourceTree = "<group>"; };
+		567FA3511702CBA9000F5802 /* Device-HBA-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-problem.png"; sourceTree = "<group>"; };
+		567FA3521702CBA9000F5802 /* Device-LUN-member-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-LUN-member-blue.png"; sourceTree = "<group>"; };
+		567FA3531702CBA9000F5802 /* Device-LUN-member-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-LUN-member-green.png"; sourceTree = "<group>"; };
+		567FA3541702CBA9000F5802 /* Device-LUN-unit-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-LUN-unit-healthy.png"; sourceTree = "<group>"; };
+		567FA3551702CBA9000F5802 /* Device-PC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-PC.png"; sourceTree = "<group>"; };
+		567FA3561702CBA9000F5802 /* Device-Raid-degraded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-degraded.png"; sourceTree = "<group>"; };
+		567FA3571702CBA9000F5802 /* Device-Raid-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-disappeared.png"; sourceTree = "<group>"; };
+		567FA3581702CBA9000F5802 /* Device-Raid-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-healthy.png"; sourceTree = "<group>"; };
+		567FA3591702CBA9000F5802 /* Device-Raid-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-problem.png"; sourceTree = "<group>"; };
+		567FA35A1702CBA9000F5802 /* Device-Site.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Site.png"; sourceTree = "<group>"; };
+		567FA35B1702CBA9000F5802 /* Device-Volume-degraded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-degraded.png"; sourceTree = "<group>"; };
+		567FA35C1702CBA9000F5802 /* Device-Volume-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-disappeared.png"; sourceTree = "<group>"; };
+		567FA35D1702CBA9000F5802 /* Device-Volume-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-healthy.png"; sourceTree = "<group>"; };
+		567FA35E1702CBA9000F5802 /* Device-Volume-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Volume-problem.png"; sourceTree = "<group>"; };
+		567FA35F1702CBA9000F5802 /* Hexagonal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hexagonal.png; sourceTree = "<group>"; };
+		567FA3601702CBA9000F5802 /* Home-Button-DriveView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-DriveView.png"; sourceTree = "<group>"; };
+		567FA3611702CBA9000F5802 /* Home-Button-HAApplianceView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-HAApplianceView.png"; sourceTree = "<group>"; };
+		567FA3621702CBA9000F5802 /* Home-Button-HBAView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-HBAView.png"; sourceTree = "<group>"; };
+		567FA3631702CBA9000F5802 /* Home-Button-RaidView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-RaidView.png"; sourceTree = "<group>"; };
+		567FA3641702CBA9000F5802 /* Home-Button-VolumeView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home-Button-VolumeView.png"; sourceTree = "<group>"; };
+		567FA3651702CBA9000F5802 /* image-RAID-Configuration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-RAID-Configuration.png"; sourceTree = "<group>"; };
+		567FA3661702CBA9000F5802 /* Information-Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Information-Board.png"; sourceTree = "<group>"; };
+		567FA3671702CBA9000F5802 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
+		567FA3681702CBA9000F5802 /* Search-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Search-Bar.png"; sourceTree = "<group>"; };
+		567FA3691702CBA9000F5802 /* text-CircularMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-CircularMode.png"; sourceTree = "<group>"; };
+		567FA36A1702CBA9000F5802 /* Text-Connection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Connection.png"; sourceTree = "<group>"; };
+		567FA36B1702CBA9000F5802 /* Text-CrystalSAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-CrystalSAN.png"; sourceTree = "<group>"; };
+		567FA36C1702CBA9000F5802 /* text-DiagonalMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-DiagonalMode.png"; sourceTree = "<group>"; };
+		567FA36D1702CBA9000F5802 /* Text-Drive View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Drive View.png"; sourceTree = "<group>"; };
+		567FA36E1702CBA9000F5802 /* Text-HA Appliance View - Cluster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Cluster.png"; sourceTree = "<group>"; };
+		567FA36F1702CBA9000F5802 /* Text-HA Appliance View - Connection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Connection.png"; sourceTree = "<group>"; };
+		567FA3701702CBA9000F5802 /* Text-HA Appliance View - History.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - History.png"; sourceTree = "<group>"; };
+		567FA3711702CBA9000F5802 /* Text-HA Appliance View - Mirror.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View - Mirror.png"; sourceTree = "<group>"; };
+		567FA3721702CBA9000F5802 /* Text-HA Appliance View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HA Appliance View.png"; sourceTree = "<group>"; };
+		567FA3731702CBA9000F5802 /* Text-HBA View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-HBA View.png"; sourceTree = "<group>"; };
+		567FA3741702CBA9000F5802 /* Text-Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Home.png"; sourceTree = "<group>"; };
+		567FA3751702CBA9000F5802 /* Text-Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Map.png"; sourceTree = "<group>"; };
+		567FA3761702CBA9000F5802 /* Text-RAID View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-RAID View.png"; sourceTree = "<group>"; };
+		567FA3771702CBA9000F5802 /* Text-Vc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Vc.png"; sourceTree = "<group>"; };
+		567FA3781702CBA9000F5802 /* Text-Vf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Vf.png"; sourceTree = "<group>"; };
+		567FA3791702CBA9000F5802 /* Text-Vi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Vi.png"; sourceTree = "<group>"; };
+		567FA37A1702CBA9000F5802 /* Text-Volume View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Volume View.png"; sourceTree = "<group>"; };
+		567FA37B1702CBA9000F5802 /* uislider-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uislider-left.png"; sourceTree = "<group>"; };
+		567FA37C1702CBA9000F5802 /* uislider-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uislider-right.png"; sourceTree = "<group>"; };
+		567FA37D1702CBA9000F5802 /* uislider-thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uislider-thumb.png"; sourceTree = "<group>"; };
 		5690A8AC16FC88C6007FDC32 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		5690A8AD16FC88D6007FDC32 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		5690A8AF16FC8A68007FDC32 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		5690A8B316FD6978007FDC32 /* Device-Site.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Site.png"; sourceTree = "<group>"; };
-		5690A8B516FD6CF6007FDC32 /* Text-Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-Map.png"; sourceTree = "<group>"; };
 		56956C0D16FEDE0100F60A8A /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		56956C0E16FEDE0100F60A8A /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		56956C0F16FEDE0100F60A8A /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		56956C1216FF09A900F60A8A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		56956C141701447700F60A8A /* FLLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLLocation.h; sourceTree = "<group>"; };
 		56956C151701447700F60A8A /* FLLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLLocation.m; sourceTree = "<group>"; };
-		56956C1817018A4500F60A8A /* Hexagonal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hexagonal.png; sourceTree = "<group>"; };
-		56984AE916F41031006A6AAD /* Device-Drive-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Drive-healthy.png"; sourceTree = "<group>"; };
-		56AC0E4216F2E1CF008C1678 /* Button-Vh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vh.png"; sourceTree = "<group>"; };
-		56AC0E4416F2E538008C1678 /* Button-Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Back.png"; sourceTree = "<group>"; };
-		56AC0E4516F2E538008C1678 /* Button-Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Home.png"; sourceTree = "<group>"; };
-		56AC0E4816F2E61A008C1678 /* Button-Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Logout.png"; sourceTree = "<group>"; };
-		56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Text-CrystalSAN.png"; sourceTree = "<group>"; };
-		56AC0E4E16F2F99A008C1678 /* Search-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Search-Bar.png"; sourceTree = "<group>"; };
-		56AC0E5016F2FD4B008C1678 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
 		56BD566F16E99A8400E56664 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewVcController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewVcController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewVcController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewVcController.m; sourceTree = "<group>"; };
@@ -243,14 +251,6 @@
 		56C4AF6916F19C9000E829A2 /* samplexml.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = samplexml.php; sourceTree = "<group>"; };
 		56C4AF6B16F1A24800E829A2 /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
 		56C4AF6C16F1A24800E829A2 /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
-		56C4AF7416F2070A00E829A2 /* Device-Raid-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Raid-healthy.png"; sourceTree = "<group>"; };
-		56C4AF7616F207D900E829A2 /* Device-HA-Appliance-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HA-Appliance-healthy.png"; sourceTree = "<group>"; };
-		56C4AF7A16F2C08500E829A2 /* uislider-thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uislider-thumb.png"; sourceTree = "<group>"; };
-		56C4AF8016F2C85A00E829A2 /* uislider-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uislider-left.png"; sourceTree = "<group>"; };
-		56C4AF8116F2C85A00E829A2 /* uislider-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uislider-right.png"; sourceTree = "<group>"; };
-		56C4AF8416F2CC3F00E829A2 /* Button-Vi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vi.png"; sourceTree = "<group>"; };
-		56C4AF8616F2CC9C00E829A2 /* Button-Vf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vf.png"; sourceTree = "<group>"; };
-		56C4AF8816F2CCD500E829A2 /* Button-Vc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Vc.png"; sourceTree = "<group>"; };
 		56C9874C16E44C8D0066AC2C /* DriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveViewController.h; sourceTree = "<group>"; };
 		56C9874D16E44CB20066AC2C /* DriveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveViewController.m; sourceTree = "<group>"; };
 		56C9875116E452CE0066AC2C /* HbaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HbaViewController.h; sourceTree = "<group>"; };
@@ -362,6 +362,79 @@
 			name = HAApplianceView;
 			sourceTree = "<group>";
 		};
+		567FA33C1702CBA9000F5802 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				567FA33D1702CBA9000F5802 /* appicon144.png */,
+				567FA33E1702CBA9000F5802 /* appicon72.png */,
+				567FA33F1702CBA9000F5802 /* background.png */,
+				567FA3401702CBA9000F5802 /* button-Arrow.png */,
+				567FA3411702CBA9000F5802 /* Button-Back.png */,
+				567FA3421702CBA9000F5802 /* Button-Home.png */,
+				567FA3431702CBA9000F5802 /* Button-Logout.png */,
+				567FA3441702CBA9000F5802 /* Button-Vc.png */,
+				567FA3451702CBA9000F5802 /* Button-Vf.png */,
+				567FA3461702CBA9000F5802 /* Button-Vh.png */,
+				567FA3471702CBA9000F5802 /* Button-Vi.png */,
+				567FA3481702CBA9000F5802 /* Default-Landscape~ipad.png */,
+				567FA3491702CBA9000F5802 /* Device-Drive-degraded.png */,
+				567FA34A1702CBA9000F5802 /* Device-Drive-disappeared.png */,
+				567FA34B1702CBA9000F5802 /* Device-Drive-healthy.png */,
+				567FA34C1702CBA9000F5802 /* Device-Drive-problem.png */,
+				567FA34D1702CBA9000F5802 /* Device-Engine.png */,
+				567FA34E1702CBA9000F5802 /* Device-HA-Appliance-healthy.png */,
+				567FA34F1702CBA9000F5802 /* Device-HBA-disappeared.png */,
+				567FA3501702CBA9000F5802 /* Device-HBA-healthy.png */,
+				567FA3511702CBA9000F5802 /* Device-HBA-problem.png */,
+				567FA3521702CBA9000F5802 /* Device-LUN-member-blue.png */,
+				567FA3531702CBA9000F5802 /* Device-LUN-member-green.png */,
+				567FA3541702CBA9000F5802 /* Device-LUN-unit-healthy.png */,
+				567FA3551702CBA9000F5802 /* Device-PC.png */,
+				567FA3561702CBA9000F5802 /* Device-Raid-degraded.png */,
+				567FA3571702CBA9000F5802 /* Device-Raid-disappeared.png */,
+				567FA3581702CBA9000F5802 /* Device-Raid-healthy.png */,
+				567FA3591702CBA9000F5802 /* Device-Raid-problem.png */,
+				567FA35A1702CBA9000F5802 /* Device-Site.png */,
+				567FA35B1702CBA9000F5802 /* Device-Volume-degraded.png */,
+				567FA35C1702CBA9000F5802 /* Device-Volume-disappeared.png */,
+				567FA35D1702CBA9000F5802 /* Device-Volume-healthy.png */,
+				567FA35E1702CBA9000F5802 /* Device-Volume-problem.png */,
+				567FA35F1702CBA9000F5802 /* Hexagonal.png */,
+				567FA3601702CBA9000F5802 /* Home-Button-DriveView.png */,
+				567FA3611702CBA9000F5802 /* Home-Button-HAApplianceView.png */,
+				567FA3621702CBA9000F5802 /* Home-Button-HBAView.png */,
+				567FA3631702CBA9000F5802 /* Home-Button-RaidView.png */,
+				567FA3641702CBA9000F5802 /* Home-Button-VolumeView.png */,
+				567FA3651702CBA9000F5802 /* image-RAID-Configuration.png */,
+				567FA3661702CBA9000F5802 /* Information-Board.png */,
+				567FA3671702CBA9000F5802 /* off.png */,
+				567FA3681702CBA9000F5802 /* Search-Bar.png */,
+				567FA3691702CBA9000F5802 /* text-CircularMode.png */,
+				567FA36A1702CBA9000F5802 /* Text-Connection.png */,
+				567FA36B1702CBA9000F5802 /* Text-CrystalSAN.png */,
+				567FA36C1702CBA9000F5802 /* text-DiagonalMode.png */,
+				567FA36D1702CBA9000F5802 /* Text-Drive View.png */,
+				567FA36E1702CBA9000F5802 /* Text-HA Appliance View - Cluster.png */,
+				567FA36F1702CBA9000F5802 /* Text-HA Appliance View - Connection.png */,
+				567FA3701702CBA9000F5802 /* Text-HA Appliance View - History.png */,
+				567FA3711702CBA9000F5802 /* Text-HA Appliance View - Mirror.png */,
+				567FA3721702CBA9000F5802 /* Text-HA Appliance View.png */,
+				567FA3731702CBA9000F5802 /* Text-HBA View.png */,
+				567FA3741702CBA9000F5802 /* Text-Home.png */,
+				567FA3751702CBA9000F5802 /* Text-Map.png */,
+				567FA3761702CBA9000F5802 /* Text-RAID View.png */,
+				567FA3771702CBA9000F5802 /* Text-Vc.png */,
+				567FA3781702CBA9000F5802 /* Text-Vf.png */,
+				567FA3791702CBA9000F5802 /* Text-Vi.png */,
+				567FA37A1702CBA9000F5802 /* Text-Volume View.png */,
+				567FA37B1702CBA9000F5802 /* uislider-left.png */,
+				567FA37C1702CBA9000F5802 /* uislider-right.png */,
+				567FA37D1702CBA9000F5802 /* uislider-thumb.png */,
+			);
+			name = images;
+			path = CrystalSAN/images;
+			sourceTree = "<group>";
+		};
 		56956C0C16FEDE0100F60A8A /* MKMapViewZoom */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,78 +454,6 @@
 			);
 			name = FLLocation;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		56984AE416F40D2F006A6AAD /* images */ = {
-			isa = PBXGroup;
-			children = (
-				56AC0E5016F2FD4B008C1678 /* off.png */,
-				56AC0E4E16F2F99A008C1678 /* Search-Bar.png */,
-				56C4AF8016F2C85A00E829A2 /* uislider-left.png */,
-				56C4AF8116F2C85A00E829A2 /* uislider-right.png */,
-				56C4AF7A16F2C08500E829A2 /* uislider-thumb.png */,
-				56C4AF7416F2070A00E829A2 /* Device-Raid-healthy.png */,
-				56424EEC16FAA7D000616251 /* Device-Raid-degraded.png */,
-				56424EED16FAA7D000616251 /* Device-Raid-disappeared.png */,
-				56424EEE16FAA7D000616251 /* Device-Raid-problem.png */,
-				56C4AF7616F207D900E829A2 /* Device-HA-Appliance-healthy.png */,
-				56984AE916F41031006A6AAD /* Device-Drive-healthy.png */,
-				56424EE616FAA5FA00616251 /* Device-Drive-degraded.png */,
-				56424EE716FAA5FA00616251 /* Device-Drive-disappeared.png */,
-				56424EE816FAA5FA00616251 /* Device-Drive-problem.png */,
-				567ABEBF16F4A7A1004B789D /* Device-Volume-healthy.png */,
-				56424EF216FAAA1000616251 /* Device-Volume-degraded.png */,
-				56424EF316FAAA1000616251 /* Device-Volume-disappeared.png */,
-				56424EF416FAAA1000616251 /* Device-Volume-problem.png */,
-				565057D216F80AC100CCFF7D /* Device-HBA-healthy.png */,
-				56424EE216FAA40200616251 /* Device-HBA-disappeared.png */,
-				56424EE316FAA40200616251 /* Device-HBA-problem.png */,
-				565057DA16F8172F00CCFF7D /* Device-Engine.png */,
-				565057D816F8144D00CCFF7D /* Device-LUN-unit-healthy.png */,
-				565057E416F8465600CCFF7D /* Device-LUN-member-blue.png */,
-				565057E516F8465600CCFF7D /* Device-LUN-member-green.png */,
-				565057EB16F849AF00CCFF7D /* Device-PC.png */,
-				5690A8B316FD6978007FDC32 /* Device-Site.png */,
-				5604ECAE169D1F51004B046F /* background.png */,
-				561A93DE169C4A500063F990 /* button-Arrow.png */,
-				561A93DA169C4A3F0063F990 /* appicon72.png */,
-				561A93DB169C4A3F0063F990 /* appicon144.png */,
-				565C7BBF169E8FAB00219D7E /* Default-Landscape~ipad.png */,
-				561A93F0169C4A640063F990 /* image-RAID-Configuration.png */,
-				561A93F8169C4A710063F990 /* text-CircularMode.png */,
-				561A93F9169C4A710063F990 /* text-DiagonalMode.png */,
-				567ABEC316F57E58004B789D /* Text-Volume View.png */,
-				5637E7D016FAF56C00ED0BC3 /* Text-Connection.png */,
-				56424EF816FABDC100616251 /* Text-Home.png */,
-				5690A8B516FD6CF6007FDC32 /* Text-Map.png */,
-				567ABEC716F57F9F004B789D /* Text-RAID View.png */,
-				567ABED016F58E52004B789D /* Text-Drive View.png */,
-				5637E7CE16FAEF3E00ED0BC3 /* Text-HA Appliance View.png */,
-				5637E7D216FB341500ED0BC3 /* Text-HA Appliance View - Cluster.png */,
-				5637E7D316FB341600ED0BC3 /* Text-HA Appliance View - Connection.png */,
-				5637E7D416FB341600ED0BC3 /* Text-HA Appliance View - History.png */,
-				5637E7D516FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png */,
-				567ABED416F591F4004B789D /* Text-HBA View.png */,
-				565057F716F8A3EE00CCFF7D /* Text-Vf.png */,
-				565057F816F8A3EF00CCFF7D /* Text-Vi.png */,
-				565057D616F8139400CCFF7D /* Text-Vc.png */,
-				56AC0E4A16F2F1D7008C1678 /* Text-CrystalSAN.png */,
-				56C4AF8816F2CCD500E829A2 /* Button-Vc.png */,
-				56C4AF8616F2CC9C00E829A2 /* Button-Vf.png */,
-				56C4AF8416F2CC3F00E829A2 /* Button-Vi.png */,
-				56AC0E4216F2E1CF008C1678 /* Button-Vh.png */,
-				56AC0E4416F2E538008C1678 /* Button-Back.png */,
-				56AC0E4516F2E538008C1678 /* Button-Home.png */,
-				56AC0E4816F2E61A008C1678 /* Button-Logout.png */,
-				565057ED16F88B9F00CCFF7D /* Home-Button-RaidView.png */,
-				565057EE16F88B9F00CCFF7D /* Home-Button-HAApplianceView.png */,
-				565057EF16F88BA300CCFF7D /* Home-Button-HBAView.png */,
-				565057F016F88BA700CCFF7D /* Home-Button-DriveView.png */,
-				565057F116F88BAB00CCFF7D /* Home-Button-VolumeView.png */,
-				56956C1817018A4500F60A8A /* Hexagonal.png */,
-				565057FB16F8A87400CCFF7D /* Information-Board.png */,
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 		56C4AF2A16F1787E00E829A2 /* CrystalSANServer */ = {
@@ -587,7 +588,7 @@
 		56EB75541689D12B0082A5D2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				56984AE416F40D2F006A6AAD /* images */,
+				567FA33C1702CBA9000F5802 /* images */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -659,73 +660,73 @@
 				56EB75481689D06A0082A5D2 /* Default-568h@2x.png in Resources */,
 				56EB754B1689D06A0082A5D2 /* MainStoryboard.storyboard in Resources */,
 				56EB756E168AA1790082A5D2 /* ReadMe.txt in Resources */,
-				561A93DC169C4A3F0063F990 /* appicon72.png in Resources */,
-				561A93DD169C4A3F0063F990 /* appicon144.png in Resources */,
-				561A93E7169C4A500063F990 /* button-Arrow.png in Resources */,
-				561A93F4169C4A640063F990 /* image-RAID-Configuration.png in Resources */,
-				561A93FE169C4A710063F990 /* text-CircularMode.png in Resources */,
-				561A93FF169C4A710063F990 /* text-DiagonalMode.png in Resources */,
-				5604ECAF169D1F51004B046F /* background.png in Resources */,
-				565C7BC0169E8FAB00219D7E /* Default-Landscape~ipad.png in Resources */,
 				56BD567016E99A8400E56664 /* Settings.bundle in Resources */,
-				56C4AF7516F2070A00E829A2 /* Device-Raid-healthy.png in Resources */,
-				56C4AF7716F207D900E829A2 /* Device-HA-Appliance-healthy.png in Resources */,
-				56C4AF7B16F2C08500E829A2 /* uislider-thumb.png in Resources */,
-				56C4AF8216F2C85A00E829A2 /* uislider-left.png in Resources */,
-				56C4AF8316F2C85A00E829A2 /* uislider-right.png in Resources */,
-				56C4AF8516F2CC3F00E829A2 /* Button-Vi.png in Resources */,
-				56C4AF8716F2CC9C00E829A2 /* Button-Vf.png in Resources */,
-				56C4AF8916F2CCD500E829A2 /* Button-Vc.png in Resources */,
-				56AC0E4316F2E1CF008C1678 /* Button-Vh.png in Resources */,
-				56AC0E4616F2E538008C1678 /* Button-Back.png in Resources */,
-				56AC0E4716F2E538008C1678 /* Button-Home.png in Resources */,
-				56AC0E4916F2E61A008C1678 /* Button-Logout.png in Resources */,
-				56AC0E4B16F2F1D7008C1678 /* Text-CrystalSAN.png in Resources */,
-				56AC0E4F16F2F99A008C1678 /* Search-Bar.png in Resources */,
-				56AC0E5116F2FD4B008C1678 /* off.png in Resources */,
-				56984AEA16F41031006A6AAD /* Device-Drive-healthy.png in Resources */,
-				567ABEC016F4A7A1004B789D /* Device-Volume-healthy.png in Resources */,
-				567ABEC416F57E58004B789D /* Text-Volume View.png in Resources */,
-				567ABEC816F57F9F004B789D /* Text-RAID View.png in Resources */,
-				567ABED116F58E52004B789D /* Text-Drive View.png in Resources */,
-				567ABED516F591F4004B789D /* Text-HBA View.png in Resources */,
-				565057D316F80AC100CCFF7D /* Device-HBA-healthy.png in Resources */,
-				565057D716F8139500CCFF7D /* Text-Vc.png in Resources */,
-				565057D916F8144D00CCFF7D /* Device-LUN-unit-healthy.png in Resources */,
-				565057DB16F8173000CCFF7D /* Device-Engine.png in Resources */,
-				565057E616F8465700CCFF7D /* Device-LUN-member-blue.png in Resources */,
-				565057E716F8465700CCFF7D /* Device-LUN-member-green.png in Resources */,
-				565057EC16F849AF00CCFF7D /* Device-PC.png in Resources */,
-				565057F216F88BB000CCFF7D /* Home-Button-RaidView.png in Resources */,
-				565057F316F88BB000CCFF7D /* Home-Button-HAApplianceView.png in Resources */,
-				565057F416F88BB000CCFF7D /* Home-Button-HBAView.png in Resources */,
-				565057F516F88BB000CCFF7D /* Home-Button-DriveView.png in Resources */,
-				565057F616F88BB000CCFF7D /* Home-Button-VolumeView.png in Resources */,
-				565057F916F8A3EF00CCFF7D /* Text-Vf.png in Resources */,
-				565057FA16F8A3EF00CCFF7D /* Text-Vi.png in Resources */,
-				565057FC16F8A87400CCFF7D /* Information-Board.png in Resources */,
-				56424EE416FAA40200616251 /* Device-HBA-disappeared.png in Resources */,
-				56424EE516FAA40200616251 /* Device-HBA-problem.png in Resources */,
-				56424EE916FAA5FA00616251 /* Device-Drive-degraded.png in Resources */,
-				56424EEA16FAA5FA00616251 /* Device-Drive-disappeared.png in Resources */,
-				56424EEB16FAA5FA00616251 /* Device-Drive-problem.png in Resources */,
-				56424EEF16FAA7D000616251 /* Device-Raid-degraded.png in Resources */,
-				56424EF016FAA7D000616251 /* Device-Raid-disappeared.png in Resources */,
-				56424EF116FAA7D000616251 /* Device-Raid-problem.png in Resources */,
-				56424EF516FAAA1000616251 /* Device-Volume-degraded.png in Resources */,
-				56424EF616FAAA1000616251 /* Device-Volume-disappeared.png in Resources */,
-				56424EF716FAAA1000616251 /* Device-Volume-problem.png in Resources */,
-				56424EF916FABDC100616251 /* Text-Home.png in Resources */,
-				5637E7CF16FAEF3E00ED0BC3 /* Text-HA Appliance View.png in Resources */,
-				5637E7D116FAF56C00ED0BC3 /* Text-Connection.png in Resources */,
-				5637E7D616FB341600ED0BC3 /* Text-HA Appliance View - Cluster.png in Resources */,
-				5637E7D716FB341600ED0BC3 /* Text-HA Appliance View - Connection.png in Resources */,
-				5637E7D816FB341600ED0BC3 /* Text-HA Appliance View - History.png in Resources */,
-				5637E7D916FB341600ED0BC3 /* Text-HA Appliance View - Mirror.png in Resources */,
-				5690A8B416FD6978007FDC32 /* Device-Site.png in Resources */,
-				5690A8B616FD6CF6007FDC32 /* Text-Map.png in Resources */,
 				56956C1116FEDE0100F60A8A /* README.markdown in Resources */,
-				56956C1917018A4800F60A8A /* Hexagonal.png in Resources */,
+				567FA37E1702CBA9000F5802 /* appicon144.png in Resources */,
+				567FA37F1702CBA9000F5802 /* appicon72.png in Resources */,
+				567FA3801702CBA9000F5802 /* background.png in Resources */,
+				567FA3811702CBA9000F5802 /* button-Arrow.png in Resources */,
+				567FA3821702CBA9000F5802 /* Button-Back.png in Resources */,
+				567FA3831702CBA9000F5802 /* Button-Home.png in Resources */,
+				567FA3841702CBA9000F5802 /* Button-Logout.png in Resources */,
+				567FA3851702CBA9000F5802 /* Button-Vc.png in Resources */,
+				567FA3861702CBA9000F5802 /* Button-Vf.png in Resources */,
+				567FA3871702CBA9000F5802 /* Button-Vh.png in Resources */,
+				567FA3881702CBA9000F5802 /* Button-Vi.png in Resources */,
+				567FA3891702CBA9000F5802 /* Default-Landscape~ipad.png in Resources */,
+				567FA38A1702CBA9000F5802 /* Device-Drive-degraded.png in Resources */,
+				567FA38B1702CBA9000F5802 /* Device-Drive-disappeared.png in Resources */,
+				567FA38C1702CBA9000F5802 /* Device-Drive-healthy.png in Resources */,
+				567FA38D1702CBA9000F5802 /* Device-Drive-problem.png in Resources */,
+				567FA38E1702CBA9000F5802 /* Device-Engine.png in Resources */,
+				567FA38F1702CBA9000F5802 /* Device-HA-Appliance-healthy.png in Resources */,
+				567FA3901702CBA9000F5802 /* Device-HBA-disappeared.png in Resources */,
+				567FA3911702CBA9000F5802 /* Device-HBA-healthy.png in Resources */,
+				567FA3921702CBA9000F5802 /* Device-HBA-problem.png in Resources */,
+				567FA3931702CBA9000F5802 /* Device-LUN-member-blue.png in Resources */,
+				567FA3941702CBA9000F5802 /* Device-LUN-member-green.png in Resources */,
+				567FA3951702CBA9000F5802 /* Device-LUN-unit-healthy.png in Resources */,
+				567FA3961702CBA9000F5802 /* Device-PC.png in Resources */,
+				567FA3971702CBA9000F5802 /* Device-Raid-degraded.png in Resources */,
+				567FA3981702CBA9000F5802 /* Device-Raid-disappeared.png in Resources */,
+				567FA3991702CBA9000F5802 /* Device-Raid-healthy.png in Resources */,
+				567FA39A1702CBA9000F5802 /* Device-Raid-problem.png in Resources */,
+				567FA39B1702CBA9000F5802 /* Device-Site.png in Resources */,
+				567FA39C1702CBA9000F5802 /* Device-Volume-degraded.png in Resources */,
+				567FA39D1702CBA9000F5802 /* Device-Volume-disappeared.png in Resources */,
+				567FA39E1702CBA9000F5802 /* Device-Volume-healthy.png in Resources */,
+				567FA39F1702CBA9000F5802 /* Device-Volume-problem.png in Resources */,
+				567FA3A01702CBA9000F5802 /* Hexagonal.png in Resources */,
+				567FA3A11702CBA9000F5802 /* Home-Button-DriveView.png in Resources */,
+				567FA3A21702CBA9000F5802 /* Home-Button-HAApplianceView.png in Resources */,
+				567FA3A31702CBA9000F5802 /* Home-Button-HBAView.png in Resources */,
+				567FA3A41702CBA9000F5802 /* Home-Button-RaidView.png in Resources */,
+				567FA3A51702CBA9000F5802 /* Home-Button-VolumeView.png in Resources */,
+				567FA3A61702CBA9000F5802 /* image-RAID-Configuration.png in Resources */,
+				567FA3A71702CBA9000F5802 /* Information-Board.png in Resources */,
+				567FA3A81702CBA9000F5802 /* off.png in Resources */,
+				567FA3A91702CBA9000F5802 /* Search-Bar.png in Resources */,
+				567FA3AA1702CBA9000F5802 /* text-CircularMode.png in Resources */,
+				567FA3AB1702CBA9000F5802 /* Text-Connection.png in Resources */,
+				567FA3AC1702CBA9000F5802 /* Text-CrystalSAN.png in Resources */,
+				567FA3AD1702CBA9000F5802 /* text-DiagonalMode.png in Resources */,
+				567FA3AE1702CBA9000F5802 /* Text-Drive View.png in Resources */,
+				567FA3AF1702CBA9000F5802 /* Text-HA Appliance View - Cluster.png in Resources */,
+				567FA3B01702CBA9000F5802 /* Text-HA Appliance View - Connection.png in Resources */,
+				567FA3B11702CBA9000F5802 /* Text-HA Appliance View - History.png in Resources */,
+				567FA3B21702CBA9000F5802 /* Text-HA Appliance View - Mirror.png in Resources */,
+				567FA3B31702CBA9000F5802 /* Text-HA Appliance View.png in Resources */,
+				567FA3B41702CBA9000F5802 /* Text-HBA View.png in Resources */,
+				567FA3B51702CBA9000F5802 /* Text-Home.png in Resources */,
+				567FA3B61702CBA9000F5802 /* Text-Map.png in Resources */,
+				567FA3B71702CBA9000F5802 /* Text-RAID View.png in Resources */,
+				567FA3B81702CBA9000F5802 /* Text-Vc.png in Resources */,
+				567FA3B91702CBA9000F5802 /* Text-Vf.png in Resources */,
+				567FA3BA1702CBA9000F5802 /* Text-Vi.png in Resources */,
+				567FA3BB1702CBA9000F5802 /* Text-Volume View.png in Resources */,
+				567FA3BC1702CBA9000F5802 /* uislider-left.png in Resources */,
+				567FA3BD1702CBA9000F5802 /* uislider-right.png in Resources */,
+				567FA3BE1702CBA9000F5802 /* uislider-thumb.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

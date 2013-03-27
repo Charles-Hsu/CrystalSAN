@@ -18,6 +18,8 @@
     NSUInteger totalCount;
 
     AppDelegate *theDelegate;
+    NSArray *deviceArray;
+
 }
 @end
 
@@ -42,6 +44,8 @@
 @synthesize sanDatabase;
 
 @synthesize itemIndexCountsAndTotalLabel;
+
+@synthesize haApplianceName;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -118,6 +122,42 @@
 
 
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%s", __func__);
+    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    
+    if ([theDelegate.currentDeviceName length] == 0) {
+        haApplianceName.hidden = YES;
+    }
+    else {
+        haApplianceName.hidden = NO;
+    }
+    
+    // currentDeviceName in theDelegate is a HA-Cluster-Name
+    
+    NSLog(@"%s currentDeviceName %@", __func__, theDelegate.currentDeviceName);
+    
+    deviceArray = [sanDatabase getDriveListByEngineSerial:theDelegate.currentDeviceName];
+    
+    if (carousel.currentItemIndex > [deviceArray count]) {
+        carousel.currentItemIndex = 0;
+    }
+    
+    currentItemIndex = carousel.currentItemIndex;
+    
+    currentCollectionCount = [deviceArray count];
+    totalCount = [deviceArray count];
+    NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+    
+    NSLog(@"%s size of diskArray %u", __func__, [deviceArray count]);
+    NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+    [carousel reloadData];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

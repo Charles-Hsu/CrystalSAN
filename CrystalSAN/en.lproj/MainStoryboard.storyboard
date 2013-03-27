@@ -3381,37 +3381,37 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button-Back.png" width="140" height="134"/>
-        <image name="Button-Home.png" width="140" height="134"/>
-        <image name="Button-Logout.png" width="99" height="94"/>
-        <image name="Button-Vc.png" width="168" height="180"/>
-        <image name="Button-Vf.png" width="181" height="177"/>
-        <image name="Button-Vh.png" width="185" height="159"/>
-        <image name="Button-Vi.png" width="156" height="174"/>
-        <image name="Device-Engine.png" width="401" height="83"/>
-        <image name="Device-LUN-member-blue.png" width="50" height="57"/>
-        <image name="Device-LUN-member-green.png" width="50" height="57"/>
-        <image name="Device-LUN-unit-healthy.png" width="83" height="109"/>
-        <image name="Device-Raid-healthy.png" width="250" height="131"/>
-        <image name="Information-Board.png" width="442" height="51"/>
-        <image name="Text-CrystalSAN.png" width="132" height="45"/>
-        <image name="Text-Drive View.png" width="228" height="54"/>
-        <image name="Text-HA Appliance View - Cluster.png" width="255" height="48"/>
-        <image name="Text-HA Appliance View - Connection.png" width="255" height="48"/>
-        <image name="Text-HA Appliance View - Mirror.png" width="255" height="48"/>
-        <image name="Text-HA Appliance View.png" width="346" height="54"/>
-        <image name="Text-HBA View.png" width="202" height="49"/>
-        <image name="Text-Home.png" width="122" height="50"/>
-        <image name="Text-Map.png" width="122" height="50"/>
-        <image name="Text-RAID View.png" width="202" height="49"/>
-        <image name="Text-Vc.png" width="90" height="54"/>
-        <image name="Text-Volume View.png" width="237" height="50"/>
-        <image name="background.png" width="1024" height="768"/>
-        <image name="button-Arrow.png" width="135" height="129"/>
-        <image name="image-RAID-Configuration.png" width="1318" height="747"/>
-        <image name="off.png" width="16" height="15"/>
-        <image name="text-CircularMode.png" width="358" height="44"/>
-        <image name="text-DiagonalMode.png" width="391" height="56"/>
+        <image name="Button-Back.png" width="16" height="16"/>
+        <image name="Button-Home.png" width="16" height="16"/>
+        <image name="Button-Logout.png" width="16" height="16"/>
+        <image name="Button-Vc.png" width="16" height="16"/>
+        <image name="Button-Vf.png" width="16" height="16"/>
+        <image name="Button-Vh.png" width="16" height="16"/>
+        <image name="Button-Vi.png" width="16" height="16"/>
+        <image name="Device-Engine.png" width="16" height="16"/>
+        <image name="Device-LUN-member-blue.png" width="16" height="16"/>
+        <image name="Device-LUN-member-green.png" width="16" height="16"/>
+        <image name="Device-LUN-unit-healthy.png" width="16" height="16"/>
+        <image name="Device-Raid-healthy.png" width="16" height="16"/>
+        <image name="Information-Board.png" width="16" height="16"/>
+        <image name="Text-CrystalSAN.png" width="16" height="16"/>
+        <image name="Text-Drive View.png" width="16" height="16"/>
+        <image name="Text-HA Appliance View - Cluster.png" width="16" height="16"/>
+        <image name="Text-HA Appliance View - Connection.png" width="16" height="16"/>
+        <image name="Text-HA Appliance View - Mirror.png" width="16" height="16"/>
+        <image name="Text-HA Appliance View.png" width="16" height="16"/>
+        <image name="Text-HBA View.png" width="16" height="16"/>
+        <image name="Text-Home.png" width="16" height="16"/>
+        <image name="Text-Map.png" width="16" height="16"/>
+        <image name="Text-RAID View.png" width="16" height="16"/>
+        <image name="Text-Vc.png" width="16" height="16"/>
+        <image name="Text-Volume View.png" width="16" height="16"/>
+        <image name="background.png" width="16" height="16"/>
+        <image name="button-Arrow.png" width="16" height="16"/>
+        <image name="image-RAID-Configuration.png" width="16" height="16"/>
+        <image name="off.png" width="16" height="16"/>
+        <image name="text-CircularMode.png" width="16" height="16"/>
+        <image name="text-DiagonalMode.png" width="16" height="16"/>
         <image name="uislider-thumb.png" width="16" height="16"/>
     </resources>
     <classes>
@@ -3426,6 +3426,7 @@
                 <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>

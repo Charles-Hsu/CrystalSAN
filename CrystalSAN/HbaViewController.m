@@ -62,29 +62,6 @@
         carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 110, 1024, 460)];
         //carousel.backgroundColor = [UIColor cyanColor];
         
-        
-        //statusArray = [[NSMutableArray alloc] init];
-        
-        //NSInteger ok = 0;
-        //NSInteger degarded = 1;
-        //NSInteger died = 2;
-        
-        //NSNumber *okStatus = [NSNumber numberWithInt:ok];
-        //NSNumber *degardedStatus = [NSNumber numberWithInt:degarded];
-        //NSNumber *diedStatus = [NSNumber numberWithInt:died];
-        
-        //for (int i=0; i<[descriptions count]; i++) {
-        //    [statusArray addObject:okStatus];
-            /*
-            if (i==10) {
-                [statusArray addObject:degardedStatus];
-            } else if (i==15) {
-                [statusArray addObject:diedStatus];
-            } else {
-                [statusArray addObject:okStatus];
-            }
-             */
-        //}
     }
     return self;
 }
@@ -98,19 +75,6 @@
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
-    //self.activeItems = theDelegate.activeItems;
-
-    /*
-    descriptions = [NSMutableArray arrayWithObjects:
-                    @"Engine_227_228",
-                    @"Engine_229_230",
-                    @"Engine_231_232",@"Engine_233_234",@"Engine_235",@"Engine_237",@"Engine_239",
-                    @"Engine_241",@"Engine_243",@"Engine_245",@"Engine_247",@"Engine_249",
-                    @"Engine_251",
-                    @"VicomM01",@"VicomM02",@"VicomM03",@"VicomM04",
-                    //@"",
-                    nil];
-     */
     
     NSLog(@"%s %@", __func__, theDelegate.currentDeviceName); 
 
@@ -138,14 +102,6 @@
     [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
     
     
-    totalItemInCarousel = [deviceArray count];
-    //NSUInteger count = [deviceArray count];
-    
-    //currentItemIndex = 0;
-    //currentCollectionCount =  count;
-    //totalCount = count;
-    
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -161,10 +117,10 @@
     }
     
     // currentDeviceName in theDelegate is a HA-Cluster-Name
+    
     NSLog(@"%s currentDeviceName %@", __func__, theDelegate.currentDeviceName);
-    deviceArray = [sanDatabase getInitiatorListByEngineSerial:theDelegate.currentDeviceName];
-    //deviceArray = [sanDatabase getInitiatorListByEngineSerial:theDelegate.currentDeviceName];
 
+    deviceArray = [sanDatabase getInitiatorListByEngineSerial:theDelegate.currentDeviceName];
     
     if (carousel.currentItemIndex > [deviceArray count]) {
         carousel.currentItemIndex = 0;
@@ -180,6 +136,10 @@
     
     NSLog(@"%s size of diskArray %u", __func__, [deviceArray count]);
     NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+
+    
+    totalItemInCarousel = [deviceArray count];
+    
     [carousel reloadData];
 }
 
