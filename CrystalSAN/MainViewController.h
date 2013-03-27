@@ -10,7 +10,7 @@
 
 #import "iCarousel.h"
 #import "RaidViewController.h"
-#import "MirrorViewController.h"
+#import "HAApplianceViewController.h"
 #import "VolumeViewController.h"
 #import "DriveViewController.h"
 #import "HbaViewController.h"
@@ -25,7 +25,7 @@
 @property (strong, nonatomic) iCarousel *carousel;
 
 @property (strong, nonatomic) RaidViewController *raidViewController;
-@property (strong, nonatomic) MirrorViewController *mirrorViewController;
+@property (strong, nonatomic) HAApplianceViewController *haApplianceViewController;
 @property (strong, nonatomic) VolumeViewController *volumeViewController;
 
 @property (strong, nonatomic) DriveViewController *driveViewController;

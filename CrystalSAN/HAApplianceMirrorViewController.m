@@ -1,25 +1,25 @@
 //
-//  RaidViewController.m
+//  HAApplianceMirrorViewController.m
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/27/12.
 //  Copyright (c) 2012 Charles Hsu. All rights reserved.
 //
 
-#import "MirrorViewVfController.h"
+#import "HAApplianceMirrorViewController.h"
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
 
 #define ITEM_BUTTON_START_TAG_RAIDVIEW 300
 
-@interface MirrorViewVfController () {
+@interface HAApplianceMirrorViewController () {
     AppDelegate *theDelegate;
 }
 
 @end
 
-@implementation MirrorViewVfController
+@implementation HAApplianceMirrorViewController
 
 @synthesize engine0Serial, engine0mirror;
 @synthesize engine1Serial, engine1mirror;

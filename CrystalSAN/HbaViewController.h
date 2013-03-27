@@ -36,6 +36,8 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *itemIndexCountsAndTotalLabel;
 
+@property (nonatomic, strong) IBOutlet UILabel *haApplianceName;
+
 
 @property (strong, nonatomic) IBOutlet UIButton *searchStatusButton;
 @property (strong, nonatomic) IBOutlet UIButton *searchNameButton;

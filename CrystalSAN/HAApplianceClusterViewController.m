@@ -1,26 +1,26 @@
 //
-//  RaidViewController.m
+//  HAApplianceViewClusterController.m
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/27/12.
 //  Copyright (c) 2012 Charles Hsu. All rights reserved.
 //
 
-#import "MirrorViewViController.h"
+#import "HAApplianceClusterViewController.h"
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
 
 #define ITEM_BUTTON_START_TAG_RAIDVIEW 300
 
-@interface MirrorViewViController () {
+@interface HAApplianceClusterViewController () {
 
     AppDelegate *theDelegate;
 }
 
 @end
 
-@implementation MirrorViewViController
+@implementation HAApplianceClusterViewController
 
 @synthesize haApplianceName;
 
@@ -78,6 +78,7 @@
     engine1Vpd.text = [self getVpdInformationBySerial:[engines objectAtIndex:1]];
 
 }
+
 
 - (void)displayEngine00VpdInformation:(NSString *)serial
 {

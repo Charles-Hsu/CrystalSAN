@@ -86,7 +86,7 @@ if {1} {
     }
 }
 
-if {0} {
+if {1} {
     
     puts "[exec date]===cli mirror=========================================="
     
@@ -114,7 +114,7 @@ if {0} {
 
 }
 
-if {0} {
+if {1} {
     
     puts "[exec date]===cli_conmgr_drive_status============================="
     
@@ -148,7 +148,7 @@ if {0} {
 }
 
 
-if {0} {
+if {1} {
 
     puts "[exec date]===cli_conmgr_engine_status============================"
     
@@ -178,7 +178,7 @@ if {0} {
 }
 
 
-if {0} {
+if {1} {
     
     puts "[exec date]===cli_conmgr_initiator_status========================="
     

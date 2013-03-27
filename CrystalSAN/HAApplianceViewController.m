@@ -1,16 +1,16 @@
 //
-//  MirrorViewController.m
+//  HAViewController.m
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/27/12.
 //  Copyright (c) 2012 Charles Hsu. All rights reserved.
 //
 
-#import "MirrorViewController.h"
+#import "HAApplianceViewController.h"
 #import "AppDelegate.h"
 
 
-@interface MirrorViewController () {
+@interface HAApplianceViewController () {
     NSMutableArray *statusArray;
     NSInteger totalItemInCarousel;
     NSInteger currentCollectionNumber;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation MirrorViewController
+@implementation HAApplianceViewController
 
 @synthesize carousel;
 @synthesize deviceArray;
@@ -94,8 +94,8 @@
     
     //[carousel reloadData];
     
-    self.mirrorViewVcController = [self.storyboard instantiateViewControllerWithIdentifier:@"MirrorViewVcControllerID"];
-    self.mirrorViewVcController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    self.haApplianceConnectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HAApplianceConnectionViewControllerID"];
+    self.haApplianceConnectionViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     currentItemIndex = carousel.currentItemIndex;
     
@@ -152,7 +152,7 @@
     
     //self.mirrorViewVcController.haApplianceName = [deviceArray objectAtIndex:currentItemIndex];
     //self.mirrorViewVcController.deviceLabel.text = self.mirrorViewVcController.haApplianceName;
-    [self presentViewController:self.mirrorViewVcController animated:YES completion:nil];
+    [self presentViewController:self.haApplianceConnectionViewController animated:YES completion:nil];
 
 }
 

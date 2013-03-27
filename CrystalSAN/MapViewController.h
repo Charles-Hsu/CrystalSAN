@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+
+//#import <MapKit/MapKit.h>
+
+#import "MKMapView+ZoomLevel.h"
 #import "iCarousel.h"
 //#import "SanDatabase.h"
+
+#import "MainViewController.h"
 
 #define METERS_PER_MILE 1609.344
 
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, iCarouselDataSource, iCarouselDelegate>{
+@interface MapViewController : UIViewController <MKMapViewDelegate, iCarouselDataSource, iCarouselDelegate> {
     
     BOOL _doneInitialZoom;
     
@@ -22,8 +27,10 @@
 
 // view
 
-@property (weak, nonatomic) IBOutlet MKMapView *_mapView;//This was auto-added by Xcode :]
+@property (strong, nonatomic) IBOutlet MKMapView *_mapView;//This was auto-added by Xcode :]
 @property (strong,nonatomic) iCarousel *carousel;
+
+@property (strong, nonatomic) MainViewController *mainViewController;
 
 
 @property (nonatomic, retain) IBOutlet UISlider *arcSlider;
@@ -40,6 +47,9 @@
 @property (nonatomic, retain) IBOutlet UILabel *radiusLabel;
 @property (nonatomic, retain) IBOutlet UILabel *spacingLabel;
 @property (nonatomic, retain) IBOutlet UILabel *sizingLabel;
+
+
+@property (nonatomic, retain) IBOutlet UIButton *homeButton;
 
 - (IBAction)onHome:(id)sender;
 - (IBAction)onBack:(id)sender;

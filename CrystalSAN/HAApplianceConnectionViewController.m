@@ -1,19 +1,19 @@
 //
-//  RaidViewController.m
+//  HAApplianceConnectionViewController.m
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/27/12.
 //  Copyright (c) 2012 Charles Hsu. All rights reserved.
 //
 
-#import "MirrorViewVcController.h"
+#import "HAApplianceConnectionViewController.h"
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
 
 #define ITEM_BUTTON_START_TAG_RAIDVIEW 300
 
-@interface MirrorViewVcController () {
+@interface HAApplianceConnectionViewController () {
 
     NSMutableArray *statusArray;
     NSInteger totalItemInCarousel;
@@ -27,7 +27,7 @@
 }
 @end
 
-@implementation MirrorViewVcController
+@implementation HAApplianceConnectionViewController
 
 @synthesize deviceName, deviceLabel;
 @synthesize carousel;

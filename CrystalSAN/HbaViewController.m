@@ -48,6 +48,7 @@
 @synthesize sanDatabase;
 //@synthesize currentItemIndex;
 
+@synthesize haApplianceName;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -151,6 +152,13 @@
 {
     NSLog(@"%s", __func__);
     //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    
+    if ([theDelegate.currentDeviceName length] == 0) {
+        haApplianceName.hidden = YES;
+    }
+    else {
+        haApplianceName.hidden = NO;
+    }
     
     // currentDeviceName in theDelegate is a HA-Cluster-Name
     NSLog(@"%s currentDeviceName %@", __func__, theDelegate.currentDeviceName);

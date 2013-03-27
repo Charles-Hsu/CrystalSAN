@@ -1,5 +1,5 @@
 //
-//  RaidViewConfigController.h
+//  HAApplianceConnectionViewController.h
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/27/12.
@@ -12,7 +12,7 @@
 #import "HbaViewController.h"
 
 
-@interface MirrorViewVcController : UIViewController <iCarouselDataSource, iCarouselDelegate>
+@interface HAApplianceConnectionViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
 {
     NSString *deviceName;
 }

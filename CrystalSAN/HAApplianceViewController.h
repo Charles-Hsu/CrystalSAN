@@ -1,5 +1,5 @@
 //
-//  MirrorViewController.h
+//  HAApplianceViewController.h
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/27/12.
@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
 #import "SanDatabase.h"
-#import "MirrorViewVcController.h"
+#import "HAApplianceConnectionViewController.h"
 
 
-@interface MirrorViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UISearchBarDelegate>
+@interface HAApplianceViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) NSMutableArray *deviceArray;
 
@@ -58,7 +58,7 @@
 
 - (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )curentIndex count:(NSUInteger)count total:(NSUInteger)total;
 
-@property (strong, nonatomic) MirrorViewVcController *mirrorViewVcController;
+@property (strong, nonatomic) HAApplianceConnectionViewController *haApplianceConnectionViewController;
 
 
 @end

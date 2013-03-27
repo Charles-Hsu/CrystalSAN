@@ -92,8 +92,8 @@
     self.raidViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RaidViewControllerID"];
     self.raidViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    self.mirrorViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MirrorViewControllerID"];
-    self.mirrorViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    self.haApplianceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HAApplianceViewControllerID"];
+    self.haApplianceViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
     self.volumeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VolumeViewControllerID"];
     self.volumeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -109,6 +109,12 @@
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
 
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%s", __func__);
+    theDelegate.currentDeviceName = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -148,7 +154,7 @@
     }
     else if (theButton.tag == 202) // MirrorViewController
     { 
-        [self presentViewController:self.mirrorViewController animated:YES completion:nil];
+        [self presentViewController:self.haApplianceViewController animated:YES completion:nil];
     }
     else if (theButton.tag == 203) // VolumeViewController
     { 

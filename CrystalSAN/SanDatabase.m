@@ -546,6 +546,7 @@
 
 - (NSDictionary *)getVpdBySerial:(NSString *)serial
 {
+    NSLog(@"%s", __func__);
     NSDictionary *dict = [[NSDictionary alloc] init];
     //
     // CREATE TABLE engine_cli_vpd (serial text primary key, seconds integer, site_name text, engine_name text, product_type text, fw_version text, fw_data text, redboot text, uid text, pcb text, mac text, ip text, uptime text, alert text, time text, a1_wwpn, a2_wwpn, b1_wwpn, b2_wwpn);
@@ -555,7 +556,7 @@
     //FMResultSet *rs = [db executeQuery:sql];
     //NSString *sql = [NSString stringWithFormat:@"SELECT * FROM ha_cluster WHERE ha_appliance_name = '%@'", haApplianceName];
     //NSMutableArray *devices = [[NSMutableArray alloc] init];
-    //NSLog(@"%s %@", __func__, sql);
+    NSLog(@"%s %@", __func__, sql);
     if ([rs next])
     {
         dict = [rs resultDictionary];

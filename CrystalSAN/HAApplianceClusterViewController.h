@@ -1,5 +1,5 @@
 //
-//  RaidViewConfigController.h
+//  HAApplianceClusterViewController.h
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/27/12.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 //#import "iCarousel.h"
 
-@interface MirrorViewVfController : UIViewController //<iCarouselDataSource, iCarouselDelegate>
+@interface HAApplianceClusterViewController : UIViewController //<iCarouselDataSource, iCarouselDelegate>
 {
     NSString *deviceName;
 }
@@ -34,8 +34,13 @@
 @property (nonatomic, weak) IBOutlet UILabel *engine0Serial;
 @property (nonatomic, weak) IBOutlet UILabel *engine1Serial;
 
-@property (nonatomic, strong) IBOutlet UITextView *engine0mirror;
-@property (nonatomic, strong) IBOutlet UITextView *engine1mirror;
+@property (nonatomic, weak) IBOutlet UIButton *mirrorInformation;
+@property (nonatomic, weak) IBOutlet UIButton *hbaInformation;
+@property (nonatomic, weak) IBOutlet UIButton *driveInformation;
+
+
+@property (nonatomic, strong) IBOutlet UITextView *engine0Vpd;
+@property (nonatomic, strong) IBOutlet UITextView *engine1Vpd;
 
 
 //@property (nonatomic, weak) IBOutlet UILabel *haApplianceName;
