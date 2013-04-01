@@ -61,10 +61,17 @@
 @property (nonatomic, retain) IBOutlet UILabel *lun04Label;
 @property (nonatomic, retain) IBOutlet UILabel *lun05Label;
 
+@property (nonatomic, retain) IBOutlet UIButton *engineLeft;
+@property (nonatomic, retain) IBOutlet UIButton *engineRight;
+
+
+@property (nonatomic, retain) IBOutlet UIButton *popoverButton;
+@property (nonatomic, retain) IBOutlet UITextView *textView;
+
 
 
 // event
-- (IBAction)onHome:(id)sender;
+//- (IBAction)onHome:(id)sender;
 - (IBAction)onBack:(id)sender;
 
 @property (nonatomic, weak) IBOutlet UILabel *deviceLabel;
@@ -77,6 +84,8 @@
 - (IBAction)updateValue:(id)sender;
 - (IBAction)hideSlider:(id)sender;
 
+
+- (IBAction)popover:(id)sender;
 
 /*
 

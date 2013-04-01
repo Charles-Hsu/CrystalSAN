@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5600033E170546CA0043A9EE /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5600033D170546CA0043A9EE /* MBProgressHUD.m */; };
+		5600034117056AE60043A9EE /* Device-Engine 1:2 Left.png in Resources */ = {isa = PBXBuildFile; fileRef = 5600033F17056AE60043A9EE /* Device-Engine 1:2 Left.png */; };
+		5600034217056AE60043A9EE /* Device-Engine 1:2 Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 5600034017056AE60043A9EE /* Device-Engine 1:2 Right.png */; };
 		561284E216A8DF8E00F53C49 /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284E116A8DE0800F53C49 /* CustomPushSegue.m */; };
 		5612850B16A8E50600F53C49 /* FlipTopPopToRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */; };
 		5623C76216BD50F1009410B2 /* SanDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C76116BD50F0009410B2 /* SanDatabase.m */; };
@@ -117,6 +120,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5600033C170546CA0043A9EE /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		5600033D170546CA0043A9EE /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		5600033F17056AE60043A9EE /* Device-Engine 1:2 Left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Engine 1:2 Left.png"; sourceTree = "<group>"; };
+		5600034017056AE60043A9EE /* Device-Engine 1:2 Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Engine 1:2 Right.png"; sourceTree = "<group>"; };
 		560EC26816FC54CC000B505C /* parse_engine_all_20130321.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all_20130321.exp; sourceTree = "<group>"; };
 		560EC26916FC54CC000B505C /* script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.sh; sourceTree = "<group>"; };
 		560EC27316FC54CC000B505C /* parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -308,6 +315,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5600033B170546CA0043A9EE /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				5600033C170546CA0043A9EE /* MBProgressHUD.h */,
+				5600033D170546CA0043A9EE /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		560EC26616FC54CC000B505C /* expect */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +398,8 @@
 				567FA34B1702CBA9000F5802 /* Device-Drive-healthy.png */,
 				567FA34C1702CBA9000F5802 /* Device-Drive-problem.png */,
 				567FA34D1702CBA9000F5802 /* Device-Engine.png */,
+				5600033F17056AE60043A9EE /* Device-Engine 1:2 Left.png */,
+				5600034017056AE60043A9EE /* Device-Engine 1:2 Right.png */,
 				567FA34E1702CBA9000F5802 /* Device-HA-Appliance-healthy.png */,
 				567FA34F1702CBA9000F5802 /* Device-HBA-disappeared.png */,
 				567FA3501702CBA9000F5802 /* Device-HBA-healthy.png */,
@@ -530,6 +548,7 @@
 		56EB75371689D06A0082A5D2 /* CrystalSAN */ = {
 			isa = PBXGroup;
 			children = (
+				5600033B170546CA0043A9EE /* MBProgressHUD */,
 				567FA33B17029C7D000F5802 /* HAApplianceView */,
 				56956C161701448300F60A8A /* FLLocation */,
 				56EB76CC16901A020082A5D2 /* CrystalSAN.entitlements */,
@@ -727,6 +746,8 @@
 				567FA3BC1702CBA9000F5802 /* uislider-left.png in Resources */,
 				567FA3BD1702CBA9000F5802 /* uislider-right.png in Resources */,
 				567FA3BE1702CBA9000F5802 /* uislider-thumb.png in Resources */,
+				5600034117056AE60043A9EE /* Device-Engine 1:2 Left.png in Resources */,
+				5600034217056AE60043A9EE /* Device-Engine 1:2 Right.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,6 +784,7 @@
 				565057FF16F93BE800CCFF7D /* HAApplianceMirrorViewController.m in Sources */,
 				5690A8AE16FC88D6007FDC32 /* MapViewController.m in Sources */,
 				56956C1016FEDE0100F60A8A /* MKMapView+ZoomLevel.m in Sources */,
+				5600033E170546CA0043A9EE /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

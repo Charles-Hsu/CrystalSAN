@@ -26,7 +26,7 @@
 @implementation DriveViewController
 
 @synthesize carousel;
-@synthesize descriptions;
+//@synthesize descriptions;
 
 @synthesize arcSlider, radiusSlider, spacingSlider, sizingSlider;
 @synthesize arcValue, radiusValue, spacingValue, sizingValue;
@@ -85,8 +85,16 @@
                     nil];
      */
     
-    descriptions = [sanDatabase getVmirrorListByKey:@""];
+    //descriptions = [sanDatabase getVmirrorListByKey:@""];
     //NSLog(@"description count = %u", [descriptions count]);
+
+    if ([theDelegate.currentDeviceName length] == 0) {
+        haApplianceName.hidden = YES;
+    }
+    else {
+        haApplianceName.hidden = NO;
+        haApplianceName.text = theDelegate.currentDeviceName;
+    }
 
     //init/add carouse view
     carousel.delegate = self;
@@ -100,10 +108,10 @@
     carousel.viewpointOffset = CGSizeMake(0, -330);
     carousel.decelerationRate = 0.9;
     
-    totalItemInCarousel = [descriptions count];
+    //totalItemInCarousel = [descriptions count];
     
-    totalCount = [descriptions count];
-    currentCollectionCount = [descriptions count];
+    //totalCount = [descriptions count];
+    //currentCollectionCount = [descriptions count];
     
     //totalItemCount.text = [NSString stringWithFormat:@"%u", totalItemInCarousel];
     //totalItem.text = totalItemCount.text;
@@ -120,7 +128,7 @@
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
 
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -133,6 +141,7 @@
     }
     else {
         haApplianceName.hidden = NO;
+        haApplianceName.text = theDelegate.currentDeviceName;
     }
     
     // currentDeviceName in theDelegate is a HA-Cluster-Name
@@ -304,7 +313,7 @@
 {
     NSLog(@"%s searchTerm=%@", __func__, searchTerm);
     
-    descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
+    //descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
     //totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
     
     if ([searchTerm length] != 0)
@@ -342,15 +351,22 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    NSLog(@"%s count=%d", __func__, [descriptions count]);
-    return [descriptions count];
+    NSLog(@"%s count=%d", __func__, [deviceArray count]);
+    return [deviceArray count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    NSLog(@"%s index=%u %@", __func__, index, [descriptions objectAtIndex:index]);
+    //NSLog(@"%s index=%u %@", __func__, index, [descriptions objectAtIndex:index]);
     UILabel *theLabel = nil;
     //NSInteger status = [[statusArray objectAtIndex:index] integerValue];
+    
+    NSLog(@"%s %@", __func__, [deviceArray objectAtIndex:index]);
+    
+    NSDictionary *dict = [deviceArray objectAtIndex:index];
+    
+    NSString *status = [dict valueForKey:@"drive_status"];
+
     
 	//create new view if no view is available for recycling
 	if (view == nil)
@@ -361,20 +377,27 @@
         
         UIImage *theItemImage = nil;
         
-        switch (index) {
-            case 0:
-                theItemImage = [UIImage imageNamed:@"Device-Drive-problem"];
-                break;
-            case 1:
-                theItemImage = [UIImage imageNamed:@"Device-Drive-degraded"];
-                break;
-            case 2:
-                theItemImage = [UIImage imageNamed:@"Device-Drive-disappeared"];
-                break;
-            default:
-                theItemImage = [UIImage imageNamed:@"Device-Drive-healthy"];
-                break;
+        if ([status isEqualToString:@"A"]) {
+            theItemImage = [UIImage imageNamed:@"Device-Drive-healthy"];
+        } else {
+            theItemImage = [UIImage imageNamed:@"Device-Drive-problem"];
         }
+        
+        
+        //switch (index) {
+        //    case 0:
+        //        theItemImage = [UIImage imageNamed:@"Device-Drive-problem"];
+        //        break;
+        //    case 1:
+        //        theItemImage = [UIImage imageNamed:@"Device-Drive-degraded"];
+        //        break;
+        //    case 2:
+        //        theItemImage = [UIImage imageNamed:@"Device-Drive-disappeared"];
+        //        break;
+        //    default:
+        //        theItemImage = [UIImage imageNamed:@"Device-Drive-healthy"];
+        //        break;
+        //}
 
         
         theLabel = [[UILabel alloc] init];
@@ -411,7 +434,8 @@
         theLabel = (UILabel *)[view viewWithTag:1];
 	}
     
-    theLabel.text = [descriptions objectAtIndex:index];
+    
+    theLabel.text = [NSString stringWithFormat:@"%@-%@(%@)",[dict valueForKey:@"serial"], [dict valueForKey:@"drive_id"], [dict valueForKey:@"drive_status"]];
     
 	return view;
 }
@@ -426,6 +450,9 @@
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
     currentItemIndex = _carousel.currentItemIndex;
+    
+    NSLog(@"%s %@", __func__, [deviceArray objectAtIndex:currentItemIndex]);
+
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
 

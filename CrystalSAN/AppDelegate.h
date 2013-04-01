@@ -31,9 +31,15 @@
 @property (strong,nonatomic) NSString *currentSegueID;
 @property (strong,nonatomic) NSString *currentDeviceName;
 
+@property (strong,nonatomic) NSString *currentEngineLeftSerial;
+@property (strong,nonatomic) NSString *currentEngineRightSerial;
+
 @property (strong,nonatomic) SanDatabase *sanDatabase;
 
+@property (strong, nonatomic) NSNumber *currentSiteIndex;
+
 - (NSString *)getSanVmirrorLists;
+
 
 - (void)customizedArcSlider:(UISlider *)arcSlider radiusSlider:(UISlider *)radiusSlider spacingSlider:(UISlider *)spacingSlider sizingSlider:(UISlider *)sizingSlider inView:(UIView *)view;
 - (void)customizedSearchArea:(UISearchBar *)searchBar statusButton:(UIButton *)statusButton nameButton:(UIButton *)nameButton connectionButton:(UIButton *)connectionButton inView:(UIView *)view;

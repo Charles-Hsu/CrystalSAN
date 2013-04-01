@@ -112,12 +112,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrystalSAN/HbaViewController.m"
-         timestampString = "386058229.415346"
+         timestampString = "386082149.23295"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "121"
-         endingLineNumber = "121"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
+         landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -125,12 +125,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrystalSAN/HbaViewController.m"
-         timestampString = "386058229.415346"
+         timestampString = "386082149.23295"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "136"
-         endingLineNumber = "136"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "143"
+         endingLineNumber = "143"
+         landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -138,12 +138,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrystalSAN/HbaViewController.m"
-         timestampString = "386058229.415346"
+         timestampString = "386082149.23295"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "130"
-         endingLineNumber = "130"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
+         landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -151,11 +151,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrystalSAN/MapViewController.m"
-         timestampString = "385975190.262166"
+         timestampString = "386148170.066382"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "290"
-         endingLineNumber = "290"
+         startingLineNumber = "296"
+         endingLineNumber = "296"
          landmarkName = "-mapView:regionDidChangeAnimated:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrystalSAN/MapViewController.m"
-         timestampString = "385975190.262166"
+         timestampString = "386148170.066382"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "301"
-         endingLineNumber = "301"
+         startingLineNumber = "308"
+         endingLineNumber = "308"
          landmarkName = "-mapViewDidFinishLoadingMap:"
          landmarkType = "5">
       </FileBreakpoint>

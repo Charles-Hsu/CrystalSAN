@@ -715,7 +715,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="LPB-Ox-4ST"/>
+                                    <segue destination="czL-d1-Xny" kind="modal" id="Qh7-Kf-rqq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D8h-rY-t4A" userLabel="Button - Vc">
@@ -1396,6 +1396,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onHome:" destination="whg-kQ-d2J" eventType="touchUpInside" id="94S-0G-avg"/>
+                                    <segue destination="2" kind="modal" id="jcG-tU-yxa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G2H-pW-gjN" userLabel="Button - Back">
@@ -1441,9 +1442,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="lvq-y9-NC8"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JoX-BU-mQz">
                                 <rect key="frame" x="180" y="431" width="69" height="58"/>
@@ -1456,9 +1454,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="h5B-Ap-CP1"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q7f-LT-c2k">
                                 <rect key="frame" x="232" y="431" width="69" height="58"/>
@@ -1471,9 +1466,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="wDA-Ou-xt3"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7c5-LP-Buk">
                                 <rect key="frame" x="266" y="477" width="69" height="58"/>
@@ -1486,9 +1478,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="nqp-Pe-LjK"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bO4-Gd-7wp">
                                 <rect key="frame" x="318" y="477" width="69" height="58"/>
@@ -1501,9 +1490,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="bhB-iO-x8f"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xUT-dG-TaZ">
                                 <rect key="frame" x="261" y="285" width="69" height="58"/>
@@ -1516,9 +1502,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="g0v-Kq-0FJ"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Yjo-6g-V59">
                                 <rect key="frame" x="345" y="252" width="69" height="58"/>
@@ -1531,9 +1514,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="niy-lW-HIA"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IYs-aE-yci">
                                 <rect key="frame" x="426" y="252" width="69" height="58"/>
@@ -1546,9 +1526,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="vgF-qS-fPW"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S2i-NE-hah">
                                 <rect key="frame" x="530" y="252" width="69" height="58"/>
@@ -1561,9 +1538,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="lzm-we-Rw0"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Lfv-I9-AT4">
                                 <rect key="frame" x="611" y="252" width="69" height="58"/>
@@ -1576,9 +1550,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="w81-uF-tJz"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="m6S-Ef-YYz">
                                 <rect key="frame" x="702" y="285" width="69" height="58"/>
@@ -1591,9 +1562,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="sGs-CJ-5nw"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rQb-QX-L3w">
                                 <rect key="frame" x="783" y="285" width="69" height="58"/>
@@ -1606,9 +1574,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="7bB-PQ-Dd8"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="peo-Rp-D88">
                                 <rect key="frame" x="731" y="431" width="69" height="58"/>
@@ -1621,9 +1586,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="8JP-d6-Si3"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TAV-vr-axW">
                                 <rect key="frame" x="783" y="431" width="69" height="58"/>
@@ -1636,9 +1598,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="TBp-Be-VQe"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HRM-SA-EJL">
                                 <rect key="frame" x="645" y="477" width="69" height="58"/>
@@ -1651,9 +1610,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="wiI-z8-cj9"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qfJ-Mg-9s8">
                                 <rect key="frame" x="697" y="477" width="69" height="58"/>
@@ -1666,9 +1622,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="S2v-MP-u2p"/>
-                                </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.49" minValue="0.0010000000474974513" maxValue="1.49" id="nEA-JN-Q2a" userLabel="Horizontal Slider - Arc">
                                 <rect key="frame" x="121" y="601" width="90" height="23"/>
@@ -2024,20 +1977,29 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Fb-V8-HUz" userLabel="Button - Engines">
-                                <rect key="frame" x="321" y="359" width="383" height="110"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zdi-ag-w41" userLabel="Button - Engines Left">
+                                <rect key="frame" x="316" y="351" width="197" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button" image="Device-Engine.png">
+                                <state key="normal" title="Button" image="Device-Engine 1:2 Left.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="JZO-dL-HeE" kind="modal" id="7FE-LI-xeF"/>
-                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0e0-Ia-zh0" userLabel="Button - Engines Right">
+                                <rect key="frame" x="511" y="351" width="197" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button" image="Device-Engine 1:2 Right.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WcI-hz-Uf7" userLabel="Hide/Show Sliders">
                                 <rect key="frame" x="85" y="41" width="305" height="44"/>
@@ -2054,6 +2016,28 @@
                                     <action selector="hideSlider:" destination="whg-kQ-d2J" eventType="touchUpInside" id="UFl-iu-s7T"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dtV-yk-DQ4">
+                                <rect key="frame" x="939" y="178" width="85" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Popover">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="popover:" destination="whg-kQ-d2J" eventType="touchUpInside" id="xiv-7A-sHf"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="6W3-eZ-B2m">
+                                <rect key="frame" x="402" y="122" width="240" height="244"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -2064,6 +2048,8 @@
                         <outlet property="arcSlider" destination="nEA-JN-Q2a" id="Pso-pz-owm"/>
                         <outlet property="arcValue" destination="Ijv-09-kyK" id="z8p-KA-AXx"/>
                         <outlet property="deviceLabel" destination="KUD-kc-9zt" id="DBO-pT-l54"/>
+                        <outlet property="engineLeft" destination="Zdi-ag-w41" id="8Yt-BX-UI2"/>
+                        <outlet property="engineRight" destination="0e0-Ia-zh0" id="xjb-Dz-s3P"/>
                         <outlet property="lun00Button" destination="tKX-ws-hPf" id="sEd-jD-rPn"/>
                         <outlet property="lun00Label" destination="Tsr-0e-AFq" id="YAY-0e-CFh"/>
                         <outlet property="lun01Button" destination="8K5-wn-OVt" id="uiy-V9-NPr"/>
@@ -2072,6 +2058,7 @@
                         <outlet property="lun02Label" destination="0bp-ed-bMe" id="pff-XV-QbS"/>
                         <outlet property="lun03Button" destination="BjB-I6-mPK" id="n2V-2S-he8"/>
                         <outlet property="lun03Label" destination="i7B-sD-kuh" id="iC4-ds-3eG"/>
+                        <outlet property="popoverButton" destination="dtV-yk-DQ4" id="CwT-jw-T34"/>
                         <outlet property="radiusLabel" destination="YJG-RX-IHZ" id="KiZ-bC-1UN"/>
                         <outlet property="radiusSlider" destination="xTo-Lk-bI6" id="Hix-w6-cr4"/>
                         <outlet property="radiusValue" destination="K7u-96-Ptq" id="U17-Rc-IPc"/>
@@ -2081,6 +2068,7 @@
                         <outlet property="spacingLabel" destination="mbk-TD-rr0" id="Vt0-t1-BpU"/>
                         <outlet property="spacingSlider" destination="Ke1-kX-twZ" id="oMo-Mz-Uab"/>
                         <outlet property="spacingValue" destination="tGx-OR-AcT" id="boO-EN-lJP"/>
+                        <outlet property="textView" destination="6W3-eZ-B2m" id="maJ-1K-YgJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcg-63-ViZ" sceneMemberID="firstResponder"/>
@@ -2125,6 +2113,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onHome:" destination="czL-d1-Xny" eventType="touchUpInside" id="VPd-yf-afI"/>
+                                    <segue destination="2" kind="modal" id="k2W-jJ-SmC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wuz-h4-S7M" userLabel="Button - Back">
@@ -2219,7 +2208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SdM-ln-Duw" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="1196"/>
+            <point key="canvasLocation" x="3062" y="1399"/>
         </scene>
         <!--Appliance Cluster View Controller-->
         <scene sceneID="fEw-Wu-R9e">
@@ -2255,7 +2244,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onHome:" destination="czL-d1-Xny" eventType="touchUpInside" id="XWO-Da-fd6"/>
-                                    <action selector="onHome:" destination="JZO-dL-HeE" eventType="touchUpInside" id="npu-BA-pUq"/>
+                                    <segue destination="2" kind="modal" id="9Q0-CS-Ttb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jce-Ib-uK9" userLabel="Button - Back">
@@ -2320,7 +2309,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="czL-d1-Xny" kind="modal" id="UgR-Po-8d3"/>
+                                    <segue destination="czL-d1-Xny" kind="modal" id="LbK-6D-GUu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="e49-Xp-Ymc">
@@ -2448,6 +2437,13 @@
                                 <rect key="frame" x="71" y="35" width="286" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00600118-0060120" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EH5-3R-qMe">
+                                <rect key="frame" x="64" y="111" width="258" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MO0-HA-cmG" userLabel="Hide/Show Slider Button">
                                 <rect key="frame" x="77" y="46" width="203" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2672,7 +2668,7 @@
                                     <action selector="updateValue:" destination="GgS-wy-aCW" eventType="valueChanged" id="HTO-T7-HEx"/>
                                 </connections>
                             </slider>
-                            <view contentMode="scaleToFill" id="QZc-aQ-Ssr">
+                            <view contentMode="scaleToFill" id="QZc-aQ-Ssr" userLabel="View for UISearchBar">
                                 <rect key="frame" x="829" y="56" width="167" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -2773,6 +2769,7 @@
                         <outlet property="arcLabel" destination="bjC-C8-KAz" id="sqP-hH-l1v"/>
                         <outlet property="arcSlider" destination="sSP-88-jmn" id="Asw-TO-wdQ"/>
                         <outlet property="arcValue" destination="edL-Mc-Zuv" id="M2d-W3-Zns"/>
+                        <outlet property="haApplianceName" destination="EH5-3R-qMe" id="nCf-p8-YT0"/>
                         <outlet property="itemIndexCountsAndTotalLabel" destination="pd0-t8-GbD" id="MVW-kB-mcu"/>
                         <outlet property="radiusLabel" destination="CoV-hl-1PM" id="xhj-V2-5Ce"/>
                         <outlet property="radiusSlider" destination="1a2-G5-f4T" id="3bU-Np-XP8"/>
@@ -3388,7 +3385,8 @@
         <image name="Button-Vf.png" width="181" height="177"/>
         <image name="Button-Vh.png" width="185" height="159"/>
         <image name="Button-Vi.png" width="156" height="174"/>
-        <image name="Device-Engine.png" width="401" height="83"/>
+        <image name="Device-Engine 1:2 Left.png" width="195" height="83"/>
+        <image name="Device-Engine 1:2 Right.png" width="195" height="83"/>
         <image name="Device-LUN-member-blue.png" width="50" height="57"/>
         <image name="Device-LUN-member-green.png" width="50" height="57"/>
         <image name="Device-LUN-unit-healthy.png" width="83" height="109"/>
@@ -3464,11 +3462,14 @@
                 <relationship kind="action" name="hideSlider:"/>
                 <relationship kind="action" name="onBack:"/>
                 <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="popover:"/>
                 <relationship kind="action" name="updateValue:"/>
                 <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="deviceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="engineLeft" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="engineRight" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun00Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun00Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun01Button" candidateClass="UIButton"/>
@@ -3481,6 +3482,7 @@
                 <relationship kind="outlet" name="lun04Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun05Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun05Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="popoverButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
@@ -3490,6 +3492,7 @@
                 <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="HAApplianceMirrorViewController" superclassName="UIViewController">
@@ -3674,9 +3677,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="jcG-tU-yxa"/>
+        <segue reference="LbK-6D-GUu"/>
         <segue reference="UYb-7y-yfg"/>
         <segue reference="vlC-xE-3tq"/>
-        <segue reference="wiI-z8-cj9"/>
-        <segue reference="7FE-LI-xeF"/>
     </inferredMetricsTieBreakers>
 </document>

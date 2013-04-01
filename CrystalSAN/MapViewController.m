@@ -24,8 +24,13 @@
     
     BOOL regionWillChangeAnimatedCalled;// = YES;
     BOOL regionChangedBecauseAnnotationSelected; // = NO;
+    
+    NSInteger currentLocationIndex;
 
 }
+
+- (void)panMapToCurrentSiteLocation;
+- (void)zoomInCurrentLocation;
 
 @end
 
@@ -146,45 +151,6 @@
     
     [_mapView addAnnotations:locations];
     
-    //[locations addObject:locationTaipei];
-    //[locations addObject:locationTaipei];
-    //[locations addObject:locationTaipei];
-    //[locations addObject:locationTaipei];
-    //[locations addObject:locationTaipei];
-    //[locations addObject:locationTaipei];
-    
-
-    /*
-    CLLocation *Taipei = [[CLLocation alloc] initWithLatitude:25.044 longitude:121.526];
-    CLLocation *SouthKorea = [[CLLocation alloc] initWithLatitude:37.000 longitude:127.5];
-    CLLocation *US = [[CLLocation alloc] initWithLatitude:38.0000 longitude:-97.0000];
-    CLLocation *Baltimore = [[CLLocation alloc] initWithLatitude:39.290458 longitude:-76.612365];
-    CLLocation *LasVegas = [[CLLocation alloc] initWithLatitude:36.175 longitude:-115.13639];
-    CLLocation *SiliconValley = [[CLLocation alloc] initWithLatitude:37.362570 longitude:-122.034760];
-    // GPS Coordinates Of Paris, France - Latitude And Longitude Of Paris, France
-    // Decimal (WGS84) : 48.85676, 2.35099
-    CLLocation *Paris = [[CLLocation alloc] initWithLatitude:48.85676 longitude:2.35099];
-    // Beijing, China, Decimal (WGS84) : 39.904459, 116.406847
-    CLLocation *Beijing = [[CLLocation alloc] initWithLatitude:39.904459 longitude:116.406847];
-    CLLocation *Tokyo = [[CLLocation alloc] initWithLatitude:35.68994 longitude:139.69170];
-    CLLocation *Shanghai = [[CLLocation alloc] initWithLatitude:31.230431 longitude:121.474956];
-    CLLocation *London = [[CLLocation alloc] initWithLatitude:51.500622 longitude:-0.126662];
-    CLLocation *Wasington = [[CLLocation alloc] initWithLatitude:38.89578 longitude:-77.03650];
-   */
-    
-    //locations = [NSArray arrayWithObjects:Taipei, SouthKorea, US, Baltimore, LasVegas, SiliconValley, Paris, Beijing, Tokyo, Shanghai, London, Wasington, nil];
-    
-    
-    //NSDictionary *locations = [NSDictionary dictionaryWithObjectsAndKeys:<#(id), ...#>, nil]
-    
-    // Seoul of South Korea
-    //      latitude 37.000
-    //      longitude 127.5
-    
-    //CLLocation *towerLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-    // http://dev.maxmind.com/geoip/codes/country_latlon
-    // Average Latitude and Longitude for Countries
-    
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
@@ -199,7 +165,6 @@
     carousel.viewpointOffset = CGSizeMake(0, -150);
     carousel.decelerationRate = 0.9;
 
-
     [self.view addSubview:carousel];
     
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
@@ -212,7 +177,11 @@
     self.mainViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
 
-    [self onItemPress:nil];
+    //[self onItemPress:nil];
+    
+    currentLocationIndex = 0;
+    
+    //[self panMapToCurrentSiteLocation];
 
     
 }
@@ -229,6 +198,9 @@
     [super viewWillAppear:animated];
     
     NSLog(@"%s", __func__);
+    
+    carousel.currentItemIndex = [theDelegate.currentSiteIndex integerValue];
+    [self panMapToCurrentSiteLocation];
    
     /*
     // Baltimore
@@ -252,12 +224,40 @@
 {
     NSLog(@"%s", __func__);
     
+    theDelegate.currentSiteIndex = [NSNumber numberWithInt:carousel.currentItemIndex];
+    
     [self presentViewController:self.mainViewController animated:YES completion:nil];
-
 
 }
 
+/*
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    MKAnnotationView *pinView = nil;
+    if(annotation != mapView.userLocation)
+    {
+        static NSString *defaultPinID = @"com.invasivecode.pin";
+        pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+        if ( pinView == nil )
+            pinView = [[MKAnnotationView alloc]
+                       initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        
+        //pinView.pinColor = MKPinAnnotationColorGreen;
+        pinView.canShowCallout = YES;
+        //pinView.animatesDrop = YES;
+        pinView.image = [UIImage imageNamed:@"pinks.jpg"];    //as suggested by Squatch
+    }
+    else {
+        [mapView.userLocation setTitle:@"I am here"];
+    }
+    return pinView;
+}
+ */
+
+///*
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
     NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
 	if (annotation == mapView.userLocation) { //returning nil means 'use built in location view'
 		return nil;
@@ -278,30 +278,11 @@
     //instatiate a detail-disclosure button and set it to appear on right side of annotation
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     pinAnnotation.rightCalloutAccessoryView = infoButton;
-	
-    [infoButton addTarget:self action:@selector(gotoSite:) forControlEvents:UIControlEventTouchUpInside];
+	[infoButton addTarget:self action:@selector(gotoSite:) forControlEvents:UIControlEventTouchUpInside];
 
 	return pinAnnotation;
 }
-
-
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
-{
-    NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
-    // Constrain zoom level to 8.
-    if( [mapView zoomLevel] > 2 )
-    {
-        [mapView setCenterCoordinate:mapView.centerCoordinate
-                           zoomLevel:2
-                            animated:YES];
-    }
-}
-
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
-    NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
-}
-
-
+//*/
 
 -(void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
@@ -310,14 +291,28 @@
     regionChangedBecauseAnnotationSelected = NO;
 }
 
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
+    // Constrain zoom level to 8.
+    //if( [mapView zoomLevel] > 2 )
+    //{
+    //    [mapView setCenterCoordinate:mapView.centerCoordinate
+    //                       zoomLevel:2
+    //                        animated:YES];
+    //}
+}
+
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
+{
+    NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
+}
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    
     NSLog(@"%s", __func__);
     regionChangedBecauseAnnotationSelected = regionWillChangeAnimatedCalled;
 }
-
 
 
 //-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -337,29 +332,88 @@
 }
 */
 
+- (void)panMapToCurrentSiteLocation
+{
+    NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
+    
+    [self zoomOutCurrentLocation];
+    
+    if (carousel.currentItemIndex < [locations count]) {
+        
+        NSInteger index = carousel.currentItemIndex;
+        FLLocation *location = [locations objectAtIndex:index];
+        CLLocationCoordinate2D coord;
+        
+        coord.latitude = [location.latitude floatValue];
+        coord.longitude= [location.longitude floatValue];
+        
+        NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
+        
+        //NSInteger zoomLevel = [[zoomLevels objectAtIndex:carousel.currentItemIndex] integerValue];
+        NSInteger zoomLevel = 3;
+        
+        [self moveToLocation:coord zoomLevel:zoomLevel];
+        
+    }
+    
+    [self performSelector:@selector(zoomInCurrentLocation) withObject:nil afterDelay:1];
+    
+    
+    //[self zoomInCurrentLocation];
+    
+    
+}
+
+- (void)zoomInCurrentLocation
+{
+    NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
+    
+    if (carousel.currentItemIndex < [locations count]) {
+        
+        NSInteger index = carousel.currentItemIndex;
+        FLLocation *location = [locations objectAtIndex:index];
+        CLLocationCoordinate2D coord;
+        
+        coord.latitude = [location.latitude floatValue];
+        coord.longitude= [location.longitude floatValue];
+        
+        NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
+        
+        //NSInteger zoomLevel = [[zoomLevels objectAtIndex:carousel.currentItemIndex] integerValue];
+        NSInteger zoomLevel = 4;
+        
+        [self moveToLocation:coord zoomLevel:zoomLevel];
+        
+    }
+}
+
+- (void)zoomOutCurrentLocation
+{
+    NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
+    
+    if (carousel.currentItemIndex < [locations count]) {
+        
+        NSInteger index = carousel.currentItemIndex;
+        FLLocation *location = [locations objectAtIndex:index];
+        CLLocationCoordinate2D coord;
+        
+        coord.latitude = [location.latitude floatValue];
+        coord.longitude= [location.longitude floatValue];
+        
+        NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
+        
+        //NSInteger zoomLevel = [[zoomLevels objectAtIndex:carousel.currentItemIndex] integerValue];
+        NSInteger zoomLevel = 3;
+        
+        [self moveToLocation:coord zoomLevel:zoomLevel];
+        
+    }
+}
+
+
 - (void)moveToLocation:(CLLocationCoordinate2D)location zoomLevel:(NSInteger)zoomLevel
 {
-    //To get the CLLocationCoordinate struct back from CLLocation, call coordinate on the object.
-    
-    //CLLocationCoordinate2D coord = [[locations objectAtIndex:carousel.currentItemIndex] coordinate];
-    //NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
-    
-
-    //typedef struct {
-    //    CLLocationDegrees latitude;
-    //    CLLocationDegrees longitude;
-    //} CLLocationCoordinate2D;
-    
-    //CLLocationCoordinate2D location = (CLLocationCoordinate2D){.latitude = latitude, .longitude = longitude};
-    // Seoul of South Korea
-    //      latitude 37.000
-    //      longitude 127.5
-    
-    
     NSLog(@"%s", __func__);
-    
-    
-    //[self setMapRegionLongitude:Y andLatitude:X withLongitudeSpan:0.05 andLatitudeSpan:0.05];
     [_mapView setCenterCoordinate:location zoomLevel:zoomLevel animated:YES];
 }
 
@@ -374,24 +428,8 @@
     NSLog(@"%s", __func__);
     
     
-    if (carousel.currentItemIndex < [locations count]) {
-        
-        NSInteger index = carousel.currentItemIndex;
-        FLLocation *location = [locations objectAtIndex:index];
-        CLLocationCoordinate2D coord;
-        
-        coord.latitude = [location.latitude floatValue];
-        coord.longitude= [location.longitude floatValue];
-
-        NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
-        
-        //NSInteger zoomLevel = [[zoomLevels objectAtIndex:carousel.currentItemIndex] integerValue];
-        NSInteger zoomLevel = 3;
-        
-        [self moveToLocation:coord zoomLevel:zoomLevel];
-
-    }
     
+    [self gotoSite:sender];
     
     //NSLog(@"onItemPress: tag=%d, current index=%u %@",theButon.tag, index, [deviceArray objectAtIndex:index]);
     
@@ -595,6 +633,7 @@
     
 }
 
+
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
     //currentItemIndex = _carousel.currentItemIndex;
@@ -603,7 +642,9 @@
     
     NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
     
-    [self onItemPress:nil];
+    [self panMapToCurrentSiteLocation];
+    
+    //[self onItemPress:nil];
 
 }
 

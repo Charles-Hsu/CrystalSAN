@@ -15,6 +15,9 @@
 @implementation AppDelegate
 
 @synthesize sanDatabase;
+@synthesize currentSiteIndex;
+
+@synthesize currentEngineLeftSerial, currentEngineRightSerial;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -74,6 +77,7 @@
      */
     
     self.currentDeviceName = @"";
+    self.currentSiteIndex = 0;
 
 
     return YES;

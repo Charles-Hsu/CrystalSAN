@@ -153,6 +153,8 @@
     //self.mirrorViewVcController.haApplianceName = [deviceArray objectAtIndex:currentItemIndex];
     //self.mirrorViewVcController.deviceLabel.text = self.mirrorViewVcController.haApplianceName;
     [self presentViewController:self.haApplianceConnectionViewController animated:YES completion:nil];
+    
+    NSLog(@"end of %s, current ha: %@, %@-%@", __func__, theDelegate.currentDeviceName, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
 
 }
 

@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
+#import "MBProgressHUD.h"
+
 
 #define ITEM_BUTTON_START_TAG_RAIDVIEW 300
 
@@ -41,6 +43,10 @@
 @synthesize lun00Button, lun01Button, lun02Button, lun03Button, lun04Button, lun05Button;
 @synthesize lun00Label, lun01Label, lun02Label, lun03Label, lun04Label, lun05Label;
 
+@synthesize engineLeft, engineRight;
+
+@synthesize popoverButton;
+@synthesize textView;
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     NSLog(@"%s", __func__);
@@ -124,7 +130,26 @@
     self.deviceLabel.text = theDelegate.currentDeviceName;
     
     NSLog(@"%s deviceName=%@", __func__, theDelegate.currentDeviceName);
+    
+    //popoverButton.backgroundColor = [UIColor redColor];
+    //popoverButton.titleLabel
 
+    UIButton *uiButton = [self popoverButton];
+    uiButton.backgroundColor = [UIColor redColor];
+    //[[uiButton titleLabel] text] = @"Hello";
+    uiButton.titleLabel.text = @"Hello";
+    //[uiButton titleLabel]
+    
+    //NSString *buttonTitle = [uiButton titleForState:UIControlStateApplication];
+    
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateApplication]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateDisabled]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateHighlighted]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateNormal]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateReserved]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateSelected]);
+
+    NSLog(@"%s currentTitle=%@", __func__,  popoverButton.currentTitle);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -151,7 +176,10 @@
 - (IBAction)onHome:(id)sender
 {
     //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+    //[self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    //NSLog(@"%s", __func__);
+    
     //UIViewController *prevVC = [self.navigationController.viewControllers objectAtIndex:0];
     //[self.navigationController popToViewController:prevVC animated:YES];
     
@@ -165,6 +193,53 @@
 - (IBAction)onBack:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)popover:(id)sender
+{
+    NSLog(@"%s %@, calss=%@", __func__, sender, [sender class]);
+    
+    UIButton *uiButton = (UIButton *)sender;
+    
+    /*
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateApplication]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateDisabled]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateHighlighted]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateNormal]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateReserved]);
+    NSLog(@"%s %@", __func__, [uiButton titleForState:UIControlStateSelected]);
+     */
+    
+    NSString *buttonTitle = uiButton.currentTitle;
+    //NSLog(@"%s %@", __func__, buttonTitle);
+    
+    CGRect frame = uiButton.imageView.frame;
+    frame.size.height += 10;
+    frame.origin.x += 10;
+    frame.origin.y += 10;
+    //uiButton.frame = frame;
+    
+    CGRect buttonFrame = CGRectMake( 500, 0, 200, 730);
+    UIButton *button = [[UIButton alloc] initWithFrame: buttonFrame];
+    [button setTitle: @"My Button" forState: UIControlStateNormal];
+    [button setTitleColor: [UIColor redColor] forState: UIControlStateNormal];
+    button.backgroundColor = [UIColor blueColor];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.textView animated:YES];
+    
+	// Configure for text only and offset down
+    //hud.mode = MBProgressHUDModeDeterminate;
+	hud.mode = MBProgressHUDModeText;
+    //hud.mode = MBProgressHUDModeCustomView;
+	hud.labelText = @"Some message..Some message...";
+	hud.margin = 10.f;
+	hud.yOffset = 150.f;
+	hud.removeFromSuperViewOnHide = YES;
+    
+	[hud hide:YES afterDelay:3];
+    
+    //NSLog(@"endf of %s %@", __func__, sender);
+
 }
 
 - (void)onItemPress:(id)sender

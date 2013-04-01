@@ -72,12 +72,19 @@
 	// Do any additional setup after loading the view.
     
     
+
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
     
     NSLog(@"%s %@", __func__, theDelegate.currentDeviceName); 
 
+    if ([theDelegate.currentDeviceName length] == 0) {
+        haApplianceName.hidden = YES;
+    }
+    else {
+        haApplianceName.hidden = NO;
+    }
     
 
     //NSLog(@"%s %@", __func__, deviceArray);
