@@ -233,13 +233,13 @@ proc get_xml_cli_vpd_key_and_value_list {args} {
     }
     
     set value_list  [string trim [lindex [lindex [lindex $items 2] 0] 1]]
-    
-    
-    set length [llength $value_list]
-    
     set return_list "{{$key} {$value_list}}"
     
-    if {$length == 0} {
+    if {[llength $value_list] == 0} {
+    
+        if { [string length $key] == 1 } {
+            append key "1"
+        }
         
         set return_list ""
         
@@ -263,6 +263,7 @@ proc get_xml_cli_vpd_key_and_value_list {args} {
         
         #puts [lindex [lindex [lindex $items 2] 1] 0]
         set subkey [lindex [lindex [lindex $items 2] 2] 0]
+        puts "====>subkey = $subkey"
         #puts [lindex [lindex [lindex [lindex [lindex $items 2] 2] 2] 0] 1]
         set value [lindex [lindex [lindex [lindex [lindex $items 2] 2] 2] 0] 1]
         
@@ -303,7 +304,7 @@ proc parse_xml_cli_vpd {args} {
         set length [llength $keyValueList]
         for {set i 0} {$i < $length} {incr i 1} {
             #puts "[lindex $keyValueList $i] = '[lindex $keyValueList $i+1]'"
-            puts "[lindex [lindex $keyValueList $i] 0] = '[lindex [lindex $keyValueList $i] 1]'"
+            puts "===> [lindex [lindex $keyValueList $i] 0] = '[lindex [lindex $keyValueList $i] 1]'"
             set items "$items, [lindex [lindex $keyValueList $i] 0]"
             set values "$values, '[lindex [lindex $keyValueList $i] 1]'"
         }
@@ -431,7 +432,7 @@ proc parse_xml_cli_conmgr_engine_status {args} {
     set serial     [lindex $args 2]
 
     set cluster_data [lindex [lindex [lindex $xml_block 2] 0] 2]
-    #puts $cluster_data
+    puts $cluster_data
     
     set cluster_id  [lindex [lindex [lindex [lindex $cluster_data 0] 2] 0] 1]
     puts "cluster_id=$cluster_id"
@@ -439,10 +440,11 @@ proc parse_xml_cli_conmgr_engine_status {args} {
     set cluster_sts [lindex [lindex [lindex [lindex $cluster_data 1] 2] 0] 1]
     puts "cluster_sts=$cluster_sts"
     
-    set path_0_data [lindex $cluster_data 2]
+    set path_0_data [lindex $cluster_data 1]
     # paths {id 1} {{port {} {{{#text} B1}}} {wwpn {} {{{#text} 2300-006022-09281e}}} {pstatus {} {{{#text} A}}}}
     
     set path_0_id   [lindex [lindex $path_0_data 1] 1]
+    puts "path_0_id = $path_0_id"
     
     set path_0_port_data [lindex $path_0_data 2]
     # path_0_port_data => {port {} {{{#text} B1}}} {wwpn {} {{{#text} 2300-006022-09281e}}} {pstatus {} {{{#text} A}}}
@@ -451,13 +453,13 @@ proc parse_xml_cli_conmgr_engine_status {args} {
     set path_0_port_wwpn [lindex [lindex [lindex [lindex $path_0_port_data 1] 2] 0] 1]
     set path_0_port_pstatus [lindex [lindex [lindex [lindex $path_0_port_data 2] 2] 0] 1]
     
-    #puts $path_0_data
-    #puts "path_0_id=$path_0_id"
-    #puts "path_0_port=$path_0_port"
-    #puts "path_0_port_wwpn=$path_0_port_wwpn"
-    #puts "path_0_port_pstatus=$path_0_port_pstatus"
+    puts $path_0_data
+    puts "path_0_id=$path_0_id"
+    puts "path_0_port=$path_0_port"
+    puts "path_0_port_wwpn=$path_0_port_wwpn"
+    puts "path_0_port_pstatus=$path_0_port_pstatus"
     
-    set path_1_data [lindex $cluster_data 3]
+    set path_1_data [lindex $cluster_data 2]
     #puts $path_1_data
     #puts [lindex $cluster_data  2]
     # paths {id 1} {{port {} {{{#text} B1}}} {wwpn {} {{{#text} 2300-006022-09281e}}} {pstatus {} {{{#text} A}}}}
@@ -471,11 +473,11 @@ proc parse_xml_cli_conmgr_engine_status {args} {
     set path_1_port_wwpn [lindex [lindex [lindex [lindex $path_1_port_data 1] 2] 0] 1]
     set path_1_port_pstatus [lindex [lindex [lindex [lindex $path_1_port_data 2] 2] 0] 1]
     
-    #puts $path_1_data
-    #puts "path_1_id=$path_1_id"
-    #puts "path_1_port=$path_1_port"
-    #puts "path_1_port_wwpn=$path_1_port_wwpn"
-    #puts "path_1_port_pstatus=$path_1_port_pstatus"
+    puts $path_1_data
+    puts "path_1_id=$path_1_id"
+    puts "path_1_port=$path_1_port"
+    puts "path_1_port_wwpn=$path_1_port_wwpn"
+    puts "path_1_port_pstatus=$path_1_port_pstatus"
     
     set sql "INSERT INTO engine_cli_conmgr_engine_status VALUES ('$serial','$seconds','$cluster_id','$cluster_sts','$path_0_id','$path_0_port','$path_0_port_wwpn','$path_0_port_pstatus','$path_1_id','$path_1_port','$path_1_port_wwpn','$path_1_port_pstatus')"
     

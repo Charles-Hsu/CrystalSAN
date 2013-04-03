@@ -21,7 +21,7 @@
 //@property (strong,nonatomic) NSMutableArray *totalItems;
 //@property (strong,nonatomic) NSMutableArray *activeItems;
 
-@property (strong, nonatomic) NSString *haApplianceName;
+//@property (strong, nonatomic) NSString *haApplianceName;
 
 //@property (strong, nonatomic) NSMutableArray *animals;
 @property (strong, nonatomic) NSMutableArray *descriptions;
@@ -65,16 +65,16 @@
 @property (nonatomic, retain) IBOutlet UIButton *engineRight;
 
 
-@property (nonatomic, retain) IBOutlet UIButton *popoverButton;
-@property (nonatomic, retain) IBOutlet UITextView *textView;
-
 
 
 // event
 //- (IBAction)onHome:(id)sender;
 - (IBAction)onBack:(id)sender;
 
-@property (nonatomic, weak) IBOutlet UILabel *deviceLabel;
+//@property (nonatomic, weak) IBOutlet UILabel *deviceLabel;
+@property (nonatomic, strong) IBOutlet UILabel *haApplianceName;
+
+
 @property (nonatomic, retain) NSString *deviceName;
 
 
@@ -85,7 +85,13 @@
 - (IBAction)hideSlider:(id)sender;
 
 
-- (IBAction)popover:(id)sender;
+- (IBAction)showEngineInfo:(id)sender;
+- (IBAction)hideEngineInfo:(id)sender;
+
+- (IBAction)showMirrorInfo:(id)sender;
+- (IBAction)hideMirrorInfo:(id)sender;
+
+- (void)hideHud;
 
 /*
 

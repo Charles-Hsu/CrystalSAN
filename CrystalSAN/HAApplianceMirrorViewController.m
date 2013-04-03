@@ -74,6 +74,10 @@
     
     engine0mirror.text = [self getEngineMirrorString:[engines objectAtIndex:0]];
     engine1mirror.text = [self getEngineMirrorString:[engines objectAtIndex:1]];
+    
+    engine0mirror.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
+    engine1mirror.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
+    
 
 }
 
@@ -205,7 +209,7 @@
     NSString *mirror_5_member_1_sts = [dict valueForKey:@"mirror_5_member_1_sts"];
     
     NSString *mirror = [NSString stringWithFormat:
-                        @"Mirror\tstate\tMap\tCapacity\t\tMembers \n"
+                        @"Mirror\tstate\tMap\tCapacity\tMembers \n"
                         "%@\t%@\t%@\t%@\t%@ %@\t%@ %@\n"
                         "%@\t%@\t%@\t%@\t%@ %@\t%@ %@\n"
                         "%@\t%@\t%@\t%@\t%@ %@\t%@ %@\n"

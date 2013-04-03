@@ -164,8 +164,6 @@ if {1} {
     puts "seconds           = $seconds"
     puts "seconds_in_table  = $seconds_in_table ($table_name)"
     
-    #parse_xml_cli_conmgr_engine_status $cli_conmgr_engine_status_block $seconds $serial
-    
     if {[expr $seconds_in_table >= $seconds]} {
         #puts "same record => ignore"
     } else {

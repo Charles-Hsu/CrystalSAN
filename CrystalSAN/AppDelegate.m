@@ -50,6 +50,9 @@
         }
     }
     
+    NSLog(@"Fonts: %@", [UIFont familyNames]);
+    NSLog(@"Fonts: %@", [UIFont fontNamesForFamilyName:@"Source Code Pro"]); // "SourceCodePro-Regular"
+    
     //NSLog(@"%s %@", __func__, self.totalItems);
     
     self.activeItems = [NSMutableArray array];
