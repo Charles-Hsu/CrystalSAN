@@ -20,6 +20,8 @@
 		5609AC7D170D575A00BB5BE5 /* UISliderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5609AC7C170D575A00BB5BE5 /* UISliderBackground.png */; };
 		5609AC7F170D5E0E00BB5BE5 /* coordinate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5609AC7E170D5E0E00BB5BE5 /* coordinate.png */; };
 		5609AC81170D61BF00BB5BE5 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 5609AC80170D61BF00BB5BE5 /* iTunesArtwork */; };
+		5609AC84170D7AD500BB5BE5 /* CalloutBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5609AC82170D7AD500BB5BE5 /* CalloutBackground.png */; };
+		5609AC85170D7AD500BB5BE5 /* CalloutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5609AC83170D7AD500BB5BE5 /* CalloutButton.png */; };
 		561284E216A8DF8E00F53C49 /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284E116A8DE0800F53C49 /* CustomPushSegue.m */; };
 		5612850B16A8E50600F53C49 /* FlipTopPopToRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */; };
 		5623C76216BD50F1009410B2 /* SanDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C76116BD50F0009410B2 /* SanDatabase.m */; };
@@ -154,6 +156,8 @@
 		5609AC7C170D575A00BB5BE5 /* UISliderBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISliderBackground.png; sourceTree = "<group>"; };
 		5609AC7E170D5E0E00BB5BE5 /* coordinate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coordinate.png; sourceTree = "<group>"; };
 		5609AC80170D61BF00BB5BE5 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		5609AC82170D7AD500BB5BE5 /* CalloutBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalloutBackground.png; sourceTree = "<group>"; };
+		5609AC83170D7AD500BB5BE5 /* CalloutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalloutButton.png; sourceTree = "<group>"; };
 		560EC26916FC54CC000B505C /* script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.sh; sourceTree = "<group>"; };
 		560EC27516FC54CC000B505C /* scan_ha_cluster.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_ha_cluster.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		560EC27816FC54CC000B505C /* test_parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = test_parse_engine_all.exp; sourceTree = "<group>"; };
@@ -501,6 +505,8 @@
 				567FA37D1702CBA9000F5802 /* uislider-thumb.png */,
 				5609AC7C170D575A00BB5BE5 /* UISliderBackground.png */,
 				5609AC7E170D5E0E00BB5BE5 /* coordinate.png */,
+				5609AC82170D7AD500BB5BE5 /* CalloutBackground.png */,
+				5609AC83170D7AD500BB5BE5 /* CalloutButton.png */,
 			);
 			name = images;
 			path = CrystalSAN/images;
@@ -842,6 +848,8 @@
 				5609AC7D170D575A00BB5BE5 /* UISliderBackground.png in Resources */,
 				5609AC7F170D5E0E00BB5BE5 /* coordinate.png in Resources */,
 				5609AC81170D61BF00BB5BE5 /* iTunesArtwork in Resources */,
+				5609AC84170D7AD500BB5BE5 /* CalloutBackground.png in Resources */,
+				5609AC85170D7AD500BB5BE5 /* CalloutButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
