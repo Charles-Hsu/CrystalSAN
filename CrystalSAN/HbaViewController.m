@@ -21,7 +21,7 @@
     
     AppDelegate *theDelegate;
     
-    NSArray *deviceArray;
+    NSMutableArray *deviceArray;
 
 }
 @end
@@ -113,21 +113,28 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"%s", __func__);
+    NSLog(@"%s ==============================", __func__);
     //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
     
     if ([theDelegate.currentDeviceName length] == 0) {
         haApplianceName.hidden = YES;
     }
     else {
+        self.haApplianceName.text = theDelegate.currentDeviceName;
         haApplianceName.hidden = NO;
     }
     
     // currentDeviceName in theDelegate is a HA-Cluster-Name
     
-    NSLog(@"%s currentDeviceName %@", __func__, theDelegate.currentDeviceName);
+    NSLog(@"%s currentDeviceName = '%@'", __func__, theDelegate.currentDeviceName);
+    NSLog(@"%s engine00 = '%@'", __func__, theDelegate.currentEngineLeftSerial);
+    NSLog(@"%s engine01 = '%@'", __func__, theDelegate.currentEngineRightSerial);
+    
+    
 
-    deviceArray = [sanDatabase getInitiatorListByEngineSerial:theDelegate.currentDeviceName];
+    deviceArray = (NSMutableArray *)[sanDatabase getInitiatorListByEngineSerial:theDelegate.currentEngineLeftSerial];
+    
+    [deviceArray addObjectsFromArray:[sanDatabase getInitiatorListByEngineSerial:theDelegate.currentEngineRightSerial]];
     
     if (carousel.currentItemIndex > [deviceArray count]) {
         carousel.currentItemIndex = 0;
@@ -137,12 +144,12 @@
 
     currentCollectionCount = [deviceArray count];
     totalCount = [deviceArray count];
-    NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
+    //NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
     
-    NSLog(@"%s size of diskArray %u", __func__, [deviceArray count]);
-    NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+    //NSLog(@"%s size of diskArray %u, currentItemIndex= %u", __func__, [deviceArray count], currentItemIndex);
+    //NSLog(@"%s %@", __func__, [deviceArray objectAtIndex:currentItemIndex]);
 
     
     totalItemInCarousel = [deviceArray count];
@@ -334,7 +341,8 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    NSLog(@"%s index=%u %@", __func__, index, [deviceArray objectAtIndex:index]);
+    //NSLog(@"%s index=%u %@", __func__, index, [deviceArray objectAtIndex:index]);
+    //NSLog(@"%s index=%u", __func__, index);
     UILabel *theLabel = nil;
     //NSInteger status = [[statusArray objectAtIndex:index] integerValue];
     

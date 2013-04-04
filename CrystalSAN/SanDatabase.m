@@ -636,12 +636,14 @@
     
     while ([rs next])
     {
+        //NSLog(@"%s %@", __func__, [rs resultDictionary]);
         [initiators addObject:[rs resultDictionary]];
     }
     // close the result set.
     // it'll also close when it's dealloc'd, but we're closing the database before
     // the autorelease pool closes, so sqlite will complain about it.
     [rs close];
+    
     return initiators;
 }
 

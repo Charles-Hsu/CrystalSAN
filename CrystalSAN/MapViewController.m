@@ -102,7 +102,7 @@
     
     if (self) {
         //set up carousel data
-        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(80, 450, 864, 260)];
+        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(480, 380, 500, 360)];
         //carousel = [[iCarousel alloc] initWithFrame:CGRectMake(80, 128, 864, 80)];
 
         //carousel.backgroundColor = [UIColor cyanColor];
@@ -158,11 +158,11 @@
     carousel.delegate = self;
     carousel.dataSource = self;
     
-    carousel.type = iCarouselTypeCylinder;
-    //carousel.type = iCarouselTypeRotary;
+    //carousel.type = iCarouselTypeCylinder;
+    carousel.type = iCarouselTypeRotary;
     
-    carousel.contentOffset = CGSizeMake(0, -120);
-    carousel.viewpointOffset = CGSizeMake(0, -150);
+    carousel.contentOffset = CGSizeMake(0, -280);
+    carousel.viewpointOffset = CGSizeMake(0, -350);
     carousel.decelerationRate = 0.9;
 
     [self.view addSubview:carousel];
@@ -267,12 +267,13 @@
     
 	if (pinAnnotation == nil) {
 		pinAnnotation = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+        pinAnnotation.image = [UIImage imageNamed:@"coordinate.png"];
 	} else {
 		pinAnnotation.annotation = annotation;
 	}
 	
     pinAnnotation.canShowCallout = YES;
-	pinAnnotation.pinColor = MKPinAnnotationColorRed;
+	//pinAnnotation.pinColor = MKPinAnnotationColorRed;
 	pinAnnotation.animatesDrop = YES;
     
     //instatiate a detail-disclosure button and set it to appear on right side of annotation
@@ -575,7 +576,7 @@
         
         UIImage *theItemImage = nil;
         
-        theItemImage = [UIImage imageNamed:@"Device-Site"];
+        theItemImage = [UIImage imageNamed:@"Item-Site"];
                 
         theLabel = [[UILabel alloc] init];
         theLabel.numberOfLines = 0;
@@ -591,14 +592,15 @@
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-20, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-43, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor redColor];
         //theLabel.alpha = 0.5;
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.tag = 1;
-        theLabel.font = [UIFont boldSystemFontOfSize:25.0];
+        theLabel.font = [UIFont boldSystemFontOfSize:20.0];
+        theLabel.textColor = [UIColor darkGrayColor];
         
         //NSLog(@"theButton.tag=%u", theButton.tag);
         

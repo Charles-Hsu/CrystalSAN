@@ -30,6 +30,12 @@
     MBProgressHUD *hud;
     
     BOOL isHUDshowing;
+    
+    NSDictionary *engine00Vpd;
+    NSDictionary *engine01Vpd;
+    
+    NSDictionary *engine00Mirror;
+    NSDictionary *engine01Mirror;
 }
 @end
 
@@ -46,6 +52,9 @@
 
 @synthesize lun00Button, lun01Button, lun02Button, lun03Button, lun04Button, lun05Button;
 @synthesize lun00Label, lun01Label, lun02Label, lun03Label, lun04Label, lun05Label;
+
+
+@synthesize lun00_0_Label, lun00_1_Label, lun01_0_Label, lun01_1_Label, lun02_0_Label, lun02_1_Label, lun03_0_Label, lun03_1_Label, lun04_0_Label, lun04_1_Label, lun05_0_Label, lun05_1_Label;
 
 @synthesize engineLeft, engineRight;
 
@@ -135,34 +144,23 @@
     
     NSLog(@"%s deviceName=%@", __func__, theDelegate.currentDeviceName);
     
-    //popoverButton.backgroundColor = [UIColor redColor];
-    //popoverButton.titleLabel
-    //hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //hud.hidden = TRUE;
-    
-    //[self addTarget:self action:@selector(hideHud:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //[self ]
-    
+    //
+    // How to add a touch event to a UIView?
+    //
+    // http://stackoverflow.com/questions/4660371/how-to-add-a-touch-event-to-a-uiview
+    // by Nathan Eror http://stackoverflow.com/users/100039/nathan-eror
+    //
     //The setup code (in viewDidLoad in your view controller)
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleFingerTap];
-    //[singleFingerTap release];
 
     
 }
 
-
-
-//The event handling method
+// The event handling method
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
-    NSLog(@"%s", __func__);
-    //CGPoint location = [recognizer locationInView:[recognizer.view superview]];
-    
-    //Do stuff here...
-    
     [self hideHud];
 }
 
@@ -178,6 +176,49 @@
     if ([engines count] == 2) {
         theDelegate.currentEngineLeftSerial = [engines objectAtIndex:0];
         theDelegate.currentEngineRightSerial = [engines objectAtIndex:1];
+        engine00Vpd = [theDelegate.sanDatabase getVpdBySerial:theDelegate.currentEngineLeftSerial];
+        engine01Vpd = [theDelegate.sanDatabase getVpdBySerial:theDelegate.currentEngineRightSerial];
+        engine00Mirror = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:theDelegate.currentEngineLeftSerial];
+        engine01Mirror = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:theDelegate.currentEngineRightSerial];
+        
+        
+        NSDictionary *dict = engine00Mirror;
+        
+        //NSString *mirror_0_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_0_id"]];
+        //NSString *mirror_0_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_0_sts"]];
+        //NSString *mirror_0_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_1_id"]];
+        //NSString *mirror_0_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_1_sts"]];
+        
+        self.lun00_0_Label.text = [dict valueForKey:@"mirror_0_member_0_id"];
+        self.lun00_1_Label.text = [dict valueForKey:@"mirror_0_member_1_id"];
+        self.lun01_0_Label.text = [dict valueForKey:@"mirror_1_member_0_id"];
+        self.lun01_1_Label.text = [dict valueForKey:@"mirror_1_member_1_id"];
+        self.lun02_0_Label.text = [dict valueForKey:@"mirror_2_member_0_id"];
+        self.lun02_1_Label.text = [dict valueForKey:@"mirror_2_member_1_id"];
+        self.lun03_0_Label.text = [dict valueForKey:@"mirror_3_member_0_id"];
+        self.lun03_1_Label.text = [dict valueForKey:@"mirror_3_member_1_id"];
+        
+        self.lun00Label.text = [dict valueForKey:@"mirror_0_id"];
+        self.lun01Label.text = [dict valueForKey:@"mirror_1_id"];
+        self.lun02Label.text = [dict valueForKey:@"mirror_2_id"];
+        self.lun03Label.text = [dict valueForKey:@"mirror_3_id"];
+        
+        if ([[dict valueForKey:@"mirror_3_id"] length] == 0) {
+            self.lun03Label.hidden = TRUE;
+            self.lun03Button.hidden = TRUE;
+            self.lun03_0_Button.hidden = TRUE;
+            self.lun03_1_Button.hidden = TRUE;
+            self.lun03_MirroredLUN.hidden = TRUE;
+        } else {
+            self.lun03Label.hidden = FALSE;
+            self.lun03Button.hidden = FALSE;
+            self.lun03_0_Button.hidden = FALSE;
+            self.lun03_1_Button.hidden = FALSE;
+            self.lun03_MirroredLUN.hidden = FALSE;
+        }
+        
+        //NSLog(@"%s '%@'", __func__, [dict valueForKey:@"mirror_3_id"]);
+        
     }
 
 }
@@ -218,10 +259,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-- (NSString *)getEngineVpdShortString:(NSString *)serial
+//- (NSString *)getEngineVpdShortString:(NSString *)serial
+- (NSString *)getEngineVpdShortString:(NSDictionary *)vpd
 {
-    NSDictionary *vpd = [theDelegate.sanDatabase getVpdBySerial:serial];
+    //NSDictionary *vpd = [theDelegate.sanDatabase getVpdBySerial:serial];
     
     /*
      "a1_wwpn" = "2100-006022-0928f2";
@@ -335,12 +376,13 @@
     }
 }
 
-- (NSString *)getMirrorShortString:(NSString *)serial byLunNum:(NSString *)lunNumStr {
+//- (NSString *)getMirrorShortString:(NSString *)serial byLunNum:(NSString *)lunNumStr {
+- (NSString *)getMirrorShortString:(NSDictionary *)dict {
     
     //Mirror(hex)    state       Map         Capacity  Members
     //33537(0x8301) Operational   0      13672091475  0 (OK )  2 (OK )
     
-    NSDictionary *dict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:theDelegate.currentEngineLeftSerial];
+    //NSDictionary *dict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:theDelegate.currentEngineLeftSerial];
     
     NSString *mirror_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_id"]];
     NSString *mirror_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_sts"]];
@@ -478,14 +520,11 @@
 
 - (IBAction)showMirrorInfo:(id)sender {
     NSLog(@"%s", __func__);
-    NSLog(@"%s", __func__);
     
-    NSString *lunNumStr = [sender restorationIdentifier];
-    //NSInteger lunNum = [lunNumStr integerValue];
-    
-    
+    //NSString *lunNumStr = [sender restorationIdentifier];
 
-    NSString *mirrorShortInfo = [self getMirrorShortString:theDelegate.currentEngineLeftSerial byLunNum:lunNumStr];
+    //NSString *mirrorShortInfo = [self getMirrorShortString:theDelegate.currentEngineLeftSerial byLunNum:lunNumStr];
+    NSString *mirrorShortInfo = [self getMirrorShortString:engine00Mirror];
     
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -536,14 +575,17 @@
 
 }
 
+/*
 - (IBAction)hideMirrorInfo:(id)sender {
     NSLog(@"%s", __func__);
     NSLog(@"%s", __func__);
     NSInteger delaySec = 3;
 	//[hud hide:YES afterDelay:delaySec];
 }
+ */
 
 
+/*
 - (IBAction)hideEngineInfo:(id)sender {
     NSLog(@"%s", __func__);
     NSInteger delaySec = 3;
@@ -553,6 +595,7 @@
     //hud.hidden = true;
 
 }
+ */
 
 - (IBAction)showEngineInfo:(id)sender {
     NSLog(@"%s", __func__);
@@ -562,13 +605,17 @@
     //UIButton *uiButton = (UIButton *)sender;
     //MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:uiButton animated:YES];
     
+    NSDictionary *vpd = nil;
+    
     if ([[sender restorationIdentifier] isEqualToString:@"leftEngine"]) {
         engineSerial = theDelegate.currentEngineLeftSerial;
+        vpd = engine00Vpd;
     } else {
         engineSerial = theDelegate.currentEngineRightSerial;
+        vpd = engine01Vpd;
     }
     
-    NSString *vpdInfo = [self getEngineVpdShortString:engineSerial];
+    NSString *vpdInfo = [self getEngineVpdShortString:vpd];
     
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     

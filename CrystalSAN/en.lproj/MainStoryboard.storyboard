@@ -38,7 +38,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="djO-T2-vl2" userLabel="Horizontal Slider - Arc">
-                                <rect key="frame" x="818" y="586" width="90" height="23"/>
+                                <rect key="frame" x="866" y="496" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="45Y-fu-l9Z"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999475479126" minValue="0.0010000000474974513" maxValue="2" id="Cjb-pU-pDF" userLabel="Horizontal Slider - Radius">
-                                <rect key="frame" x="818" y="610" width="90" height="23"/>
+                                <rect key="frame" x="866" y="520" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="ebR-yY-90a"/>
@@ -58,7 +58,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="NrA-1r-0Au" userLabel="Horizontal Slider - Spacing">
-                                <rect key="frame" x="818" y="634" width="90" height="23"/>
+                                <rect key="frame" x="866" y="544" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="XBX-ie-Zjw"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="sizingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.5" maxValue="1.5" id="v4n-0z-GIa" userLabel="Horizontal Slider - Spacing">
-                                <rect key="frame" x="818" y="658" width="90" height="23"/>
+                                <rect key="frame" x="866" y="568" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="YOT-Ri-UBv" eventType="valueChanged" id="dZU-l8-WJY"/>
@@ -78,56 +78,56 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="arcSliderLabel" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mfe-IO-rov">
-                                <rect key="frame" x="755" y="583" width="41" height="21"/>
+                                <rect key="frame" x="803" y="493" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="radiusSliderLabel" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nS0-ck-gVC">
-                                <rect key="frame" x="755" y="609" width="62" height="21"/>
+                                <rect key="frame" x="803" y="519" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="arcSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dpL-NK-8Zk">
-                                <rect key="frame" x="912" y="583" width="44" height="21"/>
+                                <rect key="frame" x="960" y="493" width="44" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="radiusSliderValue" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6IE-Az-IqC">
-                                <rect key="frame" x="912" y="615" width="44" height="10"/>
+                                <rect key="frame" x="960" y="525" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderValue" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jJt-c5-Ky4">
-                                <rect key="frame" x="912" y="639" width="44" height="10"/>
+                                <rect key="frame" x="960" y="549" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="siizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pwG-F8-5h7">
-                                <rect key="frame" x="912" y="663" width="44" height="10"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="sizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pwG-F8-5h7">
+                                <rect key="frame" x="960" y="573" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderLabel" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CRP-hw-uMP">
-                                <rect key="frame" x="755" y="633" width="70" height="21"/>
+                                <rect key="frame" x="803" y="543" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="sizingSliderLabel" text="Sizing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lua-C0-2Py">
-                                <rect key="frame" x="755" y="657" width="47" height="21"/>
+                                <rect key="frame" x="803" y="567" width="47" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -149,11 +149,11 @@
                                     <action selector="hideSlider:" destination="YOT-Ri-UBv" eventType="touchUpInside" id="bD2-u5-Xkk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TFU-wH-z38">
-                                <rect key="frame" x="458" y="626" width="205" height="65"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TFU-wH-z38">
+                                <rect key="frame" x="546" y="568" width="372" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <state key="normal" title="Map View">
+                                <state key="normal" image="Home-Button-SiteView.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -638,7 +638,7 @@
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="siizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="taH-rq-KHO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="sizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="taH-rq-KHO">
                                 <rect key="frame" x="200" y="550" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -1698,7 +1698,7 @@
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="siizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EJw-2U-dxI">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="sizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EJw-2U-dxI">
                                 <rect key="frame" x="215" y="678" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -1761,12 +1761,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideMirrorInfo:" destination="whg-kQ-d2J" eventType="touchDragOutside" id="jYd-Mg-hPB"/>
-                                    <action selector="hideMirrorInfo:" destination="whg-kQ-d2J" eventType="touchUpInside" id="nTC-gl-DO3"/>
                                     <action selector="showMirrorInfo:" destination="whg-kQ-d2J" eventType="touchDown" id="oam-jt-xvk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33537" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tsr-0e-AFq">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33537x" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tsr-0e-AFq">
                                 <rect key="frame" x="214" y="358" width="83" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -1780,7 +1778,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33538" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KkW-yd-a85">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33538x" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KkW-yd-a85">
                                 <rect key="frame" x="384" y="324" width="83" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -1794,7 +1792,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33539" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0bp-ed-bMe">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33539x" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0bp-ed-bMe">
                                 <rect key="frame" x="569" y="324" width="83" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -1808,15 +1806,15 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33540" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i7B-sD-kuh">
-                                <rect key="frame" x="736" y="350" width="83" height="25"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33540x" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i7B-sD-kuh">
+                                <rect key="frame" x="736" y="358" width="83" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Mirrored LUN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zuh-uJ-WUA">
-                                <rect key="frame" x="710" y="337" width="128" height="21"/>
+                                <rect key="frame" x="710" y="345" width="128" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1834,8 +1832,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideMirrorInfo:" destination="whg-kQ-d2J" eventType="touchUpInside" id="6R0-N5-S3F"/>
-                                    <action selector="hideMirrorInfo:" destination="whg-kQ-d2J" eventType="touchDragOutside" id="zbD-ag-aGk"/>
                                     <action selector="showMirrorInfo:" destination="whg-kQ-d2J" eventType="touchDown" id="Mi7-Ye-CV0"/>
                                 </connections>
                             </button>
@@ -1851,8 +1847,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideMirrorInfo:" destination="whg-kQ-d2J" eventType="touchDragOutside" id="WMp-30-9J2"/>
-                                    <action selector="hideMirrorInfo:" destination="whg-kQ-d2J" eventType="touchUpInside" id="d2O-TF-6gS"/>
                                     <action selector="showMirrorInfo:" destination="whg-kQ-d2J" eventType="touchDown" id="2Nm-Ps-WgB"/>
                                 </connections>
                             </button>
@@ -1868,12 +1862,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideMirrorInfo:" destination="whg-kQ-d2J" eventType="touchUpInside" id="Bl9-bL-VCV"/>
-                                    <action selector="hideMirrorInfo:" destination="whg-kQ-d2J" eventType="touchDragOutside" id="Jnj-mM-LfL"/>
                                     <action selector="showMirrorInfo:" destination="whg-kQ-d2J" eventType="touchDown" id="PuT-Gu-JUn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xWI-Pa-sn3">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xWI-Pa-sn3">
                                 <rect key="frame" x="193" y="303" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1887,42 +1879,42 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cVz-ww-nL1">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cVz-ww-nL1">
                                 <rect key="frame" x="274" y="303" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O4L-Lj-8ky">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="33" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O4L-Lj-8ky">
                                 <rect key="frame" x="358" y="270" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pcn-OA-Ygh">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pcn-OA-Ygh">
                                 <rect key="frame" x="439" y="270" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rBD-Sb-Gax">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rBD-Sb-Gax">
                                 <rect key="frame" x="543" y="269" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e8y-d5-2o9">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="66" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e8y-d5-2o9">
                                 <rect key="frame" x="624" y="269" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SUb-zJ-GAr">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="77" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SUb-zJ-GAr">
                                 <rect key="frame" x="715" y="302" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1950,7 +1942,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pnZ-80-hws">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="88" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pnZ-80-hws">
                                 <rect key="frame" x="796" y="303" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1997,8 +1989,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideEngineInfo:" destination="whg-kQ-d2J" eventType="touchDragExit" id="NgC-x0-31P"/>
-                                    <action selector="hideEngineInfo:" destination="whg-kQ-d2J" eventType="touchUpInside" id="v61-rG-5ai"/>
                                     <action selector="showEngineInfo:" destination="whg-kQ-d2J" eventType="touchDown" id="u2U-64-usF"/>
                                 </connections>
                             </button>
@@ -2014,8 +2004,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideEngineInfo:" destination="whg-kQ-d2J" eventType="touchDragOutside" id="H2R-Fo-8Qw"/>
-                                    <action selector="hideEngineInfo:" destination="whg-kQ-d2J" eventType="touchUpInside" id="Hl7-Aw-bdW"/>
                                     <action selector="showEngineInfo:" destination="whg-kQ-d2J" eventType="touchDown" id="3Gu-8P-hHm"/>
                                 </connections>
                             </button>
@@ -2048,12 +2036,23 @@
                         <outlet property="haApplianceName" destination="KUD-kc-9zt" id="rLG-Ez-e5c"/>
                         <outlet property="lun00Button" destination="tKX-ws-hPf" id="sEd-jD-rPn"/>
                         <outlet property="lun00Label" destination="Tsr-0e-AFq" id="YAY-0e-CFh"/>
+                        <outlet property="lun00_0_Label" destination="xWI-Pa-sn3" id="PoG-VL-uDc"/>
+                        <outlet property="lun00_1_Label" destination="cVz-ww-nL1" id="GbN-Ss-qPM"/>
                         <outlet property="lun01Button" destination="8K5-wn-OVt" id="uiy-V9-NPr"/>
                         <outlet property="lun01Label" destination="KkW-yd-a85" id="qtX-Fm-UbV"/>
+                        <outlet property="lun01_0_Label" destination="O4L-Lj-8ky" id="254-EN-ntb"/>
+                        <outlet property="lun01_1_Label" destination="Pcn-OA-Ygh" id="ldH-uS-QXO"/>
                         <outlet property="lun02Button" destination="FAu-lo-yvM" id="kNd-e0-4hf"/>
                         <outlet property="lun02Label" destination="0bp-ed-bMe" id="pff-XV-QbS"/>
+                        <outlet property="lun02_0_Label" destination="rBD-Sb-Gax" id="clB-Dk-J9a"/>
+                        <outlet property="lun02_1_Label" destination="e8y-d5-2o9" id="XH0-2z-Mg8"/>
                         <outlet property="lun03Button" destination="BjB-I6-mPK" id="n2V-2S-he8"/>
                         <outlet property="lun03Label" destination="i7B-sD-kuh" id="iC4-ds-3eG"/>
+                        <outlet property="lun03_0_Button" destination="m6S-Ef-YYz" id="Gku-eF-tyE"/>
+                        <outlet property="lun03_0_Label" destination="SUb-zJ-GAr" id="86f-6k-uWP"/>
+                        <outlet property="lun03_1_Button" destination="rQb-QX-L3w" id="j9V-IP-R6x"/>
+                        <outlet property="lun03_1_Label" destination="pnZ-80-hws" id="AtF-tv-can"/>
+                        <outlet property="lun03_MirroredLUN" destination="Zuh-uJ-WUA" id="qB8-zP-Vcy"/>
                         <outlet property="radiusLabel" destination="YJG-RX-IHZ" id="KiZ-bC-1UN"/>
                         <outlet property="radiusSlider" destination="xTo-Lk-bI6" id="Hix-w6-cr4"/>
                         <outlet property="radiusValue" destination="K7u-96-Ptq" id="U17-Rc-IPc"/>
@@ -3240,8 +3239,12 @@
                                     <action selector="moveToTaipei:" destination="Hyz-UC-dST" eventType="touchUpInside" id="2kb-bS-NId"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="SliderBackground" image="UISliderBackground.png" id="wOg-Pr-yXG">
+                                <rect key="frame" x="42" y="555" width="245" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="Mzq-IG-t8e" userLabel="Horizontal Slider - Arc">
-                                <rect key="frame" x="96" y="625" width="90" height="23"/>
+                                <rect key="frame" x="135" y="572" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="mhU-1v-PEN"/>
@@ -3252,7 +3255,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999475479126" minValue="0.0010000000474974513" maxValue="2" id="iVr-K2-Rag" userLabel="Horizontal Slider - Radius">
-                                <rect key="frame" x="96" y="649" width="90" height="23"/>
+                                <rect key="frame" x="135" y="596" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="YOT-Ri-UBv" eventType="valueChanged" id="cM9-mO-Zqq"/>
@@ -3262,8 +3265,8 @@
                                     <action selector="updateValue:" destination="YOT-Ri-UBv" eventType="valueChanged" id="wGN-nB-o5g"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="VX7-eG-HXM" userLabel="Horizontal Slider - Spacing">
-                                <rect key="frame" x="96" y="673" width="90" height="23"/>
+                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.05" minValue="0.0010000000474974513" maxValue="2" id="VX7-eG-HXM" userLabel="Horizontal Slider - Spacing">
+                                <rect key="frame" x="135" y="620" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="0X0-dY-oeR"/>
@@ -3274,7 +3277,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="sizingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.5" maxValue="1.5" id="YlB-MX-0hi" userLabel="Horizontal Slider - Spacing">
-                                <rect key="frame" x="96" y="697" width="90" height="23"/>
+                                <rect key="frame" x="135" y="644" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="ZvV-S6-AeS"/>
@@ -3285,56 +3288,56 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="arcSliderLabel" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QQe-6S-TAm">
-                                <rect key="frame" x="33" y="621" width="41" height="21"/>
+                                <rect key="frame" x="72" y="568" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="radiusSliderLabel" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GO4-Zr-FtB">
-                                <rect key="frame" x="33" y="647" width="62" height="21"/>
+                                <rect key="frame" x="72" y="594" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="arcSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nhc-qp-zaW">
-                                <rect key="frame" x="190" y="621" width="44" height="21"/>
+                                <rect key="frame" x="229" y="568" width="44" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="radiusSliderValue" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JAX-df-TE0">
-                                <rect key="frame" x="190" y="653" width="44" height="10"/>
+                                <rect key="frame" x="229" y="600" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderValue" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ttU-ox-8DO">
-                                <rect key="frame" x="190" y="677" width="44" height="10"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderValue" text="1.05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ttU-ox-8DO">
+                                <rect key="frame" x="229" y="624" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="siizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="spJ-nh-NPG">
-                                <rect key="frame" x="190" y="701" width="44" height="10"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="sizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="spJ-nh-NPG">
+                                <rect key="frame" x="229" y="648" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderLabel" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WVU-Xm-GrS">
-                                <rect key="frame" x="33" y="671" width="70" height="21"/>
+                                <rect key="frame" x="72" y="618" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="sizingSliderLabel" text="Sizing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aMI-vK-CbK">
-                                <rect key="frame" x="33" y="695" width="47" height="21"/>
+                                <rect key="frame" x="72" y="642" width="47" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3385,6 +3388,7 @@
         <image name="Device-LUN-member-green.png" width="50" height="57"/>
         <image name="Device-LUN-unit-healthy.png" width="83" height="109"/>
         <image name="Device-Raid-healthy.png" width="250" height="131"/>
+        <image name="Home-Button-SiteView.png" width="400" height="142"/>
         <image name="Information-Board.png" width="442" height="51"/>
         <image name="Text-CrystalSAN.png" width="132" height="45"/>
         <image name="Text-Drive View.png" width="228" height="54"/>
@@ -3398,6 +3402,7 @@
         <image name="Text-RAID View.png" width="202" height="49"/>
         <image name="Text-Vc.png" width="90" height="54"/>
         <image name="Text-Volume View.png" width="237" height="50"/>
+        <image name="UISliderBackground.png" width="239" height="110"/>
         <image name="background.png" width="1024" height="768"/>
         <image name="button-Arrow.png" width="135" height="129"/>
         <image name="image-RAID-Configuration.png" width="1318" height="747"/>
@@ -3453,12 +3458,8 @@
         <class className="HAApplianceConnectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HAApplianceConnectionViewController.h"/>
             <relationships>
-                <relationship kind="action" name="hideEngineInfo:"/>
-                <relationship kind="action" name="hideHud:"/>
-                <relationship kind="action" name="hideMirrorInfo:"/>
                 <relationship kind="action" name="hideSlider:"/>
                 <relationship kind="action" name="onBack:"/>
-                <relationship kind="action" name="onHome:"/>
                 <relationship kind="action" name="showEngineInfo:"/>
                 <relationship kind="action" name="showMirrorInfo:"/>
                 <relationship kind="action" name="updateValue:"/>
@@ -3470,16 +3471,31 @@
                 <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun00Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun00Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun00_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun00_1_Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun01Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun01Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun01_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun01_1_Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun02Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun02Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun02_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun02_1_Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun03Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun03Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun03_0_Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lun03_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun03_1_Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lun03_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun03_MirroredLUN" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun04Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun04Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun04_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun04_1_Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun05Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun05Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun05_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun05_1_Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
@@ -3674,7 +3690,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="jcG-tU-yxa"/>
-        <segue reference="LbK-6D-GUu"/>
+        <segue reference="Qh7-Kf-rqq"/>
         <segue reference="UYb-7y-yfg"/>
     </inferredMetricsTieBreakers>
 </document>

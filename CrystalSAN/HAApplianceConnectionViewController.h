@@ -48,11 +48,33 @@
 @property (nonatomic, retain) IBOutlet UILabel *sizingValue;
 
 @property (nonatomic, retain) IBOutlet UIButton *lun00Button;
+@property (nonatomic, retain) IBOutlet UILabel *lun00_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *lun00_1_Label;
+
+
 @property (nonatomic, retain) IBOutlet UIButton *lun01Button;
+@property (nonatomic, retain) IBOutlet UILabel *lun01_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *lun01_1_Label;
+
 @property (nonatomic, retain) IBOutlet UIButton *lun02Button;
+@property (nonatomic, retain) IBOutlet UILabel *lun02_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *lun02_1_Label;
+
 @property (nonatomic, retain) IBOutlet UIButton *lun03Button;
+@property (nonatomic, retain) IBOutlet UIButton *lun03_0_Button;
+@property (nonatomic, retain) IBOutlet UIButton *lun03_1_Button;
+@property (nonatomic, retain) IBOutlet UILabel *lun03_MirroredLUN;
+@property (nonatomic, retain) IBOutlet UILabel *lun03_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *lun03_1_Label;
+
 @property (nonatomic, retain) IBOutlet UIButton *lun04Button;
+@property (nonatomic, retain) IBOutlet UILabel *lun04_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *lun04_1_Label;
+
 @property (nonatomic, retain) IBOutlet UIButton *lun05Button;
+@property (nonatomic, retain) IBOutlet UILabel *lun05_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *lun05_1_Label;
+
 
 @property (nonatomic, retain) IBOutlet UILabel *lun00Label;
 @property (nonatomic, retain) IBOutlet UILabel *lun01Label;
@@ -86,10 +108,10 @@
 
 
 - (IBAction)showEngineInfo:(id)sender;
-- (IBAction)hideEngineInfo:(id)sender;
+//- (IBAction)hideEngineInfo:(id)sender;
 
 - (IBAction)showMirrorInfo:(id)sender;
-- (IBAction)hideMirrorInfo:(id)sender;
+//- (IBAction)hideMirrorInfo:(id)sender;
 
 - (void)hideHud;
 

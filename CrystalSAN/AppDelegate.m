@@ -86,6 +86,22 @@
     return YES;
 }
 
+- (void)hideSizingSlider:(UIView *)view
+{
+    //[theDelegate hideShowSliders:self.view.subviews];
+    
+    for (UIView *subview in view.subviews) {
+        NSString *identification = subview.restorationIdentifier;
+        NSRange range = [identification rangeOfString:@"sizingSlider"];
+        if (range.length != 0) {
+            //if (subview.isHidden)
+            //    [subview setHidden:FALSE];
+            //else
+            [subview setHidden:TRUE];
+        }
+    }
+}
+
 
 - (void)customizedArcSlider:(UISlider *)arcSlider radiusSlider:(UISlider *)radiusSlider spacingSlider:(UISlider *)spacingSlider sizingSlider:(UISlider *)sizingSlider inView:(UIView *)view
 {
@@ -120,6 +136,9 @@
     [view bringSubviewToFront:radiusSlider];
     [view bringSubviewToFront:spacingSlider];
     [view bringSubviewToFront:sizingSlider];
+    
+    [self hideSizingSlider:view];
+    //sizingSlider.hidden = TRUE;
 
 }
 

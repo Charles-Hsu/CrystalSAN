@@ -115,6 +115,8 @@
 {
     NSLog(@"%s", __func__);
     theDelegate.currentDeviceName = @"";
+    theDelegate.currentEngineLeftSerial = @"";
+    theDelegate.currentEngineRightSerial = @"";
 }
 
 - (void)didReceiveMemoryWarning
