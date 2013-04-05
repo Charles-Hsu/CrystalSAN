@@ -86,7 +86,18 @@
 @property (nonatomic, retain) IBOutlet UIButton *engineLeft;
 @property (nonatomic, retain) IBOutlet UIButton *engineRight;
 
-
+@property (nonatomic, retain) IBOutlet UILabel *raid00_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid00_1_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid01_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid01_1_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid02_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid02_1_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid03_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid03_1_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid04_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid04_1_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid05_0_Label;
+@property (nonatomic, retain) IBOutlet UILabel *raid05_1_Label;
 
 
 // event
@@ -112,6 +123,8 @@
 
 - (IBAction)showMirrorInfo:(id)sender;
 //- (IBAction)hideMirrorInfo:(id)sender;
+
+- (IBAction)showDriveStatus:(id)sender;
 
 - (void)hideHud;
 

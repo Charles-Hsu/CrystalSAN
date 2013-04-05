@@ -182,6 +182,8 @@
     currentLocationIndex = 0;
     
     //[self panMapToCurrentSiteLocation];
+    
+    //theDelegate.loadSiteViewTimes = 0;
 
     
 }
@@ -189,9 +191,45 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
+    NSLog(@"%s", __func__);
     // Dispose of any resources that can be recreated.
     
 }
+
+// iOS6 MKMapView using a ton of memory, to the point of crashing the app, anyone else notice this?
+// http://stackoverflow.com/questions/12641658/ios6-mkmapview-using-a-ton-of-memory-to-the-point-of-crashing-the-app-anyone-e
+// source code by http://stackoverflow.com/users/1165401/wirsing
+- (void)applyMapViewMemoryHotFix{
+    NSLog(@"%s", __func__);
+    
+    switch (self._mapView.mapType) {
+        case MKMapTypeHybrid:
+        {
+            self._mapView.mapType = MKMapTypeStandard;
+        }
+            
+            break;
+        case MKMapTypeStandard:
+        {
+            self._mapView.mapType = MKMapTypeHybrid;
+        }
+            
+            break;
+        default:
+            break;
+    }
+    
+    [self._mapView removeFromSuperview];
+    self._mapView = nil;
+}
+
+
+- (void)viewDidDisappear:(BOOL)animated {
+    NSLog(@"%s", __func__);
+    [self applyMapViewMemoryHotFix];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -200,6 +238,10 @@
     NSLog(@"%s", __func__);
     
     carousel.currentItemIndex = [theDelegate.currentSiteIndex integerValue];
+    theDelegate.loadSiteViewTimes = [NSNumber numberWithInt:([theDelegate.loadSiteViewTimes integerValue]+ 1)];
+    NSLog(@"%s mapView loaded times = %@", __func__, theDelegate.loadSiteViewTimes);
+    
+    
     [self panMapToCurrentSiteLocation];
    
     /*
@@ -277,7 +319,11 @@
 	pinAnnotation.animatesDrop = YES;
     
     //instatiate a detail-disclosure button and set it to appear on right side of annotation
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    CGRect frameBtn = CGRectMake(0.0f, 0.0f, 81.0f, 66.0f);
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];//[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [infoButton setBackgroundImage:[UIImage imageNamed:@"CalloutButton.png"] forState:UIControlStateNormal];
+    [infoButton setFrame:frameBtn];
+    //infoButton.im
     pinAnnotation.rightCalloutAccessoryView = infoButton;
 	[infoButton addTarget:self action:@selector(gotoSite:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -307,6 +353,7 @@
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
     NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
+    NSLog(@"%s mapView loaded times = %@", __func__, theDelegate.loadSiteViewTimes);
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view

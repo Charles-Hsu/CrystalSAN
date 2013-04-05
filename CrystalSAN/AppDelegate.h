@@ -38,6 +38,8 @@
 
 @property (strong, nonatomic) NSNumber *currentSiteIndex;
 
+@property (strong, nonatomic) NSNumber *loadSiteViewTimes;
+
 - (NSString *)getSanVmirrorLists;
 
 

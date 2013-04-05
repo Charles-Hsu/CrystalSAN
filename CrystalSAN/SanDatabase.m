@@ -571,6 +571,26 @@
     return dict;
 }
 
+
+- (NSDictionary *)getConmgrDriveStatusByEngineSerial:(NSString *)serial
+                                           targetNum:(NSInteger)driveID {
+    NSDictionary *dict = nil;
+    NSString *sql = [NSString stringWithFormat:
+                     @"SELECT * FROM engine_cli_conmgr_drive_status_detail WHERE serial='%@' AND drive_id='%d'",
+                     serial, driveID];
+    NSLog(@"%s %@", __func__, sql);
+    FMResultSet *rs = [db executeQuery:sql];
+    if ([rs next])
+    {
+        dict = [rs resultDictionary];
+        NSLog(@"%s %@", __func__, dict);
+    }
+    [rs close];
+    return dict;
+
+}
+
+
 - (NSDictionary *)getEngineCliMirrorDictBySerial:(NSString *)serial
 {
     NSDictionary *dict = nil;

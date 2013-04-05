@@ -122,6 +122,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    NSLog(@"%s", __func__);
     // Dispose of any resources that can be recreated.
     
     carousel.delegate = nil;

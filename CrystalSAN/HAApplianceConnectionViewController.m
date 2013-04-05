@@ -56,6 +56,8 @@
 
 @synthesize lun00_0_Label, lun00_1_Label, lun01_0_Label, lun01_1_Label, lun02_0_Label, lun02_1_Label, lun03_0_Label, lun03_1_Label, lun04_0_Label, lun04_1_Label, lun05_0_Label, lun05_1_Label;
 
+@synthesize raid00_0_Label, raid00_1_Label, raid01_0_Label, raid01_1_Label, raid02_0_Label, raid02_1_Label, raid03_0_Label, raid03_1_Label, raid04_0_Label, raid04_1_Label, raid05_0_Label, raid05_1_Label;
+
 @synthesize engineLeft, engineRight;
 
 @synthesize haApplianceName;
@@ -198,6 +200,17 @@
         self.lun03_0_Label.text = [dict valueForKey:@"mirror_3_member_0_id"];
         self.lun03_1_Label.text = [dict valueForKey:@"mirror_3_member_1_id"];
         
+        self.raid00_0_Label.text = self.lun00_0_Label.text;
+        self.raid00_1_Label.text = self.lun01_0_Label.text;
+        self.raid01_0_Label.text = self.lun02_0_Label.text;
+        self.raid01_1_Label.text = self.lun03_0_Label.text;
+        self.raid02_0_Label.text = self.lun00_1_Label.text;
+        self.raid02_1_Label.text = self.lun01_1_Label.text;
+        self.raid03_0_Label.text = self.lun02_1_Label.text;
+        self.raid03_1_Label.text = self.lun03_1_Label.text;
+        
+        
+        
         self.lun00Label.text = [dict valueForKey:@"mirror_0_id"];
         self.lun01Label.text = [dict valueForKey:@"mirror_1_id"];
         self.lun02Label.text = [dict valueForKey:@"mirror_2_id"];
@@ -223,6 +236,11 @@
 
 }
 
+
+- (IBAction)showDriveStatus:(id)sender {
+    [theDelegate.sanDatabase getConmgrDriveStatusByEngineSerial:theDelegate.currentEngineLeftSerial
+                                                      targetNum:0];
+}
 
 - (void)didReceiveMemoryWarning
 {

@@ -18,6 +18,7 @@
 @synthesize currentSiteIndex;
 
 @synthesize currentEngineLeftSerial, currentEngineRightSerial;
+@synthesize loadSiteViewTimes;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -50,8 +51,8 @@
         }
     }
     
-    NSLog(@"Fonts: %@", [UIFont familyNames]);
-    NSLog(@"Fonts: %@", [UIFont fontNamesForFamilyName:@"Source Code Pro"]); // "SourceCodePro-Regular"
+    //NSLog(@"Fonts: %@", [UIFont familyNames]);
+    //NSLog(@"Fonts: %@", [UIFont fontNamesForFamilyName:@"Source Code Pro"]); // "SourceCodePro-Regular"
     
     //NSLog(@"%s %@", __func__, self.totalItems);
     
@@ -81,6 +82,8 @@
     
     self.currentDeviceName = @"";
     self.currentSiteIndex = 0;
+    
+    self.loadSiteViewTimes = 0;
 
 
     return YES;

@@ -1454,6 +1454,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="showDriveStatus:" destination="whg-kQ-d2J" eventType="touchUpInside" id="vcL-1K-fkd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q7f-LT-c2k">
                                 <rect key="frame" x="232" y="431" width="69" height="58"/>
@@ -2056,6 +2059,14 @@
                         <outlet property="radiusLabel" destination="YJG-RX-IHZ" id="KiZ-bC-1UN"/>
                         <outlet property="radiusSlider" destination="xTo-Lk-bI6" id="Hix-w6-cr4"/>
                         <outlet property="radiusValue" destination="K7u-96-Ptq" id="U17-Rc-IPc"/>
+                        <outlet property="raid00_0_Label" destination="Bk5-9X-KRk" id="MNP-WJ-eaZ"/>
+                        <outlet property="raid00_1_Label" destination="n1L-eL-Dvy" id="xAp-8k-8Ao"/>
+                        <outlet property="raid01_0_Label" destination="XrU-Pf-gDq" id="pwp-ua-prc"/>
+                        <outlet property="raid01_1_Label" destination="S38-JG-MKg" id="BEL-r9-DFH"/>
+                        <outlet property="raid02_0_Label" destination="aL6-fb-iTS" id="7dD-HW-xi0"/>
+                        <outlet property="raid02_1_Label" destination="MLx-F7-1Wb" id="hYd-Qn-J77"/>
+                        <outlet property="raid03_0_Label" destination="SY3-XI-cMX" id="okL-st-JmB"/>
+                        <outlet property="raid03_1_Label" destination="56P-XU-Wv1" id="fJl-u5-ho5"/>
                         <outlet property="sizingLabel" destination="Pi3-TZ-wA4" id="Nyz-6O-WAd"/>
                         <outlet property="sizingSlider" destination="a0C-OE-Hz2" id="ws1-hV-0g7"/>
                         <outlet property="sizingValue" destination="EJw-2U-dxI" id="xoM-dq-ffv"/>
@@ -3347,6 +3358,10 @@
                                 <rect key="frame" x="71" y="46" width="148" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="SiteViewCarouselBackground.png" id="bLF-QC-PNn">
+                                <rect key="frame" x="512" y="482" width="443" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -3390,6 +3405,7 @@
         <image name="Device-Raid-healthy.png" width="250" height="131"/>
         <image name="Home-Button-SiteView.png" width="400" height="142"/>
         <image name="Information-Board.png" width="442" height="51"/>
+        <image name="SiteViewCarouselBackground.png" width="464" height="157"/>
         <image name="Text-CrystalSAN.png" width="132" height="45"/>
         <image name="Text-Drive View.png" width="228" height="54"/>
         <image name="Text-HA Appliance View - Cluster.png" width="255" height="48"/>
@@ -3460,6 +3476,7 @@
             <relationships>
                 <relationship kind="action" name="hideSlider:"/>
                 <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="showDriveStatus:"/>
                 <relationship kind="action" name="showEngineInfo:"/>
                 <relationship kind="action" name="showMirrorInfo:"/>
                 <relationship kind="action" name="updateValue:"/>
@@ -3499,6 +3516,18 @@
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid00_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid00_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid01_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid01_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid02_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid02_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid03_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid03_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid04_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid04_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid05_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid05_1_Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>

@@ -40,6 +40,8 @@
 - (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName andKey:(NSString *)key;
 - (NSDictionary *)getVpdBySerial:(NSString *)serial;
 - (NSDictionary *)getEngineCliMirrorDictBySerial:(NSString *)serial;
+- (NSDictionary *)getConmgrDriveStatusByEngineSerial:(NSString *)serial
+                                           targetNum:(NSInteger)driveID;
 
 - (NSArray *)getInitiatorListByEngineSerial:(NSString *)serial;
 - (NSArray *)getDriveListByEngineSerial:(NSString *)serial;
