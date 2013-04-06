@@ -14,7 +14,7 @@
 @property (nonatomic, strong) FMDatabase *db;
 
 - (NSMutableArray *)getVmirrorListByKey:(NSString *)key;
-- (void)insertDemoDevices;
+//- (void)insertDemoDevices;
 
 - (NSString *)getPasswordBySiteName:(NSString *)siteName siteID:(NSString *)siteID userName:(NSString *)userName;
 - (NSDictionary *)getHAClusterDictionaryBySiteName:(NSString *)siteName;
@@ -45,5 +45,11 @@
 
 - (NSArray *)getInitiatorListByEngineSerial:(NSString *)serial;
 - (NSArray *)getDriveListByEngineSerial:(NSString *)serial;
+
+
+- (NSDictionary *)getEngineCliDmepropDictBySerial:(NSString *)serial;
+
+- (NSString *)isMasterEngine:(NSString *)serial;
+
 
 @end

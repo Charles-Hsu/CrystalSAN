@@ -59,9 +59,9 @@
     self.activeItems = [NSMutableArray array];
     sanDatabase = [[SanDatabase alloc] init];
     //[sanDatabase getVmirrorListByKey:@"vi"];
-    if ([[sanDatabase getVmirrorListByKey:@""] count] == 0) {
-        [sanDatabase insertDemoDevices];
-    }
+    //if ([[sanDatabase getVmirrorListByKey:@""] count] == 0) {
+    //    [sanDatabase insertDemoDevices];
+    //}
     
     /*
     [sanDatabase getPasswordBySiteName:@"KBS" siteID:@"123456" userName:@"admin"];
@@ -192,11 +192,13 @@
     for (UIView *subview in view.subviews) {
         NSString *identification = subview.restorationIdentifier;
         NSRange range = [identification rangeOfString:@"Slider"];
-        if (range.length != 0) {
-            if (subview.isHidden)
-                [subview setHidden:FALSE];
-            else
-                [subview setHidden:TRUE];
+        if ([identification rangeOfString:@"sizing"].length == 0) { // ignore sizing element
+            if (range.length != 0) {
+                if (subview.isHidden)
+                    [subview setHidden:FALSE];
+                else
+                    [subview setHidden:TRUE];
+            }
         }
     }
 }

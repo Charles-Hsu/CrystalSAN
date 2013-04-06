@@ -18,7 +18,7 @@
     NSUInteger totalCount;
 
     AppDelegate *theDelegate;
-    NSArray *deviceArray;
+    NSMutableArray *deviceArray;
 
 }
 @end
@@ -146,9 +146,10 @@
     
     // currentDeviceName in theDelegate is a HA-Cluster-Name
     
-    NSLog(@"%s currentDeviceName %@", __func__, theDelegate.currentDeviceName);
+    NSLog(@"%s currentDeviceName %@, %@-%@", __func__, theDelegate.currentDeviceName, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
     
-    deviceArray = [sanDatabase getDriveListByEngineSerial:theDelegate.currentDeviceName];
+    deviceArray = (NSMutableArray *)[sanDatabase getDriveListByEngineSerial:theDelegate.currentEngineLeftSerial];
+    [deviceArray addObjectsFromArray:[sanDatabase getDriveListByEngineSerial:theDelegate.currentEngineRightSerial]];
     
     if (carousel.currentItemIndex > [deviceArray count]) {
         carousel.currentItemIndex = 0;
@@ -158,12 +159,12 @@
     
     currentCollectionCount = [deviceArray count];
     totalCount = [deviceArray count];
-    NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
+    //NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
     
-    NSLog(@"%s size of diskArray %u", __func__, [deviceArray count]);
-    NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+    //NSLog(@"%s size of diskArray %u", __func__, [deviceArray count]);
+    //NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
     [carousel reloadData];
 }
 
@@ -361,7 +362,7 @@
     UILabel *theLabel = nil;
     //NSInteger status = [[statusArray objectAtIndex:index] integerValue];
     
-    NSLog(@"%s %@", __func__, [deviceArray objectAtIndex:index]);
+    //NSLog(@"%s %@", __func__, [deviceArray objectAtIndex:index]);
     
     NSDictionary *dict = [deviceArray objectAtIndex:index];
     

@@ -614,5 +614,50 @@ proc parse_initiators {lists serial seconds} {
 }
 
 
+#parse_dmeprop $cli_dmeprop $serial $seconds
 
+proc parse_dmeprop {args} {
+    
+    #$cli_mirror_section $site_name $engine_name $seconds
+    
+    #set table_name          "engine_cli_dmeprop"
+    #set sql "CREATE TABLE IF NOT EXISTS $table_name (serial TEXT PRIMARY KEY, seconds INTEGER, cluster_0_id, cluster_0_status,  cluster_0_is_master, cluster_1_id, cluster_1_status,  cluster_1_is_master, my_id)"
+    
+    set cli_dmeprop     [lindex [lindex $args 0] 2]
+    set serial          [lindex $args 1]
+    set seconds         [lindex $args 2]
+    set table_name      [lindex $args 3]
+
+    puts "[exec date]=== parse_dmeprop start..."
+    
+    #puts $cli_dmeprop
+    # cli_dmeprop {seconds 1359519201} {{clusters {id 1} {{id {} {{{#text} 1}}} {status {} {{{#text} A}}} {is_master {} {{{#text} Yes}}}}} {clusters {id 2} {{id {} {{{#text} 2}}} {status {} {{{#text} A}}} {is_master {} {{{#text} No}}}}} {my_id {} {{{#text} 2}}}}
+    
+    set cluster_0_data  [lindex [lindex $cli_dmeprop 0] 2]
+    set cluster_1_data  [lindex [lindex $cli_dmeprop 1] 2]
+    set my_id           [lindex [lindex $cli_dmeprop 2] 2]
+    #puts "cluster_0_data  ===> $cluster_0_data"
+    
+    set cluster_0_id [lindex [lindex [lindex [lindex $cluster_0_data 0] 2] 0] 1]
+    set cluster_0_status [lindex [lindex [lindex [lindex $cluster_0_data 1] 2] 0] 1]
+    set cluster_0_is_master [lindex [lindex [lindex [lindex $cluster_0_data 2] 2] 0] 1]
+    #puts "cluster_0_id=$cluster_0_id, cluster_0_status=$cluster_0_status, cluster_0_is_master=$cluster_0_is_master"
+    
+    set cluster_1_id [lindex [lindex [lindex [lindex $cluster_1_data 0] 2] 0] 1]
+    set cluster_1_status [lindex [lindex [lindex [lindex $cluster_1_data 1] 2] 0] 1]
+    set cluster_1_is_master [lindex [lindex [lindex [lindex $cluster_1_data 2] 2] 0] 1]
+    #puts "cluster_1_id=$cluster_1_id, cluster_1_status=$cluster_1_status, cluster_1_is_master=$cluster_1_is_master"
+    
+    #puts "cluster_1_data  ===> $cluster_1_data"
+    set my_id [lindex [lindex $my_id 0] 1]
+    #puts "my_id=$my_id"
+
+    set sql "INSERT INTO $table_name VALUES ('$serial', '$seconds', '$cluster_0_id', '$cluster_0_status', '$cluster_0_is_master', '$cluster_1_id', '$cluster_1_status', '$cluster_1_is_master', '$my_id')"
+    #puts $sql
+    db eval $sql
+    
+    
+    puts "[exec date]=== parse_dmeprop completed!"
+
+}
 

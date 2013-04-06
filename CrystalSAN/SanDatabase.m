@@ -482,6 +482,7 @@
     return txtPath;
 }
 
+/*
 - (void)insertDemoDevices
 {
     NSArray *descriptions = [NSArray arrayWithObjects:
@@ -506,17 +507,18 @@
     
     //[self getVmirrorListByKey:@""];
 }
+ */
 
 - (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName
 {
     NSString *sql = [NSString stringWithFormat:@"SELECT ha_appliance_name FROM ha_cluster WHERE site_name = '%@'", siteName];
     NSMutableArray *devices = [[NSMutableArray alloc] init];
-    NSLog(@"%s %@", __func__, sql);
+    //NSLog(@"%s %@", __func__, sql);
     FMResultSet *rs = [db executeQuery:sql];
     while ([rs next])
     {
         NSString *name = [rs stringForColumnIndex:0];
-        NSLog(@"name:%@", name);
+        //NSLog(@"name:%@", name);
         [devices addObject:name];
     }
     // close the result set.
@@ -544,6 +546,53 @@
     return devices;
 }
 
+
+- (NSString *)isMasterEngine:(NSString *)serial {
+    NSDictionary *dict = [self getEngineCliDmepropDictBySerial:serial];
+    //NSDictionary *dict = [theDelegate.sanDatabase getEngineCliDmepropDictBySerial:serial];
+    
+    NSInteger myId = [[dict valueForKey:@"my_id"] intValue];
+    BOOL isMaster = NO;
+    
+    switch (myId) {
+        case 1:
+            if ([[dict valueForKey:@"cluster_0_is_master"] isEqualToString:@"Yes"]) {
+                isMaster = YES;
+            }
+            break;
+        case 2:
+            if ([[dict valueForKey:@"cluster_1_is_master"] isEqualToString:@"Yes"]) {
+                isMaster = YES;
+            }
+            break;
+        default:
+            break;
+    }
+    return isMaster?@"Master":@"Slave";
+
+}
+
+- (NSDictionary *)getEngineCliDmepropDictBySerial:(NSString *)serial {
+    NSLog(@"%s", __func__);
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    //
+    // CREATE TABLE engine_cli_dmeprop (serial TEXT PRIMARY KEY, seconds INTEGER, cluster_0_id, cluster_0_status,  cluster_0_is_master, cluster_1_id, cluster_1_status,  cluster_1_is_master, my_id);
+    //
+    NSString *tableName = @"engine_cli_dmeprop";
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE serial='%@'", tableName, serial];
+    FMResultSet *rs = [db executeQuery:sql];
+    NSLog(@"%s %@", __func__, sql);
+    if ([rs next])
+    {
+        dict = [rs resultDictionary];
+    }
+    // close the result set.
+    // it'll also close when it's dealloc'd, but we're closing the database before
+    // the autorelease pool closes, so sqlite will complain about it.
+    [rs close];
+    return dict;
+}
+
 - (NSDictionary *)getVpdBySerial:(NSString *)serial
 {
     NSLog(@"%s", __func__);
@@ -560,7 +609,7 @@
     if ([rs next])
     {
         dict = [rs resultDictionary];
-        NSLog(@"%s %@", __func__, dict);
+        //NSLog(@"%s %@", __func__, dict);
         //[devices addObject:[rs stringForColumnIndex:0]];
         //[devices addObject:[rs stringForColumnIndex:1]];
     }
@@ -583,7 +632,7 @@
     if ([rs next])
     {
         dict = [rs resultDictionary];
-        NSLog(@"%s %@", __func__, dict);
+        //NSLog(@"%s %@", __func__, dict);
     }
     [rs close];
     return dict;
@@ -599,7 +648,7 @@
     //
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM engine_cli_mirror WHERE serial='%@' ORDER BY seconds LIMIT 1", serial];
     
-    NSLog(@"%s %@", __func__, sql);
+    //NSLog(@"%s %@", __func__, sql);
     FMResultSet *rs = [db executeQuery:sql];
     //FMResultSet *rs = [db executeQuery:sql];
     //NSString *sql = [NSString stringWithFormat:@"SELECT * FROM ha_cluster WHERE ha_appliance_name = '%@'", haApplianceName];
@@ -608,7 +657,7 @@
     if ([rs next])
     {
         dict = [rs resultDictionary];
-        NSLog(@"%s %@", __func__, dict);
+        //NSLog(@"%s %@", __func__, dict);
         //[devices addObject:[rs stringForColumnIndex:0]];
         //[devices addObject:[rs stringForColumnIndex:1]];
     }

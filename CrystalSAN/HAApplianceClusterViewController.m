@@ -69,6 +69,10 @@
     if ([engines count] == 2) {
         self.engine0Serial.text = [engines objectAtIndex:0];
         self.engine1Serial.text = [engines objectAtIndex:1];
+        
+        theDelegate.currentEngineLeftSerial = [engines objectAtIndex:0];
+        theDelegate.currentEngineRightSerial = [engines objectAtIndex:1];
+
     }
     
     //[self displayEngine00VpdInformation:[engines objectAtIndex:0]];
@@ -360,6 +364,7 @@
     
     
     NSDictionary *vpd = [theDelegate.sanDatabase getVpdBySerial:serial];
+    NSString *isMaster = [theDelegate.sanDatabase isMasterEngine:serial];
     
     /*
      "a1_wwpn" = "2100-006022-0928f2";
@@ -412,6 +417,7 @@
     if ([productType isEqualToString:@"FCE4400"]) {
         NSString *vpdString = [NSString stringWithFormat:
                                @"Product Type : %@ \n"
+                               @"Engine       : %@\n"
                                " \n"
                                "Apple Release\n"
                                "128 HBA support\n"
@@ -438,6 +444,7 @@
                                "B1    %@  %@\n"
                                "B2    %@  %@\n",
                                productType,
+                               isMaster,
                                firmware,
                                revision,
                                redboot,
@@ -494,6 +501,7 @@
         
         NSString *vpdString = [NSString stringWithFormat:
                                @"Product Type : %@ \n"
+                               @"Engine       : %@\n\n"
                                "SAN Mirror Release\n"
                                "128 HBA support\n"
                                "All active/passive drives are assumed to be FastT compatible.\n"
@@ -513,9 +521,10 @@
                                "Alert: %@\n"
                                "\n"
                                "Port  Node Name           Port Name\n"
-                               "A    %@  %@\n"
-                               "B    %@  %@\n",
+                               "A     %@  %@\n"
+                               "B     %@  %@\n",
                                productType,
+                               isMaster,
                                firmware,
                                revision,
                                redboot,

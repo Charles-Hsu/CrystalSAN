@@ -211,6 +211,36 @@ if {1} {
 }
 
 
+if {1} {
+    
+    puts "[exec date]===cli_dmeprop========================================="
+    
+    set table_name          "engine_cli_dmeprop"
+    set sql "CREATE TABLE IF NOT EXISTS $table_name (serial TEXT PRIMARY KEY, seconds INTEGER, cluster_0_id, cluster_0_status,  cluster_0_is_master, cluster_1_id, cluster_1_status,  cluster_1_is_master, my_id)"
+    db eval $sql
+    
+    set cli_dmeprop         [lindex $engine_info 15]
+    set seconds             [lindex [lindex $cli_dmeprop 1] 1]
+    set seconds_in_table    [seconds_in_table $table_name $serial]
+    
+    puts "seconds           = $seconds"
+    puts "seconds_in_table  = $seconds_in_table ($table_name)"
+    
+    if {[expr $seconds_in_table >= $seconds]} {
+        #puts "same record => ignore"
+    } else {
+        # delete the old record
+        set sql "delete from $table_name where serial = '$serial'"
+        db eval $sql
+        # parse and insert the new one
+        parse_dmeprop $cli_dmeprop $serial $seconds $table_name
+    }
+
+    
+    #puts $cli_dmeprop
+}
+
+
 if {0} {
     
     #puts "-------------"
@@ -264,9 +294,6 @@ if {0} {
     #puts $cli_detach_group
     
     #puts "-------------"
-    
-    set cli_dmeprop [lindex $engine_info 15]
-    #puts $cli_dmeprop
     
     #puts "-------------"
     

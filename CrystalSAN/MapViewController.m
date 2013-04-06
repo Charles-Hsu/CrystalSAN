@@ -148,6 +148,7 @@
     
     locations = [[NSMutableArray alloc] initWithObjects:locationTaipei, locationSouthKorea, locationBaltimore, locationLasVegas, locationSiliconValley, locationParis, locationBeijing, locationTokyo, locationLondon, nil];
     
+    //locations = [[NSMutableArray alloc] initWithObjects:locationParis, locationLondon, locationBeijing, locationTokyo, nil];
     
     [_mapView addAnnotations:locations];
     
@@ -272,13 +273,13 @@
 
 }
 
-/*
+///*
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     MKAnnotationView *pinView = nil;
-    if(annotation != mapView.userLocation)
-    {
-        static NSString *defaultPinID = @"com.invasivecode.pin";
+    //if(annotation != mapView.userLocation)
+    //{
+        static NSString *defaultPinID = @"com.loxoll.pin";
         pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
         if ( pinView == nil )
             pinView = [[MKAnnotationView alloc]
@@ -287,49 +288,56 @@
         //pinView.pinColor = MKPinAnnotationColorGreen;
         pinView.canShowCallout = YES;
         //pinView.animatesDrop = YES;
-        pinView.image = [UIImage imageNamed:@"pinks.jpg"];    //as suggested by Squatch
-    }
-    else {
-        [mapView.userLocation setTitle:@"I am here"];
-    }
+        pinView.image = [UIImage imageNamed:@"coordinate.png"];    //as suggested by Squatch
+    //}
+    //else {
+    //    [mapView.userLocation setTitle:@"I am here"];
+    //}
+    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    pinView.rightCalloutAccessoryView = infoButton;
+	[infoButton addTarget:self action:@selector(gotoSite:) forControlEvents:UIControlEventTouchUpInside];
+    
     return pinView;
 }
- */
+ //*/
 
-///*
+/*
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
-    NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
-	if (annotation == mapView.userLocation) { //returning nil means 'use built in location view'
-		return nil;
-	}
+    NSLog(@"%s %@", __func__, [annotation title]);//, (unsigned long)[mapView zoomLevel]);
+	//if (annotation == mapView.userLocation) { //returning nil means 'use built in location view'
+	//	return nil;
+	//}
 	
-	MKPinAnnotationView *pinAnnotation = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+    static NSString *defaultPinID = @"com.loxoll.pin";
+	MKPinAnnotationView *pinAnnotation = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
     
-	if (pinAnnotation == nil) {
-		pinAnnotation = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
-        pinAnnotation.image = [UIImage imageNamed:@"coordinate.png"];
-	} else {
-		pinAnnotation.annotation = annotation;
-	}
+	//if (pinAnnotation == nil) {
+		pinAnnotation = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        pinAnnotation.image = [UIImage imageNamed:@""];
+	//} //else {
+	//	pinAnnotation.annotation = annotation;
+	//}
 	
     pinAnnotation.canShowCallout = YES;
 	//pinAnnotation.pinColor = MKPinAnnotationColorRed;
 	pinAnnotation.animatesDrop = YES;
     
     //instatiate a detail-disclosure button and set it to appear on right side of annotation
-    CGRect frameBtn = CGRectMake(0.0f, 0.0f, 81.0f, 66.0f);
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];//[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    [infoButton setBackgroundImage:[UIImage imageNamed:@"CalloutButton.png"] forState:UIControlStateNormal];
-    [infoButton setFrame:frameBtn];
+    //CGRect frameBtn = CGRectMake(0.0f, 0.0f, 81.0f, 66.0f);
+    //UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];//[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    //[infoButton setBackgroundImage:[UIImage imageNamed:@"CalloutButton.png"] forState:UIControlStateNormal];
+    //[infoButton setFrame:frameBtn];
     //infoButton.im
     pinAnnotation.rightCalloutAccessoryView = infoButton;
 	[infoButton addTarget:self action:@selector(gotoSite:) forControlEvents:UIControlEventTouchUpInside];
 
 	return pinAnnotation;
 }
-//*/
+*/
 
 -(void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
@@ -354,6 +362,7 @@
 {
     NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
     NSLog(@"%s mapView loaded times = %@", __func__, theDelegate.loadSiteViewTimes);
+    NSLog(@"%s -------------------------------------", __func__);
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
@@ -682,6 +691,9 @@
     
 }
 
+- (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {
+    [self panMapToCurrentSiteLocation];
+}
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
 {
@@ -689,9 +701,9 @@
     
     //[theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
     
-    NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
+    //NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
     
-    [self panMapToCurrentSiteLocation];
+    
     
     //[self onItemPress:nil];
 

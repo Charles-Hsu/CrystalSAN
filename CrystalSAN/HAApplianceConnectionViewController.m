@@ -236,10 +236,146 @@
 
 }
 
+#define RAID_DRIVE_0_0 1000
+#define RAID_DRIVE_0_1 1001
+#define RAID_DRIVE_1_0 1002
+#define RAID_DRIVE_1_1 1003
+#define RAID_DRIVE_2_0 1004
+#define RAID_DRIVE_2_1 1005
+#define RAID_DRIVE_3_0 1006
+#define RAID_DRIVE_3_1 1007
+
+
+- (NSString *)raidShortInformation:(NSDictionary *)dict0 slave:(NSDictionary *)dict1 {
+    /*
+     conmgr drive status
+     
+     8 Drives
+     ==========
+     tnum port wwpn               lun               status                  RE-stat
+     0 B1   5006-022ad0-457000 0000-000000000000 A                       A
+     1 B1   5006-022ad0-49a000 0000-000000000000 A                       A
+     2 B2   5006-022ad0-48b000 0000-000000000000 A                       A
+     3 B2   5006-022ad0-42f000 0000-000000000000 A                       A
+     4 B1   5006-022ad0-457002 0000-000000000000 A                       A
+     5 B1   5006-022ad0-49a002 0000-000000000000 A                       A
+     6 B2   5006-022ad0-48b002 0000-000000000000 A                       A
+     7 B2   5006-022ad0-42f002 0000-000000000000 A                       A
+     
+     */
+    /*
+     -[SanDatabase getConmgrDriveStatusByEngineSerial:targetNum:] {
+     "drive_id" = 5;
+     "drive_status" = A;
+     "path_0_id" = 1;
+     "path_0_lun" = 0000;
+     "path_0_port" = B1;
+     "path_0_pstatus" = A;
+     "path_0_wwpn" = "6000-393000-01a99f";
+     "path_1_id" = "";
+     "path_1_lun" = "";
+     "path_1_port" = "";
+     "path_1_pstatus" = "";
+     "path_1_wwpn" = "";
+     seconds = 1363746626;
+     serial = 00600306;
+     }
+     */
+    /*
+     Target	status	port	Storage WWPN	   LUN	status
+     5      A       B1      6000-393000-01a99f 0000 A
+     */
+    NSString *info = [NSString stringWithFormat:@""
+        "Serial    Target status port Storage WWPN       LUN  status\n"
+        "%8s  %-6d %-6s %-4s %-18s %-4s %-s\n"
+        "%8s  %-6d %-6s %-4s %-18s %-4s %-s",
+                      [[dict0 objectForKey:@"serial"] UTF8String],
+                      [[dict0 objectForKey:@"drive_id"] intValue],
+                      [[dict0 objectForKey:@"drive_status"] UTF8String],
+                      [[dict0 objectForKey:@"path_0_port"] UTF8String],
+                      [[dict0 objectForKey:@"path_0_wwpn"] UTF8String],
+                      [[dict0 objectForKey:@"path_0_lun"] UTF8String],
+                      [[dict0 objectForKey:@"path_0_pstatus"] UTF8String],
+                      [[dict1 objectForKey:@"serial"] UTF8String],
+                      [[dict1 objectForKey:@"drive_id"] intValue],
+                      [[dict1 objectForKey:@"drive_status"] UTF8String],
+                      [[dict1 objectForKey:@"path_0_port"] UTF8String],
+                      [[dict1 objectForKey:@"path_0_wwpn"] UTF8String],
+                      [[dict1 objectForKey:@"path_0_lun"] UTF8String],
+                      [[dict1 objectForKey:@"path_0_pstatus"] UTF8String]
+                      ];
+    return info;
+}
 
 - (IBAction)showDriveStatus:(id)sender {
-    [theDelegate.sanDatabase getConmgrDriveStatusByEngineSerial:theDelegate.currentEngineLeftSerial
-                                                      targetNum:0];
+    
+    NSLog(@"%s sender.tag = %d", __func__, [sender tag]);
+    
+    NSInteger targetNum = 0;
+    
+    switch ([sender tag]) {
+        case RAID_DRIVE_0_0:
+            targetNum = [raid00_0_Label.text integerValue];
+            break;
+        case RAID_DRIVE_0_1:
+            targetNum = [raid00_1_Label.text integerValue];
+            break;
+        case RAID_DRIVE_1_0:
+            targetNum = [raid01_0_Label.text integerValue];
+            break;
+        case RAID_DRIVE_1_1:
+            targetNum = [raid01_1_Label.text integerValue];
+            break;
+        case RAID_DRIVE_2_0:
+            targetNum = [raid02_0_Label.text integerValue];
+            break;
+        case RAID_DRIVE_2_1:
+            targetNum = [raid02_1_Label.text integerValue];
+            break;
+        case RAID_DRIVE_3_0:
+            targetNum = [raid03_0_Label.text integerValue];
+            break;
+        case RAID_DRIVE_3_1:
+            targetNum = [raid03_1_Label.text integerValue];
+            break;
+        default:
+            break;
+    }
+    
+    NSLog(@"target num = %d", targetNum);
+    
+    NSDictionary *dict0 = [theDelegate.sanDatabase getConmgrDriveStatusByEngineSerial:theDelegate.currentEngineLeftSerial
+                                                      targetNum:targetNum];
+    //NSLog(@"%@", [self raidShortInformation:dict0]);
+    
+    NSDictionary *dict1 = [theDelegate.sanDatabase getConmgrDriveStatusByEngineSerial:theDelegate.currentEngineRightSerial
+                                                      targetNum:targetNum];
+    //NSLog(@"%@", [self raidShortInformation:dict1]);
+    
+    NSString *info = [self raidShortInformation:dict0 slave:dict1];
+    
+    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    hud.frame = CGRectMake(0, 0, 10, 10);
+    
+    NSString *strloadingText = [NSString stringWithFormat:@"%@-%@", theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial];
+    NSString *strloadingText2 = [NSString stringWithFormat:@"%@", info];// ;//] @" Please Wait.\r 1-2 Minutes"];
+    
+    hud.labelText = strloadingText;
+    hud.detailsLabelText=strloadingText2;
+    
+    //NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+    
+	hud.mode = MBProgressHUDModeText;
+	hud.margin = 10.f;
+	hud.yOffset = 150.f;
+	hud.removeFromSuperViewOnHide = YES;
+    hud.backgroundColor = [UIColor clearColor];
+    hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
+    hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
+    
+    isHUDshowing = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -615,6 +751,30 @@
 }
  */
 
+
+- (NSString *)isMaster:(NSString *)serial {
+    NSDictionary *dict = [theDelegate.sanDatabase getEngineCliDmepropDictBySerial:serial];
+    
+    NSInteger myId = [[dict valueForKey:@"my_id"] intValue];
+    BOOL isMaster = NO;
+    
+    switch (myId) {
+        case 1:
+            if ([[dict valueForKey:@"cluster_0_is_master"] isEqualToString:@"Yes"]) {
+                isMaster = YES;
+            }
+            break;
+        case 2:
+            if ([[dict valueForKey:@"cluster_1_is_master"] isEqualToString:@"Yes"]) {
+                isMaster = YES;
+            }
+            break;
+        default:
+            break;
+    }
+    return isMaster?@"Master":@"Slave";
+}
+
 - (IBAction)showEngineInfo:(id)sender {
     NSLog(@"%s", __func__);
     
@@ -635,6 +795,8 @@
     
     NSString *vpdInfo = [self getEngineVpdShortString:vpd];
     
+    NSString *isMaster = [self isMaster:engineSerial];
+    
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     //hud.hidden = FALSE;
@@ -648,7 +810,7 @@
     
     //hud.mode = MBProgressHUDModeAnnularDeterminate;
     NSString *strloadingText = [NSString stringWithFormat:@"%@", engineSerial];
-    NSString *strloadingText2 = [NSString stringWithFormat:@"%@", vpdInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
+    NSString *strloadingText2 = [NSString stringWithFormat:@"Engine             : %@\n%@", isMaster, vpdInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
     
     NSLog(@"the loading text will be %@",strloadingText);
     hud.labelText = strloadingText;
