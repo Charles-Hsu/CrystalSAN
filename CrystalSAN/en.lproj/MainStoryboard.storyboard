@@ -25,15 +25,15 @@
                                 <rect key="frame" x="841" y="0.0" width="183" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="button-Arrow.png" id="1EL-OJ-3Yb">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="button-Arrow.png" id="1EL-OJ-3Yb">
                                 <rect key="frame" x="50" y="600" width="120" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text-CircularMode.png" id="28b-kb-3pF">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text-CircularMode.png" id="28b-kb-3pF">
                                 <rect key="frame" x="165" y="618" width="195" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text-DiagonalMode.png" id="g0u-F3-0pw">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text-DiagonalMode.png" id="g0u-F3-0pw">
                                 <rect key="frame" x="165" y="672" width="195" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -150,7 +150,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TFU-wH-z38">
-                                <rect key="frame" x="546" y="568" width="372" height="160"/>
+                                <rect key="frame" x="326" y="568" width="372" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" image="Home-Button-SiteView.png">
@@ -3521,6 +3521,7 @@
             <relationships>
                 <relationship kind="action" name="hideSlider:"/>
                 <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
                 <relationship kind="action" name="showDriveStatus:"/>
                 <relationship kind="action" name="showEngineInfo:"/>
                 <relationship kind="action" name="showMirrorInfo:"/>

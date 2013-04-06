@@ -772,7 +772,7 @@
         default:
             break;
     }
-    return isMaster?@"Master":@"Slave";
+    return isMaster?@"Master":@"Follower";
 }
 
 - (IBAction)showEngineInfo:(id)sender {

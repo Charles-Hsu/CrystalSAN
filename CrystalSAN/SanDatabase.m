@@ -568,7 +568,7 @@
         default:
             break;
     }
-    return isMaster?@"Master":@"Slave";
+    return isMaster?@"Master":@"Follower";
 
 }
 
@@ -799,6 +799,23 @@
         NSLog(@"name:%@", name);
         [devices addObject:name];
     }
+    
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    [devices addObject:@""];
+    
+    
     // close the result set.
     // it'll also close when it's dealloc'd, but we're closing the database before
     // the autorelease pool closes, so sqlite will complain about it.
