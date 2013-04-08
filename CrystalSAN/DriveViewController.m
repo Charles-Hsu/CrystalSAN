@@ -404,6 +404,7 @@
         theLabel = [[UILabel alloc] init];
         theLabel.numberOfLines = 0;
         theLabel.textColor = [UIColor darkGrayColor];
+        theLabel.font = [UIFont systemFontOfSize:12];
         
         float itemWidth, itemHeight;
         
@@ -415,7 +416,7 @@
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-23, itemWidth, 40);
+        theLabel.frame = CGRectMake(0, itemHeight-20, itemWidth, 40);
         //theLabel.alpha = 0.5;
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];
@@ -435,9 +436,46 @@
         theLabel = (UILabel *)[view viewWithTag:1];
 	}
     
+    // NSString *text = @"Updated: 2012/10/14 21:59"
+    NSString *text = [NSString stringWithFormat:@"%@-%@\n%@:%@",[dict valueForKey:@"serial"], [dict valueForKey:@"drive_id"], [dict valueForKey:@"path_0_port"], [dict valueForKey:@"path_0_wwpn"]];
     
-    theLabel.text = [NSString stringWithFormat:@"%@-%@(%@)",[dict valueForKey:@"serial"], [dict valueForKey:@"drive_id"], [dict valueForKey:@"drive_status"]];
-    
+    if ([theLabel respondsToSelector:@selector(setAttributedText:)])
+    {
+        // iOS6 and above : Use NSAttributedStrings
+        const CGFloat fontSize = 15;
+        const CGFloat boldFontSize = 15;
+        UIFont *boldFont = [UIFont boldSystemFontOfSize:boldFontSize];
+        UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
+        UIColor *foregroundColor = [UIColor darkGrayColor];//[UIColor whiteColor];
+        
+        // Create the attributes
+        NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                               boldFont, NSFontAttributeName,
+                               foregroundColor, NSForegroundColorAttributeName, nil];
+        NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  regularFont, NSFontAttributeName, nil];
+        const NSRange range = NSMakeRange(10,[text length]-10); // range of " 2012/10/14 ". Ideally this should not be hardcoded
+        
+        // Create the attributed string (text + attributes)
+        NSMutableAttributedString *attributedText =
+        [[NSMutableAttributedString alloc] initWithString:text
+                                               attributes:attrs];
+        [attributedText setAttributes:subAttrs range:range];
+        
+        // Set it in our UILabel and we are done!
+        [theLabel setAttributedText:attributedText];
+    } else {
+        // iOS5 and below
+        // Here we have some options too. The first one is to do something
+        // less fancy and show it just as plain text without attributes.
+        // The second is to use CoreText and get similar results with a bit
+        // more of code. Interested people please look down the old answer.
+        
+        // Now I am just being lazy so :p
+        [theLabel setText:text];
+        
+    }
+        
 	return view;
 }
 

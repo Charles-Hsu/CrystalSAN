@@ -38,7 +38,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="djO-T2-vl2" userLabel="Horizontal Slider - Arc">
-                                <rect key="frame" x="866" y="496" width="90" height="23"/>
+                                <rect key="frame" x="172" y="569" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="45Y-fu-l9Z"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="radiusSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.4299999475479126" minValue="0.0010000000474974513" maxValue="2" id="Cjb-pU-pDF" userLabel="Horizontal Slider - Radius">
-                                <rect key="frame" x="866" y="520" width="90" height="23"/>
+                                <rect key="frame" x="172" y="594" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="ebR-yY-90a"/>
@@ -58,7 +58,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.73000001907348633" minValue="0.0010000000474974513" maxValue="2" id="NrA-1r-0Au" userLabel="Horizontal Slider - Spacing">
-                                <rect key="frame" x="866" y="544" width="90" height="23"/>
+                                <rect key="frame" x="172" y="618" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="2" eventType="valueChanged" id="XBX-ie-Zjw"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="sizingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.5" maxValue="1.5" id="v4n-0z-GIa" userLabel="Horizontal Slider - Spacing">
-                                <rect key="frame" x="866" y="568" width="90" height="23"/>
+                                <rect key="frame" x="172" y="642" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="reloadCarousel" destination="YOT-Ri-UBv" eventType="valueChanged" id="dZU-l8-WJY"/>
@@ -78,56 +78,56 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="arcSliderLabel" text="Arc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mfe-IO-rov">
-                                <rect key="frame" x="803" y="493" width="41" height="21"/>
+                                <rect key="frame" x="109" y="566" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="radiusSliderLabel" text="Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nS0-ck-gVC">
-                                <rect key="frame" x="803" y="519" width="62" height="21"/>
+                                <rect key="frame" x="109" y="593" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="arcSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dpL-NK-8Zk">
-                                <rect key="frame" x="960" y="493" width="44" height="21"/>
+                                <rect key="frame" x="266" y="566" width="44" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="radiusSliderValue" text="1.43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6IE-Az-IqC">
-                                <rect key="frame" x="960" y="525" width="44" height="10"/>
+                                <rect key="frame" x="266" y="599" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderValue" text="0.73" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jJt-c5-Ky4">
-                                <rect key="frame" x="960" y="549" width="44" height="10"/>
+                                <rect key="frame" x="266" y="623" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="sizingSliderValue" text="1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pwG-F8-5h7">
-                                <rect key="frame" x="960" y="573" width="44" height="10"/>
+                                <rect key="frame" x="266" y="647" width="44" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderLabel" text="Spacing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CRP-hw-uMP">
-                                <rect key="frame" x="803" y="543" width="70" height="21"/>
+                                <rect key="frame" x="109" y="617" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="sizingSliderLabel" text="Sizing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lua-C0-2Py">
-                                <rect key="frame" x="803" y="567" width="47" height="21"/>
+                                <rect key="frame" x="109" y="641" width="47" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -150,7 +150,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TFU-wH-z38">
-                                <rect key="frame" x="326" y="568" width="372" height="160"/>
+                                <rect key="frame" x="632" y="521" width="372" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" image="Home-Button-SiteView.png">
@@ -3521,7 +3521,6 @@
             <relationships>
                 <relationship kind="action" name="hideSlider:"/>
                 <relationship kind="action" name="onBack:"/>
-                <relationship kind="action" name="onHome:"/>
                 <relationship kind="action" name="showDriveStatus:"/>
                 <relationship kind="action" name="showEngineInfo:"/>
                 <relationship kind="action" name="showMirrorInfo:"/>

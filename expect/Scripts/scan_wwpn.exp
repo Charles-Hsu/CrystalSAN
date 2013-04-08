@@ -1,0 +1,344 @@
+#  scan_wwpn.exp
+#  
+#
+#  Created by Charles Hsu on 4/913.
+#
+#  usage:
+#      expect scan_wwpn.exp.exp <database_filename>
+#
+#  for example:
+#      $expect scan_wwpn.exp.exp server.db
+#  
+#
+
+set db_filename [lindex $argv 0]
+load /usr/lib/sqlite3/libtclsqlite3.dylib Sqlite3
+sqlite3 db $db_filename
+
+
+
+# Network Address Authority 1
+# – 10:00:<24-bit_OUI>:<24-bit_vendor_sequence_or_serial number>
+# – 10:00:00:00:C94:3d:a5:46
+#         ^^ ^^ ^^
+# – You would key '0000c9' into the IEEE search engine
+
+
+# Network Address Authority 2
+# – 2<12-bit_vendor_code>:<24-bit_OUI>:<24-bit_vendor_sequence_or_serial number>
+# – The 12-bit vendor code (field1) can be used to identify Fibre Channel ports on a Fibre Channel node, or to extend the vendor unique serial number.
+#
+# – 20:00:00:20:37:13:12:1a
+# – 21:00:00:20:37:13:12:1a
+# – 22:00:00:20:37:13:12:1a
+#         ^^ ^^ ^^
+# You would key '002037' into the IEEE search engine
+
+
+# NAA 5 is IEEE registered name.
+# – 5<24-bit_OUI>:<36-bit_vendor_sequence_or_serial number>
+# – 50:06:04:85:c5:ed:aa:4c
+#    ^ ^^ ^^ ^ 
+# – the 24-bit OUI does not start on a byte boundary
+# - You would key '006048' into the IEEE search engine
+
+
+# NAA 6 is IEEE registered name.
+# – 60:02:0f:290:00:00:ca:93:3f:2e:b2:d4:00:01:8a:541011
+#    ^ ^^ ^^ ^
+# - You would key '0020f2' into the IEEE search engine
+
+
+
+
+
+if {0} {
+    sqlite> select serial,path_0_wwpn from engine_cli_conmgr_drive_status_detail limit 30;
+    serial      path_0_wwpn
+    ----------  ------------------
+    00600474    2600-000155-610d31   ==> 000155 ==> Promise Technology, Inc.
+    00600474    2600-000155-610d32
+    00600474    2602-000155-610d31
+    00600474    2602-000155-610d32
+    00600474    6000-393000-01aa0d   ==> 000393 ==> Apple Computer, Inc.
+    00600474    6000-393000-01a99f
+    00600474    5006-022ad0-4f1000   ==> 006022 ==> VICOM SYSTEMS, INC.
+    00600474    5006-022ad0-4f3000
+    00600306    2600-000155-610d31
+    00600306    2600-000155-610d32
+    00600306    2602-000155-610d31
+}
+
+
+
+proc engine_wwpn {args} {
+    
+    #$cli_mirror_section $site_name $engine_name $seconds
+    
+    #set table_name          "engine_cli_dmeprop"
+    #set sql "CREATE TABLE IF NOT EXISTS $table_name (serial TEXT PRIMARY KEY, seconds INTEGER, cluster_0_id, cluster_0_status,  cluster_0_is_master, cluster_1_id, cluster_1_status,  cluster_1_is_master, my_id)"
+    
+    set wwnn                [lindex $args 0]
+    set wwpn                [lindex $args 1]
+    set type                [lindex $args 2]
+    set serial              [lindex $args 3]
+    set product_type        [lindex $args 4]
+    
+    set oui                 "006022"
+    set company_name        "VICOM SYSTEMS, INC."
+    set type                "Engine"
+
+    set sql "SELECT COUNT(*) cc FROM wwpn_data WHERE wwpn = '$wwpn'"
+    db eval $sql {
+        #puts "$cc"
+        if { [expr $cc] == 0 } {
+            #puts "a1"
+            set sql "INSERT INTO wwpn_data VALUES ('$wwnn', '$wwpn', '$oui', '$company_name', '$product_type', '$type', '$serial')"
+            #puts "==>$sql"
+            db eval $sql
+        }
+    }
+}
+
+# OUI       Company Name
+# 006022    VICOM SYSTEMS, INC.
+# 000612    Accusys, Inc.
+# 000155    Promise Technology, Inc.
+# 00D023    INFORTREND TECHNOLOGY, INC.
+# 000393    Apple Computer, Inc.
+
+proc company_by_oui {args} {
+    
+    set oui [lindex $args 0]
+    
+    switch $oui \
+      "006022" {
+        return "VICOM SYSTEMS, INC."
+    } "000612" {
+        return "Accusys, Inc."
+    } "000155" {
+        return "Promise Technology, Inc."
+    } "00D023" {
+        return "INFORTREND TECHNOLOGY, INC."
+    }  "000393" {
+        return "Apple Computer, Inc."
+    } default {
+        return ""
+        # unknown
+    }
+    
+}
+
+set sql "CREATE TABLE IF NOT EXISTS wwpn_data (wwnn, wwpn primary key, oui, company_name, model, type, serial)"
+db eval $sql
+
+if {1} {
+    puts "[exec date]===scan engine_cli_vpd================================="
+    
+    set table_name          "engine_cli_vpd"
+    set type                "Engine"
+    set oui                 "006022"
+    set company_name        "VICOM SYSTEMS, INC."
+    
+    set sql "select serial,product_type,a1_wwnn wwnn,a1_wwpn,a2_wwpn,b1_wwpn,b2_wwpn from $table_name"
+    db eval $sql {
+        if {[string length $a1_wwpn] != 0} {
+            set wwpn $a1_wwpn
+            engine_wwpn $wwnn $wwpn $type $serial $product_type
+        }
+        if {[string length $a2_wwpn] != 0} {
+            set wwpn $a2_wwpn
+            engine_wwpn $wwnn $wwpn $type $serial $product_type
+        }
+        if {[string length $b1_wwpn] != 0} {
+            set wwpn $b1_wwpn
+            engine_wwpn $wwnn $wwpn $type $serial $product_type
+        }
+        if {[string length $b2_wwpn] != 0} {
+            set wwpn $b2_wwpn
+            engine_wwpn $wwnn $wwpn $type $serial $product_type
+        }
+    }
+}
+
+
+if {1} {
+    puts "[exec date]===scan engine_cli_conmgr_drive_status_detail=========="
+    
+    #set table_name          "engine_cli_conmgr_drive_status_detail"
+    #set type                "Engine"
+    #set oui                 "006022"
+    #set company_name        "VICOM SYSTEMS, INC."
+    
+    set wwnn ""
+    set type "RAID"
+    set model ""
+    set serial ""
+    
+    set sql "select DISTINCT path_0_wwpn wwpn from engine_cli_conmgr_drive_status_detail"
+    db eval $sql {
+        set sql "select count(*) cc from wwpn_data where wwpn='$wwpn'"
+        
+        #set x [format "%1c%-8s==%f" 1 foo 17.0e2]
+        #puts $x
+        #
+        #scan $x "%c%8s%*\[ =]%f" char string float
+        #puts "$char$string$float"
+        
+        db eval $sql {
+            #puts $cc
+            if { [expr $cc] == 0 } {
+                # 2600-000155-610d31
+                #puts $wwpn
+                set wwpn_org $wwpn
+                scan $wwpn "%4s-%6s-%6s-%5s" p0 p1 p2 p3
+                set wwpn "$p0$p1$p2"
+                
+                scan $wwpn "%1s" naa
+                #puts "naa=  $naa"
+                
+                switch $naa \
+                "1" {
+                    set oui [string range $wwpn 4 9]
+                    puts $oui
+                    # file
+                } "2" {
+                    set oui [string range $wwpn 4 9]
+                    puts $oui
+                } "5" {
+                    set oui [string range $wwpn 1 6]
+                    #puts $path_0_wwpn
+                    puts $oui
+                } "6" {
+                    set oui [string range $wwpn 1 6]
+                    #puts $path_0_wwpn
+                    puts $oui
+                } default {
+                    # unknown
+                }
+                
+                set company_name [company_by_oui $oui]
+                
+                #set sql "CREATE TABLE IF NOT EXISTS wwpn_data (wwnn, wwpn primary key, oui, company_name, model, type, serial)"
+
+                set sql "SELECT COUNT(*) cc FROM wwpn_data WHERE wwpn='$wwpn_org'"
+                #puts $sql
+                db eval $sql
+                #puts $cc
+                if { [expr $cc] == 0 } {
+                    set sql "INSERT INTO wwpn_data VALUES ('$wwnn', '$wwpn_org', '$oui', '$company_name', '$model', '$type', '$serial')"
+                    #puts "==>$sql"
+                    db eval $sql
+                }
+                
+                
+                #engine_wwpn $wwnn $wwpn $type $serial $product_type
+            }
+        }
+
+    }
+}
+
+
+if {0} {
+db eval {select b.site_name, a.serial 'SN',a.cluster_id,substr(a.path_0_wwpn,6),b.engine_name,substr(b.a1_wwpn,6) from engine_cli_conmgr_engine_status a, engine_cli_vpd b where a.serial=b.serial and a.cluster_id=2} {
+
+    set sql "select serial,engine_name from engine_cli_vpd where substr(a1_wwpn,6)='$substr(a.path_0_wwpn,6)'"
+    #puts $sql
+    
+    set cluster_engines "'$SN'"
+    #puts $cluster_engines
+    
+    set engines_list [list $SN]
+    
+    # The lsort command sorts a list. By default, it sorts in increasing ASCII order.
+    # tclsh> lsort {one two three four five six}
+    # five four one six three two
+    
+    db eval $sql {
+        
+        append cluster_engines ", '$serial'"
+        
+        lappend engines_list $serial
+        
+        #puts "engines_list ==> $engines_list   before sorting "
+        set engines_list [lsort $engines_list]
+        #lsort $engines_list
+        #puts "engines_list ==> $engines_list   after sorting"
+        
+        #puts "cluster_names ==> $cluster_engines"
+        
+        #puts "site_name: $site_name"
+        #puts "ha_appliance_name: "
+        #puts "engine00: $serial"
+        #puts "engine01: $serial"
+        #puts "engine02: "
+        #puts "engine03: "
+        #puts "engine04: "
+        #puts "INSERT INTO ha_cluster VALUES ('$site_name','$serial','$serial','$serial','','','')"
+        
+        
+        #tclsh> llength "a b c" 3
+        #tclsh> llength ""
+        #0
+        #tclsh> llength [llength "a b c"] 1
+ 
+        set sql "SELECT count(*) FROM ha_cluster WHERE engine00='$SN'"
+        #puts $sql
+        
+        set cc [db eval $sql]
+        #puts "serial=$SN, counter=$cc in ha_cluster"
+        
+        lsort $engines_list
+        #puts "engines_list=   ($engines_list) "
+        set ha_appliance_name [lindex $engines_list 0]
+        
+        if { [expr $cc] == 0 } {
+            #puts "-------------------"
+            set i 0
+            foreach engine_sn $engines_list {
+                if {$i == 0} {
+                    incr i 1
+                    continue
+                }
+                #puts "-------------------"
+                append ha_appliance_name "-$engine_sn"
+                #puts $ha_appliance_name
+            }
+
+            set sql "INSERT INTO ha_cluster (site_name, ha_appliance_name, engine00) VALUES ('$site_name', '$ha_appliance_name', '$SN')"
+            #puts $sql
+            db eval $sql
+            
+            #if {1} {
+            set i 1
+            foreach engine_sn $engines_list {
+                #set sql "===>  $engine_sn"
+                #puts "====> $engine_sn"
+                set sql "UPDATE ha_cluster SET engine0$i = '$engine_sn' WHERE engine00 = '$SN'"
+                # UPDATE newcontacts SET LastName="Millford" WHERE Email="gpmillford@mymail.fake";
+                #puts $sql
+                db eval $sql
+                incr i 1
+            }
+            #}
+            
+            
+        } else {
+            
+            #puts "exist"
+            
+        }
+
+    }
+}
+
+}
+
+db close
+
+
+
+
+
+
