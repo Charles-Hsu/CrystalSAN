@@ -17,18 +17,16 @@
 //- (void)insertDemoDevices;
 
 - (NSString *)getPasswordBySiteName:(NSString *)siteName siteID:(NSString *)siteID userName:(NSString *)userName;
-- (NSDictionary *)getHAClusterDictionaryBySiteName:(NSString *)siteName;
+- (NSDictionary *)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName;
 - (NSArray *)getEngineCliVpdBySerial:(NSString *)serial;
 - (NSArray *)getEngineCliMirrorBySerial:(NSString *)serial;
 
-- (NSArray *)getEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial;
-- (NSArray *)getEngineCliConmgrInitiatorStatusDetailBySerial:(NSString *)serial;
-
-- (NSArray *)getEngineCliConmgrEngineStatusBySerial:(NSString *)serial;
-
-- (NSArray *)getEngineCliConmgrDriveStatusBySerial:(NSString *)serial;
-- (NSArray *)getEngineCliConmgrDriveStatusDetailBySerial:(NSString *)serial;
-
+- (NSArray *)httpGetEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial;
+- (NSArray *)httpGetEngineCliConmgrInitiatorStatusDetailBySerial:(NSString *)serial;
+- (NSArray *)httpGetEngineCliConmgrEngineStatusBySerial:(NSString *)serial;
+- (NSArray *)httpGetEngineCliConmgrDriveStatusBySerial:(NSString *)serial;
+- (NSArray *)httpGetEngineCliConmgrDriveStatusDetailBySerial:(NSString *)serial;
+         
 - (NSArray *)getEnginesByHaApplianceName:(NSString *)haApplianceName;
 
 - (void)insertUpdateHaCluster:(NSDictionary *)dict;
@@ -40,6 +38,8 @@
 - (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName andKey:(NSString *)key;
 - (NSDictionary *)getVpdBySerial:(NSString *)serial;
 - (NSDictionary *)getEngineCliMirrorDictBySerial:(NSString *)serial;
+
+- (NSArray *)getConmgrDriveStatusByEngineSerial:(NSString *)serial;
 - (NSDictionary *)getConmgrDriveStatusByEngineSerial:(NSString *)serial
                                            targetNum:(NSInteger)driveID;
 
@@ -50,6 +50,12 @@
 - (NSDictionary *)getEngineCliDmepropDictBySerial:(NSString *)serial;
 
 - (NSString *)isMasterEngine:(NSString *)serial;
+
+
+- (NSString *)getEngineVpdShortString:(NSDictionary *)vpd;
+- (NSString *)getEngineMirrorShortString:(NSDictionary *)dict;
+- (NSString *)getEngineDriveShortString:(NSDictionary *)dict;
+- (NSString *)getEngineDriveShortStringtTitle;
 
 
 @end

@@ -246,7 +246,7 @@
 #define RAID_DRIVE_3_1 1007
 
 
-- (NSString *)raidShortInformation:(NSDictionary *)dict0 slave:(NSDictionary *)dict1 {
+- (NSString *)driveShortInformation:(NSDictionary *)dict0 slave:(NSDictionary *)dict1 {
     /*
      conmgr drive status
      
@@ -286,23 +286,15 @@
      5      A       B1      6000-393000-01a99f 0000 A
      */
     NSString *info = [NSString stringWithFormat:@""
-        "Serial    Target status port Storage WWPN       LUN  status\n"
-        "%8s  %-6d %-6s %-4s %-18s %-4s %-s\n"
-        "%8s  %-6d %-6s %-4s %-18s %-4s %-s",
+        //"Serial    Target status port Storage WWPN       LUN  status\n"
+        "%@\n"
+        "%8s  %@\n"
+        "%8s  %@",
+                      [theDelegate.sanDatabase getEngineDriveShortStringtTitle],
                       [[dict0 objectForKey:@"serial"] UTF8String],
-                      [[dict0 objectForKey:@"drive_id"] intValue],
-                      [[dict0 objectForKey:@"drive_status"] UTF8String],
-                      [[dict0 objectForKey:@"path_0_port"] UTF8String],
-                      [[dict0 objectForKey:@"path_0_wwpn"] UTF8String],
-                      [[dict0 objectForKey:@"path_0_lun"] UTF8String],
-                      [[dict0 objectForKey:@"path_0_pstatus"] UTF8String],
+                      [theDelegate.sanDatabase getEngineDriveShortString:dict0],
                       [[dict1 objectForKey:@"serial"] UTF8String],
-                      [[dict1 objectForKey:@"drive_id"] intValue],
-                      [[dict1 objectForKey:@"drive_status"] UTF8String],
-                      [[dict1 objectForKey:@"path_0_port"] UTF8String],
-                      [[dict1 objectForKey:@"path_0_wwpn"] UTF8String],
-                      [[dict1 objectForKey:@"path_0_lun"] UTF8String],
-                      [[dict1 objectForKey:@"path_0_pstatus"] UTF8String]
+                      [theDelegate.sanDatabase getEngineDriveShortString:dict1]
                       ];
     return info;
 }
@@ -352,7 +344,7 @@
                                                       targetNum:targetNum];
     //NSLog(@"%@", [self raidShortInformation:dict1]);
     
-    NSString *info = [self raidShortInformation:dict0 slave:dict1];
+    NSString *info = [self driveShortInformation:dict0 slave:dict1];
     
     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -413,110 +405,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//- (NSString *)getEngineVpdShortString:(NSString *)serial
-- (NSString *)getEngineVpdShortString:(NSDictionary *)vpd
-{
-    //NSDictionary *vpd = [theDelegate.sanDatabase getVpdBySerial:serial];
-    
-    /*
-     "a1_wwpn" = "2100-006022-0928f2";
-     "a2_wwpn" = "2200-006022-0928f2";
-     alert = None;
-     "b1_wwpn" = "2300-006022-0928f2";
-     "b2_wwpn" = "2400-006022-0928f2";
-     "engine_name" = "engine_212";
-     "fw_data" = "Sep 17 2012 16:56:07";
-     "fw_version" = "15.1.10";
-     ip = "10.100.5.212";
-     mac = "0.60.22.9.28.F2";
-     pcb = 00600306;
-     "product_type" = FCE4400;
-     redboot = "0.2.0.6";
-     seconds = 1363746626;
-     serial = 00600306;
-     "site_name" = "";
-     time = "Wednesday 3/20/2013 11:29:11";
-     uid = "00000060-220928F2";
-     uptime = "164d 04:02:40";
-     */
-    
-    //NSString *uid = [vpd valueForKey:@"uid"];
-    NSString *productType = [vpd valueForKey:@"product_type"];
-    NSString *pcb = [vpd valueForKey:@"pcb"];
-    NSString *mac = [vpd valueForKey:@"mac"];
-    NSString *ip = [vpd valueForKey:@"ip"];
-    NSString *uptime = [vpd valueForKey:@"uptime"];
-    NSString *alert = [vpd valueForKey:@"alert"];
-    NSString *time = [vpd valueForKey:@"time"];
-    NSString *a1_wwnn = [vpd valueForKey:@"a1_wwnn"];
-    NSString *a1_wwpn = [vpd valueForKey:@"a1_wwpn"];
-    NSString *a2_wwnn = [vpd valueForKey:@"a2_wwnn"];
-    NSString *a2_wwpn = [vpd valueForKey:@"a2_wwpn"];
-    NSString *b1_wwnn = [vpd valueForKey:@"b1_wwnn"];
-    NSString *b1_wwpn = [vpd valueForKey:@"b1_wwpn"];
-    NSString *b2_wwnn = [vpd valueForKey:@"b2_wwnn"];
-    NSString *b2_wwpn = [vpd valueForKey:@"b2_wwpn"];
-    
-    //
-    // http://stackoverflow.com/questions/7633664/declare-a-nsstring-in-multiple-lines
-    // Declare a NSString in multiple lines
-    //
-    
-    if ([productType isEqualToString:@"FCE4400"]) {
-        NSString *vpdString = [NSString stringWithFormat:
-                               @"PCB Number         : %@\n"
-                               "MAC address        : %@\n"
-                               "IP address         : %@\n"
-                               "Uptime             : %@\n"
-                               "Alert: %@\n"
-                               "%@\n"
-                               "Port  Node Name           Port Name\n"
-                               "A1    %@  %@\n"
-                               "A2    %@  %@\n"
-                               "B1    %@  %@\n"
-                               "B2    %@  %@\n",
-                               pcb,
-                               mac,
-                               ip,
-                               uptime,
-                               alert,
-                               time,
-                               a1_wwnn,
-                               a1_wwpn,
-                               a2_wwnn,
-                               a2_wwpn,
-                               b1_wwnn,
-                               b1_wwpn,
-                               b2_wwnn,
-                               b2_wwpn                     ];
-        
-        return vpdString;
+- (NSString *)getEngineVpdShortString:(NSDictionary *)vpd {
+    return [theDelegate.sanDatabase getEngineVpdShortString:vpd];
+}
 
-    } else if ([productType isEqualToString:@"FC"]) {
-        NSString *vpdString = [NSString stringWithFormat:
-                               @"PCB Number         : %@\n"
-                               "MAC address        : %@\n"
-                               "IP address         : %@\n"
-                               "Uptime             : %@\n"
-                               "Alert: %@\n"
-                               "Port  Node Name           Port Name\n"
-                               "A    %@  %@\n"
-                               "B    %@  %@\n",
-                               pcb,
-                               mac,
-                               ip,
-                               uptime,
-                               alert,
-                               a1_wwnn,
-                               a1_wwpn,
-                               b1_wwnn,
-                               b1_wwpn  ];
-        
-        return vpdString;
-        
-    }
-    
-    return nil;
+- (NSString *)getMirrorShortString:(NSDictionary *)dict {
+    return [theDelegate.sanDatabase getEngineMirrorShortString:dict];
 }
 
 
@@ -530,147 +424,6 @@
     }
 }
 
-//- (NSString *)getMirrorShortString:(NSString *)serial byLunNum:(NSString *)lunNumStr {
-- (NSString *)getMirrorShortString:(NSDictionary *)dict {
-    
-    //Mirror(hex)    state       Map         Capacity  Members
-    //33537(0x8301) Operational   0      13672091475  0 (OK )  2 (OK )
-    
-    //NSDictionary *dict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:theDelegate.currentEngineLeftSerial];
-    
-    NSString *mirror_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_id"]];
-    NSString *mirror_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_sts"]];
-    NSString *mirror_0_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_map"]];
-    NSString *mirror_0_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_capacity"]];
-    NSString *mirror_0_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_0_id"]];
-    NSString *mirror_0_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_0_sts"]];
-    NSString *mirror_0_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_1_id"]];
-    NSString *mirror_0_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_1_sts"]];
-    
-    NSString *mirror_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_id"]];
-    NSString *mirror_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_sts"]];
-    NSString *mirror_1_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_map"]];
-    NSString *mirror_1_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_capacity"]];
-    NSString *mirror_1_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_member_0_id"]];
-    NSString *mirror_1_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_member_0_sts"]];
-    NSString *mirror_1_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_member_1_id"]];
-    NSString *mirror_1_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_member_1_sts"]];
-    
-    NSString *mirror_2_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_id"]];
-    NSString *mirror_2_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_sts"]];
-    NSString *mirror_2_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_map"]];
-    NSString *mirror_2_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_capacity"]];
-    NSString *mirror_2_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_member_0_id"]];
-    NSString *mirror_2_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_member_0_sts"]];
-    NSString *mirror_2_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_member_1_id"]];
-    NSString *mirror_2_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_member_1_sts"]];
-    
-    NSString *mirror_3_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_id"]];
-    NSString *mirror_3_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_sts"]];
-    NSString *mirror_3_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_map"]];
-    NSString *mirror_3_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_capacity"]];
-    NSString *mirror_3_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_member_0_id"]];
-    NSString *mirror_3_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_member_0_sts"]];
-    NSString *mirror_3_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_member_1_id"]];
-    NSString *mirror_3_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_member_1_sts"]];
-    
-    /*
-    NSString *mirror_4_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_id"]];
-    NSString *mirror_4_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_sts"]];
-    NSString *mirror_4_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_map"]];
-    NSString *mirror_4_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_capacity"]];
-    NSString *mirror_4_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_member_0_id"]];
-    NSString *mirror_4_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_member_0_sts"]];
-    NSString *mirror_4_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_member_1_id"]];
-    NSString *mirror_4_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_member_1_sts"]];
-    
-    NSString *mirror_5_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_id"]];
-    NSString *mirror_5_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_sts"]];
-    NSString *mirror_5_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_map"]];
-    NSString *mirror_5_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_capacity"]];
-    NSString *mirror_5_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_member_0_id"]];
-    NSString *mirror_5_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_member_0_sts"]];
-    NSString *mirror_5_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_member_1_id"]];
-    NSString *mirror_5_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_member_1_sts"]];
-    */
-    
-    //NSString *mirrorStr = [NSString str]
-    
-    NSString *mirror = [NSString stringWithFormat:
-                        @""
-                        "Mirror state Map Capacity     Members\n"
-                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n"
-                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n"
-                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n"
-                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n",
-                        /*
-                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n"
-                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s",*/
-                        
-    //NSString *mirror = [NSString stringWithFormat:
-    //                    @"Mirror\tstate\tMap\tCapacity\t\tMembers \n"
-    //                     "%s  %s  %s  %s  %s %s  %s %s",
-                        
-                        [mirror_0_id UTF8String],
-                        [mirror_0_sts UTF8String],
-                        [mirror_0_map UTF8String],
-                        [mirror_0_capacity UTF8String],
-                        [mirror_0_member_0_id UTF8String],
-                        [mirror_0_member_0_sts UTF8String],
-                        [mirror_0_member_1_id UTF8String],
-                        [mirror_0_member_1_sts UTF8String] ,
-                        
-                        [mirror_1_id UTF8String],
-                        [mirror_1_sts UTF8String],
-                        [mirror_1_map UTF8String],
-                        [mirror_1_capacity UTF8String],
-                        [mirror_1_member_0_id UTF8String],
-                        [mirror_1_member_0_sts UTF8String],
-                        [mirror_1_member_1_id UTF8String],
-                        [mirror_1_member_1_sts UTF8String],
-                        
-                        [mirror_2_id UTF8String],
-                        [mirror_2_sts UTF8String],
-                        [mirror_2_map UTF8String],
-                        [mirror_2_capacity UTF8String],
-                        [mirror_2_member_0_id UTF8String],
-                        [mirror_2_member_0_sts UTF8String],
-                        [mirror_2_member_1_id UTF8String],
-                        [mirror_2_member_1_sts UTF8String],
-                        
-                        [mirror_3_id UTF8String],
-                        [mirror_3_sts UTF8String],
-                        [mirror_3_map UTF8String],
-                        [mirror_3_capacity UTF8String],
-                        [mirror_3_member_0_id UTF8String],
-                        [mirror_3_member_0_sts UTF8String],
-                        [mirror_3_member_1_id UTF8String],
-                        [mirror_3_member_1_sts UTF8String]  /*,
-                        
-                        [mirror_4_id UTF8String],
-                        [mirror_4_sts UTF8String],
-                        [mirror_4_map UTF8String],
-                        [mirror_4_capacity UTF8String],
-                        [mirror_4_member_0_id UTF8String],
-                        [mirror_4_member_0_sts UTF8String],
-                        [mirror_4_member_1_id UTF8String],
-                        [mirror_4_member_1_sts UTF8String],
-                        
-                        [mirror_5_id UTF8String],
-                        [mirror_5_sts UTF8String],
-                        [mirror_5_map UTF8String],
-                        [mirror_5_capacity UTF8String],
-                        [mirror_5_member_0_id UTF8String],
-                        [mirror_5_member_0_sts UTF8String],
-                        [mirror_5_member_1_id UTF8String],
-                        [mirror_5_member_1_sts UTF8String]*/
-                        ];
-    
-    NSLog(@"%@", mirror);
-    
-    return mirror;
-
- }
 
 - (IBAction)showMirrorInfo:(id)sender {
     NSLog(@"%s", __func__);

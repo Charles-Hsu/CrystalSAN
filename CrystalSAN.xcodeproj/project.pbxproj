@@ -39,7 +39,6 @@
 		56552E3A170C0BBC000CA5FB /* Device-HBA-disappeared.png in Resources */ = {isa = PBXBuildFile; fileRef = 56552E36170C0BBC000CA5FB /* Device-HBA-disappeared.png */; };
 		56552E3B170C0BBC000CA5FB /* Device-HBA-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 56552E37170C0BBC000CA5FB /* Device-HBA-healthy.png */; };
 		56552E3C170C0BBC000CA5FB /* Device-HBA-problem.png in Resources */ = {isa = PBXBuildFile; fileRef = 56552E38170C0BBC000CA5FB /* Device-HBA-problem.png */; };
-		5672C6B717126EC5008E6B8C /* scan_wwpn.exp in Sources */ = {isa = PBXBuildFile; fileRef = 5672C6B617126EC5008E6B8C /* scan_wwpn.exp */; };
 		567FA37E1702CBA9000F5802 /* appicon144.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA33D1702CBA9000F5802 /* appicon144.png */; };
 		567FA37F1702CBA9000F5802 /* appicon72.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA33E1702CBA9000F5802 /* appicon72.png */; };
 		567FA3801702CBA9000F5802 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 567FA33F1702CBA9000F5802 /* background.png */; };
@@ -894,7 +893,6 @@
 				5690A8AE16FC88D6007FDC32 /* MapViewController.m in Sources */,
 				56956C1016FEDE0100F60A8A /* MKMapView+ZoomLevel.m in Sources */,
 				5600033E170546CA0043A9EE /* MBProgressHUD.m in Sources */,
-				5672C6B717126EC5008E6B8C /* scan_wwpn.exp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

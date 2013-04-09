@@ -11,7 +11,7 @@
 
 @interface SanDatabase ()
     - (NSString *)copyServerDbFromResource;
-    - (NSArray *)getSanInformation:(NSString *)phpURL bySerial:(NSString *)serial;
+    - (NSArray *)httpGetSanInformation:(NSString *)phpURL bySerial:(NSString *)serial;
 @end
 
 @implementation SanDatabase
@@ -170,7 +170,7 @@
     return apiResponse;
 }
 
-- (NSDictionary *)getHAClusterDictionaryBySiteName:(NSString *)siteName
+- (NSDictionary *)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -194,7 +194,7 @@
     return nil;
 }
 
-- (NSArray *)getSanInformation:(NSString *)phpURL bySerial:(NSString *)serial
+- (NSArray *)httpGetSanInformation:(NSString *)phpURL bySerial:(NSString *)serial
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -224,7 +224,7 @@
 - (NSArray *)getEngineCliVpdBySerial:(NSString *)serial
 {
     NSString *phpURL = @"get_engine_cli_vpd_all.php";
-    return [self getSanInformation:phpURL bySerial:serial];
+    return [self httpGetSanInformation:phpURL bySerial:serial];
 }
 
 - (NSArray *)getEngineCliMirrorBySerial:(NSString *)serial
@@ -254,11 +254,11 @@
     */
     
     NSString *phpURL = @"get_engine_cli_mirror_all.php";
-    return [self getSanInformation:phpURL bySerial:serial];
+    return [self httpGetSanInformation:phpURL bySerial:serial];
 
 }
 
-- (NSArray *)getEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial
+- (NSArray *)httpGetEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial
 {
     /*
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -285,142 +285,39 @@
     */
     
     NSString *phpURL = @"get_engine_cli_conmgr_initiator_status.php";
-    return [self getSanInformation:phpURL bySerial:serial];
+    return [self httpGetSanInformation:phpURL bySerial:serial];
 
 }
 
 
-- (NSArray *)getEngineCliConmgrInitiatorStatusDetailBySerial:(NSString *)serial
-{
-    /*
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults synchronize];
-    
-    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_initiator_status_detail.php?serial=%@", hostname, serial];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    
-    //Initialize the delegate.
-    XMLParser *parser = [[XMLParser alloc] initXMLParser];
-    
-    //Set delegate
-    [xmlParser setDelegate:(id <NSXMLParserDelegate>)parser];
-    
-    //Start parsing the XML file.
-    BOOL success = [xmlParser parse];
-    NSLog(@"get_engine_cli_conmgr_initiator_status_detail.php parses %@", success?@"successfully":@"failed");
-    
-    return nil;
-    */
-    
+- (NSArray *)httpGetEngineCliConmgrInitiatorStatusDetailBySerial:(NSString *)serial {
     NSString *phpURL = @"get_engine_cli_conmgr_initiator_status_detail.php";
-    return [self getSanInformation:phpURL bySerial:serial];
-
+    return [self httpGetSanInformation:phpURL bySerial:serial];
 }
 
-- (NSArray *)getEngineCliConmgrEngineStatusBySerial:(NSString *)serial
-{
-    /*
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults synchronize];
-    
-    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_engine_status.php?serial=%@", hostname, serial];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    
-    //Initialize the delegate.
-    XMLParser *parser = [[XMLParser alloc] initXMLParser];
-    
-    //Set delegate
-    [xmlParser setDelegate:(id <NSXMLParserDelegate>)parser];
-    
-    //Start parsing the XML file.
-    BOOL success = [xmlParser parse];
-    NSLog(@"get_engine_cli_conmgr_engine_status.php parses %@", success?@"successfully":@"failed");
-    
-    return nil;
-    */
+- (NSArray *)httpGetEngineCliConmgrEngineStatusBySerial:(NSString *)serial {
     NSString *phpURL = @"get_engine_cli_conmgr_engine_status.php";
-    return [self getSanInformation:phpURL bySerial:serial];
-
+    return [self httpGetSanInformation:phpURL bySerial:serial];
 }
 
--(NSArray *)getEngineCliConmgrDriveStatusBySerial:(NSString *)serial
-{
-    /*
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults synchronize];
-    
-    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_drive_status.php?serial=%@", hostname, serial];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    
-    //Initialize the delegate.
-    XMLParser *parser = [[XMLParser alloc] initXMLParser];
-    
-    //Set delegate
-    [xmlParser setDelegate:(id <NSXMLParserDelegate>)parser];
-    
-    //Start parsing the XML file.
-    BOOL success = [xmlParser parse];
-    NSLog(@"get_engine_cli_conmgr_drive_status.php parses %@", success?@"successfully":@"failed");
-    
-    return nil;
-    */
-    
+-(NSArray *)httpGetEngineCliConmgrDriveStatusBySerial:(NSString *)serial {    
     NSString *phpURL = @"get_engine_cli_conmgr_drive_status.php";
-    return [self getSanInformation:phpURL bySerial:serial];
+    return [self httpGetSanInformation:phpURL bySerial:serial];
 
 }
 
--(NSArray *)getEngineCliConmgrDriveStatusDetailBySerial:(NSString *)serial
-{
-    /*
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults synchronize];
-    
-    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/CrystalSANServer/get_engine_cli_conmgr_drive_status_detail.php?serial=%@", hostname, serial];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    
-    //Initialize the delegate.
-    XMLParser *parser = [[XMLParser alloc] initXMLParser];
-    
-    //Set delegate
-    [xmlParser setDelegate:(id <NSXMLParserDelegate>)parser];
-    
-    //Start parsing the XML file.
-    BOOL success = [xmlParser parse];
-    NSLog(@"get_engine_cli_conmgr_drive_status.php parses %@", success?@"successfully":@"failed");
-    
-    return nil;
-    */
-    
+-(NSArray *)httpGetEngineCliConmgrDriveStatusDetailBySerial:(NSString *)serial {
     NSString *phpURL = @"get_engine_cli_conmgr_drive_status_detail.php";
-    return [self getSanInformation:phpURL bySerial:serial];
+    return [self httpGetSanInformation:phpURL bySerial:serial];
 
 }
 
-- (void)syncRemoteServerDatabaseBySiteName:(NSString *)siteName
-{
+- (void)syncRemoteServerDatabaseBySiteName:(NSString *)siteName {
     
 }
 
 
-- (void)loadUserPreference
-{
+- (void)loadUserPreference {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //DDLogInfo(@"%s", __func__, defaults);
     if ([defaults objectForKey:@"port"] == nil) {
@@ -482,35 +379,8 @@
     return txtPath;
 }
 
-/*
-- (void)insertDemoDevices
-{
-    NSArray *descriptions = [NSArray arrayWithObjects:
-                    @"Engine_227_228",
-                    @"Engine_229_230",
-                    @"Engine_231_232",@"Engine_233_234",@"Engine_235_236",@"Engine_237_238",@"Engine_239_240",
-                    @"Engine_241_242",@"Engine_243_244",@"Engine_245_246",@"Engine_247_248",@"Engine_249_250",
-                    @"Engine_251_252",
-                    @"VicomM01",@"VicomM02",@"VicomM03",@"VicomM04",
-                    //@"",
-                    nil];
 
-    [db beginTransaction];
-    [db executeUpdate:@"CREATE TABLE ha_appliance_device_list (name TEXT PRIMARY KEY)"];
-    for (int i=0; i<[descriptions count]; i++) {
-        //NSLog(@"description=%@", [descriptions objectAtIndex:i]);
-        NSString *sql = [NSString stringWithFormat:@"INSERT INTO ha_appliance_device_list VALUES ('%@');", [descriptions objectAtIndex:i]];
-        //NSLog(@"sql=%@", sql);
-        [db executeUpdate:sql];
-    }
-    [db commit];
-    
-    //[self getVmirrorListByKey:@""];
-}
- */
-
-- (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName
-{
+- (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName {
     NSString *sql = [NSString stringWithFormat:@"SELECT ha_appliance_name FROM ha_cluster WHERE site_name = '%@'", siteName];
     NSMutableArray *devices = [[NSMutableArray alloc] init];
     //NSLog(@"%s %@", __func__, sql);
@@ -528,8 +398,7 @@
     return devices;
 }
 
-- (NSArray *)getEnginesByHaApplianceName:(NSString *)haApplianceName
-{
+- (NSArray *)getEnginesByHaApplianceName:(NSString *)haApplianceName {
     NSString *sql = [NSString stringWithFormat:@"SELECT engine01,engine02 FROM ha_cluster WHERE ha_appliance_name = '%@'", haApplianceName];
     NSMutableArray *devices = [[NSMutableArray alloc] init];
     NSLog(@"%s %@", __func__, sql);
@@ -593,8 +462,7 @@
     return dict;
 }
 
-- (NSDictionary *)getVpdBySerial:(NSString *)serial
-{
+- (NSDictionary *)getVpdBySerial:(NSString *)serial {
     NSLog(@"%s", __func__);
     NSDictionary *dict = [[NSDictionary alloc] init];
     //
@@ -606,8 +474,7 @@
     //NSString *sql = [NSString stringWithFormat:@"SELECT * FROM ha_cluster WHERE ha_appliance_name = '%@'", haApplianceName];
     //NSMutableArray *devices = [[NSMutableArray alloc] init];
     NSLog(@"%s %@", __func__, sql);
-    if ([rs next])
-    {
+    if ([rs next]) {
         dict = [rs resultDictionary];
         //NSLog(@"%s %@", __func__, dict);
         //[devices addObject:[rs stringForColumnIndex:0]];
@@ -623,20 +490,45 @@
 
 - (NSDictionary *)getConmgrDriveStatusByEngineSerial:(NSString *)serial
                                            targetNum:(NSInteger)driveID {
+    
+    //NSMutableArray *array = [[NSMutableArray alloc] init];
     NSDictionary *dict = nil;
+    
     NSString *sql = [NSString stringWithFormat:
                      @"SELECT * FROM engine_cli_conmgr_drive_status_detail WHERE serial='%@' AND drive_id='%d'",
                      serial, driveID];
     NSLog(@"%s %@", __func__, sql);
     FMResultSet *rs = [db executeQuery:sql];
-    if ([rs next])
-    {
+    int i=0;
+    if ([rs next]) {
+        i++;
         dict = [rs resultDictionary];
-        //NSLog(@"%s %@", __func__, dict);
+        NSLog(@"%s %d %@", __func__, i, dict);
+        //[array addObject:dict];
     }
     [rs close];
     return dict;
 
+}
+
+- (NSArray *)getConmgrDriveStatusByEngineSerial:(NSString *)serial {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSDictionary *dict = nil;
+    
+    NSString *sql = [NSString stringWithFormat:
+                     @"SELECT * FROM engine_cli_conmgr_drive_status_detail WHERE serial='%@'",
+                     serial];
+    NSLog(@"%s %@", __func__, sql);
+    FMResultSet *rs = [db executeQuery:sql];
+    while ([rs next])
+    {
+        dict = [rs resultDictionary];
+        [array addObject:dict];
+        //NSLog(@"%s %@", __func__, dict);
+    }
+    [rs close];
+    return array;
+    
 }
 
 
@@ -821,6 +713,271 @@
     // the autorelease pool closes, so sqlite will complain about it.
     [rs close];
     return devices;
+}
+
+
+- (NSString *)getEngineVpdShortString:(NSDictionary *)vpd {
+    //NSDictionary *vpd = [theDelegate.sanDatabase getVpdBySerial:serial];
+    
+    /*
+     "a1_wwpn" = "2100-006022-0928f2";
+     "a2_wwpn" = "2200-006022-0928f2";
+     alert = None;
+     "b1_wwpn" = "2300-006022-0928f2";
+     "b2_wwpn" = "2400-006022-0928f2";
+     "engine_name" = "engine_212";
+     "fw_data" = "Sep 17 2012 16:56:07";
+     "fw_version" = "15.1.10";
+     ip = "10.100.5.212";
+     mac = "0.60.22.9.28.F2";
+     pcb = 00600306;
+     "product_type" = FCE4400;
+     redboot = "0.2.0.6";
+     seconds = 1363746626;
+     serial = 00600306;
+     "site_name" = "";
+     time = "Wednesday 3/20/2013 11:29:11";
+     uid = "00000060-220928F2";
+     uptime = "164d 04:02:40";
+     */
+    
+    //NSString *uid = [vpd valueForKey:@"uid"];
+    NSString *productType = [vpd valueForKey:@"product_type"];
+    NSString *pcb = [vpd valueForKey:@"pcb"];
+    NSString *mac = [vpd valueForKey:@"mac"];
+    NSString *ip = [vpd valueForKey:@"ip"];
+    NSString *uptime = [vpd valueForKey:@"uptime"];
+    NSString *alert = [vpd valueForKey:@"alert"];
+    NSString *time = [vpd valueForKey:@"time"];
+    NSString *a1_wwnn = [vpd valueForKey:@"a1_wwnn"];
+    NSString *a1_wwpn = [vpd valueForKey:@"a1_wwpn"];
+    NSString *a2_wwnn = [vpd valueForKey:@"a2_wwnn"];
+    NSString *a2_wwpn = [vpd valueForKey:@"a2_wwpn"];
+    NSString *b1_wwnn = [vpd valueForKey:@"b1_wwnn"];
+    NSString *b1_wwpn = [vpd valueForKey:@"b1_wwpn"];
+    NSString *b2_wwnn = [vpd valueForKey:@"b2_wwnn"];
+    NSString *b2_wwpn = [vpd valueForKey:@"b2_wwpn"];
+    
+    //
+    // http://stackoverflow.com/questions/7633664/declare-a-nsstring-in-multiple-lines
+    // Declare a NSString in multiple lines
+    //
+    
+    if ([productType isEqualToString:@"FCE4400"]) {
+        NSString *vpdString = [NSString stringWithFormat:
+                               @"PCB Number         : %@\n"
+                               "MAC address        : %@\n"
+                               "IP address         : %@\n"
+                               "Uptime             : %@\n"
+                               "Alert: %@\n"
+                               "%@\n"
+                               "Port  Node Name           Port Name\n"
+                               "A1    %@  %@\n"
+                               "A2    %@  %@\n"
+                               "B1    %@  %@\n"
+                               "B2    %@  %@\n",
+                               pcb,
+                               mac,
+                               ip,
+                               uptime,
+                               alert,
+                               time,
+                               a1_wwnn,
+                               a1_wwpn,
+                               a2_wwnn,
+                               a2_wwpn,
+                               b1_wwnn,
+                               b1_wwpn,
+                               b2_wwnn,
+                               b2_wwpn                     ];
+        
+        return vpdString;
+        
+    } else if ([productType isEqualToString:@"FC"]) {
+        NSString *vpdString = [NSString stringWithFormat:
+                               @"PCB Number         : %@\n"
+                               "MAC address        : %@\n"
+                               "IP address         : %@\n"
+                               "Uptime             : %@\n"
+                               "Alert: %@\n"
+                               "Port  Node Name           Port Name\n"
+                               "A    %@  %@\n"
+                               "B    %@  %@\n",
+                               pcb,
+                               mac,
+                               ip,
+                               uptime,
+                               alert,
+                               a1_wwnn,
+                               a1_wwpn,
+                               b1_wwnn,
+                               b1_wwpn  ];
+        
+        return vpdString;
+        
+    }
+    
+    return nil;
+}
+
+
+- (NSString *)getEngineMirrorShortString:(NSDictionary *)dict {
+    
+    //Mirror(hex)    state       Map         Capacity  Members
+    //33537(0x8301) Operational   0      13672091475  0 (OK )  2 (OK )
+    
+    //NSDictionary *dict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:theDelegate.currentEngineLeftSerial];
+    
+    NSString *mirror_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_id"]];
+    NSString *mirror_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_sts"]];
+    NSString *mirror_0_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_map"]];
+    NSString *mirror_0_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_capacity"]];
+    NSString *mirror_0_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_0_id"]];
+    NSString *mirror_0_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_0_sts"]];
+    NSString *mirror_0_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_1_id"]];
+    NSString *mirror_0_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_1_sts"]];
+    
+    NSString *mirror_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_id"]];
+    NSString *mirror_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_sts"]];
+    NSString *mirror_1_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_map"]];
+    NSString *mirror_1_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_capacity"]];
+    NSString *mirror_1_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_member_0_id"]];
+    NSString *mirror_1_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_member_0_sts"]];
+    NSString *mirror_1_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_member_1_id"]];
+    NSString *mirror_1_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_1_member_1_sts"]];
+    
+    NSString *mirror_2_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_id"]];
+    NSString *mirror_2_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_sts"]];
+    NSString *mirror_2_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_map"]];
+    NSString *mirror_2_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_capacity"]];
+    NSString *mirror_2_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_member_0_id"]];
+    NSString *mirror_2_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_member_0_sts"]];
+    NSString *mirror_2_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_member_1_id"]];
+    NSString *mirror_2_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_2_member_1_sts"]];
+    
+    NSString *mirror_3_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_id"]];
+    NSString *mirror_3_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_sts"]];
+    NSString *mirror_3_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_map"]];
+    NSString *mirror_3_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_capacity"]];
+    NSString *mirror_3_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_member_0_id"]];
+    NSString *mirror_3_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_member_0_sts"]];
+    NSString *mirror_3_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_member_1_id"]];
+    NSString *mirror_3_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_3_member_1_sts"]];
+    
+    /*
+     NSString *mirror_4_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_id"]];
+     NSString *mirror_4_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_sts"]];
+     NSString *mirror_4_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_map"]];
+     NSString *mirror_4_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_capacity"]];
+     NSString *mirror_4_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_member_0_id"]];
+     NSString *mirror_4_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_member_0_sts"]];
+     NSString *mirror_4_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_member_1_id"]];
+     NSString *mirror_4_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_4_member_1_sts"]];
+     
+     NSString *mirror_5_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_id"]];
+     NSString *mirror_5_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_sts"]];
+     NSString *mirror_5_map = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_map"]];
+     NSString *mirror_5_capacity = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_capacity"]];
+     NSString *mirror_5_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_member_0_id"]];
+     NSString *mirror_5_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_member_0_sts"]];
+     NSString *mirror_5_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_member_1_id"]];
+     NSString *mirror_5_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_5_member_1_sts"]];
+     */
+    
+    //NSString *mirrorStr = [NSString str]
+    
+    NSString *mirror = [NSString stringWithFormat:
+                        @""
+                        "Mirror state Map Capacity     Members\n"
+                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n"
+                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n"
+                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n"
+                        "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n",
+                        /*
+                         "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s\n"
+                         "%-6s %-5s %-3s %-12s %-2s %-5s %-2s %-5s",*/
+                        
+                        //NSString *mirror = [NSString stringWithFormat:
+                        //                    @"Mirror\tstate\tMap\tCapacity\t\tMembers \n"
+                        //                     "%s  %s  %s  %s  %s %s  %s %s",
+                        
+                        [mirror_0_id UTF8String],
+                        [mirror_0_sts UTF8String],
+                        [mirror_0_map UTF8String],
+                        [mirror_0_capacity UTF8String],
+                        [mirror_0_member_0_id UTF8String],
+                        [mirror_0_member_0_sts UTF8String],
+                        [mirror_0_member_1_id UTF8String],
+                        [mirror_0_member_1_sts UTF8String] ,
+                        
+                        [mirror_1_id UTF8String],
+                        [mirror_1_sts UTF8String],
+                        [mirror_1_map UTF8String],
+                        [mirror_1_capacity UTF8String],
+                        [mirror_1_member_0_id UTF8String],
+                        [mirror_1_member_0_sts UTF8String],
+                        [mirror_1_member_1_id UTF8String],
+                        [mirror_1_member_1_sts UTF8String],
+                        
+                        [mirror_2_id UTF8String],
+                        [mirror_2_sts UTF8String],
+                        [mirror_2_map UTF8String],
+                        [mirror_2_capacity UTF8String],
+                        [mirror_2_member_0_id UTF8String],
+                        [mirror_2_member_0_sts UTF8String],
+                        [mirror_2_member_1_id UTF8String],
+                        [mirror_2_member_1_sts UTF8String],
+                        
+                        [mirror_3_id UTF8String],
+                        [mirror_3_sts UTF8String],
+                        [mirror_3_map UTF8String],
+                        [mirror_3_capacity UTF8String],
+                        [mirror_3_member_0_id UTF8String],
+                        [mirror_3_member_0_sts UTF8String],
+                        [mirror_3_member_1_id UTF8String],
+                        [mirror_3_member_1_sts UTF8String]  /*,
+                                                             
+                                                             [mirror_4_id UTF8String],
+                                                             [mirror_4_sts UTF8String],
+                                                             [mirror_4_map UTF8String],
+                                                             [mirror_4_capacity UTF8String],
+                                                             [mirror_4_member_0_id UTF8String],
+                                                             [mirror_4_member_0_sts UTF8String],
+                                                             [mirror_4_member_1_id UTF8String],
+                                                             [mirror_4_member_1_sts UTF8String],
+                                                             
+                                                             [mirror_5_id UTF8String],
+                                                             [mirror_5_sts UTF8String],
+                                                             [mirror_5_map UTF8String],
+                                                             [mirror_5_capacity UTF8String],
+                                                             [mirror_5_member_0_id UTF8String],
+                                                             [mirror_5_member_0_sts UTF8String],
+                                                             [mirror_5_member_1_id UTF8String],
+                                                             [mirror_5_member_1_sts UTF8String]*/
+                        ];
+    
+    NSLog(@"%@", mirror);
+    
+    return mirror;
+    
+}
+
+- (NSString *)getEngineDriveShortStringtTitle {
+    return [NSString stringWithFormat:@"Target status port Storage WWPN       LUN  status"];
+}
+
+- (NSString *)getEngineDriveShortString:(NSDictionary *)dict {
+    //"Serial    Target status port Storage WWPN       LUN  status\n"
+    NSString *info = [NSString stringWithFormat:@""
+                      "%-6d %-6s %-4s %-18s %-4s %-s",
+                      [[dict objectForKey:@"drive_id"] intValue],
+                      [[dict objectForKey:@"drive_status"] UTF8String],
+                      [[dict objectForKey:@"path_0_port"] UTF8String],
+                      [[dict objectForKey:@"path_0_wwpn"] UTF8String],
+                      [[dict objectForKey:@"path_0_lun"] UTF8String],
+                      [[dict objectForKey:@"path_0_pstatus"] UTF8String]
+                      ];
+    return info;
 }
 
 @end

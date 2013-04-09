@@ -97,8 +97,8 @@
 	*/
      if([elementName isEqualToString:@"record"]) {
 
-         NSLog(@"Dict = %@", dict);
-         NSLog(@"Write to database");
+         NSLog(@"%s Dict = %@", __func__, dict);
+         NSLog(@"%s Write to database", __func__);
          //[appDelegate.books addObject:aBook];
          [appDelegate insertInto:tableName values:dict];
      

@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrystalSAN/SanDatabase.m"
-         timestampString = "386924638.035586"
+         timestampString = "387184140.985119"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "604"
-         endingLineNumber = "604"
+         startingLineNumber = "472"
+         endingLineNumber = "472"
          landmarkName = "-getVpdBySerial:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CrystalSAN/SanDatabase.m"
-         timestampString = "386924638.035586"
+         timestampString = "387184140.985119"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "652"
-         endingLineNumber = "652"
+         startingLineNumber = "544"
+         endingLineNumber = "544"
          landmarkName = "-getEngineCliMirrorDictBySerial:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -170,19 +170,6 @@
          startingLineNumber = "363"
          endingLineNumber = "363"
          landmarkName = "-mapViewDidFinishLoadingMap:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "CrystalSAN/HAApplianceConnectionViewController.m"
-         timestampString = "386859458.501806"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "610"
-         endingLineNumber = "610"
-         landmarkName = "-getMirrorShortString:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
