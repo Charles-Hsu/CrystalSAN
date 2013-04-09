@@ -107,9 +107,18 @@ proc engine_wwpn {args} {
 # 00D023    INFORTREND TECHNOLOGY, INC.
 # 000393    Apple Computer, Inc.
 
+#
+# http://standards.ieee.org/develop/regauth/oui/public.html
+#
+# 00062B    INTRASERVER TECHNOLOGY
+# 0000C9    Emulex Corporation
+# 001B32    QLogic Corporation
+# 001438    Hewlett-Packard Company
+# 00E08B    QLogic Corp.
+
 proc company_by_oui {args} {
     
-    set oui [lindex $args 0]
+    set oui [string toupper [lindex $args 0]]
     
     switch $oui \
       "006022" {
@@ -122,9 +131,18 @@ proc company_by_oui {args} {
         return "INFORTREND TECHNOLOGY, INC."
     }  "000393" {
         return "Apple Computer, Inc."
-    } default {
+    }  "00062B" {
+        return "INTRASERVER TECHNOLOGY"
+    }  "0000C9" {
+        return "Emulex Corporation"
+    }  "001B32" {
+        return "QLogic Corporation"
+    }  "001438" {
+        return "Hewlett-Packard Company"
+    }  "00E08B" {
+        return "QLogic Corp."
+    }  default  {
         return ""
-        # unknown
     }
     
 }
@@ -174,6 +192,7 @@ if {1} {
     set type "RAID"
     set model ""
     set serial ""
+    set out ""
     
     set sql "select DISTINCT path_0_wwpn wwpn from engine_cli_conmgr_drive_status_detail"
     db eval $sql {
@@ -191,7 +210,7 @@ if {1} {
                 # 2600-000155-610d31
                 #puts $wwpn
                 set wwpn_org $wwpn
-                scan $wwpn "%4s-%6s-%6s-%5s" p0 p1 p2 p3
+                scan $wwpn "%4s-%6s-%6s" p0 p1 p2
                 set wwpn "$p0$p1$p2"
                 
                 scan $wwpn "%1s" naa
@@ -201,17 +220,14 @@ if {1} {
                 "1" {
                     set oui [string range $wwpn 4 9]
                     puts $oui
-                    # file
                 } "2" {
                     set oui [string range $wwpn 4 9]
                     puts $oui
                 } "5" {
                     set oui [string range $wwpn 1 6]
-                    #puts $path_0_wwpn
                     puts $oui
                 } "6" {
                     set oui [string range $wwpn 1 6]
-                    #puts $path_0_wwpn
                     puts $oui
                 } default {
                     # unknown
@@ -236,6 +252,98 @@ if {1} {
             }
         }
 
+    }
+}
+
+
+if {0} {
+sqlite> .schema engine_cli_conmgr_initiator_status_detail
+CREATE TABLE engine_cli_conmgr_initiator_status_detail (serial TEXT, seconds INTEGER, initiator_id text, port TEXT, wwpn TEXT, status TEXT, PRIMARY KEY (serial, seconds, initiator_id));
+sqlite> select * from engine_cli_conmgr_initiator_status_detail limit 10;
+serial      seconds     initiator_id  port        wwpn                status
+----------  ----------  ------------  ----------  ------------------  ----------
+00600474    1363746626  0             A1          1000-00062b-1ec31c  I
+00600474    1363746626  1             A1          1000-00062b-1bc280  A
+00600474    1363746626  2             A1          1000-00062b-1bbfd8  A
+00600474    1363746626  3             A1          1000-00062b-1ec4f4  I
+00600306    1363746626  0             A1          1000-00062b-1ec31d  I
+00600306    1363746626  1             A1          1000-00062b-1bc281  A
+00600306    1363746626  2             A1          1000-00062b-1bbfd9  A
+00600306    1363746626  3             A1          1000-00062b-1ec4f5  I
+00500300    1363746630  0             A           1000-0000c9-6b645c  I
+00500300    1363746630  1             A           1000-00062b-1786cd  I
+sqlite>
+}
+
+# 00062B     (base 16)		INTRASERVER TECHNOLOGY
+# 0000C9     (base 16)		Emulex Corporation
+# 001B32     (base 16)		QLogic Corporation
+# 001438     (base 16)		Hewlett-Packard Company
+# 00E08B     (base 16)		QLogic Corp.
+
+
+if {1} {
+    puts "[exec date]===scan engine_cli_conmgr_initiator_status_detail======"
+    
+    set wwnn ""
+    set type "HBA"
+    set model ""
+    set serial ""
+    set out ""
+    set table_name "engine_cli_conmgr_initiator_status_detail"
+    
+    set sql "select DISTINCT wwpn wwpn from $table_name"
+    
+    db eval $sql {
+
+        set sql "select count(*) cc from wwpn_data where wwpn='$wwpn'"
+        
+        db eval $sql {
+
+            if { [expr $cc] == 0 } {
+
+                set wwpn_org $wwpn
+                scan $wwpn "%4s-%6s-%6s" p0 p1 p2
+                set wwpn "$p0$p1$p2"
+                
+                scan $wwpn "%1s" naa
+                
+                switch $naa \
+                "1" {
+                    set oui [string range $wwpn 4 9]
+                    #puts $oui
+                } "2" {
+                    set oui [string range $wwpn 4 9]
+                    #puts $oui
+                } "5" {
+                    set oui [string range $wwpn 1 6]
+                    #puts $oui
+                } "6" {
+                    set oui [string range $wwpn 1 6]
+                    #puts $oui
+                } default {
+                    # unknown
+                }
+                
+                set company_name [company_by_oui $oui]
+                
+                #set sql "CREATE TABLE IF NOT EXISTS wwpn_data (wwnn, wwpn primary key, oui, company_name, model, type, serial)"
+                
+                set sql "SELECT COUNT(*) cc FROM wwpn_data WHERE wwpn='$wwpn_org'"
+                #puts $sql
+                db eval $sql
+                puts $cc
+                if { [expr $cc] == 0 } {
+                    set sql "INSERT INTO wwpn_data VALUES ('$wwnn', '$wwpn_org', '$oui', '$company_name', '$model', '$type', '$serial')"
+                    #puts "==>$sql"
+                    db eval $sql
+                }
+                
+                
+                #engine_wwpn $wwnn $wwpn $type $serial $product_type
+            }
+        }
+        
     }
 }
 
