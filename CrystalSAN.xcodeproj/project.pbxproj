@@ -190,7 +190,7 @@
 		56552E36170C0BBC000CA5FB /* Device-HBA-disappeared.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-disappeared.png"; sourceTree = "<group>"; };
 		56552E37170C0BBC000CA5FB /* Device-HBA-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-healthy.png"; sourceTree = "<group>"; };
 		56552E38170C0BBC000CA5FB /* Device-HBA-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-problem.png"; sourceTree = "<group>"; };
-		5672C6B617126EC5008E6B8C /* scan_wwpn.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_wwpn.exp; sourceTree = "<group>"; };
+		5672C6B617126EC5008E6B8C /* scan_wwpn.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_wwpn.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.php; };
 		567FA33D1702CBA9000F5802 /* appicon144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon144.png; sourceTree = "<group>"; };
 		567FA33E1702CBA9000F5802 /* appicon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon72.png; sourceTree = "<group>"; };
 		567FA33F1702CBA9000F5802 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
