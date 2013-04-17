@@ -80,7 +80,7 @@
     [sanDatabase getEngineCliConmgrDriveStatusDetailBySerial:@"00600120"];
      */
     
-    self.currentDeviceName = @"";
+    self.currentDeviceName = nil;
     self.currentSiteIndex = 0;
     
     self.loadSiteViewTimes = 0;

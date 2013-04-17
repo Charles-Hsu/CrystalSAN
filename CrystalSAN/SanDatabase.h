@@ -45,6 +45,8 @@
 
 - (NSArray *)getInitiatorListByEngineSerial:(NSString *)serial;
 - (NSArray *)getDriveListByEngineSerial:(NSString *)serial;
+//- (NSArray *)getDriveArrayByEnginesSerial:(NSArray *)serials;
+- (NSArray *)getDriveArrayByEnginesSerial:(NSArray *)serials andSearchKey:(NSString *)searchTerm;
 
 
 - (NSDictionary *)getEngineCliDmepropDictBySerial:(NSString *)serial;
@@ -56,6 +58,7 @@
 - (NSString *)getEngineMirrorShortString:(NSDictionary *)dict;
 - (NSString *)getEngineDriveShortString:(NSDictionary *)dict;
 - (NSString *)getEngineDriveShortStringtTitle;
+- (NSString *)getCompanyNameByWWPN:(NSString *)wwpn;
 
 
 @end

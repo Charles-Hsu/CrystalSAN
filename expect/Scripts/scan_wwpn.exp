@@ -19,8 +19,8 @@ sqlite3 db $db_filename
 
 # Network Address Authority 1
 # – 10:00:<24-bit_OUI>:<24-bit_vendor_sequence_or_serial number>
-# – 10:00:00:00:C94:3d:a5:46
-#         ^^ ^^ ^^
+# – 10:00:00:00:C9:3d:a5:46
+#         ^^ ^^ ^^ xx xx xx
 # – You would key '0000c9' into the IEEE search engine
 
 
@@ -31,22 +31,23 @@ sqlite3 db $db_filename
 # – 20:00:00:20:37:13:12:1a
 # – 21:00:00:20:37:13:12:1a
 # – 22:00:00:20:37:13:12:1a
-#         ^^ ^^ ^^
+#         ^^ ^^ ^^ xx xx xx
 # You would key '002037' into the IEEE search engine
 
 
 # NAA 5 is IEEE registered name.
 # – 5<24-bit_OUI>:<36-bit_vendor_sequence_or_serial number>
 # – 50:06:04:85:c5:ed:aa:4c
-#    ^ ^^ ^^ ^ 
+#    ^ ^^ ^^ ^x xx xx xx xx
 # – the 24-bit OUI does not start on a byte boundary
 # - You would key '006048' into the IEEE search engine
 
 
 # NAA 6 is IEEE registered name.
-# – 60:02:0f:290:00:00:ca:93:3f:2e:b2:d4:00:01:8a:541011
-#    ^ ^^ ^^ ^
+# – 60:02:0f:20:00:00:ca:93:3f:2e:b2:d4:00:01:8a:54
+#    ^ ^^ ^^ ^x xx xx xx xx
 # - You would key '0020f2' into the IEEE search engine
+# 36 bit vendor sequence or serial number
 
 
 
@@ -56,11 +57,11 @@ if {0} {
     sqlite> select serial,path_0_wwpn from engine_cli_conmgr_drive_status_detail limit 30;
     serial      path_0_wwpn
     ----------  ------------------
-    00600474    2600-000155-610d31   ==> 000155 ==> Promise Technology, Inc.
+    00600474    2600-000155-610d31   ==> 000155 ==> Promise Technology, Inc., 610d31 ==> serial in hex
     00600474    2600-000155-610d32
     00600474    2602-000155-610d31
     00600474    2602-000155-610d32
-    00600474    6000-393000-01aa0d   ==> 000393 ==> Apple Computer, Inc.
+    00600474    6000-393000-01aa0d   ==> 000393 ==> Apple Computer, Inc., 000-01aa0d ==> serial in hex
     00600474    6000-393000-01a99f
     00600474    5006-022ad0-4f1000   ==> 006022 ==> VICOM SYSTEMS, INC.
     00600474    5006-022ad0-4f3000
@@ -93,7 +94,7 @@ proc engine_wwpn {args} {
         #puts "$cc"
         if { [expr $cc] == 0 } {
             #puts "a1"
-            set sql "INSERT INTO wwpn_data VALUES ('$wwnn', '$wwpn', '$oui', '$company_name', '$product_type', '$type', '$serial')"
+            set sql "INSERT INTO wwpn_data (wwnn, wwpn, oui, company_name, type, type, serial) VALUES ('$wwnn', '$wwpn', '$oui', '$company_name', '$product_type', '$type', '$serial')"
             #puts "==>$sql"
             db eval $sql
         }
@@ -147,7 +148,54 @@ proc company_by_oui {args} {
     
 }
 
-set sql "CREATE TABLE IF NOT EXISTS wwpn_data (wwnn, wwpn primary key, oui, company_name, model, type, serial)"
+
+proc serial_hex_2_decimal {args} {
+    
+    set hex [lindex $args 0]
+    set decimal [format "%010d" [expr 0x$hex]]
+    
+    puts "hex=$hex ====> decimal=$decimal"
+    
+    return $decimal
+    
+}
+
+# get_serial_port_info_by_wwpn $oui $serial
+proc get_serial_port_info_by_wwpn {args} {
+    
+    set oui [lindex $args 0]
+    set serial [lindex $args 1]
+    
+    set result {}
+    #foreach el $args {
+    #    lappend result [expr $el + $inc]
+    #}
+    #return $result
+
+    #set company_name [company_by_oui $oui]
+
+    # 006022 VICOM SYSTEMS, INC.
+    # 000612 Accusys, Inc.
+    if {$oui == "006022" || $oui == "000612"} {
+        # 5006022ad0421002
+        #  ^^^^^^......xxx
+        #  ^^^^^^ = oui
+        #  ...... = serial
+        #  xxx    = port_info
+        scan $serial "%6s%3s" s p
+        #puts "$serial, s == $s, p == $p"
+        lappend result $s
+        lappend result $p
+        return $result
+    }
+    
+    lappend result $serial
+    lappend result ""
+    return $result
+    
+}
+
+set sql "CREATE TABLE IF NOT EXISTS wwpn_data (wwnn, wwpn primary key, oui, company_name, model, type, serial, port_info)"
 db eval $sql
 
 if {1} {
@@ -159,6 +207,7 @@ if {1} {
     set company_name        "VICOM SYSTEMS, INC."
     
     set sql "select serial,product_type,a1_wwnn wwnn,a1_wwpn,a2_wwpn,b1_wwpn,b2_wwpn from $table_name"
+    #puts $sql
     db eval $sql {
         if {[string length $a1_wwpn] != 0} {
             set wwpn $a1_wwpn
@@ -179,6 +228,8 @@ if {1} {
     }
 }
 
+
+ 
 
 if {1} {
     puts "[exec date]===scan engine_cli_conmgr_drive_status_detail=========="
@@ -219,21 +270,26 @@ if {1} {
                 switch $naa \
                 "1" {
                     set oui [string range $wwpn 4 9]
-                    puts $oui
+                    set serial [string range $wwpn 10 15]
                 } "2" {
                     set oui [string range $wwpn 4 9]
-                    puts $oui
+                    set serial [string range $wwpn 10 15]
                 } "5" {
                     set oui [string range $wwpn 1 6]
-                    puts $oui
+                    set serial [string range $wwpn 7 15]
+                    
+                    set info [get_serial_port_info_by_wwpn $oui $serial]
+                    puts "$wwpn $info"
+                    
                 } "6" {
                     set oui [string range $wwpn 1 6]
-                    puts $oui
+                    set serial [string range $wwpn 7 15]
                 } default {
                     # unknown
                 }
                 
                 set company_name [company_by_oui $oui]
+                set serial [serial_hex_2_decimal $serial]
                 
                 #set sql "CREATE TABLE IF NOT EXISTS wwpn_data (wwnn, wwpn primary key, oui, company_name, model, type, serial)"
 
@@ -242,7 +298,7 @@ if {1} {
                 db eval $sql
                 #puts $cc
                 if { [expr $cc] == 0 } {
-                    set sql "INSERT INTO wwpn_data VALUES ('$wwnn', '$wwpn_org', '$oui', '$company_name', '$model', '$type', '$serial')"
+                    set sql "INSERT INTO wwpn_data (wwnn, wwpn, oui, company_name, type, type, serial) VALUES ('$wwnn', '$wwpn_org', '$oui', '$company_name', '$model', '$type', '$serial')"
                     #puts "==>$sql"
                     db eval $sql
                 }
@@ -311,21 +367,22 @@ if {1} {
                 switch $naa \
                 "1" {
                     set oui [string range $wwpn 4 9]
-                    #puts $oui
+                    set serial [string range $wwpn 10 15]
                 } "2" {
                     set oui [string range $wwpn 4 9]
-                    #puts $oui
+                    set serial [string range $wwpn 10 15]
                 } "5" {
                     set oui [string range $wwpn 1 6]
-                    #puts $oui
+                    set serial [string range $wwpn 7 15]
                 } "6" {
                     set oui [string range $wwpn 1 6]
-                    #puts $oui
+                    set serial [string range $wwpn 7 15]
                 } default {
                     # unknown
                 }
                 
                 set company_name [company_by_oui $oui]
+                set serial [serial_hex_2_decimal $serial]
                 
                 #set sql "CREATE TABLE IF NOT EXISTS wwpn_data (wwnn, wwpn primary key, oui, company_name, model, type, serial)"
                 
@@ -334,7 +391,7 @@ if {1} {
                 db eval $sql
                 puts $cc
                 if { [expr $cc] == 0 } {
-                    set sql "INSERT INTO wwpn_data VALUES ('$wwnn', '$wwpn_org', '$oui', '$company_name', '$model', '$type', '$serial')"
+                    set sql "INSERT INTO wwpn_data (wwnn, wwpn, oui, company_name, type, type, serial) VALUES ('$wwnn', '$wwpn_org', '$oui', '$company_name', '$model', '$type', '$serial')"
                     #puts "==>$sql"
                     db eval $sql
                 }

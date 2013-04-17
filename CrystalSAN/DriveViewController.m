@@ -18,7 +18,7 @@
     NSUInteger totalCount;
 
     AppDelegate *theDelegate;
-    NSMutableArray *deviceArray;
+    NSArray *deviceArray;
 
 }
 @end
@@ -134,7 +134,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"%s", __func__);
-    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
     
     if ([theDelegate.currentDeviceName length] == 0) {
         haApplianceName.hidden = YES;
@@ -146,10 +145,17 @@
     
     // currentDeviceName in theDelegate is a HA-Cluster-Name
     
-    NSLog(@"%s currentDeviceName %@, %@-%@", __func__, theDelegate.currentDeviceName, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+    //NSLog(@"%s currentDeviceName %@, %@-%@", __func__, theDelegate.currentDeviceName, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
     
-    deviceArray = (NSMutableArray *)[sanDatabase getDriveListByEngineSerial:theDelegate.currentEngineLeftSerial];
-    [deviceArray addObjectsFromArray:[sanDatabase getDriveListByEngineSerial:theDelegate.currentEngineRightSerial]];
+    //NSArray *enginesSerial = [[NSArray alloc] initWithObjects:theDelegate.currentEngineLeftSerial,theDelegate.currentEngineRightSerial, nil];
+    
+    NSMutableArray *enginesSerial = [[NSMutableArray alloc] init];
+
+    [enginesSerial addObject:theDelegate.currentEngineLeftSerial];
+    if ([theDelegate.currentEngineRightSerial length] != 0) {
+        [enginesSerial addObject:theDelegate.currentEngineRightSerial];
+    }
+    deviceArray = [theDelegate.sanDatabase getDriveArrayByEnginesSerial:enginesSerial andSearchKey:nil];
     
     if (carousel.currentItemIndex > [deviceArray count]) {
         carousel.currentItemIndex = 0;
@@ -159,12 +165,9 @@
     
     currentCollectionCount = [deviceArray count];
     totalCount = [deviceArray count];
-    //NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
     
-    //NSLog(@"%s size of diskArray %u", __func__, [deviceArray count]);
-    //NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
     [carousel reloadData];
 }
 
@@ -314,17 +317,16 @@
 {
     NSLog(@"%s searchTerm=%@", __func__, searchTerm);
     
+    NSMutableArray *enginesSerial = [[NSMutableArray alloc] init];
+    
+    [enginesSerial addObject:theDelegate.currentEngineLeftSerial];
+    if ([theDelegate.currentEngineRightSerial length] != 0) {
+        [enginesSerial addObject:theDelegate.currentEngineRightSerial];
+    }
+    deviceArray = [theDelegate.sanDatabase getDriveArrayByEnginesSerial:enginesSerial andSearchKey:searchTerm];
+
     //descriptions = [sanDatabase getVmirrorListByKey:searchTerm];
     //totalItemCount.text = [NSString stringWithFormat:@"%u", [descriptions count]];
-    
-    if ([searchTerm length] != 0)
-    {
-        //[totalItem setHidden:NO];
-    }
-    else
-    {
-        //[totalItem setHidden:YES];
-    }
     
     [carousel reloadData];
 
@@ -336,7 +338,20 @@
     } else {
         //currentItemIndex.text = [NSString stringWithFormat:@"%u", 0];
     }
-        
+    
+    currentItemIndex = carousel.currentItemIndex;
+    
+    currentCollectionCount = [deviceArray count];
+    totalCount = [deviceArray count];
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+    
+    for (int i=0; i<[deviceArray count]; i++) {
+        NSDictionary *dict = [deviceArray objectAtIndex:i];
+        NSLog(@"%s %@ %@ %@", __func__,  [dict valueForKey:@"serial"], [dict valueForKey:@"drive_id"], [dict valueForKey:@"path_0_wwpn"]);
+    }
+
+    
     //if ([searchTerm length] == 0) {
     //    [self resetSearch];
     //    [carousel reloadData];
@@ -358,24 +373,16 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    //NSLog(@"%s index=%u %@", __func__, index, [descriptions objectAtIndex:index]);
     UILabel *theLabel = nil;
-    //NSInteger status = [[statusArray objectAtIndex:index] integerValue];
-    
-    //NSLog(@"%s %@", __func__, [deviceArray objectAtIndex:index]);
-    
     NSDictionary *dict = [deviceArray objectAtIndex:index];
-    
     NSString *status = [dict valueForKey:@"drive_status"];
-
     
 	//create new view if no view is available for recycling
-	if (view == nil)
-	{
-        UIButton *theButton;
+	if (view == nil) {
+        
         view = [[UIView alloc] init];
         //view.backgroundColor = [UIColor redColor];
-        
+        UIButton *theButton;
         UIImage *theItemImage = nil;
         
         if ([status isEqualToString:@"A"]) {
@@ -384,27 +391,11 @@
             theItemImage = [UIImage imageNamed:@"Device-Drive-problem"];
         }
         
-        
-        //switch (index) {
-        //    case 0:
-        //        theItemImage = [UIImage imageNamed:@"Device-Drive-problem"];
-        //        break;
-        //    case 1:
-        //        theItemImage = [UIImage imageNamed:@"Device-Drive-degraded"];
-        //        break;
-        //    case 2:
-        //        theItemImage = [UIImage imageNamed:@"Device-Drive-disappeared"];
-        //        break;
-        //    default:
-        //        theItemImage = [UIImage imageNamed:@"Device-Drive-healthy"];
-        //        break;
-        //}
-
-        
         theLabel = [[UILabel alloc] init];
-        theLabel.numberOfLines = 0;
         theLabel.textColor = [UIColor darkGrayColor];
         theLabel.font = [UIFont systemFontOfSize:12];
+        theLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        theLabel.numberOfLines = 0;
         
         float itemWidth, itemHeight;
         
@@ -413,31 +404,29 @@
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
-        //theButton.tag = ITEM_BUTTON_START_TAG + index;
         [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         
-        theLabel.frame = CGRectMake(0, itemHeight-20, itemWidth, 40);
-        //theLabel.alpha = 0.5;
+        theLabel.frame = CGRectMake(0, itemHeight-25, itemWidth, 60);
         theLabel.backgroundColor = [UIColor clearColor];
         //theLabel.backgroundColor = [UIColor yellowColor];
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.tag = 1;
         
-        //NSLog(@"theButton.tag=%u", theButton.tag);
-        
         view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
         [view addSubview:theButton];
         [view addSubview:theLabel];
+
         //define button handler
         [theButton setImage:theItemImage forState:UIControlStateNormal];
     }
-    else
-	{
+    else {
         theLabel = (UILabel *)[view viewWithTag:1];
 	}
     
-    // NSString *text = @"Updated: 2012/10/14 21:59"
-    NSString *text = [NSString stringWithFormat:@"%@-%@\n%@:%@",[dict valueForKey:@"serial"], [dict valueForKey:@"drive_id"], [dict valueForKey:@"path_0_port"], [dict valueForKey:@"path_0_wwpn"]];
+    NSString *companyName = [theDelegate.sanDatabase getCompanyNameByWWPN:[dict valueForKey:@"path_0_wwpn"]];
+    NSString *text = [NSString stringWithFormat:@"%@ : %@\n%@:%@\n%@",[dict valueForKey:@"serial"], [dict valueForKey:@"drive_id"], [dict valueForKey:@"path_0_port"], [dict valueForKey:@"path_0_wwpn"], companyName];
+    
+    //NSLog(@"%s %@", __func__, companyName);
     
     if ([theLabel respondsToSelector:@selector(setAttributedText:)])
     {

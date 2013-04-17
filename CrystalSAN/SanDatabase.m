@@ -12,6 +12,7 @@
 @interface SanDatabase ()
     - (NSString *)copyServerDbFromResource;
     - (NSArray *)httpGetSanInformation:(NSString *)phpURL bySerial:(NSString *)serial;
+    - (NSArray *)getDriveArrayByEnginesSerial:(NSArray *)serials;
 @end
 
 @implementation SanDatabase
@@ -978,6 +979,78 @@
                       [[dict objectForKey:@"path_0_pstatus"] UTF8String]
                       ];
     return info;
+}
+
+- (NSString *)getCompanyNameByWWPN:(NSString *)wwpn {
+    NSString *sql = [NSString stringWithFormat:@"SELECT company_name FROM wwpn_data WHERE wwpn = '%@'", wwpn];
+    FMResultSet *rs = [db executeQuery:sql];
+    NSString *companyName = @"";
+    if ([rs next])
+    {
+        companyName = [rs stringForColumnIndex:0];
+    }
+    // close the result set.
+    // it'll also close when it's dealloc'd, but we're closing the database before
+    // the autorelease pool closes, so sqlite will complain about it.
+    [rs close];
+    return companyName;
+}
+
+- (NSArray *)getDriveArrayByEnginesSerial:(NSArray *)serials {
+    NSMutableArray *drivers = [[NSMutableArray alloc] init];
+    for (int i=0; i<[serials count]; i++) {
+        NSString *serial = [serials objectAtIndex:i];
+        //if ([serial length] != 0) {
+            NSString *whereClause = ([serial length]==0 ? @"" : [NSString stringWithFormat:@"WHERE serial='%@'", serial]);
+            NSString *sql = [NSString stringWithFormat:@"SELECT serial, drive_id,drive_status,path_0_id,path_0_port,path_0_wwpn,path_0_lun,path_0_pstatus FROM engine_cli_conmgr_drive_status_detail %@", whereClause];
+            NSLog(@"%s %@", __func__, sql);
+            FMResultSet *rs = [db executeQuery:sql];
+            
+            /*
+             select * from engine_cli_conmgr_drive_status_detail where serial='00600118' or serial='00600120' order by drive_id;
+             serial      seconds     drive_id    drive_status  path_0_id   path_0_port  path_0_wwpn         path_0_lun  path_0_pstatus  path_1_id   path_1_port  path_1_wwpn  path_1_lun  path_1_pstatus
+             ----------  ----------  ----------  ------------  ----------  -----------  ------------------  ----------  --------------  ----------  -----------  -----------  ----------  --------------
+             00600118    1363746628  0           A             1           B1           5000-612032-f02000  0000        A
+             00600120    1363746628  0           A             1           B1           5000-612032-f02000  0000        A
+             00600118    1363746628  1           A             1           B1           5000-612032-f18000  0000        A
+             */
+            
+            while ([rs next])
+            {
+                [drivers addObject:[rs resultDictionary]];
+            }
+            [rs close];
+        //}
+    }
+    return drivers;
+}
+
+- (NSArray *)getDriveArrayByEnginesSerial:(NSArray *)serials andSearchKey:(NSString *)searchTerm {
+    NSArray *drivers = [self getDriveArrayByEnginesSerial:serials];
+    
+    NSLog(@"%s %@ searchTerm=%@", __func__, serials, searchTerm);
+    
+    if ([searchTerm length] != 0) {
+        NSMutableArray *matched = [[NSMutableArray alloc] init];
+        NSInteger count = 0;
+        for (int i=0; i<[drivers count]; i++) {
+            NSString *serial = [[drivers objectAtIndex:i] valueForKey:@"serial"];
+            NSRange range = [serial rangeOfString:searchTerm];
+            if (range.location != NSNotFound && range.length == [searchTerm length]) {
+                //NSLog(@"%s %@ %@ location:%d length:%d, count=%u", __func__, serial, searchTerm, range.location, range.length, count+1);
+                count++;
+                [matched addObject:[drivers objectAtIndex:i]];
+            }
+            
+            
+            
+            //if (serial && [serial caseInsensitiveCompare:searchTerm] == NSOrderedSame) {
+            //    NSLog(@"NSOrderedSame %s %@ %@", __func__, serial, searchTerm);
+            //}
+        }
+        return matched;
+    }
+    return drivers;
 }
 
 @end

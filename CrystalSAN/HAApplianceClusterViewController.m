@@ -283,7 +283,7 @@
                                //"128 HBA support\n"
                                //"All active/passive drives are assumed to be FastT compatible.\n"
                                "%@ Firmware Revision : 11.1.2.9 VCMSVMIR Official Release\n"
-                               //"Revision Data : Vicom(release), %@\n"
+                               "Revision Data : Vicom(release), %@\n"
                                //"(C) 1995-2010 Vicom Systems, Inc. All Rights Reserved.\n"
                                "Redboot(tm) version: %@\n"
                                " \n"
