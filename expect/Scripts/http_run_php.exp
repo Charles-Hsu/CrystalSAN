@@ -1,0 +1,48 @@
+proc sendDataToWebServer {type {data ""}} {
+    set config_file "Config/site_config.xml"
+    
+    set site "KBS_DEMO"
+    set id "test_id"
+    set client "client"
+    set webserver_url "http://localhost/CrystalSANServer/"
+    set webserver_url "http://localhost/CrystalSANServer/parse_xml_all_files.php"
+    
+    if {0} {
+        set webserver_url [readNodeInfo $config_file webserver_url]
+        if {($webserver_url =="") || ($webserver_url =="none") } {
+            set webserver_url [readNodeInfo $config_file webserver_default]
+        }
+        if {($webserver_url =="") || ($webserver_url =="none") } {
+            puts "///// ERROR : webserver_url not exist === ";
+            exit;
+        }
+        
+        set site [readNodeInfo $config_file site_name]
+        set id [readNodeInfo $config_file site_id]
+        set client [info hostname]
+        if {[regexp "(\[^/]+\\\.(txt|xml|html))$" $type dump filename txt_xml_html]} {
+            if {![file exists $type]} {puts "///// ERROR: $type not exist";exit}
+            set data [readFile $type]
+            if {$txt_xml_html=="xml"} {
+                set data "<?xml version='1.0' encoding='utf-8'?>\n$data"
+            } elseif {$txt_xml_html=="html"} {
+                set data "<!DOCTYPE html>\n<html><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8'></head><body><pre>$data</pre></body></html>"
+            }
+            set type $filename
+        }
+    }
+    
+    #set query_list "site $site id $id client $client type $type data $data"
+    package require http
+    set query [::http::formatQuery site $site id $id client $client type $type data $data]
+    puts "----------- $query ---------------"
+    ::http::config -useragent "Mozilla/4.75 (X11; U; Linux 2.2.17; i586; Nav)"
+    return [::http::data [::http::geturl $webserver_url -query $query]]
+};### end of proc sendDataToWebServer
+
+set type "filename";
+set data "databalbla....";
+set testHttpUrl [sendDataToWebServer {type {data ""}}];
+
+puts $testHttpUrl;
+
