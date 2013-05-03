@@ -20,8 +20,14 @@ db eval $sql
 
 db eval {select b.site_name, a.serial 'SN',a.cluster_id,substr(a.path_0_wwpn,6),b.engine_name,substr(b.a1_wwpn,6) from engine_cli_conmgr_engine_status a, engine_cli_vpd b where a.serial=b.serial and a.cluster_id=2} {
 
+    
+    // select b.site_name, a.serial 'SN',a.cluster_id,substr(a.p0_wwpn,6),b.engine_name,substr(b.a1_wwpn,6) from engine_cli_conmgr_engine_status a, engine_cli_vpd b where a.serial=b.serial and a.cluster_id=2
+    
+    // select a.serial 'SN',a.cluster_id,substr(a.p0_wwpn,6) from engine_cli_conmgr_engine_status a where a.cluster_id=2;
+    
+    
     set sql "select serial,engine_name from engine_cli_vpd where substr(a1_wwpn,6)='$substr(a.path_0_wwpn,6)'"
-    #puts $sql
+    puts $sql
     
     set cluster_engines "'$SN'"
     #puts $cluster_engines

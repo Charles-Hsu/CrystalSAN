@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSNumber * longitude;
 @property (nonatomic, strong) NSString * name;
 
+@property (nonatomic, assign) NSString *locationType;
+
+
 
 - (id)initWihtName:(NSString *)_name lat:(float)_latitude lon:(float)_longitude;
 

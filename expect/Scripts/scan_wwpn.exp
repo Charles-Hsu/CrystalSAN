@@ -178,11 +178,11 @@ proc get_serial_port_info_by_wwpn {args} {
     # 000612 Accusys, Inc.
     if {$oui == "006022" || $oui == "000612"} {
         # 5006022ad0421002
-        #  ^^^^^^......xxx
+        #  ^^^^^^.......xx
         #  ^^^^^^ = oui
         #  ...... = serial
-        #  xxx    = port_info
-        scan $serial "%6s%3s" s p
+        #  xx     = port_info
+        scan $serial "%7s%2s" s p
         #puts "$serial, s == $s, p == $p"
         lappend result $s
         lappend result $p
@@ -244,6 +244,7 @@ if {1} {
     set model ""
     set serial ""
     set out ""
+    set port_info ""
     
     set sql "select DISTINCT path_0_wwpn wwpn from engine_cli_conmgr_drive_status_detail"
     db eval $sql {
@@ -279,11 +280,18 @@ if {1} {
                     set serial [string range $wwpn 7 15]
                     
                     set info [get_serial_port_info_by_wwpn $oui $serial]
-                    puts "$wwpn $info"
+                    set serial [lindex info 0]
+                    set port_info [lindex info 1]
+                    #puts "$wwpn $info"
                     
                 } "6" {
                     set oui [string range $wwpn 1 6]
                     set serial [string range $wwpn 7 15]
+                
+                    set info [get_serial_port_info_by_wwpn $oui $serial]
+                    set serial [lindex info 0]
+                    set port_info [lindex info 1]
+
                 } default {
                     # unknown
                 }
@@ -298,8 +306,8 @@ if {1} {
                 db eval $sql
                 #puts $cc
                 if { [expr $cc] == 0 } {
-                    set sql "INSERT INTO wwpn_data (wwnn, wwpn, oui, company_name, type, type, serial) VALUES ('$wwnn', '$wwpn_org', '$oui', '$company_name', '$model', '$type', '$serial')"
-                    #puts "==>$sql"
+                    set sql "INSERT INTO wwpn_data (wwnn, wwpn, oui, company_name, type, type, serial, port_info) VALUES ('$wwnn', '$wwpn_org', '$oui', '$company_name', '$model', '$type', '$serial', '$port_info')"
+                    puts "==>$sql"
                     db eval $sql
                 }
                 

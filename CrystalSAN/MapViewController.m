@@ -13,6 +13,10 @@
 
 #import "FLLocation.h"
 
+#import "Annotation.h"
+#import "CustomAnnotationView.h"
+
+
 
 @interface MapViewController () {
     
@@ -148,9 +152,13 @@
     
     locations = [[NSMutableArray alloc] initWithObjects:locationTaipei, locationSouthKorea, locationBaltimore, locationLasVegas, locationSiliconValley, locationParis, locationBeijing, locationTokyo, locationLondon, nil];
     
-    //locations = [[NSMutableArray alloc] initWithObjects:locationParis, locationLondon, locationBeijing, locationTokyo, nil];
-    
     [_mapView addAnnotations:locations];
+    
+    //Annotation *ann = [[Annotation alloc]initWithLocation:CLLocationCoordinate2DMake(25.044,121.526)];
+    //[_mapView addAnnotation:ann];
+    //ann.name = @"Taipei";
+    //ann.locationType = @"airport";
+
     
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -273,10 +281,54 @@
 
 }
 
-///*
+/*
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    // If it's the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    // Handle any custom annotations.
+    if ([annotation isKindOfClass:[Annotation class]]) {
+        
+        // Try to dequeue an existing pin view first.
+        CustomAnnotationView* pinView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+        if (!pinView){
+            // If an existing pin view was not available, create one.
+            pinView = [[CustomAnnotationView alloc] initWithAnnotation:annotation
+                                                       reuseIdentifier:@"CustomPinAnnotationView"];
+            //[pinView setPinColor:MKPinAnnotationColorGreen];
+            [pinView setImage:[UIImage imageNamed:@"coordinate.png"]];
+            [pinView setAnimatesDrop:YES];
+            [pinView setCanShowCallout:YES];
+            [pinView setDraggable:YES];
+        }
+        else
+            pinView.annotation = annotation;
+        
+        return pinView;
+
+    
+    }
+    
+    
+    
+    return nil;
+}
+*/
+
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
+    NSLog(@"%s %@", __func__, [annotation title]);
     MKAnnotationView *pinView = nil;
+    
+    
+    
+    //pinView.contentHeight = height;
+    //pinView.titleHeight = 25;
+    
+    pinView.backgroundColor = [UIColor redColor];
+    
+    
     //if(annotation != mapView.userLocation)
     //{
         static NSString *defaultPinID = @"com.loxoll.pin";
@@ -294,13 +346,23 @@
     //    [mapView.userLocation setTitle:@"I am here"];
     //}
     
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+    //UIButton *infoButton = [[UIButton alloc] init];
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //[infoButton imageView] = [UIImage imageNamed:@"CalloutButton"];
+    [infoButton setImage:[UIImage imageNamed:@"CalloutButton.png"]
+                        forState:UIControlStateNormal];
+    [infoButton setFrame:CGRectMake(100, 100, 100, 100)];
+    
     pinView.rightCalloutAccessoryView = infoButton;
+    pinView.leftCalloutAccessoryView = infoButton;
+    
+    [pinView sizeToFit];
+    
 	[infoButton addTarget:self action:@selector(gotoSite:) forControlEvents:UIControlEventTouchUpInside];
     
     return pinView;
 }
- //*/
 
 /*
 
