@@ -534,6 +534,7 @@
 		56AC7675170A9F3700FAAF78 /* SourceCodePro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56AC7663170A9F3700FAAF78 /* SourceCodePro-Bold.otf */; };
 		56AC767B170A9F3700FAAF78 /* ReadMe.html in Resources */ = {isa = PBXBuildFile; fileRef = 56AC7669170A9F3700FAAF78 /* ReadMe.html */; };
 		56AC767C170A9F3700FAAF78 /* SourceCodeProReadMe.html in Resources */ = {isa = PBXBuildFile; fileRef = 56AC766A170A9F3700FAAF78 /* SourceCodeProReadMe.html */; };
+		56AD9C0B17350DFF0088BEED /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD9C0A17350DFF0088BEED /* LoginViewController.m */; };
 		56BD567016E99A8400E56664 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56BD566F16E99A8400E56664 /* Settings.bundle */; };
 		56BDEC73169BE6D10076CD6B /* RaidViewVcController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BDEC72169BE6D10076CD6B /* RaidViewVcController.m */; };
 		56C4AF6D16F1A24800E829A2 /* XMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C4AF6C16F1A24800E829A2 /* XMLParser.m */; };
@@ -1114,6 +1115,8 @@
 		56AC766A170A9F3700FAAF78 /* SourceCodeProReadMe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SourceCodeProReadMe.html; sourceTree = "<group>"; };
 		56AC7686170AC1AF00FAAF78 /* parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = parse_engine_all.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.php; };
 		56AC7688170AC1E200FAAF78 /* public-parse-xml-proc.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = "public-parse-xml-proc.exp"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.php; };
+		56AD9C0917350DEA0088BEED /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		56AD9C0A17350DFF0088BEED /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		56BD566F16E99A8400E56664 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewVcController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewVcController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewVcController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewVcController.m; sourceTree = "<group>"; };
@@ -1948,6 +1951,8 @@
 				561284D716A7CDF200F53C49 /* FlipTopPopToRoot.h */,
 				561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */,
 				56D191D616E080D0002BB2B5 /* MirrorViewRController.h */,
+				56AD9C0917350DEA0088BEED /* LoginViewController.h */,
+				56AD9C0A17350DFF0088BEED /* LoginViewController.m */,
 				56D191D716E080F0002BB2B5 /* MirrorViewRController.m */,
 				56BDEC71169BE6B50076CD6B /* RaidViewVcController.h */,
 				56BDEC72169BE6D10076CD6B /* RaidViewVcController.m */,
@@ -2619,6 +2624,7 @@
 				56DA732C1720FD1900A0D781 /* Annotation.m in Sources */,
 				56DA732F1720FD1900A0D781 /* CustomAnnotationView.m in Sources */,
 				56E002C0172A2DA500B750F8 /* http_run_php.exp in Sources */,
+				56AD9C0B17350DFF0088BEED /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

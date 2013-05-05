@@ -1,0 +1,1371 @@
+<engine name='engine_233'>
+<events id='1363069307001'>
+<dt>3/12/2013, 09:44:47</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B1 connection 4 = drive #9</text><text id='3'>    WWPN=6000-393000-01fca2, LUN=0000-0000000000, Port ID 0x014200</text>
+</events>
+<events id='1363069307002'>
+<dt>3/12/2013, 09:44:52</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B1 connection 5 = drive #7</text><text id='3'>    WWPN=6000-393000-01fc92, LUN=0000-0000000000, Port ID 0x014300</text>
+</events>
+<events id='1363069307003'>
+<dt>3/12/2013, 10:04:13</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B1 connection 5 = drive #7</text><text id='3'>    WWPN=6000-393000-01fc92, LUN=0000-0000000000, Port ID 0x014300</text>
+</events>
+<events id='1363069307004'>
+<dt>3/12/2013, 10:04:25</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B1 connection 4 = drive #9</text><text id='3'>    WWPN=6000-393000-01fca2, LUN=0000-0000000000, Port ID 0x014200</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363069307001'>
+<dt>3/12/2013, 09:44:41</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B1 connection 4 = drive #9</text><text id='3'>    WWPN=6000-393000-01fca2, LUN=0000-0000000000, Port ID 0x014200</text>
+</events>
+<events id='1363069307002'>
+<dt>3/12/2013, 09:44:46</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B1 connection 5 = drive #7</text><text id='3'>    WWPN=6000-393000-01fc92, LUN=0000-0000000000, Port ID 0x014300</text>
+</events>
+<events id='1363069307003'>
+<dt>3/12/2013, 10:04:09</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B1 connection 5 = drive #7</text><text id='3'>    WWPN=6000-393000-01fc92, LUN=0000-0000000000, Port ID 0x014300</text>
+</events>
+<events id='1363069307004'>
+<dt>3/12/2013, 10:04:20</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B1 connection 4 = drive #9</text><text id='3'>    WWPN=6000-393000-01fca2, LUN=0000-0000000000, Port ID 0x014200</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363091991001'>
+<dt>3/12/2013, 21:33:47</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+</engine>
+
+
+<engine name='engine_234'>
+<events id='1363092231001'>
+<dt>3/12/2013, 21:37:07</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363092231002'>
+<dt>3/12/2013, 21:37:30</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363146593001'>
+<dt>3/13/2013, 12:44:00</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146593002'>
+<dt>3/13/2013, 12:44:25</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146593003'>
+<dt>3/13/2013, 12:44:25</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146593004'>
+<dt>3/13/2013, 12:44:25</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146593005'>
+<dt>3/13/2013, 12:44:29</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146593006'>
+<dt>3/13/2013, 12:44:29</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363146594001'>
+<dt>3/13/2013, 12:43:28</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146594002'>
+<dt>3/13/2013, 12:43:54</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146594003'>
+<dt>3/13/2013, 12:43:54</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363146713001'>
+<dt>3/13/2013, 12:45:16</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146713002'>
+<dt>3/13/2013, 12:45:16</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146713003'>
+<dt>3/13/2013, 12:45:16</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146713004'>
+<dt>3/13/2013, 12:45:16</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146713005'>
+<dt>3/13/2013, 12:45:37</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363146713006'>
+<dt>3/13/2013, 12:46:30</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363146714001'>
+<dt>3/13/2013, 12:45:10</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146714002'>
+<dt>3/13/2013, 12:45:11</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146714003'>
+<dt>3/13/2013, 12:45:19</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363146714004'>
+<dt>3/13/2013, 12:45:34</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363146714005'>
+<dt>3/13/2013, 12:46:02</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363146714006'>
+<dt>3/13/2013, 12:46:24</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146714007'>
+<dt>3/13/2013, 12:46:24</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363146833001'>
+<dt>3/13/2013, 12:47:51</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146833002'>
+<dt>3/13/2013, 12:47:51</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146833003'>
+<dt>3/13/2013, 12:48:41</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363146834001'>
+<dt>3/13/2013, 12:46:51</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363146834002'>
+<dt>3/13/2013, 12:47:14</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146834003'>
+<dt>3/13/2013, 12:47:37</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363146953001'>
+<dt>3/13/2013, 12:49:29</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953002'>
+<dt>3/13/2013, 12:49:29</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953003'>
+<dt>3/13/2013, 12:49:55</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953004'>
+<dt>3/13/2013, 12:50:17</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363146953001'>
+<dt>3/13/2013, 12:49:49</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953002'>
+<dt>3/13/2013, 12:50:27</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953003'>
+<dt>3/13/2013, 12:50:42</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363146953004'>
+<dt>3/13/2013, 12:50:42</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953005'>
+<dt>3/13/2013, 12:50:43</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953006'>
+<dt>3/13/2013, 12:50:43</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953007'>
+<dt>3/13/2013, 12:50:43</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953008'>
+<dt>3/13/2013, 12:50:43</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953009'>
+<dt>3/13/2013, 12:50:43</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363146953010'>
+<dt>3/13/2013, 12:50:43</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363147073001'>
+<dt>3/13/2013, 12:51:45</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147073002'>
+<dt>3/13/2013, 12:52:07</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147073003'>
+<dt>3/13/2013, 12:52:07</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147073004'>
+<dt>3/13/2013, 12:52:48</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147073005'>
+<dt>3/13/2013, 12:52:49</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147073006'>
+<dt>3/13/2013, 12:52:49</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147073007'>
+<dt>3/13/2013, 12:52:49</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147073008'>
+<dt>3/13/2013, 12:52:49</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363147074001'>
+<dt>3/13/2013, 12:51:13</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363147074002'>
+<dt>3/13/2013, 12:51:40</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147074003'>
+<dt>3/13/2013, 12:52:23</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363147074004'>
+<dt>3/13/2013, 12:52:43</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363147193001'>
+<dt>3/13/2013, 12:53:18</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147193002'>
+<dt>3/13/2013, 12:53:44</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147193003'>
+<dt>3/13/2013, 12:54:12</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147193004'>
+<dt>3/13/2013, 12:54:12</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147193005'>
+<dt>3/13/2013, 12:54:44</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 2 = drive #11</text><text id='3'>    WWPN=6000-393000-01f9ae, LUN=0000-0000000000, Port ID 0x024000</text>
+</events>
+<events id='1363147193006'>
+<dt>3/13/2013, 12:54:46</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8303 (33539), member=11 (0x000b)</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363147193001'>
+<dt>3/13/2013, 12:53:12</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 11</text>
+</events>
+<events id='1363147193002'>
+<dt>3/13/2013, 12:54:05</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363147193003'>
+<dt>3/13/2013, 12:54:36</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 11</text>
+</events>
+<events id='1363147193004'>
+<dt>3/13/2013, 12:54:38</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 2 = drive #11</text><text id='3'>    WWPN=6000-393000-01f9ae, LUN=0000-0000000000, Port ID 0x024000</text>
+</events>
+<events id='1363147193005'>
+<dt>3/13/2013, 12:54:41</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8303 (33539), member=11 (0x000b)</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363147313001'>
+<dt>3/13/2013, 12:55:03</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363147313002'>
+<dt>3/13/2013, 12:55:05</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363147313003'>
+<dt>3/13/2013, 12:55:06</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147313004'>
+<dt>3/13/2013, 12:55:32</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147313005'>
+<dt>3/13/2013, 12:56:00</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363147313006'>
+<dt>3/13/2013, 12:56:11</dt>
+<text id='1'> Drive 0x0007 (7) failed, code=0</text>
+</events>
+<events id='1363147313007'>
+<dt>3/13/2013, 12:56:11</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8306 (33542), member=7 (0x0007)</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363147314001'>
+<dt>3/13/2013, 12:55:00</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314002'>
+<dt>3/13/2013, 12:55:00</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314003'>
+<dt>3/13/2013, 12:55:00</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314004'>
+<dt>3/13/2013, 12:56:03</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314005'>
+<dt>3/13/2013, 12:56:03</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314006'>
+<dt>3/13/2013, 12:56:04</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314007'>
+<dt>3/13/2013, 12:56:04</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314008'>
+<dt>3/13/2013, 12:56:04</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314009'>
+<dt>3/13/2013, 12:56:04</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314010'>
+<dt>3/13/2013, 12:56:04</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314011'>
+<dt>3/13/2013, 12:56:04</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314012'>
+<dt>3/13/2013, 12:56:04</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314013'>
+<dt>3/13/2013, 12:56:05</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363147314014'>
+<dt>3/13/2013, 12:56:05</dt>
+<text id='1'> Drive 0x0007 (7) failed, code=0</text>
+</events>
+<events id='1363147314015'>
+<dt>3/13/2013, 12:56:06</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8306 (33542), member=7 (0x0007)</text>
+</events>
+</engine>
+
+
+<engine name='engine_234'>
+<events id='1363147914001'>
+<dt>3/13/2013, 13:06:00</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8306 (33542), member=7 (0x0007), quick</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363148033001'>
+<dt>3/13/2013, 13:06:06</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8306 (33542), member=7 (0x0007), quick</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363148274001'>
+<dt>3/13/2013, 13:11:33</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8306 (33542), member=7 (0x0007), quick</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363148274001'>
+<dt>3/13/2013, 13:11:27</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8306 (33542), member=7 (0x0007), quick</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363150793001'>
+<dt>3/13/2013, 13:52:56</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150793002'>
+<dt>3/13/2013, 13:52:56</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150793003'>
+<dt>3/13/2013, 13:53:35</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363150793001'>
+<dt>3/13/2013, 13:53:30</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150793002'>
+<dt>3/13/2013, 13:54:21</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363150913001'>
+<dt>3/13/2013, 13:55:14</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150913002'>
+<dt>3/13/2013, 13:55:38</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150913003'>
+<dt>3/13/2013, 13:55:38</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150913004'>
+<dt>3/13/2013, 13:55:59</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150913005'>
+<dt>3/13/2013, 13:56:34</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150913006'>
+<dt>3/13/2013, 13:56:35</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363150913001'>
+<dt>3/13/2013, 13:55:09</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150913002'>
+<dt>3/13/2013, 13:55:54</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150913003'>
+<dt>3/13/2013, 13:56:29</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363150913004'>
+<dt>3/13/2013, 13:56:29</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363151033001'>
+<dt>3/13/2013, 13:57:07</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151033002'>
+<dt>3/13/2013, 13:57:07</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151033003'>
+<dt>3/13/2013, 13:57:39</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151033004'>
+<dt>3/13/2013, 13:57:39</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363151034001'>
+<dt>3/13/2013, 13:57:02</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151034002'>
+<dt>3/13/2013, 13:57:33</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151034003'>
+<dt>3/13/2013, 13:57:33</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151034004'>
+<dt>3/13/2013, 13:58:09</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151034005'>
+<dt>3/13/2013, 13:58:13</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363151153001'>
+<dt>3/13/2013, 13:59:01</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151153002'>
+<dt>3/13/2013, 13:59:01</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363151153001'>
+<dt>3/13/2013, 13:58:56</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+<events id='1363151153002'>
+<dt>3/13/2013, 13:58:56</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363151274001'>
+<dt>3/13/2013, 14:02:09</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8306 (33542), member=7 (0x0007)</text>
+</events>
+</engine>
+<engine name='engine_234'>
+<events id='1363151274001'>
+<dt>3/13/2013, 14:02:04</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8306 (33542), member=7 (0x0007)</text>
+</events>
+</engine>
+
+
+<engine name='engine_234'>
+<events id='1363151394001'>
+<dt>3/13/2013, 14:04:32</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_234'>
+<events id='1363151753001'>
+<dt>3/13/2013, 14:09:46</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8303 (33539), member=11 (0x000b), quick</text>
+</events>
+</engine>
+
+
+<engine name='engine_234'>
+<events id='1363151993001'>
+<dt>3/13/2013, 14:14:41</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8303 (33539), member=11 (0x000b)</text>
+</events>
+</engine>
+
+
+<engine name='engine_233'>
+<events id='1363153073001'>
+<dt>3/13/2013, 14:09:52</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8303 (33539), member=11 (0x000b), quick</text>
+</events>
+<events id='1363153073002'>
+<dt>3/13/2013, 14:14:46</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8303 (33539), member=11 (0x000b)</text>
+</events>
+</engine>
+
+
+<engine name='engine_251'>
+<events id='1363234880001'>
+<dt>3/14/2013, 13:15:43</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 3 = drive #6</text><text id='3'>    WWPN=5006-022ad0-4cb002, LUN=0000-0000000000, Port ID 0x044100</text>
+</events>
+<events id='1363234880002'>
+<dt>3/14/2013, 13:15:43</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006)</text>
+</events>
+</engine>
+<engine name='engine_252'>
+<events id='1363234881001'>
+<dt>3/14/2013, 13:15:36</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 6</text>
+</events>
+<events id='1363234881002'>
+<dt>3/14/2013, 13:15:37</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 3 = drive #6</text><text id='3'>    WWPN=5006-022ad0-4cb002, LUN=0000-0000000000, Port ID 0x044100</text>
+</events>
+<events id='1363234881003'>
+<dt>3/14/2013, 13:15:38</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006)</text>
+</events>
+</engine>
+
+
+<engine name='engine_251'>
+<events id='1363235001001'>
+<dt>3/14/2013, 13:17:55</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 3 = drive #6</text><text id='3'>    WWPN=5006-022ad0-4cb002, LUN=0000-0000000000, Port ID 0x044100</text>
+</events>
+<events id='1363235001002'>
+<dt>3/14/2013, 13:17:56</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006), quick</text>
+</events>
+<events id='1363235001003'>
+<dt>3/14/2013, 13:17:56</dt>
+<text id='1'> Drive 0x0006 (6) failed, code=0</text>
+</events>
+</engine>
+<engine name='engine_252'>
+<events id='1363235001001'>
+<dt>3/14/2013, 13:17:50</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 3 = drive #6</text><text id='3'>    WWPN=5006-022ad0-4cb002, LUN=0000-0000000000, Port ID 0x044100</text>
+</events>
+<events id='1363235001002'>
+<dt>3/14/2013, 13:17:51</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006), quick</text>
+</events>
+<events id='1363235001003'>
+<dt>3/14/2013, 13:17:51</dt>
+<text id='1'> Drive 0x0006 (6) failed, code=0</text>
+</events>
+</engine>
+
+
+<engine name='engine_251'>
+<events id='1363235721001'>
+<dt>3/14/2013, 13:28:47</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006), quick</text>
+</events>
+</engine>
+<engine name='engine_252'>
+<events id='1363235721001'>
+<dt>3/14/2013, 13:28:41</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006), quick</text>
+</events>
+</engine>
+
+
+<engine name='engine_252'>
+<events id='1363235841001'>
+<dt>3/14/2013, 13:31:41</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006), quick</text>
+</events>
+</engine>
+<engine name='engine_251'>
+<events id='1363235841001'>
+<dt>3/14/2013, 13:31:47</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006), quick</text>
+</events>
+</engine>
+
+
+<engine name='engine_251'>
+<events id='1363236080001'>
+<dt>3/14/2013, 13:34:26</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006)</text>
+</events>
+</engine>
+<engine name='engine_252'>
+<events id='1363236080001'>
+<dt>3/14/2013, 13:34:21</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8304 (33540), member=6 (0x0006)</text>
+</events>
+</engine>
+
+
+<engine name='engine_78'>
+<events id='1363246767001'>
+<dt>3/14/2013, 16:32:08</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363246767002'>
+<dt>3/14/2013, 16:32:08</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363246767003'>
+<dt>3/14/2013, 16:32:08</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363246767004'>
+<dt>3/14/2013, 16:32:08</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363246767005'>
+<dt>3/14/2013, 16:32:09</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 1 = drive #7</text><text id='3'>    WWPN=5006-022ad0-44b002, LUN=0000-0000000000, Port ID 0x045900</text>
+</events>
+<events id='1363246767006'>
+<dt>3/14/2013, 16:32:25</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007)</text>
+</events>
+</engine>
+<engine name='engine_77'>
+<events id='1363246768001'>
+<dt>3/14/2013, 16:33:16</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363246768002'>
+<dt>3/14/2013, 16:33:16</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363246768003'>
+<dt>3/14/2013, 16:33:16</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363246768004'>
+<dt>3/14/2013, 16:33:18</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 1 = drive #7</text><text id='3'>    WWPN=5006-022ad0-44b002, LUN=0000-0000000000, Port ID 0x045900</text>
+</events>
+<events id='1363246768005'>
+<dt>3/14/2013, 16:33:33</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007)</text>
+</events>
+</engine>
+
+
+<engine name='engine_77'>
+<events id='1363246887001'>
+<dt>3/14/2013, 16:35:33</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 1 = drive #7</text><text id='3'>    WWPN=5006-022ad0-44b002, LUN=0000-0000000000, Port ID 0x045900</text>
+</events>
+<events id='1363246887002'>
+<dt>3/14/2013, 16:35:34</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007), quick</text>
+</events>
+<events id='1363246887003'>
+<dt>3/14/2013, 16:35:34</dt>
+<text id='1'> Drive 0x0007 (7) failed, code=0</text>
+</events>
+</engine>
+<engine name='engine_78'>
+<events id='1363246887001'>
+<dt>3/14/2013, 16:34:24</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 1 = drive #7</text><text id='3'>    WWPN=5006-022ad0-44b002, LUN=0000-0000000000, Port ID 0x045900</text>
+</events>
+<events id='1363246887002'>
+<dt>3/14/2013, 16:34:25</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007), quick</text>
+</events>
+<events id='1363246887003'>
+<dt>3/14/2013, 16:34:26</dt>
+<text id='1'> Drive 0x0007 (7) failed, code=0</text>
+</events>
+</engine>
+
+
+<engine name='engine_78'>
+<events id='1363247248001'>
+<dt>3/14/2013, 16:40:58</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007), quick</text>
+</events>
+</engine>
+
+
+<engine name='engine_77'>
+<events id='1363247487001'>
+<dt>3/14/2013, 16:42:06</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007), quick</text>
+</events>
+<events id='1363247487002'>
+<dt>3/14/2013, 16:45:06</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007), quick</text>
+</events>
+<events id='1363247487003'>
+<dt>3/14/2013, 16:45:07</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007)</text>
+</events>
+</engine>
+<engine name='engine_78'>
+<events id='1363247487001'>
+<dt>3/14/2013, 16:43:58</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007), quick</text>
+</events>
+<events id='1363247487002'>
+<dt>3/14/2013, 16:43:58</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8302 (33538), member=7 (0x0007)</text>
+</events>
+</engine>
+
+
+<engine name='engine_79'>
+<events id='1363352697001'>
+<dt>3/15/2013, 21:59:03</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 1 = drive #4</text><text id='3'>    WWPN=5006-022ad0-423002, LUN=0000-0000000000, Port ID 0x045d00</text>
+</events>
+</engine>
+<engine name='engine_80'>
+<events id='1363352697001'>
+<dt>3/15/2013, 21:58:55</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 4</text>
+</events>
+<events id='1363352697002'>
+<dt>3/15/2013, 21:58:56</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 1 = drive #4</text><text id='3'>    WWPN=5006-022ad0-423002, LUN=0000-0000000000, Port ID 0x045d00</text>
+</events>
+</engine>
+
+
+<engine name='engine_79'>
+<events id='1363352817001'>
+<dt>3/15/2013, 22:01:18</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 1 = drive #4</text><text id='3'>    WWPN=5006-022ad0-423002, LUN=0000-0000000000, Port ID 0x045d00</text>
+</events>
+<events id='1363352817002'>
+<dt>3/15/2013, 22:01:19</dt>
+<text id='1'> Drive 0x0004 (4) failed, code=0</text>
+</events>
+</engine>
+<engine name='engine_80'>
+<events id='1363352817001'>
+<dt>3/15/2013, 22:01:10</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 1 = drive #4</text><text id='3'>    WWPN=5006-022ad0-423002, LUN=0000-0000000000, Port ID 0x045d00</text>
+</events>
+<events id='1363352817002'>
+<dt>3/15/2013, 22:01:11</dt>
+<text id='1'> Drive 0x0004 (4) failed, code=0</text>
+</events>
+</engine>
+
+
+<engine name='engine_79'>
+<events id='1363352936001'>
+<dt>3/15/2013, 22:01:57</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8302 (33538), member=4 (0x0004)</text>
+</events>
+</engine>
+<engine name='engine_80'>
+<events id='1363352936001'>
+<dt>3/15/2013, 22:01:49</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8302 (33538), member=4 (0x0004)</text>
+</events>
+</engine>
+
+
+<engine name='engine_79'>
+<events id='1363356459001'>
+<dt>3/15/2013, 22:55:46</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8302 (33538), member=4 (0x0004), quick</text>
+</events>
+<events id='1363356459002'>
+<dt>3/15/2013, 22:58:46</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8302 (33538), member=4 (0x0004), quick</text>
+</events>
+<events id='1363356459003'>
+<dt>3/15/2013, 22:58:46</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8302 (33538), member=4 (0x0004)</text>
+</events>
+</engine>
+<engine name='engine_80'>
+<events id='1363356459001'>
+<dt>3/15/2013, 22:55:39</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8302 (33538), member=4 (0x0004), quick</text>
+</events>
+<events id='1363356459002'>
+<dt>3/15/2013, 22:58:39</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8302 (33538), member=4 (0x0004), quick</text>
+</events>
+<events id='1363356459003'>
+<dt>3/15/2013, 22:58:39</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8302 (33538), member=4 (0x0004)</text>
+</events>
+</engine>
+
+
+<engine name='engine_232'>
+<events id='1363595135001'>
+<dt>3/18/2013, 17:18:58</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363595496001'>
+<dt>3/18/2013, 17:23:37</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_232'>
+<events id='1363595496001'>
+<dt>3/18/2013, 17:24:08</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363595496002'>
+<dt>3/18/2013, 17:25:21</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363595616001'>
+<dt>3/18/2013, 17:25:31</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363595616002'>
+<dt>3/18/2013, 17:26:09</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363595616003'>
+<dt>3/18/2013, 17:26:34</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363595616004'>
+<dt>3/18/2013, 17:26:55</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_232'>
+<events id='1363595616001'>
+<dt>3/18/2013, 17:26:10</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363595616002'>
+<dt>3/18/2013, 17:26:50</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363596575001'>
+<dt>3/18/2013, 17:41:47</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363627067001'>
+<dt>3/19/2013, 02:10:52</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_232'>
+<events id='1363627068001'>
+<dt>3/19/2013, 02:11:24</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_232'>
+<events id='1363627547001'>
+<dt>3/19/2013, 02:19:13</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_232'>
+<events id='1363627668001'>
+<dt>3/19/2013, 02:21:22</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_232'>
+<events id='1363627788001'>
+<dt>3/19/2013, 02:22:36</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363627788002'>
+<dt>3/19/2013, 02:23:28</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363628027001'>
+<dt>3/19/2013, 02:26:44</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363628387001'>
+<dt>3/19/2013, 02:32:22</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363628628001'>
+<dt>3/19/2013, 02:36:17</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363629228001'>
+<dt>3/19/2013, 02:45:56</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363629228002'>
+<dt>3/19/2013, 02:46:33</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363629228003'>
+<dt>3/19/2013, 02:47:05</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363629228004'>
+<dt>3/19/2013, 02:47:20</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_232'>
+<events id='1363629228001'>
+<dt>3/19/2013, 02:46:11</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363629228002'>
+<dt>3/19/2013, 02:46:32</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363629228003'>
+<dt>3/19/2013, 02:47:06</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363629228004'>
+<dt>3/19/2013, 02:47:22</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_232'>
+<events id='1363629348001'>
+<dt>3/19/2013, 02:48:05</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_231'>
+<events id='1363629467001'>
+<dt>3/19/2013, 02:50:09</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+<events id='1363629467002'>
+<dt>3/19/2013, 02:50:24</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+<engine name='engine_232'>
+<events id='1363629468001'>
+<dt>3/19/2013, 02:50:41</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_232'>
+<events id='1363629588001'>
+<dt>3/19/2013, 02:51:57</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 7</text>
+</events>
+</engine>
+
+
+<engine name='engine_51'>
+<events id='1363651915001'>
+<dt>3/19/2013, 09:05:07</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B1 connection 2 = drive #1</text><text id='3'>    WWPN=2600-000155-53f38d, LUN=0000-0000000000, Port ID 0x015a00</text>
+</events>
+<events id='1363651915002'>
+<dt>3/19/2013, 09:05:07</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B1 connection 3 = drive #5</text><text id='3'>    WWPN=2602-000155-53f38d, LUN=0001-0000000000, Port ID 0x015b00</text>
+</events>
+<events id='1363651915003'>
+<dt>3/19/2013, 09:05:13</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 2 = drive #1</text><text id='3'>    WWPN=2601-000155-53f38d, LUN=0000-0000000000, Port ID 0x025a00</text>
+</events>
+<events id='1363651915004'>
+<dt>3/19/2013, 09:05:13</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 3 = drive #5</text><text id='3'>    WWPN=2603-000155-53f38d, LUN=0001-0000000000, Port ID 0x025b00</text>
+</events>
+</engine>
+<engine name='engine_52'>
+<events id='1363651915001'>
+<dt>3/19/2013, 09:05:13</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B1 connection 2 = drive #1</text><text id='3'>    WWPN=2600-000155-53f38d, LUN=0000-0000000000, Port ID 0x015a00</text>
+</events>
+<events id='1363651915002'>
+<dt>3/19/2013, 09:05:13</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B1 connection 3 = drive #5</text><text id='3'>    WWPN=2602-000155-53f38d, LUN=0001-0000000000, Port ID 0x015b00</text>
+</events>
+<events id='1363651915003'>
+<dt>3/19/2013, 09:05:20</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 2 = drive #1</text><text id='3'>    WWPN=2601-000155-53f38d, LUN=0000-0000000000, Port ID 0x025a00</text>
+</events>
+<events id='1363651915004'>
+<dt>3/19/2013, 09:05:20</dt>
+<text id='1'> Drive connection lost:</text><text id='2'>    Port B2 connection 3 = drive #5</text><text id='3'>    WWPN=2603-000155-53f38d, LUN=0001-0000000000, Port ID 0x025b00</text>
+</events>
+</engine>
+
+
+<engine name='engine_51'>
+<events id='1363652034001'>
+<dt>3/19/2013, 09:06:36</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8301 (33537), member=1 (0x0001)</text>
+</events>
+<events id='1363652034002'>
+<dt>3/19/2013, 09:06:36</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8302 (33538), member=5 (0x0005)</text>
+</events>
+</engine>
+<engine name='engine_52'>
+<events id='1363652035001'>
+<dt>3/19/2013, 09:06:42</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8301 (33537), member=1 (0x0001)</text>
+</events>
+<events id='1363652035002'>
+<dt>3/19/2013, 09:06:42</dt>
+<text id='1'> Mirror member degraded:</text><text id='2'>    Mirror=0x8302 (33538), member=5 (0x0005)</text>
+</events>
+</engine>
+
+
+<engine name='engine_51'>
+<events id='1363652754001'>
+<dt>3/19/2013, 09:17:42</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B1 connection 2 = drive #1</text><text id='3'>    WWPN=2600-000155-53f38d, LUN=0000-0000000000, Port ID 0x015a00</text>
+</events>
+<events id='1363652754002'>
+<dt>3/19/2013, 09:17:42</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8301 (33537), member=1 (0x0001), quick</text>
+</events>
+<events id='1363652754003'>
+<dt>3/19/2013, 09:17:50</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 2 = drive #1</text><text id='3'>    WWPN=2601-000155-53f38d, LUN=0000-0000000000, Port ID 0x025a00</text>
+</events>
+<events id='1363652754004'>
+<dt>3/19/2013, 09:17:59</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B1 connection 3 = drive #5</text><text id='3'>    WWPN=2602-000155-53f38d, LUN=0001-0000000000, Port ID 0x015b00</text>
+</events>
+<events id='1363652754005'>
+<dt>3/19/2013, 09:18:00</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8302 (33538), member=5 (0x0005), quick</text>
+</events>
+<events id='1363652754006'>
+<dt>3/19/2013, 09:18:02</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 3 = drive #5</text><text id='3'>    WWPN=2603-000155-53f38d, LUN=0001-0000000000, Port ID 0x025b00</text>
+</events>
+</engine>
+<engine name='engine_52'>
+<events id='1363652755001'>
+<dt>3/19/2013, 09:17:48</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B1 connection 2 = drive #1</text><text id='3'>    WWPN=2600-000155-53f38d, LUN=0000-0000000000, Port ID 0x015a00</text>
+</events>
+<events id='1363652755002'>
+<dt>3/19/2013, 09:17:49</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8301 (33537), member=1 (0x0001), quick</text>
+</events>
+<events id='1363652755003'>
+<dt>3/19/2013, 09:17:56</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 2 = drive #1</text><text id='3'>    WWPN=2601-000155-53f38d, LUN=0000-0000000000, Port ID 0x025a00</text>
+</events>
+<events id='1363652755004'>
+<dt>3/19/2013, 09:18:06</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B1 connection 3 = drive #5</text><text id='3'>    WWPN=2602-000155-53f38d, LUN=0001-0000000000, Port ID 0x015b00</text>
+</events>
+<events id='1363652755005'>
+<dt>3/19/2013, 09:18:06</dt>
+<text id='1'> Rebuild scheduled:</text><text id='2'>    Mirror=0x8302 (33538), member=5 (0x0005), quick</text>
+</events>
+<events id='1363652755006'>
+<dt>3/19/2013, 09:18:08</dt>
+<text id='1'> Drive connection found:</text><text id='2'>    Port B2 connection 3 = drive #5</text><text id='3'>    WWPN=2603-000155-53f38d, LUN=0001-0000000000, Port ID 0x025b00</text>
+</events>
+</engine>
+
+
+<engine name='engine_51'>
+<events id='1363652874001'>
+<dt>3/19/2013, 09:21:02</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8301 (33537), member=1 (0x0001), quick</text>
+</events>
+<events id='1363652874002'>
+<dt>3/19/2013, 09:21:02</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8302 (33538), member=5 (0x0005), quick</text>
+</events>
+</engine>
+<engine name='engine_52'>
+<events id='1363652875001'>
+<dt>3/19/2013, 09:21:09</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8301 (33537), member=1 (0x0001), quick</text>
+</events>
+<events id='1363652875002'>
+<dt>3/19/2013, 09:21:09</dt>
+<text id='1'> Rebuild started:</text><text id='2'>    Mirror=0x8302 (33538), member=5 (0x0005), quick</text>
+</events>
+</engine>
+
+
+<engine name='engine_51'>
+<events id='1363654195001'>
+<dt>3/19/2013, 09:42:57</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8301 (33537), member=1 (0x0001)</text>
+</events>
+<events id='1363654195002'>
+<dt>3/19/2013, 09:42:58</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8302 (33538), member=5 (0x0005)</text>
+</events>
+</engine>
+<engine name='engine_52'>
+<events id='1363654195001'>
+<dt>3/19/2013, 09:43:03</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8301 (33537), member=1 (0x0001)</text>
+</events>
+<events id='1363654195002'>
+<dt>3/19/2013, 09:43:04</dt>
+<text id='1'> Rebuild done:</text><text id='2'>    Mirror=0x8302 (33538), member=5 (0x0005)</text>
+</events>
+</engine>
+
+
+<engine name='engine_246'>
+<events id='1363680017001'>
+<dt>3/19/2013, 16:54:22</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 1</text>
+</events>
+<events id='1363680017002'>
+<dt>3/19/2013, 16:54:28</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 1</text>
+</events>
+<events id='1363680017003'>
+<dt>3/19/2013, 16:54:37</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 1</text>
+</events>
+<events id='1363680017004'>
+<dt>3/19/2013, 16:54:43</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 1</text>
+</events>
+<events id='1363680017005'>
+<dt>3/19/2013, 16:54:51</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 5</text>
+</events>
+</engine>
+
+
+<engine name='engine_246'>
+<events id='1363680137001'>
+<dt>3/19/2013, 16:55:33</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 5</text>
+</events>
+<events id='1363680137002'>
+<dt>3/19/2013, 16:55:35</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 5</text>
+</events>
+<events id='1363680137003'>
+<dt>3/19/2013, 16:55:41</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Read command sent to drive 5</text>
+</events>
+</engine>
+
+
+<engine name='engine_68'>
+<events id='1363696827001'>
+<dt>3/19/2013, 21:34:07</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 5</text>
+</events>
+<events id='1363696827002'>
+<dt>3/19/2013, 21:34:07</dt>
+<text id='1'> Command timed out:</text><text id='2'>    Write command sent to drive 7</text>
+</events>
+</engine>
+

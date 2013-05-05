@@ -1,0 +1,36 @@
+<sites><site><engines><engine name='engine_59'>
+
+<cli_vpd seconds='1363746636'>
+<product_type> FCE4400 </product_type><fw_version>15.1.10</fw_version><fw_date>Sep 17 2012 16:56:07</fw_date><redboot>0.2.0.6</redboot><uid>00000060-22092996</uid><serial>00600470</serial><pcb>00600470</pcb><mac>0.60.22.9.29.96</mac><ip>10.100.5.59</ip><uptime>177d 04:50:13</uptime><alert>None</alert><time>Wednesday 3/20/2013 11:23:56</time><ports id='A1'><id>A1</id><wwnn>2000-006022-092996</wwnn><wwpn>2100-006022-092996</wwpn></ports><ports id='A2'><id>A2</id><wwnn>2000-006022-092996</wwnn><wwpn>2200-006022-092996</wwpn></ports><ports id='B1'><id>B1</id><wwnn>2000-006022-092996</wwnn><wwpn>2300-006022-092996</wwpn></ports><ports id='B2'><id>B2</id><wwnn>2000-006022-092996</wwnn><wwpn>2400-006022-092996</wwpn></ports></cli_vpd>
+<cli_mirror seconds='1363746636'><mirrors id='33537'><id>33537</id><status>Good</status><map>0</map><capacity>585563345</capacity><members mid='3'><first>3</first><status1>OK</status1></members><members mid='1'><second>1</second><status2>OK</status2></members></mirrors><mirrors id='33538'><id>33538</id><status>Good</status><map>1</map><capacity>585563345</capacity><members mid='0'><first>0</first><status1>OK</status1></members><members mid='2'><second>2</second><status2>OK</status2></members></mirrors><mirrors id='33539'><id>33539</id><status>Good</status><map>2</map><capacity>292681152</capacity><members mid='5'><first>5</first><status1>OK</status1></members><members mid='4'><second>4</second><status2>OK</status2></members></mirrors><mirror_ok>3</mirror_ok><mirror_degraded>0</mirror_degraded><mirror_failed>0</mirror_failed></cli_mirror>
+<cli_conmgr_drive_status seconds='1363746636'><drives id='0'><id>0</id><status>A</status><paths id='1'><port>B1</port><wwpn>5006-022ad0-463000</wwpn><lun>0000</lun><pstatus>A</pstatus></paths>
+</drives><drives id='1'><id>1</id><status>A</status><paths id='1'><port>B2</port><wwpn>5006-022ad0-493000</wwpn><lun>0000</lun><pstatus>A</pstatus></paths>
+</drives><drives id='2'><id>2</id><status>A</status><paths id='1'><port>B2</port><wwpn>5006-022ad0-47b000</wwpn><lun>0000</lun><pstatus>A</pstatus></paths>
+</drives><drives id='3'><id>3</id><status>A</status><paths id='1'><port>B1</port><wwpn>5006-022ad0-46f000</wwpn><lun>0000</lun><pstatus>A</pstatus></paths>
+</drives><drives id='4'><id>4</id><status>A</status><paths id='1'><port>B2</port><wwpn>5006-022ad0-4c7000</wwpn><lun>0000</lun><pstatus>A</pstatus></paths>
+</drives><drives id='5'><id>5</id><status>A</status><paths id='1'><port>B1</port><wwpn>5006-022ad0-4cf000</wwpn><lun>0000</lun><pstatus>A</pstatus></paths>
+</drives><inactive>0</inactive><offline_path>0</offline_path></cli_conmgr_drive_status>
+<cli_conmgr_engine_status seconds='1363746636'><clusters id='2'><id>2</id><paths id='1'><port>B1</port><wwpn>2300-006022-092998</wwpn><pstatus>A</pstatus></paths><paths id='2'><port>B2</port><wwpn>2400-006022-092998</wwpn><pstatus>A</pstatus></paths><status>A</status></clusters><cluster_not_ok>0</cluster_not_ok><path_not_ok>0</path_not_ok></cli_conmgr_engine_status>
+<cli_conmgr_initiator_status seconds='1363746636'><initiators id='4'><id>4</id><port>A1</port><wwpn>1000-00062b-1ec31c</wwpn><status>A</status></initiators><initiators id='5'><id>5</id><port>A1</port><wwpn>1000-00062b-1bc280</wwpn><status>I</status></initiators><initiators id='6'><id>6</id><port>A1</port><wwpn>1000-00062b-1bbfd8</wwpn><status>I</status></initiators><initiators id='7'><id>7</id><port>A1</port><wwpn>1000-00062b-1ec4f4</wwpn><status>A</status></initiators><online>2</online><offline>2</offline></cli_conmgr_initiator_status>
+<cli_rebuild seconds='1363746636'><ready_count>0</ready_count><rebuilding_count>0</rebuilding_count></cli_rebuild>
+<cli_rebuild_delay seconds='1363746636'><delay>180</delay></cli_rebuild_delay>
+<cli_rebuild_default seconds='1363746636'><speed>10</speed><iops>100</iops></cli_rebuild_default>
+<cli_rtc seconds='1363746636'><day>Wednesday</day><date>3</date><time>11:23:58</time><interval>10</interval><calibration>0</calibration></cli_rtc>
+
+<cli_history seconds='1363746636'></cli_history>
+
+
+<cli_failed seconds='1363746636'><failed_count>0</failed_count></cli_failed>
+<cli_detach seconds='1363746636'></cli_detach>
+<cli_timeout seconds='1363746636'><timeout><seconds>15</seconds><timeouts>10</timeouts><command> timeout 15 1 0 10</command></timeout><timeout_last><seconds>15</seconds><timeouts>0</timeouts><command>timeout last 15 1 0 0</command></timeout_last></cli_timeout>
+
+
+<cli_port seconds='1363746636'><engine_ports id='A1'><status>enabled</status><link>active</link><gbps>4</gbps></engine_ports><engine_ports id='A2'><status>enabled</status><link>active</link><gbps>4</gbps></engine_ports><engine_ports id='B1'><status>enabled</status><link>active</link><gbps>4</gbps></engine_ports><engine_ports id='B2'><status>enabled</status><link>active</link><gbps>4</gbps></engine_ports></cli_port>
+<cli_detach_group seconds='1363746636'><groups id='RAID-X3-M'><name>RAID-X3-M</name><member id='5'><drive>5</drive></member></groups><groups id='RAID-X3-M-1'><name>RAID-X3-M-1</name><member id='4'><drive>4</drive></member></groups><groups id='RAID-X4-M'><name>RAID-X4-M</name><member id='3'><drive>3</drive></member></groups><groups id='RAID-Low2-M-1'><name>RAID-Low2-M-1</name><member id='2'><drive>2</drive></member></groups><groups id='RAID-X4-M-1'><name>RAID-X4-M-1</name><member id='1'><drive>1</drive></member></groups><groups id='RAID-Low2-M'><name>RAID-Low2-M</name><member id='0'><drive>0</drive></member></groups></cli_detach_group>
+<cli_dmeprop seconds='1363746636'><clusters id='1'><id>1</id><status>A</status><is_master>Yes</is_master></clusters><clusters id='2'><id>2</id><status>A</status><is_master>No</is_master></clusters><my_id>1</my_id></cli_dmeprop>
+<cli_map seconds='1363746636'>
+<map_id id='0'><mid>0</mid><luns>33537 33538 33539 </luns></map_id></cli_map>
+
+
+
+</engine></engines></site></sites>

@@ -59,7 +59,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
+        
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.totalItems = theDelegate.totalItems;
@@ -108,6 +108,91 @@
     //[theDelegate getSanVmirrorLists];
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
 
+    /*
+    self.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    self.modalPresentationStyle = UIModalPresentationFormSheet;
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:self animated:YES completion:nil];
+    self.view.superview.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    self.view.superview.frame = CGRectMake(
+                                                     // Calcuation based on landscape orientation (width=height)
+                                                     ([UIScreen mainScreen].applicationFrame.size.height/2)-(320/2),// X
+                                                     ([UIScreen mainScreen].applicationFrame.size.width/2)-(320/2),// Y
+                                                     320,// Width
+                                                     320// Height
+                                                     );
+     */
+    /*
+    UIViewController *V2 = [[UIViewController alloc] init];
+    V2.modalPresentationStyle = UIModalPresentationFormSheet;
+    V2.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:V2 animated:YES];
+    V2.view.superview.frame = CGRectMake(0, 0, 540, 620); //it's important to do this after presentModalViewController
+    V2.view.superview.center = self.view.center;
+     */
+    //[V1 release];
+    
+    
+    /*
+     */
+
+    
+}
+
+- (IBAction)loginView:(id)sender {
+    self.loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewControllerID"];
+    self.loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    /*
+    [self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self setModalPresentationStyle:UIModalPresentationFormSheet];
+    [self presentModalViewController:self.loginViewController animated:YES];
+    self.loginViewController.view.superview.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    float heightOfFrame = 200.0f;
+    float widthOfFrame= 400.0f;
+    self.loginViewController.view.superview.frame = CGRectMake(
+                                                 self.view.superview.center.x - (widthOfFrame/2),
+                                                 self.view.superview.center.y - (heightOfFrame/2),
+                                                 widthOfFrame,
+                                                 heightOfFrame
+                                                 );
+     */
+    
+    
+    //[src presentModalViewController:dst animated:YES];
+    //[dst.view.superview setFrame:CGRectMake(0, 0, 700, 900)];
+    //[dst.view.superview setCenter:src.view.center];
+    
+    
+    NSLog(@"%d", [[UIDevice currentDevice] orientation]);
+    // UIDeviceOrientationLandscapeLeft
+    //UIDeviceOrientationLandscapeRight
+    
+    float center_x = 0;
+    float center_y = 0;
+    
+    int orientation = [[UIDevice currentDevice] orientation];
+    
+    if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
+        center_x = self.view.superview.center.x;
+        center_y = self.view.superview.center.y;
+    } else {
+        center_x = self.view.superview.center.y;
+        center_y = self.view.superview.center.x;
+    }
+    
+    float heightOfFrame = 300.0f;
+    float widthOfFrame= 400.0f;
+    
+    CGRect frame = CGRectMake(center_x - (widthOfFrame/2),
+                              center_y - (heightOfFrame/2),
+                              widthOfFrame,
+                              heightOfFrame
+                              );
+    [self presentViewController:self.loginViewController animated:YES completion:nil];
+    [self.loginViewController.view.superview setFrame:frame];
+    //[self.loginViewController.view.superview setCenter:self.view.center];
     
 }
 

@@ -15,6 +15,9 @@
 #import "DriveViewController.h"
 #import "HbaViewController.h"
 
+
+#import "LoginViewController.h"
+
 @interface MainViewController : UIViewController<iCarouselDataSource, iCarouselDelegate>
 
 // data
@@ -30,6 +33,8 @@
 
 @property (strong, nonatomic) DriveViewController *driveViewController;
 @property (strong, nonatomic) HbaViewController *hbaViewController;
+
+@property (strong, nonatomic) LoginViewController *loginViewController;
 
 @property (strong, nonatomic) NSMutableArray *descriptions;
 
@@ -54,6 +59,8 @@
 - (IBAction)updateValue:(id)sender;
 
 - (IBAction)hideShowSlider:(id)sender;
+
+- (IBAction)loginView:(id)sender;
 
 
 @end
