@@ -164,25 +164,6 @@
                                     <segue destination="Hyz-UC-dST" kind="modal" id="nHu-AK-Dqr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EsW-i9-kiX">
-                                <rect key="frame" x="551" y="631" width="73" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginView:" destination="2" eventType="touchUpInside" id="lhX-V1-5sP"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="rru-ar-IEr">
-                                <rect key="frame" x="512" y="384" width="400" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -690,6 +671,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="logout:" destination="YOT-Ri-UBv" eventType="touchUpInside" id="Xek-vP-MDD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ro3-Cj-Gqa" userLabel="Button - Back">
                                 <rect key="frame" x="863" y="525" width="140" height="134"/>
@@ -3489,19 +3473,19 @@
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="p26-Yi-jjD" userLabel="Text Field - site name">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="20" id="p26-Yi-jjD" userLabel="Text Field - site name">
                                 <rect key="frame" x="174" y="56" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Ycd-ei-PkB" userLabel="Text Field - user name">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="20" id="Ycd-ei-PkB" userLabel="Text Field - user name">
                                 <rect key="frame" x="174" y="101" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="vsU-HI-bBz" userLabel="Text Field - password">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="20" id="vsU-HI-bBz" userLabel="Text Field - password">
                                 <rect key="frame" x="174" y="147" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -3518,6 +3502,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onConfirm:" destination="4MA-mM-Ulr" eventType="touchUpInside" id="cUS-44-ENK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mEu-gz-GEE">
                                 <rect key="frame" x="230" y="212" width="119" height="44"/>
@@ -3530,6 +3517,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onCancel:" destination="4MA-mM-Ulr" eventType="touchUpInside" id="hMQ-y8-s4j"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3550,7 +3540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="riA-nF-mlR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="561" y="2053"/>
+            <point key="canvasLocation" x="576" y="2129"/>
         </scene>
     </scenes>
     <resources>
@@ -3716,6 +3706,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HAApplianceViewController.h"/>
             <relationships>
                 <relationship kind="action" name="hideSlider:"/>
+                <relationship kind="action" name="logout:"/>
                 <relationship kind="action" name="onBack:"/>
                 <relationship kind="action" name="onHome:"/>
                 <relationship kind="action" name="reloadCarousel"/>
@@ -3772,8 +3763,8 @@
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
-                <relationship kind="action" name="onBack:"/>
-                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="onCancel:"/>
+                <relationship kind="action" name="onConfirm:"/>
                 <relationship kind="outlet" name="cancel" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="confirm" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>

@@ -69,9 +69,10 @@
 		[currentElementValue appendString:string];
 }
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
-  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	
+    NSLog(@"%s %@", __func__, elementName);
+    
 	//if([elementName isEqualToString:@"Books"])
     if([elementName isEqualToString:@"ha_cluster"]) {
         //NSLog(@"elementName=%@", elementName);

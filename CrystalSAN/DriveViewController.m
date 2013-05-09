@@ -19,6 +19,8 @@
 
     AppDelegate *theDelegate;
     NSArray *deviceArray;
+    
+    NSString *siteName;
 
 }
 @end
@@ -127,13 +129,66 @@
     currentItemIndex = carousel.currentItemIndex;
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+    
+}
 
+- (void)httpGetDriveInformation {
+    
+    [sanDatabase httpGetEngineDriveInformation:theDelegate.currentEngineLeftSerial siteName:theDelegate.siteName];
+    [sanDatabase httpGetEngineDriveInformation:theDelegate.currentEngineRightSerial siteName:theDelegate.siteName];
+    
+    //deviceArray = [sanDatabase getHaApplianceNameListBySiteName:theDelegate.siteName];
+    //NSLog(@"%s site %@,  count = %u", __func__, theDelegate.siteName, [deviceArray count]);
+    
+    totalItemInCarousel = [deviceArray count];
+    NSUInteger count = [deviceArray count];
+    
+    currentItemIndex = 0;
+    currentCollectionCount =  count;
+    totalCount = count;
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+    
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"%s", __func__);
+    NSLog(@"%s siteName in current class = %@, siteName in delegate = %@", __func__, siteName, theDelegate.siteName);
+    
+    //if(![siteName isEqualToString:theDelegate.siteName]) {
+        siteName = theDelegate.siteName;
+        
+    if ([theDelegate.currentEngineLeftSerial length]!= 0 || [theDelegate.currentEngineRightSerial length]!= 0) {
+        [self httpGetDriveInformation];
+    }
+
+        NSMutableArray *enginesSerial = [[NSMutableArray alloc] init];
+    
+    NSLog(@"%s currentEngineLeftSerial=%@ currentEngineRightSerial=%@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+    
+    
+        [enginesSerial addObject:theDelegate.currentEngineLeftSerial];
+        if ([theDelegate.currentEngineRightSerial length] != 0) {
+            [enginesSerial addObject:theDelegate.currentEngineRightSerial];
+        }
+        deviceArray = [theDelegate.sanDatabase getDriveArrayByEnginesSerial:enginesSerial andSearchKey:nil];
+        
+        //NSLog(@"%s %@", __func__, deviceArray);
+        
+        [carousel reloadData];
+        
+        //currentItemIndex = carousel.currentItemIndex;
+        //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
+    //}
+    
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"%s", __func__);
+    NSLog(@"%s theDelegate.currentDeviceName=%@", __func__, theDelegate.currentDeviceName);
     
     if ([theDelegate.currentDeviceName length] == 0) {
         haApplianceName.hidden = YES;
@@ -149,6 +204,7 @@
     
     //NSArray *enginesSerial = [[NSArray alloc] initWithObjects:theDelegate.currentEngineLeftSerial,theDelegate.currentEngineRightSerial, nil];
     
+    /*
     NSMutableArray *enginesSerial = [[NSMutableArray alloc] init];
 
     [enginesSerial addObject:theDelegate.currentEngineLeftSerial];
@@ -156,6 +212,10 @@
         [enginesSerial addObject:theDelegate.currentEngineRightSerial];
     }
     deviceArray = [theDelegate.sanDatabase getDriveArrayByEnginesSerial:enginesSerial andSearchKey:nil];
+    
+    NSLog(@"%s %@", __func__, deviceArray);
+     */
+    
     
     if (carousel.currentItemIndex > [deviceArray count]) {
         carousel.currentItemIndex = 0;
@@ -166,7 +226,7 @@
     currentCollectionCount = [deviceArray count];
     totalCount = [deviceArray count];
     
-    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+    //[theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
     
     [carousel reloadData];
 }
@@ -348,7 +408,7 @@
     
     for (int i=0; i<[deviceArray count]; i++) {
         NSDictionary *dict = [deviceArray objectAtIndex:i];
-        NSLog(@"%s %@ %@ %@", __func__,  [dict valueForKey:@"serial"], [dict valueForKey:@"drive_id"], [dict valueForKey:@"path_0_wwpn"]);
+        NSLog(@"%s %@ %@ %@", __func__,  [dict valueForKey:@"serial"], [dict valueForKey:@"id"], [dict valueForKey:@"path_0_wwpn"]);
     }
 
     
@@ -424,7 +484,7 @@
 	}
     
     NSString *companyName = [theDelegate.sanDatabase getCompanyNameByWWPN:[dict valueForKey:@"path_0_wwpn"]];
-    NSString *text = [NSString stringWithFormat:@"%@ : %@\n%@:%@\n%@",[dict valueForKey:@"serial"], [dict valueForKey:@"drive_id"], [dict valueForKey:@"path_0_port"], [dict valueForKey:@"path_0_wwpn"], companyName];
+    NSString *text = [NSString stringWithFormat:@"%@ : %@\n%@:%@\n%@",[dict valueForKey:@"serial"], [dict valueForKey:@"id"], [dict valueForKey:@"path_0_port"], [dict valueForKey:@"path_0_wwpn"], companyName];
     
     //NSLog(@"%s %@", __func__, companyName);
     

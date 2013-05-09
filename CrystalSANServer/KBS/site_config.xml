@@ -1,0 +1,108 @@
+<sites>
+    <site>
+        <config_folder>Config</config_folder>
+        <script_daemon>Vicom-script-daemon.exp</script_daemon>
+        <daemon_pid>20919</daemon_pid>
+        <engines>
+            <product_type>FCEx400</product_type>
+            <engine_new_max_nodes>50</engine_new_max_nodes>
+            <engine id="211">engine_211</engine>
+            <engine id="212">engine_212</engine>
+            <engine id="215">engine_215</engine>
+            <engine id="216">engine_216</engine>
+            <engine id="217">engine_217</engine>
+            <engine id="218">engine_218</engine>
+            <engine id="219">engine_219</engine>
+            <engine id="220">engine_220</engine>
+            <engine id="221">engine_221</engine>
+            <engine id="222">engine_222</engine>
+            <engine id="223">engine_223</engine>
+            <engine id="224">engine_224</engine>
+            <engine id="225">engine_225</engine>
+            <engine id="226">engine_226</engine>
+            <engine id="227">engine_227</engine>
+            <engine id="228">engine_228</engine>
+            <engine id="229">engine_229</engine>
+            <engine id="230">engine_230</engine>
+            <engine id="231">engine_231</engine>
+            <engine id="232">engine_232</engine>
+            <engine id="233">engine_233</engine>
+            <engine id="234">engine_234</engine>
+            <engine id="235">engine_235</engine>
+            <engine id="236">engine_236</engine>
+            <engine id="237">engine_237</engine>
+            <engine id="238">engine_238</engine>
+            <engine id="239">engine_239</engine>
+            <engine id="240">engine_240</engine>
+            <engine id="241">engine_241</engine>
+            <engine id="242">engine_242</engine>
+            <engine id="243">engine_243</engine>
+            <engine id="244">engine_244</engine>
+            <engine id="245">engine_245</engine>
+            <engine id="246">engine_246</engine>
+            <engine id="247">engine_247</engine>
+            <engine id="248">engine_248</engine>
+            <engine id="249">engine_249</engine>
+            <engine id="250">engine_250</engine>
+            <engine id="251">engine_251</engine>
+            <engine id="252">engine_252</engine>
+            <engine id="45">engine_45</engine>
+            <engine id="46">engine_46</engine>
+            <engine id="47">engine_47</engine>
+            <engine id="48">engine_48</engine>
+            <engine id="51">engine_51</engine>
+            <engine id="52">engine_52</engine>
+            <engine id="53">engine_53</engine>
+            <engine id="54">engine_54</engine>
+            <engine id="55">engine_55</engine>
+            <engine id="56">engine_56</engine>
+            <engine id="57">engine_57</engine>
+            <engine id="58">engine_58</engine>
+            <engine id="59">engine_59</engine>
+            <engine id="60">engine_60</engine>
+            <engine id="61">engine_61</engine>
+            <engine id="62">engine_62</engine>
+            <engine id="63">engine_63</engine>
+            <engine id="64">engine_64</engine>
+            <engine id="65">engine_65</engine>
+            <engine id="66">engine_66</engine>
+            <engine id="67">engine_67</engine>
+            <engine id="68">engine_68</engine>
+            <engine id="69">engine_69</engine>
+            <engine id="70">engine_70</engine>
+            <engine id="75">engine_75</engine>
+            <engine id="76">engine_76</engine>
+            <engine id="77">engine_77</engine>
+            <engine id="78">engine_78</engine>
+            <engine id="79">engine_79</engine>
+            <engine id="80">engine_80</engine>
+        </engines>
+        <folder_site>Vicom-EEN-For-Test</folder_site>
+        <upload_interval>2</upload_interval>
+        <een_email_from>jesse.wu@vicom.com</een_email_from>
+        <een_email_account_username>jesse.wu@vicom.com</een_email_account_username>
+        <txt_folder>Data/data_txt</txt_folder>
+        <engine_ip_prefix>10.100.5</engine_ip_prefix>
+        <healthy_interval>86400</healthy_interval>
+        <xml_folder>Data/data_xml</xml_folder>
+        <een_interval>120</een_interval>
+        <webserver_url>none</webserver_url>
+        <remote_interval>2</remote_interval>
+        <html_folder>Data/data_html</html_folder>
+        <script_folder>Scripts</script_folder>
+        <engine_password>ada74304c65bdc3ae35d755a2959daec</engine_password>
+        <webserver_default>http://www.parastor.com/sms/http-receive-local-file.php</webserver_default>
+        <een_email_to>jesse.wu@vicom.com, jesse.wu@loxoll.com</een_email_to>
+        <een_email_server_port>587</een_email_server_port>
+        <site_id>130219</site_id>
+        <refresh_interval>3600</refresh_interval>
+        <een_email_account_password>78b2d3dc-4f15-4cb8-b015-cbad601e420d</een_email_account_password>
+        <een_email_server_name>smtp.mandrillapp.com</een_email_server_name>
+        <attachment_interval>0</attachment_interval>
+        <site_name>KBS</site_name>
+        <log_folder>logs</log_folder>
+        <return_file>none</return_file>
+        <folder_root>none</folder_root>
+    </site>
+</sites>
+

@@ -1,13 +1,15 @@
 <?php
     
 
+    ini_set("display_errors", "On");
+    ini_set("log_errors_max_len", 100);
 
     
     $site_name = $_REQUEST['site'] ;
-    $xml_file  = $_REQUEST['xml'] ;
+    //$xml_file  = $_REQUEST['xml'] ;
     
-
-    echo "site_name = " . $site_name . ", xml = " . $xml_file . "<br>";
+    require ("public-parse-xml-proc.php");
+    echo "site_name = $site_name<br>";
     
     echo date('l jS \of F Y h:i:s A') . "<br>";
     
@@ -17,16 +19,26 @@
 
     try
     {
-        $database = "./" . $site_name . "/Data/server.db";
+        $database = "./" . $site_name . "/server.db";
         echo "database:" . $database . "<br>";
        
         $db = new PDO("sqlite:" . $database);
         //echo "<br>";
         
-        $full_xml_file = "./" . $site_name . "/Data/data_xml/" . $xml_file;
+        //$full_xml_file = "./" . $site_name . "/Data/data_xml/" . $xml_file;
+        
+        $files = glob("./$site_name/Data/data_xml/*_all.xml");
+        
+        var_dump($files);
+        
+        foreach ($files as $key => $xml_file) {
+            echo "<br/>$xml_file<br/>";
+            parse_engine_all($xml_file, $db, $site_name);
+        }
+
         
         //$full_xml_file = "./Accusys/Data/data_xml/engine_40_all.xml";
-        
+        /*
         echo "full_xml_file:" . $full_xml_file . "<br>";
         
         $myFile = "parse-engine-all-xml.log";
@@ -47,7 +59,7 @@
         } else {
             echo "file not exists";
         }
-        
+        */
         /*
         for($i=0; $i<300; $i++) {
             $file = $path . "engine_" . $i ."_all.xml";

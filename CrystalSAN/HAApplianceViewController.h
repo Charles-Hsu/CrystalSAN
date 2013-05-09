@@ -53,6 +53,7 @@
 
 - (IBAction)onHome:(id)sender;
 - (IBAction)onBack:(id)sender;
+- (IBAction)logout:(id)sender;
 
 - (IBAction)hideSlider:(id)sender;
 

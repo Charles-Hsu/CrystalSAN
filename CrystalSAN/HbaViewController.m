@@ -130,8 +130,6 @@
     NSLog(@"%s engine00 = '%@'", __func__, theDelegate.currentEngineLeftSerial);
     NSLog(@"%s engine01 = '%@'", __func__, theDelegate.currentEngineRightSerial);
     
-    
-
     deviceArray = (NSMutableArray *)[sanDatabase getInitiatorListByEngineSerial:theDelegate.currentEngineLeftSerial];
     
     [deviceArray addObjectsFromArray:[sanDatabase getInitiatorListByEngineSerial:theDelegate.currentEngineRightSerial]];

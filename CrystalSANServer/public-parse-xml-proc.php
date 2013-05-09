@@ -135,8 +135,8 @@
         //$db->exec("DROP TABLE temp_engine_status");
         //$db->exec("DROP TABLE temp_vpd");
         
-        $db->exec ("CREATE TABLE IF NOT EXISTS temp_engine_status (serial PRIMARY KEY, p0_wwpn)");
-        $db->exec ("CREATE TABLE IF NOT EXISTS temp_vpd (site_name, serial PRIMARY KEY, engine_name, a1_wwpn)");
+        $db->exec ("CREATE TABLE IF NOT EXISTS temp_engine_status (serial INTEGER PRIMARY KEY, p0_wwpn)");
+        $db->exec ("CREATE TABLE IF NOT EXISTS temp_vpd (site_name, serial INTEGER PRIMARY KEY, engine_name, a1_wwpn)");
         
         $sql = "SELECT serial,p0_wwpn FROM engine_cli_conmgr_engine_status WHERE cluster_id='2'";
         $result = $db->query($sql)->fetchAll();
@@ -400,7 +400,10 @@
                         
         $table_name = "engine_cli_vpd";
         echo "<br>" . $table_name . "----><br>";
-        $db->exec("CREATE TABLE IF NOT EXISTS $table_name (serial primary key, seconds integer, site_name, engine_name, product_type, fw_version, fw_date, redboot, uid, pcb, mac, ip, uptime, alert, time, a1_wwnn, a1_wwpn, a2_wwnn, a2_wwpn, b1_wwnn, b1_wwpn, b2_wwnn, b2_wwpn)");
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER primary key, seconds integer, site_name, engine_name, product_type, fw_version, fw_date, redboot, uid, pcb, mac, ip, uptime, alert, time, a1_wwnn, a1_wwpn, a2_wwnn, a2_wwpn, b1_wwnn, b1_wwpn, b2_wwnn, b2_wwpn)";
+        echo $sql;
+        
+        $db->exec($sql);
 
         $key_array = array_keys($cli_vpd);
         
@@ -459,7 +462,7 @@
                   .") VALUES ("
                   . $sql_value_string
                   .")";
-        //echo $sql_stmt . "<br>";
+        echo $sql_stmt . "<br>";
                   
         $db->exec($sql_stmt);
         
@@ -483,7 +486,7 @@
         $table_name = "engine_" . __FUNCTION__;
         //echo "<br>" . $table_name . "----><br>";
         
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial PRIMARY KEY, seconds INTEGER," .
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER PRIMARY KEY, seconds INTEGER," .
             "m0_id, m0_sts, m0_map, m0_capacity, m0_mb0_id, m0_mb0_sts, m0_mb1_id, m0_mb1_sts," .
             "m1_id, m1_sts, m1_map, m1_capacity, m1_mb0_id, m1_mb0_sts, m1_mb1_id, m1_mb1_sts," .
             "m2_id, m2_sts, m2_map, m2_capacity, m2_mb0_id, m2_mb0_sts, m2_mb1_id, m2_mb1_sts," .
@@ -566,7 +569,7 @@
         //var_dump($data);
         //echo "<br>===============================================<br>";
         
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial PRIMARY KEY, seconds INTEGER, inactive INTEGER, offline_path INTEGER)";
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER PRIMARY KEY, seconds INTEGER, inactive INTEGER, offline_path INTEGER)";
         //echo $sql;
         $db->exec($sql);
         
@@ -577,7 +580,7 @@
         //echo $sql;
         $db->exec($sql);
         
-        $sql = "CREATE TABLE IF NOT EXISTS " . $table_name . "_detail (serial, seconds INTEGER, id, status," .
+        $sql = "CREATE TABLE IF NOT EXISTS " . $table_name . "_detail (serial INTEGER, seconds INTEGER, id, status," .
             "path_0_id, path_0_port, path_0_wwpn, path_0_lun, path_0_pstatus," .
             "path_1_id, path_1_port, path_1_wwpn, path_1_lun, path_1_pstatus," .
             "PRIMARY KEY (serial, seconds, id))";
@@ -680,7 +683,7 @@
         $table_name = "engine_" . __FUNCTION__;
         //echo "<br>" . $table_name . "----><br>";
         
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial PRIMARY KEY, seconds INTEGER, cluster_id INTEGER, status, p0_id, p0_port, p0_wwpn, p0_pstatus, p1_id, p1_port, p1_wwpn, p1_pstatus, cluster_not_ok INTEGER, path_not_ok INTEGER)";
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER PRIMARY KEY, seconds INTEGER, cluster_id INTEGER, status, p0_id, p0_port, p0_wwpn, p0_pstatus, p1_id, p1_port, p1_wwpn, p1_pstatus, cluster_not_ok INTEGER, path_not_ok INTEGER)";
         //echo $sql;
         $db->exec($sql);
         
@@ -758,10 +761,10 @@
          array(4) { ["initiators"]=> array(4) { [0]=> array(4) { ["id"]=> string(1) "0" ["port"]=> string(2) "A1" ["wwpn"]=> string(18) "1000-00062b-1ec31c" ["status"]=> string(1) "I" } [1]=> array(4) { ["id"]=> string(1) "1" ["port"]=> string(2) "A1" ["wwpn"]=> string(18) "1000-00062b-1bc280" ["status"]=> string(1) "A" } [2]=> array(4) { ["id"]=> string(1) "2" ["port"]=> string(2) "A1" ["wwpn"]=> string(18) "1000-00062b-1bbfd8" ["status"]=> string(1) "A" } [3]=> array(4) { ["id"]=> string(1) "3" ["port"]=> string(2) "A1" ["wwpn"]=> string(18) "1000-00062b-1ec4f4" ["status"]=> string(1) "I" } } ["online"]=> string(1) "2" ["offline"]=> string(1) "2" ["seconds"]=> string(10) "1363746627" }
          */
         
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial PRIMARY KEY, seconds INTEGER, online INTEGER, offline INTEGER)";
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER PRIMARY KEY, seconds INTEGER, online INTEGER, offline INTEGER)";
         $db->exec($sql);
         
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name" . "_detail (serial, seconds INTEGER, initiator_id, port, wwpn, status, PRIMARY KEY (serial, seconds, initiator_id))";
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name" . "_detail (serial INTEGER, seconds INTEGER, initiator_id, port, wwpn, status, PRIMARY KEY (serial, seconds, initiator_id))";
         $db->exec($sql);
         
         $online = $data['online'];
@@ -824,7 +827,7 @@
         $table_name = "engine_" . __FUNCTION__;
         //echo "<br>" . $table_name . "----><br>";
         
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial PRIMARY KEY, seconds INTEGER, " .
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER PRIMARY KEY, seconds INTEGER, " .
             "cluster_0_id, cluster_0_status, cluster_0_is_master, cluster_1_id, cluster_1_status, cluster_1_is_master, my_id);";
         $db->exec($sql);
         

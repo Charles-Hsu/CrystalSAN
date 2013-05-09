@@ -136,8 +136,21 @@
     
     /*
      */
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(presentNextViewController:)
+                                                 name:@"presentNextViewControllerNotification"
+                                               object:nil];
 
     
+}
+
+
+- (void)presentNextViewController:(id)sender {
+    NSLog(@"%s", __func__);
+    [self presentViewController:theDelegate.nextViewController
+                       animated:YES
+                     completion:nil];
 }
 
 - (IBAction)loginView:(id)sender {
@@ -192,6 +205,9 @@
                               );
     [self presentViewController:self.loginViewController animated:YES completion:nil];
     [self.loginViewController.view.superview setFrame:frame];
+    //self.loginViewController.parentViewController = self;
+    
+    
     //[self.loginViewController.view.superview setCenter:self.view.center];
     
 }
@@ -199,10 +215,31 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"%s", __func__);
+
+    [super viewWillAppear:animated];
+    
     theDelegate.currentDeviceName = @"";
     theDelegate.currentEngineLeftSerial = @"";
     theDelegate.currentEngineRightSerial = @"";
+    
+    NSLog(@"%s %@ %@", __func__, theDelegate.siteName, theDelegate.userName);
+
+    
 }
+
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+//}
+
+- (void)viewWillDisappear:(BOOL)animated {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    NSLog(@"%s", __func__);
+    
+    [super viewWillDisappear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -232,32 +269,44 @@
 - (void)onItemPress:(id)sender
 {
     //NSLog(@"%s: %@",__func__, sender);
-          
+    
     UIButton *theButton = (UIButton *)sender;
     //NSLog(@"theButton.tag==%u", theButton.tag);
+    switch (theButton.tag) {
+        case 201:
+            theDelegate.nextViewController = self.raidViewController;
+            break;
+        case 202:
+            theDelegate.nextViewController = self.haApplianceViewController;
+            break;
+        case 203:
+            theDelegate.nextViewController = self.volumeViewController;
+            break;
+        case 200 + ITEM_BUTTON_VIEW_DRIVE_TAG +1:
+            theDelegate.nextViewController = self.driveViewController;
+            break;
+        case 200 + ITEM_BUTTON_VIEW_HBA_TAG +1:
+            theDelegate.nextViewController = self.hbaViewController;
+            break;
+        default:
+            break;
+    }
+
+    if (theDelegate.isLogin) {
+        
+        [self presentNextViewController:sender];
+        
+        //[self presentViewController:theDelegate.nextViewController
+        //                   animated:YES
+        //                 completion:nil];
+
+    } else {
+        
+        [self loginView:nil];
+        
+    }
     
-    if (theButton.tag == 201) // RaidViewController
-    { 
-       [self presentViewController:self.raidViewController animated:YES completion:nil];
-    }
-    else if (theButton.tag == 202) // MirrorViewController
-    { 
-        [self presentViewController:self.haApplianceViewController animated:YES completion:nil];
-    }
-    else if (theButton.tag == 203) // VolumeViewController
-    { 
-        [self presentViewController:self.volumeViewController animated:YES completion:nil];
-    }
-    else if (theButton.tag == 200 + ITEM_BUTTON_VIEW_DRIVE_TAG +1)
-    {
-        NSLog(@"presentViewController==driveViewController");
-        [self presentViewController:self.driveViewController animated:YES completion:nil];
-    }
-    else if (theButton.tag == 200 + ITEM_BUTTON_VIEW_HBA_TAG +1)
-    {
-        NSLog(@"presentViewController==HbaViewController");
-        [self presentViewController:self.hbaViewController animated:YES completion:nil];
-    }
+
 }
 
 - (IBAction)hideShowSlider:(id)sender

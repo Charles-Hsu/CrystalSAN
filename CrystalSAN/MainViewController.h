@@ -62,5 +62,7 @@
 
 - (IBAction)loginView:(id)sender;
 
+- (void)presentNextViewController:(id)sender;
+
 
 @end

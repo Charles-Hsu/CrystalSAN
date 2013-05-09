@@ -166,6 +166,30 @@
     [self hideHud];
 }
 
+- (void)loadEngineCliInformation:(NSString *)serial {
+    
+    [sanDatabase httpGetEngineCliVpdBySerial:serial siteName:theDelegate.siteName];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"%s", __func__);
+    
+    self.haApplianceName.text = theDelegate.currentDeviceName;
+    
+    NSArray *engines = [theDelegate.sanDatabase getEnginesByHaApplianceName:(self.haApplianceName.text)];
+    NSLog(@"%s %@", __func__, engines);
+    
+    if ([engines count] == 2) {
+        theDelegate.currentEngineLeftSerial = [engines objectAtIndex:0];
+        theDelegate.currentEngineRightSerial = [engines objectAtIndex:1];
+        
+        [self loadEngineCliInformation:theDelegate.currentEngineLeftSerial];
+        [self loadEngineCliInformation:theDelegate.currentEngineRightSerial];
+    }
+        
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"%s", __func__);

@@ -40,6 +40,15 @@
 
 @property (strong, nonatomic) NSNumber *loadSiteViewTimes;
 
+@property (strong,nonatomic) NSString *siteName;
+@property (strong,nonatomic) NSString *userName;
+@property (strong,nonatomic) NSString *password;
+
+@property BOOL isLogin;
+@property (weak, nonatomic) UIViewController *nextViewController;
+
+
+
 - (NSString *)getSanVmirrorLists;
 
 

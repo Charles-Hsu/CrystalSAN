@@ -68,26 +68,36 @@
     //      engine03 text,
     //      engine04 text);
     
-    NSString *primaryKey = [dict valueForKey:@"site_name"];
-    FMResultSet *rs = [db executeQuery:@"select count(*) from ha_cluster where site_name = '?'", primaryKey];
+    NSString *primaryKey = [dict valueForKey:@"engine00"];
+    NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(*) FROM ha_cluster WHERE engine00 = '%@'", primaryKey];
+    NSLog(@"%s %@", __func__, sql);
     
-    while ([rs next])
+    FMResultSet *rs = [db executeQuery:sql];
+    
+    if ([rs next])
     {
+        [db beginTransaction];
+        
+        NSLog(@"%s intForColumnIndex=%d", __func__,  [rs intForColumnIndex:0]);
+        
         if ([rs intForColumnIndex:0] == 0) {
-            [db beginTransaction];
             [db executeUpdate:@"insert into ha_cluster values (?, ?, ?, ?, ?, ?, ?)" ,
-                [dict objectForKey:@"site_name" ],
-                [dict objectForKey:@"ha_appliance_name" ],
-                [dict objectForKey:@"engine00" ],
-                [dict objectForKey:@"engine01" ],
-                [dict objectForKey:@"engine02" ],
-                [dict objectForKey:@"engine03" ],
-                [dict objectForKey:@"engine04" ]];
-            [db commit];
+                [dict objectForKey:@"site_name"],
+                [dict objectForKey:@"ha_appliance_name"],
+                [dict objectForKey:@"engine00"],
+                [dict objectForKey:@"engine01"],
+                [dict objectForKey:@"engine02"],
+                [dict objectForKey:@"engine03"],
+                [dict objectForKey:@"engine04"]];
         }
         else {
-            
+            [db executeUpdate:@"UPDATE ha_cluster SET engine01=?, engine02=?, engine03=?, engine03=?" ,
+             [dict objectForKey:@"engine01"],
+             [dict objectForKey:@"engine02"],
+             [dict objectForKey:@"engine03"],
+             [dict objectForKey:@"engine04"]];
         }
+        [db commit];
     }
     // close the result set.
     // it'll also close when it's dealloc'd, but we're closing the database before
@@ -150,6 +160,15 @@
 }
 
 
+- (void)updateUserAuthInfo:(NSString *)siteName user:(NSString *)userName password:(NSString *)password {
+    
+}
+
+- (BOOL)checkUserAuthInfo:(NSString *)siteName user:(NSString *)userName password:(NSString *)password {
+    return TRUE;
+}
+
+
 - (NSString *)getPasswordBySiteName:(NSString *)siteName siteID:(NSString *)siteID userName:(NSString *)userName
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -171,14 +190,94 @@
     return apiResponse;
 }
 
-- (NSDictionary *)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName
-{
+- (NSString *)hostURLPathWithPHP:(NSString *)phpFile {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *hostPath = [NSString stringWithFormat:@"%@", [defaults objectForKey:@"server_ip_hostname"]];
     
-    [defaults synchronize];
+    if (![hostPath hasPrefix:@"http://"]) {
+        hostPath = [NSString stringWithFormat:@"http://%@", hostPath];
+    }
+    NSString *urlString = [hostPath stringByAppendingPathComponent:phpFile];
+    return urlString;
+}
+
+- (void)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName
+{
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/CrystalSANServer/get_ha_cluster_all.php?site_name=%@", hostname, siteName]];
+    //[defaults synchronize];
+    
+    //NSString *hostname = [defaults objectForKey:@"server_ip_hostname"];
+    NSString *php = @"http-get-ha_cluster.php";
+    NSString *urlString = [self hostURLPathWithPHP:php];
+    
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSString *hostPath = [NSString stringWithFormat:@"%@", [defaults objectForKey:@"server_ip_hostname"]];
+    //if (![hostPath hasPrefix:@"http://"]) {
+    //    hostPath = [NSString stringWithFormat:@"http://%@", hostPath];
+    //}
+    
+    NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@", siteName];
+    NSURL *url = [NSURL URLWithString:urlStringWithItems];
+    
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlStringWithItems);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"nsurl error = %@", error);
+    NSLog(@"--");
+
+
+    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    
+    //Initialize the delegate.
+    XMLParser *parser = [[XMLParser alloc] initXMLParser];
+    
+    //Set delegate
+    [xmlParser setDelegate:(id <NSXMLParserDelegate>)parser];
+    
+    //Start parsing the XML file.
+    BOOL success = [xmlParser parse];
+    
+    NSLog(@"%s %@ parses %@", __func__, php, success ? @"successfully" : @"failed");
+        
+}
+
+
+
+- (void)httpGetEngineCliVpdBySerial:(NSString *)serial siteName:(NSString *)siteName {
+    
+    NSString *sql = [NSString stringWithFormat:@"SELECT seconds FROM engine_cli_vpd WHERE serial='%@'", serial];
+    NSLog(@"%s %@", __func__, sql);
+    
+    NSString *seconds = nil;
+    
+    FMResultSet *rs = [db executeQuery:sql];
+    while ([rs next])
+    {
+        seconds = [rs stringForColumnIndex:0];
+        NSLog(@"seconds:%@", seconds);
+    }
+    
+    NSString *php = @"http-get-engine_cli_vpd.php";
+    NSString *urlString = [self hostURLPathWithPHP:php];
+    
+    NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@&serial=%@", siteName, serial];
+    
+    if (seconds) {
+        urlStringWithItems = [NSString stringWithFormat:@"%@&seconds=%@", urlStringWithItems, seconds];
+    }
+
+    NSURL *url = [NSURL URLWithString:urlStringWithItems];
+    
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlStringWithItems);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"nsurl error = %@", error);
+    NSLog(@"--");
     
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     
@@ -190,9 +289,59 @@
     
     //Start parsing the XML file.
     BOOL success = [xmlParser parse];
-    NSLog(@"get_ha_cluster_all.php parses %@", success?@"successfully":@"failed");
+    
+    NSLog(@"%s %@ parses %@", __func__, php, success ? @"successfully" : @"failed");
+    
+}
+
+
+- (void)httpGetEngineDriveInformation:(NSString *)serial siteName:(NSString *)siteName {
+    
+    NSInteger seconds = 0;
+
+    if ([serial length] > 0) {
+        NSString *sql = [NSString stringWithFormat:@"SELECT seconds FROM engine_cli_conmgr_drive_status WHERE serial='%@'", serial];
+        NSLog(@"%s %@", __func__, sql);
         
-    return nil;
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            seconds = [rs intForColumnIndex:0];
+        }
+    }
+    NSLog(@"seconds:%d", seconds);
+    
+    NSString *php = @"http-get-engine_cli_conmgr_drive_status.php"; // http-get-engine_cli_conmgr_drive_status.php?site=Accusys&serial=11340292
+    NSString *urlString = [self hostURLPathWithPHP:php];
+    
+    NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@&serial=%@", siteName, serial];
+    
+    if (seconds>0) {
+        urlStringWithItems = [NSString stringWithFormat:@"%@&seconds=%d", urlStringWithItems, seconds];
+    }
+    
+    NSURL *url = [NSURL URLWithString:urlStringWithItems];
+    
+    NSError *error = nil;
+    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlStringWithItems);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"nsurl error = %@", error);
+    NSLog(@"--");
+    
+    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    
+    //Initialize the delegate.
+    XMLParser *parser = [[XMLParser alloc] initXMLParser];
+    
+    //Set delegate
+    [xmlParser setDelegate:(id <NSXMLParserDelegate>)parser];
+    
+    //Start parsing the XML file.
+    BOOL success = [xmlParser parse];
+    
+    NSLog(@"%s %@ parses %@", __func__, php, success ? @"successfully" : @"failed");
+
 }
 
 - (NSArray *)httpGetSanInformation:(NSString *)phpURL bySerial:(NSString *)serial
@@ -571,10 +720,10 @@
     
     NSString *sql = nil;
     if (serial.length == 0) {
-        sql = [NSString stringWithFormat:@"select * from engine_cli_conmgr_initiator_status_detail"];
+        sql = [NSString stringWithFormat:@"SELECT * FROM engine_cli_conmgr_initiator_status_detail"];
     }
     else {
-        sql = [NSString stringWithFormat:@"select * from engine_cli_conmgr_initiator_status_detail where serial='%@'", serial];
+        sql = [NSString stringWithFormat:@"SELECT * FROM engine_cli_conmgr_initiator_status_detail WHERE serial='%@'", serial];
     }
     
     FMResultSet *rs = [db executeQuery:sql];
@@ -982,12 +1131,16 @@
 }
 
 - (NSString *)getCompanyNameByWWPN:(NSString *)wwpn {
-    NSString *sql = [NSString stringWithFormat:@"SELECT company_name FROM wwpn_data WHERE wwpn = '%@'", wwpn];
+    NSString *sql = [NSString stringWithFormat:@"SELECT company_name,oui FROM wwpn_data WHERE wwpn = '%@'", wwpn];
     FMResultSet *rs = [db executeQuery:sql];
     NSString *companyName = @"";
+    //NSString *oui = @"";
     if ([rs next])
     {
         companyName = [rs stringForColumnIndex:0];
+        if ([companyName length] == 0) {
+            companyName = [rs stringForColumnIndex:1];
+        }
     }
     // close the result set.
     // it'll also close when it's dealloc'd, but we're closing the database before
@@ -1002,7 +1155,8 @@
         NSString *serial = [serials objectAtIndex:i];
         //if ([serial length] != 0) {
             NSString *whereClause = ([serial length]==0 ? @"" : [NSString stringWithFormat:@"WHERE serial='%@'", serial]);
-            NSString *sql = [NSString stringWithFormat:@"SELECT serial, drive_id,drive_status,path_0_id,path_0_port,path_0_wwpn,path_0_lun,path_0_pstatus FROM engine_cli_conmgr_drive_status_detail %@", whereClause];
+            //NSString *sql = [NSString stringWithFormat:@"SELECT serial, drive_id,drive_status,path_0_id,path_0_port,path_0_wwpn,path_0_lun,path_0_pstatus FROM engine_cli_conmgr_drive_status_detail %@", whereClause];
+        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM engine_cli_conmgr_drive_status_detail %@", whereClause];
             NSLog(@"%s %@", __func__, sql);
             FMResultSet *rs = [db executeQuery:sql];
             
@@ -1014,6 +1168,14 @@
              00600120    1363746628  0           A             1           B1           5000-612032-f02000  0000        A
              00600118    1363746628  1           A             1           B1           5000-612032-f18000  0000        A
              */
+        
+        /*
+        select * from engine_cli_conmgr_drive_status_detail;
+        serial      seconds     id          status      path_0_id   path_0_port  path_0_wwpn         path_0_lun  path_0_pstatus  path_1_id   path_1_port  path_1_wwpn  path_1_lun  path_1_pstatus
+        ----------  ----------  ----------  ----------  ----------  -----------  ------------------  ----------  --------------  ----------  -----------  -----------  ----------  --------------
+        11340292    1367391044  0           A           1           B2           5006-022ad0-485000  0000        A
+        11340292    1367391044  1           A           1           B2           5006-022ad0-485000  0001        A
+         */
             
             while ([rs next])
             {

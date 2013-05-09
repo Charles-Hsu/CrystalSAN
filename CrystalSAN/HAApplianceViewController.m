@@ -20,6 +20,9 @@
     NSUInteger totalCount;
     
     AppDelegate *theDelegate;
+    
+    NSString *siteName;
+    
 }
 
 //- (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )curentIndex count:(NSUInteger)count total:(NSUInteger)total;
@@ -59,17 +62,42 @@
     return self;
 }
 
+- (void)loadHaClusterArray {
+    
+    [sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
+    
+    deviceArray = [sanDatabase getHaApplianceNameListBySiteName:theDelegate.siteName];
+    NSLog(@"%s site %@,  count = %u", __func__, theDelegate.siteName, [deviceArray count]);
+    
+    totalItemInCarousel = [deviceArray count];
+    NSUInteger count = [deviceArray count];
+    
+    currentItemIndex = 0;
+    currentCollectionCount =  count;
+    totalCount = count;
+    
+    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    NSLog(@"%s", __func__);
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
     
-    deviceArray = [sanDatabase getHaApplianceNameListBySiteName:@""];
-    //NSLog(@"description count = %u", [descriptions count]);
+    siteName = theDelegate.siteName;
+    
+    [self loadHaClusterArray];
+    
+    //[sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
+    //deviceArray = [sanDatabase getHaApplianceNameListBySiteName:theDelegate.siteName];
+    //NSLog(@"%s site %@,  count = %u", __func__, theDelegate.siteName, [deviceArray count]);
 
     //init/add carouse view
     carousel.delegate = self;
@@ -83,6 +111,7 @@
     carousel.viewpointOffset = CGSizeMake(0, -330);
     carousel.decelerationRate = 0.9;
     
+    /*
     totalItemInCarousel = [deviceArray count];
     NSUInteger count = [deviceArray count];
     
@@ -91,15 +120,15 @@
     totalCount = count;
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+     */
     
     //[carousel reloadData];
     
     self.haApplianceConnectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HAApplianceConnectionViewControllerID"];
     self.haApplianceConnectionViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    currentItemIndex = carousel.currentItemIndex;
-    
-    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
+    //currentItemIndex = carousel.currentItemIndex;
+    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
 
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
     
@@ -107,6 +136,22 @@
     
 
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"%s", __func__);
+    NSLog(@"%s siteName in current class = %@, siteName in delegate = %@", __func__, siteName, theDelegate.siteName);
+    
+    if(![siteName isEqualToString:theDelegate.siteName]) {
+        siteName = theDelegate.siteName;
+        [self loadHaClusterArray];
+        [carousel reloadData];
+        currentItemIndex = carousel.currentItemIndex;
+        theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
+    }
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -176,6 +221,11 @@
     [theDelegate getSanVmirrorLists];
 
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)logout:(id)sender {
+    theDelegate.isLogin = FALSE;
+    [self onHome:sender];
 }
 
 - (void)refreshStatus

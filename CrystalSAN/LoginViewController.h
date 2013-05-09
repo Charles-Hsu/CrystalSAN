@@ -27,8 +27,8 @@
 //@property (strong,nonatomic) iCarousel *carousel;
 
 // event
-- (IBAction)onHome:(id)sender;
-- (IBAction)onBack:(id)sender;
+- (IBAction)onCancel:(id)sender;
+- (IBAction)onConfirm:(id)sender;
 
 @property (nonatomic, weak) IBOutlet UILabel *siteNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *userNameLabel;

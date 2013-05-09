@@ -20,6 +20,9 @@
 @synthesize currentEngineLeftSerial, currentEngineRightSerial;
 @synthesize loadSiteViewTimes;
 
+@synthesize siteName, userName, password;
+@synthesize isLogin;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -85,7 +88,8 @@
     
     self.loadSiteViewTimes = 0;
 
-
+    self.isLogin = FALSE;
+    
     return YES;
 }
 
@@ -206,6 +210,9 @@
 
 - (void)insertInto:(NSString *)table values:(NSDictionary *)dict
 {
+    
+    NSLog(@"%s %@ %@", __func__, table, dict);
+    
     NSMutableString *keys = [[NSMutableString alloc] init];
     NSMutableString *values = [[NSMutableString alloc] init];
     NSUInteger count = [[dict allKeys] count];

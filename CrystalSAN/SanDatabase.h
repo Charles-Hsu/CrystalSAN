@@ -17,9 +17,14 @@
 //- (void)insertDemoDevices;
 
 - (NSString *)getPasswordBySiteName:(NSString *)siteName siteID:(NSString *)siteID userName:(NSString *)userName;
-- (NSDictionary *)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName;
 - (NSArray *)getEngineCliVpdBySerial:(NSString *)serial;
 - (NSArray *)getEngineCliMirrorBySerial:(NSString *)serial;
+
+
+- (void)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName;
+- (void)httpGetEngineCliVpdBySerial:(NSString *)serial siteName:(NSString *)siteName;
+- (void)httpGetEngineDriveInformation:(NSString *)serial siteName:(NSString *)siteName;
+
 
 - (NSArray *)httpGetEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial;
 - (NSArray *)httpGetEngineCliConmgrInitiatorStatusDetailBySerial:(NSString *)serial;
@@ -60,5 +65,9 @@
 - (NSString *)getEngineDriveShortStringtTitle;
 - (NSString *)getCompanyNameByWWPN:(NSString *)wwpn;
 
+- (void)updateUserAuthInfo:(NSString *)siteName user:(NSString *)userName password:(NSString *)password;
+- (BOOL)checkUserAuthInfo:(NSString *)siteName user:(NSString *)userName password:(NSString *)password;
+
+- (NSString *)hostURLPathWithPHP:(NSString *)php;
 
 @end
