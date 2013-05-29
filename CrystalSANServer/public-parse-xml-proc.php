@@ -4,10 +4,7 @@
     function parse_engine_all($file,$db,$site_name) {
         
         $xml = simplexml_load_file($file);
-        
         $result = simpleXMLToArray($xml);
-        
-        //print_r($result);
         
         $site = $result['site'];
         
@@ -15,16 +12,12 @@
         $engine = $engines['engine'];
         $engine_name = $engine['name'];
         
-        //var_dump ($engine_name);
-        
-        $vpd_info = cli_vpd ($site_name, $engine_name, $engine['cli_vpd'], $db);
+        $vpd_info = cli_vpd($site_name, $engine_name, $engine['cli_vpd'], $db);
         
         $serial = $vpd_info['serial'];
         $wwnn = $vpd_info['wwnn'];
         
-        //var_dump ($serial);
-        
-        cli_mirror ($site_name, $engine_name, $serial, $engine['cli_mirror'], $db);
+        cli_mirror($site_name, $engine_name, $serial, $engine['cli_mirror'], $db);
         cli_conmgr_drive_status($site_name, $engine_name, $serial, $engine['cli_conmgr_drive_status'], $db);
         cli_conmgr_engine_status($site_name,$engine_name, $serial, $engine['cli_conmgr_engine_status'], $db);
         cli_conmgr_initiator_status($site_name, $engine_name, $serial, $engine['cli_conmgr_initiator_status'], $db);
@@ -34,6 +27,79 @@
 
     }
     
+    function parse_engine_new($file,$db,$site_name) {
+        $xml = simplexml_load_file($file);
+        $result = simpleXMLToArray($xml);
+        
+        $site = $result['site'];
+        
+        $engines = $site['engines'];
+        $engine_data = $engines['engine'];
+        
+        foreach($engine_data as $key => $engine) {
+            $engine_name=$engine['name'];
+            echo "<br>=====[$engine_name]=========<br>";
+            //$engine_cli_vpd = $engine['cli_vpd'];
+            //$engine_cli_conmgr_initiator_status = $engine['cli_conmgr_initiator_status'];
+            
+            if(array_key_exists('cli_vpd', $engine)) {
+                new_cli_vpd($site_name, $engine_name, $engine['cli_vpd'], $db);
+            }
+            
+            if(array_key_exists('cli_conmgr_initiator_status', $engine)) {
+                new_cli_conmgr_initiator_status($site_name, $engine_name, $engine['cli_conmgr_initiator_status'], $db);
+            }
+            //var_dump($engine);
+        }
+        
+    }
+    
+ 
+    function parse_engine_time($file_name,$db,$site_name) {
+
+        $sql = "CREATE TABLE IF NOT EXISTS engine_time (site_name, engine_name, all_time INTEGER, new_time INTEGER, conn_lost INTEGER)";
+        
+        $db->exec($sql);
+        $xml = simplexml_load_file($file_name);
+        //echo "--->$xml";
+
+        //$file = fopen($file_name, "r") or exit("Unable to open file!");
+        //Output a line of the file until the end is reached
+        //while(!feof($file))
+        //{
+        //    echo fgets($file). "<br>";
+        //}
+        //fclose($file);
+        
+        $result = simpleXMLToArray($xml);
+        //var_dump ($result);
+        //return;
+        $site = $result['site'];
+        $engines = $site['engines'];
+        $engine_data = $engines['engine'];
+        
+        foreach($engine_data as $key => $engine) {
+            $engine_name=$engine['name'];
+            echo "<br>=====[$engine_name]=========<br>";
+            
+            $conn_lost = $engine['conn_lost'];
+            $all_time = $engine['all_time'];
+            //var_dump($all_time);
+            
+            $new_time = $engine['new_time'];
+            //var_dump($new_time);
+            
+            $sql = "DELETE FROM engine_time WHERE engine_name='$engine_name'";
+            $db->exec($sql);
+            
+            $sql = "INSERT INTO engine_time VALUES ('$site_name','$engine_name', $all_time[0], $new_time[0], $conn_lost)";
+            //echo $sql;
+            $db->exec($sql);
+            
+        }
+        
+    }
+
     function company_by_oui ($oui) {
         
         switch (strtoupper($oui)) {
@@ -98,9 +164,9 @@
         return $array;
     }
     
-    function wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, $port) {
+    function wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, $port, $site_name) {
         
-        $sql = "CREATE TABLE IF NOT EXISTS wwpn_data (wwnn, wwpn PRIMARY KEY, oui, company_name, model, type, serial, port_info)";
+        $sql = "CREATE TABLE IF NOT EXISTS wwpn_data (seconds INTEGER, site_name, wwnn, wwpn PRIMARY KEY, oui, company_name, model, type, serial, port_info)";
         $db->exec($sql);
      
         $wwpn_info = get_oui_by_wwpn ($wwpn);
@@ -112,8 +178,10 @@
             $port = $wwpn_info['port'];
             //$port = "PORT";
         }
+        
+        $seconds = round(microtime(true));
 
-        $sql = "INSERT INTO wwpn_data VALUES ('$wwnn', '$wwpn', '$oui', '$company_name', '$product_type', '$type', '$serial', '$port')";
+        $sql = "INSERT INTO wwpn_data VALUES ($seconds, '$site_name', '$wwnn', '$wwpn', '$oui', '$company_name', '$product_type', '$type', '$serial', '$port')";
         $db->exec($sql);
         //echo "<br> $sql <br>";
         
@@ -121,9 +189,11 @@
     
     function ha_appliance_parsing ($db, $site_name, $engine_serial) {
         
+        echo "<br>*************" . __FUNCTION__ . "<br>";
+        
         $table_name = "ha_cluster";
         $sql = "CREATE TABLE IF NOT EXISTS " . $table_name .
-            "(site_name, ha_appliance_name, engine00 PRIMARY KEY, engine01, engine02, engine03 , engine04)";
+            "(seconds INTEGER, site_name, ha_appliance_name, engine00 PRIMARY KEY, engine01, engine02, engine03 , engine04)";
         $db->exec($sql);
         
         //$sql = "SELECT b.site_name, a.serial 'SN',a.cluster_id, SUBSTR(a.p0_wwpn,6) p0_wwpn, b.engine_name, SUBSTR(b.a1_wwpn,6) a1_wwpn" .
@@ -135,14 +205,15 @@
         //$db->exec("DROP TABLE temp_engine_status");
         //$db->exec("DROP TABLE temp_vpd");
         
-        $db->exec ("CREATE TABLE IF NOT EXISTS temp_engine_status (serial INTEGER PRIMARY KEY, p0_wwpn)");
+        $db->exec ("CREATE TABLE IF NOT EXISTS temp_engine_status (seconds INTEGER, serial INTEGER PRIMARY KEY, p0_wwpn)");
         $db->exec ("CREATE TABLE IF NOT EXISTS temp_vpd (site_name, serial INTEGER PRIMARY KEY, engine_name, a1_wwpn)");
         
-        $sql = "SELECT serial,p0_wwpn FROM engine_cli_conmgr_engine_status WHERE cluster_id='2'";
+        $sql = "SELECT seconds,serial,p0_wwpn FROM engine_cli_conmgr_engine_status WHERE cluster_id='2'";
         $result = $db->query($sql)->fetchAll();
         
         foreach($result as $key => $row) {
-            $sql = "INSERT INTO temp_engine_status VALUES ('" . $row['serial'] . "','" . substr ($row['p0_wwpn'], 5) . "')";
+            $sql = "INSERT INTO temp_engine_status VALUES ('" . $row['seconds'] . "','" . $row['serial'] . "','" . substr ($row['p0_wwpn'], 5) . "')";
+            echo "<br>$sql<br>";
             $db->exec ($sql);
         }
         
@@ -161,17 +232,15 @@
         //echo "--------------<br>";
         //var_dump($result);
         
-        $sql = "SELECT b.site_name, a.serial serial, a.p0_wwpn p0_wwpn, b.engine_name, b.a1_wwpn a1_wwpn " .
+        $sql = "SELECT a.seconds seconds, b.site_name, a.serial serial, a.p0_wwpn p0_wwpn, b.engine_name, b.a1_wwpn a1_wwpn " .
                 "FROM temp_engine_status a, temp_vpd b " .
                 "WHERE a.serial=b.serial";
-        //echo $sql;
+        echo $sql;
         $result = $db->query($sql);
         //var_dump ($result);
         
-        // CREATE TABLE ha_cluster (site_name, ha_appliance_name, engine00 PRIMARY KEY, engine01, engine02, engine03 , engine04)
-        
-        
         foreach($result as $key => $row) {
+            $seconds = $row['seconds'];
             $p0_wwpn = $row['p0_wwpn'];
             //echo "p0_wwpn = $p0_wwpn -> ";
             //$serial = $row['serial'];
@@ -198,7 +267,6 @@
             $engine_value_string = "";
             $engine_field_string = "";
             
-            
             for ($i=0; $i<count($engine_array); $i++) {
                 $engine_value_string .= ",'" . $engine_array[$i] . "'";
                 $engine_field_string .= ",engine0" . ($i+1);
@@ -221,9 +289,8 @@
             $db->exec($sql);
             
             $sql = "INSERT INTO " . $table_name .
-                " (site_name,ha_appliance_name,engine00" . $engine_field_string .
-                ") VALUES ('" . $site_name . "','" . $ha_appliance_name . "','" .
-                $primary_key . "'" . $engine_value_string .")";
+                " (seconds,site_name,ha_appliance_name,engine00" . $engine_field_string .
+                ") VALUES ($seconds,'$site_name','$ha_appliance_name','$primary_key' $engine_value_string)";
             
             echo $sql;
             $db->exec($sql);
@@ -241,8 +308,8 @@
         
         
        
-        //$db->exec("DROP TABLE temp_engine_status");
-        //$db->exec("DROP TABLE temp_vpd");
+        $db->exec("DROP TABLE temp_engine_status");
+        $db->exec("DROP FROM TABLE temp_vpd");
 
         
         //$result = $db->query($sql);
@@ -450,7 +517,7 @@
             $sql_value_string .= "'$wwpn'"  . ",";
             
             //var_dump (get_oui_by_wwpn ($wwpn));
-            wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, strtoupper($id));
+            wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, strtoupper($id), $site_name);
             
         }
         
@@ -477,10 +544,165 @@
         
         return $array;
     }
+    
+    
+    function new_cli_vpd($site_name,$engine_name,$cli_vpd,$db) {
+        
+        $table_name = "engine_cli_vpd";
+        echo "<br>" . __FUNCTION__ . "----><br>";
+        
+        //sqlite> UPDATE newcontacts SET LastName="Millford" WHERE Email="gpmillford@mymail.fake"; 
+        // build query...
+        
+        $sql = "CREATE TABLE IF NOT EXISTS new_$table_name (serial INTEGER, seconds integer, site_name, engine_name, product_type, fw_version, fw_date, redboot, uid, pcb, mac, ip, uptime, alert, time, a1_wwnn, a1_wwpn, a2_wwnn, a2_wwpn, b1_wwnn, b1_wwpn, b2_wwnn, b2_wwpn)";
+        echo $sql . "<br>";
+        $db->exec($sql);
+        
+        $sql = "UPDATE $table_name SET ";
+        
+        $key_array = array_keys($cli_vpd);
+        $value_array = array_values($cli_vpd);
+        
+        var_dump($key_array);
+        var_dump($value_array);
+        
+        for($i=0; $i<count($key_array); $i++) {
+            $sql .= "$key_array[$i]='$value_array[$i]'";
+            if($i<count($key_array)-1) {
+                $sql .= ",";
+            }
+        }
+        $sql .= " WHERE engine_name='$engine_name'";
+        echo $sql;
+        $db->exec($sql);
+        
+        $sql = "INSERT INTO new_$table_name";
+        // implode keys of $array...
+        $sql .= " (`engine_name`,`".implode("`, `", $key_array)."`)";
+        // implode values of $array...
+        $sql .= " VALUES ('$engine_name','".implode("', '", $value_array)."') ";
+        
+        echo $sql;
+        $db->exec($sql);
+
+    }
+    
+    
+    function new_cli_conmgr_initiator_status($site_name, $engine_name, $data, $db) {
+        echo __FUNCTION__ . "<br>";
+        $table_name = "engine_cli_conmgr_initiator_status";
+        
+        $sql = "SELECT serial FROM engine_cli_vpd WHERE engine_name='$engine_name'";
+        $result = $db->query($sql)->fetch();
+        $serial = $result['serial'];
+        
+        $online = $data['online'];
+        $offline = $data['offline'];
+        $seconds = $data['seconds'];
+        
+        $sql = "UPDATE $table_name SET online=$online, offline=$offline, seconds=$seconds WHERE serial='$serial'";
+        //echo $sql;
+        $db->exec($sql);
+        
+        $table_name = "new_engine_cli_conmgr_initiator_status";
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER, seconds INTEGER, online INTEGER, offline INTEGER)";
+        echo $sql;
+        $db->exec($sql);
+        $sql = "INSERT INTO $table_name (`online`,`offline`,`seconds`,`serial`) VALUES ($online,$offline,$seconds,$serial)";
+        echo $sql;
+        $db->exec($sql);
+        
+        $initiators = $data['initiators'];
+        
+        $table_name = "engine_cli_conmgr_initiator_status_detail";
+        $new_table_name = "new_engine_cli_conmgr_initiator_status_detail";
+        $sql = "CREATE TABLE IF NOT EXISTS $new_table_name (serial INTEGER, seconds INTEGER, id, port, wwpn, status);";
+        $db->exec($sql);
+
+        foreach ($initiators as $key => $initiator) {
+            var_dump($initiator);
+            $id = $initiator['id'];
+        
+            $sql = "UPDATE $table_name SET seconds=$seconds,";
+            //$new_sql = "INSERT INTO $new_table_name";
+            $new_keys = "";
+            $new_values = "";
+
+            $key_array = array_keys($initiator);
+            $value_array = array_values($initiator);
+            
+            //var_dump($key_array);
+            //var_dump($value_array);
+            
+            for($i=0; $i<count($key_array); $i++) {
+                $sql .= "$key_array[$i]='$value_array[$i]'";
+                $new_keys .= "`$key_array[$i]`";
+                $new_values .= "'$value_array[$i]'";
+                if($i<count($key_array)-1) {
+                    $sql .= ",";
+                    $new_keys .= ",";
+                    $new_values .= ",";
+                }
+            }
+            $sql .= " WHERE serial=$serial AND id='$id'";
+            echo $sql;
+            $db->exec($sql);
+            
+            $sql = "INSERT INTO $new_table_name (`serial`,`seconds`,$new_keys) VALUES ('$serial','$seconds',$new_values)";
+            echo $sql;
+            $db->exec($sql);
+        }
+    }
+    
+    /*
+        //if($result) {
+        //
+        //}
+        
+        
+        $initiators = $data['initiators'];
+        for($i=0; $i<count($initiators); $i++) {
+            $initiator = $initiators[$i];
+            $id = $initiator['id'];
+            $status = $initiator['status'];
+            $sql = "INSERT INTO $table_name" . "_detail VALUES ('$serial', '$seconds', '$id', '$port', '$wwpn', '$status')";
+            $db->exec($sql);
+        }
+        
+    }
+    */
+
+
+?>
+
+
+<?php
+    /*
+    
+    // array containing data
+    $array = array(
+                   "name" => "John",
+                   "surname" => "Doe",
+                   "email" => "j.doe@intelligence.gov"
+                   );
+    
+    // build query...
+    $sql  = "INSERT INTO table";
+    
+    // implode keys of $array...
+    $sql .= " (`".implode("`, `", array_keys($array))."`)";
+    
+    // implode values of $array...
+    $sql .= " VALUES ('".implode("', '", $array)."') ";
+    
+    // execute query...
+    $result = mysql_query($sql) or die(mysql_error());
+     */
+    
 ?>
 
 <?php
-        
+    
     function cli_mirror($site_name,$engine_name,$serial,$data,$db) {
         
         $table_name = "engine_" . __FUNCTION__;
@@ -630,7 +852,7 @@
                 $sql_value_string .= "'$id'," . "'$port'," . "'$wwpn'," . "'$lun'," . "'$pstatus',";
                 
                 
-                wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, "");
+                wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, "", $site_name);
                 
                 
             } else {
@@ -645,7 +867,7 @@
                     $pstatus = $path['pstatus'];
                     $sql_value_string .= "'$id'," . "'$port'," . "'$wwpn'," . "'$lun'," . "'$pstatus',";
                     
-                    wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, "");
+                    wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, "", $site_name);
                 }
             }
             
@@ -764,7 +986,7 @@
         $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER PRIMARY KEY, seconds INTEGER, online INTEGER, offline INTEGER)";
         $db->exec($sql);
         
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name" . "_detail (serial INTEGER, seconds INTEGER, initiator_id, port, wwpn, status, PRIMARY KEY (serial, seconds, initiator_id))";
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name" . "_detail (serial INTEGER, seconds INTEGER, id, port, wwpn, status, PRIMARY KEY (serial, id))";
         $db->exec($sql);
         
         $online = $data['online'];
@@ -797,7 +1019,7 @@
             $sql = "INSERT INTO $table_name" . "_detail VALUES ('$serial', '$seconds', '$id', '$port', '$wwpn', '$status')";
             $db->exec($sql);
             
-            wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, "");
+            wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, "", $site_name);
             
         }
         
@@ -991,8 +1213,9 @@
             $attributes[$name] = trim($value); 
         } 
         if($attributes){ 
-            if($attributesKey){$return[$attributesKey] = $attributes;} 
-            else{$return = array_merge($return, $attributes);} 
+            if($attributesKey){$return[$attributesKey] = $attributes;}
+            //else{$return = array_merge($return, $attributes);}
+            else{$return = array_merge((array)$return, (array)$attributes);}
         } 
         
         return $return; 

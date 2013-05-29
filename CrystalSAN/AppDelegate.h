@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SanDatabase.h"
+#import "SyncManager.h"
 
 #define ITEM_BUTTON_START_TAG       201
 
@@ -30,11 +31,13 @@
 
 @property (strong,nonatomic) NSString *currentSegueID;
 @property (strong,nonatomic) NSString *currentDeviceName;
+@property (strong,nonatomic) NSString *currentHAApplianceName;
 
 @property (strong,nonatomic) NSString *currentEngineLeftSerial;
 @property (strong,nonatomic) NSString *currentEngineRightSerial;
 
 @property (strong,nonatomic) SanDatabase *sanDatabase;
+@property (strong,nonatomic) SyncManager *syncManager;
 
 @property (strong, nonatomic) NSNumber *currentSiteIndex;
 
@@ -46,6 +49,12 @@
 
 @property BOOL isLogin;
 @property (weak, nonatomic) UIViewController *nextViewController;
+
+@property BOOL isHostReachable;
+
+@property (strong,nonatomic) NSArray *siteInfoArray;
+@property NSInteger currentSiteInfoArrayIndex;
+
 
 
 
@@ -59,6 +68,9 @@
 - (void)hideShowSliders:(UIView *)view;
 
 - (void)insertInto:(NSString *)table values:(NSDictionary *)dict;
+- (void)insertIntoCache:(NSString *)table values:(NSDictionary *)dict;
+
+
 //- (void)hideSlider:(id)sender;
 
 @end

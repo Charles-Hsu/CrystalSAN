@@ -12,7 +12,6 @@
     
     NSString *tableName;
     NSMutableArray *records;
-    
     NSMutableDictionary *dict;
 }
 
@@ -28,7 +27,7 @@
 	appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     records = [[NSMutableArray alloc] init];
     
-    dict = [[NSMutableDictionary alloc] init];
+    //dict = [[NSMutableDictionary alloc] init];
 	
 	return self;
 }
@@ -46,6 +45,8 @@
 		
 		//Initialize the book.
 		//aBook = [[Book alloc] init];
+        
+        dict = [[NSMutableDictionary alloc] init];
 		
 		//Extract the attribute here.
 		//aBook.bookID = [[attributeDict objectForKey:@"id"] integerValue];
@@ -57,7 +58,7 @@
     
     if (tableName == nil) {
         tableName = elementName;
-        NSLog(@"tableName=%@", tableName);
+        //NSLog(@"tableName=%@", tableName);
     }
 }
 
@@ -71,7 +72,7 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	
-    NSLog(@"%s %@", __func__, elementName);
+    //NSLog(@"%s %@", __func__, elementName);
     
 	//if([elementName isEqualToString:@"Books"])
     if([elementName isEqualToString:@"ha_cluster"]) {
@@ -98,13 +99,8 @@
 	*/
      if([elementName isEqualToString:@"record"]) {
 
-         NSLog(@"%s Dict = %@", __func__, dict);
-         NSLog(@"%s Write to database", __func__);
-         //[appDelegate.books addObject:aBook];
-         [appDelegate insertInto:tableName values:dict];
-     
-         //[aBook release];
-         //aBook = nil;
+        // NSLog(@"%s Dict = %@", __func__, dict);
+          [appDelegate insertInto:tableName values:dict];
      }
      else {
          //[aBook setValue:currentElementValue forKey:elementName];

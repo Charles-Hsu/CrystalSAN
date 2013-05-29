@@ -53,6 +53,9 @@
 @property (nonatomic, retain) IBOutlet UILabel *spacingLabel;
 @property (nonatomic, retain) IBOutlet UILabel *sizingLabel;
 
+@property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
+@property (nonatomic, strong) IBOutlet UIView *viewForToggleSliders;
+
 
 
 - (IBAction)reloadCarousel;

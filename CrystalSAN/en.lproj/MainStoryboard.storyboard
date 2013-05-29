@@ -17,12 +17,12 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="left" image="Text-Home.png" id="Gmk-8j-3Jf" userLabel="Text-Home.png">
-                                <rect key="frame" x="71" y="35" width="148" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="Text-CrystalSAN.png" id="ct5-gv-vRU">
                                 <rect key="frame" x="841" y="0.0" width="183" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="left" image="Text-Home.png" id="Gmk-8j-3Jf" userLabel="Text-Home.png">
+                                <rect key="frame" x="72" y="35" width="148" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="button-Arrow.png" id="1EL-OJ-3Yb">
@@ -133,23 +133,7 @@
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lJW-vb-T7m" userLabel="Button - Sliders toggle">
-                                <rect key="frame" x="71" y="46" width="116" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="hideShowSlider:" destination="2" eventType="touchUpInside" id="Y0o-dF-rsz"/>
-                                    <action selector="hideSlider:" destination="YOT-Ri-UBv" eventType="touchUpInside" id="bD2-u5-Xkk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TFU-wH-z38">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TFU-wH-z38" userLabel="Button Site View">
                                 <rect key="frame" x="632" y="521" width="372" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
@@ -164,6 +148,18 @@
                                     <segue destination="Hyz-UC-dST" kind="modal" id="nHu-AK-Dqr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QdQ-Qx-kO7" userLabel="Label - Site Name">
+                                <rect key="frame" x="79" y="20" width="265" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="4Bi-Of-u2T" userLabel="View for on/off sliders">
+                                <rect key="frame" x="862" y="10" width="140" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -177,17 +173,19 @@
                         <outlet property="radiusLabel" destination="nS0-ck-gVC" id="KyJ-jx-Ka6"/>
                         <outlet property="radiusSlider" destination="Cjb-pU-pDF" id="Pv7-11-qxC"/>
                         <outlet property="radiusValue" destination="6IE-Az-IqC" id="OU1-1i-ATf"/>
+                        <outlet property="siteNameLabel" destination="QdQ-Qx-kO7" id="gSl-Sy-8Nf"/>
                         <outlet property="sizingLabel" destination="Lua-C0-2Py" id="InD-0H-Xup"/>
                         <outlet property="sizingSlider" destination="v4n-0z-GIa" id="8Xi-gF-HsS"/>
                         <outlet property="sizingValue" destination="pwG-F8-5h7" id="wvS-tk-pb1"/>
                         <outlet property="spacingLabel" destination="CRP-hw-uMP" id="WPK-WU-6gD"/>
                         <outlet property="spacingSlider" destination="NrA-1r-0Au" id="NVu-mC-GsH"/>
                         <outlet property="spacingValue" destination="jJt-c5-Ky4" id="Dpa-uR-Wof"/>
+                        <outlet property="viewForToggleSliders" destination="4Bi-Of-u2T" id="CbM-NB-cec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-764" y="-560"/>
+            <point key="canvasLocation" x="-983" y="-592"/>
         </scene>
         <!--Raid View Controller-->
         <scene sceneID="r9q-67-G5r">
@@ -210,21 +208,6 @@
                                 <rect key="frame" x="71" y="35" width="214" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WIO-PD-KPE" userLabel="Hide show Sliders">
-                                <rect key="frame" x="89" y="98" width="202" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="hideSlider:" destination="sZ4-0c-S4u" eventType="touchUpInside" id="Kxe-0t-KAH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ivi-Ag-NIb" userLabel="Button - Home">
                                 <rect key="frame" x="735" y="525" width="140" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -556,6 +539,13 @@
                                 <rect key="frame" x="840" y="0.0" width="184" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T1m-R6-BC6" userLabel="Label - Site Name">
+                                <rect key="frame" x="79" y="20" width="265" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZYb-MA-2GB" userLabel="Button - Sliders toggle">
                                 <rect key="frame" x="71" y="46" width="346" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -567,9 +557,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="hideSlider:" destination="YOT-Ri-UBv" eventType="touchUpInside" id="LIf-tA-P3O"/>
-                                </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="229-kE-frN" userLabel="Horizontal Slider - Arc">
                                 <rect key="frame" x="106" y="472" width="90" height="23"/>
@@ -868,6 +855,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" id="ZdA-f1-QCL" userLabel="View for on/off sliders">
+                                <rect key="frame" x="862" y="10" width="140" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -885,12 +877,14 @@
                         <outlet property="searchConnectionButton" destination="MkB-t1-kfP" id="xL2-dw-KF7"/>
                         <outlet property="searchNameButton" destination="75M-wy-hCo" id="dnV-fG-hxF"/>
                         <outlet property="searchStatusButton" destination="Ysp-wQ-iyk" id="fjE-TL-dvg"/>
+                        <outlet property="siteNameLabel" destination="T1m-R6-BC6" id="lTE-sO-i5Y"/>
                         <outlet property="sizingLabel" destination="SMf-8N-izm" id="N8W-Nq-3JN"/>
                         <outlet property="sizingSlider" destination="KlL-v8-gL3" id="fwe-vq-ymh"/>
                         <outlet property="sizingValue" destination="taH-rq-KHO" id="mLQ-Si-ZDs"/>
                         <outlet property="spacingLabel" destination="Xne-hV-zKx" id="mNw-rp-o4g"/>
                         <outlet property="spacingSlider" destination="dtG-2v-5i1" id="j0u-n4-37H"/>
                         <outlet property="spacingValue" destination="IWS-Dy-62u" id="Hix-Pn-uT7"/>
+                        <outlet property="viewForToggleSliders" destination="ZdA-f1-QCL" id="t4r-JA-CIf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIs-nA-1fb" sceneMemberID="firstResponder"/>
@@ -1615,7 +1609,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1006" contentMode="scaleToFill" restorationIdentifier="raid03_0_button" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="peo-Rp-D88">
-                                <rect key="frame" x="731" y="431" width="69" height="58"/>
+                                <rect key="frame" x="636" y="477" width="69" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Device-LUN-member-blue.png">
@@ -1630,7 +1624,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1007" contentMode="scaleToFill" restorationIdentifier="raid03_1_button" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TAV-vr-axW">
-                                <rect key="frame" x="783" y="431" width="69" height="58"/>
+                                <rect key="frame" x="688" y="477" width="69" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Device-LUN-member-blue.png">
@@ -1645,7 +1639,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1004" contentMode="scaleToFill" restorationIdentifier="raid02_0_button" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HRM-SA-EJL">
-                                <rect key="frame" x="645" y="477" width="69" height="58"/>
+                                <rect key="frame" x="723" y="431" width="69" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Device-LUN-member-blue.png">
@@ -1660,7 +1654,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1005" contentMode="scaleToFill" restorationIdentifier="raid02_1_button" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qfJ-Mg-9s8">
-                                <rect key="frame" x="697" y="477" width="69" height="58"/>
+                                <rect key="frame" x="775" y="431" width="69" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Device-LUN-member-blue.png">
@@ -2001,28 +1995,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SY3-XI-cMX">
-                                <rect key="frame" x="744" y="449" width="42" height="21"/>
+                                <rect key="frame" x="649" y="495" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="56P-XU-Wv1">
-                                <rect key="frame" x="796" y="449" width="42" height="21"/>
+                                <rect key="frame" x="701" y="495" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aL6-fb-iTS">
-                                <rect key="frame" x="658" y="494" width="42" height="21"/>
+                                <rect key="frame" x="736" y="448" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MLx-F7-1Wb">
-                                <rect key="frame" x="710" y="494" width="42" height="21"/>
+                                <rect key="frame" x="788" y="448" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2039,9 +2033,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="showEngineInfo:" destination="whg-kQ-d2J" eventType="touchDown" id="u2U-64-usF"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" restorationIdentifier="rightEngine" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0e0-Ia-zh0" userLabel="Button - Engines Right">
                                 <rect key="frame" x="511" y="351" width="197" height="110"/>
@@ -2054,8 +2045,19 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                            </button>
+                            <button opaque="NO" alpha="0.99999999999999989" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QjM-Wp-APw" userLabel="Button for two fingers touch">
+                                <rect key="frame" x="320" y="365" width="382" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="showEngineInfo:" destination="whg-kQ-d2J" eventType="touchDown" id="3Gu-8P-hHm"/>
+                                    <action selector="onBack:" destination="whg-kQ-d2J" eventType="touchDownRepeat" id="faD-1L-aiH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WcI-hz-Uf7" userLabel="Hide/Show Sliders">
@@ -2069,10 +2071,14 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="hideSlider:" destination="whg-kQ-d2J" eventType="touchUpInside" id="UFl-iu-s7T"/>
-                                </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dj9-Lp-7fv" userLabel="Label - Site Name">
+                                <rect key="frame" x="79" y="20" width="265" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -2095,8 +2101,11 @@
                         <outlet property="lun01_1_Label" destination="Pcn-OA-Ygh" id="ldH-uS-QXO"/>
                         <outlet property="lun02Button" destination="FAu-lo-yvM" id="kNd-e0-4hf"/>
                         <outlet property="lun02Label" destination="0bp-ed-bMe" id="pff-XV-QbS"/>
+                        <outlet property="lun02_0_Button" destination="S2i-NE-hah" id="XJh-oF-Do8"/>
                         <outlet property="lun02_0_Label" destination="rBD-Sb-Gax" id="clB-Dk-J9a"/>
+                        <outlet property="lun02_1_Button" destination="Lfv-I9-AT4" id="Gi4-Kj-ASu"/>
                         <outlet property="lun02_1_Label" destination="e8y-d5-2o9" id="XH0-2z-Mg8"/>
+                        <outlet property="lun02_MirroredLUN" destination="4Tg-Hp-dk6" id="0Qu-2C-Vd2"/>
                         <outlet property="lun03Button" destination="BjB-I6-mPK" id="n2V-2S-he8"/>
                         <outlet property="lun03Label" destination="i7B-sD-kuh" id="iC4-ds-3eG"/>
                         <outlet property="lun03_0_Button" destination="m6S-Ef-YYz" id="Gku-eF-tyE"/>
@@ -2107,20 +2116,30 @@
                         <outlet property="radiusLabel" destination="YJG-RX-IHZ" id="KiZ-bC-1UN"/>
                         <outlet property="radiusSlider" destination="xTo-Lk-bI6" id="Hix-w6-cr4"/>
                         <outlet property="radiusValue" destination="K7u-96-Ptq" id="U17-Rc-IPc"/>
+                        <outlet property="raid00_0_Button" destination="JoX-BU-mQz" id="YQk-Sh-PDt"/>
                         <outlet property="raid00_0_Label" destination="Bk5-9X-KRk" id="MNP-WJ-eaZ"/>
+                        <outlet property="raid00_1_Button" destination="Q7f-LT-c2k" id="R6S-my-cxe"/>
                         <outlet property="raid00_1_Label" destination="n1L-eL-Dvy" id="xAp-8k-8Ao"/>
+                        <outlet property="raid01_0_Button" destination="7c5-LP-Buk" id="zKz-7Q-UgG"/>
                         <outlet property="raid01_0_Label" destination="XrU-Pf-gDq" id="pwp-ua-prc"/>
+                        <outlet property="raid01_1_Button" destination="bO4-Gd-7wp" id="JBO-jb-nuC"/>
                         <outlet property="raid01_1_Label" destination="S38-JG-MKg" id="BEL-r9-DFH"/>
+                        <outlet property="raid02_0_Button" destination="HRM-SA-EJL" id="nUB-M8-aib"/>
                         <outlet property="raid02_0_Label" destination="aL6-fb-iTS" id="7dD-HW-xi0"/>
+                        <outlet property="raid02_1_Button" destination="qfJ-Mg-9s8" id="DjV-qN-8qN"/>
                         <outlet property="raid02_1_Label" destination="MLx-F7-1Wb" id="hYd-Qn-J77"/>
+                        <outlet property="raid03_0_Button" destination="peo-Rp-D88" id="5Tc-xT-E3R"/>
                         <outlet property="raid03_0_Label" destination="SY3-XI-cMX" id="okL-st-JmB"/>
+                        <outlet property="raid03_1_Button" destination="TAV-vr-axW" id="9gH-Wh-i3O"/>
                         <outlet property="raid03_1_Label" destination="56P-XU-Wv1" id="fJl-u5-ho5"/>
+                        <outlet property="siteNameLabel" destination="dj9-Lp-7fv" id="UHG-9t-RSC"/>
                         <outlet property="sizingLabel" destination="Pi3-TZ-wA4" id="Nyz-6O-WAd"/>
                         <outlet property="sizingSlider" destination="a0C-OE-Hz2" id="ws1-hV-0g7"/>
                         <outlet property="sizingValue" destination="EJw-2U-dxI" id="xoM-dq-ffv"/>
                         <outlet property="spacingLabel" destination="mbk-TD-rr0" id="Vt0-t1-BpU"/>
                         <outlet property="spacingSlider" destination="Ke1-kX-twZ" id="oMo-Mz-Uab"/>
                         <outlet property="spacingValue" destination="tGx-OR-AcT" id="boO-EN-lJP"/>
+                        <outlet property="testTwoFingersTap" destination="QjM-Wp-APw" id="xOO-2e-5nj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcg-63-ViZ" sceneMemberID="firstResponder"/>
@@ -2152,6 +2171,13 @@
                                 <rect key="frame" x="387" y="42" width="306" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Eh-lw-xhq" userLabel="Label - Site Name">
+                                <rect key="frame" x="79" y="20" width="265" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BaK-Ui-kA9" userLabel="Button - Home">
                                 <rect key="frame" x="735" y="525" width="140" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2256,6 +2282,7 @@
                         <outlet property="engine1Serial" destination="Y5z-z9-erY" id="gFn-RQ-uAv"/>
                         <outlet property="engine1mirror" destination="Yxt-G5-ZuM" id="bXb-Kl-5mn"/>
                         <outlet property="haApplianceName" destination="4FC-IB-w1Q" id="GWB-Ux-3Wi"/>
+                        <outlet property="siteNameLabel" destination="3Eh-lw-xhq" id="d4b-KC-b36"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SdM-ln-Duw" sceneMemberID="firstResponder"/>
@@ -2283,6 +2310,13 @@
                                 <rect key="frame" x="71" y="35" width="346" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fd8-zT-n8g" userLabel="Label - Site Name">
+                                <rect key="frame" x="79" y="20" width="265" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K1O-0J-jTk" userLabel="Button - Home">
                                 <rect key="frame" x="736" y="505" width="140" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2462,6 +2496,7 @@
                         <outlet property="haApplianceName" destination="yWd-6s-gG4" id="Gqa-In-tc3"/>
                         <outlet property="hbaInformation" destination="Eu7-iC-YVD" id="Kxd-fV-w6v"/>
                         <outlet property="mirrorInformation" destination="oLy-ln-S8K" id="6bW-q9-U1X"/>
+                        <outlet property="siteNameLabel" destination="Fd8-zT-n8g" id="zbc-WA-90U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8v6-1I-sGi" sceneMemberID="firstResponder"/>
@@ -2489,6 +2524,13 @@
                                 <rect key="frame" x="71" y="35" width="286" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nRh-yp-CIl" userLabel="Label - Site Name">
+                                <rect key="frame" x="79" y="20" width="265" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00600118-0060120" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EH5-3R-qMe">
                                 <rect key="frame" x="64" y="111" width="258" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2496,21 +2538,6 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MO0-HA-cmG" userLabel="Hide/Show Slider Button">
-                                <rect key="frame" x="77" y="46" width="203" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="hideShowSliders:" destination="GgS-wy-aCW" eventType="touchUpInside" id="raR-fo-SOe"/>
-                                </connections>
-                            </button>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="sSP-88-jmn" userLabel="Horizontal Slider - Arc">
                                 <rect key="frame" x="106" y="472" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2830,6 +2857,7 @@
                         <outlet property="searchConnectionButton" destination="L1D-Fu-3a1" id="oxn-Pa-6Eh"/>
                         <outlet property="searchNameButton" destination="5ow-bL-lcy" id="3fb-v5-9x1"/>
                         <outlet property="searchStatusButton" destination="mNs-Fl-x2o" id="Ezi-VG-EXK"/>
+                        <outlet property="siteNameLabel" destination="nRh-yp-CIl" id="dj6-ev-lKx"/>
                         <outlet property="sizingLabel" destination="NcN-7y-OYh" id="Ugo-J5-abt"/>
                         <outlet property="sizingSlider" destination="0TX-x2-aaT" id="Nac-S8-LsH"/>
                         <outlet property="sizingValue" destination="eAV-ux-7Rk" id="qdu-e1-lUk"/>
@@ -2859,6 +2887,13 @@
                                 <rect key="frame" x="841" y="0.0" width="183" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eSu-yW-kfQ" userLabel="Label - Site Name">
+                                <rect key="frame" x="79" y="20" width="265" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0010000000474974513" maxValue="1" id="WRy-k5-LEF" userLabel="Horizontal Slider - Arc">
                                 <rect key="frame" x="106" y="470" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3039,10 +3074,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="hideShowSliders:" destination="GgS-wy-aCW" eventType="touchUpInside" id="deg-aj-K3Q"/>
-                                    <action selector="showHideSliders:" destination="mh5-db-iAd" eventType="touchUpInside" id="BuA-RR-k3Q"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" id="cct-sa-v7I" userLabel="View search bar">
                                 <rect key="frame" x="829" y="56" width="167" height="44"/>
@@ -3205,6 +3236,7 @@
                         <outlet property="searchConnectionButton" destination="hft-bj-Lm9" id="FMK-oB-3NG"/>
                         <outlet property="searchNameButton" destination="o1p-r4-QoO" id="VOt-I7-37o"/>
                         <outlet property="searchStatusButton" destination="kUr-RH-kw0" id="HaB-FF-M7M"/>
+                        <outlet property="siteNameLabel" destination="eSu-yW-kfQ" id="qJZ-gI-EFK"/>
                         <outlet property="sizingLabel" destination="W1v-nJ-2Iv" id="Re0-sM-c9Z"/>
                         <outlet property="sizingSlider" destination="906-F8-sEF" id="3oo-VN-478"/>
                         <outlet property="sizingValue" destination="Rhm-0d-VX7" id="fYr-e0-KCw"/>
@@ -3215,7 +3247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77e-mX-Iqr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="576" y="1196"/>
+            <point key="canvasLocation" x="719" y="1260"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="PpL-WZ-eoO">
@@ -3240,6 +3272,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="center" image="Text-CrystalSAN.png" id="M08-4f-aWU">
                                 <rect key="frame" x="841" y="0.0" width="183" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9iQ-kw-MzY" userLabel="Button - Home">
                                 <rect key="frame" x="864" y="536" width="140" height="134"/>
@@ -3410,6 +3443,11 @@
                                 <rect key="frame" x="512" y="482" width="443" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" id="YzZ-0j-bev" userLabel="View for on/off sliders">
+                                <rect key="frame" x="862" y="10" width="140" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -3427,12 +3465,20 @@
                         <outlet property="sizingLabel" destination="aMI-vK-CbK" id="FM7-Uy-oEC"/>
                         <outlet property="sizingSlider" destination="YlB-MX-0hi" id="iK5-VL-Uua"/>
                         <outlet property="sizingValue" destination="spJ-nh-NPG" id="4Ge-hJ-KDI"/>
+                        <outlet property="sliderBackground" destination="wOg-Pr-yXG" id="bzN-Ma-AQJ"/>
                         <outlet property="spacingLabel" destination="WVU-Xm-GrS" id="7WX-Fc-Xlz"/>
                         <outlet property="spacingSlider" destination="VX7-eG-HXM" id="ZpT-cT-LjG"/>
                         <outlet property="spacingValue" destination="ttU-ox-8DO" id="Rei-ff-eKY"/>
+                        <outlet property="viewForToggleSliders" destination="YzZ-0j-bev" id="z6X-rH-K7Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4U5-86-zFn" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Gga-PJ-kyg">
+                    <connections>
+                        <action selector="hideShowSliders:" destination="Hyz-UC-dST" id="1Bx-Hd-Qry"/>
+                        <outlet property="delegate" destination="M08-4f-aWU" id="0Dm-0U-RHr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-764" y="317"/>
         </scene>
@@ -3602,6 +3648,7 @@
                 <relationship kind="outlet" name="searchConnectionButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchNameButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchStatusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
@@ -3623,6 +3670,7 @@
                 <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="hbaInformation" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mirrorInformation" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="HAApplianceConnectionViewController" superclassName="UIViewController">
@@ -3650,8 +3698,11 @@
                 <relationship kind="outlet" name="lun01_1_Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun02Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun02Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun02_0_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun02_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun02_1_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun02_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lun02_MirroredLUN" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun03Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun03Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun03_0_Button" candidateClass="UIButton"/>
@@ -3670,24 +3721,38 @@
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid00_0_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid00_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid00_1_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid00_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid01_0_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid01_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid01_1_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid01_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid02_0_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid02_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid02_1_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid02_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid03_0_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid03_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid03_1_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid03_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid04_0_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid04_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid04_1_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid04_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid05_0_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid05_0_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="raid05_1_Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="raid05_1_Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="testTwoFingersTap" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="HAApplianceMirrorViewController" superclassName="UIViewController">
@@ -3700,6 +3765,7 @@
                 <relationship kind="outlet" name="engine1Serial" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="engine1mirror" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="HAApplianceViewController" superclassName="UIViewController">
@@ -3722,12 +3788,14 @@
                 <relationship kind="outlet" name="searchConnectionButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchNameButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchStatusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="viewForToggleSliders" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="HbaViewController" superclassName="UIViewController">
@@ -3750,6 +3818,7 @@
                 <relationship kind="outlet" name="searchConnectionButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchNameButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchStatusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
@@ -3779,6 +3848,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
             <relationships>
                 <relationship kind="action" name="hideShowSlider:"/>
+                <relationship kind="action" name="hideShowSliders:"/>
                 <relationship kind="action" name="loginView:"/>
                 <relationship kind="action" name="reloadCarousel"/>
                 <relationship kind="action" name="updateValue:"/>
@@ -3788,17 +3858,20 @@
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="viewForToggleSliders" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="MapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
+                <relationship kind="action" name="hideShowSliders:"/>
                 <relationship kind="action" name="moveToTaipei:"/>
                 <relationship kind="action" name="onBack:"/>
                 <relationship kind="action" name="onHome:"/>
@@ -3807,6 +3880,7 @@
                 <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="crystalSAN" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="homeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
@@ -3814,9 +3888,11 @@
                 <relationship kind="outlet" name="sizingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sizingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="sizingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sliderBackground" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="viewForToggleSliders" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="RaidViewController" superclassName="UIViewController">
@@ -3889,8 +3965,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jcG-tU-yxa"/>
-        <segue reference="Qh7-Kf-rqq"/>
         <segue reference="UYb-7y-yfg"/>
+        <segue reference="LbK-6D-GUu"/>
+        <segue reference="9Q0-CS-Ttb"/>
     </inferredMetricsTieBreakers>
 </document>

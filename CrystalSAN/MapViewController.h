@@ -1,5 +1,5 @@
 //
-//  MainViewController.h
+//  MapViewController.h
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/25/12.
@@ -48,6 +48,13 @@
 @property (nonatomic, retain) IBOutlet UILabel *spacingLabel;
 @property (nonatomic, retain) IBOutlet UILabel *sizingLabel;
 
+@property (nonatomic, strong) IBOutlet UIImageView *sliderBackground;
+
+
+@property (nonatomic, strong) IBOutlet UIImageView *crystalSAN;
+
+@property (nonatomic, strong) IBOutlet UIView *viewForToggleSliders;
+
 
 @property (nonatomic, retain) IBOutlet UIButton *homeButton;
 
@@ -57,6 +64,8 @@
 - (IBAction)moveToTaipei:(id)sender;
 
 - (IBAction)updateValue:(id)sender;
+
+- (void)handleDoubleTap:(id)sender;
 
 
 @end

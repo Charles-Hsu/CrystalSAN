@@ -37,6 +37,7 @@
 @property (nonatomic, strong) IBOutlet UITextView *engine0mirror;
 @property (nonatomic, strong) IBOutlet UITextView *engine1mirror;
 
+@property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
 
 //@property (nonatomic, weak) IBOutlet UILabel *haApplianceName;
 //@property (nonatomic, retain) NSString *deviceName;

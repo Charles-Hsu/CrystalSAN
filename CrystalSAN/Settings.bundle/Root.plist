@@ -16,7 +16,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>10.10.10.1</string>
+			<string>www.loxoll.com/charles/sms/</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
@@ -24,7 +24,7 @@
 			<key>KeyboardType</key>
 			<string>URL</string>
 			<key>Title</key>
-			<string>IP / Host</string>
+			<string>Host</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 		</dict>
@@ -56,11 +56,47 @@
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
-			<string>site_name</string>
+			<string>app_sitename</string>
 			<key>KeyboardType</key>
 			<string>Alphabet</string>
 			<key>Title</key>
 			<string>Site Name</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>administrator</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>app_username</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>User Name</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>vicom123</string>
+			<key>IsSecure</key>
+			<true/>
+			<key>Key</key>
+			<string>app_password</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>Password</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 		</dict>

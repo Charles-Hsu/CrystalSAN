@@ -47,6 +47,8 @@
 @property (strong, nonatomic) NSMutableDictionary *names;
 
 @property (strong, nonatomic) SanDatabase *sanDatabase;
+@property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
+
 
 - (IBAction)reloadCarousel;
 - (IBAction)updateValue:(id)sender;

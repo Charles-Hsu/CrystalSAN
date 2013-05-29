@@ -8,6 +8,9 @@
 
 #import "HAApplianceViewController.h"
 #import "AppDelegate.h"
+#import "XMLCacheParser.h"
+#import "SyncManager.h"
+#import <objc/runtime.h>
 
 
 @interface HAApplianceViewController () {
@@ -22,6 +25,9 @@
     AppDelegate *theDelegate;
     
     NSString *siteName;
+    
+    const NSMutableString *className;
+    UITapGestureRecognizer *tripleTapGestureRecognizer;
     
 }
 
@@ -45,65 +51,67 @@
 @synthesize itemIndexCountsAndTotalLabel;
 
 @synthesize searchConnectionButton, searchNameButton, searchStatusButton;
+@synthesize siteNameLabel;
 
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    //NSLog(@"%s", __func__);
-    
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    
     if (self) {
         //set up carousel data
         //carousel = [[iCarousel alloc] initWithFrame:CGRectMake(50, 150, 924, 400)];
         carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 110, 1024, 460)];
         //carousel.backgroundColor = [UIColor cyanColor];
+
+        tripleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTripleTap:)];
+        tripleTapGestureRecognizer.numberOfTapsRequired = 3;
+
     }
+    
+    //className = class_getName([self class]);
+    className = [NSMutableString stringWithUTF8String:class_getName([self class])];
+    [className replaceOccurrencesOfString:@"Controller" withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [className length])];
+    NSLog(@"yourObject is a: %@", className);
+    
     return self;
 }
 
+- (void)handleTripleTap:(id)sender {
+    NSLog(@"%s", __func__);
+    [theDelegate hideShowSliders:self.view];
+    //[self hideShowSliders:sender];
+}
+
+
 - (void)loadHaClusterArray {
-    
-    [sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
-    
+    //SyncManager
+    //[sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
     deviceArray = [sanDatabase getHaApplianceNameListBySiteName:theDelegate.siteName];
     NSLog(@"%s site %@,  count = %u", __func__, theDelegate.siteName, [deviceArray count]);
-    
     totalItemInCarousel = [deviceArray count];
     NSUInteger count = [deviceArray count];
-    
     currentItemIndex = 0;
     currentCollectionCount =  count;
     totalCount = count;
-    
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
-
-
+    [carousel reloadData];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     sanDatabase = theDelegate.sanDatabase;
     
     siteName = theDelegate.siteName;
+    self.siteNameLabel.text = theDelegate.siteName;
     
-    [self loadHaClusterArray];
-    
-    //[sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
-    //deviceArray = [sanDatabase getHaApplianceNameListBySiteName:theDelegate.siteName];
-    //NSLog(@"%s site %@,  count = %u", __func__, theDelegate.siteName, [deviceArray count]);
-
     //init/add carouse view
     carousel.delegate = self;
     carousel.dataSource = self;
     [self.view addSubview:carousel];
-    //self.iCarouselView.currentItemIndex = self.totalItems.count/2;
     
     carousel.type = iCarouselTypeRotary; //0 - -0.01;
     
@@ -111,54 +119,58 @@
     carousel.viewpointOffset = CGSizeMake(0, -330);
     carousel.decelerationRate = 0.9;
     
-    /*
-    totalItemInCarousel = [deviceArray count];
-    NSUInteger count = [deviceArray count];
-    
-    currentItemIndex = 0;
-    currentCollectionCount =  count;
-    totalCount = count;
-    
-    [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
-     */
-    
-    //[carousel reloadData];
-    
     self.haApplianceConnectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HAApplianceConnectionViewControllerID"];
     self.haApplianceConnectionViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    //currentItemIndex = carousel.currentItemIndex;
-    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
-
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
     
     [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
     
+    currentItemIndex = carousel.currentItemIndex;
+    
+    [self.viewForToggleSliders addGestureRecognizer:tripleTapGestureRecognizer];
+    [theDelegate hideShowSliders:self.view];
 
-
+    //[theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    NSLog(@"%s", __func__);
-    NSLog(@"%s siteName in current class = %@, siteName in delegate = %@", __func__, siteName, theDelegate.siteName);
+- (void)viewWillAppear:(BOOL)animated {
+    //NSLog(@"%s", __func__);
+    //NSString *php = [NSString stringWithFormat:@"http-get_%@.php", className];
+    //siteName = theDelegate.siteName;
     
-    if(![siteName isEqualToString:theDelegate.siteName]) {
-        siteName = theDelegate.siteName;
-        [self loadHaClusterArray];
-        [carousel reloadData];
-        currentItemIndex = carousel.currentItemIndex;
-        theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
-    }
+    //NSString *urlString = [self hostURLPathWithPHP:php];
+    //NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@", siteName];
     
+    //NSLog(@"url=%@", urlStringWithItems);
+    //[self httpGetAndParseURL:urlStringWithItems];
+    //NSLog(@"%s siteName in current class = %@, siteName in delegate = %@", __func__, siteName, theDelegate.siteName);
+    //
+    //if(![siteName isEqualToString:theDelegate.siteName]) {
+    //    siteName = theDelegate.siteName;
+    //    [self loadHaClusterArray];
+    //    [carousel reloadData];
+    //    currentItemIndex = carousel.currentItemIndex;
+    //    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
+    //}
+    [self loadHaClusterArray];
     
+    currentItemIndex = carousel.currentItemIndex;
+    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    theDelegate.currentHAApplianceName = [deviceArray objectAtIndex:currentItemIndex];
+    
+    self.siteNameLabel.text = theDelegate.siteName;
+
+
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
+    currentItemIndex = carousel.currentItemIndex;
     theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
-    NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+    //NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
 }
 
 - (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )currentIndex count:(NSUInteger)count total:(NSUInteger)total
@@ -187,22 +199,26 @@
 
 - (void)onItemPress:(id)sender
 {
+    
+    //NSLog(@"%s %@", __func__, [deviceArray objectAtIndex:currentItemIndex]);
+    
+    
     UIButton *theButon = (UIButton *)sender;
     NSInteger index = carousel.currentItemIndex;
     NSLog(@"onItemPress: tag=%d, current index=%u %@",theButon.tag, index, [deviceArray objectAtIndex:index]);
     
-    //currentItemIndex = _carousel.currentItemIndex;
+    currentItemIndex = carousel.currentItemIndex;
 
-    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
+    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    theDelegate.currentHAApplianceName = [deviceArray objectAtIndex:currentItemIndex];
     
     //self.mirrorViewVcController.haApplianceName = [deviceArray objectAtIndex:currentItemIndex];
     //self.mirrorViewVcController.deviceLabel.text = self.mirrorViewVcController.haApplianceName;
     [self presentViewController:self.haApplianceConnectionViewController animated:YES completion:nil];
     
-    NSLog(@"end of %s, current ha: %@, %@-%@", __func__, theDelegate.currentDeviceName, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+    //NSLog(@"end of %s, current ha: %@, %@-%@", __func__, theDelegate.currentDeviceName, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
     
-    //xx
-
+    
 }
 
 - (IBAction)onHome:(id)sender
@@ -225,6 +241,7 @@
 
 - (IBAction)logout:(id)sender {
     theDelegate.isLogin = FALSE;
+    theDelegate.syncManager = nil;
     [self onHome:sender];
 }
 
@@ -352,7 +369,7 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    NSLog(@"%s index=%u %@", __func__, index, [deviceArray objectAtIndex:index]);
+    //NSLog(@"%s index=%u %@", __func__, index, [deviceArray objectAtIndex:index]);
     UILabel *theLabel = nil;
     NSInteger status = [[statusArray objectAtIndex:index] integerValue];
     
@@ -429,7 +446,9 @@
 {
     currentItemIndex = _carousel.currentItemIndex;
     
-    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
+    theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    theDelegate.currentHAApplianceName = [deviceArray objectAtIndex:currentItemIndex];
+
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
 }

@@ -130,7 +130,8 @@
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
     
     [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
-        
+    
+    [theDelegate hideShowSliders:self.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -161,28 +162,6 @@
     NSLog(@"%s", __func__);
     [carousel reloadData];
 }
-
-/*
-- (IBAction)updateValue:(id)sender
-{
-    UISlider *slider = (UISlider*)sender;
-    NSLog(@"%s %@ %@", __func__, sender, [sender restorationIdentifier]);
-    NSString *identifier = [sender restorationIdentifier];
-    if ([identifier isEqualToString:@"arcSlider"]) {
-        arcValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } else if ([identifier isEqualToString:@"radiusSlider"]) {
-        radiusValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } else if ([identifier isEqualToString:@"spacingSlider"]) {
-        spacingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    } //else if ([identifier isEqualToString:@"contentSlider"]) {
-    //    contentValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    //} else if ([identifier isEqualToString:@"viewpointSlider"]) {
-    //    viewpointValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
-    //    carousel.viewpointOffset = CGSizeMake(0, 100*slider.value);
-    //}
-    
-}
-*/
 
 - (IBAction)updateValue:(id)sender
 {
@@ -230,22 +209,6 @@
     //NSLog(@"%s", __func__);
     [self performSegueWithIdentifier:@"RaidViewConfigSegue" sender:sender];
 }
-
-/*
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-    //NSString *segueId = [segue identifier];
-    NSLog(@"%s %@ currentDeviceName=%@", __func__, [segue identifier], currentDeviceName);
-    
-    if ([[segue identifier] isEqualToString:@"RaidViewConfigSegue"])
-    {
-        RaidViewConfigController *vc = [segue destinationViewController];
-        [vc setDeviceName:currentDeviceName];
-    }
-    
-}
-*/
 
 #pragma mark -
 #pragma mark iCarousel methods

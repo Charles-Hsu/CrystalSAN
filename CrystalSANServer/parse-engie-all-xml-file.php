@@ -1,5 +1,6 @@
 <?php
     
+    date_default_timezone_set('Asia/Manila');
 
     ini_set("display_errors", "On");
     ini_set("log_errors_max_len", 100);
@@ -30,6 +31,12 @@
         $files = glob("./$site_name/Data/data_xml/*_all.xml");
         
         var_dump($files);
+        
+        $sql = "CREATE TABLE IF NOT EXISTS config_user (site_name, user_name, password, PRIMARY KEY (site_name, user_name))";
+        $db->exec($sql);
+        $sql = "INSERT INTO config_user VALUES ('" . $site_name ."', 'admin', '0000')";
+        echo $sql;
+        $db->exec($sql);
         
         foreach ($files as $key => $xml_file) {
             echo "<br/>$xml_file<br/>";

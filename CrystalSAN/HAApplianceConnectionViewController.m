@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 
 #import "MBProgressHUD.h"
+#import <objc/runtime.h>
 
 
 #define ITEM_BUTTON_START_TAG_RAIDVIEW 300
@@ -36,6 +37,15 @@
     
     NSDictionary *engine00Mirror;
     NSDictionary *engine01Mirror;
+    
+    UITapGestureRecognizer *doubleTapGestureRecognizer;
+    UITapGestureRecognizer *singleTapGestureRecognizer;
+    
+    //UITextView *textViewInHud;
+    
+    //NSInteger currentEngineIndex;
+    
+    
 }
 @end
 
@@ -58,9 +68,15 @@
 
 @synthesize raid00_0_Label, raid00_1_Label, raid01_0_Label, raid01_1_Label, raid02_0_Label, raid02_1_Label, raid03_0_Label, raid03_1_Label, raid04_0_Label, raid04_1_Label, raid05_0_Label, raid05_1_Label;
 
+@synthesize raid00_0_Button, raid00_1_Button, raid01_0_Button, raid01_1_Button, raid02_0_Button, raid02_1_Button, raid03_0_Button, raid03_1_Button, raid04_0_Button, raid04_1_Button, raid05_0_Button, raid05_1_Button;
+
 @synthesize engineLeft, engineRight;
 
 @synthesize haApplianceName;
+@synthesize siteNameLabel;
+
+
+@synthesize testTwoFingersTap;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -77,6 +93,488 @@
     return self;
 }
 
+/*
+- (void)handleSwipeFrom:(id)sender {
+    NSLog(@"%s %@ currentEngineIndex=%d", __func__, sender, currentEngineIndex);
+    UISwipeGestureRecognizer *recognizer = (UISwipeGestureRecognizer *)sender;
+    
+    if (currentEngineIndex == 0) { // left engine, only accept left swipe to right engine
+        if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+            //textViewInHud.text = @"hi, already the left most engine";
+            currentEngineIndex = 1;
+            NSString *engineSerial = theDelegate.currentEngineRightSerial;
+            NSString *vpdInfo = [theDelegate.sanDatabase getEngineVpdString:engineSerial isShort:FALSE];
+            NSDictionary *mirrorDict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:engineSerial];
+            
+            NSString *vpdString = [NSString stringWithFormat:
+                                   @"%@\n%@\n%@", vpdInfo,
+                                   [theDelegate.sanDatabase getEngineMirrorShortString:mirrorDict],
+                                   [theDelegate.sanDatabase getConmgrDriveStatusStringByEngineSerial:engineSerial]];
+            
+            textViewInHud.text = vpdString;
+        } 
+    } else { // currentEngineIndex == 1, right engine
+        if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+            //textViewInHud.text = @"hi, already the left most engine";
+            currentEngineIndex = 0;
+            NSString *engineSerial = theDelegate.currentEngineLeftSerial;
+            NSString *vpdInfo = [theDelegate.sanDatabase getEngineVpdString:engineSerial isShort:FALSE];
+            NSDictionary *mirrorDict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:engineSerial];
+            
+            NSString *vpdString = [NSString stringWithFormat:
+                                   @"%@\n%@\n%@", vpdInfo,
+                                   [theDelegate.sanDatabase getEngineMirrorShortString:mirrorDict],
+                                   [theDelegate.sanDatabase getConmgrDriveStatusStringByEngineSerial:engineSerial]];
+            
+            textViewInHud.text = vpdString;
+
+        }
+    }
+}
+ */
+
+- (void)twoFingersTouch:(id)sender {
+    NSLog(@"%s %@", __func__, sender);
+    
+    
+    const char* className = class_getName([sender class]);
+    NSLog(@"class name of sender = %s", className);
+    
+    //- (CGPoint)locationInView:(UIView*)view;
+    //CGPoint point = [doubleTapGestureRecognizer locationInView:testTwoFingersTap];
+    //NSLog(@"(%f,%f)", point.x, point.y);
+    
+    
+    //CGRect rect = testTwoFingersTap.frame;
+    //NSLog(@"(%f,%f)", point.x, point.y);
+    //NSLog(@"w=%f h=%f", rect.size.width, rect.size.height);
+    
+    if(!isHUDshowing) {
+        isHUDshowing = YES;
+        NSString *engineSerial = nil;
+        //NSDictionary *vpd = nil;
+        
+        CGRect mainFrame = self.view.bounds;
+        //CGRect hudFrame = CGRectMake(0, 0, mainFrame.size.width/2, mainFrame.size.height/2);
+        CGRect hudFrame = CGRectMake(0, 0, 600, mainFrame.size.height/2);
+        CGRect hudFrame1 = CGRectMake(600, 0, 600, mainFrame.size.height/2);
+        
+        //UITableView *tableView = [[UITableView alloc] initWithFrame:hudFrame];
+        //tableView.backgroundColor = [UIColor clearColor];
+        //tableView.editing = FALSE;
+        //tableView.isEditing = FALSE;
+        //tableView.delegate = self;
+        //tableView.dataSource = self;
+        
+        
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:hudFrame];
+        
+        //scrollView.alwaysBounceVertical = YES;
+        //scrollView.alwaysBounceHorizontal = YES;
+        scrollView.pagingEnabled = YES;
+        //scrollView.contentSize = CGSizeMake(imageSize.width * images.count, imageSize.height);
+        scrollView.contentSize = CGSizeMake(600 * 2, mainFrame.size.height/2);
+        
+        UITextView *textView = [[UITextView alloc] initWithFrame:hudFrame];
+        textView.editable = FALSE;
+        //textViewInHud = textView;
+
+        //engineSerial = theDelegate.currentEngineRightSerial;
+        /*
+        NSLog(@"scrollView.alwaysBounceVertical=%@", scrollView.alwaysBounceVertical?@"YES":@"NO");
+        NSLog(@"scrollView.alwaysBounceHorizontal=%@", scrollView.alwaysBounceHorizontal?@"YES":@"NO");
+
+        if (point.x > rect.size.width/2) {
+            NSLog(@"%f > %f, right engine", point.x, rect.size.width/2);
+            engineSerial = theDelegate.currentEngineRightSerial;
+            vpd = engine01Vpd;
+            currentEngineIndex = 1;
+        } else {
+            NSLog(@"%f <= %f, left engine", point.x, rect.size.width/2);
+            engineSerial = theDelegate.currentEngineLeftSerial;
+            vpd = engine00Vpd;
+            currentEngineIndex = 0;
+        }
+         */
+        
+        engineSerial = theDelegate.currentEngineLeftSerial;
+        NSString *vpdInfo = [theDelegate.sanDatabase getEngineVpdString:engineSerial isShort:FALSE];
+        NSDictionary *mirrorDict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:engineSerial];
+        
+        NSString *vpdString = [NSString stringWithFormat:
+                               @"%@\n%@\n%@", vpdInfo,
+                               [theDelegate.sanDatabase getEngineMirrorShortString:mirrorDict],
+                               [theDelegate.sanDatabase getConmgrDriveStatusStringByEngineSerial:engineSerial]];
+        
+        textView.text = vpdString;
+        textView.textColor = [UIColor whiteColor];
+        textView.backgroundColor = [UIColor clearColor];
+        
+        textView.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
+
+        [scrollView addSubview:textView];
+        
+        
+        /////////////
+        //UILabel *label = [[UILabel alloc] initWithFrame:hudFrame1];
+        //label.text = @"hello world";
+        //label.textColor = [UIColor redColor];
+        //label.backgroundColor = [UIColor yellowColor];
+        //[scrollView addSubview:label];
+        /////////////
+
+        engineSerial = theDelegate.currentEngineRightSerial;
+        vpdInfo = [theDelegate.sanDatabase getEngineVpdString:engineSerial isShort:FALSE];
+        mirrorDict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:engineSerial];
+        
+        vpdString = [NSString stringWithFormat:
+                               @"%@\n%@\n%@", vpdInfo,
+                               [theDelegate.sanDatabase getEngineMirrorShortString:mirrorDict],
+                               [theDelegate.sanDatabase getConmgrDriveStatusStringByEngineSerial:engineSerial]];
+        
+        UITextView *textView1 = [[UITextView alloc] initWithFrame:hudFrame1];
+        textView1.editable = FALSE;
+        textView1.text = vpdString;
+        textView1.textColor = [UIColor whiteColor];
+        textView1.backgroundColor = [UIColor clearColor];
+        
+        textView1.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
+        [scrollView addSubview:textView1];
+        
+        //[tableView addSubview:scrollView];
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.frame = CGRectMake(0, 0, 120, 143);
+        
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.labelText = nil;
+        hud.detailsLabelText = nil;
+        
+        hud.margin = 10.f;
+        hud.yOffset = 150.f;
+        hud.removeFromSuperViewOnHide = YES;
+        hud.backgroundColor = [UIColor clearColor];
+        
+        hud.customView = scrollView;//customView;
+        //hud.customView = tableView;
+        
+        /*
+        UISwipeGestureRecognizer *leftRecognizer;
+        leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+        leftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+        
+        UISwipeGestureRecognizer *rightRecognizer;
+        rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+        rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+         */
+
+        //[scrollView addGestureRecognizer:leftRecognizer];
+        //[scrollView addGestureRecognizer:rightRecognizer];
+
+    }
+
+    
+    /*
+    
+    if(!isHUDshowing) {
+        isHUDshowing = YES;
+        
+        //loadingHUD.mode = MBProgressHUDModeCustomView;
+        //loadingHUD.labelText = nil;
+        //loadingHUD.detailsLabelText = nil;
+        //UIView *customView = [[UIView alloc] initWithFrame:self.view.bounds]; // Set a size
+        
+        
+        CGRect mainFrame = self.view.bounds;
+        //CGRect hudFrame = CGRectMake(0, 0, mainFrame.size.width/2, mainFrame.size.height/2);
+        CGRect hudFrame = CGRectMake(0, 0, 600, mainFrame.size.height/2);
+
+        
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:hudFrame];
+        UITextView *textView = [[UITextView alloc] initWithFrame:hudFrame];
+        
+        //vpd = engine00Vpd;
+        NSString *vpdInfo = [self getEngineVpdShortString:engine00Vpd];
+        
+        NSString *doubleForTest = [NSString stringWithFormat:@"%@ %@ %@", vpdInfo, vpdInfo, vpdInfo];
+        vpdInfo = doubleForTest;
+        
+        textView.text = vpdInfo;
+        textView.textColor = [UIColor whiteColor];
+        textView.backgroundColor = [UIColor clearColor];
+        
+        textView.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
+        
+        
+        //hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
+        //hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
+
+        
+        // Add stuff to view here
+        //loadingHUD.customView = customView;
+        //[HUD show:YES];
+        
+        
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.frame = CGRectMake(0, 0, 120, 143);
+        
+        //hud.mode = MBProgressHUDModeAnnularDeterminate;
+        //NSString *strloadingText = [NSString stringWithFormat:@"%@", engineSerial];
+        //NSString *strloadingText2 = [NSString stringWithFormat:@"Engine             : %@\n%@", isMaster, vpdInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
+        
+        //NSLog(@"the loading text will be %@",strloadingText);
+        //hud.labelText = strloadingText;
+        //hud.detailsLabelText=strloadingText2;
+        
+        //NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+        
+        hud.mode = MBProgressHUDModeCustomView;
+
+        hud.labelText = nil;
+        hud.detailsLabelText = nil;
+        
+        //hud.mode = MBProgressHUDModeCustomView;
+        //hud.labelText = @"Some message..Some message...";
+        hud.margin = 10.f;
+        hud.yOffset = 150.f;
+        hud.removeFromSuperViewOnHide = YES;
+        hud.backgroundColor = [UIColor clearColor];
+        //hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
+        //hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
+        
+        
+        
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:self.view.bounds];
+        label.text = @"hello world";
+        label.textColor = [UIColor redColor];
+        label.backgroundColor = [UIColor yellowColor];
+        
+        
+        //[textView addSubview:label];
+        [scrollView addSubview:textView];
+        //[testTwoFingersTap addSubview:label];
+        
+        hud.customView = scrollView;//customView;
+        //hud.customView = textView;
+        //hud.customView = label;
+    }
+     */
+    
+}
+
+
+#pragma mark -
+#pragma mark Table View Data Source Methods
+/*
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"%s", __func__);
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: SimpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
+    }
+    
+    NSString *engineSerial = nil;
+    NSDictionary *vpd = nil;
+    
+    
+    CGPoint point = [doubleTapGestureRecognizer locationInView:testTwoFingersTap];
+    CGRect rect = testTwoFingersTap.frame;
+
+    
+    CGRect mainFrame = self.view.bounds;
+    //CGRect hudFrame = CGRectMake(0, 0, mainFrame.size.width/2, mainFrame.size.height/2);
+    CGRect hudFrame = CGRectMake(0, 0, 600, mainFrame.size.height/2);
+
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:hudFrame];
+    
+    scrollView.alwaysBounceVertical = YES;
+    scrollView.alwaysBounceHorizontal = YES;
+    
+    NSLog(@"scrollView.alwaysBounceVertical=%@", scrollView.alwaysBounceVertical?@"YES":@"NO");
+    NSLog(@"scrollView.alwaysBounceHorizontal=%@", scrollView.alwaysBounceHorizontal?@"YES":@"NO");
+    
+    UITextView *textView = [[UITextView alloc] initWithFrame:hudFrame];
+    
+    if (point.x > rect.size.width/2) {
+        NSLog(@"%f > %f, right engine", point.x, rect.size.width/2);
+        engineSerial = theDelegate.currentEngineRightSerial;
+        vpd = engine01Vpd;
+    } else {
+        NSLog(@"%f <= %f, left engine", point.x, rect.size.width/2);
+        engineSerial = theDelegate.currentEngineLeftSerial;
+        vpd = engine00Vpd;
+    }
+    
+    NSString *vpdInfo = [theDelegate.sanDatabase getEngineVpdString:engineSerial isShort:FALSE];
+    NSDictionary *mirrorDict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:engineSerial];
+    
+    NSString *vpdString = [NSString stringWithFormat:
+                           @"%@\n%@\n%@", vpdInfo,
+                           [theDelegate.sanDatabase getEngineMirrorShortString:mirrorDict],
+                           [theDelegate.sanDatabase getConmgrDriveStatusStringByEngineSerial:engineSerial]];
+    
+    textView.text = vpdString;
+    textView.textColor = [UIColor whiteColor];
+    textView.backgroundColor = [UIColor clearColor];
+    
+    textView.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
+    
+    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.frame = CGRectMake(0, 0, 120, 143);
+    
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.labelText = nil;
+    hud.detailsLabelText = nil;
+    
+    hud.margin = 10.f;
+    hud.yOffset = 150.f;
+    hud.removeFromSuperViewOnHide = YES;
+    hud.backgroundColor = [UIColor clearColor];
+    
+    [scrollView addSubview:textView];
+    [tableView addSubview:scrollView];
+    //hud.customView = scrollView;//customView;
+    hud.customView = tableView;
+    
+    UISwipeGestureRecognizer *leftRecognizer;
+    leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    leftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    //[[self view] addGestureRecognizer:leftRecognizer];
+    //[leftRecognizer release];
+    
+    UISwipeGestureRecognizer *rightRecognizer;
+    rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    //[[self view] addGestureRecognizer:rightRecognizer];
+    //[rightRecognizer release];
+    
+    //UISwipeGestureRecognizer *swipeRecognizer;
+    //swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(helloSwipe:)];
+    //swipeRecognizer.UISwipeGestureRecognizerDirection = UISwipeGestureRecognizerDirectionRight; // UISwipeGestureRecognizerDirectionLeft
+    
+    //swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
+    
+    
+    //UISwipeGestureRecognizerDirectionRight = 1 << 0,
+    //UISwipeGestureRecognizerDirectionLeft  = 1 << 1,
+    
+    //[scrollView addGestureRecognizer:swipeRecognizer];
+    [scrollView addGestureRecognizer:leftRecognizer];
+    [scrollView addGestureRecognizer:rightRecognizer];
+
+    
+    
+    //NSUInteger row = [indexPath row];
+    NSLog(@"%s", __func__);
+    [cell.contentView addSubview:scrollView];
+    return cell;
+}
+ */
+
+- (void)showEngineinfoInHud:(NSString *)engineSerial vpdInfo:(NSDictionary *)vpd {
+    NSString *vpdInfo = [self getEngineVpdShortString:vpd];
+    NSString *isMaster = [self isMaster:engineSerial];
+    
+    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.frame = CGRectMake(0, 0, 120, 143);
+    
+    //hud.mode = MBProgressHUDModeAnnularDeterminate;
+    NSString *strloadingText = [NSString stringWithFormat:@"%@", engineSerial];
+    NSString *strloadingText2 = [NSString stringWithFormat:@"Engine             : %@\n%@", isMaster, vpdInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
+    
+    NSLog(@"the loading text will be %@",strloadingText);
+    hud.labelText = strloadingText;
+    hud.detailsLabelText=strloadingText2;
+    
+    NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+    
+    hud.mode = MBProgressHUDModeText;
+    //hud.mode = MBProgressHUDModeCustomView;
+    //hud.labelText = @"Some message..Some message...";
+    hud.margin = 10.f;
+    hud.yOffset = 150.f;
+    hud.removeFromSuperViewOnHide = YES;
+    hud.backgroundColor = [UIColor clearColor];
+    hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
+    hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
+}
+
+
+- (void)oneFingerTouch:(id)sender {
+
+    NSLog(@"%s %@", __func__, sender);
+    const char* className = class_getName([sender class]);
+    NSLog(@"class name of sender = %s", className);
+    CGPoint point = [singleTapGestureRecognizer locationInView:testTwoFingersTap];
+    CGRect rect = testTwoFingersTap.frame;
+    NSLog(@"(%f,%f)", point.x, point.y);
+    NSLog(@"w=%f h=%f", rect.size.width, rect.size.height);
+
+    if(!isHUDshowing) {
+        isHUDshowing = YES;
+        NSString *engineSerial = nil;
+        /*
+        NSDictionary *vpd = nil;
+        if (point.x > rect.size.width/2) {
+            NSLog(@"%f > %f, right engine", point.x, rect.size.width/2);
+            engineSerial = theDelegate.currentEngineRightSerial;
+            vpd = engine01Vpd;
+        } else {
+            NSLog(@"%f <= %f, left engine", point.x, rect.size.width/2);
+            engineSerial = theDelegate.currentEngineLeftSerial;
+            vpd = engine00Vpd;
+        }
+        [self showEngineinfoInHud:engineSerial vpdInfo:vpd];
+        */
+        CGRect mainFrame = self.view.bounds;
+        CGRect hudFrame = CGRectMake(0, 0, 600, mainFrame.size.height/2);
+        CGRect hudFrame1 = CGRectMake(600, 0, 600, mainFrame.size.height/2);
+        
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:hudFrame];
+        scrollView.pagingEnabled = YES;
+        scrollView.contentSize = CGSizeMake(600 * 2, mainFrame.size.height/2);
+        
+        UITextView *textView = [[UITextView alloc] initWithFrame:hudFrame];
+        textView.editable = FALSE;
+        
+        engineSerial = theDelegate.currentEngineLeftSerial;
+        NSString *vpdInfo = [self getEngineVpdShortString:engine00Vpd];
+        NSString *isMaster = [self isMaster:engineSerial];
+        
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        //hud.frame = CGRectMake(0, 0, 120, 143);
+        
+        //hud.mode = MBProgressHUDModeAnnularDeterminate;
+        //NSString *strloadingText = [NSString stringWithFormat:@"%@", engineSerial];
+        NSString *strloadingText2 = [NSString stringWithFormat:@"Engine             : %@\n%@", isMaster, vpdInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
+        textView.text = strloadingText2;
+        textView.textColor = [UIColor whiteColor];
+        textView.backgroundColor = [UIColor clearColor];
+        textView.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
+
+        [scrollView addSubview:textView];
+        
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.labelText = nil;
+        hud.detailsLabelText = nil;
+        
+        hud.margin = 10.f;
+        hud.yOffset = 150.f;
+        hud.removeFromSuperViewOnHide = YES;
+        hud.backgroundColor = [UIColor clearColor];
+        
+        hud.customView = scrollView;//customView;
+        
+
+    }
+    
+}
 
 - (void)viewDidLoad
 {
@@ -85,6 +583,19 @@
     
     NSLog(@"deviceName=%@", deviceName);
     deviceName = [deviceName stringByReplacingOccurrencesOfString:@"\r" withString:@" "];
+    
+
+    
+    doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingersTouch:)];
+    doubleTapGestureRecognizer.numberOfTouchesRequired = 2;
+
+    singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingersTouch:)];
+    singleTapGestureRecognizer.numberOfTouchesRequired = 1;
+    singleTapGestureRecognizer.numberOfTapsRequired = 1;
+
+    [testTwoFingersTap addGestureRecognizer:doubleTapGestureRecognizer];
+    [testTwoFingersTap addGestureRecognizer:singleTapGestureRecognizer];
+    
     
     [haApplianceName setText:[NSString stringWithFormat:@"%@", deviceName]];
     //deviceLabel.numberOfLines = 0;
@@ -157,7 +668,8 @@
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleFingerTap];
-
+    
+    [theDelegate hideShowSliders:self.view];
     
 }
 
@@ -168,7 +680,7 @@
 
 - (void)loadEngineCliInformation:(NSString *)serial {
     
-    [sanDatabase httpGetEngineCliVpdBySerial:serial siteName:theDelegate.siteName];
+    //[sanDatabase httpGetEngineCliVpdBySiteName:theDelegate.siteName serial:serial];
     
 }
 
@@ -176,25 +688,10 @@
     NSLog(@"%s", __func__);
     
     self.haApplianceName.text = theDelegate.currentDeviceName;
-    
-    NSArray *engines = [theDelegate.sanDatabase getEnginesByHaApplianceName:(self.haApplianceName.text)];
-    NSLog(@"%s %@", __func__, engines);
-    
-    if ([engines count] == 2) {
-        theDelegate.currentEngineLeftSerial = [engines objectAtIndex:0];
-        theDelegate.currentEngineRightSerial = [engines objectAtIndex:1];
-        
-        [self loadEngineCliInformation:theDelegate.currentEngineLeftSerial];
-        [self loadEngineCliInformation:theDelegate.currentEngineRightSerial];
-    }
-        
-}
+    self.siteNameLabel.text = theDelegate.siteName;
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"%s", __func__);
-    self.haApplianceName.text = theDelegate.currentDeviceName;
-    //NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+    
+    [theDelegate.syncManager syncEngineWithHAApplianceNameAndAddedtoSyncedArray:theDelegate.currentHAApplianceName];
     
     NSArray *engines = [theDelegate.sanDatabase getEnginesByHaApplianceName:(self.haApplianceName.text)];
     NSLog(@"%s %@", __func__, engines);
@@ -210,19 +707,16 @@
         
         NSDictionary *dict = engine00Mirror;
         
-        //NSString *mirror_0_member_0_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_0_id"]];
-        //NSString *mirror_0_member_0_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_0_sts"]];
-        //NSString *mirror_0_member_1_id = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_1_id"]];
-        //NSString *mirror_0_member_1_sts = [NSString stringWithFormat:@"%@", [dict valueForKey:@"mirror_0_member_1_sts"]];
-        
-        self.lun00_0_Label.text = [dict valueForKey:@"mirror_0_member_0_id"];
-        self.lun00_1_Label.text = [dict valueForKey:@"mirror_0_member_1_id"];
-        self.lun01_0_Label.text = [dict valueForKey:@"mirror_1_member_0_id"];
-        self.lun01_1_Label.text = [dict valueForKey:@"mirror_1_member_1_id"];
-        self.lun02_0_Label.text = [dict valueForKey:@"mirror_2_member_0_id"];
-        self.lun02_1_Label.text = [dict valueForKey:@"mirror_2_member_1_id"];
-        self.lun03_0_Label.text = [dict valueForKey:@"mirror_3_member_0_id"];
-        self.lun03_1_Label.text = [dict valueForKey:@"mirror_3_member_1_id"];
+        NSLog(@"%s %@", __func__, dict);
+                
+        self.lun00_0_Label.text = [self stringForKey:dict key:@"m0_mb0_id"];
+        self.lun00_1_Label.text = [self stringForKey:dict key:@"m0_mb1_id"];
+        self.lun01_0_Label.text = [self stringForKey:dict key:@"m1_mb0_id"];
+        self.lun01_1_Label.text = [self stringForKey:dict key:@"m1_mb1_id"];
+        self.lun02_0_Label.text = [self stringForKey:dict key:@"m2_mb0_id"];
+        self.lun02_1_Label.text = [self stringForKey:dict key:@"m2_mb1_id"];
+        self.lun03_0_Label.text = [self stringForKey:dict key:@"m3_mb0_id"];
+        self.lun03_1_Label.text = [self stringForKey:dict key:@"m3_mb1_id"];
         
         self.raid00_0_Label.text = self.lun00_0_Label.text;
         self.raid00_1_Label.text = self.lun01_0_Label.text;
@@ -235,28 +729,80 @@
         
         
         
-        self.lun00Label.text = [dict valueForKey:@"mirror_0_id"];
-        self.lun01Label.text = [dict valueForKey:@"mirror_1_id"];
-        self.lun02Label.text = [dict valueForKey:@"mirror_2_id"];
-        self.lun03Label.text = [dict valueForKey:@"mirror_3_id"];
+        self.lun00Label.text = [self stringForKey:dict key:@"m0_id"];
+        self.lun01Label.text = [self stringForKey:dict key:@"m1_id"];
+        self.lun02Label.text = [self stringForKey:dict key:@"m2_id"];
+        self.lun03Label.text = [self stringForKey:dict key:@"m3_id"];
         
-        if ([[dict valueForKey:@"mirror_3_id"] length] == 0) {
+        
+        if ([[self stringForKey:dict key:@"m2_id"] length] == 0) {
+            self.lun02Label.hidden = TRUE;
+            self.lun02Button.hidden = TRUE;
+            self.lun02_0_Button.hidden = TRUE;
+            self.lun02_1_Button.hidden = TRUE;
+            self.lun02_MirroredLUN.hidden = TRUE;
+            
+            self.raid01_0_Button.hidden = TRUE;
+            self.raid01_1_Button.hidden = TRUE;
+            
+            
+        } else {
+            self.lun02Label.hidden = FALSE;
+            self.lun02Button.hidden = FALSE;
+            self.lun02_0_Button.hidden = FALSE;
+            self.lun02_1_Button.hidden = FALSE;
+            self.lun02_MirroredLUN.hidden = FALSE;
+            
+            self.raid01_0_Button.hidden = FALSE;
+            self.raid01_1_Button.hidden = FALSE;
+
+        }
+        
+        if ([[self stringForKey:dict key:@"m3_id"] length] == 0) {
             self.lun03Label.hidden = TRUE;
             self.lun03Button.hidden = TRUE;
             self.lun03_0_Button.hidden = TRUE;
             self.lun03_1_Button.hidden = TRUE;
             self.lun03_MirroredLUN.hidden = TRUE;
+            
+            self.raid03_0_Button.hidden = TRUE;
+            self.raid03_1_Button.hidden = TRUE;
+
         } else {
             self.lun03Label.hidden = FALSE;
             self.lun03Button.hidden = FALSE;
             self.lun03_0_Button.hidden = FALSE;
             self.lun03_1_Button.hidden = FALSE;
             self.lun03_MirroredLUN.hidden = FALSE;
+            
+            self.raid03_0_Button.hidden = FALSE;
+            self.raid03_1_Button.hidden = FALSE;
+
         }
         
-        //NSLog(@"%s '%@'", __func__, [dict valueForKey:@"mirror_3_id"]);
-        
     }
+
+        
+}
+
+- (NSString *)stringForKey:(NSDictionary *)dict key:(NSString *)_key {
+    NSString *string = [dict valueForKey:_key];
+    NSLog(@"%s %@", __func__, string);
+    if (string != (id)[NSNull null]) {
+        NSLog(@"%@ length=%d", string, [string length]);
+        return string;
+    }
+    return @"";
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%s", __func__);
+    self.haApplianceName.text = theDelegate.currentDeviceName;
+    //NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+    
+    NSArray *engines = [theDelegate.sanDatabase getEnginesByHaApplianceName:(self.haApplianceName.text)];
+    NSLog(@"%s %@", __func__, engines);
 
 }
 
@@ -309,15 +855,17 @@
      Target	status	port	Storage WWPN	   LUN	status
      5      A       B1      6000-393000-01a99f 0000 A
      */
+    
+    const NSString *EngineDriveShortStringtTitle = @"Serial   Target status port Storage WWPN       LUN  status";
     NSString *info = [NSString stringWithFormat:@""
         //"Serial    Target status port Storage WWPN       LUN  status\n"
         "%@\n"
-        "%8s  %@\n"
-        "%8s  %@",
-                      [theDelegate.sanDatabase getEngineDriveShortStringtTitle],
-                      [[dict0 objectForKey:@"serial"] UTF8String],
+        "%-8d %@\n"
+        "%-8d %@",
+                      EngineDriveShortStringtTitle,
+                      [[dict0 objectForKey:@"serial"] integerValue],
                       [theDelegate.sanDatabase getEngineDriveShortString:dict0],
-                      [[dict1 objectForKey:@"serial"] UTF8String],
+                      [[dict1 objectForKey:@"serial"] integerValue],
                       [theDelegate.sanDatabase getEngineDriveShortString:dict1]
                       ];
     return info;
@@ -327,70 +875,74 @@
     
     NSLog(@"%s sender.tag = %d", __func__, [sender tag]);
     
-    NSInteger targetNum = 0;
-    
-    switch ([sender tag]) {
-        case RAID_DRIVE_0_0:
-            targetNum = [raid00_0_Label.text integerValue];
-            break;
-        case RAID_DRIVE_0_1:
-            targetNum = [raid00_1_Label.text integerValue];
-            break;
-        case RAID_DRIVE_1_0:
-            targetNum = [raid01_0_Label.text integerValue];
-            break;
-        case RAID_DRIVE_1_1:
-            targetNum = [raid01_1_Label.text integerValue];
-            break;
-        case RAID_DRIVE_2_0:
-            targetNum = [raid02_0_Label.text integerValue];
-            break;
-        case RAID_DRIVE_2_1:
-            targetNum = [raid02_1_Label.text integerValue];
-            break;
-        case RAID_DRIVE_3_0:
-            targetNum = [raid03_0_Label.text integerValue];
-            break;
-        case RAID_DRIVE_3_1:
-            targetNum = [raid03_1_Label.text integerValue];
-            break;
-        default:
-            break;
+    if(!isHUDshowing) {
+        
+        isHUDshowing = YES;
+
+        NSInteger targetNum = 0;
+        
+        switch ([sender tag]) {
+            case RAID_DRIVE_0_0:
+                targetNum = [raid00_0_Label.text integerValue];
+                break;
+            case RAID_DRIVE_0_1:
+                targetNum = [raid00_1_Label.text integerValue];
+                break;
+            case RAID_DRIVE_1_0:
+                targetNum = [raid01_0_Label.text integerValue];
+                break;
+            case RAID_DRIVE_1_1:
+                targetNum = [raid01_1_Label.text integerValue];
+                break;
+            case RAID_DRIVE_2_0:
+                targetNum = [raid02_0_Label.text integerValue];
+                break;
+            case RAID_DRIVE_2_1:
+                targetNum = [raid02_1_Label.text integerValue];
+                break;
+            case RAID_DRIVE_3_0:
+                targetNum = [raid03_0_Label.text integerValue];
+                break;
+            case RAID_DRIVE_3_1:
+                targetNum = [raid03_1_Label.text integerValue];
+                break;
+            default:
+                break;
+        }
+        
+        NSLog(@"target num = %d", targetNum);
+        
+        NSDictionary *dict0 = [theDelegate.sanDatabase getConmgrDriveStatusByEngineSerial:theDelegate.currentEngineLeftSerial
+                                                                                targetNum:targetNum];
+        //NSLog(@"%@", [self raidShortInformation:dict0]);
+        
+        NSDictionary *dict1 = [theDelegate.sanDatabase getConmgrDriveStatusByEngineSerial:theDelegate.currentEngineRightSerial
+                                                                                targetNum:targetNum];
+        //NSLog(@"%@", [self raidShortInformation:dict1]);
+        
+        NSString *info = [self driveShortInformation:dict0 slave:dict1];
+        
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        hud.frame = CGRectMake(0, 0, 10, 10);
+        
+        NSString *strloadingText = [NSString stringWithFormat:@"%@-%@", theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial];
+        NSString *strloadingText2 = [NSString stringWithFormat:@"%@", info];// ;//] @" Please Wait.\r 1-2 Minutes"];
+        
+        hud.labelText = strloadingText;
+        hud.detailsLabelText=strloadingText2;
+        
+        //NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+        
+        hud.mode = MBProgressHUDModeText;
+        hud.margin = 10.f;
+        hud.yOffset = 150.f;
+        hud.removeFromSuperViewOnHide = YES;
+        hud.backgroundColor = [UIColor clearColor];
+        hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
+        hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
+        
     }
-    
-    NSLog(@"target num = %d", targetNum);
-    
-    NSDictionary *dict0 = [theDelegate.sanDatabase getConmgrDriveStatusByEngineSerial:theDelegate.currentEngineLeftSerial
-                                                      targetNum:targetNum];
-    //NSLog(@"%@", [self raidShortInformation:dict0]);
-    
-    NSDictionary *dict1 = [theDelegate.sanDatabase getConmgrDriveStatusByEngineSerial:theDelegate.currentEngineRightSerial
-                                                      targetNum:targetNum];
-    //NSLog(@"%@", [self raidShortInformation:dict1]);
-    
-    NSString *info = [self driveShortInformation:dict0 slave:dict1];
-    
-    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    hud.frame = CGRectMake(0, 0, 10, 10);
-    
-    NSString *strloadingText = [NSString stringWithFormat:@"%@-%@", theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial];
-    NSString *strloadingText2 = [NSString stringWithFormat:@"%@", info];// ;//] @" Please Wait.\r 1-2 Minutes"];
-    
-    hud.labelText = strloadingText;
-    hud.detailsLabelText=strloadingText2;
-    
-    //NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
-    
-	hud.mode = MBProgressHUDModeText;
-	hud.margin = 10.f;
-	hud.yOffset = 150.f;
-	hud.removeFromSuperViewOnHide = YES;
-    hud.backgroundColor = [UIColor clearColor];
-    hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
-    hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
-    
-    isHUDshowing = YES;
     
 }
 
@@ -452,50 +1004,42 @@
 - (IBAction)showMirrorInfo:(id)sender {
     NSLog(@"%s", __func__);
     
-    //NSString *lunNumStr = [sender restorationIdentifier];
-
-    //NSString *mirrorShortInfo = [self getMirrorShortString:theDelegate.currentEngineLeftSerial byLunNum:lunNumStr];
-    NSString *mirrorShortInfo = [self getMirrorShortString:engine00Mirror];
-    
-    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    //hud.hidden = FALSE;
-    
-    hud.frame = CGRectMake(0, 0, 10, 10);
-    
-    
-    //[sender addTarget:self action:@selector(hideHud:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //[sender addTarget:self action:@selector(hideHud:) forControlEvents:UIControlEventTouchUpInside];
-    //UIView *customView = hud.customView;
-    
-    
-    //UIControlEventTouchDown
-    
-    //hud.mode = MBProgressHUDModeAnnularDeterminate;
-    NSString *strloadingText = [NSString stringWithFormat:@"%@-%@", theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial];
-    NSString *strloadingText2 = [NSString stringWithFormat:@"%@", mirrorShortInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
-    
-    //NSLog(@"the loading text will be %@",strloadingText);
-    hud.labelText = strloadingText;
-    hud.detailsLabelText=strloadingText2;
-    
-    NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
-    
-	hud.mode = MBProgressHUDModeText;
-    //hud.mode = MBProgressHUDModeCustomView;
-	//hud.labelText = @"Some message..Some message...";
-	hud.margin = 10.f;
-	hud.yOffset = 150.f;
-	hud.removeFromSuperViewOnHide = YES;
-    hud.backgroundColor = [UIColor clearColor];
-    hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
-    //engine0mirror.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
-    
-    hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
-    
-    
-    isHUDshowing = YES;
+    if(!isHUDshowing) {
+        //NSString *lunNumStr = [sender restorationIdentifier];
+        
+        //NSString *mirrorShortInfo = [self getMirrorShortString:theDelegate.currentEngineLeftSerial byLunNum:lunNumStr];
+        NSLog(@"%s %@", __func__, engine00Mirror);
+        NSString *mirrorShortInfo = [self getMirrorShortString:engine00Mirror];
+        
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        hud.frame = CGRectMake(0, 0, 10, 10);
+        
+        
+        NSString *strloadingText = [NSString stringWithFormat:@"%@-%@", theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial];
+        NSString *strloadingText2 = [NSString stringWithFormat:@"%@", mirrorShortInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
+        
+        //NSLog(@"the loading text will be %@",strloadingText);
+        hud.labelText = strloadingText;
+        hud.detailsLabelText=strloadingText2;
+        
+        NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+        
+        hud.mode = MBProgressHUDModeText;
+        //hud.mode = MBProgressHUDModeCustomView;
+        //hud.labelText = @"Some message..Some message...";
+        hud.margin = 10.f;
+        hud.yOffset = 150.f;
+        hud.removeFromSuperViewOnHide = YES;
+        hud.backgroundColor = [UIColor clearColor];
+        hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
+        //engine0mirror.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];
+        
+        hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
+        
+        
+        isHUDshowing = YES;
+    }
     //hud.l
     
     //NSInteger delaySec = 3.0;
@@ -535,6 +1079,8 @@
     NSInteger myId = [[dict valueForKey:@"my_id"] intValue];
     BOOL isMaster = NO;
     
+    NSLog(@"%s %@", __func__, dict);
+    
     switch (myId) {
         case 1:
             if ([[dict valueForKey:@"cluster_0_is_master"] isEqualToString:@"Yes"]) {
@@ -555,65 +1101,49 @@
 - (IBAction)showEngineInfo:(id)sender {
     NSLog(@"%s", __func__);
     
-    NSString *engineSerial = nil;
-    
-    //UIButton *uiButton = (UIButton *)sender;
-    //MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:uiButton animated:YES];
-    
-    NSDictionary *vpd = nil;
-    
-    if ([[sender restorationIdentifier] isEqualToString:@"leftEngine"]) {
-        engineSerial = theDelegate.currentEngineLeftSerial;
-        vpd = engine00Vpd;
-    } else {
-        engineSerial = theDelegate.currentEngineRightSerial;
-        vpd = engine01Vpd;
+    if(!isHUDshowing) {
+        isHUDshowing = YES;
+        NSString *engineSerial = nil;
+        NSDictionary *vpd = nil;
+        
+        if ([[sender restorationIdentifier] isEqualToString:@"leftEngine"]) {
+            engineSerial = theDelegate.currentEngineLeftSerial;
+            vpd = engine00Vpd;
+        } else {
+            engineSerial = theDelegate.currentEngineRightSerial;
+            vpd = engine01Vpd;
+        }
+        
+        [self showEngineinfoInHud:engineSerial vpdInfo:vpd];
+        /*
+        NSString *vpdInfo = [self getEngineVpdShortString:vpd];
+        
+        NSString *isMaster = [self isMaster:engineSerial];
+        
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.frame = CGRectMake(0, 0, 120, 143);
+        
+        //hud.mode = MBProgressHUDModeAnnularDeterminate;
+        NSString *strloadingText = [NSString stringWithFormat:@"%@", engineSerial];
+        NSString *strloadingText2 = [NSString stringWithFormat:@"Engine             : %@\n%@", isMaster, vpdInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
+        
+        NSLog(@"the loading text will be %@",strloadingText);
+        hud.labelText = strloadingText;
+        hud.detailsLabelText=strloadingText2;
+        
+        NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
+        
+        hud.mode = MBProgressHUDModeText;
+        //hud.mode = MBProgressHUDModeCustomView;
+        //hud.labelText = @"Some message..Some message...";
+        hud.margin = 10.f;
+        hud.yOffset = 150.f;
+        hud.removeFromSuperViewOnHide = YES;
+        hud.backgroundColor = [UIColor clearColor];
+        hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
+        hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
+         */
     }
-    
-    NSString *vpdInfo = [self getEngineVpdShortString:vpd];
-    
-    NSString *isMaster = [self isMaster:engineSerial];
-    
-    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    //hud.hidden = FALSE;
-    
-    
-    hud.frame = CGRectMake(0, 0, 120, 143);
-    
-    
-    //[sender addTarget:self action:@selector(hideHud:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    //hud.mode = MBProgressHUDModeAnnularDeterminate;
-    NSString *strloadingText = [NSString stringWithFormat:@"%@", engineSerial];
-    NSString *strloadingText2 = [NSString stringWithFormat:@"Engine             : %@\n%@", isMaster, vpdInfo];// ;//] @" Please Wait.\r 1-2 Minutes"];
-    
-    NSLog(@"the loading text will be %@",strloadingText);
-    hud.labelText = strloadingText;
-    hud.detailsLabelText=strloadingText2;
-
-    NSLog(@"%s %@ %@", __func__, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
-    
-	hud.mode = MBProgressHUDModeText;
-    //hud.mode = MBProgressHUDModeCustomView;
-	//hud.labelText = @"Some message..Some message...";
-	hud.margin = 10.f;
-	hud.yOffset = 150.f;
-	hud.removeFromSuperViewOnHide = YES;
-    hud.backgroundColor = [UIColor clearColor];
-    hud.labelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:25.0];
-    hud.detailsLabelFont = [UIFont fontWithName:@"SourceCodePro-Bold" size:14.0];//[UIFont systemFontOfSize:20.0];
-    
-    
-    isHUDshowing = YES;
-    //hud.l
-    
-    //NSInteger delaySec = 3.0;
-    
-    
-	//[hud hide:YES afterDelay:delaySec];
-
 }
 
 /*

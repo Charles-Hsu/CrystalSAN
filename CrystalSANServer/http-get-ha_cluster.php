@@ -1,6 +1,6 @@
 <?php
     
-#  get_ha_cluster_all.php
+#  http-get-ha_cluster.php
 #  CrystalSAN
 #
 #  Created by Charles Hsu on 3/7/13.
@@ -9,6 +9,7 @@
     ini_set("display_errors", "On");
     
     $site_name = @$_REQUEST['site'] ;
+    $seconds = @$_REQUEST['seconds'] ;
     $sql = "";
     
     try {
@@ -18,15 +19,22 @@
             if (file_exists($database)) {
                 $db = new PDO("sqlite:" . $database);
                 $sql = "SELECT * FROM ha_cluster WHERE site_name='$site_name'";
+                //echo $sql;
+                if (isset($seconds) && !empty($seconds)) {
+                    $sql .= " AND seconds > $seconds";
+                }
                 
-                $results = $db->query($sql)->fetchAll();
+                //echo $sql;
                 
+                $results = $db->query($sql);
+                //var_dump($results);
                 //$i = 0;
                 
-                if (is_array($results)) {
+                //if (is_array($results)) {
                     echo '<ha_cluster>';
                     foreach($results as $key => $row) {
                         echo '<record>';
+                        $seconds  = $row['seconds'];
                         $site_name = $row['site_name'];
                         $engine00 = $row['engine00'];
                         $engine01 = $row['engine01'];
@@ -36,6 +44,7 @@
                         
                         $ha_appliance_name = $row['ha_appliance_name'];
                         
+                        echo "<seconds>$seconds</seconds>";
                         echo "<site_name>$site_name</site_name>";
                         echo "<ha_appliance_name>$ha_appliance_name</ha_appliance_name>";
                         echo "<engine00>$engine00</engine00>";
@@ -46,7 +55,7 @@
                         echo '</record>';
                     }
                     echo '</ha_cluster>';
-                }
+                //}
             }
             
 

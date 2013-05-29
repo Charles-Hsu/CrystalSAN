@@ -21,11 +21,23 @@
 - (NSArray *)getEngineCliMirrorBySerial:(NSString *)serial;
 
 
+// new methods
 - (void)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName;
-- (void)httpGetEngineCliVpdBySerial:(NSString *)serial siteName:(NSString *)siteName;
-- (void)httpGetEngineDriveInformation:(NSString *)serial siteName:(NSString *)siteName;
+
+- (void)httpGetEngineCliVpdBySiteName:(NSString *)siteName serial:(NSString *)serial;
+
+- (void)httpGetEngineDriveInformationBySiteName:(NSString *)siteName serial:(NSString *)serial;
+- (void)httpGetEngineCliEngineStatusBySiteName:(NSString *)siteName serial:(NSString *)serial;
+- (void)httpGetEngineCliMirrorBySiteName:(NSString *)siteName serial:(NSString *)serial;
+- (void)httpGetEngineCliDmepropBySiteName:(NSString *)siteName serial:(NSString *)serial;
+- (void)httpGetEngineInitiatorInformationBySiteName:(NSString *)siteName serial:(NSString *)serial;
+- (void)httpGetWwpnDataBySiteName:(NSString *)siteName;
+- (void)httpGetSiteInfoByAppSiteName:(NSString *)siteName appUserName:(NSString *)userName appPassword:(NSString *)password;
+- (NSArray *)getSiteInfoArray;
 
 
+
+// old methods
 - (NSArray *)httpGetEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial;
 - (NSArray *)httpGetEngineCliConmgrInitiatorStatusDetailBySerial:(NSString *)serial;
 - (NSArray *)httpGetEngineCliConmgrEngineStatusBySerial:(NSString *)serial;
@@ -36,6 +48,7 @@
 
 - (void)insertUpdateHaCluster:(NSDictionary *)dict;
 - (void)insertUpdate:(NSString *)table record:(NSDictionary *)dict;
+- (void)insertCache:(NSString *)table record:(NSDictionary *)dict;
 
 - (void)syncWithServerDb:(NSString *)siteName;
 
@@ -47,6 +60,7 @@
 - (NSArray *)getConmgrDriveStatusByEngineSerial:(NSString *)serial;
 - (NSDictionary *)getConmgrDriveStatusByEngineSerial:(NSString *)serial
                                            targetNum:(NSInteger)driveID;
+- (NSString *)getConmgrDriveStatusStringByEngineSerial:(NSString *)serial;
 
 - (NSArray *)getInitiatorListByEngineSerial:(NSString *)serial;
 - (NSArray *)getDriveListByEngineSerial:(NSString *)serial;
@@ -59,15 +73,21 @@
 - (NSString *)isMasterEngine:(NSString *)serial;
 
 
+
 - (NSString *)getEngineVpdShortString:(NSDictionary *)vpd;
+- (NSString *)getEngineVpdString:(NSString *)serial isShort:(BOOL)isShort;
+
+
 - (NSString *)getEngineMirrorShortString:(NSDictionary *)dict;
 - (NSString *)getEngineDriveShortString:(NSDictionary *)dict;
-- (NSString *)getEngineDriveShortStringtTitle;
+//- (NSString *)getEngineDriveShortStringtTitle;
 - (NSString *)getCompanyNameByWWPN:(NSString *)wwpn;
 
 - (void)updateUserAuthInfo:(NSString *)siteName user:(NSString *)userName password:(NSString *)password;
 - (BOOL)checkUserAuthInfo:(NSString *)siteName user:(NSString *)userName password:(NSString *)password;
 
 - (NSString *)hostURLPathWithPHP:(NSString *)php;
+
+- (void)loadUserPreference;
 
 @end

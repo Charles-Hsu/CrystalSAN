@@ -12,6 +12,9 @@
 
 @interface MainViewController () {
     AppDelegate *theDelegate;
+    NSInteger loginViewOffset;
+    
+    UITapGestureRecognizer *tripleTapGestureRecognizer;
 }
 
 @end
@@ -23,6 +26,8 @@
 @synthesize arcSlider, radiusSlider, spacingSlider, sizingSlider;
 @synthesize arcValue, radiusValue, spacingValue, sizingValue;
 @synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
+
+@synthesize siteNameLabel;
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -49,9 +54,31 @@
                              @"Drive View",
                              @"HBA View",
                              nil];
+        tripleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTripleTap:)];
+        tripleTapGestureRecognizer.numberOfTapsRequired = 3;
+
     }
     
     return self;
+}
+
+
+- (void)handleTripleTap:(id)sender {
+    NSLog(@"%s", __func__);
+    [self hideShowSliders:sender];
+}
+
+
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSLog(@"%s", __func__);
+    NSLog(@"%@", notification);
+    loginViewOffset = 150;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSLog(@"%s", __func__);
+    NSLog(@"%@", notification);
 }
 
 
@@ -59,9 +86,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-        
+    
     //get data
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    self.siteNameLabel.text = @"";//theDelegate.siteName;
+    NSLog(@"%s sitename=%@", __func__, theDelegate.siteName);
+    
+    
     self.totalItems = theDelegate.totalItems;
     self.activeItems = theDelegate.activeItems;
     
@@ -141,44 +173,62 @@
                                              selector:@selector(presentNextViewController:)
                                                  name:@"presentNextViewControllerNotification"
                                                object:nil];
+    
+    /*
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                            object:nil];
+     */
+    
+    theDelegate.nextViewController = self.haApplianceViewController;
+    [self.viewForToggleSliders addGestureRecognizer:tripleTapGestureRecognizer];
+    
+    [self hideShowSliders:nil];
 
     
 }
 
 
 - (void)presentNextViewController:(id)sender {
-    NSLog(@"%s", __func__);
+    NSLog(@"%s %@", __func__, theDelegate.nextViewController);
+    NSLog(@"%s %@", __func__, theDelegate.siteName);
+    
     [self presentViewController:theDelegate.nextViewController
                        animated:YES
                      completion:nil];
+    
+    /*
+    if (theDelegate.siteName != nil) {
+        if (theDelegate.syncManager == nil) {
+            theDelegate.syncManager = [[SyncManager alloc] init];
+        }
+    }
+     */
+    
+    //[theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
+    //[theDelegate.sanDatabase httpGetEngineCliVpdBySiteName:theDelegate.siteName serial:nil];
+    //[theDelegate.sanDatabase httpGetEngineDriveInformationBySiteName:theDelegate.siteName serial:nil];
+    //[theDelegate.sanDatabase httpGetEngineCliEngineStatusBySiteName:theDelegate.siteName serial:nil];
+    //[theDelegate.sanDatabase httpGetEngineCliMirrorBySiteName:theDelegate.siteName serial:nil];
+    //[theDelegate.sanDatabase httpGetEngineCliDmepropBySiteName:theDelegate.siteName serial:nil];
+    //
+    //[theDelegate.sanDatabase httpGetEngineInitiatorInformationBySiteName:theDelegate.siteName serial:nil];
+    //
+    [theDelegate.sanDatabase httpGetWwpnDataBySiteName:theDelegate.siteName];
+    
+    
 }
 
 - (IBAction)loginView:(id)sender {
     self.loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewControllerID"];
     self.loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    /*
-    [self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self setModalPresentationStyle:UIModalPresentationFormSheet];
-    [self presentModalViewController:self.loginViewController animated:YES];
-    self.loginViewController.view.superview.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    float heightOfFrame = 200.0f;
-    float widthOfFrame= 400.0f;
-    self.loginViewController.view.superview.frame = CGRectMake(
-                                                 self.view.superview.center.x - (widthOfFrame/2),
-                                                 self.view.superview.center.y - (heightOfFrame/2),
-                                                 widthOfFrame,
-                                                 heightOfFrame
-                                                 );
-     */
-    
-    
-    //[src presentModalViewController:dst animated:YES];
-    //[dst.view.superview setFrame:CGRectMake(0, 0, 700, 900)];
-    //[dst.view.superview setCenter:src.view.center];
-    
-    
-    NSLog(@"%d", [[UIDevice currentDevice] orientation]);
+     NSLog(@"%s %d", __func__, [[UIDevice currentDevice] orientation]);
     // UIDeviceOrientationLandscapeLeft
     //UIDeviceOrientationLandscapeRight
     
@@ -199,6 +249,7 @@
     float widthOfFrame= 400.0f;
     
     CGRect frame = CGRectMake(center_x - (widthOfFrame/2),
+                              //center_y - (heightOfFrame/2)-loginViewOffset,
                               center_y - (heightOfFrame/2),
                               widthOfFrame,
                               heightOfFrame
@@ -212,6 +263,13 @@
     
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"%s", __func__);
+    self.siteNameLabel.text = theDelegate.siteName;
+}
+
+
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"%s", __func__);
@@ -223,6 +281,13 @@
     theDelegate.currentEngineRightSerial = @"";
     
     NSLog(@"%s %@ %@", __func__, theDelegate.siteName, theDelegate.userName);
+
+    loginViewOffset = 200;
+    
+    if (!theDelegate.isLogin) {
+        [self loginView:nil];
+    }
+    
 
     
 }
@@ -273,43 +338,43 @@
     UIButton *theButton = (UIButton *)sender;
     //NSLog(@"theButton.tag==%u", theButton.tag);
     switch (theButton.tag) {
-        case 201:
-            theDelegate.nextViewController = self.raidViewController;
-            break;
+        //case 201:
+        //    theDelegate.nextViewController = self.raidViewController;
+        //    break;
         case 202:
             theDelegate.nextViewController = self.haApplianceViewController;
+            if (theDelegate.isLogin) {
+                
+                [self presentNextViewController:sender];
+                
+                //[self presentViewController:theDelegate.nextViewController
+                //                   animated:YES
+                //                 completion:nil];
+                
+            } else {
+                
+                [self loginView:nil];
+                
+            }
             break;
-        case 203:
-            theDelegate.nextViewController = self.volumeViewController;
-            break;
-        case 200 + ITEM_BUTTON_VIEW_DRIVE_TAG +1:
-            theDelegate.nextViewController = self.driveViewController;
-            break;
-        case 200 + ITEM_BUTTON_VIEW_HBA_TAG +1:
-            theDelegate.nextViewController = self.hbaViewController;
-            break;
+        //case 203:
+        //    theDelegate.nextViewController = self.volumeViewController;
+        //    break;
+        //case 200 + ITEM_BUTTON_VIEW_DRIVE_TAG +1:
+        //    theDelegate.nextViewController = self.driveViewController;
+        //    break;
+        //case 200 + ITEM_BUTTON_VIEW_HBA_TAG +1:
+        //    theDelegate.nextViewController = self.hbaViewController;
+        //    break;
         default:
             break;
     }
 
-    if (theDelegate.isLogin) {
-        
-        [self presentNextViewController:sender];
-        
-        //[self presentViewController:theDelegate.nextViewController
-        //                   animated:YES
-        //                 completion:nil];
-
-    } else {
-        
-        [self loginView:nil];
-        
-    }
     
 
 }
 
-- (IBAction)hideShowSlider:(id)sender
+- (IBAction)hideShowSliders:(id)sender
 {
     [theDelegate hideShowSliders:self.view];
 }

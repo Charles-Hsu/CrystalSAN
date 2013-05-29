@@ -22,6 +22,12 @@
 
 @synthesize siteName, userName, password;
 @synthesize isLogin;
+@synthesize syncManager;
+@synthesize currentDeviceName;
+@synthesize currentHAApplianceName;
+
+@synthesize siteInfoArray;
+@synthesize currentSiteInfoArrayIndex;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -61,7 +67,21 @@
     
     self.activeItems = [NSMutableArray array];
     sanDatabase = [[SanDatabase alloc] init];
-    //[sanDatabase getVmirrorListByKey:@"vi"];
+    
+    //syncManager = [[SyncManager alloc] init];
+    
+    [sanDatabase loadUserPreference];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *appSiteName = [defaults objectForKey:@"app_sitename"];
+    NSString *appUserName = [defaults objectForKey:@"app_username"];
+    NSString *appPassword = [defaults objectForKey:@"app_password"];
+    
+    [sanDatabase httpGetSiteInfoByAppSiteName:appSiteName appUserName:appUserName appPassword:appPassword];
+    siteInfoArray = [sanDatabase getSiteInfoArray];
+    NSLog(@"%s %@ count=%d", __func__, siteInfoArray, [siteInfoArray count]);
+    
+     //[sanDatabase getVmirrorListByKey:@"vi"];
     //if ([[sanDatabase getVmirrorListByKey:@""] count] == 0) {
     //    [sanDatabase insertDemoDevices];
     //}
@@ -89,6 +109,7 @@
     self.loadSiteViewTimes = 0;
 
     self.isLogin = FALSE;
+    self.isHostReachable = FALSE;
     
     return YES;
 }
@@ -211,7 +232,7 @@
 - (void)insertInto:(NSString *)table values:(NSDictionary *)dict
 {
     
-    NSLog(@"%s %@ %@", __func__, table, dict);
+    //NSLog(@"%s %@ %@", __func__, table, dict);
     
     NSMutableString *keys = [[NSMutableString alloc] init];
     NSMutableString *values = [[NSMutableString alloc] init];
@@ -233,10 +254,35 @@
         [sanDatabase insertUpdateHaCluster: dict];
     }
     else {
+        if ([table isEqualToString:@"wwpn_data"]) {
+            NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
+            [myDictionary addEntriesFromDictionary:dict];
+            [myDictionary setObject:siteName forKey:@"site_name"];
+            dict = myDictionary;
+        }
         [sanDatabase insertUpdate:table record: dict];
     }
     
 }
+
+- (void)insertIntoCache:(NSString *)table values:(NSDictionary *)dict {
+    NSMutableString *keys = [[NSMutableString alloc] init];
+    NSMutableString *values = [[NSMutableString alloc] init];
+    NSUInteger count = [[dict allKeys] count];
+    for (int i=0; i<count; i++) {
+        [keys appendString:[[dict allKeys] objectAtIndex:i]];
+        if (i < count-1)
+            [keys appendString:@","];
+    }
+    
+    for (int i=0; i<count; i++) {
+        [values appendFormat:@"'%@'", [[dict allValues] objectAtIndex:i]];
+        if (i < count-1)
+            [values appendString:@","];
+    }
+    [sanDatabase insertCache:table record: dict];
+}
+
 
 - (NSString *)getSanVmirrorLists
 {

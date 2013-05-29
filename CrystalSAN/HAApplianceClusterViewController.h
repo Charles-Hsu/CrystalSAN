@@ -42,6 +42,8 @@
 @property (nonatomic, strong) IBOutlet UITextView *engine0Vpd;
 @property (nonatomic, strong) IBOutlet UITextView *engine1Vpd;
 
+@property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
+
 
 //@property (nonatomic, weak) IBOutlet UILabel *haApplianceName;
 //@property (nonatomic, retain) NSString *deviceName;

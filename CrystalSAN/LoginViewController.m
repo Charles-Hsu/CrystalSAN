@@ -23,7 +23,6 @@
     AppDelegate *theDelegate;
     
     UIViewController *parrentVC;
-    
 }
 
 //@synthesize deviceName, deviceLabel;
@@ -45,8 +44,7 @@
 }
 */
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     
     //self.view.superview.bounds = CGRectMake(0, 0, 200, 100);
     
@@ -54,18 +52,22 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    NSLog(@"deviceName=%@", deviceName);
+    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    
+    NSLog(@"%s deviceName=%@", __func__, deviceName);
     deviceName = [deviceName stringByReplacingOccurrencesOfString:@"\r" withString:@" "];
     
     //[deviceLabel setText:[NSString stringWithFormat:@"%@", deviceName]];
     //deviceLabel.numberOfLines = 0;
     
-    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     //theDelegate.currentSegueID = @"RaidViewConfigID";
     //theDelegate.currentDeviceName = deviceName;
     
     //self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.0];
-    self.siteName.text = [self getDefaultSiteName];
+    //self.siteName.text = [self getDefaultSiteName];
+    self.siteName.text = theDelegate.siteName;
+    self.password.keyboardType = UIKeyboardTypeNumberPad;
     
     // UITextField focus
     // http://stackoverflow.com/questions/1014999/uitextfield-focus
@@ -77,17 +79,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //self.view.superview.bounds = _realBounds;
-    
-    
-
-    
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
     //carousel.delegate = nil;
     //carousel.dataSource = nil;
     //carousel = nil;
@@ -96,8 +92,7 @@
 }
 
 
-- (IBAction)onCancel:(id)sender
-{
+- (IBAction)onCancel:(id)sender {
     //[self dismissViewControllerAnimated:YES completion:nil];
     //[self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
     //UIViewController *prevVC = [self.navigationController.viewControllers objectAtIndex:0];
@@ -116,9 +111,14 @@
 - (IBAction)onConfirm:(id)sender
 {
     
+    //NSLog(@"%s %@", __func__, self.userName.text);
+    
+    
     NSString *userName = self.userName.text;
     NSString *siteName = self.siteName.text;
     NSString *password = self.password.text;
+    
+    NSLog(@"%s %@ %@ %@", __func__, userName, siteName, password);
     
     NSString *urlString = [theDelegate.sanDatabase hostURLPathWithPHP:@"http-check-auth.php"];
     
@@ -130,60 +130,86 @@
     
     NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@&user=%@&password=%@", siteName, userName, password];
     NSURL *url = [NSURL URLWithString:urlStringWithItems];
+    NSError *error = nil;
+    NSString *apiResponse = nil;
+    
+    NSLog(@"%s %@", __func__, url);
+    
+    //if ([url checkResourceIsReachableAndReturnError:&error]) {
+        
+        NSLog(@"%s url %@ isReachable", __func__, url);
+        
+        apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+        NSLog(@"--");
+        NSLog(@"%@", urlStringWithItems);
+        NSLog(@"nsurl response = %@", apiResponse);
+        NSLog(@"nsurl error = %@", error);
+        NSLog(@"--");
+        
+        if ([apiResponse isEqualToString:@"1"]) {
+            theDelegate.isLogin = YES;
+            theDelegate.siteName = siteName;
+            
+            [theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
+        }
+        
+        theDelegate.isHostReachable = TRUE;
+    //} else {
+    //    NSLog(@"%s url %@ is NOT Reachable", __func__, url);
+    //}
     
     //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
-    NSError *error = nil;
-    NSString *apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
-    NSLog(@"--");
-    NSLog(@"%@", urlStringWithItems);
-    NSLog(@"nsurl response = %@", apiResponse);
-    NSLog(@"nsurl error = %@", error);
-    NSLog(@"--");
-
-    if ([apiResponse isEqualToString:@"1"]) {
-        theDelegate.isLogin = YES;
-        [theDelegate.sanDatabase updateUserAuthInfo:siteName user:userName password:password];
-    } else {
-        if ([theDelegate.sanDatabase checkUserAuthInfo:siteName user:userName password:password])
-            theDelegate.isLogin = TRUE;
-        else
-            [self shakeView:self.view];
+    
+    if (!theDelegate.isLogin) {
+        if (!theDelegate.isHostReachable) {
+            if ([theDelegate.sanDatabase checkUserAuthInfo:siteName user:userName password:password]) {
+                theDelegate.isLogin = TRUE;
+            }
+        }
     }
     
+    NSLog(@"%s nsurl response = %@, isLogin=%@", __func__, apiResponse, theDelegate.isLogin?@"login":@"failed");
+    NSLog(@"%s isHostReachable=%@", __func__, theDelegate.isHostReachable?@"reachable":@"not reachable");
+    
     if (theDelegate.isLogin) {
-        theDelegate.userName = userName;
-        theDelegate.siteName = siteName;
-        theDelegate.password = password;
+        theDelegate.userName = self.userName.text;
+        theDelegate.siteName = self.siteName.text;
+        theDelegate.password = self.password.text;
+        
+        if (theDelegate.siteName != nil) {
+            if (theDelegate.syncManager == nil) {
+                theDelegate.syncManager = [[SyncManager alloc] init];
+            }
+        }
+        
         [self dismissViewControllerAnimated:YES completion:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:@"presentNextViewControllerNotification" object:nil];
         }];
+    } else {
+        [self shakeView:self.view];
     }
 
     
 }
 
-- (NSString *)getDefaultSiteName
-{
+- (NSString *)getDefaultSiteName {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     [defaults synchronize];
     
-    NSString *siteName = [defaults objectForKey:@"site_name"];
+    NSLog(@"%s %@", __func__, defaults);
     
+    NSString *siteName = [defaults objectForKey:@"site_name"];
     return siteName;
 }
 
 // Shake visual effect on iPhone (NOT shaking the device)
 // http://stackoverflow.com/questions/1632364/shake-visual-effect-on-iphone-not-shaking-the-device
 
-- (void)shakeView:(UIView *)viewToShake
-{
+- (void)shakeView:(UIView *)viewToShake {
     CGFloat t = 2.0;
     CGAffineTransform translateRight  = CGAffineTransformTranslate(CGAffineTransformIdentity, t, 0.0);
     CGAffineTransform translateLeft = CGAffineTransformTranslate(CGAffineTransformIdentity, -t, 0.0);
-    
     viewToShake.transform = translateLeft;
-    
     [UIView animateWithDuration:0.07 delay:0.0 options:UIViewAnimationOptionAutoreverse|UIViewAnimationOptionRepeat animations:^{
         [UIView setAnimationRepeatCount:2.0];
         viewToShake.transform = translateRight;

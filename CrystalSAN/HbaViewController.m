@@ -49,6 +49,7 @@
 //@synthesize currentItemIndex;
 
 @synthesize haApplianceName;
+@synthesize siteNameLabel;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -108,13 +109,12 @@
     
     [theDelegate customizedSearchArea:searchBar statusButton:searchStatusButton nameButton:searchNameButton connectionButton:searchConnectionButton inView:self.view];
     
-    
+    [theDelegate hideShowSliders:self.view];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"%s ==============================", __func__);
-    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"%s", __func__);
+    self.siteNameLabel.text = theDelegate.siteName;
     
     if ([theDelegate.currentDeviceName length] == 0) {
         haApplianceName.hidden = YES;
@@ -137,9 +137,9 @@
     if (carousel.currentItemIndex > [deviceArray count]) {
         carousel.currentItemIndex = 0;
     }
- 
+    
     currentItemIndex = carousel.currentItemIndex;
-
+    
     currentCollectionCount = [deviceArray count];
     totalCount = [deviceArray count];
     //NSLog(@"%s %u %u %u",__func__, currentItemIndex, currentCollectionCount, totalCount);
@@ -148,11 +148,21 @@
     
     //NSLog(@"%s size of diskArray %u, currentItemIndex= %u", __func__, [deviceArray count], currentItemIndex);
     //NSLog(@"%s %@", __func__, [deviceArray objectAtIndex:currentItemIndex]);
-
+    
     
     totalItemInCarousel = [deviceArray count];
     
     [carousel reloadData];
+
+    
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%s ==============================", __func__);
+    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    
 }
 
 - (void)didReceiveMemoryWarning

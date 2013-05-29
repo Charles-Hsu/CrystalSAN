@@ -13,6 +13,7 @@
 
 
 @interface HAApplianceConnectionViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
+//UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     NSString *deviceName;
 }
@@ -57,6 +58,9 @@
 @property (nonatomic, retain) IBOutlet UILabel *lun01_1_Label;
 
 @property (nonatomic, retain) IBOutlet UIButton *lun02Button;
+@property (nonatomic, retain) IBOutlet UIButton *lun02_0_Button;
+@property (nonatomic, retain) IBOutlet UIButton *lun02_1_Button;
+@property (nonatomic, retain) IBOutlet UILabel *lun02_MirroredLUN;
 @property (nonatomic, retain) IBOutlet UILabel *lun02_0_Label;
 @property (nonatomic, retain) IBOutlet UILabel *lun02_1_Label;
 
@@ -98,6 +102,26 @@
 @property (nonatomic, retain) IBOutlet UILabel *raid04_1_Label;
 @property (nonatomic, retain) IBOutlet UILabel *raid05_0_Label;
 @property (nonatomic, retain) IBOutlet UILabel *raid05_1_Label;
+
+@property (nonatomic, retain) IBOutlet UIButton *raid00_0_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid00_1_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid01_0_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid01_1_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid02_0_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid02_1_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid03_0_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid03_1_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid04_0_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid04_1_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid05_0_Button;
+@property (nonatomic, retain) IBOutlet UIButton *raid05_1_Button;
+
+
+
+@property (nonatomic, retain) IBOutlet UIButton *testTwoFingersTap;
+
+@property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
+
 
 
 // event

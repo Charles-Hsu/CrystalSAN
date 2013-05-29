@@ -30,11 +30,18 @@
     BOOL regionChangedBecauseAnnotationSelected; // = NO;
     
     NSInteger currentLocationIndex;
+    
+    UITapGestureRecognizer *singleTapGestureRecognizer;
+    UITapGestureRecognizer *doubleTapGestureRecognizer;
+    UITapGestureRecognizer *tripleTapGestureRecognizer;
+    
+    FLLocation *currentLocation;
 
 }
 
 - (void)panMapToCurrentSiteLocation;
 - (void)zoomInCurrentLocation;
+
 
 @end
 
@@ -96,6 +103,7 @@
 @synthesize arcLabel, radiusLabel, spacingLabel, sizingLabel;
 
 @synthesize homeButton;
+@synthesize crystalSAN;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -110,6 +118,15 @@
         //carousel = [[iCarousel alloc] initWithFrame:CGRectMake(80, 128, 864, 80)];
 
         //carousel.backgroundColor = [UIColor cyanColor];
+        //singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+        //singleTapGestureRecognizer.numberOfTapsRequired = 1;
+        
+        doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoSite:)];
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2;
+        
+        tripleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTripleTap:)];
+        tripleTapGestureRecognizer.numberOfTapsRequired = 3;
+
     }
     return self;
 }
@@ -118,6 +135,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+    
+    
+    theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate; 
+    NSLog(@"%s", __func__);
     
     sites = [NSArray arrayWithObjects:
              @"China TV, Taiwan",
@@ -139,18 +162,44 @@
 
     //locations = [[NSMutableArray alloc] init];
 
-    FLLocation *locationTaipei = [[FLLocation alloc] initWihtName:@"Taipei" lat:25.044 lon:121.526];
-    FLLocation *locationSouthKorea = [[FLLocation alloc] initWihtName:@"South Korea" lat:37.000 lon:127.5];
-    FLLocation *locationBaltimore = [[FLLocation alloc] initWihtName:@"Baltimore" lat:39.290458 lon:-76.612365];
-    FLLocation *locationLasVegas = [[FLLocation alloc] initWihtName:@"Las Vegas" lat:36.175 lon:-115.13639];
-    FLLocation *locationSiliconValley = [[FLLocation alloc] initWihtName:@"Silicon Valley" lat:37.362570 lon:-122.034760];
-    FLLocation *locationParis = [[FLLocation alloc] initWihtName:@"Paris" lat:48.85676 lon:2.35099];
-    FLLocation *locationBeijing = [[FLLocation alloc] initWihtName:@"Beijing" lat:39.904459 lon:116.406847];
-    FLLocation *locationTokyo = [[FLLocation alloc] initWihtName:@"Tokyo" lat:35.68994 lon:139.69170];
-    FLLocation *locationLondon = [[FLLocation alloc] initWihtName:@"London" lat:51.500622 lon:-0.126662];
-    //FLLocation *locationWasington = [[FLLocation alloc] initWihtName:@"Wasington" lat:38.89578 lon:-77.03650];
+    //FLLocation *locationTaipei = [[FLLocation alloc] initWihtName:@"Taipei" lat:25.044 lon:121.526];
+    //FLLocation *locationSouthKorea = [[FLLocation alloc] initWihtName:@"South Korea" lat:37.000 lon:127.5];
     
-    locations = [[NSMutableArray alloc] initWithObjects:locationTaipei, locationSouthKorea, locationBaltimore, locationLasVegas, locationSiliconValley, locationParis, locationBeijing, locationTokyo, locationLondon, nil];
+    //insert into site_info values ('South Korea','KBS','13, Yeouigongwon-ro, Yeongdeungpo-gu, Seoul', 127.5,37.000, 'Loxoll','administrator','vicom123');
+    
+    //FLLocation *locationBaltimore = [[FLLocation alloc] initWihtName:@"Baltimore" lat:39.290458 lon:-76.612365];
+    //FLLocation *locationLasVegas = [[FLLocation alloc] initWihtName:@"Las Vegas" lat:36.175 lon:-115.13639];
+    //FLLocation *locationSiliconValley = [[FLLocation alloc] initWihtName:@"Silicon Valley" lat:37.362570 lon:-122.034760];
+    //FLLocation *locationParis = [[FLLocation alloc] initWihtName:@"Paris" lat:48.85676 lon:2.35099];
+    //FLLocation *locationBeijing = [[FLLocation alloc] initWihtName:@"Beijing" lat:39.904459 lon:116.406847];
+    //FLLocation *locationTokyo = [[FLLocation alloc] initWihtName:@"Tokyo" lat:35.68994 lon:139.69170];
+    //FLLocation *locationLondon = [[FLLocation alloc] initWihtName:@"London" lat:51.500622 lon:-0.126662];
+    
+    //locations = [[NSMutableArray alloc] initWithObjects:locationTaipei, locationSouthKorea, locationBaltimore, locationLasVegas, locationSiliconValley, locationParis, locationBeijing, locationTokyo, locationLondon, nil];
+    
+        /*
+    {
+        label = Accusys;
+        latitude = "25.044";
+        location = Jhubei;
+        longitude = "121.526";
+    },
+    {
+        label = KBS;
+        latitude = "37.0";
+        location = "South Korea";
+        longitude = "127.5";
+    }
+         */
+
+    
+    locations = [[NSMutableArray alloc] init];
+    NSLog(@"%s [theDelegate.siteInfoArray count]=%d", __func__, [theDelegate.siteInfoArray count]);
+    for (int i=0; i<[theDelegate.siteInfoArray count]; i++) {
+        NSDictionary *dict = [theDelegate.siteInfoArray objectAtIndex:i];
+        FLLocation *location = [[FLLocation alloc] initWihtName:[dict objectForKey:@"location"] lat:[[dict objectForKey:@"latitude"] floatValue] lon:[[dict objectForKey:@"longitude"] floatValue]];
+        [locations addObject:location];
+    }
     
     [_mapView addAnnotations:locations];
     
@@ -185,6 +234,7 @@
     self.MainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewControllerID"];
     self.mainViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
+    //[self.view addGestureRecognizer:doubleTapGestureRecognizer];
 
     //[self onItemPress:nil];
     
@@ -193,15 +243,53 @@
     //[self panMapToCurrentSiteLocation];
     
     //theDelegate.loadSiteViewTimes = 0;
-
+    /*
     
+    //tapGestureRecognizer.delegate = self;
+    
+    [self.crystalSAN addGestureRecognizer:doubleTapGestureRecognizer];
+    
+    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    singleTapGestureRecognizer.numberOfTapsRequired = 1;
+    
+    [singleTapGestureRecognizer requireGestureRecognizerToFail: doubleTapGestureRecognizer];
+    //tapGestureRecognizer.delegate = self;
+    
+    [self.crystalSAN addGestureRecognizer:singleTapGestureRecognizer];
+     */
+    //UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+
+    //[self.viewForToggleSliders addGestureRecognizer:doubleTapGestureRecognizer];
+    [self.viewForToggleSliders addGestureRecognizer:tripleTapGestureRecognizer];
+    //[self.crystalSAN addGestureRecognizer:doubleTapGestureRecognizer];
+    
+    [self hideShowSliders:nil];
+    
+    NSLog(@"end of %s", __func__);
+
 }
+
+
+- (void)handleTripleTap:(id)sender {
+    NSLog(@"%s", __func__);
+    [self hideShowSliders:sender];
+}
+
+- (void)handleDoubleTap:(id)sender {
+    NSLog(@"%s", __func__);
+}
+
+
+- (void)handleSingleTap:(id)sender {
+    NSLog(@"%s %@", __func__, sender);
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     // Dispose of any resources that can be recreated.
     
 }
@@ -210,7 +298,7 @@
 // http://stackoverflow.com/questions/12641658/ios6-mkmapview-using-a-ton-of-memory-to-the-point-of-crashing-the-app-anyone-e
 // source code by http://stackoverflow.com/users/1165401/wirsing
 - (void)applyMapViewMemoryHotFix{
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     
     switch (self._mapView.mapType) {
         case MKMapTypeHybrid:
@@ -235,7 +323,7 @@
 
 
 - (void)viewDidDisappear:(BOOL)animated {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     [self applyMapViewMemoryHotFix];
 }
 
@@ -244,11 +332,11 @@
 {
     [super viewWillAppear:animated];
     
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     
     carousel.currentItemIndex = [theDelegate.currentSiteIndex integerValue];
     theDelegate.loadSiteViewTimes = [NSNumber numberWithInt:([theDelegate.loadSiteViewTimes integerValue]+ 1)];
-    NSLog(@"%s mapView loaded times = %@", __func__, theDelegate.loadSiteViewTimes);
+    //NSLog(@"%s mapView loaded times = %@", __func__, theDelegate.loadSiteViewTimes);
     
     
     [self panMapToCurrentSiteLocation];
@@ -271,11 +359,26 @@
     
 }
 
+- (IBAction)hideShowSliders:(id)sender
+{
+    [theDelegate hideShowSliders:self.view];
+}
+
+
 - (void)gotoSite:(id)sender
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     
     theDelegate.currentSiteIndex = [NSNumber numberWithInt:carousel.currentItemIndex];
+    theDelegate.currentSiteInfoArrayIndex = [NSNumber numberWithInt:carousel.currentItemIndex];
+    
+    //currentLocation = [locations objectAtIndex:carousel.currentItemIndex];
+    NSDictionary *dict = [theDelegate.siteInfoArray objectAtIndex:carousel.currentItemIndex];
+    
+    //FLLocation *location = [[FLLocation alloc] initWihtName:[dict objectForKey:@"location"] lat:[[dict objectForKey:@"latitude"] floatValue] lon:[[dict objectForKey:@"longitude"] floatValue]];
+    //NSLog(@"%s %@ %d", __func__, currentLocation.title, carousel.currentItemIndex);
+    
+    theDelegate.siteName = [dict objectForKey:@"label"];
     
     [self presentViewController:self.mainViewController animated:YES completion:nil];
 
@@ -316,12 +419,11 @@
 }
 */
 
+
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     NSLog(@"%s %@", __func__, [annotation title]);
     MKAnnotationView *pinView = nil;
-    
-    
     
     //pinView.contentHeight = height;
     //pinView.titleHeight = 25;
@@ -331,16 +433,24 @@
     
     //if(annotation != mapView.userLocation)
     //{
-        static NSString *defaultPinID = @"com.loxoll.pin";
-        pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-        if ( pinView == nil )
-            pinView = [[MKAnnotationView alloc]
-                       initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+    static NSString *defaultPinID = @"com.loxoll.pin";
+    pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    NSLog(@"%s pinView=%@", __func__, pinView);
+    if ( pinView == nil ) 
+        pinView = [[MKAnnotationView alloc]
+                   initWithAnnotation:annotation reuseIdentifier:defaultPinID];
         
         //pinView.pinColor = MKPinAnnotationColorGreen;
-        pinView.canShowCallout = YES;
+        //pinView.canShowCallout = YES;
         //pinView.animatesDrop = YES;
         pinView.image = [UIImage imageNamed:@"coordinate.png"];    //as suggested by Squatch
+        
+        //NSLog(@"pinView %@ add singleTapGestureRecognizer", pinView);
+        //[pinView addGestureRecognizer:singleTapGestureRecognizer];
+        //NSLog(@"pinView %@ add doubleTapGestureRecognizer", pinView);
+        //[pinView addGestureRecognizer:doubleTapGestureRecognizer];
+    
+    
     //}
     //else {
     //    [mapView.userLocation setTitle:@"I am here"];
@@ -352,85 +462,87 @@
     //[infoButton imageView] = [UIImage imageNamed:@"CalloutButton"];
     [infoButton setImage:[UIImage imageNamed:@"CalloutButton.png"]
                         forState:UIControlStateNormal];
-    [infoButton setFrame:CGRectMake(100, 100, 100, 100)];
+    //[infoButton setFrame:CGRectMake(100, 100, 100, 100)];
     
     pinView.rightCalloutAccessoryView = infoButton;
-    pinView.leftCalloutAccessoryView = infoButton;
+    //pinView.leftCalloutAccessoryView = infoButton;
     
     [pinView sizeToFit];
     
 	[infoButton addTarget:self action:@selector(gotoSite:) forControlEvents:UIControlEventTouchUpInside];
+    //[infoButton addGestureRecognizer:<#(UIGestureRecognizer *)#>]
     
     return pinView;
 }
 
-/*
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    
-    NSLog(@"%s %@", __func__, [annotation title]);//, (unsigned long)[mapView zoomLevel]);
-	//if (annotation == mapView.userLocation) { //returning nil means 'use built in location view'
-	//	return nil;
-	//}
-	
-    static NSString *defaultPinID = @"com.loxoll.pin";
-	MKPinAnnotationView *pinAnnotation = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-    
-	//if (pinAnnotation == nil) {
-		pinAnnotation = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-        pinAnnotation.image = [UIImage imageNamed:@""];
-	//} //else {
-	//	pinAnnotation.annotation = annotation;
-	//}
-	
-    pinAnnotation.canShowCallout = YES;
-	//pinAnnotation.pinColor = MKPinAnnotationColorRed;
-	pinAnnotation.animatesDrop = YES;
-    
-    //instatiate a detail-disclosure button and set it to appear on right side of annotation
-    //CGRect frameBtn = CGRectMake(0.0f, 0.0f, 81.0f, 66.0f);
-    //UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];//[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    //[infoButton setBackgroundImage:[UIImage imageNamed:@"CalloutButton.png"] forState:UIControlStateNormal];
-    //[infoButton setFrame:frameBtn];
-    //infoButton.im
-    pinAnnotation.rightCalloutAccessoryView = infoButton;
-	[infoButton addTarget:self action:@selector(gotoSite:) forControlEvents:UIControlEventTouchUpInside];
-
-	return pinAnnotation;
-}
-*/
 
 -(void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     regionWillChangeAnimatedCalled = YES;
     regionChangedBecauseAnnotationSelected = NO;
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
-    // Constrain zoom level to 8.
-    //if( [mapView zoomLevel] > 2 )
-    //{
-    //    [mapView setCenterCoordinate:mapView.centerCoordinate
-    //                       zoomLevel:2
-    //                        animated:YES];
-    //}
+    //NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
-    NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
-    NSLog(@"%s mapView loaded times = %@", __func__, theDelegate.loadSiteViewTimes);
-    NSLog(@"%s -------------------------------------", __func__);
+    //NSLog(@"%s", __func__);//, (unsigned long)[mapView zoomLevel]);
+    //NSLog(@"%s mapView loaded times = %@", __func__, theDelegate.loadSiteViewTimes);
+   // NSLog(@"%s -------------------------------------", __func__);
+}
+
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    NSLog(@"%s %@", __func__, [[view annotation] title]);
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    NSLog(@"%s", __func__);
+    NSLog(@"%s %@", __func__, [[view annotation] title]);
     regionChangedBecauseAnnotationSelected = regionWillChangeAnimatedCalled;
+    
+    NSString *selectedAnnotationTitle = [[view annotation] title];
+    
+    int selectedInex = 0;
+    
+    for(int i=0; i<[locations count]; i++) {
+        FLLocation *location = [locations objectAtIndex:i];
+        //NSLog(@"%s %d %@", __func__, i, [location title]);
+        //NSLog(@"curentLocation = %@ %@", currentLocation, currentLocation.title);
+        //NSLog(@"location %d = %@ %@", i, location, location.title);
+        if ([location.title isEqualToString:selectedAnnotationTitle]) {
+            NSLog(@"selected i=%d", i);
+            selectedInex = i;
+        }
+        
+    }
+    
+    NSLog(@"selected index=%d", selectedInex);
+    carousel.currentItemIndex = selectedInex;
+    [carousel scrollToItemAtIndex:carousel.currentItemIndex animated:TRUE];
+    
+    /*
+    NSLog(@"%d", carousel.currentItemIndex);
+    
+    int i=carousel.currentItemIndex;
+    i++;
+    NSLog(@"ScrollSpeed %f", carousel.scrollSpeed);
+    //carousel setScrollSpeed:<#(CGFloat)#>
+    [carousel setScrollSpeed:0.1];
+    carousel.currentItemIndex = i % carousel.numberOfItems;
+    //[carousel scrollToItemAtIndex:carousel.currentItemIndex animated:TRUE];
+    [carousel scrollToItemAtIndex:carousel.currentItemIndex duration:1];
+    //carousel setScrollSpeed:<#(CGFloat)#>
+    
+    NSLog(@"ScrollSpeed %f", carousel.scrollSpeed);
+    
+    NSLog(@"%d", carousel.currentItemIndex);
+     */
+    
 }
 
 
@@ -453,7 +565,7 @@
 
 - (void)panMapToCurrentSiteLocation
 {
-    NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
+    //NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
     
     [self zoomOutCurrentLocation];
     
@@ -466,16 +578,16 @@
         coord.latitude = [location.latitude floatValue];
         coord.longitude= [location.longitude floatValue];
         
-        NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
+        //NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
         
         //NSInteger zoomLevel = [[zoomLevels objectAtIndex:carousel.currentItemIndex] integerValue];
-        NSInteger zoomLevel = 3;
+        NSInteger zoomLevel = 6;
         
         [self moveToLocation:coord zoomLevel:zoomLevel];
         
     }
     
-    [self performSelector:@selector(zoomInCurrentLocation) withObject:nil afterDelay:1];
+    [self performSelector:@selector(zoomInCurrentLocation) withObject:nil afterDelay:3];
     
     
     //[self zoomInCurrentLocation];
@@ -485,21 +597,24 @@
 
 - (void)zoomInCurrentLocation
 {
-    NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
+    //NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
     
     if (carousel.currentItemIndex < [locations count]) {
         
         NSInteger index = carousel.currentItemIndex;
         FLLocation *location = [locations objectAtIndex:index];
+        
+        currentLocation = location;
+        
         CLLocationCoordinate2D coord;
         
         coord.latitude = [location.latitude floatValue];
         coord.longitude= [location.longitude floatValue];
         
-        NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
+        //NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
         
         //NSInteger zoomLevel = [[zoomLevels objectAtIndex:carousel.currentItemIndex] integerValue];
-        NSInteger zoomLevel = 4;
+        NSInteger zoomLevel = 3;
         
         [self moveToLocation:coord zoomLevel:zoomLevel];
         
@@ -508,7 +623,7 @@
 
 - (void)zoomOutCurrentLocation
 {
-    NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
+    //NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
     
     if (carousel.currentItemIndex < [locations count]) {
         
@@ -519,7 +634,7 @@
         coord.latitude = [location.latitude floatValue];
         coord.longitude= [location.longitude floatValue];
         
-        NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
+        //NSLog(@"%s %f %f", __func__, coord.latitude, coord.longitude);
         
         //NSInteger zoomLevel = [[zoomLevels objectAtIndex:carousel.currentItemIndex] integerValue];
         NSInteger zoomLevel = 3;
@@ -532,7 +647,7 @@
 
 - (void)moveToLocation:(CLLocationCoordinate2D)location zoomLevel:(NSInteger)zoomLevel
 {
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     [_mapView setCenterCoordinate:location zoomLevel:zoomLevel animated:YES];
 }
 
@@ -544,7 +659,7 @@
     //UIButton *theButon = (UIButton *)sender;
     //NSInteger index = carousel.currentItemIndex;
     
-    NSLog(@"%s", __func__);
+    //NSLog(@"%s", __func__);
     
     
     
@@ -585,7 +700,7 @@
 - (IBAction)updateValue:(id)sender
 {
     UISlider *slider = (UISlider*)sender;
-    NSLog(@"%s %@ %@", __func__, sender, [sender restorationIdentifier]);
+    //NSLog(@"%s %@ %@", __func__, sender, [sender restorationIdentifier]);
     
     NSString *identifier = [sender restorationIdentifier];
     
@@ -674,7 +789,7 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    //NSLog(@"%s count=%d", __func__, [sites count]);
+    NSLog(@"%s count=%d", __func__, [locations count]);
     //return [sites count];
     return [locations count];
 }
@@ -747,7 +862,7 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
-    NSLog(@"carousel:didSelectItemAtIndex:  %d",index);
+    //NSLog(@"carousel:didSelectItemAtIndex:  %d",index);
     
     //[self presentViewController:self.hbaViewController animated:YES completion:nil];
     

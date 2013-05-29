@@ -42,12 +42,30 @@
                 
                 echo "<$table_name>";
                 if (is_array($results)) {
+                    
+                    //var_dump($results);
+                    
                     foreach($results as $key => $row) {
                         $array_key = array_keys($row);
                         $array_value = array_values($row);
+                        
+                        // build query...
+                        //$sql  = "INSERT INTO table";
+                        
+                        // implode keys of $array...
+                        //$sql .= " (`".implode("`, `", array_keys($row))."`)";
+                        
+                        // implode values of $array...
+                        //$sql .= " VALUES ('".implode("', '", $row)."') ";
+                        
+                        //echo "<<<<<<<<<<<$sql>>>>>>>>>>>>>";
+                        
+                        
                         echo "<record>";
                         for($i=0; $i<count($row); $i+=2) {
-                            echo "<$array_key[$i]>$array_value[$i]</$array_key[$i]>";
+                            //if(!empty($array_value[$i])) {
+                                echo "<$array_key[$i]>$array_value[$i]</$array_key[$i]>";
+                            //}
                         }
                         echo "</record>";
                     }

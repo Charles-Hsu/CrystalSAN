@@ -15,8 +15,13 @@
             $database = "./" . $site_name . "/server.db";
             $db = new PDO("sqlite:" . $database);
             
+            $sql = "CREATE TABLE IF NOT EXISTS config_user (site_name, user_name, password, PRIMARY KEY (site_name, user_name))";
+            $db->exec($sql);
+            
             $sql = "SELECT count(*) FROM config_user WHERE site_name='$site_name' AND user_name='$user_name' AND password='$password'";
             $result = $db->query($sql)->fetchAll();
+            
+            //echo $sql;
             
             //var_dump($result);
             

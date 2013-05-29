@@ -24,7 +24,7 @@
 @synthesize engine0Serial, engine0mirror;
 @synthesize engine1Serial, engine1mirror;
 @synthesize haApplianceName;
-
+@synthesize siteNameLabel;
 
 //@synthesize deviceName, deviceLabel;
 
@@ -81,6 +81,23 @@
 
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"%s", __func__);
+    self.siteNameLabel.text = theDelegate.siteName;
+}
+
+
+
+- (NSString *)skipNull:(NSString *)string {
+    NSLog(@"%s %@", __func__, string);
+    if (string != (id)[NSNull null]) {
+        NSLog(@"%@ length=%d", string, [string length]);
+        return string;
+    }
+    return @"";
+}
+
 - (NSString *)getEngineMirrorString:(NSString *)serial
 {
     /*
@@ -97,116 +114,120 @@
     
     NSDictionary *dict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:serial];
     
+    NSLog(@"%s %@", __func__, dict);
+    
     /*
-     
-     "mirror_0_capacity" = 976748544;
-     "mirror_0_id" = 33537;
-     "mirror_0_map" = 0;
-     "mirror_0_member_0_id" = 5;
-     "mirror_0_member_0_sts" = OK;
-     "mirror_0_member_1_id" = 4;
-     "mirror_0_member_1_sts" = OK;
-     "mirror_0_sts" = Good;
-     "mirror_1_capacity" = 976748544;
-     "mirror_1_id" = 33538;
-     "mirror_1_map" = 1;
-     "mirror_1_member_0_id" = 9;
-     "mirror_1_member_0_sts" = OK;
-     "mirror_1_member_1_id" = 8;
-     "mirror_1_member_1_sts" = OK;
-     "mirror_1_sts" = Good;
-     "mirror_2_capacity" = 876952832;
-     "mirror_2_id" = 33539;
-     "mirror_2_map" = 2;
-     "mirror_2_member_0_id" = 1;
-     "mirror_2_member_0_sts" = OK;
-     "mirror_2_member_1_id" = 0;
-     "mirror_2_member_1_sts" = OK;
-     "mirror_2_sts" = Good;
-     "mirror_3_capacity" = 876952832;
-     "mirror_3_id" = 33540;
-     "mirror_3_map" = 3;
-     "mirror_3_member_0_id" = 3;
-     "mirror_3_member_0_sts" = OK;
-     "mirror_3_member_1_id" = 2;
-     "mirror_3_member_1_sts" = OK;
-     "mirror_3_sts" = Good;
-     "mirror_4_capacity" = "";
-     "mirror_4_id" = "";
-     "mirror_4_map" = "";
-     "mirror_4_member_0_id" = "";
-     "mirror_4_member_0_sts" = "";
-     "mirror_4_member_1_id" = "";
-     "mirror_4_member_1_sts" = "";
-     "mirror_4_sts" = "";
-     "mirror_5_capacity" = "";
-     "mirror_5_id" = "";
-     "mirror_5_map" = "";
-     "mirror_5_member_0_id" = "";
-     "mirror_5_member_0_sts" = "";
-     "mirror_5_member_1_id" = "";
-     "mirror_5_member_1_sts" = "";
-     "mirror_5_sts" = "";
-     "mirror_degraded" = 0;
-     "mirror_failed" = 0;
-     "mirror_ok" = 4;
-     seconds = 1363746626;
-     serial = 00600474;
+     2013-05-14 11:45:32.912 CrystalSAN[1879:c07] -[HAApplianceMirrorViewController getEngineMirrorString:] {
+     degraded = 0;
+     failed = 0;
+     "m0_capacity" = 5860573184;
+     "m0_id" = 33537;
+     "m0_map" = 0;
+     "m0_mb0_id" = 2;
+     "m0_mb0_sts" = OK;
+     "m0_mb1_id" = 6;
+     "m0_mb1_sts" = OK;
+     "m0_sts" = Good;
+     "m1_capacity" = 5860573184;
+     "m1_id" = 33538;
+     "m1_map" = 1;
+     "m1_mb0_id" = 1;
+     "m1_mb0_sts" = OK;
+     "m1_mb1_id" = 3;
+     "m1_mb1_sts" = OK;
+     "m1_sts" = Good;
+     "m2_capacity" = 5860573184;
+     "m2_id" = 33539;
+     "m2_map" = 2;
+     "m2_mb0_id" = 4;
+     "m2_mb0_sts" = OK;
+     "m2_mb1_id" = 0;
+     "m2_mb1_sts" = OK;
+     "m2_sts" = Good;
+     "m3_capacity" = 5860573184;
+     "m3_id" = 33540;
+     "m3_map" = 3;
+     "m3_mb0_id" = 7;
+     "m3_mb0_sts" = OK;
+     "m3_mb1_id" = 5;
+     "m3_mb1_sts" = OK;
+     "m3_sts" = Good;
+     "m4_capacity" = "<null>";
+     "m4_id" = "<null>";
+     "m4_map" = "<null>";
+     "m4_mb0_id" = "<null>";
+     "m4_mb0_sts" = "<null>";
+     "m4_mb1_id" = "<null>";
+     "m4_mb1_sts" = "<null>";
+     "m4_sts" = "<null>";
+     "m5_capacity" = "<null>";
+     "m5_id" = "<null>";
+     "m5_map" = "<null>";
+     "m5_mb0_id" = "<null>";
+     "m5_mb0_sts" = "<null>";
+     "m5_mb1_id" = "<null>";
+     "m5_mb1_sts" = "<null>";
+     "m5_sts" = "<null>";
+     ok = 4;
+     seconds = 1363746630;
+     serial = 500301;
+     }
+
 
      */
-    NSString *mirror_0_id = [dict valueForKey:@"mirror_0_id"];
-    NSString *mirror_0_sts = [dict valueForKey:@"mirror_0_sts"];
-    NSString *mirror_0_map = [dict valueForKey:@"mirror_0_map"];
-    NSString *mirror_0_capacity = [dict valueForKey:@"mirror_0_capacity"];
-    NSString *mirror_0_member_0_id = [dict valueForKey:@"mirror_0_member_0_id"];
-    NSString *mirror_0_member_0_sts = [dict valueForKey:@"mirror_0_member_0_sts"];
-    NSString *mirror_0_member_1_id = [dict valueForKey:@"mirror_0_member_1_id"];
-    NSString *mirror_0_member_1_sts = [dict valueForKey:@"mirror_0_member_1_sts"];
+    NSString *mirror_0_id = [self skipNull:[dict valueForKey:@"m0_id"]];
+    NSString *mirror_0_sts = [self skipNull:[dict valueForKey:@"m0_sts"]];
+    NSString *mirror_0_map = [self skipNull:[dict valueForKey:@"m0_map"]];
+    NSString *mirror_0_capacity = [self skipNull:[dict valueForKey:@"m0_capacity"]];
+    NSString *mirror_0_member_0_id = [self skipNull:[dict valueForKey:@"m0_mb0_id"]];
+    NSString *mirror_0_member_0_sts = [self skipNull:[dict valueForKey:@"m0_mb0_sts"]];
+    NSString *mirror_0_member_1_id = [self skipNull:[dict valueForKey:@"m0_mb1_id"]];
+    NSString *mirror_0_member_1_sts = [self skipNull:[dict valueForKey:@"m0_mb1_sts"]];
     
-    NSString *mirror_1_id = [dict valueForKey:@"mirror_1_id"];
-    NSString *mirror_1_sts = [dict valueForKey:@"mirror_1_sts"];
-    NSString *mirror_1_map = [dict valueForKey:@"mirror_1_map"];
-    NSString *mirror_1_capacity = [dict valueForKey:@"mirror_1_capacity"];
-    NSString *mirror_1_member_0_id = [dict valueForKey:@"mirror_1_member_0_id"];
-    NSString *mirror_1_member_0_sts = [dict valueForKey:@"mirror_1_member_0_sts"];
-    NSString *mirror_1_member_1_id = [dict valueForKey:@"mirror_1_member_1_id"];
-    NSString *mirror_1_member_1_sts = [dict valueForKey:@"mirror_1_member_1_sts"];
+    NSString *mirror_1_id = [self skipNull:[dict valueForKey:@"m1_id"]];
+    NSString *mirror_1_sts = [self skipNull:[dict valueForKey:@"m1_sts"]];
+    NSString *mirror_1_map = [self skipNull:[dict valueForKey:@"m1_map"]];
+    NSString *mirror_1_capacity = [self skipNull:[dict valueForKey:@"m1_capacity"]];
+    NSString *mirror_1_member_0_id = [self skipNull:[dict valueForKey:@"m1_mb0_id"]];
+    NSString *mirror_1_member_0_sts = [self skipNull:[dict valueForKey:@"m1_mb0_sts"]];
+    NSString *mirror_1_member_1_id = [self skipNull:[dict valueForKey:@"m1_mb1_id"]];
+    NSString *mirror_1_member_1_sts = [self skipNull:[dict valueForKey:@"m1_mb1_sts"]];
     
-    NSString *mirror_2_id = [dict valueForKey:@"mirror_2_id"];
-    NSString *mirror_2_sts = [dict valueForKey:@"mirror_2_sts"];
-    NSString *mirror_2_map = [dict valueForKey:@"mirror_2_map"];
-    NSString *mirror_2_capacity = [dict valueForKey:@"mirror_2_capacity"];
-    NSString *mirror_2_member_0_id = [dict valueForKey:@"mirror_2_member_0_id"];
-    NSString *mirror_2_member_0_sts = [dict valueForKey:@"mirror_2_member_0_sts"];
-    NSString *mirror_2_member_1_id = [dict valueForKey:@"mirror_2_member_1_id"];
-    NSString *mirror_2_member_1_sts = [dict valueForKey:@"mirror_2_member_1_sts"];
+    NSString *mirror_2_id = [self skipNull:[dict valueForKey:@"m2_id"]];
+    NSString *mirror_2_sts = [self skipNull:[dict valueForKey:@"m2_sts"]];
+    NSString *mirror_2_map = [self skipNull:[dict valueForKey:@"m2_map"]];
+    NSString *mirror_2_capacity = [self skipNull:[dict valueForKey:@"m2_capacity"]];
+    NSString *mirror_2_member_0_id = [self skipNull:[dict valueForKey:@"m2_mb0_id"]];
+    NSString *mirror_2_member_0_sts = [self skipNull:[dict valueForKey:@"m2_mb0_sts"]];
+    NSString *mirror_2_member_1_id = [self skipNull:[dict valueForKey:@"m2_mb1_id"]];
+    NSString *mirror_2_member_1_sts = [self skipNull:[dict valueForKey:@"m2_mb1_sts"]];
     
-    NSString *mirror_3_id = [dict valueForKey:@"mirror_3_id"];
-    NSString *mirror_3_sts = [dict valueForKey:@"mirror_3_sts"];
-    NSString *mirror_3_map = [dict valueForKey:@"mirror_3_map"];
-    NSString *mirror_3_capacity = [dict valueForKey:@"mirror_3_capacity"];
-    NSString *mirror_3_member_0_id = [dict valueForKey:@"mirror_3_member_0_id"];
-    NSString *mirror_3_member_0_sts = [dict valueForKey:@"mirror_3_member_0_sts"];
-    NSString *mirror_3_member_1_id = [dict valueForKey:@"mirror_3_member_1_id"];
-    NSString *mirror_3_member_1_sts = [dict valueForKey:@"mirror_3_member_1_sts"];
+    NSString *mirror_3_id = [self skipNull:[dict valueForKey:@"m3_id"]];
+    NSString *mirror_3_sts = [self skipNull:[dict valueForKey:@"m3_sts"]];
+    NSString *mirror_3_map = [self skipNull:[dict valueForKey:@"m3_map"]];
+    NSString *mirror_3_capacity = [self skipNull:[dict valueForKey:@"m3_capacity"]];
+    NSString *mirror_3_member_0_id = [self skipNull:[dict valueForKey:@"m3_mb0_id"]];
+    NSString *mirror_3_member_0_sts = [self skipNull:[dict valueForKey:@"m3_mb0_sts"]];
+    NSString *mirror_3_member_1_id = [self skipNull:[dict valueForKey:@"m3_mb1_id"]];
+    NSString *mirror_3_member_1_sts = [self skipNull:[dict valueForKey:@"m3_mb1_sts"]];
     
-    NSString *mirror_4_id = [dict valueForKey:@"mirror_4_id"];
-    NSString *mirror_4_sts = [dict valueForKey:@"mirror_4_sts"];
-    NSString *mirror_4_map = [dict valueForKey:@"mirror_4_map"];
-    NSString *mirror_4_capacity = [dict valueForKey:@"mirror_4_capacity"];
-    NSString *mirror_4_member_0_id = [dict valueForKey:@"mirror_4_member_0_id"];
-    NSString *mirror_4_member_0_sts = [dict valueForKey:@"mirror_4_member_0_sts"];
-    NSString *mirror_4_member_1_id = [dict valueForKey:@"mirror_4_member_1_id"];
-    NSString *mirror_4_member_1_sts = [dict valueForKey:@"mirror_4_member_1_sts"];
+    NSString *mirror_4_id = [self skipNull:[dict valueForKey:@"m4_id"]];
+    NSString *mirror_4_sts = [self skipNull:[dict valueForKey:@"m4_sts"]];
+    NSString *mirror_4_map = [self skipNull:[dict valueForKey:@"m4_map"]];
+    NSString *mirror_4_capacity = [self skipNull:[dict valueForKey:@"m4_capacity"]];
+    NSString *mirror_4_member_0_id = [self skipNull:[dict valueForKey:@"m4_mb0_id"]];
+    NSString *mirror_4_member_0_sts = [self skipNull:[dict valueForKey:@"m4_mb0_sts"]];
+    NSString *mirror_4_member_1_id = [self skipNull:[dict valueForKey:@"m4_mb1_id"]];
+    NSString *mirror_4_member_1_sts = [self skipNull:[dict valueForKey:@"m4_mb1_sts"]];
     
-    NSString *mirror_5_id = [dict valueForKey:@"mirror_5_id"];
-    NSString *mirror_5_sts = [dict valueForKey:@"mirror_5_sts"];
-    NSString *mirror_5_map = [dict valueForKey:@"mirror_5_map"];
-    NSString *mirror_5_capacity = [dict valueForKey:@"mirror_5_capacity"];
-    NSString *mirror_5_member_0_id = [dict valueForKey:@"mirror_5_member_0_id"];
-    NSString *mirror_5_member_0_sts = [dict valueForKey:@"mirror_5_member_0_sts"];
-    NSString *mirror_5_member_1_id = [dict valueForKey:@"mirror_5_member_1_id"];
-    NSString *mirror_5_member_1_sts = [dict valueForKey:@"mirror_5_member_1_sts"];
+    NSString *mirror_5_id = [self skipNull:[dict valueForKey:@"m5_id"]];
+    NSString *mirror_5_sts = [self skipNull:[dict valueForKey:@"m5_sts"]];
+    NSString *mirror_5_map = [self skipNull:[dict valueForKey:@"m5_map"]];
+    NSString *mirror_5_capacity = [self skipNull:[dict valueForKey:@"m5_capacity"]];
+    NSString *mirror_5_member_0_id = [self skipNull:[dict valueForKey:@"m5_mb0_id"]];
+    NSString *mirror_5_member_0_sts = [self skipNull:[dict valueForKey:@"m5_mb0_sts"]];
+    NSString *mirror_5_member_1_id = [self skipNull:[dict valueForKey:@"m5_mb1_id"]];
+    NSString *mirror_5_member_1_sts = [self skipNull:[dict valueForKey:@"m5_mb1_sts"]];
     
     NSString *mirror = [NSString stringWithFormat:
                         @"Mirror\tstate\tMap\tCapacity\tMembers \n"

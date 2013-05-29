@@ -40,7 +40,7 @@
                         $engine_name = $row['engine_name'];
                         $product_type = $row['product_type'];
                         $fw_version = $row['fw_version'];
-                        $fw_data = $row['fw_data'];
+                        $fw_date = $row['fw_date'];
                         $redboot = $row['redboot'];
                         $uid = $row['uid'];
                         $pcb = $row['pcb'];
@@ -49,6 +49,12 @@
                         $uptime = $row['uptime'];
                         $alert = $row['alert'];
                         $time = $row['time'];
+                        
+                        $a1_wwnn = $row['a1_wwnn'];
+                        $a2_wwnn = $row['a2_wwnn'];
+                        $b1_wwnn = $row['b1_wwnn'];
+                        $b2_wwnn = $row['b2_wwnn'];
+                        
                         $a1_wwpn = $row['a1_wwpn'];
                         $a2_wwpn = $row['a2_wwpn'];
                         $b1_wwpn = $row['b1_wwpn'];
@@ -62,7 +68,7 @@
                         echo "<engine_name>$engine_name</engine_name>";
                         echo "<product_type>$product_type</product_type>";
                         echo "<fw_version>$fw_version</fw_version>";
-                        echo "<fw_data>$fw_data</fw_data>";
+                        echo "<fw_date>$fw_date</fw_date>";
                         echo "<redboot>$redboot</redboot>";
                         echo "<uid>$uid</uid>";
                         echo "<pcb>$pcb</pcb>";
@@ -75,6 +81,10 @@
                         echo "<a2_wwpn>$a2_wwpn</a2_wwpn>";
                         echo "<b1_wwpn>$b1_wwpn</b1_wwpn>";
                         echo "<b2_wwpn>$b2_wwpn</b2_wwpn>";
+                        echo "<a1_wwnn>$a1_wwnn</a1_wwnn>";
+                        echo "<a2_wwnn>$a2_wwnn</a2_wwnn>";
+                        echo "<b1_wwnn>$b1_wwnn</b1_wwnn>";
+                        echo "<b2_wwnn>$b2_wwnn</b2_wwnn>";
                         
                         echo "</record>";
                     }

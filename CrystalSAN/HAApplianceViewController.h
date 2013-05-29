@@ -48,6 +48,10 @@
 
 @property (strong, nonatomic) SanDatabase *sanDatabase;
 
+@property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
+@property (nonatomic, strong) IBOutlet UIView *viewForToggleSliders;
+
+
 - (IBAction)reloadCarousel;
 - (IBAction)updateValue:(id)sender;
 

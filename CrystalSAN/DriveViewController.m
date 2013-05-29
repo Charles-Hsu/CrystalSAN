@@ -48,6 +48,7 @@
 @synthesize itemIndexCountsAndTotalLabel;
 
 @synthesize haApplianceName;
+@synthesize siteNameLabel;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -129,13 +130,13 @@
     currentItemIndex = carousel.currentItemIndex;
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
+    [theDelegate hideShowSliders:self.view];
     
 }
 
 - (void)httpGetDriveInformation {
     
-    [sanDatabase httpGetEngineDriveInformation:theDelegate.currentEngineLeftSerial siteName:theDelegate.siteName];
-    [sanDatabase httpGetEngineDriveInformation:theDelegate.currentEngineRightSerial siteName:theDelegate.siteName];
+    [sanDatabase httpGetEngineDriveInformationBySiteName:theDelegate.siteName serial:theDelegate.currentEngineLeftSerial];
     
     //deviceArray = [sanDatabase getHaApplianceNameListBySiteName:theDelegate.siteName];
     //NSLog(@"%s site %@,  count = %u", __func__, theDelegate.siteName, [deviceArray count]);
@@ -161,7 +162,7 @@
         siteName = theDelegate.siteName;
         
     if ([theDelegate.currentEngineLeftSerial length]!= 0 || [theDelegate.currentEngineRightSerial length]!= 0) {
-        [self httpGetDriveInformation];
+        //[self httpGetDriveInformation];
     }
 
         NSMutableArray *enginesSerial = [[NSMutableArray alloc] init];
@@ -178,7 +179,8 @@
         //NSLog(@"%s %@", __func__, deviceArray);
         
         [carousel reloadData];
-        
+    
+     self.siteNameLabel.text = theDelegate.siteName;
         //currentItemIndex = carousel.currentItemIndex;
         //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
     //}
