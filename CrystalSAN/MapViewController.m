@@ -334,7 +334,7 @@
     
     //NSLog(@"%s", __func__);
     
-    carousel.currentItemIndex = [theDelegate.currentSiteIndex integerValue];
+    carousel.currentItemIndex = theDelegate.currentSiteIndex;
     theDelegate.loadSiteViewTimes = [NSNumber numberWithInt:([theDelegate.loadSiteViewTimes integerValue]+ 1)];
     //NSLog(@"%s mapView loaded times = %@", __func__, theDelegate.loadSiteViewTimes);
     
@@ -369,16 +369,16 @@
 {
     //NSLog(@"%s", __func__);
     
-    theDelegate.currentSiteIndex = [NSNumber numberWithInt:carousel.currentItemIndex];
-    theDelegate.currentSiteInfoArrayIndex = [NSNumber numberWithInt:carousel.currentItemIndex];
+    theDelegate.currentSiteIndex = carousel.currentItemIndex;
     
     //currentLocation = [locations objectAtIndex:carousel.currentItemIndex];
     NSDictionary *dict = [theDelegate.siteInfoArray objectAtIndex:carousel.currentItemIndex];
+    NSLog(@"%s %@", __func__, dict);
     
     //FLLocation *location = [[FLLocation alloc] initWihtName:[dict objectForKey:@"location"] lat:[[dict objectForKey:@"latitude"] floatValue] lon:[[dict objectForKey:@"longitude"] floatValue]];
     //NSLog(@"%s %@ %d", __func__, currentLocation.title, carousel.currentItemIndex);
     
-    theDelegate.siteName = [dict objectForKey:@"label"];
+    theDelegate.siteName = [dict objectForKey:@"name"];
     
     [self presentViewController:self.mainViewController animated:YES completion:nil];
 

@@ -39,7 +39,7 @@
 @property (strong,nonatomic) SanDatabase *sanDatabase;
 @property (strong,nonatomic) SyncManager *syncManager;
 
-@property (strong, nonatomic) NSNumber *currentSiteIndex;
+@property int currentSiteIndex;
 
 @property (strong, nonatomic) NSNumber *loadSiteViewTimes;
 
@@ -47,15 +47,12 @@
 @property (strong,nonatomic) NSString *userName;
 @property (strong,nonatomic) NSString *password;
 
-@property BOOL isLogin;
+//@property BOOL isLogin;
 @property (weak, nonatomic) UIViewController *nextViewController;
 
 @property BOOL isHostReachable;
 
 @property (strong,nonatomic) NSArray *siteInfoArray;
-@property NSInteger currentSiteInfoArrayIndex;
-
-
 
 
 - (NSString *)getSanVmirrorLists;
@@ -69,6 +66,11 @@
 
 - (void)insertInto:(NSString *)table values:(NSDictionary *)dict;
 - (void)insertIntoCache:(NSString *)table values:(NSDictionary *)dict;
+
+- (BOOL)IsCurrentSiteLogin;
+- (void)setCurrentSiteLogin;
+- (void)setCurrentSiteLogout;
+
 
 
 //- (void)hideSlider:(id)sender;

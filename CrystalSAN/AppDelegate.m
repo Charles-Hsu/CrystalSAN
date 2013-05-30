@@ -21,13 +21,12 @@
 @synthesize loadSiteViewTimes;
 
 @synthesize siteName, userName, password;
-@synthesize isLogin;
+//@synthesize isLogin;
 @synthesize syncManager;
 @synthesize currentDeviceName;
 @synthesize currentHAApplianceName;
 
 @synthesize siteInfoArray;
-@synthesize currentSiteInfoArrayIndex;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -108,7 +107,6 @@
     
     self.loadSiteViewTimes = 0;
 
-    self.isLogin = FALSE;
     self.isHostReachable = FALSE;
     
     return YES;
@@ -128,6 +126,24 @@
             [subview setHidden:TRUE];
         }
     }
+}
+
+- (BOOL)IsCurrentSiteLogin {
+    NSDictionary *dict = [siteInfoArray objectAtIndex:currentSiteIndex];
+    if ([[dict valueForKey:@"is_login"] intValue] == 1) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+- (void)setCurrentSiteLogin {
+    NSMutableDictionary *dict = [siteInfoArray objectAtIndex:currentSiteIndex];
+    [dict setObject:@"1" forKey:@"is_login"];
+}
+
+- (void)setCurrentSiteLogout {
+    NSMutableDictionary *dict = [siteInfoArray objectAtIndex:currentSiteIndex];
+    [dict setObject:@"0" forKey:@"is_login"];
 }
 
 

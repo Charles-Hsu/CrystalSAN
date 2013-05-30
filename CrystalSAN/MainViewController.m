@@ -140,51 +140,10 @@
     //[theDelegate getSanVmirrorLists];
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
 
-    /*
-    self.modalPresentationStyle = UIModalPresentationFormSheet;
-    
-    self.modalPresentationStyle = UIModalPresentationFormSheet;
-    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:self animated:YES completion:nil];
-    self.view.superview.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    self.view.superview.frame = CGRectMake(
-                                                     // Calcuation based on landscape orientation (width=height)
-                                                     ([UIScreen mainScreen].applicationFrame.size.height/2)-(320/2),// X
-                                                     ([UIScreen mainScreen].applicationFrame.size.width/2)-(320/2),// Y
-                                                     320,// Width
-                                                     320// Height
-                                                     );
-     */
-    /*
-    UIViewController *V2 = [[UIViewController alloc] init];
-    V2.modalPresentationStyle = UIModalPresentationFormSheet;
-    V2.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentModalViewController:V2 animated:YES];
-    V2.view.superview.frame = CGRectMake(0, 0, 540, 620); //it's important to do this after presentModalViewController
-    V2.view.superview.center = self.view.center;
-     */
-    //[V1 release];
-    
-    
-    /*
-     */
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(presentNextViewController:)
                                                  name:@"presentNextViewControllerNotification"
                                                object:nil];
-    
-    /*
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                            object:nil];
-     */
-    
     theDelegate.nextViewController = self.haApplianceViewController;
     [self.viewForToggleSliders addGestureRecognizer:tripleTapGestureRecognizer];
     
@@ -202,25 +161,7 @@
                        animated:YES
                      completion:nil];
     
-    /*
-    if (theDelegate.siteName != nil) {
-        if (theDelegate.syncManager == nil) {
-            theDelegate.syncManager = [[SyncManager alloc] init];
-        }
-    }
-     */
-    
-    //[theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
-    //[theDelegate.sanDatabase httpGetEngineCliVpdBySiteName:theDelegate.siteName serial:nil];
-    //[theDelegate.sanDatabase httpGetEngineDriveInformationBySiteName:theDelegate.siteName serial:nil];
-    //[theDelegate.sanDatabase httpGetEngineCliEngineStatusBySiteName:theDelegate.siteName serial:nil];
-    //[theDelegate.sanDatabase httpGetEngineCliMirrorBySiteName:theDelegate.siteName serial:nil];
-    //[theDelegate.sanDatabase httpGetEngineCliDmepropBySiteName:theDelegate.siteName serial:nil];
-    //
-    //[theDelegate.sanDatabase httpGetEngineInitiatorInformationBySiteName:theDelegate.siteName serial:nil];
-    //
     [theDelegate.sanDatabase httpGetWwpnDataBySiteName:theDelegate.siteName];
-    
     
 }
 
@@ -228,9 +169,7 @@
     self.loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewControllerID"];
     self.loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-     NSLog(@"%s %d", __func__, [[UIDevice currentDevice] orientation]);
-    // UIDeviceOrientationLandscapeLeft
-    //UIDeviceOrientationLandscapeRight
+    NSLog(@"%s %d", __func__, [[UIDevice currentDevice] orientation]);
     
     float center_x = 0;
     float center_y = 0;
@@ -256,11 +195,6 @@
                               );
     [self presentViewController:self.loginViewController animated:YES completion:nil];
     [self.loginViewController.view.superview setFrame:frame];
-    //self.loginViewController.parentViewController = self;
-    
-    
-    //[self.loginViewController.view.superview setCenter:self.view.center];
-    
 }
 
 
@@ -284,7 +218,7 @@
 
     loginViewOffset = 200;
     
-    if (!theDelegate.isLogin) {
+    if (![theDelegate IsCurrentSiteLogin]) {
         [self loginView:nil];
     }
     
@@ -292,16 +226,8 @@
     
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
-//}
-
 - (void)viewWillDisappear:(BOOL)animated {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
     NSLog(@"%s", __func__);
-    
     [super viewWillDisappear:animated];
 }
 
@@ -319,20 +245,17 @@
     self.activeItems = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
             toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
-- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     NSLog(@"%s: %@",__func__, sender);
 }
 
 #pragma mark - event handler
-- (void)onItemPress:(id)sender
-{
+- (void)onItemPress:(id)sender {
     //NSLog(@"%s: %@",__func__, sender);
     
     UIButton *theButton = (UIButton *)sender;
@@ -343,13 +266,10 @@
         //    break;
         case 202:
             theDelegate.nextViewController = self.haApplianceViewController;
-            if (theDelegate.isLogin) {
+            //if (theDelegate.isLogin) {
+            if ([theDelegate IsCurrentSiteLogin]) {
                 
                 [self presentNextViewController:sender];
-                
-                //[self presentViewController:theDelegate.nextViewController
-                //                   animated:YES
-                //                 completion:nil];
                 
             } else {
                 
@@ -374,8 +294,7 @@
 
 }
 
-- (IBAction)hideShowSliders:(id)sender
-{
+- (IBAction)hideShowSliders:(id)sender {
     [theDelegate hideShowSliders:self.view];
 }
 

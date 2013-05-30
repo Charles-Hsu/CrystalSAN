@@ -108,11 +108,7 @@
 
 }
 
-- (IBAction)onConfirm:(id)sender
-{
-    
-    //NSLog(@"%s %@", __func__, self.userName.text);
-    
+- (IBAction)onConfirm:(id)sender {
     
     NSString *userName = self.userName.text;
     NSString *siteName = self.siteName.text;
@@ -122,12 +118,6 @@
     
     NSString *urlString = [theDelegate.sanDatabase hostURLPathWithPHP:@"http-check-auth.php"];
     
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //NSString *hostPath = [NSString stringWithFormat:@"%@", [defaults objectForKey:@"server_ip_hostname"]];
-    //if (![hostPath hasPrefix:@"http://"]) {
-    //    hostPath = [NSString stringWithFormat:@"http://%@", hostPath];
-    //}
-    
     NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@&user=%@&password=%@", siteName, userName, password];
     NSURL *url = [NSURL URLWithString:urlStringWithItems];
     NSError *error = nil;
@@ -135,43 +125,28 @@
     
     NSLog(@"%s %@", __func__, url);
     
-    //if ([url checkResourceIsReachableAndReturnError:&error]) {
-        
-        NSLog(@"%s url %@ isReachable", __func__, url);
-        
-        apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
-        NSLog(@"--");
-        NSLog(@"%@", urlStringWithItems);
-        NSLog(@"nsurl response = %@", apiResponse);
-        NSLog(@"nsurl error = %@", error);
-        NSLog(@"--");
-        
-        if ([apiResponse isEqualToString:@"1"]) {
-            theDelegate.isLogin = YES;
-            theDelegate.siteName = siteName;
-            
-            [theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
-        }
-        
-        theDelegate.isHostReachable = TRUE;
-    //} else {
-    //    NSLog(@"%s url %@ is NOT Reachable", __func__, url);
-    //}
+    NSLog(@"%s url %@ isReachable", __func__, url);
     
-    //NSURL *url = [NSURL URLWithString:@"http://mac-mini.local/sanserver/san_site_name.php"];
+    apiResponse = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"--");
+    NSLog(@"%@", urlStringWithItems);
+    NSLog(@"nsurl response = %@", apiResponse);
+    NSLog(@"nsurl error = %@", error);
+    NSLog(@"--");
     
-    if (!theDelegate.isLogin) {
-        if (!theDelegate.isHostReachable) {
-            if ([theDelegate.sanDatabase checkUserAuthInfo:siteName user:userName password:password]) {
-                theDelegate.isLogin = TRUE;
-            }
-        }
+    NSLog(@"%s %@", __func__, theDelegate.siteInfoArray);
+    
+    if ([apiResponse isEqualToString:@"1"]) {
+        theDelegate.siteName = siteName;
+        [theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
+        [theDelegate setCurrentSiteLogin];
     }
     
-    NSLog(@"%s nsurl response = %@, isLogin=%@", __func__, apiResponse, theDelegate.isLogin?@"login":@"failed");
-    NSLog(@"%s isHostReachable=%@", __func__, theDelegate.isHostReachable?@"reachable":@"not reachable");
+    NSLog(@"%s %@", __func__, theDelegate.siteInfoArray);
     
-    if (theDelegate.isLogin) {
+    theDelegate.isHostReachable = TRUE;
+    
+    if ([theDelegate IsCurrentSiteLogin]) {
         theDelegate.userName = self.userName.text;
         theDelegate.siteName = self.siteName.text;
         theDelegate.password = self.password.text;

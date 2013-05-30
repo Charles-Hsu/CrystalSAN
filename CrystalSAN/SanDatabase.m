@@ -233,12 +233,12 @@
         [db commit];
        
     } else if ([table isEqualToString:@"site_info"]) {
-        NSString *sql = @"CREATE TABLE IF NOT EXISTS site_info (location,label,address,longitude,latitude)";
+        NSString *sql = @"CREATE TABLE IF NOT EXISTS site_info (location,name,address,longitude,latitude, is_login INTEGER DEFAULT 0)";
         [db beginTransaction];
         BOOL updateSuccessfully = [db executeUpdate:sql];
         NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         
-        sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE label='%@'", table, [dict objectForKey:@"label"]];
+        sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE name='%@'", table, [dict objectForKey:@"name"]];
         updateSuccessfully = [db executeUpdate:sql];
         NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         
@@ -453,10 +453,11 @@
     NSMutableArray *array = [[NSMutableArray alloc] init];
     while ([rs next])
     {
-        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[rs stringForColumn:@"location"], @"location",
-                              [rs stringForColumn:@"label"], @"label",
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[rs stringForColumn:@"location"], @"location",
+                              [rs stringForColumn:@"name"], @"name",
                               [rs stringForColumn:@"longitude"], @"longitude",
                               [rs stringForColumn:@"latitude"], @"latitude",
+                              [rs stringForColumn:@"is_login"], @"is_login",
                               nil];
         
         NSLog(@"%s %@", __func__, dict);
@@ -890,6 +891,8 @@
     
     return txtPath;
 }
+
+
 
 
 - (NSMutableArray *)getHaApplianceNameListBySiteName:(NSString *)siteName {

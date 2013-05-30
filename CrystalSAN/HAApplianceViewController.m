@@ -240,7 +240,7 @@
 }
 
 - (IBAction)logout:(id)sender {
-    theDelegate.isLogin = FALSE;
+    [theDelegate setCurrentSiteLogout];
     theDelegate.syncManager = nil;
     [self onHome:sender];
 }

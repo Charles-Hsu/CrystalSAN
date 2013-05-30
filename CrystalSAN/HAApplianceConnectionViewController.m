@@ -518,20 +518,6 @@
 
     if(!isHUDshowing) {
         isHUDshowing = YES;
-        NSString *engineSerial = nil;
-        /*
-        NSDictionary *vpd = nil;
-        if (point.x > rect.size.width/2) {
-            NSLog(@"%f > %f, right engine", point.x, rect.size.width/2);
-            engineSerial = theDelegate.currentEngineRightSerial;
-            vpd = engine01Vpd;
-        } else {
-            NSLog(@"%f <= %f, left engine", point.x, rect.size.width/2);
-            engineSerial = theDelegate.currentEngineLeftSerial;
-            vpd = engine00Vpd;
-        }
-        [self showEngineinfoInHud:engineSerial vpdInfo:vpd];
-        */
         CGRect mainFrame = self.view.bounds;
         CGRect hudFrame = CGRectMake(0, 0, 600, mainFrame.size.height/2);
         CGRect hudFrame1 = CGRectMake(600, 0, 600, mainFrame.size.height/2);
@@ -543,7 +529,7 @@
         UITextView *textView = [[UITextView alloc] initWithFrame:hudFrame];
         textView.editable = FALSE;
         
-        engineSerial = theDelegate.currentEngineLeftSerial;
+        NSString *engineSerial = theDelegate.currentEngineLeftSerial;
         NSString *vpdInfo = [self getEngineVpdShortString:engine00Vpd];
         NSString *isMaster = [self isMaster:engineSerial];
         
@@ -569,7 +555,7 @@
         hud.removeFromSuperViewOnHide = YES;
         hud.backgroundColor = [UIColor clearColor];
         
-        hud.customView = scrollView;//customView;
+        hud.customView = scrollView;
         
 
     }
@@ -583,8 +569,6 @@
     
     NSLog(@"deviceName=%@", deviceName);
     deviceName = [deviceName stringByReplacingOccurrencesOfString:@"\r" withString:@" "];
-    
-
     
     doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingersTouch:)];
     doubleTapGestureRecognizer.numberOfTouchesRequired = 2;
@@ -657,16 +641,7 @@
     
     NSLog(@"%s deviceName=%@", __func__, theDelegate.currentDeviceName);
     
-    //
-    // How to add a touch event to a UIView?
-    //
-    // http://stackoverflow.com/questions/4660371/how-to-add-a-touch-event-to-a-uiview
-    // by Nathan Eror http://stackoverflow.com/users/100039/nathan-eror
-    //
-    //The setup code (in viewDidLoad in your view controller)
-    UITapGestureRecognizer *singleFingerTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(handleSingleTap:)];
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.view addGestureRecognizer:singleFingerTap];
     
     [theDelegate hideShowSliders:self.view];
@@ -689,7 +664,6 @@
     
     self.haApplianceName.text = theDelegate.currentDeviceName;
     self.siteNameLabel.text = theDelegate.siteName;
-
     
     [theDelegate.syncManager syncEngineWithHAApplianceNameAndAddedtoSyncedArray:theDelegate.currentHAApplianceName];
     
