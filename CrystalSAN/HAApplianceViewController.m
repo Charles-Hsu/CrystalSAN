@@ -8,7 +8,7 @@
 
 #import "HAApplianceViewController.h"
 #import "AppDelegate.h"
-#import "XMLCacheParser.h"
+//#import "XMLCacheParser.h"
 #import "SyncManager.h"
 #import <objc/runtime.h>
 
@@ -215,6 +215,9 @@
     //self.mirrorViewVcController.haApplianceName = [deviceArray objectAtIndex:currentItemIndex];
     //self.mirrorViewVcController.deviceLabel.text = self.mirrorViewVcController.haApplianceName;
     [self presentViewController:self.haApplianceConnectionViewController animated:YES completion:nil];
+    
+    
+    [theDelegate.sanDatabase testHttpGetEngineDriveInfoAll:theDelegate.currentEngineLeftSerial siteName:theDelegate.siteName];
     
     //NSLog(@"end of %s, current ha: %@, %@-%@", __func__, theDelegate.currentDeviceName, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
     

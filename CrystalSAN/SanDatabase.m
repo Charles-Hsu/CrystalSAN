@@ -57,6 +57,19 @@
     }
 }
 
+
+- (void)testHttpGetEngineDriveInfoAll:(NSString *)serial siteName:(NSString *)siteName {
+    // http-get-engine_cli_conmgr_drive_status_all.php?site=KBS&serial=600498
+    NSString *php = @"http-get-appliance_connection_all_info.php";
+    NSString *urlString = [self hostURLPathWithPHP:php];
+    NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@&serial=%@", siteName, serial];
+    //NSURL *url = [NSURL URLWithString:urlStringWithItems];
+    NSLog(@"%s", __func__);
+    [self httpGetAndParseURL:urlStringWithItems];
+
+}
+
+
 - (void)insertUpdateHaCluster:(NSDictionary *)dict
 {
     // CREATE TABLE ha_cluster (
@@ -211,29 +224,22 @@
         }
         [db commit];
 
-    } else if ([table isEqualToString:@"engine_cli_conmgr_drive_status_detail"]) {
-        /*
-         CREATE TABLE engine_cli_conmgr_drive_status_detail (serial INTEGER, seconds INTEGER, id, status,path_0_id, path_0_port, path_0_wwpn, path_0_lun, path_0_pstatus,path_1_id, path_1_port, path_1_wwpn, path_1_lun, path_1_pstatus,PRIMARY KEY (serial, seconds, id));
-         */
-        //NSLog(@"table IS %@", table);
-        //NSLog(@"%@", dict);
-        
-        //NSString *primaryKey = [dict valueForKey:@"serial"];
-        NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE serial = %@ AND id = %@", table, [dict valueForKey:@"serial"], [dict valueForKey:@"id"]];
-        //NSLog(@"%s %@", __func__, sql);
+    } else if ([table isEqualToString:@"engine_cli_conmgr_drive_status_detail"] || [table isEqualToString:@"engine_cli_conmgr_initiator_status_detail"]) {
+        NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE serial = '%@' AND id = '%@'", table, [dict valueForKey:@"serial"], [dict valueForKey:@"id"]];
+        NSLog(@"%s %@", __func__, sql);
         BOOL updateSuccessfully = [db executeUpdate:sql];
-        //NSLog(@"update %@", updateSuccessfully ? @"successfully!" : @"failed");
+        NSLog(@"update %@", updateSuccessfully ? @"successfully!" : @"failed");
 
         sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
                          table, [self allKeyString:[dict allKeys]], [self allValueString:[dict allValues]]];
-        //NSLog(@"%s %@", __func__, sql);
+        NSLog(@"%s %@", __func__, sql);
         [db beginTransaction];
         updateSuccessfully = [db executeUpdate:sql];
-            NSLog(@"update %@", updateSuccessfully ? @"successfully!" : @"failed");
+        NSLog(@"%s %@ update %@", __func__, sql , updateSuccessfully ? @"successfully!" : @"failed");
         [db commit];
        
     } else if ([table isEqualToString:@"site_info"]) {
-        NSString *sql = @"CREATE TABLE IF NOT EXISTS site_info (location,name,address,longitude,latitude, is_login INTEGER DEFAULT 0)";
+        NSString *sql = @"CREATE TABLE IF NOT EXISTS site_info (location,name,address,longitude,latitude,is_login INTEGER DEFAULT 0)";
         [db beginTransaction];
         BOOL updateSuccessfully = [db executeUpdate:sql];
         NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
@@ -255,9 +261,9 @@
         NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)", table, allKeysString, allValuesString];
         updateSuccessfully = [db executeUpdate:sql];
-        if (!updateSuccessfully) {
+        //if (!updateSuccessfully) {
             NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
-        }
+        //}
         [db commit];
     }
     
@@ -367,8 +373,8 @@
     return urlString;
 }
 
-- (void) httpGetAndParseURL:(NSString *)urlString {
-    //NSLog(@"%s %@", __func__, urlString);
+- (void)httpGetAndParseURL:(NSString *)urlString {
+    NSLog(@"%s %@", __func__, urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSError *error = nil;
     BOOL success = FALSE;
@@ -381,8 +387,8 @@
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
         //NSLog(@"--");
-        NSLog(@"%@", urlString);
-        NSLog(@"%@", apiResponse);
+        NSLog(@"%s %@", __func__, urlString);
+        NSLog(@"%s %@", __func__, apiResponse);
         //NSLog(@"nsurl error = %@", error);
         //NSLog(@"--");
         

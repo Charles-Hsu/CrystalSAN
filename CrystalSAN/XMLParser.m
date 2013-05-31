@@ -36,12 +36,16 @@
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
 	attributes:(NSDictionary *)attributeDict {
 	
-	if([elementName isEqualToString:@"Books"]) {
+    NSLog(@"%s elementName=%@, namespaceURI=%@, qualifiedName=%@, attributes=%@", __func__, elementName, namespaceURI, qualifiedName, attributeDict);
+    
+
+    
+	if ([elementName isEqualToString:@"Books"]) {
 		//Initialize the array.
 		//appDelegate.books = [[NSMutableArray alloc] init];
 	}
 	//else if([elementName isEqualToString:@"Book"]) {
-    else if([elementName isEqualToString:@"record"]) {
+    else if ([elementName isEqualToString:@"record"]) {
 		
 		//Initialize the book.
 		//aBook = [[Book alloc] init];
@@ -52,7 +56,15 @@
 		//aBook.bookID = [[attributeDict objectForKey:@"id"] integerValue];
 		
 		//NSLog(@"Reading id value :%i", aBook.bookID);
-	}
+	} else if ([elementName isEqualToString:@"table"]) {
+        /*
+         2013-05-31 12:38:31.867 CrystalSAN[2070:c07] -[XMLParser parser:didStartElement:namespaceURI:qualifiedName:attributes:] elementName=table, namespaceURI=(null), qualifiedName=(null), attributes={
+         name = "engine_cli_conmgr_drive_status";
+         }
+         */
+        tableName = [attributeDict valueForKey:@"name"];
+
+    }
 	
 	//NSLog(@"<%@>", elementName);
     
@@ -72,7 +84,7 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	
-    //NSLog(@"%s %@", __func__, elementName);
+    NSLog(@"%s elementName=%@, namespaceURI=%@, qualifiedName=%@", __func__, elementName, namespaceURI, qName);
     
 	//if([elementName isEqualToString:@"Books"])
     if([elementName isEqualToString:@"ha_cluster"]) {

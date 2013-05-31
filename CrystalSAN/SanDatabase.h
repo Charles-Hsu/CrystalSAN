@@ -34,6 +34,7 @@
 - (void)httpGetWwpnDataBySiteName:(NSString *)siteName;
 - (void)httpGetSiteInfoByAppSiteName:(NSString *)siteName appUserName:(NSString *)userName appPassword:(NSString *)password;
 - (NSArray *)getSiteInfoArray;
+- (void)testHttpGetEngineDriveInfoAll:(NSString *)serial siteName:(NSString *)siteName;
 
 
 

@@ -55,7 +55,8 @@
     
     siteName = theDelegate.siteName;
     
-    if (theDelegate.isHostReachable) { 
+    /*
+    if (theDelegate.isHostReachable) {
         [sanDatabase httpGetEngineCliDmepropBySiteName:siteName serial:serial];
         [sanDatabase httpGetEngineCliEngineStatusBySiteName:siteName serial:serial];
         [sanDatabase httpGetEngineCliMirrorBySiteName:siteName serial:serial];
@@ -65,6 +66,7 @@
     } else {
         // user current local client.db
     }
+     */
     
 }
 
@@ -87,6 +89,7 @@
         NSArray *engines = [sanDatabase getEnginesByHaApplianceName:haApplianceName];
         NSLog(@"%s %@", __func__, engines);
         for (int i=0; i<[engines count]; i++) {
+            /*
             NSString *serial = [engines objectAtIndex:i];
             [sanDatabase httpGetEngineCliDmepropBySiteName:siteName serial:serial];
             [sanDatabase httpGetEngineCliEngineStatusBySiteName:siteName serial:serial];
@@ -94,6 +97,7 @@
             [sanDatabase httpGetEngineCliVpdBySiteName:siteName serial:serial];
             [sanDatabase httpGetEngineDriveInformationBySiteName:siteName serial:serial];
             [sanDatabase httpGetEngineInitiatorInformationBySiteName:siteName serial:serial];
+             */
         }
     }
 }

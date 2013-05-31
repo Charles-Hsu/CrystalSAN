@@ -28,7 +28,6 @@
 		561284E216A8DF8E00F53C49 /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284E116A8DE0800F53C49 /* CustomPushSegue.m */; };
 		5612850B16A8E50600F53C49 /* FlipTopPopToRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */; };
 		56214F741740903700D121FD /* http-get_HAApplianceView.php in Resources */ = {isa = PBXBuildFile; fileRef = 56214F731740903700D121FD /* http-get_HAApplianceView.php */; };
-		56214F761740BF4E00D121FD /* XMLCacheParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 56214F751740BF4E00D121FD /* XMLCacheParser.m */; };
 		56214F7A1740E9EB00D121FD /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56214F791740E9EB00D121FD /* SyncManager.m */; };
 		5623C76216BD50F1009410B2 /* SanDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C76116BD50F0009410B2 /* SanDatabase.m */; };
 		5623C77B16BD54BF009410B2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77116BD54BF009410B2 /* FMDatabase.m */; };
@@ -153,6 +152,7 @@
 		56EB7578168BF70B0082A5D2 /* RaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EB7577168BF70B0082A5D2 /* RaidViewController.m */; };
 		56EB757B168BFA680082A5D2 /* VolumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EB757A168BFA670082A5D2 /* VolumeViewController.m */; };
 		56EB757E168BFA800082A5D2 /* HAApplianceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EB757D168BFA800082A5D2 /* HAApplianceViewController.m */; };
+		56F8BD94175841D50039541C /* http-get-appliance_connection_all_info.php in Resources */ = {isa = PBXBuildFile; fileRef = 56F8BD93175841D50039541C /* http-get-appliance_connection_all_info.php */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,8 +188,6 @@
 		561284E016A8DE0800F53C49 /* CustomPushSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
 		561284E116A8DE0800F53C49 /* CustomPushSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPushSegue.m; sourceTree = "<group>"; };
 		56214F731740903700D121FD /* http-get_HAApplianceView.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get_HAApplianceView.php"; path = "CrystalSANServer/http-get_HAApplianceView.php"; sourceTree = SOURCE_ROOT; };
-		56214F751740BF4E00D121FD /* XMLCacheParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLCacheParser.m; sourceTree = "<group>"; };
-		56214F771740BF5A00D121FD /* XMLCacheParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLCacheParser.h; sourceTree = "<group>"; };
 		56214F781740E9EB00D121FD /* SyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncManager.h; sourceTree = "<group>"; };
 		56214F791740E9EB00D121FD /* SyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncManager.m; sourceTree = "<group>"; };
 		5623C76016BD50F0009410B2 /* SanDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SanDatabase.h; sourceTree = "<group>"; };
@@ -769,6 +767,8 @@
 		56EB757C168BFA800082A5D2 /* HAApplianceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAApplianceViewController.h; sourceTree = "<group>"; };
 		56EB757D168BFA800082A5D2 /* HAApplianceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAApplianceViewController.m; sourceTree = "<group>"; };
 		56EB76CC16901A020082A5D2 /* CrystalSAN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = CrystalSAN.entitlements; path = CrystalSAN/CrystalSAN.entitlements; sourceTree = "<group>"; };
+		56F8BD93175841D50039541C /* http-get-appliance_connection_all_info.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get-appliance_connection_all_info.php"; path = "CrystalSANServer/http-get-appliance_connection_all_info.php"; sourceTree = SOURCE_ROOT; };
+		56F8BD951758430B0039541C /* test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = test.xml; path = CrystalSANServer/test.xml; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -873,6 +873,8 @@
 				564D8586174F1E2D0019D34F /* http-insert-config_user.php */,
 				560D1BF6173B7E7C0013E571 /* http-get-engine_cli_conmgr_drive_status.php */,
 				56CBA4F1173BB1E900E0670B /* http-get-engine_cli_conmgr_drive_status_detail.php */,
+				56F8BD93175841D50039541C /* http-get-appliance_connection_all_info.php */,
+				56F8BD951758430B0039541C /* test.xml */,
 				56CBA4F3173BCB3100E0670B /* http-get-engine_cli_conmgr_engine_status.php */,
 				56CBA4F5173BCBB900E0670B /* http-get-engine_cli_conmgr_initiator_status.php */,
 				56CBA4F7173BCC1700E0670B /* http-get-engine_cli_conmgr_initiator_status_detail.php */,
@@ -1566,8 +1568,6 @@
 				564D8583174B58A40019D34F /* SiteView */,
 				56C4AF6C16F1A24800E829A2 /* XMLParser.m */,
 				56C4AF6B16F1A24800E829A2 /* XMLParser.h */,
-				56214F771740BF5A00D121FD /* XMLCacheParser.h */,
-				56214F751740BF4E00D121FD /* XMLCacheParser.m */,
 				56214F781740E9EB00D121FD /* SyncManager.h */,
 				56214F791740E9EB00D121FD /* SyncManager.m */,
 				5623C76016BD50F0009410B2 /* SanDatabase.h */,
@@ -1795,6 +1795,7 @@
 				5610922B1745E08000107072 /* test_parse_engine_time.php in Resources */,
 				564D8585174C715E0019D34F /* http-get-site_info.php in Resources */,
 				564D8587174F1E2E0019D34F /* http-insert-config_user.php in Resources */,
+				56F8BD94175841D50039541C /* http-get-appliance_connection_all_info.php in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1835,7 +1836,6 @@
 				56DA732C1720FD1900A0D781 /* Annotation.m in Sources */,
 				56DA732F1720FD1900A0D781 /* CustomAnnotationView.m in Sources */,
 				56AD9C0B17350DFF0088BEED /* LoginViewController.m in Sources */,
-				56214F761740BF4E00D121FD /* XMLCacheParser.m in Sources */,
 				56214F7A1740E9EB00D121FD /* SyncManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
