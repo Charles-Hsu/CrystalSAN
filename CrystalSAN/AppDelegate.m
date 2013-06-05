@@ -9,6 +9,7 @@
 
 #import "AppDelegate.h"
 #import "XMLParser.h"
+#import "MainViewController.h"
 
 #define PSUDO_ITEM_NUMBER   12
 
@@ -21,12 +22,16 @@
 @synthesize loadSiteViewTimes;
 
 @synthesize siteName, userName, password;
+//@synthesize phpSiteName;
+
 //@synthesize isLogin;
 @synthesize syncManager;
 @synthesize currentDeviceName;
 @synthesize currentHAApplianceName;
 
 @synthesize siteInfoArray;
+@synthesize currentViewController;
+//@synthesize storyboard;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -126,6 +131,21 @@
             [subview setHidden:TRUE];
         }
     }
+}
+
+- (void)logout {
+    NSLog(@"%s %@", __func__, self.currentViewController);
+    //self.currentViewController.storyboard
+    
+    [self setCurrentSiteLogout];
+    self.syncManager = nil;
+    
+    MainViewController *mainVC = [self.currentViewController.storyboard instantiateViewControllerWithIdentifier:@"MainViewControllerID"];
+    
+	//present new view controller
+	//[self presentViewController:mainVC animated:YES completion:nil];
+    [self.currentViewController presentViewController:mainVC animated:YES completion:nil];
+
 }
 
 - (BOOL)IsCurrentSiteLogin {

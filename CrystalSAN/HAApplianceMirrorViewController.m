@@ -85,6 +85,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"%s", __func__);
     self.siteNameLabel.text = theDelegate.siteName;
+    theDelegate.currentViewController = self;
 }
 
 
@@ -97,6 +98,13 @@
     }
     return @"";
 }
+
+- (IBAction)logout:(id)sender {
+    [theDelegate setCurrentSiteLogout];
+    theDelegate.syncManager = nil;
+    [self onHome:sender];
+}
+
 
 - (NSString *)getEngineMirrorString:(NSString *)serial
 {
@@ -114,7 +122,7 @@
     
     NSDictionary *dict = [theDelegate.sanDatabase getEngineCliMirrorDictBySerial:serial];
     
-    NSLog(@"%s %@", __func__, dict);
+    //NSLog(@"%s %@", __func__, dict);
     
     /*
      2013-05-14 11:45:32.912 CrystalSAN[1879:c07] -[HAApplianceMirrorViewController getEngineMirrorString:] {

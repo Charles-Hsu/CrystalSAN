@@ -112,6 +112,13 @@
     [theDelegate hideShowSliders:self.view];
 }
 
+//- (IBAction)logout:(id)sender {
+//    [theDelegate setCurrentSiteLogout];
+//    theDelegate.syncManager = nil;
+//    [self onHome:sender];
+//}
+
+
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"%s", __func__);
     self.siteNameLabel.text = theDelegate.siteName;
@@ -124,6 +131,7 @@
         haApplianceName.hidden = NO;
     }
     
+    [theDelegate.syncManager syncEngineWithHAApplianceNameAndAddedtoSyncedArray:theDelegate.currentHAApplianceName part:2];
     // currentDeviceName in theDelegate is a HA-Cluster-Name
     
     NSLog(@"%s currentDeviceName = '%@'", __func__, theDelegate.currentDeviceName);
@@ -162,6 +170,7 @@
 {
     NSLog(@"%s ==============================", __func__);
     //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
+    theDelegate.currentViewController = self;
     
 }
 

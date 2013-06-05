@@ -52,6 +52,7 @@
 
 @synthesize searchConnectionButton, searchNameButton, searchStatusButton;
 @synthesize siteNameLabel;
+@synthesize logoutButton;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -84,7 +85,6 @@
 
 - (void)loadHaClusterArray {
     //SyncManager
-    //[sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
     deviceArray = [sanDatabase getHaApplianceNameListBySiteName:theDelegate.siteName];
     NSLog(@"%s site %@,  count = %u", __func__, theDelegate.siteName, [deviceArray count]);
     totalItemInCarousel = [deviceArray count];
@@ -130,8 +130,6 @@
     
     [self.viewForToggleSliders addGestureRecognizer:tripleTapGestureRecognizer];
     [theDelegate hideShowSliders:self.view];
-
-    //[theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -159,6 +157,8 @@
     theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
     theDelegate.currentHAApplianceName = [deviceArray objectAtIndex:currentItemIndex];
     
+    theDelegate.currentViewController = self;
+    
     self.siteNameLabel.text = theDelegate.siteName;
 
 
@@ -171,6 +171,7 @@
     currentItemIndex = carousel.currentItemIndex;
     theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];
     //NSLog(@"%@", [deviceArray objectAtIndex:currentItemIndex]);
+    theDelegate.currentViewController = self;
 }
 
 - (void)updateItemIndexCountsAndTotalLabel:(NSUInteger )currentIndex count:(NSUInteger)count total:(NSUInteger)total
@@ -217,7 +218,8 @@
     [self presentViewController:self.haApplianceConnectionViewController animated:YES completion:nil];
     
     
-    [theDelegate.sanDatabase testHttpGetEngineDriveInfoAll:theDelegate.currentEngineLeftSerial siteName:theDelegate.siteName];
+    //[theDelegate.sanDatabase testHttpGetEngineDriveInfoAll:theDelegate.currentEngineLeftSerial siteName:theDelegate.siteName];
+    [theDelegate.sanDatabase httpGetApplianceAllInfoPart1:theDelegate.currentHAApplianceName siteName:theDelegate.siteName];
     
     //NSLog(@"end of %s, current ha: %@, %@-%@", __func__, theDelegate.currentDeviceName, theDelegate.currentEngineLeftSerial, theDelegate.currentEngineRightSerial);
     
@@ -242,16 +244,17 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)logout:(id)sender {
-    [theDelegate setCurrentSiteLogout];
-    theDelegate.syncManager = nil;
-    [self onHome:sender];
-}
+//- (IBAction)logout:(id)sender {
+//    [theDelegate setCurrentSiteLogout];
+//    theDelegate.syncManager = nil;
+//    [self onHome:sender];
+//}
 
 - (void)refreshStatus
 {
     
 }
+
 
 - (IBAction)reloadCarousel
 {

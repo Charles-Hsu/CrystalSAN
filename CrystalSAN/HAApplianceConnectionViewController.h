@@ -10,6 +10,7 @@
 #import "iCarousel.h"
 #import "SanDatabase.h"
 #import "HbaViewController.h"
+#import "UILogoutButton.h"
 
 
 @interface HAApplianceConnectionViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
@@ -121,6 +122,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *testTwoFingersTap;
 
 @property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
+@property (nonatomic, strong) IBOutlet UILogoutButton *logoutButton;
 
 
 
@@ -139,10 +141,11 @@
 
 
 - (IBAction)updateValue:(id)sender;
-- (IBAction)hideSlider:(id)sender;
+//- (IBAction)hideSlider:(id)sender;
 
+//- (IBAction)logout:(id)sender;
 
-- (IBAction)showEngineInfo:(id)sender;
+//- (IBAction)showEngineInfo:(id)sender;
 //- (IBAction)hideEngineInfo:(id)sender;
 
 - (IBAction)showMirrorInfo:(id)sender;

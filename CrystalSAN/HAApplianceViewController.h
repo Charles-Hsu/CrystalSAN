@@ -10,6 +10,7 @@
 #import "iCarousel.h"
 #import "SanDatabase.h"
 #import "HAApplianceConnectionViewController.h"
+#import "UILogoutButton.h"
 
 
 @interface HAApplianceViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UISearchBarDelegate>
@@ -51,13 +52,15 @@
 @property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
 @property (nonatomic, strong) IBOutlet UIView *viewForToggleSliders;
 
+@property (nonatomic, strong) IBOutlet UILogoutButton *logoutButton;
+
 
 - (IBAction)reloadCarousel;
 - (IBAction)updateValue:(id)sender;
 
 - (IBAction)onHome:(id)sender;
 - (IBAction)onBack:(id)sender;
-- (IBAction)logout:(id)sender;
+//- (IBAction)logout:(id)sender;
 
 - (IBAction)hideSlider:(id)sender;
 

@@ -58,9 +58,6 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *homeButton;
 
-- (IBAction)onHome:(id)sender;
-- (IBAction)onBack:(id)sender;
-
 - (IBAction)moveToTaipei:(id)sender;
 
 - (IBAction)updateValue:(id)sender;

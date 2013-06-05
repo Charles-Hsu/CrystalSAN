@@ -121,6 +121,8 @@
     // ie, RaidViewController, MirrorViewController and VolumeViewController,
     // otherwise the trnasition behaviour will follow the defined in storyboard
     
+    NSLog(@"%s storyboard=%@", __func__, self.storyboard);
+    
     self.raidViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RaidViewControllerID"];
     self.raidViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
@@ -166,10 +168,8 @@
 }
 
 - (IBAction)loginView:(id)sender {
-    self.loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewControllerID"];
-    self.loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    NSLog(@"%s %d", __func__, [[UIDevice currentDevice] orientation]);
+    NSLog(@"%s orientation=%d", __func__, [[UIDevice currentDevice] orientation]);
     
     float center_x = 0;
     float center_y = 0;
@@ -183,18 +183,22 @@
         center_x = self.view.superview.center.y;
         center_y = self.view.superview.center.x;
     }
-    
-    float heightOfFrame = 300.0f;
-    float widthOfFrame= 400.0f;
+
+    float widthOfFrame = 400.0f;
+    float heightOfFrame = 312.0f;
     
     CGRect frame = CGRectMake(center_x - (widthOfFrame/2),
-                              //center_y - (heightOfFrame/2)-loginViewOffset,
                               center_y - (heightOfFrame/2),
                               widthOfFrame,
                               heightOfFrame
                               );
+     
+    self.loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewControllerID"];
+    self.loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
     [self presentViewController:self.loginViewController animated:YES completion:nil];
     [self.loginViewController.view.superview setFrame:frame];
+    
 }
 
 
@@ -222,6 +226,7 @@
         [self loginView:nil];
     }
     
+    theDelegate.currentViewController = self;
 
     
 }

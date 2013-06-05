@@ -22,21 +22,19 @@
 
 
 // new methods
+//- (void)httpGetEngineCliVpdBySiteName:(NSString *)siteName serial:(NSString *)serial;
+//- (void)httpGetEngineDriveInformationBySiteName:(NSString *)siteName serial:(NSString *)serial;
+//- (void)httpGetEngineCliEngineStatusBySiteName:(NSString *)siteName serial:(NSString *)serial;
+//- (void)httpGetEngineCliMirrorBySiteName:(NSString *)siteName serial:(NSString *)serial;
+//- (void)httpGetEngineCliDmepropBySiteName:(NSString *)siteName serial:(NSString *)serial;
+//- (void)httpGetEngineInitiatorInformationBySiteName:(NSString *)siteName serial:(NSString *)serial;
+//- (void)testHttpGetEngineDriveInfoAll:(NSString *)serial siteName:(NSString *)siteName;
 - (void)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName;
-
-- (void)httpGetEngineCliVpdBySiteName:(NSString *)siteName serial:(NSString *)serial;
-
-- (void)httpGetEngineDriveInformationBySiteName:(NSString *)siteName serial:(NSString *)serial;
-- (void)httpGetEngineCliEngineStatusBySiteName:(NSString *)siteName serial:(NSString *)serial;
-- (void)httpGetEngineCliMirrorBySiteName:(NSString *)siteName serial:(NSString *)serial;
-- (void)httpGetEngineCliDmepropBySiteName:(NSString *)siteName serial:(NSString *)serial;
-- (void)httpGetEngineInitiatorInformationBySiteName:(NSString *)siteName serial:(NSString *)serial;
 - (void)httpGetWwpnDataBySiteName:(NSString *)siteName;
 - (void)httpGetSiteInfoByAppSiteName:(NSString *)siteName appUserName:(NSString *)userName appPassword:(NSString *)password;
 - (NSArray *)getSiteInfoArray;
-- (void)testHttpGetEngineDriveInfoAll:(NSString *)serial siteName:(NSString *)siteName;
-
-
+- (void)httpGetApplianceAllInfoPart1:(NSString *)haName siteName:(NSString *)siteName;
+- (void)httpGetApplianceAllInfoPart2:(NSString *)haName siteName:(NSString *)siteName;
 
 // old methods
 - (NSArray *)httpGetEngineCliConmgrInitiatorStatusBySerial:(NSString *)serial;

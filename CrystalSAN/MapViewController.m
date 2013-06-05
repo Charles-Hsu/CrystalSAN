@@ -108,7 +108,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    //NSLog(@"%s", __func__);
+    NSLog(@"%s", __func__);
     
     self = [super initWithCoder:aDecoder];
     
@@ -126,6 +126,8 @@
         
         tripleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTripleTap:)];
         tripleTapGestureRecognizer.numberOfTapsRequired = 3;
+        
+        //theDelegate.storyboard = self.storyboard;
 
     }
     return self;
@@ -654,48 +656,9 @@
 
 #pragma mark - event handler
 
-- (void)onItemPress:(id)sender
-{
-    //UIButton *theButon = (UIButton *)sender;
-    //NSInteger index = carousel.currentItemIndex;
-    
-    //NSLog(@"%s", __func__);
-    
-    
-    
+- (void)onItemPress:(id)sender {
     [self gotoSite:sender];
-    
-    //NSLog(@"onItemPress: tag=%d, current index=%u %@",theButon.tag, index, [deviceArray objectAtIndex:index]);
-    
-    //currentItemIndex = _carousel.currentItemIndex;
-    
-    //theDelegate.currentDeviceName = [deviceArray objectAtIndex:currentItemIndex];;
-    
-    //self.mirrorViewVcController.haApplianceName = [deviceArray objectAtIndex:currentItemIndex];
-    //self.mirrorViewVcController.deviceLabel.text = self.mirrorViewVcController.haApplianceName;
-    //[self presentViewController:self.mirrorViewVcController animated:YES completion:nil];
-    
 }
-
-- (IBAction)onHome:(id)sender
-{
-    //get data
-    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [theDelegate getSanVmirrorLists];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-- (IBAction)onBack:(id)sender
-{
-    //get data
-    //AppDelegate *theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [theDelegate getSanVmirrorLists];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 - (IBAction)updateValue:(id)sender
 {
@@ -860,30 +823,14 @@
 
 
 
-- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
-{
-    //NSLog(@"carousel:didSelectItemAtIndex:  %d",index);
-    
-    //[self presentViewController:self.hbaViewController animated:YES completion:nil];
-    
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {
     [self panMapToCurrentSiteLocation];
 }
 
-- (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel
-{
-    //currentItemIndex = _carousel.currentItemIndex;
-    
-    //[theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
-    
-    //NSLog(@"%s zoom level %lu", __func__, (unsigned long)[_mapView zoomLevel]);
-    
-    
-    
-    //[self onItemPress:nil];
-
+- (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel {
 }
 
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value

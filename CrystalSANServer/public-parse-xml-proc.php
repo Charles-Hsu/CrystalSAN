@@ -20,6 +20,11 @@
         cli_mirror($site_name, $engine_name, $serial, $engine['cli_mirror'], $db);
         cli_conmgr_drive_status($site_name, $engine_name, $serial, $engine['cli_conmgr_drive_status'], $db);
         cli_conmgr_engine_status($site_name,$engine_name, $serial, $engine['cli_conmgr_engine_status'], $db);
+        
+        echo "<br>[cli_conmgr_initiator_status]<br>";
+        var_dump ($engine['cli_conmgr_initiator_status']);
+        echo "<br>[cli_conmgr_initiator_status]<br>";
+        
         cli_conmgr_initiator_status($site_name, $engine_name, $serial, $engine['cli_conmgr_initiator_status'], $db);
         cli_dmeprop($site_name, $engine_name, $serial, $engine['cli_dmeprop'], $db);
         
@@ -191,6 +196,10 @@
         
         echo "<br>*************" . __FUNCTION__ . "<br>";
         
+        echo "is master engine? ";
+        echo is_master_engine($engine_serial,$db);
+        echo "<br>";
+        
         $table_name = "ha_cluster";
         $sql = "CREATE TABLE IF NOT EXISTS " . $table_name .
             "(seconds INTEGER, site_name, ha_appliance_name, engine00 PRIMARY KEY, engine01, engine02, engine03 , engine04)";
@@ -200,16 +209,16 @@
         //    "FROM engine_cli_conmgr_engine_status a, engine_cli_vpd b " .
         //    "WHERE a.serial=b.serial AND a.cluster_id=2";
         
-        //echo "hello";
-        
         //$db->exec("DROP TABLE temp_engine_status");
         //$db->exec("DROP TABLE temp_vpd");
         
         $db->exec ("CREATE TABLE IF NOT EXISTS temp_engine_status (seconds INTEGER, serial INTEGER PRIMARY KEY, p0_wwpn)");
         $db->exec ("CREATE TABLE IF NOT EXISTS temp_vpd (site_name, serial INTEGER PRIMARY KEY, engine_name, a1_wwpn)");
         
-        $sql = "SELECT seconds,serial,p0_wwpn FROM engine_cli_conmgr_engine_status WHERE cluster_id='2'";
+        $sql = "SELECT seconds,serial,p0_wwpn FROM engine_cli_conmgr_engine_status WHERE cluster_id='2' OR cluster_id=''";
+        echo "<br>sql=$sql<br>";
         $result = $db->query($sql)->fetchAll();
+        var_dump($result);
         
         foreach($result as $key => $row) {
             $sql = "INSERT INTO temp_engine_status VALUES ('" . $row['seconds'] . "','" . $row['serial'] . "','" . substr ($row['p0_wwpn'], 5) . "')";
@@ -285,8 +294,10 @@
             //site_name, ha_appliance_name, engine00 PRIMARY KEY
             
             $sql = "DELETE FROM " . $table_name . " WHERE engine00='" . $primary_key . "'";
-            echo $sql;
+            echo "[[[[[[[[[[[$sql]]]]]]]]]]]]]";
             $db->exec($sql);
+            
+            locate_ha_cluster($primary_key,$db);
             
             $sql = "INSERT INTO " . $table_name .
                 " (seconds,site_name,ha_appliance_name,engine00" . $engine_field_string .
@@ -300,149 +311,57 @@
             //var_dump ($db->query($sql)->fetchAll());
             echo "<br>site_name:$site_name, $primary_key, <br>";
         }
-       
-       
-        
-        
         //var_dump ($result);
-        
-        
-       
-        $db->exec("DROP TABLE temp_engine_status");
-        $db->exec("DROP FROM TABLE temp_vpd");
-
-        
-        //$result = $db->query($sql);
-        
-        //echo "hello";
-        //echo "count = " . count($result);
-        
-        //var_dump ($result);
-        
-        //$row = $result->fetch(PDO::FETCH_ASSOC);
-        
-        
-        
-        
-        //var_dump ($row);
-        
-        //$sql = "SELECT a.serial 'SN', a.cluster_id cluster_id, a.p0_wwpn p0_wwpn, b.engine_name engine_name, b.a1_wwpn a1_wwpn " .
-        //        "FROM engine_cli_conmgr_engine_status a, engine_cli_vpd b " .
-         //       "WHERE a.serial=b.serial AND a.cluster_id=2";
-        
-        //$sql = "SELECT serial, cluster_id, SUBSTR(p0_wwpn,6) FROM engine_cli_conmgr_engine_status";
 
         $start = gettimeofday(true);
-
-        //$db->query($sql);
-        
-        //$sec = round(($end-$start)/$filesNum,2);
-        //echo  $sec . " sec(s) per file";
-
-        
-        //$sql = "SELECT * FROM engine_cli_conmgr_engine_status";
-        //$sth = $db->query($sql);
-        
-
-        
-        //var_dump ($sth);
-        
-        echo "--------------<br>";
-        
-        //$result = $sth->fetchAll();
-        
-        echo "--------------<br>";
-        
-        //var_dump ($result);
-
-        //$i = 0;
-        //$result = $db->query($sql);
-        
-        /*
-        foreach(array_name as $key => $value)
-        {
-            statement;
-        }
-         */
-        
-        //$arr = array("one", "two", "three");
-        //reset($arr);
-        //while (list($key, $value) = each($arr)) {
-        //    echo "Key: $key; Value: $value<br />\n";
-        //}
-        
-        //foreach ($result as $key => $row) {
-           // echo "Key: $key; Value: $row<br />\n";
-            //var_dump ($value);
-            
-            //echo $key." - ".$row['SN']."<br/>";
-            //echo $key." - ".$row['cluster_id']."<br/>";
-            //echo $key." - ".$row['p0_wwpn']."<br/>";
-
-            //echo "<br>";
-        //}
-        
-        
-        
-        
-        
-        /*
-        foreach ($result as $key => $row) {
-            echo $key." - ".$row['SN']."<br/>";
-            echo $key." - ".$row['cluster_id']."<br/>";
-            echo $key." - ".$row['p0_wwpn']."<br/>";
-            //$i++;
-        }
-         */
-        
-        //foreach(array_name as $value)
-        //{
-        //    statement;
-        //}
-        
-        
         $end = gettimeofday(true);
-        
         $total = sprintf("%f", $end-$start); //round(,2);
-        echo "<br>$total second(s)<br>";
-        
-        echo date('l jS \of F Y h:i:s A') . "<br>";
-
-
-        
-        /*
-        $query = $db->prepare($sql);
-        $query->execute();
-        
-        for($i=0; $row = $query->fetch(); $i++){
-            echo $i." - ".$row['SN']."<br/>";
-            echo $i." - ".$row['cluster_id']."<br/>";
-            echo $i." - ".$row['p0_wwpn']."<br/>";
-            
-            
-            //$sql = "select serial,engine_name from engine_cli_vpd where substr(a1_wwpn,6)='" . substr(a.path_0_wwpn,6) . "'";
-            //echo $sql;
-            
-            
-        }
-         */
-        
-        
-        
-        //print_r("---->" . $row);
-        
-        /*
-        foreach ($db->query($sql) as $row) {
-            echo "--------------";
-            print $row['b.site_name'] . "<br>";
-            print $row['SN'] . "<br>";
-            print $row['p0_wwpn'] . "<br>";
-        }
-         */
-
         
     }
 
+    function locate_ha_cluster($serial,$db) {
+        $sql = "SELECT engine00 FROM ha_cluster WHERE engine01='$serial' OR engine02='$serial'    ";
+        echo $sql;
+        $result=$db->query($sql)->fetchAll();
+        echo __FUNCTION__;
+        var_dump($result);
+        echo "end of " . __FUNCTION__;
+    }
+    
+    function is_master_engine($serial,$db) {
+        //$sql = "select * from engine_cli_dmeprop where serial='11340426'";
+        $sql = "SELECT * FROM engine_cli_dmeprop WHERE serial='$serial'";
+        //echo $sql;
+        $result = $db->query($sql)->fetchAll();
+        //var_dump($result);
+        /*array(1) { [0]=> array(18) {
+         ["serial"]=> string(8) "11340426" 
+         [0]=> string(8) "11340426" 
+         ["seconds"]=> string(10) "1370327855" 
+         [1]=> string(10) "1370327855" 
+         ["cluster_0_id"]=> string(1) "0" 
+         [2]=> string(1) "0" 
+         ["cluster_0_status"]=> string(1) "A" 
+         [3]=> string(1) "A" 
+         ["cluster_0_is_master"]=> string(3) "Yes" 
+         [4]=> string(3) "Yes" 
+         ["cluster_1_id"]=> string(0) "" 
+         [5]=> string(0) "" 
+         ["cluster_1_status"]=> string(0) "" 
+         [6]=> string(0) "" 
+         ["cluster_1_is_master"]=> string(0) "" 
+         [7]=> string(0) "" 
+         ["my_id"]=> string(1) "0" 
+         [8]=> string(1) "0" } }
+         */
+        //$my_id = $result['my_id'];
+        //$cluster_0_id = $result['cluster_0_id'];
+        //$cluster_1_id = $result['cluster_1_id'];
+        if ($result[0]['my_id'] == $result[0]['cluster_0_id']) {
+            return $result[0]['cluster_0_is_master'];
+        }
+        return $result[0]['cluster_1_is_master'];
+    }
     
     /*
      $product_type = $cli_vpd[product_type]; //FCE4400
@@ -908,7 +827,9 @@
         $sql = "CREATE TABLE IF NOT EXISTS $table_name (serial INTEGER PRIMARY KEY, seconds INTEGER, cluster_id INTEGER, status, p0_id, p0_port, p0_wwpn, p0_pstatus, p1_id, p1_port, p1_wwpn, p1_pstatus, cluster_not_ok INTEGER, path_not_ok INTEGER)";
         //echo $sql;
         $db->exec($sql);
-        
+        echo "------cli_conmgr_engine_status--------<br>";
+        var_dump($data);
+        echo "------cli_conmgr_engine_status--------<br>";
         $cluster_not_ok = $data['cluster_not_ok'];
         $path_not_ok = $data['path_not_ok'];
         $seconds = $data['seconds'];
@@ -1006,22 +927,25 @@
         $product_type = "";
         $wwnn = "";
         
-        $initiators = $data['initiators'];
-        for($i=0; $i<count($initiators); $i++) {
-            $initiator = $initiators[$i];
-            $id = $initiator['id'];
-            $port = $initiator['port'];
-            $wwpn = $initiator['wwpn'];
-            $status = $initiator['status'];
-            //var_dump ($initiator);
-            //echo $id . "," . $port . "," . $wwpn . "," . $status . "<br>";
-            //echo "<br>";
-            $sql = "INSERT INTO $table_name" . "_detail VALUES ('$serial', '$seconds', '$id', '$port', '$wwpn', '$status')";
-            $db->exec($sql);
-            
-            wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, "", $site_name);
-            
+        if (array_key_exists('initiators', $data)) {
+            $initiators = $data['initiators'];
+            for($i=0; $i<count($initiators); $i++) {
+                $initiator = $initiators[$i];
+                $id = $initiator['id'];
+                $port = $initiator['port'];
+                $wwpn = $initiator['wwpn'];
+                $status = $initiator['status'];
+                //var_dump ($initiator);
+                //echo $id . "," . $port . "," . $wwpn . "," . $status . "<br>";
+                //echo "<br>";
+                $sql = "INSERT INTO $table_name" . "_detail VALUES ('$serial', '$seconds', '$id', '$port', '$wwpn', '$status')";
+                $db->exec($sql);
+                
+                wwpn_data_parsing ($db, $wwnn, $wwpn, $type, $serial, $product_type, $type, "", $site_name);
+                
+            }
         }
+        
         
         //echo "---------> Done<br>";
 
@@ -1053,27 +977,46 @@
             "cluster_0_id, cluster_0_status, cluster_0_is_master, cluster_1_id, cluster_1_status, cluster_1_is_master, my_id);";
         $db->exec($sql);
         
+        echo "-----------------";
+        var_dump($data);
+        echo "-----------------";
         $my_id = $data['my_id'];
 
         $clusters = $data['clusters'];
         $seconds = $data['seconds'];
         
-        $cluster0 = $clusters[0];
-        $cluster0_id = $cluster0['id'];
-        $cluster0_status = $cluster0['status'];
-        $cluster0_is_master = $cluster0['is_master'];
         
-        $cluster1 = $clusters[1];
-        $cluster1_id = $cluster1['id'];
-        $cluster1_status = $cluster1['status'];
-        $cluster1_is_master = $cluster1['is_master'];
+        $cluster0_id = '';
+        $cluster0_status = '';
+        $cluster0_is_master = '';
+        
+        $cluster1_id = '';
+        $cluster1_status = '';
+        $cluster1_is_master = '';
+
+        if (array_key_exists('id', $clusters)) { // only one engine in clusters
+            $cluster0 = $clusters;
+            $cluster0_id = $cluster0['id'];
+            $cluster0_status = $cluster0['status'];
+            $cluster0_is_master = $cluster0['is_master'];
+        } else {
+            $cluster0 = $clusters[0];
+            $cluster0_id = $cluster0['id'];
+            $cluster0_status = $cluster0['status'];
+            $cluster0_is_master = $cluster0['is_master'];
+            
+            $cluster1 = $clusters[1];
+            $cluster1_id = $cluster1['id'];
+            $cluster1_status = $cluster1['status'];
+            $cluster1_is_master = $cluster1['is_master'];
+        }
         
         $sql = "DELETE FROM $table_name WHERE serial='$serial'";
         $db->exec($sql);
         
         $sql = "INSERT INTO $table_name VALUES ('$serial', '$seconds', '$cluster0_id', '$cluster0_status', '$cluster0_is_master', '$cluster1_id', '$cluster1_status', '$cluster1_is_master', '$my_id')";
         
-        //echo $sql;
+        echo $sql;
         $db->exec($sql);
         
         

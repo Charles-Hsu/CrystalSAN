@@ -1,5 +1,5 @@
 //
-//  MirrorViewController.h
+//  DriveViewController.h
 //  CrystalSAN
 //
 //  Created by Charles Hsu on 12/27/12.
@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
 #import "SanDatabase.h"
+#import "UILogoutButton.h"
 
 
 @interface DriveViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UISearchBarDelegate>
@@ -48,6 +49,7 @@
 
 @property (strong, nonatomic) SanDatabase *sanDatabase;
 @property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
+@property (nonatomic, strong) IBOutlet UILogoutButton *logoutButton;
 
 
 - (IBAction)reloadCarousel;
@@ -55,6 +57,7 @@
 
 - (IBAction)onHome:(id)sender;
 - (IBAction)onBack:(id)sender;
+//- (IBAction)logout:(id)sender;
 
 - (IBAction)hideShowSliders:(id)sender;
 

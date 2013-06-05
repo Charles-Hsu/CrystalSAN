@@ -48,6 +48,17 @@
 }
 */
 
+/*
+- (IBAction)logout:(id)sender {
+    
+    NSLog(@"%s %@", __func__, sender);
+    
+    [theDelegate setCurrentSiteLogout];
+    theDelegate.syncManager = nil;
+    [self onHome:nil];
+}
+ */
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -60,7 +71,7 @@
     //deviceLabel.numberOfLines = 0;
     
     theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [theDelegate.syncManager updateEngineVpdInfo:theDelegate.currentHAApplianceName];
+    //[theDelegate.syncManager updateEngineVpdInfo:theDelegate.currentHAApplianceName];
 
     //theDelegate.currentSegueID = @"RaidViewConfigID";
     //theDelegate.currentDeviceName = deviceName;
@@ -103,6 +114,7 @@
     NSLog(@"%s", __func__);
     self.haApplianceName.text = theDelegate.currentHAApplianceName;
     
+    
     NSLog(@"%s %@", __func__, self.haApplianceName.text);
     
     NSArray *engines = [theDelegate.sanDatabase getEnginesByHaApplianceName:(self.haApplianceName.text)];
@@ -116,10 +128,10 @@
         theDelegate.currentEngineRightSerial = [engines objectAtIndex:1];
         
     }
-    //[theDelegate.sanDatabase httpGetEngineCliVpdBySiteName:theDelegate.siteName serial:[engines objectAtIndex:0]];
-    //[theDelegate.sanDatabase httpGetEngineCliVpdBySiteName:theDelegate.siteName serial:[engines objectAtIndex:1]];
     
-    //[theDelegate.syncManager checkForUpdate:];
+    NSLog(@"%s call [theDelegate.syncManager syncEngineWithHAApplianceNameAndAddedtoSyncedArray:theDelegate.currentHAApplianceName part:1]", __func__);
+
+    [theDelegate.syncManager syncEngineWithHAApplianceNameAndAddedtoSyncedArray:theDelegate.currentHAApplianceName part:1];
     
     engine0Vpd.text = [self getVpdInformationBySerial:[engines objectAtIndex:0]];
     engine1Vpd.text = [self getVpdInformationBySerial:[engines objectAtIndex:1]];
@@ -138,6 +150,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     NSLog(@"%s", __func__);
+    theDelegate.currentViewController = self;
 }
 
 - (NSString *)getDriveArraryString:(NSArray *)dictArray {
@@ -177,6 +190,8 @@
 
 - (IBAction)onHome:(id)sender
 {
+    NSLog(@"%s %@", __func__, sender);
+
     //[self dismissViewControllerAnimated:YES completion:nil];
     [self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
     //UIViewController *prevVC = [self.navigationController.viewControllers objectAtIndex:0];

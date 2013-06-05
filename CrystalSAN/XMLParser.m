@@ -36,7 +36,7 @@
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
 	attributes:(NSDictionary *)attributeDict {
 	
-    NSLog(@"%s elementName=%@, namespaceURI=%@, qualifiedName=%@, attributes=%@", __func__, elementName, namespaceURI, qualifiedName, attributeDict);
+    //NSLog(@"%s elementName=%@, namespaceURI=%@, qualifiedName=%@, attributes=%@", __func__, elementName, namespaceURI, qualifiedName, attributeDict);
     
 
     
@@ -84,7 +84,7 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	
-    NSLog(@"%s elementName=%@, namespaceURI=%@, qualifiedName=%@", __func__, elementName, namespaceURI, qName);
+    //NSLog(@"%s elementName=%@, namespaceURI=%@, qualifiedName=%@", __func__, elementName, namespaceURI, qName);
     
 	//if([elementName isEqualToString:@"Books"])
     if([elementName isEqualToString:@"ha_cluster"]) {

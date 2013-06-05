@@ -65,6 +65,14 @@
     return self;
 }
 
+/*
+- (IBAction)logout:(id)sender {
+    [theDelegate setCurrentSiteLogout];
+    theDelegate.syncManager = nil;
+    [self onHome:sender];
+}
+*/
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -136,11 +144,6 @@
 
 - (void)httpGetDriveInformation {
     
-    [sanDatabase httpGetEngineDriveInformationBySiteName:theDelegate.siteName serial:theDelegate.currentEngineLeftSerial];
-    
-    //deviceArray = [sanDatabase getHaApplianceNameListBySiteName:theDelegate.siteName];
-    //NSLog(@"%s site %@,  count = %u", __func__, theDelegate.siteName, [deviceArray count]);
-    
     totalItemInCarousel = [deviceArray count];
     NSUInteger count = [deviceArray count];
     
@@ -150,7 +153,6 @@
     
     [theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
     
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -192,6 +194,8 @@
 {
     NSLog(@"%s theDelegate.currentDeviceName=%@", __func__, theDelegate.currentDeviceName);
     
+    theDelegate.currentViewController = self;
+
     if ([theDelegate.currentDeviceName length] == 0) {
         haApplianceName.hidden = YES;
     }

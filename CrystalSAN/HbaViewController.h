@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
 #import "SanDatabase.h"
+#import "UILogoutButton.h"
 
 
 @interface HbaViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UISearchBarDelegate>
@@ -55,6 +56,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
 
+@property (nonatomic, strong) IBOutlet UILogoutButton *logoutButton;
 
 - (IBAction)reloadCarousel;
 - (IBAction)updateValue:(id)sender;
@@ -63,6 +65,7 @@
 - (IBAction)onBack:(id)sender;
 
 - (IBAction)showHideSliders:(id)sender;
+//- (IBAction)logout:(id)sender;
 
 
 @end

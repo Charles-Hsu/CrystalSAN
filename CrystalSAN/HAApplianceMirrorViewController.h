@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UILogoutButton.h"
 //#import "iCarousel.h"
 
 @interface HAApplianceMirrorViewController : UIViewController //<iCarouselDataSource, iCarouselDelegate>
@@ -39,6 +40,9 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *siteNameLabel;
 
+@property (nonatomic, strong) IBOutlet UILogoutButton *logoutButton;
+
+- (IBAction)logout:(id)sender;
 //@property (nonatomic, weak) IBOutlet UILabel *haApplianceName;
 //@property (nonatomic, retain) NSString *deviceName;
 

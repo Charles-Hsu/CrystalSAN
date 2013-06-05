@@ -47,12 +47,17 @@
 @property (strong,nonatomic) NSString *userName;
 @property (strong,nonatomic) NSString *password;
 
+//@property (strong,nonatomic) NSString *phpSiteName;
+
 //@property BOOL isLogin;
 @property (weak, nonatomic) UIViewController *nextViewController;
 
 @property BOOL isHostReachable;
 
 @property (strong,nonatomic) NSArray *siteInfoArray;
+
+@property (strong,nonatomic) UIViewController *currentViewController;
+//@property (strong,nonatomic) UIStoryboard *storyboard;
 
 
 - (NSString *)getSanVmirrorLists;
@@ -70,6 +75,8 @@
 - (BOOL)IsCurrentSiteLogin;
 - (void)setCurrentSiteLogin;
 - (void)setCurrentSiteLogout;
+
+- (void)logout;
 
 
 

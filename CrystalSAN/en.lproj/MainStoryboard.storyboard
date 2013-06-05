@@ -647,7 +647,7 @@
                                     <action selector="onHome:" destination="YOT-Ri-UBv" eventType="touchUpInside" id="iYk-Z9-KE9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DZD-iE-5kc" userLabel="Button - Logout">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DZD-iE-5kc" userLabel="Button - Logout" customClass="UILogoutButton">
                                 <rect key="frame" x="820" y="626" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -658,9 +658,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="logout:" destination="YOT-Ri-UBv" eventType="touchUpInside" id="Xek-vP-MDD"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ro3-Cj-Gqa" userLabel="Button - Back">
                                 <rect key="frame" x="863" y="525" width="140" height="134"/>
@@ -870,6 +867,7 @@
                         <outlet property="arcSlider" destination="229-kE-frN" id="H0N-e4-av6"/>
                         <outlet property="arcValue" destination="qk1-NQ-PLr" id="Uwf-9S-dR3"/>
                         <outlet property="itemIndexCountsAndTotalLabel" destination="DtM-p1-pu9" id="m1j-J1-PTl"/>
+                        <outlet property="logoutButton" destination="DZD-iE-5kc" id="JfV-uA-pMJ"/>
                         <outlet property="radiusLabel" destination="0yc-4H-aPe" id="1xQ-hZ-Viz"/>
                         <outlet property="radiusSlider" destination="N5R-IM-Hla" id="7af-6t-w7U"/>
                         <outlet property="radiusValue" destination="Wka-Wb-ctU" id="Wpg-XN-GwW"/>
@@ -889,7 +887,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIs-nA-1fb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="-729"/>
+            <point key="canvasLocation" x="645" y="-729"/>
         </scene>
         <!--Volume View Controller-->
         <scene sceneID="4XE-nL-MyA">
@@ -1411,7 +1409,7 @@
                                     <action selector="onBack:" destination="whg-kQ-d2J" eventType="touchUpInside" id="Kzf-na-toe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jfE-th-GPT" userLabel="Button - Logout">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jfE-th-GPT" userLabel="Button - Logout" customClass="UILogoutButton">
                                 <rect key="frame" x="820" y="626" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -1775,9 +1773,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="sZ4-0c-S4u" kind="modal" id="UYb-7y-yfg"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vTq-WN-GXJ" userLabel="Button - Drive 1">
                                 <rect key="frame" x="320" y="568" width="182" height="78"/>
@@ -1790,9 +1785,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="sZ4-0c-S4u" kind="modal" id="DPb-aW-6FE"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="center" restorationIdentifier="mirror_0" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tKX-ws-hPf">
                                 <rect key="frame" x="209" y="190" width="92" height="116"/>
@@ -2091,6 +2083,7 @@
                         <outlet property="engineLeft" destination="Zdi-ag-w41" id="8Yt-BX-UI2"/>
                         <outlet property="engineRight" destination="0e0-Ia-zh0" id="xjb-Dz-s3P"/>
                         <outlet property="haApplianceName" destination="KUD-kc-9zt" id="rLG-Ez-e5c"/>
+                        <outlet property="logoutButton" destination="jfE-th-GPT" id="6c4-WY-QUC"/>
                         <outlet property="lun00Button" destination="tKX-ws-hPf" id="sEd-jD-rPn"/>
                         <outlet property="lun00Label" destination="Tsr-0e-AFq" id="YAY-0e-CFh"/>
                         <outlet property="lun00_0_Label" destination="xWI-Pa-sn3" id="PoG-VL-uDc"/>
@@ -2209,7 +2202,7 @@
                                     <action selector="onBack:" destination="czL-d1-Xny" eventType="touchUpInside" id="aP3-w0-V1Y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uOQ-c7-6CT" userLabel="Button - Logout">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uOQ-c7-6CT" userLabel="Button - Logout" customClass="UILogoutButton">
                                 <rect key="frame" x="820" y="626" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -2220,6 +2213,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="logout:" destination="czL-d1-Xny" eventType="touchUpInside" id="Pqh-to-jBw"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00600118-0060120" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4FC-IB-w1Q">
                                 <rect key="frame" x="64" y="111" width="258" height="30"/>
@@ -2282,6 +2278,7 @@
                         <outlet property="engine1Serial" destination="Y5z-z9-erY" id="gFn-RQ-uAv"/>
                         <outlet property="engine1mirror" destination="Yxt-G5-ZuM" id="bXb-Kl-5mn"/>
                         <outlet property="haApplianceName" destination="4FC-IB-w1Q" id="GWB-Ux-3Wi"/>
+                        <outlet property="logoutButton" destination="uOQ-c7-6CT" id="fiQ-G0-8Ds"/>
                         <outlet property="siteNameLabel" destination="3Eh-lw-xhq" id="d4b-KC-b36"/>
                     </connections>
                 </viewController>
@@ -2346,10 +2343,9 @@
                                 </state>
                                 <connections>
                                     <action selector="onBack:" destination="JZO-dL-HeE" eventType="touchUpInside" id="Cge-BV-dBd"/>
-                                    <action selector="onBack:" destination="czL-d1-Xny" eventType="touchUpInside" id="IwD-YH-2M1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="syR-2Z-X1x" userLabel="Button - Logout">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="syR-2Z-X1x" userLabel="Button - Logout" customClass="UILogoutButton">
                                 <rect key="frame" x="821" y="606" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -2495,6 +2491,7 @@
                         <outlet property="engine1Vpd" destination="KgK-7j-Sxq" id="bRG-iZ-Km3"/>
                         <outlet property="haApplianceName" destination="yWd-6s-gG4" id="Gqa-In-tc3"/>
                         <outlet property="hbaInformation" destination="Eu7-iC-YVD" id="Kxd-fV-w6v"/>
+                        <outlet property="logoutButton" destination="syR-2Z-X1x" id="0pv-Co-13S"/>
                         <outlet property="mirrorInformation" destination="oLy-ln-S8K" id="6bW-q9-U1X"/>
                         <outlet property="siteNameLabel" destination="Fd8-zT-n8g" id="zbc-WA-90U"/>
                     </connections>
@@ -2620,7 +2617,7 @@
                                     <action selector="onBack:" destination="GgS-wy-aCW" eventType="touchUpInside" id="Tk0-QM-9om"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fh2-LT-Wag" userLabel="Button - Logout">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fh2-LT-Wag" userLabel="Button - Logout" customClass="UILogoutButton">
                                 <rect key="frame" x="820" y="626" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -2850,6 +2847,7 @@
                         <outlet property="arcValue" destination="edL-Mc-Zuv" id="M2d-W3-Zns"/>
                         <outlet property="haApplianceName" destination="EH5-3R-qMe" id="nCf-p8-YT0"/>
                         <outlet property="itemIndexCountsAndTotalLabel" destination="pd0-t8-GbD" id="MVW-kB-mcu"/>
+                        <outlet property="logoutButton" destination="Fh2-LT-Wag" id="k6n-yQ-aot"/>
                         <outlet property="radiusLabel" destination="CoV-hl-1PM" id="xhj-V2-5Ce"/>
                         <outlet property="radiusSlider" destination="1a2-G5-f4T" id="3bU-Np-XP8"/>
                         <outlet property="radiusValue" destination="byR-hh-axS" id="p7Q-P7-Pd0"/>
@@ -2868,7 +2866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CWX-Ke-kjg" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3375" y="168"/>
+            <point key="canvasLocation" x="3174" y="127"/>
         </scene>
         <!--Hba View Controller-->
         <scene sceneID="4Py-iR-T8j">
@@ -3012,7 +3010,7 @@
                                     <action selector="onBack:" destination="mh5-db-iAd" eventType="touchUpInside" id="r81-y2-bFU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lUf-Vv-QdG" userLabel="Button - Logout">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lUf-Vv-QdG" userLabel="Button - Logout" customClass="UILogoutButton">
                                 <rect key="frame" x="820" y="626" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -3229,6 +3227,7 @@
                         <outlet property="arcValue" destination="9RN-Dk-OwK" id="icl-sM-yOc"/>
                         <outlet property="haApplianceName" destination="HXL-LK-0cf" id="jx8-H3-lyx"/>
                         <outlet property="itemIndexCountsAndTotalLabel" destination="uTp-PO-R5O" id="GHw-hl-Huu"/>
+                        <outlet property="logoutButton" destination="lUf-Vv-QdG" id="EhA-lP-GqF"/>
                         <outlet property="radiusLabel" destination="O9r-tr-jGz" id="jIN-sd-U0a"/>
                         <outlet property="radiusSlider" destination="M7x-Hg-fQw" id="Xha-Ee-QGj"/>
                         <outlet property="radiusValue" destination="BS4-fC-yex" id="M5g-fG-LFK"/>
@@ -3485,60 +3484,57 @@
         <!--Login View Controller - Login-->
         <scene sceneID="XAr-4g-oAn">
             <objects>
-                <viewController storyboardIdentifier="LoginViewControllerID" title="Login" modalPresentationStyle="formSheet" id="4MA-mM-Ulr" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewControllerID" title="Login" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="formSheet" id="4MA-mM-Ulr" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RXN-4u-yby">
-                        <rect key="frame" x="0.0" y="20" width="540" height="600"/>
+                        <rect key="frame" x="0.0" y="20" width="400" height="312"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background.png" id="iNR-L2-wRp">
-                                <rect key="frame" x="-242" y="-84" width="1024" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="background.png" id="sXr-ZX-0f7">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Site Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AUI-zB-yLQ">
-                                <rect key="frame" x="59" y="60" width="121" height="21"/>
+                                <rect key="frame" x="55" y="60" width="121" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="User Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VUK-ul-MPO">
-                                <rect key="frame" x="59" y="106" width="121" height="21"/>
+                                <rect key="frame" x="55" y="106" width="121" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0JG-dR-IF1">
-                                <rect key="frame" x="59" y="147" width="121" height="21"/>
+                                <rect key="frame" x="55" y="147" width="121" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="20" id="p26-Yi-jjD" userLabel="Text Field - site name">
-                                <rect key="frame" x="174" y="56" width="159" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="site_name" borderStyle="roundedRect" minimumFontSize="20" id="p26-Yi-jjD" userLabel="Text Field - site name">
+                                <rect key="frame" x="186" y="56" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="20" id="Ycd-ei-PkB" userLabel="Text Field - user name">
-                                <rect key="frame" x="174" y="101" width="159" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="admin" borderStyle="roundedRect" minimumFontSize="20" id="Ycd-ei-PkB" userLabel="Text Field - user name">
+                                <rect key="frame" x="186" y="101" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="20" id="vsU-HI-bBz" userLabel="Text Field - password">
-                                <rect key="frame" x="174" y="147" width="159" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0000" borderStyle="roundedRect" minimumFontSize="20" id="vsU-HI-bBz" userLabel="Text Field - password">
+                                <rect key="frame" x="186" y="147" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="60j-cY-X5k">
-                                <rect key="frame" x="59" y="212" width="119" height="44"/>
+                                <rect key="frame" x="55" y="211" width="119" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Confirm">
@@ -3553,7 +3549,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mEu-gz-GEE">
-                                <rect key="frame" x="230" y="212" width="119" height="44"/>
+                                <rect key="frame" x="226" y="211" width="119" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Cancel">
@@ -3572,7 +3568,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="cancel" destination="mEu-gz-GEE" id="wBU-EX-sKN"/>
                         <outlet property="confirm" destination="60j-cY-X5k" id="EbY-3D-hWL"/>
@@ -3586,7 +3582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="riA-nF-mlR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="576" y="2129"/>
+            <point key="canvasLocation" x="736" y="2123"/>
         </scene>
     </scenes>
     <resources>
@@ -3641,6 +3637,7 @@
                 <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UILogoutButton"/>
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
@@ -3669,6 +3666,7 @@
                 <relationship kind="outlet" name="engine1Vpd" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="hbaInformation" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UILogoutButton"/>
                 <relationship kind="outlet" name="mirrorInformation" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
             </relationships>
@@ -3688,6 +3686,7 @@
                 <relationship kind="outlet" name="engineLeft" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="engineRight" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UILogoutButton"/>
                 <relationship kind="outlet" name="lun00Button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lun00Label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lun00_0_Label" candidateClass="UILabel"/>
@@ -3758,6 +3757,7 @@
         <class className="HAApplianceMirrorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HAApplianceMirrorViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logout:"/>
                 <relationship kind="action" name="onBack:"/>
                 <relationship kind="action" name="onHome:"/>
                 <relationship kind="outlet" name="engine0Serial" candidateClass="UILabel"/>
@@ -3765,6 +3765,7 @@
                 <relationship kind="outlet" name="engine1Serial" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="engine1mirror" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UILogoutButton"/>
                 <relationship kind="outlet" name="siteNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -3772,7 +3773,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HAApplianceViewController.h"/>
             <relationships>
                 <relationship kind="action" name="hideSlider:"/>
-                <relationship kind="action" name="logout:"/>
                 <relationship kind="action" name="onBack:"/>
                 <relationship kind="action" name="onHome:"/>
                 <relationship kind="action" name="reloadCarousel"/>
@@ -3781,6 +3781,7 @@
                 <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UILogoutButton"/>
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
@@ -3811,6 +3812,7 @@
                 <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="haApplianceName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemIndexCountsAndTotalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UILogoutButton"/>
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
@@ -3847,7 +3849,6 @@
         <class className="MainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
             <relationships>
-                <relationship kind="action" name="hideShowSlider:"/>
                 <relationship kind="action" name="hideShowSliders:"/>
                 <relationship kind="action" name="loginView:"/>
                 <relationship kind="action" name="reloadCarousel"/>
@@ -3871,10 +3872,7 @@
         <class className="MapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
-                <relationship kind="action" name="hideShowSliders:"/>
                 <relationship kind="action" name="moveToTaipei:"/>
-                <relationship kind="action" name="onBack:"/>
-                <relationship kind="action" name="onHome:"/>
                 <relationship kind="action" name="updateValue:"/>
                 <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
@@ -3931,6 +3929,9 @@
                 <relationship kind="outlet" name="deviceLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="UILogoutButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UILogoutButton.h"/>
+        </class>
         <class className="VolumeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VolumeViewController.h"/>
             <relationships>
@@ -3965,8 +3966,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UYb-7y-yfg"/>
+        <segue reference="jcG-tU-yxa"/>
         <segue reference="LbK-6D-GUu"/>
-        <segue reference="9Q0-CS-Ttb"/>
     </inferredMetricsTieBreakers>
 </document>

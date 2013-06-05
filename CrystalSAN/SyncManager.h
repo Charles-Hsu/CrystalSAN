@@ -11,14 +11,13 @@
 @interface SyncManager : NSObject {
 }
 
-@property (nonatomic, strong) NSArray *haArray;
-
-- (void)syncEngineWithSerial:(NSString *)serial;
+//- (void)syncEngineWithSerial:(NSString *)serial;
 //- (void)syncEngineWithHAApplianceName:(NSString *)haApplianceName;
-- (void)syncEngineWithHAApplianceNameAndAddedtoSyncedArray:(NSString *)haApplianceName;
+//- (void)syncEngineWithHAApplianceNameAndAddedtoSyncedArray:(NSString *)haApplianceName;
 
-
-- (void)updateEngineVpdInfo:(NSString *)haApplianceName;
-- (void)syncHAAppliancesOfSite:(NSString *)siteName;
+//- (void)getApplianceAllInformation:(NSString *)serial part:(int)partNo;
+//- (void)updateEngineVpdInfo:(NSString *)haApplianceName;
+- (void)syncEngineWithHAApplianceNameAndAddedtoSyncedArray:(NSString *)haApplianceName part:(int)partNo;
+//- (void)syncHAAppliancesOfSite:(NSString *)siteName;
 
 @end

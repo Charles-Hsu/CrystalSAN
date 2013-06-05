@@ -69,6 +69,25 @@
 
 }
 
+- (void)httpGetApplianceAllInfoPart1:(NSString *)haName siteName:(NSString *)siteName {
+    NSString *php = @"http-get-appliance_all_info.php";
+    NSString *urlString = [self hostURLPathWithPHP:php];
+    NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@&ha_name=%@&part=%d", siteName, haName, 1];
+    //NSURL *url = [NSURL URLWithString:urlStringWithItems];
+    NSLog(@"%s", __func__);
+    [self httpGetAndParseURL:urlStringWithItems];
+}
+
+- (void)httpGetApplianceAllInfoPart2:(NSString *)haName siteName:(NSString *)siteName {
+    NSString *php = @"http-get-appliance_all_info.php";
+    NSString *urlString = [self hostURLPathWithPHP:php];
+    NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@&ha_name=%@&part=%d", siteName, haName, 2];
+    //NSURL *url = [NSURL URLWithString:urlStringWithItems];
+    NSLog(@"%s", __func__);
+    [self httpGetAndParseURL:urlStringWithItems];
+}
+
+
 
 - (void)insertUpdateHaCluster:(NSDictionary *)dict
 {
@@ -212,57 +231,57 @@
                          table, [dict valueForKey:@"wwpn"]];
         BOOL updateSuccessfully = [db executeUpdate:sql];
         //if (!updateSuccessfully) {
-            NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
+            //NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         //}
         sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
                          table, [self allKeyString:[dict allKeys]], [self allValueString:[dict allValues]]];
         //NSLog(@"%s %@", __func__, sql);
         
         updateSuccessfully = [db executeUpdate:sql];
-        if (!updateSuccessfully) {
-            NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
-        }
+        //if (!updateSuccessfully) {
+            //NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
+        //}
         [db commit];
 
     } else if ([table isEqualToString:@"engine_cli_conmgr_drive_status_detail"] || [table isEqualToString:@"engine_cli_conmgr_initiator_status_detail"]) {
         NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE serial = '%@' AND id = '%@'", table, [dict valueForKey:@"serial"], [dict valueForKey:@"id"]];
-        NSLog(@"%s %@", __func__, sql);
+        //NSLog(@"%s %@", __func__, sql);
         BOOL updateSuccessfully = [db executeUpdate:sql];
-        NSLog(@"update %@", updateSuccessfully ? @"successfully!" : @"failed");
+        //NSLog(@"update %@", updateSuccessfully ? @"successfully!" : @"failed");
 
         sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
                          table, [self allKeyString:[dict allKeys]], [self allValueString:[dict allValues]]];
-        NSLog(@"%s %@", __func__, sql);
+        //NSLog(@"%s %@", __func__, sql);
         [db beginTransaction];
         updateSuccessfully = [db executeUpdate:sql];
-        NSLog(@"%s %@ update %@", __func__, sql , updateSuccessfully ? @"successfully!" : @"failed");
+        //NSLog(@"%s %@ update %@", __func__, sql , updateSuccessfully ? @"successfully!" : @"failed");
         [db commit];
        
     } else if ([table isEqualToString:@"site_info"]) {
         NSString *sql = @"CREATE TABLE IF NOT EXISTS site_info (location,name,address,longitude,latitude,is_login INTEGER DEFAULT 0)";
         [db beginTransaction];
         BOOL updateSuccessfully = [db executeUpdate:sql];
-        NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
+        //NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         
         sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE name='%@'", table, [dict objectForKey:@"name"]];
         updateSuccessfully = [db executeUpdate:sql];
-        NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
+        //NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         
         sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)",
                table, [self allKeyString:[dict allKeys]], [self allValueString:[dict allValues]]];
         updateSuccessfully = [db executeUpdate:sql];
-        NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
+        //NSLog(@"%@ %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         [db commit];
     } else {
         NSString *primaryKey = [dict valueForKey:@"serial"];
         NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE serial = '%@'", table, primaryKey];
         [db beginTransaction];
         BOOL updateSuccessfully = [db executeUpdate:sql];
-        NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
+        //NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)", table, allKeysString, allValuesString];
         updateSuccessfully = [db executeUpdate:sql];
         //if (!updateSuccessfully) {
-            NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
+            //NSLog(@"%@ update %@", sql, updateSuccessfully ? @"successfully!" : @"failed");
         //}
         [db commit];
     }
@@ -386,25 +405,18 @@
         NSString *apiResponse = [NSString stringWithContentsOfURL:url
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
-        //NSLog(@"--");
-        NSLog(@"%s %@", __func__, urlString);
         NSLog(@"%s %@", __func__, apiResponse);
-        //NSLog(@"nsurl error = %@", error);
-        //NSLog(@"--");
-        
         NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
         
-        //Initialize the delegate.
         XMLParser *parser = [[XMLParser alloc] initXMLParser];
-        
-        //Set delegate
         [xmlParser setDelegate:(id <NSXMLParserDelegate>)parser];
         success = [xmlParser parse];
+        if (!success) {
+            NSLog(@"%s parses %@ failed", __func__, urlString);
+        }
     } else {
-        NSLog(@"%s %@ invalid", __func__, urlString);
+        NSLog(@"%s URL %@ invalid", __func__, urlString);
     }
-    NSLog(@"%s %@ parses %@", __func__, urlString, success ? @"successfully" : @"failed");
-
 }
 
 - (void)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName {
@@ -413,8 +425,8 @@
     NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@", siteName];
     //NSURL *url = [NSURL URLWithString:urlStringWithItems];
     
+    /*
     NSInteger seconds = 0;
-    
     //if (serial) {
     NSString *tableName = @"ha_cluster";
     NSString *sql = [NSString stringWithFormat:@"SELECT seconds FROM %@ WHERE site_name='%@' ORDER BY seconds DESC LIMIT 1", tableName, siteName];
@@ -425,10 +437,10 @@
         seconds = [rs intForColumnIndex:0];
         NSLog(@"seconds:%d", seconds);
     }
-    
     if (seconds) {
         urlStringWithItems = [NSString stringWithFormat:@"%@&seconds=%d", urlStringWithItems, seconds];
     }
+     */
 
     [self httpGetAndParseURL:urlStringWithItems];
     
@@ -1072,7 +1084,7 @@
     //
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM engine_cli_mirror WHERE serial='%@'", serial];
     
-    NSLog(@"%s %@", __func__, sql);
+    //NSLog(@"%s %@", __func__, sql);
     FMResultSet *rs = [db executeQuery:sql];
     //FMResultSet *rs = [db executeQuery:sql];
     //NSString *sql = [NSString stringWithFormat:@"SELECT * FROM ha_cluster WHERE ha_appliance_name = '%@'", haApplianceName];
@@ -1081,9 +1093,7 @@
     if ([rs next])
     {
         dict = [rs resultDictionary];
-        NSLog(@"%s %@", __func__, dict);
-        //[devices addObject:[rs stringForColumnIndex:0]];
-        //[devices addObject:[rs stringForColumnIndex:1]];
+        //NSLog(@"%s %@", __func__, dict);
     }
     // close the result set.
     // it'll also close when it's dealloc'd, but we're closing the database before
@@ -1108,11 +1118,13 @@
         sql = [NSString stringWithFormat:@"SELECT * FROM engine_cli_conmgr_initiator_status_detail WHERE serial='%@'", serial];
     }
     
+    NSLog(@"%s %@", __func__, sql);
+    
     FMResultSet *rs = [db executeQuery:sql];
 
     /*
      sqlite> select * from engine_cli_conmgr_initiator_status_detail limit 10;
-     serial      seconds     initiator_id  port        wwpn                status
+     serial      seconds     id  port        wwpn                status
      ----------  ----------  ------------  ----------  ------------------  ----------
      00600118    1359489267  0             A2          1000-0000c9-60b612  I
      00600118    1359489267  1             A1          1000-00062b-16ef20  A

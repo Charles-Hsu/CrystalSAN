@@ -23,11 +23,8 @@
 		5609AC84170D7AD500BB5BE5 /* CalloutBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5609AC82170D7AD500BB5BE5 /* CalloutBackground.png */; };
 		5609AC85170D7AD500BB5BE5 /* CalloutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5609AC83170D7AD500BB5BE5 /* CalloutButton.png */; };
 		5609AC87170D7B8200BB5BE5 /* SiteViewCarouselBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5609AC86170D7B8100BB5BE5 /* SiteViewCarouselBackground.png */; };
-		561092291745DD8900107072 /* engine_new.xml in Resources */ = {isa = PBXBuildFile; fileRef = 561092281745DD8900107072 /* engine_new.xml */; };
-		5610922B1745E08000107072 /* test_parse_engine_time.php in Resources */ = {isa = PBXBuildFile; fileRef = 5610922A1745E08000107072 /* test_parse_engine_time.php */; };
 		561284E216A8DF8E00F53C49 /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284E116A8DE0800F53C49 /* CustomPushSegue.m */; };
 		5612850B16A8E50600F53C49 /* FlipTopPopToRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */; };
-		56214F741740903700D121FD /* http-get_HAApplianceView.php in Resources */ = {isa = PBXBuildFile; fileRef = 56214F731740903700D121FD /* http-get_HAApplianceView.php */; };
 		56214F7A1740E9EB00D121FD /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56214F791740E9EB00D121FD /* SyncManager.m */; };
 		5623C76216BD50F1009410B2 /* SanDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C76116BD50F0009410B2 /* SanDatabase.m */; };
 		5623C77B16BD54BF009410B2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77116BD54BF009410B2 /* FMDatabase.m */; };
@@ -36,9 +33,7 @@
 		5623C77E16BD54BF009410B2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77716BD54BF009410B2 /* FMDatabaseQueue.m */; };
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
-		5627F1B8173DE2B90046E07C /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 5627F1B7173DE2B90046E07C /* server.db */; };
-		564D8585174C715E0019D34F /* http-get-site_info.php in Resources */ = {isa = PBXBuildFile; fileRef = 564D8584174C715E0019D34F /* http-get-site_info.php */; };
-		564D8587174F1E2E0019D34F /* http-insert-config_user.php in Resources */ = {isa = PBXBuildFile; fileRef = 564D8586174F1E2D0019D34F /* http-insert-config_user.php */; };
+		5647C693175F13D0008AF02E /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 5647C68D175F13D0008AF02E /* server.db */; };
 		565057C616F7E8CA00CCFF7D /* HAApplianceConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565057C516F7E8C900CCFF7D /* HAApplianceConnectionViewController.m */; };
 		565057FF16F93BE800CCFF7D /* HAApplianceMirrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565057FE16F93BE300CCFF7D /* HAApplianceMirrorViewController.m */; };
 		56552E39170C0BBC000CA5FB /* Device-HBA-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 56552E35170C0BBC000CA5FB /* Device-HBA-degraded.png */; };
@@ -132,10 +127,6 @@
 		56D191DB16E085DB002BB2B5 /* HAApplianceClusterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D191DA16E085DB002BB2B5 /* HAApplianceClusterViewController.m */; };
 		56DA732C1720FD1900A0D781 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DA73201720FD1900A0D781 /* Annotation.m */; };
 		56DA732F1720FD1900A0D781 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DA73261720FD1900A0D781 /* CustomAnnotationView.m */; };
-		56DA7336172108DE00A0D781 /* shopping.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DA7333172108DE00A0D781 /* shopping.png */; };
-		56DA7337172108DE00A0D781 /* airport.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DA7334172108DE00A0D781 /* airport.png */; };
-		56DA7338172108DE00A0D781 /* restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = 56DA7335172108DE00A0D781 /* restaurant.png */; };
-		56E9D6A41744848400B36424 /* test_parse_engine_new.php in Resources */ = {isa = PBXBuildFile; fileRef = 56E9D6A31744848300B36424 /* test_parse_engine_new.php */; };
 		56EB75321689D06A0082A5D2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75311689D06A0082A5D2 /* UIKit.framework */; };
 		56EB75341689D06A0082A5D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75331689D06A0082A5D2 /* Foundation.framework */; };
 		56EB75361689D06A0082A5D2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB75351689D06A0082A5D2 /* CoreGraphics.framework */; };
@@ -152,7 +143,7 @@
 		56EB7578168BF70B0082A5D2 /* RaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EB7577168BF70B0082A5D2 /* RaidViewController.m */; };
 		56EB757B168BFA680082A5D2 /* VolumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EB757A168BFA670082A5D2 /* VolumeViewController.m */; };
 		56EB757E168BFA800082A5D2 /* HAApplianceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EB757D168BFA800082A5D2 /* HAApplianceViewController.m */; };
-		56F8BD94175841D50039541C /* http-get-appliance_connection_all_info.php in Resources */ = {isa = PBXBuildFile; fileRef = 56F8BD93175841D50039541C /* http-get-appliance_connection_all_info.php */; };
+		56F8BD9A175B25B50039541C /* UILogoutButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F8BD99175B25B50039541C /* UILogoutButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,12 +167,10 @@
 		560D1BEC1738AA730013E571 /* http-check-auth.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-check-auth.php"; path = "CrystalSANServer/http-check-auth.php"; sourceTree = SOURCE_ROOT; };
 		560D1BF0173A1EF00013E571 /* http-get-engine_cli_vpd.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get-engine_cli_vpd.php"; path = "CrystalSANServer/http-get-engine_cli_vpd.php"; sourceTree = SOURCE_ROOT; };
 		560D1BF2173B58E20013E571 /* site_config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = site_config.xml; sourceTree = "<group>"; };
-		560D1BF4173B73E30013E571 /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
 		560D1BF6173B7E7C0013E571 /* http-get-engine_cli_conmgr_drive_status.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get-engine_cli_conmgr_drive_status.php"; path = "CrystalSANServer/http-get-engine_cli_conmgr_drive_status.php"; sourceTree = SOURCE_ROOT; };
 		560EC26916FC54CC000B505C /* script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.sh; sourceTree = "<group>"; };
 		560EC27516FC54CC000B505C /* scan_ha_cluster.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_ha_cluster.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		560EC27816FC54CC000B505C /* test_parse_engine_all.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = test_parse_engine_all.exp; sourceTree = "<group>"; };
-		561092281745DD8900107072 /* engine_new.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = engine_new.xml; path = CrystalSANServer/Accusys/Data/data_xml/engine_new.xml; sourceTree = SOURCE_ROOT; };
 		5610922A1745E08000107072 /* test_parse_engine_time.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = test_parse_engine_time.php; path = CrystalSANServer/test_parse_engine_time.php; sourceTree = SOURCE_ROOT; };
 		561284D616A7CDF200F53C49 /* FlipTopPopToRoot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipTopPopToRoot.m; sourceTree = "<group>"; };
 		561284D716A7CDF200F53C49 /* FlipTopPopToRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipTopPopToRoot.h; sourceTree = "<group>"; };
@@ -205,6 +194,11 @@
 		5623C78116BD565E009410B2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		5627F1B7173DE2B90046E07C /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = server.db; path = CrystalSANServer/Accusys/server.db; sourceTree = "<group>"; };
 		56368419173CD934001AA86F /* http-get-wwpn_data.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get-wwpn_data.php"; path = "CrystalSANServer/http-get-wwpn_data.php"; sourceTree = SOURCE_ROOT; };
+		5647C689175F13D0008AF02E /* engine_40_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_40_all.xml; sourceTree = "<group>"; };
+		5647C68A175F13D0008AF02E /* engine_new.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_new.xml; sourceTree = "<group>"; };
+		5647C68B175F13D0008AF02E /* engine_time.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_time.xml; sourceTree = "<group>"; };
+		5647C68C175F13D0008AF02E /* site_time.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = site_time.xml; sourceTree = "<group>"; };
+		5647C68D175F13D0008AF02E /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
 		564D8584174C715E0019D34F /* http-get-site_info.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get-site_info.php"; path = "CrystalSANServer/http-get-site_info.php"; sourceTree = SOURCE_ROOT; };
 		564D8586174F1E2D0019D34F /* http-insert-config_user.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-insert-config_user.php"; path = "CrystalSANServer/http-insert-config_user.php"; sourceTree = SOURCE_ROOT; };
 		565057C416F7E8BC00CCFF7D /* HAApplianceConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAApplianceConnectionViewController.h; sourceTree = "<group>"; };
@@ -216,10 +210,6 @@
 		56552E37170C0BBC000CA5FB /* Device-HBA-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-healthy.png"; sourceTree = "<group>"; };
 		56552E38170C0BBC000CA5FB /* Device-HBA-problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-HBA-problem.png"; sourceTree = "<group>"; };
 		5672C6B617126EC5008E6B8C /* scan_wwpn.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = scan_wwpn.exp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.php; };
-		56789E501734FC9C000F4A13 /* engine_39_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_39_all.xml; sourceTree = "<group>"; };
-		56789E511734FC9C000F4A13 /* engine_40_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_40_all.xml; sourceTree = "<group>"; };
-		56789E541734FC9C000F4A13 /* engine_time.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_time.xml; sourceTree = "<group>"; };
-		56789E551734FC9C000F4A13 /* site_time.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = site_time.xml; sourceTree = "<group>"; };
 		56789E571734FC9C000F4A13 /* engine_211_all.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_211_all.xml; sourceTree = "<group>"; };
 		56789E581734FC9C000F4A13 /* engine_cli_conmgr_drive_status.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_drive_status.xml; sourceTree = "<group>"; };
 		56789E591734FC9C000F4A13 /* engine_cli_conmgr_drive_status_detail.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_cli_conmgr_drive_status_detail.xml; sourceTree = "<group>"; };
@@ -713,6 +703,8 @@
 		56BD566F16E99A8400E56664 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		56BDEC71169BE6B50076CD6B /* RaidViewVcController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaidViewVcController.h; sourceTree = "<group>"; };
 		56BDEC72169BE6D10076CD6B /* RaidViewVcController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaidViewVcController.m; sourceTree = "<group>"; };
+		56C3835B175DBE7B003C9CD3 /* http-sqlite.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-sqlite.php"; path = "CrystalSANServer/http-sqlite.php"; sourceTree = SOURCE_ROOT; };
+		56C3835D175DC426003C9CD3 /* test_ha_appliance_parse.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = test_ha_appliance_parse.php; path = CrystalSANServer/test_ha_appliance_parse.php; sourceTree = SOURCE_ROOT; };
 		56C4AF6B16F1A24800E829A2 /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
 		56C4AF6C16F1A24800E829A2 /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
 		56C9874C16E44C8D0066AC2C /* DriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveViewController.h; sourceTree = "<group>"; };
@@ -769,6 +761,9 @@
 		56EB76CC16901A020082A5D2 /* CrystalSAN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = CrystalSAN.entitlements; path = CrystalSAN/CrystalSAN.entitlements; sourceTree = "<group>"; };
 		56F8BD93175841D50039541C /* http-get-appliance_connection_all_info.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get-appliance_connection_all_info.php"; path = "CrystalSANServer/http-get-appliance_connection_all_info.php"; sourceTree = SOURCE_ROOT; };
 		56F8BD951758430B0039541C /* test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = test.xml; path = CrystalSANServer/test.xml; sourceTree = SOURCE_ROOT; };
+		56F8BD96175AD6A50039541C /* http-get-appliance_all_info.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get-appliance_all_info.php"; path = "CrystalSANServer/http-get-appliance_all_info.php"; sourceTree = SOURCE_ROOT; };
+		56F8BD98175B25B50039541C /* UILogoutButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILogoutButton.h; sourceTree = "<group>"; };
+		56F8BD99175B25B50039541C /* UILogoutButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILogoutButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -840,6 +835,35 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		5647C683175F13D0008AF02E /* Loxoll */ = {
+			isa = PBXGroup;
+			children = (
+				5647C685175F13D0008AF02E /* Data */,
+				5647C68D175F13D0008AF02E /* server.db */,
+			);
+			name = Loxoll;
+			path = CrystalSANServer/Loxoll;
+			sourceTree = SOURCE_ROOT;
+		};
+		5647C685175F13D0008AF02E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5647C688175F13D0008AF02E /* data_xml */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5647C688175F13D0008AF02E /* data_xml */ = {
+			isa = PBXGroup;
+			children = (
+				5647C689175F13D0008AF02E /* engine_40_all.xml */,
+				5647C68A175F13D0008AF02E /* engine_new.xml */,
+				5647C68B175F13D0008AF02E /* engine_time.xml */,
+				5647C68C175F13D0008AF02E /* site_time.xml */,
+			);
+			path = data_xml;
+			sourceTree = "<group>";
+		};
 		564D8583174B58A40019D34F /* SiteView */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,7 +876,7 @@
 		56789E4A1734FC9C000F4A13 /* CrystalSANServer */ = {
 			isa = PBXGroup;
 			children = (
-				56789E4B1734FC9C000F4A13 /* Accusys */,
+				5647C683175F13D0008AF02E /* Loxoll */,
 				56789E571734FC9C000F4A13 /* engine_211_all.xml */,
 				56789E581734FC9C000F4A13 /* engine_cli_conmgr_drive_status.xml */,
 				56789E591734FC9C000F4A13 /* engine_cli_conmgr_drive_status_detail.xml */,
@@ -874,6 +898,7 @@
 				560D1BF6173B7E7C0013E571 /* http-get-engine_cli_conmgr_drive_status.php */,
 				56CBA4F1173BB1E900E0670B /* http-get-engine_cli_conmgr_drive_status_detail.php */,
 				56F8BD93175841D50039541C /* http-get-appliance_connection_all_info.php */,
+				56F8BD96175AD6A50039541C /* http-get-appliance_all_info.php */,
 				56F8BD951758430B0039541C /* test.xml */,
 				56CBA4F3173BCB3100E0670B /* http-get-engine_cli_conmgr_engine_status.php */,
 				56CBA4F5173BCBB900E0670B /* http-get-engine_cli_conmgr_initiator_status.php */,
@@ -885,6 +910,7 @@
 				56789E671734FC9C000F4A13 /* http-get-ha_cluster.php */,
 				56214F731740903700D121FD /* http-get_HAApplianceView.php */,
 				564D8584174C715E0019D34F /* http-get-site_info.php */,
+				56C3835B175DBE7B003C9CD3 /* http-sqlite.php */,
 				56789FEC1734FC9E000F4A13 /* public-parse-xml-proc.php */,
 				56789E681734FC9C000F4A13 /* http-receive-local-file.php */,
 				56789FE71734FC9E000F4A13 /* parse-engie-all-xml-file.php */,
@@ -897,56 +923,12 @@
 				56789FF11734FC9E000F4A13 /* test_sqlite_pdo_example.php */,
 				56789FF21734FC9E000F4A13 /* test-call-url.php */,
 				56789FF41734FC9E000F4A13 /* test_parse_engine_all.php */,
+				56C3835D175DC426003C9CD3 /* test_ha_appliance_parse.php */,
 				56E9D6A31744848300B36424 /* test_parse_engine_new.php */,
 				5610922A1745E08000107072 /* test_parse_engine_time.php */,
 			);
 			name = CrystalSANServer;
 			path = ../../../../../../Library/WebServer/Documents/CrystalSANServer;
-			sourceTree = "<group>";
-		};
-		56789E4B1734FC9C000F4A13 /* Accusys */ = {
-			isa = PBXGroup;
-			children = (
-				56789E4C1734FC9C000F4A13 /* Data */,
-			);
-			path = Accusys;
-			sourceTree = "<group>";
-		};
-		56789E4C1734FC9C000F4A13 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				560D1BF4173B73E30013E571 /* server.db */,
-				56789E4D1734FC9C000F4A13 /* data_html */,
-				56789E4E1734FC9C000F4A13 /* data_txt */,
-				56789E4F1734FC9C000F4A13 /* data_xml */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		56789E4D1734FC9C000F4A13 /* data_html */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = data_html;
-			sourceTree = "<group>";
-		};
-		56789E4E1734FC9C000F4A13 /* data_txt */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = data_txt;
-			sourceTree = "<group>";
-		};
-		56789E4F1734FC9C000F4A13 /* data_xml */ = {
-			isa = PBXGroup;
-			children = (
-				561092281745DD8900107072 /* engine_new.xml */,
-				56789E501734FC9C000F4A13 /* engine_39_all.xml */,
-				56789E511734FC9C000F4A13 /* engine_40_all.xml */,
-				56789E541734FC9C000F4A13 /* engine_time.xml */,
-				56789E551734FC9C000F4A13 /* site_time.xml */,
-			);
-			path = data_xml;
 			sourceTree = "<group>";
 		};
 		56789E6A1734FC9C000F4A13 /* KBS */ = {
@@ -1353,6 +1335,8 @@
 		567FA33B17029C7D000F5802 /* HAApplianceView */ = {
 			isa = PBXGroup;
 			children = (
+				56F8BD98175B25B50039541C /* UILogoutButton.h */,
+				56F8BD99175B25B50039541C /* UILogoutButton.m */,
 				56EB757C168BFA800082A5D2 /* HAApplianceViewController.h */,
 				56EB757D168BFA800082A5D2 /* HAApplianceViewController.m */,
 				56D191D916E085C9002BB2B5 /* HAApplianceClusterViewController.h */,
@@ -1688,7 +1672,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5627F1B8173DE2B90046E07C /* server.db in Resources */,
 				56EB753C1689D06A0082A5D2 /* InfoPlist.strings in Resources */,
 				56EB75441689D06A0082A5D2 /* Default.png in Resources */,
 				56EB75461689D06A0082A5D2 /* Default@2x.png in Resources */,
@@ -1786,16 +1769,7 @@
 				5609AC84170D7AD500BB5BE5 /* CalloutBackground.png in Resources */,
 				5609AC85170D7AD500BB5BE5 /* CalloutButton.png in Resources */,
 				5609AC87170D7B8200BB5BE5 /* SiteViewCarouselBackground.png in Resources */,
-				56DA7336172108DE00A0D781 /* shopping.png in Resources */,
-				56DA7337172108DE00A0D781 /* airport.png in Resources */,
-				56DA7338172108DE00A0D781 /* restaurant.png in Resources */,
-				56214F741740903700D121FD /* http-get_HAApplianceView.php in Resources */,
-				56E9D6A41744848400B36424 /* test_parse_engine_new.php in Resources */,
-				561092291745DD8900107072 /* engine_new.xml in Resources */,
-				5610922B1745E08000107072 /* test_parse_engine_time.php in Resources */,
-				564D8585174C715E0019D34F /* http-get-site_info.php in Resources */,
-				564D8587174F1E2E0019D34F /* http-insert-config_user.php in Resources */,
-				56F8BD94175841D50039541C /* http-get-appliance_connection_all_info.php in Resources */,
+				5647C693175F13D0008AF02E /* server.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1837,6 +1811,7 @@
 				56DA732F1720FD1900A0D781 /* CustomAnnotationView.m in Sources */,
 				56AD9C0B17350DFF0088BEED /* LoginViewController.m in Sources */,
 				56214F7A1740E9EB00D121FD /* SyncManager.m in Sources */,
+				56F8BD9A175B25B50039541C /* UILogoutButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

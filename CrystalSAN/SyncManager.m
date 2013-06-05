@@ -10,16 +10,13 @@
 #import "AppDelegate.h"
 #import "SanDatabase.h"
 
-@interface SyncManager () {
+@implementation SyncManager {
     AppDelegate *theDelegate;
     SanDatabase *sanDatabase;
-    NSString *siteName;
-    NSMutableArray  *haArray;
+    NSString *_siteName;
+    NSMutableArray  *_haArray;
+    NSMutableArray  *_haArray1;
 }
-@end
-
-@implementation SyncManager
-@synthesize haArray;
 
 - (id)init
 {
@@ -27,89 +24,43 @@
     if (self) {
         theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         sanDatabase = theDelegate.sanDatabase;
-        siteName = theDelegate.siteName;
-        //haArray = [sanDatabase getHaApplianceNameListBySiteName:siteName];
-        haArray = [[NSMutableArray alloc] init];
-        NSLog(@"%s %@", __func__, haArray);
-        
-        [sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
+        _siteName = theDelegate.siteName;
+        _haArray = [[NSMutableArray alloc] init];
+        _haArray1 = [[NSMutableArray alloc] init];
+        [sanDatabase httpGetHAClusterDictionaryBySiteName:_siteName];
     }
     return self;
 }
 
-- (id)initWithHAApplianceArray:(NSArray *)array
+- (void)syncEngineWithHAApplianceNameAndAddedtoSyncedArray:(NSString *)haApplianceName part:(int)partNo
 {
-    self = [super init];
-    if (self) {
-        self.haArray = array;
-    }
-    return self;
-}
-
-
-
-
-- (void)syncEngineWithSerial:(NSString *)serial {
-    
-    NSLog(@"%s serial=%@", __func__, serial);
-    
-    siteName = theDelegate.siteName;
-    
-    /*
-    if (theDelegate.isHostReachable) {
-        [sanDatabase httpGetEngineCliDmepropBySiteName:siteName serial:serial];
-        [sanDatabase httpGetEngineCliEngineStatusBySiteName:siteName serial:serial];
-        [sanDatabase httpGetEngineCliMirrorBySiteName:siteName serial:serial];
-        [sanDatabase httpGetEngineCliVpdBySiteName:siteName serial:serial];
-        [sanDatabase httpGetEngineDriveInformationBySiteName:siteName serial:serial];
-        [sanDatabase httpGetEngineInitiatorInformationBySiteName:siteName serial:serial];
-    } else {
-        // user current local client.db
-    }
-     */
-    
-}
-
-
-- (void)syncHAAppliancesOfSite:(NSString *)siteName {
-    
-}
-
-- (void)syncEngineWithHAApplianceNameAndAddedtoSyncedArray:(NSString *)haApplianceName {
     NSLog(@"%s haApplianceName=%@", __func__, haApplianceName);
     BOOL notExisted = TRUE;
-    for (int i=0; i<[haArray count] && notExisted; i++) {
-        if ([[haArray objectAtIndex:i] isEqualToString:haApplianceName]) {
-            notExisted = FALSE;
+    if (partNo == 1) {
+        for (int i=0; i<[_haArray count] && notExisted; i++) {
+            if ([[_haArray objectAtIndex:i] isEqualToString:haApplianceName]) {
+                notExisted = FALSE;
+            }
+        }
+        if (notExisted) {
+            NSLog(@"%s %@ %@", __func__, haApplianceName, notExisted?@"not existed":@"existed");
+            [_haArray addObject:haApplianceName];
+            [sanDatabase httpGetApplianceAllInfoPart1:haApplianceName siteName:_siteName];
+        }
+    } else if (partNo == 2) {
+        for (int i=0; i<[_haArray1 count] && notExisted; i++) {
+            if ([[_haArray1 objectAtIndex:i] isEqualToString:haApplianceName]) {
+                notExisted = FALSE;
+            }
+        }
+        if (notExisted) {
+            NSLog(@"%s %@ %@", __func__, haApplianceName, notExisted?@"not existed":@"existed");
+            [_haArray1 addObject:haApplianceName];
+            [sanDatabase httpGetApplianceAllInfoPart2:haApplianceName siteName:_siteName];
         }
     }
-    NSLog(@"%s %@", __func__, haArray);
-    if (notExisted) {
-        [haArray  addObject:haApplianceName];
-        NSArray *engines = [sanDatabase getEnginesByHaApplianceName:haApplianceName];
-        NSLog(@"%s %@", __func__, engines);
-        for (int i=0; i<[engines count]; i++) {
-            /*
-            NSString *serial = [engines objectAtIndex:i];
-            [sanDatabase httpGetEngineCliDmepropBySiteName:siteName serial:serial];
-            [sanDatabase httpGetEngineCliEngineStatusBySiteName:siteName serial:serial];
-            [sanDatabase httpGetEngineCliMirrorBySiteName:siteName serial:serial];
-            [sanDatabase httpGetEngineCliVpdBySiteName:siteName serial:serial];
-            [sanDatabase httpGetEngineDriveInformationBySiteName:siteName serial:serial];
-            [sanDatabase httpGetEngineInitiatorInformationBySiteName:siteName serial:serial];
-             */
-        }
-    }
-}
-
-
-- (void)updateEngineVpdInfo:(NSString *)haApplianceName {
-    NSArray *engines = [sanDatabase getEnginesByHaApplianceName:haApplianceName];
-    NSLog(@"%s %@", __func__, engines);
-    for (int i=0; i<[engines count]; i++) {
-        NSString *serial = [engines objectAtIndex:i];
-        [sanDatabase httpGetEngineCliVpdBySiteName:siteName serial:serial];
-    }
+    NSLog(@"%s haArray(%p)%@", __func__, &_haArray, _haArray);
+    NSLog(@"%s haArray1(%p)%@", __func__, &_haArray1, _haArray1);
 }
 
 

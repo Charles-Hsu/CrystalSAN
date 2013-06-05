@@ -41,6 +41,9 @@
 @property (nonatomic, weak) IBOutlet UIButton *cancel;
 @property (nonatomic, weak) IBOutlet UIButton *confirm;
 
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+
 
 
 /*

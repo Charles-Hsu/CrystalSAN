@@ -67,6 +67,11 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    theDelegate.currentViewController = self;
+}
+
 - (void)viewDidLoad
 {
     /*
