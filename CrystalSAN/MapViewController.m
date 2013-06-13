@@ -233,7 +233,7 @@
     
      //_mapView.transform=CGAffineTransformMakeRotation(-M_PI/2);
     
-    self.MainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewControllerID"];
+    self.mainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewControllerID"];
     self.mainViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     //[self.view addGestureRecognizer:doubleTapGestureRecognizer];
@@ -268,6 +268,18 @@
     [self hideShowSliders:nil];
     
     NSLog(@"end of %s", __func__);
+    
+    /*
+    if ([theDelegate.siteInfoArray count]==0) {
+        ThunderboltSWViewController *thunderSWViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ThunderboltSWViewControllerID"];
+        thunderSWViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        
+        [self presentViewController:thunderSWViewController
+                           animated:YES
+                         completion:nil];
+    }
+     */
+
 
 }
 

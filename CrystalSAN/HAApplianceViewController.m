@@ -422,6 +422,9 @@
         //theLabel.backgroundColor = [UIColor yellowColor];
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.tag = 1;
+        //
+        
+        
         
         //NSLog(@"theButton.tag=%u", theButton.tag);
         
@@ -435,6 +438,7 @@
 	{
         theLabel = (UILabel *)[view viewWithTag:1];
 	}
+    
     
     theLabel.text = [deviceArray objectAtIndex:index];
     

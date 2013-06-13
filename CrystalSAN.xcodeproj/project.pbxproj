@@ -34,6 +34,12 @@
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
 		5647C693175F13D0008AF02E /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 5647C68D175F13D0008AF02E /* server.db */; };
+		5647C69A176035A8008AF02E /* macbookpro.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647C695176035A8008AF02E /* macbookpro.png */; };
+		5647C69B176035A8008AF02E /* macmini.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647C696176035A8008AF02E /* macmini.png */; };
+		5647C69C176035A8008AF02E /* storage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647C697176035A8008AF02E /* storage.png */; };
+		5647C69D176035A8008AF02E /* swBackView.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647C698176035A8008AF02E /* swBackView.png */; };
+		5647C69E176035A8008AF02E /* swFrontView.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647C699176035A8008AF02E /* swFrontView.png */; };
+		5647C6A11760571C008AF02E /* ThunderboltSWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C6A01760571B008AF02E /* ThunderboltSWViewController.m */; };
 		565057C616F7E8CA00CCFF7D /* HAApplianceConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565057C516F7E8C900CCFF7D /* HAApplianceConnectionViewController.m */; };
 		565057FF16F93BE800CCFF7D /* HAApplianceMirrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565057FE16F93BE300CCFF7D /* HAApplianceMirrorViewController.m */; };
 		56552E39170C0BBC000CA5FB /* Device-HBA-degraded.png in Resources */ = {isa = PBXBuildFile; fileRef = 56552E35170C0BBC000CA5FB /* Device-HBA-degraded.png */; };
@@ -106,6 +112,7 @@
 		56956C1116FEDE0100F60A8A /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 56956C0F16FEDE0100F60A8A /* README.markdown */; };
 		56956C1316FF09A900F60A8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56956C1216FF09A900F60A8A /* CoreLocation.framework */; };
 		56956C1717014A0200F60A8A /* FLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56956C151701447700F60A8A /* FLLocation.m */; };
+		569CC8521765AC2600224BBB /* macbookpro_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 569CC8511765AC2600224BBB /* macbookpro_blank.png */; };
 		56AC7655170A9AB100FAAF78 /* Device-Engine-healthy-L.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC764F170A9AB100FAAF78 /* Device-Engine-healthy-L.png */; };
 		56AC7656170A9AB100FAAF78 /* Device-Engine-healthy-R.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC7650170A9AB100FAAF78 /* Device-Engine-healthy-R.png */; };
 		56AC7657170A9AB100FAAF78 /* Device-Engine-healthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AC7651170A9AB100FAAF78 /* Device-Engine-healthy.png */; };
@@ -199,6 +206,13 @@
 		5647C68B175F13D0008AF02E /* engine_time.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = engine_time.xml; sourceTree = "<group>"; };
 		5647C68C175F13D0008AF02E /* site_time.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = site_time.xml; sourceTree = "<group>"; };
 		5647C68D175F13D0008AF02E /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
+		5647C695176035A8008AF02E /* macbookpro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macbookpro.png; sourceTree = "<group>"; };
+		5647C696176035A8008AF02E /* macmini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macmini.png; sourceTree = "<group>"; };
+		5647C697176035A8008AF02E /* storage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage.png; sourceTree = "<group>"; };
+		5647C698176035A8008AF02E /* swBackView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swBackView.png; sourceTree = "<group>"; };
+		5647C699176035A8008AF02E /* swFrontView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swFrontView.png; sourceTree = "<group>"; };
+		5647C69F17605709008AF02E /* ThunderboltSWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThunderboltSWViewController.h; sourceTree = "<group>"; };
+		5647C6A01760571B008AF02E /* ThunderboltSWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThunderboltSWViewController.m; sourceTree = "<group>"; };
 		564D8584174C715E0019D34F /* http-get-site_info.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-get-site_info.php"; path = "CrystalSANServer/http-get-site_info.php"; sourceTree = SOURCE_ROOT; };
 		564D8586174F1E2D0019D34F /* http-insert-config_user.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; name = "http-insert-config_user.php"; path = "CrystalSANServer/http-insert-config_user.php"; sourceTree = SOURCE_ROOT; };
 		565057C416F7E8BC00CCFF7D /* HAApplianceConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAApplianceConnectionViewController.h; sourceTree = "<group>"; };
@@ -685,6 +699,7 @@
 		56956C141701447700F60A8A /* FLLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLLocation.h; sourceTree = "<group>"; };
 		56956C151701447700F60A8A /* FLLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLLocation.m; sourceTree = "<group>"; };
 		569B9B35171E81D600E8D5CE /* update_db.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = update_db.sh; sourceTree = "<group>"; };
+		569CC8511765AC2600224BBB /* macbookpro_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macbookpro_blank.png; sourceTree = "<group>"; };
 		56AC764F170A9AB100FAAF78 /* Device-Engine-healthy-L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Engine-healthy-L.png"; sourceTree = "<group>"; };
 		56AC7650170A9AB100FAAF78 /* Device-Engine-healthy-R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Engine-healthy-R.png"; sourceTree = "<group>"; };
 		56AC7651170A9AB100FAAF78 /* Device-Engine-healthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Device-Engine-healthy.png"; sourceTree = "<group>"; };
@@ -862,6 +877,19 @@
 				5647C68C175F13D0008AF02E /* site_time.xml */,
 			);
 			path = data_xml;
+			sourceTree = "<group>";
+		};
+		5647C694176035A8008AF02E /* thunderbolt */ = {
+			isa = PBXGroup;
+			children = (
+				569CC8511765AC2600224BBB /* macbookpro_blank.png */,
+				5647C695176035A8008AF02E /* macbookpro.png */,
+				5647C696176035A8008AF02E /* macmini.png */,
+				5647C697176035A8008AF02E /* storage.png */,
+				5647C698176035A8008AF02E /* swBackView.png */,
+				5647C699176035A8008AF02E /* swFrontView.png */,
+			);
+			path = thunderbolt;
 			sourceTree = "<group>";
 		};
 		564D8583174B58A40019D34F /* SiteView */ = {
@@ -1437,6 +1465,7 @@
 				5609AC82170D7AD500BB5BE5 /* CalloutBackground.png */,
 				5609AC83170D7AD500BB5BE5 /* CalloutButton.png */,
 				5609AC86170D7B8100BB5BE5 /* SiteViewCarouselBackground.png */,
+				5647C694176035A8008AF02E /* thunderbolt */,
 			);
 			name = images;
 			path = CrystalSAN/images;
@@ -1577,6 +1606,8 @@
 				56EB75491689D06A0082A5D2 /* MainStoryboard.storyboard */,
 				56EB754C1689D06A0082A5D2 /* MainViewController.h */,
 				56EB754D1689D06A0082A5D2 /* MainViewController.m */,
+				5647C69F17605709008AF02E /* ThunderboltSWViewController.h */,
+				5647C6A01760571B008AF02E /* ThunderboltSWViewController.m */,
 				56EB756B1689DFA80082A5D2 /* CoverFlowViewController.h */,
 				56EB756C1689DFA80082A5D2 /* CoverFlowViewController.m */,
 				56956C0C16FEDE0100F60A8A /* MKMapViewZoom */,
@@ -1770,6 +1801,12 @@
 				5609AC85170D7AD500BB5BE5 /* CalloutButton.png in Resources */,
 				5609AC87170D7B8200BB5BE5 /* SiteViewCarouselBackground.png in Resources */,
 				5647C693175F13D0008AF02E /* server.db in Resources */,
+				5647C69A176035A8008AF02E /* macbookpro.png in Resources */,
+				5647C69B176035A8008AF02E /* macmini.png in Resources */,
+				5647C69C176035A8008AF02E /* storage.png in Resources */,
+				5647C69D176035A8008AF02E /* swBackView.png in Resources */,
+				5647C69E176035A8008AF02E /* swFrontView.png in Resources */,
+				569CC8521765AC2600224BBB /* macbookpro_blank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1812,6 +1849,7 @@
 				56AD9C0B17350DFF0088BEED /* LoginViewController.m in Sources */,
 				56214F7A1740E9EB00D121FD /* SyncManager.m in Sources */,
 				56F8BD9A175B25B50039541C /* UILogoutButton.m in Sources */,
+				5647C6A11760571C008AF02E /* ThunderboltSWViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

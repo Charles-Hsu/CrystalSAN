@@ -44,7 +44,7 @@
                              @"RAID View",
                              @"HA Appliance View",
                              @"Volume View",
-                             @"Datacenter View",
+                             @"Access Control Management", // Datacenter View
                              @"Rack View",
                              @"Connection View",
                              @"Data Flow View",
@@ -138,6 +138,10 @@
 
     self.hbaViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HbaViewControllerID"];
     self.hbaViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    self.thunderSWViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ThunderboltSWViewControllerID"];
+    self.thunderSWViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
 
     //[theDelegate getSanVmirrorLists];
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
@@ -261,10 +265,10 @@
 
 #pragma mark - event handler
 - (void)onItemPress:(id)sender {
-    //NSLog(@"%s: %@",__func__, sender);
+    NSLog(@"%s: %@",__func__, sender);
     
     UIButton *theButton = (UIButton *)sender;
-    //NSLog(@"theButton.tag==%u", theButton.tag);
+    NSLog(@"theButton.tag==%u", theButton.tag);
     switch (theButton.tag) {
         //case 201:
         //    theDelegate.nextViewController = self.raidViewController;
@@ -291,6 +295,10 @@
         //case 200 + ITEM_BUTTON_VIEW_HBA_TAG +1:
         //    theDelegate.nextViewController = self.hbaViewController;
         //    break;
+        case 204: // Thunderbolt SW Controller
+            theDelegate.nextViewController = self.thunderSWViewController;
+            [self presentNextViewController:sender];
+            break;
         default:
             break;
     }

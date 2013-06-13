@@ -14,7 +14,7 @@
 #import "VolumeViewController.h"
 #import "DriveViewController.h"
 #import "HbaViewController.h"
-
+#import "ThunderboltSWViewController.h"
 
 #import "LoginViewController.h"
 
@@ -35,6 +35,7 @@
 @property (strong, nonatomic) HbaViewController *hbaViewController;
 
 @property (strong, nonatomic) LoginViewController *loginViewController;
+@property (strong, nonatomic) ThunderboltSWViewController *thunderSWViewController;
 
 @property (strong, nonatomic) NSMutableArray *descriptions;
 
