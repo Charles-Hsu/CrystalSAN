@@ -1,2 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<sites><site><engines><engine name='engine_39'><cli_vpd seconds='1368760927'><uptime>12d 03:10:09</uptime><time>Thursday 5/16/2013 18:58:46</time><fw_date>May 2 2013 16:48:30</fw_date></cli_vpd><cli_rtc seconds='1368760927'><time>18:58:48</time></cli_rtc></engine><engine name='engine_40'><cli_vpd seconds='1368760927'><uptime>13d 01:31:06</uptime><time>Friday 5/17/2013 11:13:37</time><fw_date>May 2 2013 16:48:30</fw_date></cli_vpd><cli_rtc seconds='1368760927'><time>11:13:39</time></cli_rtc></engine></engines></site></sites>
