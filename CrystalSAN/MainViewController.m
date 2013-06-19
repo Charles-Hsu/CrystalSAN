@@ -113,7 +113,7 @@
     //NSLog(@"viewpointOffset=(%f,%f)", carousel.viewpointOffset.width, carousel.viewpointOffset.height);
     //NSLog(@"contentOffset=(%f,%f)", carousel.contentOffset.width, carousel.contentOffset.height);
 
-    [carousel scrollToItemAtIndex:1 animated:TRUE];
+    [carousel scrollToItemAtIndex:3 animated:TRUE];
     
     // Here does not use the method
     // -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender defined in storyboard,
@@ -150,7 +150,18 @@
                                              selector:@selector(presentNextViewController:)
                                                  name:@"presentNextViewControllerNotification"
                                                object:nil];
-    theDelegate.nextViewController = self.haApplianceViewController;
+    switch ([theDelegate.sanDatabase getDefaultViewController]) {
+        case 1:
+            theDelegate.nextViewController = self.haApplianceViewController;
+            break;
+        case 4:
+            theDelegate.nextViewController = self.thunderSWViewController;
+            break;
+        default:
+            theDelegate.nextViewController = self.thunderSWViewController;
+            break;
+    }
+    
     [self.viewForToggleSliders addGestureRecognizer:tripleTapGestureRecognizer];
     
     [self hideShowSliders:nil];
@@ -167,7 +178,7 @@
                        animated:YES
                      completion:nil];
     
-    [theDelegate.sanDatabase httpGetWwpnDataBySiteName:theDelegate.siteName];
+    //[theDelegate.sanDatabase httpGetWwpnDataBySiteName:theDelegate.siteName];
     
 }
 
@@ -297,7 +308,15 @@
         //    break;
         case 204: // Thunderbolt SW Controller
             theDelegate.nextViewController = self.thunderSWViewController;
-            [self presentNextViewController:sender];
+            if ([theDelegate IsCurrentSiteLogin]) {
+                
+                [self presentNextViewController:sender];
+                
+            } else {
+                
+                [self loginView:nil];
+                
+            }
             break;
         default:
             break;

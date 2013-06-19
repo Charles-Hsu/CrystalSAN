@@ -3613,7 +3613,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.34000000000000002" minValue="0.0010000000474974513" maxValue="1.4900000095367432" id="Izr-1b-J8s" userLabel="Horizontal Slider - Arc">
+                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="arcSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.49" minValue="0.0010000000474974513" maxValue="1.4900000095367432" id="Izr-1b-J8s" userLabel="Horizontal Slider - Arc">
                                 <rect key="frame" x="121" y="601" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -3633,7 +3633,7 @@
                                     <action selector="updateValue:" destination="Gny-qt-EjL" eventType="valueChanged" id="m1n-Bm-RwD"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="3" id="d0b-eq-MsA" userLabel="Horizontal Slider - Spacing">
+                            <slider opaque="NO" contentMode="scaleToFill" restorationIdentifier="spacingSlider" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="2" maxValue="3" id="d0b-eq-MsA" userLabel="Horizontal Slider - Spacing">
                                 <rect key="frame" x="121" y="649" width="90" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -3667,7 +3667,7 @@
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="arcSliderValue" text="0.34" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gb6-fI-YDq">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="arcSliderValue" text="1.49" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gb6-fI-YDq">
                                 <rect key="frame" x="215" y="598" width="44" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -3681,7 +3681,7 @@
                                 <color key="textColor" red="0.40553252550000002" green="0.40553252550000002" blue="0.40553252550000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderValue" text="2.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jao-cH-32K">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="spacingSliderValue" text="2.50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jao-cH-32K">
                                 <rect key="frame" x="215" y="654" width="44" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -3730,67 +3730,259 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onHome:" destination="Gny-qt-EjL" eventType="touchUpInside" id="28q-ir-Av5"/>
+                                    <action selector="onHome:" destination="Gny-qt-EjL" eventType="touchUpInside" id="G9B-FU-B0k"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RAID 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u9D-7R-YnC">
-                                <rect key="frame" x="190" y="569" width="119" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="host01" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Host01" textAlignment="center" minimumFontSize="17" id="wIZ-eB-eSB">
+                                <rect key="frame" x="36" y="304" width="152" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RAID 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NU4-TX-5B2">
-                                <rect key="frame" x="554" y="580" width="119" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.35529853789999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="host02" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Host02" textAlignment="center" minimumFontSize="17" id="ang-dH-cK1">
+                                <rect key="frame" x="36" y="195" width="152" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RAID 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rKU-0a-yef">
-                                <rect key="frame" x="714" y="563" width="119" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.35529853789999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="host03" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Host03" textAlignment="center" minimumFontSize="17" id="lBo-it-8le">
+                                <rect key="frame" x="196" y="149" width="152" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RAID 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4vZ-Q8-9l0">
-                                <rect key="frame" x="355" y="580" width="119" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.35529853789999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="host04" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Host04" textAlignment="center" minimumFontSize="17" id="p8l-C0-R2a">
+                                <rect key="frame" x="356" y="149" width="152" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="toz-ga-LcE">
-                                <rect key="frame" x="207" y="536" width="91" height="29"/>
+                                <color key="backgroundColor" red="1" green="0.35529853789999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="host05" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Host05" textAlignment="center" minimumFontSize="17" id="oCO-Dx-v1Z">
+                                <rect key="frame" x="516" y="149" width="152" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.73138469689999996" blue="0.95394113489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.35529853789999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="host06" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Host06" textAlignment="center" minimumFontSize="17" id="4pU-7w-DcA">
+                                <rect key="frame" x="676" y="149" width="152" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.35529853789999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="host07" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Host07" textAlignment="center" minimumFontSize="17" id="Meq-HZ-vZ7">
+                                <rect key="frame" x="836" y="195" width="152" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.35529853789999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="host08" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Host08" textAlignment="center" minimumFontSize="17" id="HBB-Vt-uDZ">
+                                <rect key="frame" x="836" y="304" width="152" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.35529853789999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pc01" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="TOd-4g-SNY" userLabel="Button - pc01">
+                                <rect key="frame" x="36" y="304" width="152" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="LUN0-3">
+                                <state key="normal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="hostAuthorityLUNsDiselected:" destination="Gny-qt-EjL" eventType="touchUpInside" id="eVh-3l-aCI"/>
+                                    <action selector="hostAuthorityLUNsSelected:" destination="Gny-qt-EjL" eventType="touchDown" id="PJT-8h-8MY"/>
+                                    <action selector="selectHost:" destination="Gny-qt-EjL" eventType="touchDown" id="XDg-Ak-cGV"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lXZ-SX-sun">
-                                <rect key="frame" x="207" y="506" width="91" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pc02" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="sE5-nO-p1W" userLabel="Button - pc02">
+                                <rect key="frame" x="36" y="195" width="152" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="LUN0-2">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hostAuthorityLUNsDiselected:" destination="Gny-qt-EjL" eventType="touchUpInside" id="hcU-7w-0rK"/>
+                                    <action selector="hostAuthorityLUNsSelected:" destination="Gny-qt-EjL" eventType="touchDown" id="9xi-mV-jxw"/>
+                                    <action selector="selectHost:" destination="Gny-qt-EjL" eventType="touchDown" id="4Ju-eq-s3v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pc03" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Tyt-bE-yZT" userLabel="Button - pc03">
+                                <rect key="frame" x="196" y="149" width="152" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hostAuthorityLUNsDiselected:" destination="Gny-qt-EjL" eventType="touchUpInside" id="aag-PU-LkO"/>
+                                    <action selector="hostAuthorityLUNsSelected:" destination="Gny-qt-EjL" eventType="touchDown" id="sdQ-7W-VP7"/>
+                                    <action selector="selectHost:" destination="Gny-qt-EjL" eventType="touchDown" id="GWW-kB-mLl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pc04" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="kDf-Oj-nY3" userLabel="Button - pc04">
+                                <rect key="frame" x="356" y="149" width="152" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hostAuthorityLUNsDiselected:" destination="Gny-qt-EjL" eventType="touchUpInside" id="oYQ-1b-Lor"/>
+                                    <action selector="hostAuthorityLUNsSelected:" destination="Gny-qt-EjL" eventType="touchDown" id="ZQd-Os-Yxd"/>
+                                    <action selector="selectHost:" destination="Gny-qt-EjL" eventType="touchDown" id="OzT-Xf-yJ4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pc05" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ZOu-gb-zQZ" userLabel="Button - pc05">
+                                <rect key="frame" x="516" y="148" width="152" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hostAuthorityLUNsDiselected:" destination="Gny-qt-EjL" eventType="touchUpInside" id="y7j-cO-8E4"/>
+                                    <action selector="hostAuthorityLUNsSelected:" destination="Gny-qt-EjL" eventType="touchDown" id="8zG-X6-h28"/>
+                                    <action selector="selectHost:" destination="Gny-qt-EjL" eventType="touchDown" id="nC3-zv-h6A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pc06" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Wa2-6P-Srv" userLabel="Button - pc06">
+                                <rect key="frame" x="674" y="148" width="152" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hostAuthorityLUNsDiselected:" destination="Gny-qt-EjL" eventType="touchUpInside" id="1fN-FK-aiD"/>
+                                    <action selector="hostAuthorityLUNsSelected:" destination="Gny-qt-EjL" eventType="touchDown" id="XOc-CZ-k5y"/>
+                                    <action selector="selectHost:" destination="Gny-qt-EjL" eventType="touchDown" id="gk7-sR-s50"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pc07" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="KeM-Z9-8YV" userLabel="Button - pc07">
+                                <rect key="frame" x="834" y="195" width="152" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hostAuthorityLUNsDiselected:" destination="Gny-qt-EjL" eventType="touchUpInside" id="kkh-0h-w2W"/>
+                                    <action selector="hostAuthorityLUNsSelected:" destination="Gny-qt-EjL" eventType="touchDown" id="kV4-4h-6iZ"/>
+                                    <action selector="selectHost:" destination="Gny-qt-EjL" eventType="touchDown" id="yb0-Tn-5eh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="pc08" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Gtx-My-Lpw" userLabel="Button - pc08">
+                                <rect key="frame" x="836" y="305" width="152" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hostAuthorityLUNsDiselected:" destination="Gny-qt-EjL" eventType="touchUpInside" id="2E2-3m-3NA"/>
+                                    <action selector="hostAuthorityLUNsSelected:" destination="Gny-qt-EjL" eventType="touchDown" id="fE2-zU-GRG"/>
+                                    <action selector="selectHost:" destination="Gny-qt-EjL" eventType="touchDown" id="8CY-vK-hYj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="140" contentMode="left" text="RAID 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u9D-7R-YnC">
+                                <rect key="frame" x="215" y="451" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="140" contentMode="left" text="RAID 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NU4-TX-5B2">
+                                <rect key="frame" x="545" y="451" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="140" contentMode="left" text="RAID 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rKU-0a-yef">
+                                <rect key="frame" x="705" y="451" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="140" contentMode="left" text="RAID 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4vZ-Q8-9l0">
+                                <rect key="frame" x="382" y="451" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="toz-ga-LcE">
+                                <rect key="frame" x="218" y="561" width="91" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.68740035076530615" green="0.0" blue="0.0074589855623190208" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="LUN0-3">
+                                    <color key="titleColor" red="0.59707828443877553" green="0.59707828443877553" blue="0.59707828443877553" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="LUN0-1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ia7-YI-0Dt">
-                                <rect key="frame" x="207" y="477" width="91" height="29"/>
+                            <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lXZ-SX-sun">
+                                <rect key="frame" x="218" y="531" width="91" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.73138469689999996" blue="0.95394113489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.80151865433673475" green="0.0" blue="0.0086972839975583225" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="LUN0-2">
+                                    <color key="titleColor" red="0.59707828443877553" green="0.59707828443877553" blue="0.59707828443877553" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="101" contentMode="scaleToFill" restorationIdentifier="" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ia7-YI-0Dt">
+                                <rect key="frame" x="218" y="502" width="91" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90619021045918369" green="0.0" blue="0.009833075716363212" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN0-1">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3800,10 +3992,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="LUN0-0" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Itn-sZ-1QD">
-                                <rect key="frame" x="207" y="447" width="91" height="31"/>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" restorationIdentifier="" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Itn-sZ-1QD">
+                                <rect key="frame" x="218" y="472" width="91" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.010851006337158076" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN0-0">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -3813,36 +4005,36 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WR2-zg-53x">
-                                <rect key="frame" x="369" y="544" width="91" height="29"/>
+                            <button opaque="NO" tag="113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WR2-zg-53x">
+                                <rect key="frame" x="382" y="561" width="91" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.50175382653061229" blue="0.025677091772511443" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN1-3">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.59707828443877553" green="0.59707828443877553" blue="0.59707828443877553" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hHR-Xn-7GP">
-                                <rect key="frame" x="369" y="514" width="91" height="31"/>
+                            <button opaque="NO" tag="112" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hHR-Xn-7GP">
+                                <rect key="frame" x="382" y="531" width="91" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.055158147713522662" green="0.72066326530612246" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN1-2">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.59707828443877553" green="0.59707828443877553" blue="0.59707828443877553" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pBb-df-H76">
-                                <rect key="frame" x="369" y="486" width="91" height="29"/>
+                            <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pBb-df-H76">
+                                <rect key="frame" x="382" y="503" width="91" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.056202435366156135" green="0.84105947066326525" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN1-1">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3852,10 +4044,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1AA-eH-5mT">
-                                <rect key="frame" x="369" y="456" width="91" height="31"/>
+                            <button opaque="NO" tag="110" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1AA-eH-5mT">
+                                <rect key="frame" x="382" y="473" width="91" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.076538031517525251" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN1-0">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3865,88 +4057,36 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sn0-UZ-hse">
-                                <rect key="frame" x="733" y="518" width="91" height="29"/>
+                            <button opaque="NO" tag="123" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5uV-pg-TIG">
+                                <rect key="frame" x="545" y="561" width="91" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.73138469689999996" blue="0.95394113489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="LUN3-3">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TPW-sB-H2Z">
-                                <rect key="frame" x="733" y="488" width="91" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="LUN3-2">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QRh-5Y-86N">
-                                <rect key="frame" x="733" y="459" width="91" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.73138469689999996" blue="0.95394113489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="LUN3-1">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oZj-mb-RoW">
-                                <rect key="frame" x="733" y="429" width="91" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="LUN3-0">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5uV-pg-TIG">
-                                <rect key="frame" x="574" y="544" width="91" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.56068377022298466" green="0.0" blue="0.56307796556122447" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN2-3">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.59707828443877553" green="0.59707828443877553" blue="0.59707828443877553" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U5s-Mc-wgg">
-                                <rect key="frame" x="574" y="514" width="91" height="31"/>
+                            <button opaque="NO" tag="122" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U5s-Mc-wgg">
+                                <rect key="frame" x="545" y="531" width="91" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.64893495509473675" green="0.0" blue="0.65170599489795911" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN2-2">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.59707828443877553" green="0.59707828443877553" blue="0.59707828443877553" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UuK-ie-gub">
-                                <rect key="frame" x="574" y="486" width="91" height="29"/>
+                            <button opaque="NO" tag="121" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UuK-ie-gub">
+                                <rect key="frame" x="545" y="503" width="91" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.76895815412877255" green="0.0" blue="0.77224170918367352" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN2-1">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3956,10 +4096,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c8S-sv-wft">
-                                <rect key="frame" x="574" y="456" width="91" height="31"/>
+                            <button opaque="NO" tag="120" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c8S-sv-wft">
+                                <rect key="frame" x="545" y="473" width="91" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.99574802161570375" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LUN2-0">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3969,15 +4109,58 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" id="nFJ-OR-0mK" customClass="iCarousel">
-                                <rect key="frame" x="80" y="86" width="859" height="204"/>
+                            <button opaque="NO" tag="133" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sn0-UZ-hse">
+                                <rect key="frame" x="705" y="561" width="91" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Gny-qt-EjL" id="fwH-eV-pGf"/>
-                                    <outlet property="delegate" destination="Gny-qt-EjL" id="E8J-Pn-hWF"/>
-                                </connections>
-                            </view>
+                                <color key="backgroundColor" red="0.0" green="0.2897921326668042" blue="0.57469706632653061" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="LUN3-3">
+                                    <color key="titleColor" red="0.59707828443877553" green="0.59707828443877553" blue="0.59707828443877553" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="132" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TPW-sB-H2Z">
+                                <rect key="frame" x="705" y="531" width="91" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.36160703695439544" blue="0.71711575255102034" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="LUN3-2">
+                                    <color key="titleColor" red="0.59707828443877553" green="0.59707828443877553" blue="0.59707828443877553" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="131" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QRh-5Y-86N">
+                                <rect key="frame" x="705" y="502" width="91" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.41717163334483659" blue="0.82730787627551017" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="LUN3-1">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="130" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oZj-mb-RoW">
+                                <rect key="frame" x="705" y="472" width="91" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="LUN3-0">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -3987,7 +4170,7 @@
                         <outlet property="arcLabel" destination="6hC-aE-LWj" id="ugU-7T-ZSo"/>
                         <outlet property="arcSlider" destination="Izr-1b-J8s" id="e79-V2-i4m"/>
                         <outlet property="arcValue" destination="gb6-fI-YDq" id="hA8-cy-NdZ"/>
-                        <outlet property="carousel" destination="nFJ-OR-0mK" id="Wuf-pN-Jeh"/>
+                        <outlet property="homeButton" destination="8yH-JM-VM3" id="AwD-HK-fn6"/>
                         <outlet property="lun0_0" destination="Itn-sZ-1QD" id="QAA-cM-M0N"/>
                         <outlet property="lun0_1" destination="ia7-YI-0Dt" id="Edv-3p-54a"/>
                         <outlet property="lun0_2" destination="lXZ-SX-sun" id="58Y-VZ-563"/>
@@ -4004,6 +4187,14 @@
                         <outlet property="lun3_1" destination="QRh-5Y-86N" id="r8l-Cc-b9f"/>
                         <outlet property="lun3_2" destination="TPW-sB-H2Z" id="mUv-TI-nCo"/>
                         <outlet property="lun3_3" destination="sn0-UZ-hse" id="zyq-PK-8sD"/>
+                        <outlet property="pc1" destination="TOd-4g-SNY" id="cAV-yM-Mik"/>
+                        <outlet property="pc2" destination="sE5-nO-p1W" id="suQ-ec-BJR"/>
+                        <outlet property="pc3" destination="Tyt-bE-yZT" id="1ca-yE-sdb"/>
+                        <outlet property="pc4" destination="kDf-Oj-nY3" id="TfK-S7-HNq"/>
+                        <outlet property="pc5" destination="ZOu-gb-zQZ" id="SSV-qt-WcP"/>
+                        <outlet property="pc6" destination="Wa2-6P-Srv" id="Fu5-Jl-zhT"/>
+                        <outlet property="pc7" destination="KeM-Z9-8YV" id="eI7-Io-cfj"/>
+                        <outlet property="pc8" destination="Gtx-My-Lpw" id="VhE-xH-hQu"/>
                         <outlet property="radiusLabel" destination="olL-2L-e4B" id="DZz-YQ-3rQ"/>
                         <outlet property="radiusSlider" destination="crY-Bi-LBx" id="gGD-GA-LX3"/>
                         <outlet property="radiusValue" destination="Fl5-ug-4mn" id="upV-q3-Vbp"/>
@@ -4018,7 +4209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdY-p1-xVT" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-463" y="1249"/>
+            <point key="canvasLocation" x="-373" y="1285"/>
         </scene>
     </scenes>
     <resources>
@@ -4369,13 +4560,22 @@
             <relationships>
                 <relationship kind="action" name="aMethod:"/>
                 <relationship kind="action" name="changeSWSide:"/>
+                <relationship kind="action" name="hostAuthorityLUNsDiselected:"/>
+                <relationship kind="action" name="hostAuthorityLUNsSelected:"/>
+                <relationship kind="action" name="imageMoved:withEvent:"/>
+                <relationship kind="action" name="logout:"/>
                 <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onHome:"/>
+                <relationship kind="action" name="selectHost:"/>
+                <relationship kind="action" name="toggleReadMode:"/>
+                <relationship kind="action" name="toggleReadWriteMode:"/>
                 <relationship kind="action" name="updateValue:"/>
                 <relationship kind="outlet" name="arcLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="arcSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="arcValue" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="carousel" candidateClass="iCarousel"/>
                 <relationship kind="outlet" name="carouselDriver" candidateClass="iCarousel"/>
+                <relationship kind="outlet" name="homeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="logoutButton" candidateClass="UILogoutButton"/>
                 <relationship kind="outlet" name="lun0_0" candidateClass="UIButton"/>
@@ -4401,6 +4601,7 @@
                 <relationship kind="outlet" name="pc5" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="pc6" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="pc7" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pc8" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="radiusValue" candidateClass="UILabel"/>
@@ -4410,6 +4611,8 @@
                 <relationship kind="outlet" name="spacingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spacingSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="spacingValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="templateForHosts" candidateClass="UIView"/>
+                <relationship kind="outlet" name="templateforraids" candidateClass="UIView"/>
                 <relationship kind="outlet" name="thunderboltSWButton" candidateClass="UIButton"/>
             </relationships>
         </class>
@@ -4457,7 +4660,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Qh7-Kf-rqq"/>
         <segue reference="jcG-tU-yxa"/>
-        <segue reference="LbK-6D-GUu"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -282,7 +282,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     if ([apiResponse isEqualToString:@"1"]) {
         theDelegate.siteName = siteName.text;
-        [theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
+        //[theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
         [theDelegate setCurrentSiteLogin];
     }
     

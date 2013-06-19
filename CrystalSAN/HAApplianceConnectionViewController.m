@@ -94,7 +94,7 @@
         theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         //set up carousel data
         carousel = [[iCarousel alloc] initWithFrame:CGRectMake(80, 128, 864, 80)];
-        //carousel.backgroundColor = [UIColor cyanColor];
+        carousel.backgroundColor = [UIColor cyanColor];
         
     }
     return self;
@@ -767,6 +767,8 @@
         
         itemWidth = theItemImage.size.width; // 250px
         itemHeight = theItemImage.size.height;
+        
+        NSLog(@"%s image.width=%f, %f", __func__, itemWidth, itemHeight);
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);

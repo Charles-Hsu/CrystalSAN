@@ -87,6 +87,9 @@
 
 - (NSString *)hostURLPathWithPHP:(NSString *)php;
 
+- (void)setDefaultViewController:(NSInteger)vcNum;
+- (NSInteger)getDefaultViewController;
+
 - (void)loadUserPreference;
 
 @end

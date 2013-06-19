@@ -31,7 +31,7 @@
     AppDelegate *theDelegate;
     MBProgressHUD *hud;
     BOOL isHUDshowing;
-    int currentHostIndex;
+    //int currentHostIndex;
 }
 
 @property (nonatomic) UIImagePickerController *imagePickerController;
@@ -56,6 +56,11 @@
     UITapGestureRecognizer *singleFingerTap;
     UITapGestureRecognizer *doubleTapGestureRecognizer;
     //UITapGestureRecognizer *singleTapGestureRecognizerOnHost;
+    
+    UITextField *currentHostTextField;
+    //NSArray *hostSelectedStatus;
+    
+    char hostSelectedStatus[8];// = {1,23,17,4,-5,100};
 }
 
 @synthesize carousel;
@@ -73,6 +78,8 @@
 @synthesize lun3_0, lun3_1, lun3_2, lun3_3;
 
 @synthesize thunderboltSWButton;
+@synthesize templateforraids;
+@synthesize templateForHosts;
 
 - (IBAction)logout:(id)sender {
     [theDelegate setCurrentSiteLogout];
@@ -89,105 +96,418 @@
     if (self) {
         theDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         //set up carousel data
-        //carousel = [[iCarousel alloc] initWithFrame:CGRectMake(80, 128, 864, 80)];
+        carousel = [[iCarousel alloc] initWithFrame:CGRectMake(80, 88, 864, 80)];
         //carousel.backgroundColor = [UIColor cyanColor];
+        
+        carouselDriver = [[iCarousel alloc] initWithFrame:CGRectMake(80, 500, 864, 180)];
+        //carouselDriver.backgroundColor = [UIColor cyanColor];
+        //carousel.type = iCarouselTypeInvertedCylinder;
+        carouselDriver.type = iCarouselTypeRotary;
+        //carousel.type = iCarouselTypeInvertedRotary;// Rotary;
+        carouselDriver.contentOffset = CGSizeMake(0, -100);
+        carouselDriver.viewpointOffset = CGSizeMake(0, -150);
+        //carousel.decelerationRate = 0.9;
     }
     return self;
 }
 
 
-- (void)showHostInformationOnHUD:(id)sender {
-    NSLog(@"%s %@", __func__, sender);
-    
-    const char* className = class_getName([sender class]);
-    NSLog(@"class name of sender = %s", className);
-    
-    if(!isHUDshowing) {
-        isHUDshowing = YES;
-        
-        CGRect mainFrame = self.view.bounds;
-        //CGRect hudFrame = CGRectMake(0, 0, mainFrame.size.width/2, mainFrame.size.height/2);
-        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 600, mainFrame.size.height/2)];
-        scrollView.delegate = self;
-        
-        scrollView.pagingEnabled = YES;
-        int pages = 7;
-        scrollView.contentSize = CGSizeMake(600 * pages, mainFrame.size.height/2);
-        int width = 600;
-        int height = mainFrame.size.height/2;
-        
-        for (int i=0; i<pages; i++) {
-            CGRect hudFrame = CGRectMake(width*i, 0, width, height);
-            
-            //scrollView.alwaysBounceVertical = YES;
-            //scrollView.alwaysBounceHorizontal = YES;
-            
-            UITextView *textView = [[UITextView alloc] initWithFrame:hudFrame];
-            textView.editable = FALSE;
-            
-            textView.text = [NSString stringWithFormat:@"%d", i+1];
-            textView.textColor = [UIColor whiteColor];
-            textView.backgroundColor = [UIColor clearColor];
-            textView.textAlignment = NSTextAlignmentCenter;
-            
-            textView.font = [UIFont fontWithName:@"SourceCodePro-Bold" size:30.0];
-            
-            [scrollView addSubview:textView];
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [button addTarget:self
-                       action:@selector(aMethod:)
-             forControlEvents:UIControlEventTouchDown];
-            [button setTitle:@"Photo Library" forState:UIControlStateNormal];
-            button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
-            
-            [scrollView addSubview:button];
-            
-
-        }
-        
-        //[tableView addSubview:scrollView];
-        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.frame = CGRectMake(0, 0, 120, 143);
-        
-        hud.mode = MBProgressHUDModeCustomView;
-        hud.labelText = nil;
-        hud.detailsLabelText = nil;
-        
-        hud.margin = 10.f;
-        hud.yOffset = 150.f;
-        hud.removeFromSuperViewOnHide = YES;
-        hud.backgroundColor = [UIColor clearColor];
-        
-        hud.customView = scrollView;//customView;
-        //hud.customView = tableView;
-        
-        CGRect frame = scrollView.frame;
-        frame.origin.x = frame.size.width * currentHostIndex;
-        frame.origin.y = 0;
-        [scrollView scrollRectToVisible:frame animated:NO];
-        
-    }
-}
 
 - (void)insertDEMOdata
 {
     NSLog(@"%s", __func__);
     // host0
-    [[self.hostArrayForLUNArray objectAtIndex:0] addObject:[[NSArray alloc] initWithObjects:self.lun0_0, @"RW", nil]];
-    [[self.hostArrayForLUNArray objectAtIndex:0] addObject:[[NSArray alloc] initWithObjects:self.lun3_0, @"RW", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:0] addObject:[[NSArray alloc] initWithObjects:self.lun0_0, @"R", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:0] addObject:[[NSArray alloc] initWithObjects:self.lun3_0, @"R", nil]];
     // host1
-    [[self.hostArrayForLUNArray objectAtIndex:1] addObject:[[NSArray alloc] initWithObjects:self.lun1_0, @"RW", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:1] addObject:[[NSArray alloc] initWithObjects:self.lun1_0, @"R", nil]];
     // host2
-    [[self.hostArrayForLUNArray objectAtIndex:2] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"RW", nil]];
-    [[self.hostArrayForLUNArray objectAtIndex:3] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"RW", nil]];
-    [[self.hostArrayForLUNArray objectAtIndex:4] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"RW", nil]];
-    [[self.hostArrayForLUNArray objectAtIndex:5] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"RW", nil]];
-    [[self.hostArrayForLUNArray objectAtIndex:6] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"RW", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:2] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"R", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:3] addObject:[[NSArray alloc] initWithObjects:self.lun3_1, @"R", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:4] addObject:[[NSArray alloc] initWithObjects:self.lun3_2, @"R", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:5] addObject:[[NSArray alloc] initWithObjects:self.lun0_2, @"R", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:6] addObject:[[NSArray alloc] initWithObjects:self.lun0_1, @"R", nil]];
     //[[self.hostArrayForLUNArray objectAtIndex:7] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"RW", nil]];
     
     //[carousel reloadData];
     
+}
+
+
+- (void)onLunPress:(id)sender {
+    NSLog(@"%s %@", __func__, sender);
+    UIButton *button = (UIButton *)sender;
+    NSLog(@"%s %@, borderWidth=%f", __func__, button.currentTitle, button.layer.borderWidth);
+    
+    for (UIView *subview in self.view.subviews) { //self.view.subviews
+        if (subview.tag >= 100 && subview.tag < 140) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                UIButton *btn = (UIButton *)subview;
+                NSLog(@"%s %@", __func__, btn.currentTitle);
+                if ([button.currentTitle isEqualToString:btn.currentTitle]) {
+                    btn.layer.borderWidth = 3.0;
+                    btn.layer.borderColor = [UIColor yellowColor].CGColor;
+                }
+            }
+        }
+    }
+
+    
+    
+    
+}
+
+- (void)onLunPressCancel:(id)sender {
+    NSLog(@"%s %@", __func__, sender);
+    UIButton *button = (UIButton *)sender;
+
+    for (UIView *subview in self.view.subviews) { //self.view.subviews
+        if (subview.tag >= 100 && subview.tag < 140) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                UIButton *btn = (UIButton *)subview;
+                NSLog(@"%s %@", __func__, btn.currentTitle);
+                if ([button.currentTitle isEqualToString:btn.currentTitle]) {
+                    btn.layer.borderWidth = 0.0;
+                    btn.layer.borderColor = [UIColor blackColor].CGColor;
+                }
+            }
+        }
+    }
+}
+
+
+- (void)drawRaidLayout:(NSString *)lunString {
+    
+}
+
+
+- (void)drawHostsLayout {
+    NSLog(@"%s", __func__);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    for (UIView *subview in self.view.subviews) { //self.view.subviews
+        NSRange range = [subview.restorationIdentifier rangeOfString:@"host"];
+        if (range.location != NSNotFound) {
+            if ([subview isKindOfClass:[UITextField class]]) {
+                
+                
+                UITextField *textField = (UITextField *)subview;
+                CGRect frame = textField.frame;
+                CGSize size = frame.size;
+                //NSLog(@"(w,h)=(%f,%f), prefered width=%f", size.height, size.width, size.width/13.0);
+                NSString *hostName = subview.restorationIdentifier;
+                NSInteger hostNo = [[hostName substringFromIndex:(range.location+range.length)] integerValue];
+                //NSLog(@"%@ hostNo=%d", subview.restorationIdentifier, hostNo);
+                //UITextField *text = (UITextField *)subview;
+                //text.text = @"Hello";
+                NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:(hostNo-1)];
+                //NSLog(@"[lunForHost count] = %d", [lunForHost count]);
+                for (int i=0; i<[lunForHost count]; i++) {
+                    UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+                    NSString *auth = [[lunForHost objectAtIndex:i] objectAtIndex:1];
+                    //NSLog(@"%d %@ %@", i, btn.currentTitle, auth);
+                    //btn.frame = CGRectMake(0, 0, size.width/13.0, itemHeight);
+                }
+                
+                for (UIView *subview in textField.subviews) {
+                    //NSLog(@"subview=%@", subview);
+                    [subview removeFromSuperview];
+                }
+                
+                NSArray *raidsForLuns = [[NSArray alloc] initWithObjects:
+                                         [[NSMutableArray alloc] init],
+                                         [[NSMutableArray alloc] init],
+                                         [[NSMutableArray alloc] init],
+                                         [[NSMutableArray alloc] init], nil];
+                UIButton *btn = nil;
+                for (int i=0; i<[lunForHost count]; i++) {
+                    btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+                    NSString *authority = [[lunForHost objectAtIndex:i] objectAtIndex:1];
+                    //NSLog(@"%d. btn = %@ (%@)", i, btn.currentTitle, authority);
+                    if ([btn.currentTitle rangeOfString:@"LUN0-"].location != NSNotFound) {
+                        [[raidsForLuns objectAtIndex:0] addObject:[lunForHost objectAtIndex:i]];
+                    } else if ([btn.currentTitle rangeOfString:@"LUN1-"].location != NSNotFound) {
+                        [[raidsForLuns objectAtIndex:1] addObject:[lunForHost objectAtIndex:i]];
+                    } else if ([btn.currentTitle rangeOfString:@"LUN2-"].location != NSNotFound) {
+                        [[raidsForLuns objectAtIndex:2] addObject:[lunForHost objectAtIndex:i]];
+                    } else if ([btn.currentTitle rangeOfString:@"LUN3-"].location != NSNotFound) {
+                        [[raidsForLuns objectAtIndex:3] addObject:[lunForHost objectAtIndex:i]];
+                    }
+                }
+                
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                int currentRaid = 0;
+                for (int j=0; j<4; j++) {
+                    NSMutableArray *raid_luns_org = [raidsForLuns objectAtIndex:j];
+                    //NSLog(@"[raid_luns=%p]", raid_luns);
+                    //[raid_luns sortUsingSelector:@selector(compareLUNs:)];
+                    
+                    NSArray *raid_luns = [raid_luns_org sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                        //NSString *label1 = ((UIButton*)obj1).currentTitle;
+                        //NSString *label2 = ((UIButton*)obj2).currentTitle;
+                        //NSNumber *second = [(Request*)b priorityID];
+                        //NSLog(@"obj1 %p %s@ count=%d", obj1, class_getName([obj1 class]), [obj1 count]);
+                        //NSLog(@"obj1 0 =%s", class_getName([[obj1 objectAtIndex:0] class]));
+                        //NSLog(@"obj1 1 =%s", class_getName([[obj1 objectAtIndex:1] class]));
+                        //NSLog(@"obj2 %p %s@ count=%d", obj2, class_getName([obj2 class]), [obj2 count]);
+                        //NSLog(@"obj1=%@,obj2=%@", ((UIButton*)[obj1 objectAtIndex:0]).currentTitle, ((UIButton*)[obj2 objectAtIndex:0]).currentTitle);
+                        NSComparisonResult result = [((UIButton*)[obj2 objectAtIndex:0]).currentTitle compare:((UIButton*)[obj1 objectAtIndex:0]).currentTitle];
+                        //NSLog(@"compare result = %d", result);
+                        
+                        //return NSOrderedAscending;//[first compare:second];
+                        return result;
+                    }];
+                    
+                    /*
+                     sortedArray = [self.selectedReqArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                     NSNumber *first = [(Request*)a priorityID];
+                     NSNumber *second = [(Request*)b priorityID];
+                     return [first compare:second];
+                     }];
+                     */
+                    
+                    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                    [button addTarget:self
+                               action:@selector(aMethod:)
+                     forControlEvents:UIControlEventTouchDown];
+                    [button setTitle:@"Photo Library" forState:UIControlStateNormal];
+                    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+                    
+                    float cubicWidth = size.width/13.0;
+                    float cubicHeight = size.height/4;
+                    
+                    //NSLog(@"raid#= %d -> %p [raid_luns count]=%d,x_offset=%f", j, raid_luns, [raid_luns count], x_offset);
+                    if ([raid_luns count]) {
+                        //if ([raid_luns count]<=2) {
+                        //    x_offset = (itemWidth-labelWidth*([raid_luns count]))/2;
+                        //}
+                        //NSLog(@"raid#= %d -> %p [raid_luns count]=%d,x_offset=%f", j, raid_luns, [raid_luns count]);
+                        for (int i=0; i<[raid_luns count]; i++) {
+                            //NSLog(@"LUN#=%d, raid count=%d",i,[raid_luns count]);
+                            UIButton *btn = [[raid_luns objectAtIndex:i] objectAtIndex:0];
+                            NSString *auth = [[raid_luns objectAtIndex:i] objectAtIndex:1];
+                            float x = cubicWidth * (j + 2*(j+1) -0.8) ;//x_offset + currentRaid * labelWidth;//(itemWidth - labelWidth)/2;
+                            float y = size.height - (i+1) * cubicHeight;//-y_offset + itemHeight - labelHeight*(i+1);
+                            //NSLog(@"currentRaid #%d (x,y)=(%f,%f)", currentRaid, x, y);
+                            //UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(currentRaid*labelWidth, i*labelHeight, labelWidth, labelHeight)];
+                            UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];//[[UIButton alloc] initWithFrame:CGRectMake(x, y, labelWidth, labelHeight)];
+                            b.backgroundColor = btn.backgroundColor;
+                            [b setTitle:[NSString stringWithFormat:@"%@", btn.currentTitle] forState:UIControlStateNormal];
+                            [b setFrame:CGRectMake(x, y, 2*size.width/13.0, 20)];
+                            [b addTarget:self action:@selector(onLunPress:) forControlEvents:UIControlEventTouchDown];
+                            [b addTarget:self action:@selector(onLunPressCancel:) forControlEvents:UIControlEventTouchUpInside];
+                            if ([auth isEqualToString:@"RW"]) {
+                                [b.layer setBorderColor:[UIColor blackColor].CGColor];
+                                [b.layer setBorderWidth:3.0f];
+                            }
+                            
+                            [textField addSubview:b];
+                        }
+                        currentRaid++;
+                    }
+                    
+                }
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            }
+        }
+    }
+}
+
+
+
+- (IBAction)toggleReadMode:(id)sender
+{
+    int currentHostIndex = NSNotFound;
+    for (int i=0; i<sizeof(hostSelectedStatus) && currentHostIndex == NSNotFound; i++) {
+        //NSLog(@"%s [host]%d = %d", __func__, i, hostSelectedStatus[i]);
+        if (hostSelectedStatus[i] == 1) {
+            currentHostIndex = i;
+            //NSLog(@"%s xxxxi=%d, [currentHostIndex]=%d", __func__, i, currentHostIndex);
+        }
+    }
+    
+    //NSLog(@"%s [currentHostIndex]=%d", __func__, currentHostIndex);
+    
+    
+    if (currentHostIndex != NSNotFound) {
+        //NSLog(@"%s %@", __func__, sender);
+        UIButton *button = (UIButton *)sender;
+        //NSLog(@"'%@' '%@', currentHostIndex=%d", button.description, button.currentTitle, currentHostIndex);
+        NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:currentHostIndex];
+        //NSLog(@"%s lunForHost=%@", __func__, lunForHost);
+        UIButton *foundBtn = nil;
+        NSString *authority = nil;
+        int lunIndex = 0;
+        BOOL found=NO;
+        for (int i=0; i<[lunForHost count] && !found; i++) {
+            UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+            authority = [[lunForHost objectAtIndex:i] objectAtIndex:1];
+            //NSLog(@"%d. btn = %@", i, btn.currentTitle);
+            //NSLog(@"%d. sender = %@", i, button.currentTitle);
+            if (btn==sender) {
+                found = YES;
+                foundBtn = sender;
+                lunIndex = i;
+            }
+        }
+        
+        //NSLog(@"%s %@", __func__, found?@"Found":@"Not found");
+        
+        if (!found) {
+            [lunForHost addObject:[[NSArray alloc] initWithObjects:sender, @"R", nil]];
+        } else {
+            if ([authority isEqualToString:@"R"]) {
+                [lunForHost removeObjectAtIndex:lunIndex];
+            }
+        }
+        //NSLog(@"%s [lunForHost count]=%d", __func__, [lunForHost count]);
+        
+        [self drawHostsLayout];
+    }
+}
+
+
+
+- (IBAction)toggleReadWriteMode:(UIGestureRecognizer *)doubleTaps
+{
+    int currentHostIndex = NSNotFound;
+    for (int i=0; i<sizeof(hostSelectedStatus) && currentHostIndex == NSNotFound; i++) {
+        //NSLog(@"host%d = %d", i, hostSelectedStatus[i]);
+        if (hostSelectedStatus[i] == 1) {
+            currentHostIndex = i;
+        }
+    }
+
+    if (currentHostIndex != NSNotFound) {
+        UIView *view = doubleTaps.view;
+        //NSLog(@"%s %@ view.tag=%d", __func__, doubleTaps, view.tag);
+        if (view.tag >= 100 && view.tag < 140) {
+            //NSLog(@"%s view.tag=%d (%s)", __func__, view.tag, class_getName(([view class])));
+            int raidNo = (view.tag-100)/10;
+            int lunNo = (view.tag-100)-raidNo*10;
+            //NSLog(@"raid%d-%d", raidNo, lunNo);
+            
+            
+            
+            
+            NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:currentHostIndex];
+            
+            BOOL found=NO;
+            UIButton *foundBtn = nil;
+            NSString *authority = nil;
+            int lunIndex = 0;
+            
+            
+            NSInteger removeFromHostIndex = NSNotFound;
+            //NSInteger removeFromHostLunIndex = NSNotFound;
+            
+            for (UIView *subview in self.view.subviews) { //self.view.subviews
+                NSRange range = [subview.restorationIdentifier rangeOfString:@"host"];
+                if (range.location != NSNotFound) {
+                    if ([subview isKindOfClass:[UITextField class]]) {
+                        NSString *hostName = subview.restorationIdentifier;
+                        NSInteger hostNo = [[hostName substringFromIndex:(range.location+range.length)] integerValue];
+                        //NSLog(@"%@ hostNo=%d", subview.restorationIdentifier, hostNo);
+                        //UITextField *text = (UITextField *)subview;
+                        //text.text = @"Hello";
+                        NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:(hostNo-1)];
+                        //NSLog(@"[lunForHost count] = %d", [lunForHost count]);
+                        for (int i=0; i<[lunForHost count] && !found; i++) {
+                            UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+                            authority = [[lunForHost objectAtIndex:i] objectAtIndex:1];
+                            //NSLog(@"%d. btn = %@", i, btn.currentTitle);
+                            //NSLog(@"%d. sender = %@", i, ((UIButton *)view).currentTitle);
+                            if (btn==view && [authority isEqualToString:@"RW"]) {
+                                found = YES;
+                                foundBtn = (UIButton *)view;
+                                lunIndex = i;
+                                [lunForHost removeObjectAtIndex:lunIndex];
+                                
+                                removeFromHostIndex = (hostNo-1);
+                                //removeFromHostLunIndex = i;
+                                
+                                
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if (currentHostIndex != removeFromHostIndex) {
+                lunIndex = 0;
+                found=NO;
+                for (int i=0; i<[lunForHost count] && !found; i++) {
+                    UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+                    authority = [[lunForHost objectAtIndex:i] objectAtIndex:1];
+                    //NSLog(@"%d. btn = %@", i, btn.currentTitle);
+                    //NSLog(@"%d. sender = %@", i, ((UIButton *)view).currentTitle);
+                    if (btn==view) {
+                        found = YES;
+                        foundBtn = (UIButton *)view;
+                        lunIndex = i;
+                    }
+                }
+                
+                //NSLog(@"%s %@", __func__, found?@"Found":@"Not found");
+                if (!found) {
+                    [lunForHost addObject:[[NSArray alloc] initWithObjects:(UIButton *)view, @"RW", nil]];
+                } else {
+                    if ([authority isEqualToString:@"R"]) {
+                        [lunForHost replaceObjectAtIndex:lunIndex withObject:[[NSArray alloc] initWithObjects:view, @"RW", nil]];
+                    } else {
+                        [lunForHost removeObjectAtIndex:lunIndex];
+                    }
+                }
+                
+            }
+            
+            
+            
+            
+            
+            //NSLog(@"%s [lunForHost count]=%d", __func__, [lunForHost count]);
+            [self drawHostsLayout];
+            
+        }
+    }
+
 }
 
 - (IBAction)aMethod:(id)sender {
@@ -413,6 +733,43 @@
 
 
 
+- (void)setHost:(UIButton *)button isSelected:(BOOL)selected {
+    NSLog(@"%s", __func__);
+    
+    //int currentHostIndex = NSNotFound;
+    if (selected) {
+        //currentHostTextField = textField;
+        /*
+        NSString *hostLabel = button.restorationIdentifier;
+        hostLabel = [hostLabel stringByReplacingOccurrencesOfString:@"pc" withString:@""];
+        int hostNo = [hostLabel intValue]-1;
+        NSLog(@"pc# = %d", hostNo);
+        NSLog(@"===================");
+        for (int i=0; i<8; i++) {
+            NSLog(@"xxxxHost%d=%d", i, hostSelectedStatus[i]);
+        }
+        NSLog(@"-------------------");
+        hostSelectedStatus[hostNo] = 1;
+        for (int i=0; i<8; i++) {
+            NSLog(@"xxxxHost%d=%d", i, hostSelectedStatus[i]);
+        }
+        NSLog(@"===================");
+        
+        //currentHostIndex = [hostLabel integerValue]-1;
+        
+        //NSRange range = [lunLabel rangeOfString:@"LUN"];
+        //NSLog(@"location=%d length=%d", range.location, range.length);
+        //NSLog(@"lun#=%@", [lunLabel substringFromIndex:range.location]);
+        
+        //button.restorationIdentifier
+         */
+        [[button layer] setBorderWidth:5.0f];
+        [[button layer] setBorderColor:[UIColor greenColor].CGColor];
+        
+    }
+    
+}
+
 
 
 - (void)viewDidLoad {
@@ -443,39 +800,44 @@
     [self.hostArrayForLUNArray addObject:[[NSMutableArray alloc] init]];
     [self.hostArrayForLUNArray addObject:[[NSMutableArray alloc] init]];
     [self.hostArrayForLUNArray addObject:[[NSMutableArray alloc] init]];
+    [self.hostArrayForLUNArray addObject:[[NSMutableArray alloc] init]];
     [self insertDEMOdata];
     
     //init/add carouse view
-    //carousel.delegate = self;
-    //carousel.dataSource = self;
-    //[self.view addSubview:carousel];
+    carousel.delegate = self;
+    carousel.dataSource = self;
+    carousel.type = iCarouselTypeInvertedCylinder;
+    carousel.contentOffset = CGSizeMake(0, -60);
+    carousel.viewpointOffset = CGSizeMake(0, -50);
+
+    [self.view addSubview:carousel];
     
-    //carouselDriver.delegate = self;
-    //carouselDriver.dataSource = self;
-    //[self.view addSubview:carouselDriver];
+    carouselDriver.delegate = self;
+    carouselDriver.dataSource = self;
+    //carouselDriver.type = iCarouselTypeInvertedCylinder;
+    //carouselDriver.contentOffset = CGSizeMake(0, -60);
+    //carouselDriver.viewpointOffset = CGSizeMake(0, -50);
+
+    [self.view addSubview:carouselDriver];
     //carouselDriver.stopAtItemBoundary = NO;
     //carouselDriver.scrollToItemBoundary = NO;
     //carouselDriver.scrollEnabled = NO;
     
     //carousel.type = iCarouselTypeInvertedCylinder;
-    carousel.type = iCarouselTypeRotary;
+    //carousel.type = iCarouselTypeRotary;
     //carousel.type = iCarouselTypeInvertedRotary;// Rotary;
     //carousel.contentOffset = CGSizeMake(0, -60);
     //carousel.viewpointOffset = CGSizeMake(0, -50);
-    carousel.decelerationRate = 0.9;
+    //carousel.decelerationRate = 0.9;
     
     [theDelegate customizedArcSlider: arcSlider radiusSlider:radiusSlider spacingSlider:spacingSlider sizingSlider:sizingSlider inView:self.view];
     
-    singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    [self.view addGestureRecognizer:singleFingerTap];
+    //singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    //[self.view addGestureRecognizer:singleFingerTap];
     
-    //[theDelegate hideShowSliders:self.view];
-    doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeSWSide:)];
-    doubleTapGestureRecognizer.numberOfTapsRequired = 2;
-    //[self.thunderboltSW addGestureRecognizer:doubleTapGestureRecognizer];
     
     //[self.test addGestureRecognizer:doubleTapGestureRecognizer];
-    [thunderboltSWButton addGestureRecognizer:doubleTapGestureRecognizer];
+    //[thunderboltSWButton addGestureRecognizer:doubleTapGestureRecognizer];
     
     
     //singleTapGestureRecognizerOnHost = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHostInformationOnHUD:)];
@@ -483,76 +845,194 @@
     //singleTapGestureRecognizerOnHost.numberOfTapsRequired = 1;
     //[carousel addGestureRecognizer:singleTapGestureRecognizerOnHost];
     
-    [lun0_0 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun0_1 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun0_2 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun0_3 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun1_0 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun1_1 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun1_2 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun1_3 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun2_0 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun2_1 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun2_2 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun2_3 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun3_0 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun3_1 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun3_2 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
-    [lun3_3 addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchUpInside];
+    [lun0_0 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun0_1 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun0_2 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun0_3 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun1_0 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun1_1 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun1_2 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun1_3 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun2_0 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun2_1 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun2_2 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun2_3 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun3_0 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun3_1 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun3_2 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
+    [lun3_3 addTarget:self action:@selector(toggleReadMode:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    [lun0_0 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun0_0 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
+    //[theDelegate hideShowSliders:self.view];
+    //doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleReadWriteMode:)];
+    //doubleTapGestureRecognizer.numberOfTapsRequired = 2;
+    //[self.thunderboltSW addGestureRecognizer:doubleTapGestureRecognizer];
+    //[self.view addGestureRecognizer:doubleTapGestureRecognizer];
+    
+    [self.view bringSubviewToFront:self.templateforraids];
+    //[self.view bringSubviewToFront:self.templateForHosts];
+    
+    for (UIView *subview in self.view.subviews) { //self.view.subviews
+        //NSLog(@"%s %@", __func__, subview.restorationIdentifier);
+        if ([subview.restorationIdentifier rangeOfString:@"host"].location != NSNotFound) {
+            if ([subview isKindOfClass:[UITextField class]]) {
+                //NSLog(@"%@", subview);
+                UITextField *text = (UITextField *)subview;
+                [[text layer] setBorderWidth:0.0f];
+                [[text layer] setBorderColor:[UIColor clearColor].CGColor];
+                text.borderStyle=UITextBorderStyleNone;
+                text.layer.cornerRadius=8.0f;
+                text.layer.masksToBounds=YES;
+                text.backgroundColor = [UIColor lightTextColor];
+                //[[text layer] setBorderWidth:1.0f];
+                //[[text layer] setBorderColor:[UIColor grayColor].CGColor];
+                
+                //text.enabled = YES
+                //text setInputView:<#(UIView *)#>;
+                text.delegate = self;
+                //text.
+                [self.view bringSubviewToFront:text];
 
-    [lun0_1 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun0_1 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
+            }
+        }
+        if ([subview.restorationIdentifier rangeOfString:@"pc0"].location != NSNotFound) {
+            //NSLog(@"%s %@", __func__, subview.restorationIdentifier);
+            if (subview.restorationIdentifier) {
+                if ([subview isKindOfClass:[UIButton class]]) {
+                    //NSLog(@"ooooooooooooo");
+                    UIButton *button = (UIButton *)subview;
+                    [[button layer] setBorderWidth:1.0f];
+                    [[button layer] setBorderColor:[UIColor grayColor].CGColor];
+                    //text.borderStyle=UITextBorderStyleNone;
+                    button.layer.cornerRadius=8.0f;
+                    button.layer.masksToBounds=YES;
+                    //button.backgroundColor = [UIColor lightTextColor];
+                }
+            }
+        }
 
-    [lun0_2 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun0_2 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
+        if (subview.tag >= 100 && subview.tag < 140) {
+            [self.view bringSubviewToFront:subview];
+            UITapGestureRecognizer *gesRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleReadWriteMode:)];
+            gesRecognizer.numberOfTapsRequired = 2;
+            [subview addGestureRecognizer:gesRecognizer];
+        }
+    }
+    
+    //if ([subview.restorationIdentifier rangeOfString:@"01"].location != NSNotFound && [subview isKindOfClass:[UITextField class]]) {
+    //    [self setHost:(UITextField *)subview];
+    //}
 
-    [lun0_3 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun0_3 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-
-
-    [lun1_0 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun1_0 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
     
-    [lun1_1 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun1_1 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-    
-    [lun1_2 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun1_2 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-    
-    [lun1_3 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun1_3 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-
-
-    [lun2_0 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun2_0 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-    
-    [lun2_1 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun2_1 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-    
-    [lun2_2 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun2_2 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-    
-    [lun2_3 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun2_3 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-
-    [lun3_0 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun3_0 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-    
-    [lun3_1 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun3_1 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-    
-    [lun3_2 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun3_2 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
-    
-    [lun3_3 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    [lun3_3 addTarget:self action:@selector(imageMoved:withEvent:) forControlEvents:UIControlEventTouchDragOutside];
+    [self.view bringSubviewToFront:self.homeButton];
+    [self.view bringSubviewToFront:self.pc1];
+    [self.view bringSubviewToFront:self.pc2];
+    [self.view bringSubviewToFront:self.pc3];
+    [self.view bringSubviewToFront:self.pc4];
+    [self.view bringSubviewToFront:self.pc5];
+    [self.view bringSubviewToFront:self.pc6];
+    [self.view bringSubviewToFront:self.pc7];
+    [self.view bringSubviewToFront:self.pc8];
+    [self drawHostsLayout];
 
 }
 
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    //UITextField *text = sender;
+    NSLog(@"%s %@", __func__, textField.restorationIdentifier);
+    return NO;
+}
+
+/*
+-(void)textFieldDidEndEditing:(UITextField*) textField{
+    NSLog(@"%s %@", __func__, textField.restorationIdentifier);
+    //return NO;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    NSLog(@"%s %@", __func__, textField.restorationIdentifier);
+    return YES;
+}
+ */
+
+- (IBAction)hostAuthorityLUNsSelected:(id)sender {
+    UITextField *text = sender;
+    NSLog(@"%s %@ %@", __func__, sender, text.restorationIdentifier);
+}
+
+- (IBAction)hostAuthorityLUNsDiselected:(id)sender {
+    UITextField *text = sender;
+    NSLog(@"%s %@ %@", __func__, sender, text.restorationIdentifier);
+}
+
+
+- (IBAction)selectHost:(id)sender {
+    UIButton *button = sender;
+    NSLog(@"%s %@", __func__, button.restorationIdentifier);
+    
+    NSString *hostName = button.restorationIdentifier;
+    NSRange range = [hostName rangeOfString:@"pc"];
+    int hostNo = [[hostName substringFromIndex:range.location+range.length] intValue]-1;
+    //NSLog(@"hostName=%@", [hostName substringFromIndex:[hostName rangeOfString:@"pc"].location+1]);
+    //NSLog(@"sizeof = %ld", sizeof(hostSelectedStatus));
+    //NSLog(@"hostNo = %d", hostNo);
+    
+    //for (int i=0; i<sizeof(hostSelectedStatus); i++) {
+    //    NSLog(@"%s host%d = %d", __func__, i, hostSelectedStatus[i]);
+    //}
+    
+    BOOL selected = hostSelectedStatus[hostNo]==1?YES:NO;
+    
+    //NSLog(@"hostSelectedStatus[%d]=%d, selected=%@",hostNo,hostSelectedStatus[hostNo],selected?@"YES":@"NO");
+    
+    
+    for (int i=0; i<sizeof(hostSelectedStatus); i++) {
+        hostSelectedStatus[i] = 0;
+    }
+
+    
+    
+    if (selected) {
+        //hostSelectedStatus[hostNo] = 0;
+        selected = NO;
+    } else {
+        hostSelectedStatus[hostNo] = 1;
+        selected = YES;
+    }
+    
+    //NSLog(@"hostNo=%d", hostNo);
+    //hostSelectedStatus[hostNo] = 1;
+    
+    //for (int i=0; i<sizeof(hostSelectedStatus); i++) {
+    //    NSLog(@"%s host%d = %d", __func__, i, hostSelectedStatus[i]);
+    //}
+    
+    //NSLog(@"hostSelectedStatus[%d]=%d, selected=%@",hostNo,hostSelectedStatus[hostNo],selected?@"YES":@"NO");
+
+
+    
+    //button.restorationIdentifier
+    for (UIView *subview in self.view.subviews) { //self.view.subviews
+        //NSLog(@"%s %@", __func__, subview.restorationIdentifier);
+        if (subview.restorationIdentifier) {
+            if ([subview.restorationIdentifier rangeOfString:@"pc0"].location != NSNotFound) {
+                //NSLog(@"location = %d", [subview.restorationIdentifier rangeOfString:@"pc0"].location);
+                if ([subview isKindOfClass:[UIButton class]]) {
+                    //NSLog(@"%@", subview);
+                    UIButton *button = (UIButton *)subview;
+                    //button.borderStyle=UITextBorderStyleNone;
+                    button.layer.cornerRadius=8.0f;
+                    button.layer.masksToBounds=YES;
+                    
+                    [[button layer] setBorderWidth:1.0f];
+                    [[button layer] setBorderColor:[UIColor grayColor].CGColor];
+                }
+            }
+        }
+    }
+    [self setHost:button isSelected:selected];
+}
 
 - (IBAction)imageMoved:(id) sender withEvent:(UIEvent *) event
 {
@@ -622,6 +1102,7 @@
 
 - (IBAction)onHome:(id)sender
 {
+    NSLog(@"%s", __func__);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -641,7 +1122,7 @@
 - (void)onItemPress:(id)sender {
     UIButton *theButon = (UIButton *)sender;
     NSLog(@"%s onItemPress: tag=%d", __func__, theButon.tag);
-    [self showHostInformationOnHUD:sender];
+    //[self showHostInformationOnHUD:sender];
     //[self presentViewController:self.hbaViewController animated:YES completion:nil];
 }
 
@@ -666,6 +1147,11 @@
         sizingValue.text = [NSString stringWithFormat:@"%1.2f", slider.value];
 }
 
+-(NSComparisonResult) compareLUNs:(id)element {
+    NSLog(@"%s %@", __func__, element);
+    return NSOrderedAscending; //NSOrderedSame, NSOrderedDescending
+}
+
 #pragma mark -
 #pragma mark iCarousel methods
 
@@ -673,9 +1159,9 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)_carousel {
     if (_carousel == carousel) {
-        return 7;
+        return 12;
     }
-    return 4;
+    return 12;
 }
 
 - (UIView *)carousel:(iCarousel *)_carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view {
@@ -683,22 +1169,82 @@
     //class_getName([sender class]
     //id obj = [[self.hostArrayForLUNArray objectAtIndex:index] objectAtIndex:0];
     //UIButton *btn = class_getName([[[self.hostArrayForLUNArray objectAtIndex:index] objectAtIndex:0] class]) ;
+    //NSLog(@"%s index=%d", __func__, index);
+    
+    UILabel *theLabel = nil;
+	if (view == nil) {
+        view = [[UIView alloc] init];
+        //view.backgroundColor = [UIColor redColor];
+        UIImage *theItemImage = nil;
+        float itemWidth, itemHeight;
+
+        if (_carousel == self.carouselDriver) {
+            theItemImage = [UIImage imageNamed:@"drive.png"];
+        } else {
+            theItemImage = [UIImage imageNamed:@"Device-PC.png"];
+        }
+        theLabel = [[UILabel alloc] init];
+        theLabel.numberOfLines = 0;
+        theLabel.textColor = [UIColor darkGrayColor];
+        
+        itemWidth = theItemImage.size.width; // 250px
+        itemHeight = theItemImage.size.height;
+        
+        //NSLog(@"%s image.width=%f, %f", __func__, itemWidth, itemHeight);
+
+        UIButton *theButton = [UIButton buttonWithType:UIButtonTypeCustom];;
+        theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
+        [theButton setImage:theItemImage forState:UIControlStateNormal];
+
+        //theButton.backgroundColor = [UIColor redColor];
+        //theButton.tag = ITEM_BUTTON_START_TAG + index;
+        //[theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
+        if (_carousel == self.carousel) {
+            theLabel.frame = CGRectMake(0, itemHeight-10, itemWidth, 40);
+            theLabel.font = [UIFont boldSystemFontOfSize:30.0];
+            
+            //theLabel.alpha = 0.5;
+            theLabel.backgroundColor = [UIColor clearColor];
+            //theLabel.backgroundColor = [UIColor yellowColor];
+            theLabel.textAlignment = NSTextAlignmentCenter;
+            theLabel.tag = 1;
+            //[view addSubview:theLabel];
+            
+            
+        } else {
+            theLabel.frame = CGRectMake(0, itemHeight-70, itemWidth, 40);
+            [theLabel setFont:[UIFont fontWithName:@"AmericanTypewriter" size:20.0]];
+        }
+        
+        view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
+        [view addSubview:theButton];
+        
+
+        
+    } else {
+        theLabel = (UILabel *)[view viewWithTag:1];
+	}
+    //theLabel.text = [NSString stringWithFormat:@"%d", index+1];
+	return view;
+}
+
+
+- (UIView *)carousel:(iCarousel *)_carousel viewForItemAtIndexXXX:(NSUInteger)index reusingView:(UIView *)view {
+    
+    //class_getName([sender class]
+    //id obj = [[self.hostArrayForLUNArray objectAtIndex:index] objectAtIndex:0];
+    //UIButton *btn = class_getName([[[self.hostArrayForLUNArray objectAtIndex:index] objectAtIndex:0] class]) ;
     NSLog(@"%s index=%d", __func__, index);
-    
-    
     
     UILabel *theLabel = nil;
 	if (view == nil) {
         UIButton *theButton;
         view = [[UIView alloc] init];
         //view.backgroundColor = [UIColor redColor];
-        UIImage *theItemImage = nil;
-        if (_carousel == self.carousel) {
-            theItemImage = [UIImage imageNamed:@"macbookpro_blank.png"];
-        } else {
-            theItemImage = [UIImage imageNamed:@"storage.png"];
+        UIImage *theItemImage = [UIImage imageNamed:@"macbookpro_blank.png"];
+        if (_carousel == self.carouselDriver) {
+            theItemImage = [UIImage imageNamed:@"drive.png"];
         }
-
         theLabel = [[UILabel alloc] init];
         theLabel.numberOfLines = 0;
         theLabel.textColor = [UIColor darkGrayColor];
@@ -710,86 +1256,231 @@
         
         theButton = [UIButton buttonWithType:UIButtonTypeCustom];
         theButton.frame = CGRectMake(0, 0, itemWidth, itemHeight);
-        theButton.backgroundColor = [UIColor redColor];
+        //theButton.backgroundColor = [UIColor redColor];
         //theButton.tag = ITEM_BUTTON_START_TAG + index;
-        [theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
+        //[theButton addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
         if (_carousel == self.carousel) {
             theLabel.frame = CGRectMake(0, itemHeight-10, itemWidth, 40);
             theLabel.font = [UIFont boldSystemFontOfSize:30.0];
+            
+            //theLabel.alpha = 0.5;
+            theLabel.backgroundColor = [UIColor clearColor];
+            //theLabel.backgroundColor = [UIColor yellowColor];
+            theLabel.textAlignment = NSTextAlignmentCenter;
+            theLabel.tag = 1;
+            
+            [theButton setImage:theItemImage forState:UIControlStateNormal];
+            
+            view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
+            [view addSubview:theButton];
+            [view addSubview:theLabel];
+            
+            /*
+             UITextView *theTextView = [[UITextView alloc] init];
+             theTextView.text = @"Example of non-editable UITextView";
+             //theTextView.backgroundColor = [UIColor greenColor];
+             theTextView.backgroundColor = [UIColor clearColor];
+             theTextView.frame = CGRectMake(0, 0, itemWidth, itemHeight);
+             theTextView.editable = NO;
+             
+             //[view addSubview:theTextView];
+             
+             //[lunForHost addObject:[[NSArray alloc] initWithObjects:sender, @"RW", nil]];
+             //NSLog(@"%s [lunForHost count]=%d", __func__, [lunForHost count]);
+             
+             NSMutableString *mutableString = [[NSMutableString alloc] init];
+             for (int i=0; i<[lunForHost count]; i++) {
+             UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+             NSString *authority = [[lunForHost objectAtIndex:i] objectAtIndex:1];
+             NSLog(@"%d. btn = %@ (%@)", i, btn.currentTitle, authority);
+             [mutableString appendString:[NSString stringWithFormat:@"%@(%@)\n", btn.currentTitle, authority]];
+             //if ([authority isEqualToString:@"R"]) {
+             //[lunForHost replaceObjectAtIndex:lunIndex withObject:[[NSArray alloc] initWithObjects:sender, @"RW", nil]];
+             //} else { //if ([authority isEqualToString:@"RW"]) {
+             //[lunForHost removeObjectAtIndex:lunIndex];
+             //}
+             }
+             theTextView.text = mutableString;
+             */
+            
+            NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:index];
+            UIView *theViewContainer = [[UITextView alloc] init];
+            
+            theViewContainer.frame = CGRectMake(0, 0, itemWidth, itemHeight);
+            theViewContainer.backgroundColor = [UIColor clearColor];
+            
+            [view addSubview:theViewContainer];
+            NSArray *raidsForLuns = [[NSArray alloc] initWithObjects:
+                                     [[NSMutableArray alloc] init],
+                                     [[NSMutableArray alloc] init],
+                                     [[NSMutableArray alloc] init],
+                                     [[NSMutableArray alloc] init], nil];
+            UIButton *btn = nil;
+            for (int i=0; i<[lunForHost count]; i++) {
+                btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+                NSString *authority = [[lunForHost objectAtIndex:i] objectAtIndex:1];
+                NSLog(@"%d. btn = %@ (%@)", i, btn.currentTitle, authority);
+                if ([btn.currentTitle rangeOfString:@"LUN0-"].location != NSNotFound) {
+                    [[raidsForLuns objectAtIndex:0] addObject:[lunForHost objectAtIndex:i]];
+                } else if ([btn.currentTitle rangeOfString:@"LUN1-"].location != NSNotFound) {
+                    [[raidsForLuns objectAtIndex:1] addObject:[lunForHost objectAtIndex:i]];
+                } else if ([btn.currentTitle rangeOfString:@"LUN2-"].location != NSNotFound) {
+                    [[raidsForLuns objectAtIndex:2] addObject:[lunForHost objectAtIndex:i]];
+                } else if ([btn.currentTitle rangeOfString:@"LUN3-"].location != NSNotFound) {
+                    [[raidsForLuns objectAtIndex:3] addObject:[lunForHost objectAtIndex:i]];
+                }
+            }
+            int howManyRaids = 0;
+            if ([[raidsForLuns objectAtIndex:0] count]) {
+                howManyRaids++;
+            }
+            if ([[raidsForLuns objectAtIndex:1] count]) {
+                howManyRaids++;
+            }
+            if ([[raidsForLuns objectAtIndex:2] count]) {
+                howManyRaids++;
+            }
+            if ([[raidsForLuns objectAtIndex:3] count]) {
+                howManyRaids++;
+            }
+            
+            NSLog(@"how many raids %d", howManyRaids);
+            
+            NSInteger labelWidth = 0;
+            NSInteger labelHeight = 0;
+            float x_offset = 0;
+            float y_offset = 5;
+            
+            float percent = 1.0;
+            if (btn != nil) {
+                if (howManyRaids == 1) {
+                    labelWidth = btn.frame.size.width;
+                    labelHeight = btn.frame.size.height;
+                    x_offset = (itemWidth-labelWidth)/2;
+                } else if (howManyRaids == 2) {
+                    labelWidth = btn.frame.size.width;
+                    labelHeight = btn.frame.size.height;
+                    x_offset = (itemWidth-labelWidth*2)/2;
+                } else if (howManyRaids == 3) {
+                    labelWidth = itemWidth / howManyRaids;
+                    percent = labelWidth / btn.frame.size.width;
+                    labelHeight = btn.frame.size.height * percent;
+                    x_offset = 0;
+                } else if (howManyRaids == 4) {
+                    labelWidth = itemWidth / howManyRaids;
+                    percent = labelWidth / btn.frame.size.width;
+                    labelHeight = btn.frame.size.height * percent;
+                    x_offset = 0;
+                }
+            }
+            int currentRaid = 0;
+            for (int j=0; j<4; j++) {
+                NSMutableArray *raid_luns_org = [raidsForLuns objectAtIndex:j];
+                //NSLog(@"[raid_luns=%p]", raid_luns);
+                //[raid_luns sortUsingSelector:@selector(compareLUNs:)];
+                
+                NSArray *raid_luns = [raid_luns_org sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                    //NSString *label1 = ((UIButton*)obj1).currentTitle;
+                    //NSString *label2 = ((UIButton*)obj2).currentTitle;
+                    //NSNumber *second = [(Request*)b priorityID];
+                    NSLog(@"obj1 %p %s@ count=%d", obj1, class_getName([obj1 class]), [obj1 count]);
+                    NSLog(@"obj1 0 =%s", class_getName([[obj1 objectAtIndex:0] class]));
+                    NSLog(@"obj1 1 =%s", class_getName([[obj1 objectAtIndex:1] class]));
+                    NSLog(@"obj2 %p %s@ count=%d", obj2, class_getName([obj2 class]), [obj2 count]);
+                    NSLog(@"obj1=%@,obj2=%@", ((UIButton*)[obj1 objectAtIndex:0]).currentTitle, ((UIButton*)[obj2 objectAtIndex:0]).currentTitle);
+                    NSComparisonResult result = [((UIButton*)[obj1 objectAtIndex:0]).currentTitle compare:((UIButton*)[obj2 objectAtIndex:0]).currentTitle];
+                    NSLog(@"compare result = %d", result);
+                    
+                    //return NSOrderedAscending;//[first compare:second];
+                    return [((UIButton*)[obj2 objectAtIndex:0]).currentTitle compare:((UIButton*)[obj1 objectAtIndex:0]).currentTitle];
+                }];
+                
+                /*
+                 sortedArray = [self.selectedReqArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                 NSNumber *first = [(Request*)a priorityID];
+                 NSNumber *second = [(Request*)b priorityID];
+                 return [first compare:second];
+                 }];
+                 */
+                
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [button addTarget:self
+                           action:@selector(aMethod:)
+                 forControlEvents:UIControlEventTouchDown];
+                [button setTitle:@"Photo Library" forState:UIControlStateNormal];
+                button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+                
+                
+                
+                NSLog(@"raid#= %d -> %p [raid_luns count]=%d,x_offset=%f", j, raid_luns, [raid_luns count], x_offset);
+                if ([raid_luns count]) {
+                    //if ([raid_luns count]<=2) {
+                    //    x_offset = (itemWidth-labelWidth*([raid_luns count]))/2;
+                    //}
+                    NSLog(@"raid#= %d -> %p [raid_luns count]=%d,x_offset=%f", j, raid_luns, [raid_luns count], x_offset);
+                    for (int i=0; i<[raid_luns count]; i++) {
+                        NSLog(@"LUN#=%d, raid count=%d",i,[raid_luns count]);
+                        UIButton *btn = [[raid_luns objectAtIndex:i] objectAtIndex:0];
+                        NSString *auth = [[raid_luns objectAtIndex:i] objectAtIndex:1];
+                        float x = x_offset + currentRaid * labelWidth;//(itemWidth - labelWidth)/2;
+                        float y = -y_offset + itemHeight - labelHeight*(i+1);
+                        NSLog(@"currentRaid #%d (x,y)=(%f,%f)", currentRaid, x, y);
+                        //UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(currentRaid*labelWidth, i*labelHeight, labelWidth, labelHeight)];
+                        UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];//[[UIButton alloc] initWithFrame:CGRectMake(x, y, labelWidth, labelHeight)];
+                        b.backgroundColor = btn.backgroundColor;
+                        [b setTitle:[NSString stringWithFormat:@"%@", btn.currentTitle] forState:UIControlStateNormal];
+                        [b setFrame:CGRectMake(x, y, labelWidth, labelHeight)];
+                        [b addTarget:self action:@selector(onItemPress:) forControlEvents:UIControlEventTouchUpInside];
+                        
+                        //UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, y, labelWidth, labelHeight)];
+                        //UILabel *label = b.titleLabel;
+                        //label.text = [NSString stringWithFormat:@"%@", btn.currentTitle];
+                        //label.textAlignment = UITextAlignmentCenter;
+                        //label.backgroundColor = btn.backgroundColor;
+                        //label.font = [UIFont systemFontOfSize:15.0*percent];
+                        //if ([auth isEqualToString:@"RW"]) {
+                        //    label.layer.borderColor = [UIColor blackColor].CGColor;
+                        //    label.layer.borderWidth = 2.0;
+                        //    label.font = [UIFont boldSystemFontOfSize:15.0*percent];
+                        //}
+                        [theViewContainer addSubview:b];
+                    }
+                    currentRaid++;
+                }
+                
+            }
+
+            
+            
         } else {
             theLabel.frame = CGRectMake(0, itemHeight-70, itemWidth, 40);
             [theLabel setFont:[UIFont fontWithName:@"AmericanTypewriter" size:20.0]];
         }
 
-        //theLabel.alpha = 0.5;
-        theLabel.backgroundColor = [UIColor clearColor];
-        theLabel.backgroundColor = [UIColor yellowColor];
-        theLabel.textAlignment = NSTextAlignmentCenter;
-        theLabel.tag = 1;
-        
-        [theButton setImage:theItemImage forState:UIControlStateNormal];
-
-        view.frame = CGRectMake(0, 0, itemWidth, itemHeight);
-        [view addSubview:theButton];
-        [view addSubview:theLabel];
-        
-        
-        UITextView *theTextView = [[UITextView alloc] init];
-        theTextView.text = @"Example of non-editable UITextView";
-        theTextView.backgroundColor = [UIColor greenColor];
-        theTextView.frame = CGRectMake(0, 0, itemWidth, itemHeight);
-        theTextView.editable = NO;
-        
-        [view addSubview:theTextView];
-
-        NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:index];
-        //[lunForHost addObject:[[NSArray alloc] initWithObjects:sender, @"RW", nil]];
-        //NSLog(@"%s [lunForHost count]=%d", __func__, [lunForHost count]);
-        
-        NSMutableString *mutableString = [[NSMutableString alloc] init];
-        for (int i=0; i<[lunForHost count]; i++) {
-            UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
-            NSString *authority = [[lunForHost objectAtIndex:i] objectAtIndex:1];
-            NSLog(@"%d. btn = %@ (%@)", i, btn.currentTitle, authority);
-            [mutableString appendString:[NSString stringWithFormat:@"%@(%@)\n", btn.currentTitle, authority]];
-            if ([authority isEqualToString:@"R"]) {
-                //[lunForHost replaceObjectAtIndex:lunIndex withObject:[[NSArray alloc] initWithObjects:sender, @"RW", nil]];
-            } else { //if ([authority isEqualToString:@"RW"]) {
-                //[lunForHost removeObjectAtIndex:lunIndex];
-            }
-        }
-        theTextView.text = mutableString;
- 
-        
-        //define button handler
      }
     else {
         theLabel = (UILabel *)[view viewWithTag:1];
 	}
-    if (_carousel == self.carousel) {
-        theLabel.text = [NSString stringWithFormat:@"%d", index+1];
-    } else {
-        theLabel.text = [NSString stringWithFormat:@"RAID %d", index+1];
-    }
+    theLabel.text = [NSString stringWithFormat:@"%d", index+1];
 	return view;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"%s index=%d",__func__, index);
-    currentHostIndex = index;
+    //currentHostIndex = index;
     //[self presentViewController:self.hbaViewController animated:YES completion:nil];
 }
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)_carousel {
     NSLog(@"%s %d",__func__, _carousel.currentItemIndex);
-    NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:carousel.currentItemIndex];
+    //NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:carousel.currentItemIndex];
     //[lunForHost addObject:[[NSArray alloc] initWithObjects:sender, @"RW", nil]];
     //NSLog(@"%s [lunForHost count]=%d", __func__, [lunForHost count]);
     
-    for (int i=0; i<[lunForHost count]; i++) {
-        UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
-        NSLog(@"%@", btn.currentTitle);
-    }
+    //for (int i=0; i<[lunForHost count]; i++) {
+    //    UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+    //    NSLog(@"%@", btn.currentTitle);
+    //}
     //[_carousel reloadData];
     //currentItemIndex = _carousel.currentItemIndex;
     //[theDelegate updateItemIndexCountsAndTotalLabel:currentItemIndex count:currentCollectionCount total:totalCount forUILabel:itemIndexCountsAndTotalLabel];
@@ -803,7 +1494,7 @@
             if (_carousel == self.carousel) {
                 return TRUE;
             }
-            return FALSE;
+            return TRUE;
         }
         case iCarouselOptionFadeMax:
         {
@@ -815,18 +1506,24 @@
         }
         case iCarouselOptionArc:
         {
+            if (_carousel == self.carousel) {
             return 2 * M_PI * arcSlider.value;
+            }
         }
         case iCarouselOptionRadius:
         {
+            if (_carousel == self.carousel) {
             return value * radiusSlider.value;
+            }
         }
         case iCarouselOptionSpacing:
         {
             if (_carousel == self.carousel) {
                 return value * spacingSlider.value;
+            } else {
+                return 1.5 * value;
             }
-            return 0.9;
+            
         }
         default:
         {

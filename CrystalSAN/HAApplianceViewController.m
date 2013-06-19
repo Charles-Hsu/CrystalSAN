@@ -130,6 +130,10 @@
     
     [self.viewForToggleSliders addGestureRecognizer:tripleTapGestureRecognizer];
     [theDelegate hideShowSliders:self.view];
+    
+    [theDelegate.sanDatabase httpGetHAClusterDictionaryBySiteName:theDelegate.siteName];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

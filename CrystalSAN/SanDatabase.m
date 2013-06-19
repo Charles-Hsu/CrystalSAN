@@ -57,6 +57,15 @@
     }
 }
 
+- (void)setDefaultViewController:(NSInteger)vcNum {
+    
+}
+
+- (NSInteger)getDefaultViewController {
+    return 3;
+}
+
+
 
 - (void)testHttpGetEngineDriveInfoAll:(NSString *)serial siteName:(NSString *)siteName {
     // http-get-engine_cli_conmgr_drive_status_all.php?site=KBS&serial=600498
@@ -420,6 +429,7 @@
 }
 
 - (void)httpGetHAClusterDictionaryBySiteName:(NSString *)siteName {
+    NSLog(@"%s", __func__);
     NSString *php = @"http-get-ha_cluster.php";
     NSString *urlString = [self hostURLPathWithPHP:php];
     NSString *urlStringWithItems = [urlString stringByAppendingFormat:@"?site=%@", siteName];

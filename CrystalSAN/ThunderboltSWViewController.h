@@ -13,7 +13,7 @@
 #import "UILogoutButton.h"
 
 
-@interface ThunderboltSWViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UIScrollViewDelegate, UIPopoverControllerDelegate,UIImagePickerControllerDelegate>
+@interface ThunderboltSWViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UIScrollViewDelegate, UIPopoverControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate>
 //UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     NSString *deviceName;
@@ -56,6 +56,9 @@
 
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 
+@property (nonatomic, strong) IBOutlet UIView *templateforraids;
+@property (nonatomic, strong) IBOutlet UIView *templateForHosts;
+
 @property (nonatomic, retain) IBOutlet UIButton *pc1;
 @property (nonatomic, retain) IBOutlet UIButton *pc2;
 @property (nonatomic, retain) IBOutlet UIButton *pc3;
@@ -63,6 +66,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *pc5;
 @property (nonatomic, retain) IBOutlet UIButton *pc6;
 @property (nonatomic, retain) IBOutlet UIButton *pc7;
+@property (nonatomic, retain) IBOutlet UIButton *pc8;
 
 
 @property (nonatomic, retain) IBOutlet UIButton *lun0_0;
@@ -85,9 +89,10 @@
 @property (nonatomic, retain) IBOutlet UIButton *lun3_2;
 @property (nonatomic, retain) IBOutlet UIButton *lun3_3;
 
+@property (nonatomic, strong) IBOutlet UIButton *homeButton;
 
 // event
-//- (IBAction)onHome:(id)sender;
+- (IBAction)onHome:(id)sender;
 - (IBAction)onBack:(id)sender;
 - (IBAction)updateValue:(id)sender;
 
@@ -95,6 +100,15 @@
 
 
 - (IBAction)changeSWSide:(id)sender;
+
+
+- (IBAction)selectHost:(id)sender;
+
+- (IBAction)hostAuthorityLUNsSelected:(id)sender;
+- (IBAction)hostAuthorityLUNsDiselected:(id)sender;
+
+- (IBAction)toggleReadMode:(id)sender;
+- (IBAction)toggleReadWriteMode:(id)sender;
 
 
 /*
