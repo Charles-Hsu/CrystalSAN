@@ -4562,8 +4562,6 @@
                 <relationship kind="action" name="changeSWSide:"/>
                 <relationship kind="action" name="hostAuthorityLUNsDiselected:"/>
                 <relationship kind="action" name="hostAuthorityLUNsSelected:"/>
-                <relationship kind="action" name="imageMoved:withEvent:"/>
-                <relationship kind="action" name="logout:"/>
                 <relationship kind="action" name="onBack:"/>
                 <relationship kind="action" name="onHome:"/>
                 <relationship kind="action" name="selectHost:"/>
