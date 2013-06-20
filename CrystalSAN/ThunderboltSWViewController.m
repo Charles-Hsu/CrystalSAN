@@ -118,14 +118,14 @@
     NSLog(@"%s", __func__);
     // host0
     [[self.hostArrayForLUNArray objectAtIndex:0] addObject:[[NSArray alloc] initWithObjects:self.lun0_0, @"R", nil]];
-    [[self.hostArrayForLUNArray objectAtIndex:0] addObject:[[NSArray alloc] initWithObjects:self.lun3_0, @"R", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:0] addObject:[[NSArray alloc] initWithObjects:self.lun3_0, @"RW", nil]];
     // host1
     [[self.hostArrayForLUNArray objectAtIndex:1] addObject:[[NSArray alloc] initWithObjects:self.lun1_0, @"R", nil]];
     // host2
     [[self.hostArrayForLUNArray objectAtIndex:2] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"R", nil]];
     [[self.hostArrayForLUNArray objectAtIndex:3] addObject:[[NSArray alloc] initWithObjects:self.lun3_1, @"R", nil]];
     [[self.hostArrayForLUNArray objectAtIndex:4] addObject:[[NSArray alloc] initWithObjects:self.lun3_2, @"R", nil]];
-    [[self.hostArrayForLUNArray objectAtIndex:5] addObject:[[NSArray alloc] initWithObjects:self.lun0_2, @"R", nil]];
+    [[self.hostArrayForLUNArray objectAtIndex:5] addObject:[[NSArray alloc] initWithObjects:self.lun0_2, @"RW", nil]];
     [[self.hostArrayForLUNArray objectAtIndex:6] addObject:[[NSArray alloc] initWithObjects:self.lun0_1, @"R", nil]];
     //[[self.hostArrayForLUNArray objectAtIndex:7] addObject:[[NSArray alloc] initWithObjects:self.lun2_0, @"RW", nil]];
     
@@ -299,7 +299,7 @@
                     button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
                     
                     float cubicWidth = size.width/13.0;
-                    float cubicHeight = size.height/4;
+                    float cubicHeight = size.height/4.8;
                     
                     //NSLog(@"raid#= %d -> %p [raid_luns count]=%d,x_offset=%f", j, raid_luns, [raid_luns count], x_offset);
                     if ([raid_luns count]) {
@@ -317,6 +317,7 @@
                             //UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(currentRaid*labelWidth, i*labelHeight, labelWidth, labelHeight)];
                             UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];//[[UIButton alloc] initWithFrame:CGRectMake(x, y, labelWidth, labelHeight)];
                             b.backgroundColor = btn.backgroundColor;
+                            b.layer.cornerRadius = 3.0f;
                             [b setTitle:[NSString stringWithFormat:@"%@", btn.currentTitle] forState:UIControlStateNormal];
                             [b setFrame:CGRectMake(x, y, 2*size.width/13.0, 20)];
                             [b addTarget:self action:@selector(onLunPress:) forControlEvents:UIControlEventTouchDown];
@@ -916,6 +917,8 @@
             UITapGestureRecognizer *gesRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleReadWriteMode:)];
             gesRecognizer.numberOfTapsRequired = 2;
             [subview addGestureRecognizer:gesRecognizer];
+            UIButton *lun = (UIButton *)subview;
+            lun.layer.cornerRadius=3.0f;
         }
     }
     
@@ -959,11 +962,61 @@
 - (IBAction)hostAuthorityLUNsSelected:(id)sender {
     UITextField *text = sender;
     NSLog(@"%s %@ %@", __func__, sender, text.restorationIdentifier);
+    NSRange range = [text.restorationIdentifier rangeOfString:@"pc0"];
+    NSLog(@"location=%d, length=%d", range.location, range.length);
+    NSString *hostNoStr = [text.restorationIdentifier substringFromIndex:(range.location+range.length)];
+    int hostIndex = [hostNoStr intValue]-1;
+    NSLog(@"%s Host%@, hostIndex = %d", __func__, hostNoStr, hostIndex);
+
+    for (UIView *subview in self.view.subviews) { //self.view.subviews
+        if (subview.tag >= 100 && subview.tag < 140) {
+            UIButton *button = (UIButton *)subview;
+            button.alpha = 0.1;
+            //CGRect frame = button.frame;
+            //UILabel *label = [[UILabel alloc] initWithFrame:frame];
+            //label.backgroundColor = [UIColor lightTextColor];
+            //label.tag = NSNotFound;
+            //[self.view addSubview:label];
+        }
+    }
+    
+    NSMutableArray *lunForHost = [self.hostArrayForLUNArray objectAtIndex:hostIndex];
+    //NSLog(@"[lunForHost count] = %d", [lunForHost count]);
+    for (int i=0; i<[lunForHost count]; i++) {
+        UIButton *btn = [[lunForHost objectAtIndex:i] objectAtIndex:0];
+        btn.alpha = 1.0;
+        NSString *authority = [[lunForHost objectAtIndex:i] objectAtIndex:1];
+        //NSLog(@"%d. btn = %@", i, btn.currentTitle);
+        //NSLog(@"%d. sender = %@", i, ((UIButton *)view).currentTitle);
+        //if (btn==view && [authority isEqualToString:@"RW"]) {
+        NSLog(@"%@ authority=%@", btn.currentTitle, authority);
+        if ([authority isEqualToString:@"RW"]) {
+            btn.layer.borderWidth = 3.0;
+        }
+        CGRect frame = btn.frame;
+        NSLog(@"(x,y)=(%f,%f),(w,h)=(%f,%f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    }
+
+    
 }
 
 - (IBAction)hostAuthorityLUNsDiselected:(id)sender {
-    UITextField *text = sender;
-    NSLog(@"%s %@ %@", __func__, sender, text.restorationIdentifier);
+    //UITextField *text = sender;
+    //NSLog(@"%s %@ %@", __func__, sender, text.restorationIdentifier);
+    //for (UIView *subview in self.view.subviews) { //self.view.subviews
+        //NSLog(@"tag=%d", subview.tag);
+    //    if (subview.tag == NSNotFound) {
+    //        [subview removeFromSuperview];
+    //    }
+    //}
+    for (UIView *subview in self.view.subviews) { //self.view.subviews
+        if (subview.tag >= 100 && subview.tag < 140) {
+            UIButton *button = (UIButton *)subview;
+            button.alpha = 1.0;
+            button.layer.borderWidth = 0.0;
+        }
+    }
+
 }
 
 
