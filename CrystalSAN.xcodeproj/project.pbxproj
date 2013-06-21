@@ -33,7 +33,7 @@
 		5623C77E16BD54BF009410B2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77716BD54BF009410B2 /* FMDatabaseQueue.m */; };
 		5623C78016BD54BF009410B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5623C77A16BD54BF009410B2 /* FMResultSet.m */; };
 		5623C78216BD565E009410B2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5623C78116BD565E009410B2 /* libsqlite3.0.dylib */; };
-		563203DC1769911E00C0A300 /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 5632022C1769911E00C0A300 /* server.db */; };
+		5639BA4D1773FFAD00C5B408 /* server.db in Resources */ = {isa = PBXBuildFile; fileRef = 5639BA4C1773FF7200C5B408 /* server.db */; };
 		5647C69D176035A8008AF02E /* swBackView.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647C698176035A8008AF02E /* swBackView.png */; };
 		5647C69E176035A8008AF02E /* swFrontView.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647C699176035A8008AF02E /* swFrontView.png */; };
 		5647C6A11760571C008AF02E /* ThunderboltSWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C6A01760571B008AF02E /* ThunderboltSWViewController.m */; };
@@ -616,6 +616,7 @@
 		563202371769911E00C0A300 /* test_parse_engine_time.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = test_parse_engine_time.php; sourceTree = "<group>"; };
 		563202381769911E00C0A300 /* test_sqlite_pdo_createtable.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = test_sqlite_pdo_createtable.php; sourceTree = "<group>"; };
 		563202391769911E00C0A300 /* test_sqlite_pdo_example.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = test_sqlite_pdo_example.php; sourceTree = "<group>"; };
+		5639BA4C1773FF7200C5B408 /* server.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.db; sourceTree = "<group>"; };
 		5647C698176035A8008AF02E /* swBackView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swBackView.png; sourceTree = "<group>"; };
 		5647C699176035A8008AF02E /* swFrontView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swFrontView.png; sourceTree = "<group>"; };
 		5647C69F17605709008AF02E /* ThunderboltSWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThunderboltSWViewController.h; sourceTree = "<group>"; };
@@ -1541,6 +1542,7 @@
 		56EB75371689D06A0082A5D2 /* CrystalSAN */ = {
 			isa = PBXGroup;
 			children = (
+				5639BA4C1773FF7200C5B408 /* server.db */,
 				56DA731E1720FD1900A0D781 /* CustomAnnotation */,
 				56956C161701448300F60A8A /* FLLocation */,
 				5600033B170546CA0043A9EE /* MBProgressHUD */,
@@ -1671,6 +1673,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5639BA4D1773FFAD00C5B408 /* server.db in Resources */,
 				56EB753C1689D06A0082A5D2 /* InfoPlist.strings in Resources */,
 				56EB75441689D06A0082A5D2 /* Default.png in Resources */,
 				56EB75461689D06A0082A5D2 /* Default@2x.png in Resources */,
@@ -1767,7 +1770,6 @@
 				5609AC87170D7B8200BB5BE5 /* SiteViewCarouselBackground.png in Resources */,
 				5647C69D176035A8008AF02E /* swBackView.png in Resources */,
 				5647C69E176035A8008AF02E /* swFrontView.png in Resources */,
-				563203DC1769911E00C0A300 /* server.db in Resources */,
 				56E7AADF176EB263008BCDA1 /* drive.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
